@@ -1,8 +1,8 @@
-<<<<<<< HEAD
+
 Belireview/.classpath
-=======
+
 .classpath
->>>>>>> fbdd7f238cb1d329d590aea810dcc5baa15a244c
+
 Belireview/.settings/org.eclipse.jdt.core.prefs
 Belireview/.settings/org.eclipse.wst.common.component
 Belireview/.settings/org.eclipse.wst.validation.prefs
@@ -12,8 +12,8 @@ Belireview/target/m2e-wtp/web-resources/META-INF/MANIFEST.MF
 Belireview/target/m2e-wtp/web-resources/META-INF/maven/believe.review/brw/pom.properties
 Belireview/target/m2e-wtp/web-resources/META-INF/maven/believe.review/brw/pom.xml
 Belireview/target/test-classes/log4j.xml
-<<<<<<< HEAD
-=======
+
+
 Belireview/.classpath
 Belireview/target/test-classes/log4j.xml
 Belireview/.settings/org.eclipse.wst.validation.prefs
@@ -25,4 +25,4 @@ Belireview/target/classes/log4j.xml
 Belireview/target/classes/believe/review/brw/HomeController.class
 Belireview/.settings/org.eclipse.jdt.core.prefs
 
->>>>>>> fbdd7f238cb1d329d590aea810dcc5baa15a244c
+
