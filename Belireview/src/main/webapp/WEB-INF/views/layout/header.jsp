@@ -22,7 +22,7 @@
               <div class="top"> <!-- top -->
                   <div class="container">
                       <div class="top-control">
-                          <a href="">로그인</a><span>•</span><a href="">회원가입</a>
+                          <a href="">로그인</a><span>•</span><a href="http://localhost:8080/brw/member/joinTerms.br">회원가입</a>
                       </div>
                   </div>
               </div> <!-- top end -->
