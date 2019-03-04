@@ -6,12 +6,14 @@
 <html>
 <script>
 	$(function(){
-		$(".cat-nav").css("display","none");
-		
+		$("#cat-nav").css("display","none");
+		$("#cat-nav").click(function(){
+			alert("a");
+		});
 		$(".mm").hover(function(){
-			$(".cat-nav").css("display","");
+			$("#cat-nav").css("display","");
 		},function(){
-			$(".cat-nav").css("display","none");
+			$("#cat-nav").css("display","none");
 		});
 	})
 </script>
