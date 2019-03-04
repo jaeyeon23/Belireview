@@ -18,6 +18,43 @@
 	      </div>
 	    </div>
 	  </div>
+	  
+	  <div class="col-sm-6 col-md-3">
+	    <div class="thumbnail">
+	      <img src="/brw/resources/images/3-girls.jpg">
+	      <div class="caption">
+	        <h3>Thumbnail label</h3>
+	        <p></p>
+	      </div>
+	    </div>
+	  </div>
+	  <div class="col-sm-6 col-md-3">
+	    <div class="thumbnail">
+	      <img src="/brw/resources/images/3-girls.jpg">
+	      <div class="caption">
+	        <h3>Thumbnail label</h3>
+	        <p></p>
+	      </div>
+	    </div>
+	  </div>
+	  <div class="col-sm-6 col-md-3">
+	    <div class="thumbnail">
+	      <img src="/brw/resources/images/3-girls.jpg">
+	      <div class="caption">
+	        <h3>Thumbnail label</h3>
+	        <p></p>
+	      </div>
+	    </div>
+	  </div>
+	  <div class="col-sm-6 col-md-3">
+	    <div class="thumbnail">
+	      <img src="/brw/resources/images/3-girls.jpg">
+	      <div class="caption">
+	        <h3>Thumbnail label</h3>
+	        <p></p>
+	      </div>
+	    </div>
+	  </div>
 	</div>
 	
 </body>

@@ -20,6 +20,7 @@
     	<put-attribute name="body" value="/WEB-INF/views/main/main.jsp"/>
     </definition>
     
+    <!-- contents -->
     <definition name="adList" extends=".home">
     	<put-attribute name="body" value="/WEB-INF/views/ad/adList.jsp"/>
     </definition>
@@ -67,5 +68,22 @@
     <definition name="movieComment" extends=".home">
     	<put-attribute name="body" value="/WEB-INF/views/movie/movieComment.jsp"/>
     </definition>
+    <!-- /contents -->
+    
+    <!-- user -->
+    <definition name="userMovie" extends=".home">
+    	<put-attribute name="body" value="/WEB-INF/views/user/userMovie.jsp"/>
+    </definition>
+    
+    
+    
+    
+    
+    
+    
+    <!-- /user -->
+    
+    
+    
     
 </tiles-definitions>
