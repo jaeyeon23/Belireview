@@ -8,25 +8,25 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/Movie")
 public class MovieController {
 	
-	@RequestMapping("movieList")
+	@RequestMapping(value="/movieList")
 	public ModelAndView movieList() {
 		ModelAndView mv = new ModelAndView("Movie/movieList");
 		return mv;
 	}
 	
-	@RequestMapping("movieDetail")
+	@RequestMapping(value="/movieDetail")
 	public ModelAndView movieDetail() {
 		ModelAndView mv = new ModelAndView("Movie/movieDetail");
 		return mv;
 	}
 	
-	@RequestMapping("movieInfo")
+	@RequestMapping(value="/movieInfo")
 	public ModelAndView movieInfo() {
 		ModelAndView mv = new ModelAndView("Movie/movieInfo");
 		return mv;
 	}
 	
-	@RequestMapping("movieComment")
+	@RequestMapping(value="/movieComment")
 	public ModelAndView movieComment() {
 		ModelAndView mv = new ModelAndView("Movie/movieComment");
 		return mv;
