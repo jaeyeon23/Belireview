@@ -17,7 +17,7 @@
     </definition>
     
     <definition name="main" extends=".home">
-    	<put-attribute name="body" value="/WEB-INF/views/main.jsp"/>
+    	<put-attribute name="body" value="/WEB-INF/views/main/main.jsp"/>
     </definition>
     
     <definition name="adList" extends=".home">
