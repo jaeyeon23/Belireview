@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" 
+       "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<tiles-definitions>
+	<definition name=".home" template="/WEB-INF/views/layout/layout.jsp">
+        <put-attribute name="title" value="빌리뷰" />
+        <put-attribute name="header" value="/WEB-INF/views/layout/header.jsp" />
+        <put-attribute name="footer" value="/WEB-INF/views/layout/footer.jsp" />
+    </definition>
+    
+    <definition name=".admin" template="/WEB-INF/views/layout/layout.jsp">
+        <put-attribute name="title" value="빌리뷰 : 관리자" />
+        <put-attribute name="header" value="/WEB-INF/views/layout/header.jsp" />
+        <put-attribute name="footer" value="/WEB-INF/views/layout/footer.jsp" />
+    </definition>
+    
+    <definition name="main" extends=".home">
+    	<put-attribute name="body" value="/WEB-INF/views/main/main.jsp"/>
+    </definition>
+    
+</tiles-definitions>
