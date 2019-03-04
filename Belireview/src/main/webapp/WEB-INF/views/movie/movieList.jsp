@@ -1,12 +1,23 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
-<title>Insert title here</title>
+<meta charset="utf-8">
+   <link rel="stylesheet" href="/brw/resources/css/list.css">
 </head>
 <body>
-
+	<div class="row a">
+	  <div class="col-sm-6 col-md-3">
+	    <div class="thumbnail">
+	      <img src="/brw/resources/images/3-girls.jpg">
+	      <div class="caption">
+	        <h3>Thumbnail label</h3>
+	        <p></p>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	
 </body>
 </html>
