@@ -5,7 +5,15 @@
 <!DOCTYPE html>
 <html>
 <script>
-	
+	$(function(){
+		$(".cat-nav").css("display","none");
+		
+		$(".mm").hover(function(){
+			$(".cat-nav").css("display","");
+		},function(){
+			$(".cat-nav").css("display","none");
+		});
+	})
 </script>
 <body>
 	 <div id="header"> <!-- header -->
@@ -37,9 +45,9 @@
                                   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                                       <ul class="nav navbar-nav">
                                           <li class="active"><a href="">Home <span class="sr-only">(current)</span></a></li>
-                                          <li><a href="/brw/drama/dramaList.br">Drama</a></li>
-                                          <li><a href="/brw/movie/movieList.br">Movie</a></li>
-                                          <li><a href="/brw/ad/adList.br">Advertisement</a></li>
+                                          <li><a class="dd" href="/brw/drama/dramaList.br">Drama</a></li>
+                                          <li><a class="mm" href="/brw/movie/movieList.br">Movie</a></li>
+                                          <li><a class="aa" href="/brw/ad/adList.br">Advertisement</a></li>
                                       </ul>
                                      
                                       <ul class="nav navbar-nav navbar-right">
