@@ -5,30 +5,30 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping("/Movie")
+@RequestMapping("/movie")
 public class MovieController {
 	
 	@RequestMapping(value="/movieList")
 	public ModelAndView movieList() {
-		ModelAndView mv = new ModelAndView("Movie/movieList");
+		ModelAndView mv = new ModelAndView("movie/movieList");
 		return mv;
 	}
 	
 	@RequestMapping(value="/movieDetail")
 	public ModelAndView movieDetail() {
-		ModelAndView mv = new ModelAndView("Movie/movieDetail");
+		ModelAndView mv = new ModelAndView("movie/movieDetail");
 		return mv;
 	}
 	
 	@RequestMapping(value="/movieInfo")
 	public ModelAndView movieInfo() {
-		ModelAndView mv = new ModelAndView("Movie/movieInfo");
+		ModelAndView mv = new ModelAndView("movie/movieInfo");
 		return mv;
 	}
 	
 	@RequestMapping(value="/movieComment")
 	public ModelAndView movieComment() {
-		ModelAndView mv = new ModelAndView("Movie/movieComment");
+		ModelAndView mv = new ModelAndView("movie/movieComment");
 		return mv;
 	}
 	
