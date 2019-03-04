@@ -4,6 +4,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
+<script>
+	
+</script>
 <body>
 	 <div id="header"> <!-- header -->
               <div class="top"> <!-- top -->
@@ -34,9 +37,9 @@
                                   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                                       <ul class="nav navbar-nav">
                                           <li class="active"><a href="">Home <span class="sr-only">(current)</span></a></li>
-                                          <li><a href="">Drama</a></li>
-                                          <li><a href="">Movie</a></li>
-                                          <li><a href="">Advertisement</a></li>
+                                          <li><a href="/brw/drama/dramaList.br">Drama</a></li>
+                                          <li><a href="/brw/movie/movieList.br">Movie</a></li>
+                                          <li><a href="/brw/ad/adList.br">Advertisement</a></li>
                                       </ul>
                                      
                                       <ul class="nav navbar-nav navbar-right">

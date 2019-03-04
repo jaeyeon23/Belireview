@@ -9,53 +9,19 @@
 </head>
 <body>
 	<div class="row a">
-	  <div class="col-sm-6 col-md-3">
-	    <div class="thumbnail">
-	      <img src="/brw/resources/images/3-girls.jpg">
-	      <div class="caption">
-	        <h3>Thumbnail label</h3>
-	        <p></p>
-	      </div>
-	    </div>
-	  </div>
-	  
-	  <div class="col-sm-6 col-md-3">
-	    <div class="thumbnail">
-	      <img src="/brw/resources/images/3-girls.jpg">
-	      <div class="caption">
-	        <h3>Thumbnail label</h3>
-	        <p></p>
-	      </div>
-	    </div>
-	  </div>
-	  <div class="col-sm-6 col-md-3">
-	    <div class="thumbnail">
-	      <img src="/brw/resources/images/3-girls.jpg">
-	      <div class="caption">
-	        <h3>Thumbnail label</h3>
-	        <p></p>
-	      </div>
-	    </div>
-	  </div>
-	  <div class="col-sm-6 col-md-3">
-	    <div class="thumbnail">
-	      <img src="/brw/resources/images/3-girls.jpg">
-	      <div class="caption">
-	        <h3>Thumbnail label</h3>
-	        <p></p>
-	      </div>
-	    </div>
-	  </div>
-	  <div class="col-sm-6 col-md-3">
-	    <div class="thumbnail">
-	      <img src="/brw/resources/images/3-girls.jpg">
-	      <div class="caption">
-	        <h3>Thumbnail label</h3>
-	        <p></p>
-	      </div>
-	    </div>
-	  </div>
+		<%-- <c:forEach var="liist" items="" varStatus="stat"> --%>
+			 <div class="col-sm-6 col-md-3">
+			 	<a href="/brw/movie/movieDetail.br">
+			    <div class="thumbnail">
+			      <img src="/brw/resources/images/3-girls.jpg">
+			      <div class="caption">
+			        <h3>제목</h3>
+			        <p>기타</p>
+			      </div>
+			    </div>
+			    </a>
+			  </div>
+		  <%-- </c:forEach> --%>
 	</div>
-	
 </body>
 </html>
