@@ -19,14 +19,14 @@
                                       <div class="slide-offers-left">
                                           <div class="slide-offers-title"><span>드라마</span><br/>FASHION</div>
                                           <p>New & Fvhresh collection<br/>arraival in believe store</p>
-                                          <a href="" class="btn btn-blue">드라마</a>
+                                          <a href="/brw/drama/dramaList.br" class="btn btn-blue">드라마</a>
                                       </div>
                                   </div>
                                   <div class="col-md-6">
                                        <div class="slide-offers-right">
                                           <div class="slide-offers-title"><span>영화</span><br/>FASHION</div>
                                           <p>New & Fvhresh collection<br/>arraival in believe store</p>
-                                          <a href="" class="btn btn-magenta">영화</a>
+                                          <a href="/brw/movie/movieList.br" class="btn btn-magenta">영화</a>
                                       </div>
                                   </div>
                               </div>
@@ -42,7 +42,7 @@
                                       <div class="slide-offers-left">
                                           <div class="slide-offers-title"><span>광고</span><br/>for online order</div>
                                           <p>New & Fvhresh collection<br/>arraival in believe store</p>
-                                          <a href="" class="btn btn-blue">AD</a>
+                                          <a href="/brw/ad/adList.br" class="btn btn-blue">AD</a>
                                       </div>
                                   </div>
                                   <div class="col-md-6">
@@ -62,7 +62,7 @@
                                       <div class="slide-offers-left">
                                           <div class="slide-offers-title"><span>광고</span><br/>for online order</div>
                                           <p>New & Fvhresh collection<br/>arraival in believe store</p>
-                                          <a href="" class="btn btn-blue">AD</a>
+                                          <a href="/brw/ad/adList.br" class="btn btn-blue">AD</a>
                                       </div>
                                   </div>
                                   <div class="col-md-6">

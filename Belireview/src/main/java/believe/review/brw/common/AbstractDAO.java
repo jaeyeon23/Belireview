@@ -1,14 +1,11 @@
 package believe.review.brw.common;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.util.StringUtils;
 
 /*import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 */
