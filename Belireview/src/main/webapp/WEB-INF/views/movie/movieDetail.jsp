@@ -213,8 +213,7 @@
 																			class="SectionWithHeader__TopRight-s1eyxltb-3 bZaEfL">
 																			<div
 																				class="SectionWithViewMore__ViewMore-xtbl7q-0 bhbIbv">
-																				<a lng="ko-KR"
-																					href="/ko-KR/contents/mOAZGJQ/overview">더보기</a>
+																				<a href="/brw/movie/movieInfo.br">더보기</a>
 																			</div>
 																		</div>
 																	</header>
@@ -569,12 +568,9 @@
 																		class="SectionWithHeader__Header-s1eyxltb-1 cuiACK">
 																		<h2 class="SectionWithHeader__Title-s1eyxltb-2 kwjefp">코멘트</h2>
 																		<span class="TitleSuffixForNumber-l2d30g-0 ejtPKl">4000+</span>
-																		<div
-																			class="SectionWithHeader__TopRight-s1eyxltb-3 bZaEfL">
-																			<div
-																				class="SectionWithViewMore__ViewMore-xtbl7q-0 bhbIbv">
-																				<a lng="ko-KR"
-																					href="/ko-KR/contents/mOAZGJQ/comments">더보기</a>
+																		<div class="SectionWithHeader__TopRight-s1eyxltb-3 bZaEfL">
+																			<div class="SectionWithViewMore__ViewMore-xtbl7q-0 bhbIbv">
+																				<a href="/brw/movie/movieComment.br">더보기</a>
 																			</div>
 																		</div>
 																	</header>
@@ -634,8 +630,7 @@
 																										class="TextTruncate__Self-wvv1uj-0 jXBVmV">
 																										<div
 																											class="TextTruncate__Text-wvv1uj-1 gLsCNn"
-																											style="white-space: pre-line;">탄생을 위해
-																											희생을 요구하는 신이라면, 그 신의 탄생은 과연 축복할만한 일인가</div>
+																											style="white-space: pre-line;">탄생을 위해 희생을 요구하는 신이라면, 그 신의 탄생은 과연 축복할만한 일인가</div>
 																									</div></a>
 																							</div>
 																							<div
@@ -823,9 +818,13 @@
 															<div class="Row-s1apwm9x-0 lowZpE">
 																<header
 																	class="SectionWithHeader__Header-s1eyxltb-1 cuiACK">
-																	<h2 class="SectionWithHeader__Title-s1eyxltb-2 kwjefp">이
-																		작품이 담긴 컬렉션</h2>
+																	<h2 class="SectionWithHeader__Title-s1eyxltb-2 kwjefp">갤러리</h2>
 																	<span class="TitleSuffixForNumber-l2d30g-0 ejtPKl">703</span>
+																	<div class="SectionWithHeader__TopRight-s1eyxltb-3 bZaEfL">
+																			<div class="SectionWithViewMore__ViewMore-xtbl7q-0 bhbIbv">
+																				<a href="/brw/movie/movieComment.br">더보기</a>
+																			</div>
+																		</div>
 																</header>
 															</div>
 														</div>
@@ -1081,6 +1080,11 @@
 																	class="SectionWithHeader__Header-s1eyxltb-1 cuiACK">
 																	<h2 class="SectionWithHeader__Title-s1eyxltb-2 kwjefp">비슷한 장르</h2>
 																	<span class="TitleSuffixForNumber-l2d30g-0 ejtPKl">703</span>
+																	<div class="SectionWithHeader__TopRight-s1eyxltb-3 bZaEfL">
+																			<div class="SectionWithViewMore__ViewMore-xtbl7q-0 bhbIbv">
+																				<a href="/brw/movie/movieComment.br">더보기</a>
+																			</div>
+																		</div>
 																</header>
 															</div>
 														</div>
