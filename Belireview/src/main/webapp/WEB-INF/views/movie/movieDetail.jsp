@@ -1072,6 +1072,261 @@
 													<div></div>
 												</div>
 											</div>
+											<div class="MaxWidthCol-s1fpp771-0 fGpdkH">
+												<div class="RoundedCornerBlock-s17n38ib-0 iyaHUY">
+													<section class="SectionWithHeader__Self-s1eyxltb-0 gAYeFO">
+														<div class="Grid-zydj2q-0 cspjno">
+															<div class="Row-s1apwm9x-0 lowZpE">
+																<header
+																	class="SectionWithHeader__Header-s1eyxltb-1 cuiACK">
+																	<h2 class="SectionWithHeader__Title-s1eyxltb-2 kwjefp">비슷한 장르</h2>
+																	<span class="TitleSuffixForNumber-l2d30g-0 ejtPKl">703</span>
+																</header>
+															</div>
+														</div>
+														<div
+															class="PrimitiveHorizontalScrollable__ScrollBarContainer-hy4esm-0 hUyjJn">
+															<div
+																class="PrimitiveHorizontalScrollable__ScrollBar-hy4esm-1 bVhHTK">
+																<div
+																	class="PrimitiveHorizontalScrollable__ScrollingInner-hy4esm-2 iGzmWK">
+																	<div class="Grid-zydj2q-0 cspjno">
+																		<div class="Row-s1apwm9x-0 lowZpE">
+																			<ul
+																				class="ContentDeckSection__DeckHorizontalUl-s1xkjjf8-0 dGBnhH HorizontalUl__StyledHorizontalUl-s1lfz4bc-0 eVxIzP VisualUl-s1vzev56-0 hgAYVH">
+																				<li
+																					class="ContentDeckSection__DeckCollage-s1xkjjf8-1 eHppBK HorizontalListItem-tt0z2b-0 hRbPKu"><a
+																					lng="ko-KR" title="단 1%의 반전이라도!!!!!!"
+																					href="/ko-KR/decks/SAzhL1LStc7d"><div
+																							class="ContentDeckSection__DeckPostersBlock-s1xkjjf8-2 hTJJpD">
+																							<div
+																								class="LazyLoadingBackground__StylingMerged-cgbyi4-2 fiwrWr LazyLoadingBackground__Self-cgbyi4-0 dxPvni">
+																								<span
+																									class="LazyLoadingBackground__BackgroundImage-cgbyi4-1 bqtNip"
+																									data-background-image-id="209"></span>
+																							</div>
+																							<div
+																								class="LazyLoadingBackground__StylingMerged-cgbyi4-2 fiwrWr LazyLoadingBackground__Self-cgbyi4-0 dxPvni">
+																								<span
+																									class="LazyLoadingBackground__BackgroundImage-cgbyi4-1 bqtNip"
+																									data-background-image-id="210"></span>
+																							</div>
+																							<div
+																								class="LazyLoadingBackground__StylingMerged-cgbyi4-2 fiwrWr LazyLoadingBackground__Self-cgbyi4-0 dxPvni">
+																								<span
+																									class="LazyLoadingBackground__BackgroundImage-cgbyi4-1 bqtNip"
+																									data-background-image-id="211"></span>
+																							</div>
+																							<div
+																								class="LazyLoadingBackground__StylingMerged-cgbyi4-2 fiwrWr LazyLoadingBackground__Self-cgbyi4-0 dxPvni">
+																								<span
+																									class="LazyLoadingBackground__BackgroundImage-cgbyi4-1 bqtNip"
+																									data-background-image-id="212"></span>
+																							</div>
+																						</div>
+																						<ul
+																							class="ContentDeckSection__DeckInfo-s1xkjjf8-3 eoOquJ VisualUl-s1vzev56-0 hgAYVH">
+																							<li
+																								class="ContentDeckSection__DeckTitle-s1xkjjf8-4 gGVjvL"><div
+																									class="TextTruncate__Self-wvv1uj-0 laNFWG">
+																									<div class="TextTruncate__Text-wvv1uj-1 gLsCNn"
+																										style="white-space: pre-line;">단 1%의
+																										반전이라도!!!!!!</div>
+																								</div></li>
+																							<li
+																								class="ContentDeckSection__DeckLikeCount-s1xkjjf8-5 iKvIaj">좋아요
+																								2426</li>
+																						</ul></a></li>
+																				<li
+																					class="ContentDeckSection__DeckCollage-s1xkjjf8-1 eHppBK HorizontalListItem-tt0z2b-0 hRbPKu"><a
+																					lng="ko-KR" title="2016/7/1 ~~"
+																					href="/ko-KR/decks/rwZdNJ0krzvO"><div
+																							class="ContentDeckSection__DeckPostersBlock-s1xkjjf8-2 hTJJpD">
+																							<div
+																								class="LazyLoadingBackground__StylingMerged-cgbyi4-2 fiwrWr LazyLoadingBackground__Self-cgbyi4-0 dxPvni">
+																								<span
+																									class="LazyLoadingBackground__BackgroundImage-cgbyi4-1 bqtNip"
+																									data-background-image-id="213"></span>
+																							</div>
+																							<div
+																								class="LazyLoadingBackground__StylingMerged-cgbyi4-2 fiwrWr LazyLoadingBackground__Self-cgbyi4-0 dxPvni">
+																								<span
+																									class="LazyLoadingBackground__BackgroundImage-cgbyi4-1 bqtNip"
+																									data-background-image-id="214"></span>
+																							</div>
+																							<div
+																								class="LazyLoadingBackground__StylingMerged-cgbyi4-2 fiwrWr LazyLoadingBackground__Self-cgbyi4-0 dxPvni">
+																								<span
+																									class="LazyLoadingBackground__BackgroundImage-cgbyi4-1 bqtNip"
+																									data-background-image-id="215"></span>
+																							</div>
+																							<div
+																								class="LazyLoadingBackground__StylingMerged-cgbyi4-2 fiwrWr LazyLoadingBackground__Self-cgbyi4-0 dxPvni">
+																								<span
+																									class="LazyLoadingBackground__BackgroundImage-cgbyi4-1 bqtNip"
+																									data-background-image-id="216"></span>
+																							</div>
+																						</div>
+																						<ul
+																							class="ContentDeckSection__DeckInfo-s1xkjjf8-3 eoOquJ VisualUl-s1vzev56-0 hgAYVH">
+																							<li
+																								class="ContentDeckSection__DeckTitle-s1xkjjf8-4 gGVjvL"><div
+																									class="TextTruncate__Self-wvv1uj-0 laNFWG">
+																									<div class="TextTruncate__Text-wvv1uj-1 gLsCNn"
+																										style="white-space: pre-line;">2016/7/1
+																										~~</div>
+																								</div></li>
+																							<li
+																								class="ContentDeckSection__DeckLikeCount-s1xkjjf8-5 iKvIaj">좋아요
+																								94</li>
+																						</ul></a></li>
+																				<li
+																					class="ContentDeckSection__DeckCollage-s1xkjjf8-1 eHppBK HorizontalListItem-tt0z2b-0 hRbPKu"><a
+																					lng="ko-KR" title="Honest 박정민"
+																					href="/ko-KR/decks/pytrFLcewdqw"><div
+																							class="ContentDeckSection__DeckPostersBlock-s1xkjjf8-2 hTJJpD">
+																							<div
+																								class="ContentPosterWithFallbackImg__FallbackImg-s1d414re-0 gJWbRf"
+																								src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDQ4IDQ4Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHBhdGggZmlsbD0iI0Q0RDRENCIgZD0iTTQyIDQxLjI1aC01LjM4MnYtNy41NjZoNi42MzJWNDBjMCAuNjg5LS41NjEgMS4yNS0xLjI1IDEuMjV6TTQuNzUgNDB2LTYuMzE2aDYuNjMydjcuNTY2SDZjLS42ODkgMC0xLjI1LS41NjEtMS4yNS0xLjI1ek02IDYuNzVoNS4zODJ2Ny41NjZINC43NVY4YzAtLjY4OS41NjEtMS4yNSAxLjI1LTEuMjV6TTQzLjI1IDh2Ni4zMTZoLTYuNjMyVjYuNzVINDJjLjY4OSAwIDEuMjUuNTYxIDEuMjUgMS4yNXptLTYuNjMyIDI0LjE4NGg2LjYzMlYyNC43NWgtNi42MzJ2Ny40MzR6TTEyLjg4MiA0MS4yNWgyMi4yMzZ2LTE2LjVIMTIuODgydjE2LjV6TTQuNzUgMzIuMTg0aDYuNjMyVjI0Ljc1SDQuNzV2Ny40MzR6bTAtOC45MzRoNi42MzJ2LTcuNDM0SDQuNzV2Ny40MzR6bTguMTMyIDBoMjIuMjM2VjYuNzVIMTIuODgydjE2LjV6bTIzLjczNiAwaDYuNjMydi03LjQzNGgtNi42MzJ2Ny40MzR6TTQyIDUuMjVINkEyLjc1MiAyLjc1MiAwIDAgMCAzLjI1IDh2MzJBMi43NTIgMi43NTIgMCAwIDAgNiA0Mi43NWgzNkEyLjc1MiAyLjc1MiAwIDAgMCA0NC43NSA0MFY4QTIuNzUyIDIuNzUyIDAgMCAwIDQyIDUuMjV6Ii8+CiAgICA8L2c+Cjwvc3ZnPgo="></div>
+																							<div
+																								class="LazyLoadingBackground__StylingMerged-cgbyi4-2 fiwrWr LazyLoadingBackground__Self-cgbyi4-0 dxPvni">
+																								<span
+																									class="LazyLoadingBackground__BackgroundImage-cgbyi4-1 bqtNip"
+																									data-background-image-id="217"></span>
+																							</div>
+																							<div
+																								class="LazyLoadingBackground__StylingMerged-cgbyi4-2 fiwrWr LazyLoadingBackground__Self-cgbyi4-0 dxPvni">
+																								<span
+																									class="LazyLoadingBackground__BackgroundImage-cgbyi4-1 bqtNip"
+																									data-background-image-id="218"></span>
+																							</div>
+																							<div
+																								class="LazyLoadingBackground__StylingMerged-cgbyi4-2 fiwrWr LazyLoadingBackground__Self-cgbyi4-0 dxPvni">
+																								<span
+																									class="LazyLoadingBackground__BackgroundImage-cgbyi4-1 bqtNip"
+																									data-background-image-id="219"></span>
+																							</div>
+																						</div>
+																						<ul
+																							class="ContentDeckSection__DeckInfo-s1xkjjf8-3 eoOquJ VisualUl-s1vzev56-0 hgAYVH">
+																							<li
+																								class="ContentDeckSection__DeckTitle-s1xkjjf8-4 gGVjvL"><div
+																									class="TextTruncate__Self-wvv1uj-0 laNFWG">
+																									<div class="TextTruncate__Text-wvv1uj-1 gLsCNn"
+																										style="white-space: pre-line;">Honest
+																										박정민</div>
+																								</div></li>
+																							<li
+																								class="ContentDeckSection__DeckLikeCount-s1xkjjf8-5 iKvIaj">좋아요
+																								87</li>
+																						</ul></a></li>
+																				<li
+																					class="ContentDeckSection__DeckCollage-s1xkjjf8-1 eHppBK HorizontalListItem-tt0z2b-0 hRbPKu"><a
+																					lng="ko-KR" title="IN THE CINEMA"
+																					href="/ko-KR/decks/4Y0spXPuIie6"><div
+																							class="ContentDeckSection__DeckPostersBlock-s1xkjjf8-2 hTJJpD">
+																							<div
+																								class="LazyLoadingBackground__StylingMerged-cgbyi4-2 fiwrWr LazyLoadingBackground__Self-cgbyi4-0 dxPvni">
+																								<span
+																									class="LazyLoadingBackground__BackgroundImage-cgbyi4-1 bqtNip"
+																									data-background-image-id="220"></span>
+																							</div>
+																							<div
+																								class="LazyLoadingBackground__StylingMerged-cgbyi4-2 fiwrWr LazyLoadingBackground__Self-cgbyi4-0 dxPvni">
+																								<span
+																									class="LazyLoadingBackground__BackgroundImage-cgbyi4-1 bqtNip"
+																									data-background-image-id="221"></span>
+																							</div>
+																							<div
+																								class="LazyLoadingBackground__StylingMerged-cgbyi4-2 fiwrWr LazyLoadingBackground__Self-cgbyi4-0 dxPvni">
+																								<span
+																									class="LazyLoadingBackground__BackgroundImage-cgbyi4-1 bqtNip"
+																									data-background-image-id="222"></span>
+																							</div>
+																							<div
+																								class="LazyLoadingBackground__StylingMerged-cgbyi4-2 fiwrWr LazyLoadingBackground__Self-cgbyi4-0 dxPvni">
+																								<span
+																									class="LazyLoadingBackground__BackgroundImage-cgbyi4-1 bqtNip"
+																									data-background-image-id="223"></span>
+																							</div>
+																						</div>
+																						<ul
+																							class="ContentDeckSection__DeckInfo-s1xkjjf8-3 eoOquJ VisualUl-s1vzev56-0 hgAYVH">
+																							<li
+																								class="ContentDeckSection__DeckTitle-s1xkjjf8-4 gGVjvL"><div
+																									class="TextTruncate__Self-wvv1uj-0 laNFWG">
+																									<div class="TextTruncate__Text-wvv1uj-1 gLsCNn"
+																										style="white-space: pre-line;">IN THE
+																										CINEMA</div>
+																								</div></li>
+																							<li
+																								class="ContentDeckSection__DeckLikeCount-s1xkjjf8-5 iKvIaj">좋아요
+																								54</li>
+																						</ul></a></li>
+																				<li
+																					class="ContentDeckSection__DeckCollage-s1xkjjf8-1 eHppBK HorizontalListItem-tt0z2b-0 hRbPKu"><a
+																					lng="ko-KR" title="신"
+																					href="/ko-KR/decks/SIycdWakv3Ju"><div
+																							class="ContentDeckSection__DeckPostersBlock-s1xkjjf8-2 hTJJpD">
+																							<div
+																								class="LazyLoadingBackground__StylingMerged-cgbyi4-2 fiwrWr LazyLoadingBackground__Self-cgbyi4-0 dxPvni">
+																								<span
+																									class="LazyLoadingBackground__BackgroundImage-cgbyi4-1 bqtNip"
+																									data-background-image-id="224"></span>
+																							</div>
+																							<div
+																								class="LazyLoadingBackground__StylingMerged-cgbyi4-2 fiwrWr LazyLoadingBackground__Self-cgbyi4-0 dxPvni">
+																								<span
+																									class="LazyLoadingBackground__BackgroundImage-cgbyi4-1 bqtNip"
+																									data-background-image-id="225"></span>
+																							</div>
+																							<div
+																								class="LazyLoadingBackground__StylingMerged-cgbyi4-2 fiwrWr LazyLoadingBackground__Self-cgbyi4-0 dxPvni">
+																								<span
+																									class="LazyLoadingBackground__BackgroundImage-cgbyi4-1 bqtNip"
+																									data-background-image-id="226"></span>
+																							</div>
+																							<div
+																								class="LazyLoadingBackground__StylingMerged-cgbyi4-2 fiwrWr LazyLoadingBackground__Self-cgbyi4-0 dxPvni">
+																								<span
+																									class="LazyLoadingBackground__BackgroundImage-cgbyi4-1 bqtNip"
+																									data-background-image-id="227"></span>
+																							</div>
+																						</div>
+																						<ul
+																							class="ContentDeckSection__DeckInfo-s1xkjjf8-3 eoOquJ VisualUl-s1vzev56-0 hgAYVH">
+																							<li
+																								class="ContentDeckSection__DeckTitle-s1xkjjf8-4 gGVjvL"><div
+																									class="TextTruncate__Self-wvv1uj-0 laNFWG">
+																									<div class="TextTruncate__Text-wvv1uj-1 gLsCNn"
+																										style="white-space: pre-line;">신</div>
+																								</div></li>
+																							<li
+																								class="ContentDeckSection__DeckLikeCount-s1xkjjf8-5 iKvIaj">좋아요
+																								43</li>
+																						</ul></a></li>
+																				<div
+																					class="SpinnerContainer__Self-s16nvp7b-0 dvymnj"></div>
+																			</ul>
+																		</div>
+																	</div>
+																</div>
+															</div>
+															<div
+																class="arrow_button PrimitiveHorizontalScrollable__ArrowButtonBlock-hy4esm-3 kCjzvu"
+																direction="left">
+																<div
+																	class="PrimitiveHorizontalScrollable__BackwardButton-hy4esm-5 bWflCD"></div>
+															</div>
+															<div
+																class="arrow_button PrimitiveHorizontalScrollable__ArrowButtonBlock-hy4esm-3 eweFwK"
+																direction="right">
+															</div>
+														</div>
+													</section>
+													<div></div>
+												</div>
+											</div>
 										</div>
 										<div
 											class="ContentPage__HiddenBlockOnlyMdScreen-se3skp-10 jVScZl"></div>
