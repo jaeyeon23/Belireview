@@ -10,22 +10,22 @@ public class AdController {
    
    @RequestMapping(value="/adList.br")
    public ModelAndView adList() {
-      ModelAndView mv = new ModelAndView("ad/adList");
+      ModelAndView mv = new ModelAndView("adList");
       return mv;
    }
    @RequestMapping(value="/adDetail.br")
    public ModelAndView adDetail() {
-      ModelAndView mv = new ModelAndView("ad/adDetail");
+      ModelAndView mv = new ModelAndView("adDetail");
       return mv;
    }
    @RequestMapping(value="/adInfo.br")
    public ModelAndView adInfo() {
-      ModelAndView mv = new ModelAndView("ad/adInfo");
+      ModelAndView mv = new ModelAndView("adInfo");
       return mv;
    }
    @RequestMapping(value="/adComment.br")
    public ModelAndView adComment() {
-      ModelAndView mv = new ModelAndView("ad/adComment");
+      ModelAndView mv = new ModelAndView("adComment");
       return mv;
    }
 }

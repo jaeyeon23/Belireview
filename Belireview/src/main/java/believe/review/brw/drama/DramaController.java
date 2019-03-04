@@ -14,7 +14,7 @@ public class DramaController {
    @RequestMapping(value="dramaList.br")
    public ModelAndView dramaList() throws Exception{
       
-      ModelAndView mv = new ModelAndView("/drama/dramaList");
+      ModelAndView mv = new ModelAndView("dramaList");
       
       return mv;
       
@@ -24,7 +24,7 @@ public class DramaController {
    @RequestMapping(value="dramaDetail.br")
    public ModelAndView dramaDetail() throws Exception{
       
-      ModelAndView mv = new ModelAndView("/drama/dramaDetail");
+      ModelAndView mv = new ModelAndView("dramaDetail");
       
       return mv;
       
@@ -34,7 +34,7 @@ public class DramaController {
    @RequestMapping(value="dramaInfo.br")
    public ModelAndView dramaInfo() throws Exception{
       
-      ModelAndView mv = new ModelAndView("/drama/dramaInfo");
+      ModelAndView mv = new ModelAndView("dramaInfo");
       
       return mv;
       
@@ -44,7 +44,7 @@ public class DramaController {
    @RequestMapping(value="dramaComment.br")
    public ModelAndView dramaComment() throws Exception{
       
-      ModelAndView mv = new ModelAndView("/drama/dramaComment");
+      ModelAndView mv = new ModelAndView("dramaComment");
       
       return mv;
       

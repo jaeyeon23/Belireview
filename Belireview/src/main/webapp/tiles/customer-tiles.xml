@@ -16,8 +16,52 @@
         <put-attribute name="footer" value="/WEB-INF/views/layout/footer.jsp" />
     </definition>
     
-    <definition name="main" extends=".home">
-    	<put-attribute name="body" value="/WEB-INF/views/main/main.jsp"/>
+    <definition name="adList" extends=".home">
+    	<put-attribute name="body" value="/WEB-INF/views/ad/adList.jsp"/>
+    </definition>
+    
+    <definition name="adDetail" extends=".home">
+    	<put-attribute name="body" value="/WEB-INF/views/ad/adDetail.jsp"/>
+    </definition>
+    
+    <definition name="adInfo" extends=".home">
+    	<put-attribute name="body" value="/WEB-INF/views/ad/adInfo.jsp"/>
+    </definition>
+    
+    <definition name="adComment" extends=".home">
+    	<put-attribute name="body" value="/WEB-INF/views/ad/adComment.jsp"/>
+    </definition>
+    
+    <definition name="dramaList" extends=".home">
+    	<put-attribute name="body" value="/WEB-INF/views/drama/dramaList.jsp"/>
+    </definition>
+    
+    <definition name="dramaDetail" extends=".home">
+    	<put-attribute name="body" value="/WEB-INF/views/drama/dramaDetail.jsp"/>
+    </definition>
+    
+    <definition name="dramaInfo" extends=".home">
+    	<put-attribute name="body" value="/WEB-INF/views/drama/dramaInfo.jsp"/>
+    </definition>
+    
+    <definition name="dramaComment" extends=".home">
+    	<put-attribute name="body" value="/WEB-INF/views/drama/dramaComment.jsp"/>
+    </definition>
+    
+    <definition name="movieList" extends=".home">
+    	<put-attribute name="body" value="/WEB-INF/views/movie/movieList.jsp"/>
+    </definition>
+    
+    <definition name="movieDetail" extends=".home">
+    	<put-attribute name="body" value="/WEB-INF/views/movie/movieDetail.jsp"/>
+    </definition>
+    
+    <definition name="movieInfo" extends=".home">
+    	<put-attribute name="body" value="/WEB-INF/views/movie/movieInfo.jsp"/>
+    </definition>
+    
+    <definition name="movieComment" extends=".home">
+    	<put-attribute name="body" value="/WEB-INF/views/movie/movieComment.jsp"/>
     </definition>
     
 </tiles-definitions>

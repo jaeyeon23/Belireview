@@ -10,25 +10,25 @@ public class MovieController {
    
    @RequestMapping(value="/movieList")
    public ModelAndView movieList() {
-      ModelAndView mv = new ModelAndView("movie/movieList");
+      ModelAndView mv = new ModelAndView("movieList");
       return mv;
    }
    
    @RequestMapping(value="/movieDetail")
    public ModelAndView movieDetail() {
-      ModelAndView mv = new ModelAndView("movie/movieDetail");
+      ModelAndView mv = new ModelAndView("movieDetail");
       return mv;
    }
    
    @RequestMapping(value="/movieInfo")
    public ModelAndView movieInfo() {
-      ModelAndView mv = new ModelAndView("movie/movieInfo");
+      ModelAndView mv = new ModelAndView("movieInfo");
       return mv;
    }
    
    @RequestMapping(value="/movieComment")
    public ModelAndView movieComment() {
-      ModelAndView mv = new ModelAndView("movie/movieComment");
+      ModelAndView mv = new ModelAndView("movieComment");
       return mv;
    }
    
