@@ -5,7 +5,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="member">
 	
-   <!--    <insert id="insertMember" parameterType="hashmap">
+     <insert id="insertMember" parameterType="hashmap">
 		<![CDATA[
 		INSERT INTO MEMBER ( MEMBER_NO, ID, PASSWORD, NAME, EMAIL, TEL, ADMIN, REGDATE, PROFILE_IMAGE, EMAIL_MARKETING, SMS_MARKETING) 
 		VALUES( MEMBER_NO_SEQ.nextVal, #{ID}, #{PASSWORD}, #{NAME},
@@ -15,8 +15,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	  </insert>
 	
 
-	   ID 찾기 정보 가져오기 확인
-      
+     <!--  
       <select id="Idcheck" parameterType="hashmap" resultType="int">
   		 <![CDATA[
    		   SELECT COUNT(*) FROM MEMBER WHERE ID = #{ID}

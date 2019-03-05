@@ -1,20 +1,17 @@
 package believe.review.brw.member;
 
-//import java.util.List;
+
 import java.util.Map;
-//
-//import org.apache.commons.logging.Log;
-//import org.apache.commons.logging.LogFactory;
-//import org.mybatis.spring.SqlSessionTemplate;
-//import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Repository;
-//
+
+import believe.review.brw.common.AbstractDAO;
 
 @Repository("memberDAO")
-public class MemberDAO {
+public class MemberDAO extends AbstractDAO {
 
 	public void insertMember(Map<String, Object> map) throws Exception {
-	
+		insert("member.insertMember",map);
 	}
 	 
 }
