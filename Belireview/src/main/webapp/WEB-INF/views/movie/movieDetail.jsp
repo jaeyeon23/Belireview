@@ -6,6 +6,56 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="/brw/resources/css/detail3.css">
+ <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <link rel="stylesheet"  href="/brw/resources/css/lightslider.css"/>
+    <style>
+    	ul{
+			list-style: none outside none;
+		    padding-left: 0;
+            margin: 0;
+		}
+        .demo .item{
+            margin-bottom: 60px;
+        }
+		.content-slider li{
+		    background-color: #ed3020;
+		    text-align: center;
+		    color: #FFF;
+		}
+		.content-slider h3 {
+		    margin: 0;
+		    padding: 70px 0;
+		}
+		.demo{
+			width: 800px;
+		}
+    </style>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="/brw/resources/js/lightslider.js"></script> 
+    <script>
+      
+    	 $(document).ready(function() {
+			$("#content-slider").lightSlider({
+                loop:true,
+              	auto:true,
+                keyPress:true
+            });
+            $('#image-gallery').lightSlider({
+                gallery:true,
+                item:1,
+                thumbItem:9,
+                slideMargin: 0,
+                speed:500,
+                auto:true,
+                loop:true,
+                onSliderLoad: function() {
+                    $('#image-gallery').removeClass('cS-hidden');
+                }  
+            });
+		});
+    </script>
 </head>
 <body>
 	<div id="root">
@@ -828,9 +878,31 @@
 																</header>
 															</div>
 														</div>
-														<div
+														 <div
 															class="PrimitiveHorizontalScrollable__ScrollBarContainer-hy4esm-0 hUyjJn">
-															<div
+																<div class="item">
+																	<ul id="content-slider" class="content-slider">
+																		<li>
+																			<h3>1</h3>
+																		</li>
+																		<li>
+																			<h3>2</h3>
+																		</li>
+																		<li>
+																			<h3>3</h3>
+																		</li>
+																		<li>
+																			<h3>4</h3>
+																		</li>
+																		<li>
+																			<h3>5</h3>
+																		</li>
+																		<li>
+																			<h3>6</h3>
+																		</li>
+																	</ul>
+																</div>
+																<!--	<div
 																class="PrimitiveHorizontalScrollable__ScrollBar-hy4esm-1 bVhHTK">
 																<div
 																	class="PrimitiveHorizontalScrollable__ScrollingInner-hy4esm-2 iGzmWK">
@@ -849,24 +921,7 @@
 																									class="LazyLoadingBackground__BackgroundImage-cgbyi4-1 bqtNip"
 																									data-background-image-id="209"></span>
 																							</div>
-																							<div
-																								class="LazyLoadingBackground__StylingMerged-cgbyi4-2 fiwrWr LazyLoadingBackground__Self-cgbyi4-0 dxPvni">
-																								<span
-																									class="LazyLoadingBackground__BackgroundImage-cgbyi4-1 bqtNip"
-																									data-background-image-id="210"></span>
-																							</div>
-																							<div
-																								class="LazyLoadingBackground__StylingMerged-cgbyi4-2 fiwrWr LazyLoadingBackground__Self-cgbyi4-0 dxPvni">
-																								<span
-																									class="LazyLoadingBackground__BackgroundImage-cgbyi4-1 bqtNip"
-																									data-background-image-id="211"></span>
-																							</div>
-																							<div
-																								class="LazyLoadingBackground__StylingMerged-cgbyi4-2 fiwrWr LazyLoadingBackground__Self-cgbyi4-0 dxPvni">
-																								<span
-																									class="LazyLoadingBackground__BackgroundImage-cgbyi4-1 bqtNip"
-																									data-background-image-id="212"></span>
-																							</div>
+																					
 																						</div>
 																						<ul
 																							class="ContentDeckSection__DeckInfo-s1xkjjf8-3 eoOquJ VisualUl-s1vzev56-0 hgAYVH">
@@ -892,24 +947,7 @@
 																									class="LazyLoadingBackground__BackgroundImage-cgbyi4-1 bqtNip"
 																									data-background-image-id="213"></span>
 																							</div>
-																							<div
-																								class="LazyLoadingBackground__StylingMerged-cgbyi4-2 fiwrWr LazyLoadingBackground__Self-cgbyi4-0 dxPvni">
-																								<span
-																									class="LazyLoadingBackground__BackgroundImage-cgbyi4-1 bqtNip"
-																									data-background-image-id="214"></span>
-																							</div>
-																							<div
-																								class="LazyLoadingBackground__StylingMerged-cgbyi4-2 fiwrWr LazyLoadingBackground__Self-cgbyi4-0 dxPvni">
-																								<span
-																									class="LazyLoadingBackground__BackgroundImage-cgbyi4-1 bqtNip"
-																									data-background-image-id="215"></span>
-																							</div>
-																							<div
-																								class="LazyLoadingBackground__StylingMerged-cgbyi4-2 fiwrWr LazyLoadingBackground__Self-cgbyi4-0 dxPvni">
-																								<span
-																									class="LazyLoadingBackground__BackgroundImage-cgbyi4-1 bqtNip"
-																									data-background-image-id="216"></span>
-																							</div>
+																						
 																						</div>
 																						<ul
 																							class="ContentDeckSection__DeckInfo-s1xkjjf8-3 eoOquJ VisualUl-s1vzev56-0 hgAYVH">
@@ -930,26 +968,12 @@
 																					href="/ko-KR/decks/pytrFLcewdqw"><div
 																							class="ContentDeckSection__DeckPostersBlock-s1xkjjf8-2 hTJJpD">
 																							<div
-																								class="ContentPosterWithFallbackImg__FallbackImg-s1d414re-0 gJWbRf"
-																								src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDQ4IDQ4Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHBhdGggZmlsbD0iI0Q0RDRENCIgZD0iTTQyIDQxLjI1aC01LjM4MnYtNy41NjZoNi42MzJWNDBjMCAuNjg5LS41NjEgMS4yNS0xLjI1IDEuMjV6TTQuNzUgNDB2LTYuMzE2aDYuNjMydjcuNTY2SDZjLS42ODkgMC0xLjI1LS41NjEtMS4yNS0xLjI1ek02IDYuNzVoNS4zODJ2Ny41NjZINC43NVY4YzAtLjY4OS41NjEtMS4yNSAxLjI1LTEuMjV6TTQzLjI1IDh2Ni4zMTZoLTYuNjMyVjYuNzVINDJjLjY4OSAwIDEuMjUuNTYxIDEuMjUgMS4yNXptLTYuNjMyIDI0LjE4NGg2LjYzMlYyNC43NWgtNi42MzJ2Ny40MzR6TTEyLjg4MiA0MS4yNWgyMi4yMzZ2LTE2LjVIMTIuODgydjE2LjV6TTQuNzUgMzIuMTg0aDYuNjMyVjI0Ljc1SDQuNzV2Ny40MzR6bTAtOC45MzRoNi42MzJ2LTcuNDM0SDQuNzV2Ny40MzR6bTguMTMyIDBoMjIuMjM2VjYuNzVIMTIuODgydjE2LjV6bTIzLjczNiAwaDYuNjMydi03LjQzNGgtNi42MzJ2Ny40MzR6TTQyIDUuMjVINkEyLjc1MiAyLjc1MiAwIDAgMCAzLjI1IDh2MzJBMi43NTIgMi43NTIgMCAwIDAgNiA0Mi43NWgzNkEyLjc1MiAyLjc1MiAwIDAgMCA0NC43NSA0MFY4QTIuNzUyIDIuNzUyIDAgMCAwIDQyIDUuMjV6Ii8+CiAgICA8L2c+Cjwvc3ZnPgo="></div>
-																							<div
 																								class="LazyLoadingBackground__StylingMerged-cgbyi4-2 fiwrWr LazyLoadingBackground__Self-cgbyi4-0 dxPvni">
 																								<span
 																									class="LazyLoadingBackground__BackgroundImage-cgbyi4-1 bqtNip"
 																									data-background-image-id="217"></span>
 																							</div>
-																							<div
-																								class="LazyLoadingBackground__StylingMerged-cgbyi4-2 fiwrWr LazyLoadingBackground__Self-cgbyi4-0 dxPvni">
-																								<span
-																									class="LazyLoadingBackground__BackgroundImage-cgbyi4-1 bqtNip"
-																									data-background-image-id="218"></span>
-																							</div>
-																							<div
-																								class="LazyLoadingBackground__StylingMerged-cgbyi4-2 fiwrWr LazyLoadingBackground__Self-cgbyi4-0 dxPvni">
-																								<span
-																									class="LazyLoadingBackground__BackgroundImage-cgbyi4-1 bqtNip"
-																									data-background-image-id="219"></span>
-																							</div>
+																						
 																						</div>
 																						<ul
 																							class="ContentDeckSection__DeckInfo-s1xkjjf8-3 eoOquJ VisualUl-s1vzev56-0 hgAYVH">
@@ -975,24 +999,7 @@
 																									class="LazyLoadingBackground__BackgroundImage-cgbyi4-1 bqtNip"
 																									data-background-image-id="220"></span>
 																							</div>
-																							<div
-																								class="LazyLoadingBackground__StylingMerged-cgbyi4-2 fiwrWr LazyLoadingBackground__Self-cgbyi4-0 dxPvni">
-																								<span
-																									class="LazyLoadingBackground__BackgroundImage-cgbyi4-1 bqtNip"
-																									data-background-image-id="221"></span>
-																							</div>
-																							<div
-																								class="LazyLoadingBackground__StylingMerged-cgbyi4-2 fiwrWr LazyLoadingBackground__Self-cgbyi4-0 dxPvni">
-																								<span
-																									class="LazyLoadingBackground__BackgroundImage-cgbyi4-1 bqtNip"
-																									data-background-image-id="222"></span>
-																							</div>
-																							<div
-																								class="LazyLoadingBackground__StylingMerged-cgbyi4-2 fiwrWr LazyLoadingBackground__Self-cgbyi4-0 dxPvni">
-																								<span
-																									class="LazyLoadingBackground__BackgroundImage-cgbyi4-1 bqtNip"
-																									data-background-image-id="223"></span>
-																							</div>
+																							
 																						</div>
 																						<ul
 																							class="ContentDeckSection__DeckInfo-s1xkjjf8-3 eoOquJ VisualUl-s1vzev56-0 hgAYVH">
@@ -1018,24 +1025,7 @@
 																									class="LazyLoadingBackground__BackgroundImage-cgbyi4-1 bqtNip"
 																									data-background-image-id="224"></span>
 																							</div>
-																							<div
-																								class="LazyLoadingBackground__StylingMerged-cgbyi4-2 fiwrWr LazyLoadingBackground__Self-cgbyi4-0 dxPvni">
-																								<span
-																									class="LazyLoadingBackground__BackgroundImage-cgbyi4-1 bqtNip"
-																									data-background-image-id="225"></span>
-																							</div>
-																							<div
-																								class="LazyLoadingBackground__StylingMerged-cgbyi4-2 fiwrWr LazyLoadingBackground__Self-cgbyi4-0 dxPvni">
-																								<span
-																									class="LazyLoadingBackground__BackgroundImage-cgbyi4-1 bqtNip"
-																									data-background-image-id="226"></span>
-																							</div>
-																							<div
-																								class="LazyLoadingBackground__StylingMerged-cgbyi4-2 fiwrWr LazyLoadingBackground__Self-cgbyi4-0 dxPvni">
-																								<span
-																									class="LazyLoadingBackground__BackgroundImage-cgbyi4-1 bqtNip"
-																									data-background-image-id="227"></span>
-																							</div>
+																							
 																						</div>
 																						<ul
 																							class="ContentDeckSection__DeckInfo-s1xkjjf8-3 eoOquJ VisualUl-s1vzev56-0 hgAYVH">
@@ -1054,7 +1044,7 @@
 																			</ul>
 																		</div>
 																	</div>
-																</div>
+																</div> -->
 															</div>
 															<div
 																class="arrow_button PrimitiveHorizontalScrollable__ArrowButtonBlock-hy4esm-3 kCjzvu"
