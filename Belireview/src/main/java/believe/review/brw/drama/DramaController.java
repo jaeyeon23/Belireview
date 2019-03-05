@@ -20,7 +20,7 @@ public class DramaController {
 	public ModelAndView dramaList(CommandMap commandMap) throws Exception {
 
 		ModelAndView mv = new ModelAndView("dramaList");
-		List<Map<String,Object>> list = dramaService.selectBoardList(commandMap.getMap());
+		List<Map<String,Object>> list = dramaService.selectBoardList();
 		mv.addObject("list", list);
 		
 		return mv;
@@ -43,6 +43,7 @@ public class DramaController {
 
 		return mv;
 
+		
 	}
 
 	@RequestMapping(value = "dramaComment.br")
