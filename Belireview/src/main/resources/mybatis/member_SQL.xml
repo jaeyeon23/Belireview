@@ -6,7 +6,7 @@
 	<!-- 로그인 -->
 	<select id="selectOneMember" parameterType="hashmap" resultType="hashmap">
 		<![CDATA[
-			SELECT * FROM MEMBER WHERE ID=#{ID}
+			SELECT * FROM MEMBER WHERE ID=#{id}
 		]]>
 	</select>
 	
@@ -26,15 +26,16 @@
 		]]>
 	</select>
 	
-</mapper>
-   <!--    <insert id="insertMember" parameterType="hashmap">
+	<!-- 회원가입 -->
+	<insert id="insertMember" parameterType="hashmap">
 		<![CDATA[
-		INSERT INTO MEMBER ( MEMBER_NO, ID, PASSWORD, NAME, EMAIL, TEL, ADMIN, REGDATE, PROFILE_IMAGE, EMAIL_MARKETING, SMS_MARKETING) 
-		VALUES( MEMBER_NO_SEQ.nextVal, #{ID}, #{PASSWORD}, #{NAME},
-		 #{EMAIL}, #{TEL}, #{ADMIN}, 
-		 #{REGDATE}, #{PROFILE_IMAGE}, #{EMAIL_MARKETING}, #{SMS_MARKETING})
+		INSERT INTO MEMBER(MEMBER_NO, ID, PASSWORD, NAME, EMAIL, TEL, ADMIN, REGDATE, EMAIL_MARKETING, SMS_MARKETING) 
+		VALUES(SEQ_MEMBER_NO.nextVal, #{id}, #{password}, #{name}, #{email}, #{tel}, '0', SYSDATE , '1', '1')
 		]]>
-	  </insert>
+	 </insert>  
+	
+</mapper>
+   <!--   
 	
 
 	   ID 찾기 정보 가져오기 확인

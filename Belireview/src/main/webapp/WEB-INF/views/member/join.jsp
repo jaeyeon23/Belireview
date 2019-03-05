@@ -5,11 +5,12 @@
 <head>
 <meta charset="UTF-8">
 <title>회원가입</title>
-	    <link href="/brw/resources/Jcss/join.css" rel="stylesheet">   
+	    <link href="/brw/resources/Jcss/join.css" rel="stylesheet">
+	    
 </head>
 <body>
 <div id="wrap">
-	<form id="join_form" method="post" action="">
+	<form id="join_form" name="join_form" method="post" action="join.br">
 
     <!-- container -->
     <div id="container" role="main">
@@ -32,7 +33,7 @@
                     <div class="join_row">
                         <h3 class="join_title"><label for="pswd1">비밀번호</label></h3>
                         <span class="ps_box int_pass" id="pswd1Img">
-							<input type="password" id="pswd1" name="pswd1" class="int" title="비밀번호 입력" aria-describedby="pswd1Msg" maxlength="20">
+							<input type="password" id="password" name="password" class="int" title="비밀번호 입력" aria-describedby="pswd1Msg" maxlength="20">
                             <span class="lbl"><span id="pswd1Span" class="step_txt"></span></span>
 						</span>
 						
@@ -72,19 +73,30 @@
                     </div>
                     <span class="error_next_box" id="emailMsg" style="display:none" role="alert"></span>
                 </div>
-                <!-- // 이름, 생년월일 입력 -->
-
-
-                
+              
               
                 <div class="btn_area">
-                    <button type="button" id="btnJoin" class="btn_type btn_primary"><span>가입하기</span></button>
-                </div>
+                	<input type="submit" id="btnJoin" class="btn_type btn_primary" value="가입하기" >
+                <!-- 	<button type="button" id="btnJoin" class="btn_type btn_primary"><span>가입하기</span></button>   onclick="javascript:checkSubmit()"
+                 --></div>
             </div>
         </div>
     </div>
     <!-- // container -->
 </form>
 </div>
+<!-- 
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#btnJoin").click(function() {
+			document.join_form.action = "${path}join.br";
+			document.join_form.submit();
+		});
+		
+	});
+</script> -->
+
+
 </body>
 </html>
