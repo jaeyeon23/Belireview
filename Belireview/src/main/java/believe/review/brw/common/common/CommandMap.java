@@ -1,4 +1,4 @@
-package believe.review.brw.common;
+package believe.review.brw.common.common;
 
 import java.util.HashMap;
 import java.util.Map;
