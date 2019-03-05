@@ -1,8 +1,101 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <mapper namespace="drama">
 
-<select id="selectBoardList" parameterType="hashmap" resultType="hashmap">
+  <select id="selectBoardList" parameterType="hashmap" resultType="hashmap">
  			SELECT * FROM AD ORDER BY AD_NO ASC;
    </select>
+   
+   <insert id="insertDrama"  parameterType="hashmap" resultType="hashmap">
+   INSERT INTO DRAMA(	
+	DRAMA_NO,
+	DRAMA_NAME,
+    DRAMA_DATE,
+    DRAMA_CHANNEL,
+    DRAMA_GENRE,
+    DRAMA_DIRECTOR,
+    DRAMA_CONTENT,
+    DRAMA_READCOUNT,
+    DRAMA_POSTER_IMAGE,
+    DRAMA_MAIN_IMAGE,
+    DRAMA_CONTENT_IMAGE,
+    DRAMA_EPISODE,
+    DRAMA_GRADE,
+)
+values (
+	SEQ_DRAMA_NO.NEXTVAL,
+	#{DRAMA_NAME},
+	#{DRAMA_DATE},
+	#{DRAMA_CHANNEL},
+	#{DRAMA_GENRE},
+	#{DRAMA_DIRECTOR},
+	#{DRAMA_CONTENT},
+	0,
+	#{DRAMA_POSTER_IMAGE},
+	#{DRAMA_MAIN_IMAGE},
+	#{DRAMA_CONTENT_IMAGE},
+	#{DRAMA_EPISODE},
+	0
+);
+</insert>
+<!-- 드라마 최신순 3개 -->
+<select id="dramadate_list"  parameterType="hashmap" resultType="hashmap">
+	SELECT
+	DRAMA_NAME,
+	DRAMA_DATE,
+	DRAMA_CHANNEL,
+	DRAMA_GENRE,
+	DRAMA_DIRECTOR,
+	DRAMA_CONTENT,
+	DRAMA_READCOUNT,
+	DRAMA_POSTER_IMAGE,
+	DRAMA_MAIN_IMAGE,
+	DRAMA_CONTENT_IMAGE,
+	DRAMA_EPISODE,
+	DRAMA_GRADE,
+	RNUM FROM 
+	(
+SELECT
+		DRAMA_NAME,
+		DRAMA_DATE,
+		DRAMA_CHANNEL,
+		DRAMA_GENRE,
+		DRAMA_DIRECTOR,
+		DRAMA_CONTENT,
+		DRAMA_READCOUNT,
+		DRAMA_POSTER_IMAGE,
+		DRAMA_MAIN_IMAGE,
+		DRAMA_CONTENT_IMAGE,
+		DRAMA_EPISODE,
+		DRAMA_GRADE,
+		ROWNUM RNUM FROM 
+		(SELECT *
+			FROM DRAMA ORDER BY DRAMA_DATE DESC) ORDER BY RNUM ASC) WHERE RNUM BETWEEN #{START} AND #{END}
+
+</select>
+
+	<select>
+		SELECT * FROM DRAMA WHERE DRAMA_NO=#{DRAMA_NO}
+	</select>
 	
+<!-- 수정 -->	
+	<update>
+	UPDATE DRAMA SET 
+		DRAMA_NAME=#{DRAMA_NAME},
+		DRAMA_DATE=#{DRAMA_DATE},
+		DRAMA_CHANNEL=#{DRAMA_CHANNEL},
+		DRAMA_GENRE=#{DRAMA_GENRE},
+		DRAMA_DIRECTOR=#{DRAMA_DIRECTOR},
+		DRAMA_CONTENT=#{DRAMA_CONTENT},
+		DRAMA_POSTER_IMAGE=#{DRAMA_POSTER_IMAGE},
+		DRAMA_MAIN_IMAGE=#{DRAMA_MAIN_IMAGE},
+		DRAMA_CONTENT_IMAGE=#{CONTENT_IMAGE},
+		DRAMA_EPISODE=#{EPISODE}
+	WHERE DRAMA_NO=#{DRAMA_NO}	
+	</update>
+
+<!-- 삭제 -->
+	<delete>
+		DELETE DRAMA WHERE DRAMA_NO=#{DRAMA_NO}
+	</delete>
+
 </mapper>
