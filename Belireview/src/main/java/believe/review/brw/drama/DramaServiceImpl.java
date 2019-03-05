@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 
 public class DramaServiceImpl  implements DramaService{
 
-	@Resource(name="DramaDAO")
+	@Resource(name="dramaDAO")
 	private DramaDAO dramaDAO;
 	
 	
