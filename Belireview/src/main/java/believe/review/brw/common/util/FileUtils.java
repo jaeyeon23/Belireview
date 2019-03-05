@@ -1,4 +1,4 @@
-package believe.review.brw.common.util;
+/*package believe.review.brw.common.util;
 
 import java.io.File;
 import java.io.IOException;
@@ -16,7 +16,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 @Component("fileUtils")
 public class FileUtils {//user_profile\\
-	private static final String filePath = "C:\\Users\\¹ÚÀç¿¬\\Desktop\\Belireview\\Belireview\\src\\main\\webapp\\resources\\images\\";
+	private static final String filePath = "C:\\Users\\ï¿½ï¿½ï¿½ç¿¬\\Desktop\\Belireview\\Belireview\\src\\main\\webapp\\resources\\images\\";
 	
 	public Map<String, Object> parseInsertFileInfo(HttpServletRequest request) throws Exception{
 		MultipartHttpServletRequest multipartHttpServletRequest = (MultipartHttpServletRequest)request;
@@ -27,10 +27,10 @@ public class FileUtils {//user_profile\\
 		String originalFileExtension = null;
 		String storedFileName = null;
 		
-		/*List<Map<String, Object>> list = new ArrayList<Map<String,Object>>();*/
+		List<Map<String, Object>> list = new ArrayList<Map<String,Object>>();
 		Map<String, Object> fileMap	= null; //listMap->fileMap
 		
-		/*String boardIdx = (String)map.get("IDX");*/
+		String boardIdx = (String)map.get("IDX");
 		
 		File file = new File(filePath);
 		
@@ -45,11 +45,11 @@ public class FileUtils {//user_profile\\
 				multipartFile.transferTo(file);
 				
 				fileMap = new HashMap<String, Object>();
-				/*listMap.put("BOARD_IDX", boardIdx);*/
+				listMap.put("BOARD_IDX", boardIdx);
 				fileMap.put("ORIGINAL_FILE_NAME", originalFileName);
 				fileMap.put("STORED_FILE_NAME", storedFileName);
-				/*listMap.put("FILE_SIZE", multipartFile.getSize());*/
-				/*list.add(listMap);*/
+				listMap.put("FILE_SIZE", multipartFile.getSize());
+				list.add(listMap);
 				
 			}
 		}
@@ -58,3 +58,4 @@ public class FileUtils {//user_profile\\
 	
 
 }
+*/

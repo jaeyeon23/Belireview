@@ -5,7 +5,7 @@ import java.util.Map;
 
 import org.springframework.stereotype.Repository;
 
-import believe.review.brw.common.AbstractDAO;
+import believe.review.brw.common.common.AbstractDAO;
 
 @Repository("dramaDAO")
 public class DramaDAO extends AbstractDAO{
