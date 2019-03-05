@@ -2,6 +2,7 @@ package believe.review.brw.admin.user;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -9,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import believe.review.brw.common.common.CommandMap;
 import believe.review.brw.common.util.Paging;
@@ -23,6 +25,7 @@ public class AdminUserController {
 	private int blockPage = 5; 	 
 	private String pagingHtml;  
 	private Paging page;
+	private String filePath = "C:\\Users\\¹ÚÀç¿¬\\Desktop\\Belireview\\Belireview\\src\\main\\webapp\\resources\\images\\user_profile\\";
 	
 	@Resource(name="adminUserService")
 	private AdminUserService adminUserService;
@@ -73,7 +76,7 @@ public class AdminUserController {
 		return "redirect:/admin/users.br";
 	}
 	
-	@RequestMapping("/modify.br")
+	@RequestMapping(value="/modify.br", method=RequestMethod.GET)
 	public String userModifyPage(HttpServletRequest request, Model model) throws Exception{
 		Map<String, Object> admin = null;
 		
@@ -85,4 +88,48 @@ public class AdminUserController {
 		
 		return "/admin/user/adminUserModify";
 	}
+	
+	@RequestMapping(value="/modify.br", method=RequestMethod.POST)
+	public String userModify(CommandMap commandMap, HttpServletRequest request, Model model) throws Exception{
+		/*
+		Set keyset = commandMap.keySet();
+		System.out.println("Key set values are" + keyset);
+		
+		(result) Key set values are[password, sms_marketing, email_marketing, password_check, name, admin, tel, id, email]
+		
+		*/
+
+		/*MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
+		MultipartFile multipartFile = multipartRequest.getFile("profile_image");
+		
+		String fileName = multipartFile.getOriginalFilename();
+		String IMAGEExtension = fileName.substring(fileName.lastIndexOf("."));
+		String fileName2 = (String)commandMap.get("id") + IMAGEExtension;
+		
+		commandMap.put("profile_image", fileName2);
+		adminUserService.updateUserOne(commandMap.getMap());
+		
+		File file = new File(filePath + fileName2);
+		
+		multipartFile.transferTo(file);*/
+		
+		/*MultipartFile multipartFile = multipartHttpServletRequest.getFile("profile_image");
+		String fileName = multipartFile.getOriginalFilename();
+		if(fileName != "") {
+			String id = (String) commandMap.get("id");
+			
+	        String IMAGEExtension = fileName.substring(fileName.lastIndexOf("."));
+	        String fileName2 = id + IMAGEExtension;
+	        FileCopyUtils.copy(multipartFile.getInputStream(), new FileOutputStream(filePath + fileName2));
+	        
+	        commandMap.put("profile_image", fileName2);
+		}else {
+			commandMap.put("profile_image", null);
+		}*/
+
+		adminUserService.updateUserOne(commandMap.getMap());
+
+		return "redirect:/admin/users.br";
+	}
+	
 }
