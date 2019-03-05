@@ -37,9 +37,22 @@
                                           <li><a href="">Drama</a></li>
                                           <li><a href="">Movie</a></li>
                                           <li><a href="">Advertisement</a></li>
-                                          <li><a href="">Admin</a></li>
-                                      </ul>
-                                     
+                                          <li><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Admin <i class="fa fa-angle-down"></i></a>
+			                                  <ul class="dropdown-menu megamenu" role="menu">
+			                                      <li>
+		                                              <div class="mega-sub">
+		                                                  <div class="mega-sub-title">All Clothing</div>
+		                                                  <ul>
+		                                                      <li><a href="/brw/admin/users.br">Users</a></li>
+		                                                      <li><a href="/brw/admin/drama.br">Drama</a></li>
+		                                                      <li><a href="/brw/admin/movie.br">Movie</a></li>
+		                                                      <li><a href="/brw/admin/ad.br">Advertisement</a></li>
+		                                                      <li><a href="/brw/admin/qa.br">Q&A</a></li>
+		                                                  </ul>
+		                                              </div>
+                                         		 </li>
+                                         	</ul>
+                                     </li>
                                       <ul class="nav navbar-nav navbar-right">
                                           <li class="menu-search-form">
                                               <a href="#" id="open-srch-form"><img src="/brw/resources/images/srch.png" alt="srch"></a>
@@ -56,7 +69,26 @@
                                               </div>
                                           </li>
                                       </ul>
-                                     
+                                     <!-- <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">MEN <i class="fa fa-angle-down"></i></a>
+                                  <ul class="dropdown-menu megamenu" role="menu">
+                                      <li>
+                                          <div class="">
+                                              <div class="mega-sub">
+                                                  <div class="mega-sub-title">All Clothing</div>
+                                                  <ul>
+                                                      <li><a href="">T-Shirts</a></li>
+                                                      <li><a href="">Casual & Party Wear Shirts</a></li>
+                                                      <li><a href="">Jeans</a></li>
+                                                      <li><a href="">Formal Shirts</a></li>
+                                                      <li><a href="">Cargos, Shorts & 3/4ths</a></li>
+                                                      <li><a href="">Sports Wear</a></li>
+                                                      <li><a href="">Trousers</a></li>
+                                                      <li><a href="">Suits and Blazers</a></li>
+                                                      <li><a href="">Ethnic Wear</a></li>
+                                                      <li><a href="">Inner & Sleep Wear</a></li>
+                                                      <li><a href="">Accessories</a></li>
+                                                  </ul>
+                                              </div> -->
                                   </div><!-- /.navbar-collapse -->
                               <!--</div> -->
                               
