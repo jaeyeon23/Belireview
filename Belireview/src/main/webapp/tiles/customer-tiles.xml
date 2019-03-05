@@ -12,14 +12,14 @@
     
     <definition name=".admin" template="/WEB-INF/views/layout/layout.jsp">
         <put-attribute name="title" value="빌리뷰 : 관리자" />
-        <put-attribute name="header" value="/WEB-INF/views/layout/header.jsp" />
+        <put-attribute name="header" value="/WEB-INF/views/layout/header_admin.jsp" />
         <put-attribute name="footer" value="/WEB-INF/views/layout/footer.jsp" />
     </definition>
     
     <definition name="main" extends=".home">
     	<put-attribute name="body" value="/WEB-INF/views/main/main.jsp"/>
     </definition>
-    
+
 
     <!-- contents -->
     <definition name="adList" extends=".home">
@@ -97,5 +97,10 @@
     </definition>
     
 
+	<!-- 관리자 -->
+    <definition name="/admin/*/*" extends=".admin">
+    	<put-attribute name="body" value="/WEB-INF/views/admin/{1}/{2}.jsp"/>
+    </definition>
     
+
 </tiles-definitions>
