@@ -1,9 +1,11 @@
-/*package believe.review.brw.login;
+package believe.review.brw.login;
 
 import java.util.Map;
+
 import javax.annotation.Resource;
+
 import org.springframework.stereotype.Service;
-import believe.review.brw.common.CommandMap;
+/*import believe.review.brw.common.CommandMap;*/
 
 @Service("loginService")
 public class LoginServiceImpl implements LoginService{
@@ -17,7 +19,7 @@ public class LoginServiceImpl implements LoginService{
 		return loginDAO.selectId(map);
 	}
 	
-	//아이디 찾기
+/*	//아이디 찾기
 	public String findId(Map<String, Object> map) throws Exception {
 		return loginDao.findId(map);
 	}
@@ -27,19 +29,19 @@ public class LoginServiceImpl implements LoginService{
 	{
 		loginDao.findPasswd(map);
 	}
-	
-	@Override
+	*/
+/*	@Override
 	public Map<String, Object> loginMember(Map<String,Object>map)throws Exception{
 		Map<String,Object> tempMap=loginDao.loginMember(map);
 		return tempMap;
 		
-	}
-	@Override
+	}*/
+	/*@Override
 	public Map<String,Object> loginMember(Map<String,Object> map)throws Exception{
 		return loginDao.selectOneMember(map);
-	}
+	}*/
 
-	@Override
+	/*@Override
 	public Map<String, Object> searchId(Map<String, Object> map) throws Exception {
 		return loginDao.searchId(map);
 	}
@@ -48,6 +50,5 @@ public class LoginServiceImpl implements LoginService{
 	public Map<String, Object> searchPw(Map<String, Object> map) throws Exception {
 		return loginDao.searchPw(map);
 	}
-	
+	*/
 }
-*/
