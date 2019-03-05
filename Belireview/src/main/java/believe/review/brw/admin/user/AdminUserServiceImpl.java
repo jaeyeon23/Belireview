@@ -32,6 +32,11 @@ public class AdminUserServiceImpl implements AdminUserService{
 	}
 
 	@Override
+	public void updateUserOne(Map<String, Object> map) throws Exception {
+		adminUserDAO.updateUserOne(map);
+	}
+
+	@Override
 	public void deleteUserOne(Map<String, Object> map) throws Exception {
 		adminUserDAO.deleteUserOne(map);
 	}
