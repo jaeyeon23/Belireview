@@ -1,3 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <mapper namespace="drama">
+
+<select id="selectBoardList" parameterType="hashmap" resultType="hashmap">
+ 			SELECT * FROM AD ORDER BY AD_NO ASC;
+   </select>
+	
 </mapper>

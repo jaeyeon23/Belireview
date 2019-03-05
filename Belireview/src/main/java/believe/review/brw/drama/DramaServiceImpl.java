@@ -1,5 +1,23 @@
 package believe.review.brw.drama;
 
-public class DramaServiceImpl {
+import java.util.List;
+import java.util.Map;
+
+import javax.annotation.Resource;
+
+import org.springframework.stereotype.Service;
+
+@Service("dramaService")
+
+public class DramaServiceImpl  implements DramaService{
+
+	@Resource(name="DramaDAO")
+	private DramaDAO dramaDAO;
+	
+	
+	@Override
+	public List<Map<String, Object>> selectBoardList(Map<String, Object> map) throws Exception {
+		return dramaDAO.selectBoardList(map);
+	}
 
 }
