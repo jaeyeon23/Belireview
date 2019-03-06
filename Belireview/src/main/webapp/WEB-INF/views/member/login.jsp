@@ -36,7 +36,7 @@
 				<div class="login_form">
 					<legend class="blind">로그인</legend>
 						<div class="row_group">
-							<form id="loginForm" method="post" action="/brw/member/login.br">
+							<form id="loginForm" method="post" action="">
 							<div class="join_row">
 								<span class="ps_box int_id"> 
 									<input type="text" id="id" name="id" class="int"  maxlength="20" placeholder="아이디"> 

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mapper namespace="movie_comment">
+
+<insert>
+INSERT INTO MOVIE_COMMENT 
+(
+  MOVIE_NO,
+  MC_NO,
+  ID,
+  MC_REG_DATE,
+  MC_CONTENT,
+  MC_LIKE,
+  MC_LIKE_ID
+)
+VALUES
+(
+  SEQ_MOVIE_COMMENT_NO.NEXTVAL,
+  #{MOVIE_NO},
+  #{MC_NO},
+  #{ID},
+  #{MC_REG_DATE},
+  #{MC_CONTENT},
+  #{MC_LIKE},
+  #{MC_LIKE_ID}
+);
+</insert>
+
+<!-- 댓글 최신순 -->
+<select>
+SELECT
+  MOVIE_NO,
+  MC_NO,
+  ID,
+  MC_REG_DATE,
+  MC_CONTENT,
+  MC_LIKE,
+  MC_LIKE_ID,
+  RNUM FROM 
+  (SELECT
+     MOVIE_NO,
+     MC_NO,
+     ID,
+     MC_REG_DATE,
+     MC_CONTENT,
+     MC_LIKE,
+     MC_LIKE_ID,
+     ROWNUM RNUM FROM 
+    (SELECT 
+      *
+      FROM MOVIE_COMMENT ORDER BY MC_REG_DATE DESC) ORDER BY RNUM ASC) WHERE RNUM BETWEEN #{START} AND #{END}
+</select>
+
+<!-- 댓글 좋아요 순 -->
+<select>
+SELECT
+  MOVIE_NO,
+  MC_NO,
+  ID,
+  MC_REG_DATE,
+  MC_CONTENT,
+  MC_LIKE,
+  MC_LIKE_ID,
+  RNUM FROM 
+  (SELECT
+     MOVIE_NO,
+     MC_NO,
+     ID,
+     MC_REG_DATE,
+     MC_CONTENT,
+     MC_LIKE,
+     MC_LIKE_ID,
+     ROWNUM RNUM FROM 
+    (SELECT 
+      *
+      FROM MOVIE_COMMENT ORDER BY MC_LIKE DESC) ORDER BY RNUM ASC) WHERE RNUM BETWEEN #{START} AND #{END}
+</select>
+
+</mapper>

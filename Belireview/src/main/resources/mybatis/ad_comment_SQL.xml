@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mapper namespace="ad_comment">
+
+<insert>
+INSERT INTO AD_COMMENT 
+(
+  AD_NO,
+  ADC_NO,
+  ID,
+  AD_REG_DATE,
+  AD_CONTENT,
+  AD_LIKE,
+  AD_LIKE_ID
+)
+VALUES
+(
+  SEQ_AD_COMMENT_NO.NEXTVAL,
+  #{AD_NO},
+  #{ADC_NO},
+  #{ID},
+  #{AD_REG_DATE},
+  #{AD_CONTENT},
+  #{AD_LIKE},
+  #{AD_LIKE_ID}
+);
+</insert>
+
+<!-- 댓글 최신순 -->
+<select>
+SELECT
+  AD_NO,
+  ADC_NO,
+  ID,
+  AD_REG_DATE,
+  AD_CONTENT,
+  AD_LIKE,
+  AD_LIKE_ID,
+  RNUM FROM 
+  (SELECT
+     AD_NO,
+     ADC_NO,
+     ID,
+     AD_REG_DATE,
+     AD_CONTENT,
+     AD_LIKE,
+     AD_LIKE_ID,
+     ROWNUM RNUM FROM 
+    (SELECT 
+      *
+      FROM AD_COMMENT ORDER BY AD_REG_DATE DESC) ORDER BY RNUM ASC) WHERE RNUM BETWEEN #{START} AND #{END}
+</select>
+
+<!-- 댓글 좋아요 순 -->
+<select>
+SELECT
+  AD_NO,
+  ADC_NO,
+  ID,
+  AD_REG_DATE,
+  AD_CONTENT,
+  AD_LIKE,
+  AD_LIKE_ID,
+  RNUM FROM 
+  (SELECT
+     AD_NO,
+     ADC_NO,
+     ID,
+     AD_REG_DATE,
+     AD_CONTENT,
+     AD_LIKE,
+     AD_LIKE_ID,
+     ROWNUM RNUM FROM 
+    (SELECT 
+      *
+      FROM AD_COMMENT ORDER BY AD_LIKE DESC) ORDER BY RNUM ASC) WHERE RNUM BETWEEN #{START} AND #{END}
+</select>
+</mapper>
