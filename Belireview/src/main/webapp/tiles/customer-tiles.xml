@@ -98,6 +98,9 @@
     <definition name="join" extends=".home">
     	<put-attribute name="body" value="/WEB-INF/views/member/join.jsp"/>
     </definition>
+    <definition name="joinComplete" extends=".home">
+    	<put-attribute name="body" value="/WEB-INF/views/member/joinComplete.jsp"/>
+    </definition>
     
 
 	<!-- 관리자 -->
