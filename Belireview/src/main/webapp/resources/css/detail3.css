@@ -503,7 +503,7 @@
 .gPsULF{position:absolute;top:0;left:0;background-image:linear-gradient( -180deg,rgba(20,20,20,0.3) 1%,rgba(20,20,20,0.5) 67%,#141414 98% );width:100%;height:100%;overflow:hidden;}@media (min-width:719px){.gPsULF{background-image:linear-gradient( -180deg,rgba(0,0,0,0.35) 2%,rgba(0,0,0,0.2) 70%,rgba(0,0,0,0.5) 100% );}}
 /* sc-component-id: ContentJumbotron__BlurPoster-yf8npk-4 */
 
-.WdAlN{position:absolute;top:-10%;left:-10%;width:120%;height:110%;filter:blur(15px);background:url(https://dhgywazgeek0d.cloudfront.net/watcha/image/upload/c_fill,h_720,q_80,w_1280/v1548745097/seseepcbkomwhicbhsn1.jpg) no-repeat center;background-size:cover;}@media (min-width:719px){.WdAlN{position:relative;top:auto;left:auto;width:825px;height:100%;filter:none;}}@media (min-width:1023px){.WdAlN{width:768px;}}@media (min-width:1300px){.WdAlN{width:910px;}}@media (min-width:1400px){.WdAlN{width:1024px;}}
+.WdAlN{position:absolute;top:-10%;left:-10%;width:120%;height:110%;filter:blur(15px);background-size:cover;}@media (min-width:719px){.WdAlN{position:relative;top:auto;left:auto;width:825px;height:100%;filter:none;}}@media (min-width:1023px){.WdAlN{width:768px;}}@media (min-width:1300px){.WdAlN{width:910px;}}@media (min-width:1400px){.WdAlN{width:1024px;}}
 /* sc-component-id: ContentJumbotron__LeftBackground-yf8npk-6 */
 
 .cGzUVh{-webkit-flex:1;-ms-flex:1;flex:1;background:#364052;}

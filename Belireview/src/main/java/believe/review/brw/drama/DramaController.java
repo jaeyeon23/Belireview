@@ -31,10 +31,11 @@ public class DramaController {
 	}
 
 	@RequestMapping(value = "dramaDetail.br")
-	public ModelAndView dramaDetail() throws Exception {
+	public ModelAndView dramaDetail(CommandMap commandMap) throws Exception {
 
 		ModelAndView mv = new ModelAndView("dramaDetail");
-
+		Map<String,Object> map = dramaService.dramaDetail(commandMap.getMap());
+		mv.addObject("map",map);
 		return mv;
 
 	}
