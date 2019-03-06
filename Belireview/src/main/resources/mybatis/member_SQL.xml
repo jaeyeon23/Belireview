@@ -33,6 +33,13 @@
 		VALUES(SEQ_MEMBER_NO.nextVal, #{id}, #{password}, #{name}, #{email}, #{tel}, '0', SYSDATE , '1', '1')
 		]]>
 	 </insert>  
+	 
+	 <!-- 아이디 중복확인 -->
+	 <select id="checkId" parameterType="String" resultType="int">
+  		<![CDATA[
+   		   SELECT COUNT(*) FROM MEMBER WHERE ID = #{id}
+   		]]>
+   	 </select>
 	
 </mapper>
    <!--   

@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
  
@@ -66,35 +67,6 @@ public class MemberController {
 		mv.addObject("NAME",commandMap.get("name"));
 		return mv;
 	}
-	
-	/*
-	 * @RequestMapping(value="/joinComplete", method=RequestMethod.POST) //step3
-	 * 가입완료 public ModelAndView join(CommandMap commandMap, HttpServletRequest
-	 * request) throws Exception{ ModelAndView mv = new ModelAndView();
-	 * 
-	 * HttpSession session = request.getSession();
-	 * 
-	 * Map<String, Object> memberMap = new HashMap<String, Object>(); memberMap =
-	 * commandMap.getMap();
-	 * 
-	 * memberService.insertMember(memberMap, request);
-	 * 
-	 * 
-	 * session.setAttribute("ID", commandMap.get("ID"));
-	 * session.setAttribute("PASSWORD", commandMap.get("PASSWORD"));
-	 * session.setAttribute("NAME", commandMap.get("NAME"));
-	 * session.setAttribute("EMAIL", commandMap.get("EMAIL"));
-	 * session.setAttribute("TEL", commandMap.get("TEL"));
-	 * session.setAttribute("ADMIN", 0); session.setAttribute("EMAIL_MARKETING",
-	 * commandMap.get("EMAIL_MARKETING")); session.setAttribute("SMS_MARKETING",
-	 * commandMap.get("SMS_MARKETING"));
-	 * 
-	 * mv.setViewName("joinComplete");
-	 * 
-	 * //mv.addObject("MEMBER_ID",commandMap.get("MEMBER_ID")); return mv; }
-	 */
-	
-	
 	
 
 }

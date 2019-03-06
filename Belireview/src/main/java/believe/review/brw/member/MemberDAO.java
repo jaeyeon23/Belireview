@@ -13,6 +13,8 @@ public class MemberDAO extends AbstractDAO {
 	public void insertMember(Map<String, Object> map) throws Exception {
 		insert("member.insertMember", map);
 	}
+	
+	
 	 
 }
 
