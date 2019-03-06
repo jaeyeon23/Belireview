@@ -1,5 +1,7 @@
-/*package believe.review.brw.login;
+package believe.review.brw.login;
 
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -10,8 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-
-import believe.review.brw.common.CommandMap;
+import believe.review.brw.common.common.CommandMap;
 
 @Controller
 @RequestMapping("/member")
@@ -19,35 +20,38 @@ public class LoginController {
 
 	@Resource(name="loginService")
 	private LoginService loginService;
-
+	
 	@RequestMapping(value="/loginForm")
 	public ModelAndView loginForm() {
 		ModelAndView mv=new ModelAndView();
-		mv.setViewName("login");
+		mv.setViewName("loginForm");
 		return mv;
 	}
 	
-	@RequestMapping(value="/login", method=RequestMethod.POST)
-	public ModelAndView loginMember(CommandMap commandMap,HttpServletRequest request)throws Exception{
-		ModelAndView mv=new ModelAndView();
+	@SuppressWarnings("unchecked")
+	@RequestMapping(value = "/login.br", method = RequestMethod.POST)
+	public ModelAndView loginComplete(CommandMap commandMap, HttpServletRequest request) throws Exception {
+		ModelAndView mv = new ModelAndView();
+
 		HttpSession session = request.getSession();
-		
-		Map<String,Object> map=loginService.loginMember(commandMap.getMap());		
-		 // System.out.println("아이디" + commandMap.get("ID"));
-		 
-		if(map==null) {//아이디가 없으면
+
+		System.out.println("아이디" + commandMap.get("ID"));
+
+		Map<String, Object> chk = loginService.loginGo(commandMap.getMap());
+
+		if(chk==null) {//아이디가 없으면
 			mv.setViewName("loginForm");
 			mv.addObject("message","해당 아이디가 없습니다.");
 			return mv;
 						
-		}else if(map.get("ADMIN").equals("1")) {//관리자
+		}else if(chk.get("ADMIN").equals("1")) {//관리자
 			
-			if(map.get("PASSWORD").equals(commandMap.get("PASSWORD"))) {
+			if(chk.get("PASSWORD").equals(commandMap.get("PASSWORD"))) {
 	              session.setAttribute("ID", commandMap.get("ID"));
-	              session.setAttribute("NAME", map.get("NAME"));
-	              session.setAttribute("ADMIN", map.get("ADMIN"));
+	              session.setAttribute("NAME", chk.get("NAME"));
+	              session.setAttribute("ADMIN", chk.get("ADMIN"));
 	              
-	              mv.setViewName("redirect:/admin/adminPage");
+	              mv.setViewName("redirect:/admin/adminMain");
 	              return mv;
 			}
 			else {
@@ -59,14 +63,14 @@ public class LoginController {
 		else {
 			//System.out.println("비밀번호1:"+map.get("PASSWORD")+"비밀번호2:"+commandMap.get("PASSWORD"));
 		
-			if(map.get("PASSWORD").equals(commandMap.get("PASSWORD"))) {
+			if(chk.get("PASSWORD").equals(commandMap.get("PASSWORD"))) {
 				session.setAttribute("ID",commandMap.get("ID"));
-				mv.addObject("MEMBER",map);
+				mv.addObject("MEMBER",chk);
 				mv.setViewName("redirect:main");
-				session.setAttribute("NAME", map.get("NAME"));
-				session.setAttribute("TEL", map.get("TEL"));
-				session.setAttribute("EMAIL", map.get("EMAIL"));
-				session.setAttribute("ADMIN", map.get("ADMIN"));
+				session.setAttribute("NAME", chk.get("NAME"));
+				session.setAttribute("TEL", chk.get("TEL"));
+				session.setAttribute("EMAIL", chk.get("EMAIL"));
+				session.setAttribute("ADMIN", chk.get("ADMIN"));
 				
 				return mv;
 			}
@@ -76,17 +80,18 @@ public class LoginController {
 				return mv;
 			}
 		}
-	}
+		
+	}	 
 	
-	
-	@RequestMapping(value="/logout")
-	public ModelAndView logout(CommandMap commandMap,HttpServletRequest request) {
-		HttpSession session=request.getSession(false);
-		if(session!=null)
-			session.invalidate();
-		ModelAndView mv=new ModelAndView();
-		mv.setViewName("redirect:/main");
-		return mv;
-	}
+	@RequestMapping(value = "/logout.br")		//로그아웃
+	   public ModelAndView logout(HttpServletRequest request, CommandMap commandMap) {
+	      HttpSession session = request.getSession(false);
+	      if (session != null)
+	         session.invalidate();
+	      ModelAndView mv = new ModelAndView();
+	      mv.setViewName("redirect:/main");
+	      return mv;
+	 }
+
 }
-*/
+

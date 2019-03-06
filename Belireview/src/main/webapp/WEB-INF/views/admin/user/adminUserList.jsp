@@ -57,7 +57,7 @@
 <body>
 	<div class="container">
 		<table class="table" align="center">
-			<thead class="thead-dark">
+			<thead>
 				<tr>
 					<th>NO</th>
 					<th>ID</th>

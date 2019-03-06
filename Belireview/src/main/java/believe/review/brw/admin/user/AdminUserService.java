@@ -11,5 +11,7 @@ public interface AdminUserService {
 	
 	public Map<String, Object> selectUserOne(String str) throws Exception;
 	
+	public void updateUserOne(Map<String, Object> map) throws Exception;
+	
 	public void deleteUserOne(Map<String, Object> map) throws Exception;
 }
