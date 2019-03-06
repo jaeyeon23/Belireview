@@ -36,16 +36,16 @@
 				<div class="login_form">
 					<legend class="blind">로그인</legend>
 						<div class="row_group">
-							<form id="loginForm" method="post" action="">
+							<form id="loginForm" method="post" action="/brw/member/login.br">
 							<div class="join_row">
 								<span class="ps_box int_id"> 
-									<input type="text" id="id" name="id" class="int"  maxlength="20" placeholder="아이디"> 
+									<input type="text" id="ID" name="ID" class="int"  maxlength="20" placeholder="아이디"> 
 								<span class="error_next_box" id="idMsg" style="display: none" role="alert"></span>
 							</div>
 							<br>
 							<div class="join_row">
 								<span class="ps_box int_pass" id="pswd1Img"> 
-								<input type="password" id="password" name="password" class="int" maxlength="20" placeholder="비밀번호"> 
+								<input type="password" id="PASSWORD" name="PASSWORD" class="int" maxlength="20" placeholder="비밀번호"> 
 								<span class="lbl"><span id="pswd1Span" class="step_txt"></span></span>
 									<div class="ly_v2" id="err_capslock" style="display: none;">
 										<div class="ly_box">
@@ -70,11 +70,11 @@
 				<div class="position_a">
 					<div class="find_info">
 						<center>
-							<a href="http://localhost:8085/bwr/member/findId.br">아이디 찾기</a> <span
-								class="bar" aria-hidden="true">|</span> <a
-								href="http://localhost:8085/bwr/member/findPw.br">비밀번호 찾기</a> <span
-								class="bar" aria-hidden="true">|</span> <a
-								href="http://localhost:8080/brw/member/joinTerms.br">회원가입</a>
+							<a href="http://localhost:8080/brw/member/findIdForm.br">아이디 찾기</a> <span
+								class="bar" aria-hidden="true">|</span> 
+							<a href="http://localhost:8080/brw/member/findPwForm.br">비밀번호 찾기</a> <span
+								class="bar" aria-hidden="true">|</span> 
+							<a href="http://localhost:8080/brw/member/joinTerms.br">회원가입</a>
 						</center>
 					</div>
 				</div>
