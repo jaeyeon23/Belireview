@@ -61,7 +61,7 @@ public class LoginController {
 		}
 	}//회원이 로그인을 시도하였을 때
 		else {
-			//System.out.println("비밀번호1:"+map.get("PASSWORD")+"비밀번호2:"+commandMap.get("PASSWORD"));
+			System.out.println("비밀번호1:"+chk.get("PASSWORD")+"비밀번호2:"+commandMap.get("PASSWORD"));
 		
 			if(chk.get("PASSWORD").equals(commandMap.get("PASSWORD"))) {
 				session.setAttribute("ID",commandMap.get("ID"));
