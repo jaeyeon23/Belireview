@@ -19,36 +19,16 @@ public class LoginServiceImpl implements LoginService{
 		return loginDAO.selectId(map);
 	}
 	
-/*	//아이디 찾기
-	public String findId(Map<String, Object> map) throws Exception {
-		return loginDao.findId(map);
+	//아이디 찾기
+	public Map<String, Object> findId(Map<String, Object> map) throws Exception {
+		return loginDAO.findId(map);
 	}
 	
-	//비밀번호 찾기
+/*	//비밀번호 찾기
 	public void findPasswd(Map<String, Object> map) throws Exception 
 	{
 		loginDao.findPasswd(map);
-	}
-	*/
-/*	@Override
-	public Map<String, Object> loginMember(Map<String,Object>map)throws Exception{
-		Map<String,Object> tempMap=loginDao.loginMember(map);
-		return tempMap;
-		
 	}*/
-	/*@Override
-	public Map<String,Object> loginMember(Map<String,Object> map)throws Exception{
-		return loginDao.selectOneMember(map);
-	}*/
+	
 
-	/*@Override
-	public Map<String, Object> searchId(Map<String, Object> map) throws Exception {
-		return loginDao.searchId(map);
-	}
-
-	@Override
-	public Map<String, Object> searchPw(Map<String, Object> map) throws Exception {
-		return loginDao.searchPw(map);
-	}
-	*/
 }

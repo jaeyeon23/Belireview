@@ -6,7 +6,7 @@
 	<!-- 로그인 -->
 	<select id="loginGo" parameterType="hashmap" resultType="hashmap">
 		<![CDATA[
-			SELECT * FROM MEMBER WHERE ID=#{id}
+			SELECT * FROM MEMBER WHERE ID=#{ID}
 		]]>
 	</select>
 	
@@ -14,7 +14,7 @@
 	<select id="findId" parameterType="hashmap" resultType="hashmap">
 		<![CDATA[
 			SELECT ID FROM MEMBER
-			WHERE NAME=#{name} AND EMAIL=#{name}
+			WHERE NAME=#{name} AND EMAIL=#{email}
 		]]>
 	</select>
 	
