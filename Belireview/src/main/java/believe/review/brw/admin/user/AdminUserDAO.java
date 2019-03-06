@@ -24,6 +24,10 @@ public class AdminUserDAO extends AbstractDAO{
 		return (Map<String, Object>) selectOne("admin.selectUserOne", str);
 	}
 	
+	public void updateUserOne(Map<String, Object> map) {
+		update("admin.updateUserOne", map);
+	}
+	
 	public void deleteUserOne(Map<String, Object> map) {
 		delete("admin.deleteUserOne", map);
 	}

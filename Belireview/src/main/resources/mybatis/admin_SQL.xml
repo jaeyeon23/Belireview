@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC " - //mybatis.org//DTD Config 3.0//EN" " http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="admin">
+
+<!-- User -->
 	<select id="selectUserList" resultType="hashmap">
 		SELECT 
 			*
@@ -26,6 +28,21 @@
 			id=#{id}
 	</select>
 	
+	<!-- (result) Key set values are[password, sms_marketing, email_marketing, password_check, name, admin, tel, id, email] -->
+	<update id="updateUserOne" parameterType="hashmap">
+		UPDATE
+			member
+		SET
+			<!-- <if test="profile_image != null">
+				profile_image=#{profile_image},  
+			</if> -->
+			password=#{password}, name=#{name}, tel=#{tel}, 
+			admin=to_number(#{admin}),
+			email_marketing=to_number(#{email_marketing}), sms_marketing=to_number(#{sms_marketing}) 
+		WHERE
+			id=#{id}	
+	</update>
+	
 	<delete id="deleteUserOne" parameterType="hashmap">
 		DELETE
 		FROM
@@ -33,4 +50,42 @@
 		WHERE
 			id=#{id} and password=#{password}
 	</delete>
+	
+	<!-- Drama -->
+	<select id="selectDramaList" resultType="hashmap">
+		SELECT
+			*
+		FROM
+			drama
+		ORDER BY
+			drama_no
+	</select>
+	
+	<select id="selectDramaList_order" resultType="hashmap" parameterType="hashmap">
+		SELECT
+			*
+		FROM
+			drama 
+		ORDER BY 
+			<choose>
+				<when test="orderby == 1">
+					DRAMA_READCOUNT	
+				</when>
+				<when test="orderby == 2">
+					DRAMA_EPISODE DESC
+				</when>
+				<when test="orderby == 3">
+					DRAMA_EPISODE
+				</when>
+				<when test="orderby == 4">
+					DRAMA_GRADE DESC
+				</when>
+				<when test="orderby == 5">
+					DRAMA_GRADE 
+				</when>
+				<otherwise>
+					DRAMA_NO
+				</otherwise>
+			</choose>
+	</select>
 </mapper>
