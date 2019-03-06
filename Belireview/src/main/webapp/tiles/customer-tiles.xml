@@ -83,7 +83,10 @@
     
     
     <!-- /user -->
-    
+   <!--  로그인 -->
+    <definition name="loginForm" extends=".home">
+    	<put-attribute name="body" value="/WEB-INF/views/member/login.jsp"/>
+    </definition>
     
     
 

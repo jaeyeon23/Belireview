@@ -860,8 +860,7 @@
 													</div>
 												</div>
 											</div>
-										<div class="MaxWidthRow-s14yonsc-0 dCZZZZ">
-											<div class="MaxWidthCol-s1fpp771-0 fGpdkH">
+										
 												<div class="RoundedCornerBlock-s17n38ib-0 iyaHUY">
 													<section class="SectionWithHeader__Self-s1eyxltb-0 gAYeFO">
 														<div class="Grid-zydj2q-0 cspjno">
