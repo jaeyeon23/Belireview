@@ -35,7 +35,10 @@ public class DramaController {
 
 		ModelAndView mv = new ModelAndView("dramaDetail");
 		Map<String,Object> map = dramaService.dramaDetail(commandMap.getMap());
+		List<Map<String,Object>> comment = dramaService.dramaCommentByLike(map);
 		mv.addObject("map",map);
+		mv.addObject("comment",comment);
+		
 		return mv;
 
 	}
