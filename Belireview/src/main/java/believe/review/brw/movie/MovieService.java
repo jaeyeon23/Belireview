@@ -1,5 +1,9 @@
 package believe.review.brw.movie;
 
-public class MovieService {
+import java.util.List;
+import java.util.Map;
 
+public interface MovieService {
+	 List<Map<String,Object>> selectBoardList() throws Exception;
+	 
 }

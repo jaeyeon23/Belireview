@@ -1,5 +1,8 @@
 package believe.review.brw.ad;
 
-public class AdService {
+import java.util.List;
+import java.util.Map;
 
+public interface AdService {
+	List<Map<String,Object>> selectBoardList() throws Exception;
 }

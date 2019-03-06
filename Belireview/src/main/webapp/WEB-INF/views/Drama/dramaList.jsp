@@ -8,15 +8,15 @@
    <link rel="stylesheet" href="/brw/resources/css/list.css">
 </head>
 <body>
-	<div class="row a" >
-		<c:forEach items="${list}" var="r" >
+	<div class="row" >
+		<c:forEach items="${list}" var="dramaList" >
 			 <div class="col-sm-6 col-md-3">
 			 	<a href="/brw/movie/movieDetail.br">
 			    <div class="thumbnail">
 			      <img src="/brw/resources/images/3-girls.jpg">
 			      <div class="caption">
-			        <h3>${r.DRAMA_NAME}</h3>
-			        <p>${r.DRAMA_DATE}・${r.DRAMA_CHANNEL}・${r.DRAMA_GENRE}</p>
+			        <h3>${dramaList.DRAMA_NAME}</h3>
+			        <p>${dramaList.DRAMA_DATE}・${dramaList.DRAMA_CHANNEL}・${dramaList.DRAMA_GENRE}</p>
 			      </div>
 			    </div>
 			    </a>
