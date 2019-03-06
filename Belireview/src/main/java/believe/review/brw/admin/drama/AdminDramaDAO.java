@@ -20,4 +20,21 @@ public class AdminDramaDAO extends AbstractDAO{
 		
 		return (List<Map<String, Object>>) selectList("admin.selectDramaList_order", map);
 	}
+	
+	@SuppressWarnings("unchecked")
+	public Map<String, Object> selectDramaOne(int no){
+		return (Map<String, Object>) selectOne("admin.selectDramaOne", no);
+	}
+	
+	public int checkDrama(Map<String, Object> map) {
+		return (Integer) selectOne("admin.checkDrama", map);
+	}
+	
+	public void deleteDramaImageOne(int no) {
+		delete("admin.deleteDramaImageOne", no);
+	}
+	
+	public void deleteDramaOne(Map<String, Object> map) {
+		delete("admin.deleteDramaOne", map);
+	}
 }

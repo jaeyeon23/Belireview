@@ -46,14 +46,19 @@
 		var pw1 = document.admin_update_form.password.value;
 		var pw2 = document.admin_update_form.password_check.value;
 		
-		if(pw1!=pw2){
+		if(pw1.length < 9){
 			document.getElementById('checkcheck').className="alert alert-danger";
-			document.getElementById('checkcheck').innerHTML = "동일한 암호를 입력하세요.";
-			pw_check = 0;
+			document.getElementById('checkcheck').innerHTML = "최소 9글자 이상 입력하세요.";
 		}else{
-			document.getElementById('checkcheck').className="alert alert-success";
-			document.getElementById('checkcheck').innerHTML = "암호가 확인되었습니다.";
-			pw_check = 1;
+			if(pw1!=pw2){
+				document.getElementById('checkcheck').className="alert alert-danger";
+				document.getElementById('checkcheck').innerHTML = "동일한 암호를 입력하세요.";
+				pw_check = 0;
+			}else{
+				document.getElementById('checkcheck').className="alert alert-success";
+				document.getElementById('checkcheck').innerHTML = "암호가 확인되었습니다.";
+				pw_check = 1;
+			}
 		}
 	}
 	
@@ -109,7 +114,8 @@
 				PROFILE IMAGE
 			</h3>
 			<div>
-				<input type="file" class="btn btn-primary btn-send-message" name="profile_image">
+				<input type="file" class="btn btn-primary btn-send-message" name="profile_image"><br>
+				<input type="checkbox" name="image_delete">기존 파일 삭제(선택 시 Default 이미지로 반영됩니다)
 			</div>
 			<h3 class="blog-post-title">
 				ADMIN

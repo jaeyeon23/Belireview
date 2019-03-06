@@ -35,16 +35,16 @@ public class LoginController {
 
 		HttpSession session = request.getSession();
 
-		System.out.println("아이디" + commandMap.get("ID"));
+		System.out.println("�븘�씠�뵒" + commandMap.get("ID"));
 
 		Map<String, Object> chk = loginService.loginGo(commandMap.getMap());
 
-		if(chk==null) {//아이디가 없으면
+		if(chk==null) {//�븘�씠�뵒媛� �뾾�쑝硫�
 			mv.setViewName("loginForm");
-			mv.addObject("message","해당 아이디가 없습니다.");
+			mv.addObject("message","lkjlkjl");
 			return mv;
 						
-		}else if(chk.get("ADMIN").equals("1")) {//관리자
+		}else if(chk.get("ADMIN").equals("1")) {//愿�由ъ옄
 			
 			if(chk.get("PASSWORD").equals(commandMap.get("PASSWORD"))) {
 	              session.setAttribute("ID", commandMap.get("ID"));
@@ -56,12 +56,12 @@ public class LoginController {
 			}
 			else {
 			mv.setViewName("loginForm");		
-			mv.addObject("message","비밀번호를 확인해주세요.");
+			mv.addObject("message","鍮꾨�踰덊샇瑜� �솗�씤�빐二쇱꽭�슂.");
 			return mv;
 		}
-	}//회원이 로그인을 시도하였을 때
+	}//�쉶�썝�씠 濡쒓렇�씤�쓣 �떆�룄�븯���쓣 �븣
 		else {
-			//System.out.println("비밀번호1:"+map.get("PASSWORD")+"비밀번호2:"+commandMap.get("PASSWORD"));
+			//System.out.println("鍮꾨�踰덊샇1:"+map.get("PASSWORD")+"鍮꾨�踰덊샇2:"+commandMap.get("PASSWORD"));
 		
 			if(chk.get("PASSWORD").equals(commandMap.get("PASSWORD"))) {
 				session.setAttribute("ID",commandMap.get("ID"));
@@ -75,7 +75,7 @@ public class LoginController {
 				return mv;
 			}
 			else {
-				mv.addObject("message","비밀번호를 확인해주세요.");
+				mv.addObject("message","鍮꾨�踰덊샇瑜� �솗�씤�빐二쇱꽭�슂.");
 				mv.setViewName("loginForm");
 				return mv;
 			}
@@ -83,7 +83,7 @@ public class LoginController {
 		
 	}	 
 	
-	@RequestMapping(value = "/logout.br")		//로그아웃
+	@RequestMapping(value = "/logout.br")		//濡쒓렇�븘�썐
 	   public ModelAndView logout(HttpServletRequest request, CommandMap commandMap) {
 	      HttpSession session = request.getSession(false);
 	      if (session != null)
