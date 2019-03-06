@@ -19,5 +19,12 @@ public class DramaServiceImpl  implements DramaService{
 	public List<Map<String, Object>> selectBoardList() throws Exception {
 		return dramaDAO.selectBoardList();
 	}
+	@Override
+	public Map<String, Object> dramaDetail(Map<String, Object> map) throws Exception {
+		return dramaDAO.dramaDetail(map);
+	}
+
+
+	
 
 }

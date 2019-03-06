@@ -4,6 +4,7 @@
 
   <select id="selectBoardList" resultType="hashmap">
  		SELECT
+ 			DRAMA_NO,
 			DRAMA_NAME,
 			DRAMA_DATE,
 			DRAMA_CHANNEL,
@@ -19,6 +20,7 @@
 			RNUM FROM 
 			(
 		SELECT
+				DRAMA_NO,
 				DRAMA_NAME,
 				to_char(DRAMA_DATE,'yyyy') as DRAMA_DATE,
 				DRAMA_CHANNEL,
@@ -35,6 +37,26 @@
 				(SELECT *
 					FROM DRAMA ORDER BY DRAMA_DATE DESC) ORDER BY RNUM ASC) WHERE RNUM BETWEEN 1 AND 5
 
+   </select>
+   
+   <select id="dramaDetail" parameterType="hashmap" resultType="hashmap">
+	   	SELECT
+	   		DRAMA_NO,
+			DRAMA_NAME,
+			TO_CHAR(DRAMA_DATE,'yyyy') AS DRAMA_DATE,
+			DRAMA_CHANNEL,
+			DRAMA_GENRE,
+			DRAMA_DIRECTOR,
+			DRAMA_CONTENT,
+			DRAMA_READCOUNT,
+			DRAMA_POSTER_IMAGE,
+			DRAMA_MAIN_IMAGE,
+			DRAMA_CONTENT_IMAGE,
+			DRAMA_EPISODE,
+			(SELECT AVG(DL_GRADE)
+			FROM DRAMA_LIKE WHERE DRAMA_LIKE_NO = #{DRAMA_NO}) 
+			AS DRAMA_GRADE 
+		FROM DRAMA WHERE DRAMA_NO = #{DRAMA_NO}
    </select>
    
    <insert id="insertDrama"  parameterType="hashmap">

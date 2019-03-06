@@ -1,16 +1,29 @@
 package believe.review.brw.movie;
 
+import java.util.List;
+import java.util.Map;
+
+import javax.annotation.Resource;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import believe.review.brw.common.common.CommandMap;
+
 
 @Controller
 @RequestMapping("/movie")
 public class MovieController {
    
-   @RequestMapping(value="/movieList")
-   public ModelAndView movieList() {
+	@Resource(name="movieService")
+	private MovieService movieService;
+	
+   @RequestMapping(value="movieList.br")
+   public ModelAndView movieList(CommandMap commandMap) throws Exception {
+	   
       ModelAndView mv = new ModelAndView("movieList");
+      List<Map<String,Object>> list = movieService.selectBoardList();
+      mv.addObject("list",list);
       return mv;
    }
    
