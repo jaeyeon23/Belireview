@@ -13,7 +13,7 @@
 		<c:forEach items="${list}" var="dramaList" >
 			 <div class="col-sm-6 col-md-3">
 			 	<!-- <a href="#this" class="detail"> -->
-			 	<a href="/brw/drama/dramaDetail.br?DRAMA_NO=${dramaList.DRAMA_NO}">
+			 	<a href="/brw/drama/dramaDetail.br?DRAMA_NO=${dramaList.DRAMA_NO}&DRAMA_NAME=${dramaList.DRAMA_NAME}">
 			    <div class="thumbnail">
 			      <img src="/brw/resources/images/3-girls.jpg">
 			      <%-- <input type='hidden' class='IDX' value="${dramaList.DRAMA_NO}"> --%>
