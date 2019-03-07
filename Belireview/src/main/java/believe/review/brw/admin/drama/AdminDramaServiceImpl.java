@@ -25,6 +25,24 @@ public class AdminDramaServiceImpl implements AdminDramaService{
 	public List<Map<String, Object>> selectDramaList_order(Map<String, Object> map) throws Exception {
 		return adminDramaDAO.selectDramaList_order(map);
 	}
-
 	
+	@Override
+	public Map<String, Object> selectDramaOne(int no) throws Exception {
+		return adminDramaDAO.selectDramaOne(no);
+	}
+
+	@Override
+	public int checkDrama(Map<String, Object> map) throws Exception {
+		return adminDramaDAO.checkDrama(map);
+	}
+
+	@Override
+	public void deleteDramaImageOne(int no) throws Exception {
+		adminDramaDAO.deleteDramaImageOne(no);
+	}
+
+	@Override
+	public void deleteDramaOne(Map<String, Object> map) throws Exception {
+		adminDramaDAO.deleteDramaOne(map);
+	}
 }

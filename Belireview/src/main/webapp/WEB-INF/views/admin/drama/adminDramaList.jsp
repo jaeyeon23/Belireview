@@ -9,9 +9,18 @@
 <title>Insert title here</title>
 <script type="text/javascript">
 	function orderby() {
-		var value = document.getElementById("orderby").value;
+		var orderby = document.getElementById("orderby").value;
+		var searchNum = document.getElementById("searchNum").value;
+		var searchBox = document.getElementById("searchBox").value;
 		
-		post_to_url("/brw/admin/drama.br", {'orderby':value}, "POST");
+		if(orderby == null)
+			orderby = 0;
+		
+		if(searchBox != null){
+			post_to_url("/brw/admin/drama.br", {'orderby':orderby, 'searchNum':searchNum, 'searchBox':searchBox}, "GET");
+		}else{
+			post_to_url("/brw/admin/drama.br", {'orderby':orderby}, "GET");	
+		}
 	}
 	
 	function post_to_url(path, params, method) {
@@ -36,10 +45,33 @@
 	    form.submit();
 	}
 	
+	function write_drama(){
+		location.href = "/brw/admin/drama/write.br";	
+	}
+	
+	function update_drama(no){
+		location.href = "/brw/admin/drama/modify.br?no="+no;
+	}
+	
+	function delete_drama(no){
+		var check = confirm("정말로 삭제하시겠습니까?");
+		
+		if(check == true){
+			var inputString = prompt('관리자 비밀번호를 입력하시오');
+			if(inputString != null){
+				post_to_url("/brw/admin/drama/delete.br", {'id':no, 'password':inputString}, "POST");
+			}
+		}
+	}
+	
+	
 </script>
 </head>
 <body>
 	<div class="container">
+		<div style="float:left; margin:20pt auto;">
+			<button class="btn btn-default" type="button" onclick="write_drama()">생성</button>
+		</div>
 		<div style="margin:20pt auto; float: right; width: 20%;" onchange="orderby()">
 			<%-- <c:if test="${orderby }"></c:if> --%>
 			<select id="orderby" name="orderby" class="form-control">
@@ -54,13 +86,14 @@
 			<thead>
 				<tr>
 					<th>NO</th>
-					<th>NAME</th>
+					<th>DRAMA</th>
 					<th>CHANNEL</th>
 					<th>GENRE</th>
 					<th>DIRECTOR</th>
-					<th>READCOUNT</th>
+					<th>READ</th>
 					<th>EPISODE</th>
 					<th>GRADE</th>
+					<th>CHOOSE</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -76,6 +109,10 @@
 								<td>${list.DRAMA_READCOUNT}</td>
 								<td>${list.DRAMA_EPISODE}</td>
 								<td>${list.DRAMA_GRADE}</td>
+								<td>
+									<button class="btn btn-default" type="button" onclick="update_drama('${list.DRAMA_NO}')">수정</button>
+									<button class="btn btn-danger" type="button" onclick="delete_drama('${list.DRAMA_NO}')">삭제</button>
+								</td>
 							</tr>
 						</c:forEach>
 					</c:when>
@@ -88,15 +125,28 @@
 			</tbody>
 		</table>
 		
-		<!-- <select name="searchNum" class="form-control" style="width: 10%; float: left;">
-			<option>감독</option>
-			<option>장르</option>
-			<option>채널</option>
-			<option>이름</option>
-		</select>&nbsp;&nbsp;
-		<div class="col-md-8">
-			<input type="text" name="searchBox" class="form-control search-wid">
-		</div> -->
+		<div>
+			<select name="searchNum" id="searchNum" class="form-control" style="width: 10%; float: left;">
+				<option value="director">감독</option>
+				<option value="genre">장르</option>
+				<option value="channel">채널</option>
+				<option value="name">이름</option>
+			</select>
+			<div class="input-group col-md-4">
+				<form onsubmit="orderby()">
+	            	<input type="text" class="form-control search-wid" id="searchBox" placeholder="Search Here" value="${searchBox }">
+	            </form>
+	            <a href='javascript:void(0);' onclick="orderby();" class="input-group-addon btn-side-serach" id="basic-addon1"><i class="fa fa-search"></i></a>
+	        </div>			
+		</div>
+		
+		<nav>
+			<div class='pag-center'>
+				<ul class='pagination believe-pag'>
+					${pagingHtml}
+				</ul>
+			</div>
+		</nav>
 	</div>
 </body>
 </html>

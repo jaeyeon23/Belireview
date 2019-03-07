@@ -14,16 +14,16 @@ public class LoginDAO extends AbstractDAO{
 	public Map<String, Object> selectId(Map<String, Object> map) throws Exception {
 		return (Map<String, Object>) selectOne("member.loginGo", map);
 	}
-/*	// 아이디 찾기
-	public String findId(Map<String, Object> map) throws Exception {
-		return (String) selectOne("member.findId", map);
+	// 아이디 찾기
+	public Map<String, Object> findId(Map<String, Object> map) throws Exception {
+		return (Map<String, Object>) selectOne("member.findId", map);
 	}
-	//비밀번호 찾기변경
+/*	//비밀번호 찾기변경
 	public void findPasswd(Map<String, Object> map) throws Exception
 	{
 		update("member.findPasswd", map);
-	}
-	*/
+	}*/
+	
 /*	@SuppressWarnings("unchecked")
 	public Map<String, Object> loginMember(Map<String, Object> map) throws Exception{
 		return (Map<String, Object>) selectOne("member.selectOneMember", map);

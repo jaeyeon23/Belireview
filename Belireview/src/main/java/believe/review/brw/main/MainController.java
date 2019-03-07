@@ -34,4 +34,10 @@ public class MainController {
 
 	      return "main";
 	   }
+	   
+	   @RequestMapping(value="/admin/main.br")
+	   public String admin_home(Model model) throws Exception{
+		   
+		   return "adminMain";
+	   }
 }

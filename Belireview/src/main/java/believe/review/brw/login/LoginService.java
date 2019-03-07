@@ -8,8 +8,9 @@ public interface LoginService {
 	// 로그인 하기
 	Map<String, Object> loginGo(Map<String, Object> map) throws Exception;
 	//아이디찾기
-/*	String findId(Map<String, Object> map) throws Exception;
-	//비밀번호 찾기
+	Map<String, Object> findId(Map<String, Object> map) throws Exception;
+
+/*	//비밀번호 찾기
 	void findPasswd(Map<String, Object> map) throws Exception;*/
 	
 	

@@ -1755,7 +1755,7 @@ blockquote{
     border-left:none;
 }
 .side-search{
-    border-bottom:1px dashed #d7d7d7;
+    border-bottom:none;
     padding-bottom:45px;
     margin-bottom: 45px;
 }
