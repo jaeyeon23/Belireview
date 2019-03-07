@@ -24,11 +24,11 @@ public class LoginServiceImpl implements LoginService{
 		return loginDAO.findId(map);
 	}
 	
-/*	//비밀번호 찾기
-	public void findPasswd(Map<String, Object> map) throws Exception 
+	//비밀번호 바꾸기
+	public void changePw(Map<String, Object> map) throws Exception 
 	{
-		loginDao.findPasswd(map);
-	}*/
+		loginDAO.changePw(map);
+	}
 	
 
 }
