@@ -341,7 +341,7 @@
 																								</div>
 																								<div></div>
 																							</div></a></li>
-																							<c:forEach items="actor" var="act"><!-- 배우-->
+																							<!-- 배우-->
 																						<li class="ListItemWithProfilePhoto__Self-s1a35ruo-0 GRmjI"><a
 																						lng="ko-KR"
 																						class="InnerPartOfListWithImage__LinkSelf-s11a1hqv-1 gmbtJD"
@@ -371,7 +371,7 @@
 																								</div>
 																								<div></div>
 																							</div></a></li>
-																							</c:forEach>
+																							
 																					<div
 																						class="StackableUl__SpinnerContainer-gafxvv-0 gddnxb"></div>
 																				</ul>
@@ -520,7 +520,7 @@
 																										class="BasicCommentItem__UserActionStatus-iqy0k7-4 cMGqAP">
 																										<img
 																											src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4KICAgIDxwYXRoIGZpbGw9IiM0QTRBNEEiIGZpbGwtcnVsZT0iZXZlbm9kZCIgZD0iTTEyIDE3Ljk4bC02LjAxNSA0LjM5MmMtLjUwOC4zNzItMS4xOTQtLjEyNi0uOTk4LS43MjVsMi4zMTctNy4wODEtNi4wMzUtNC4zNjdjLS41MS0uMzY5LS4yNDctMS4xNzUuMzgyLTEuMTc0bDcuNDQ3LjAxNiAyLjI4Ni03LjA5MWMuMTkyLS42IDEuMDQtLjYgMS4yMzMgMGwyLjI4NiA3LjA5IDcuNDQ3LS4wMTVjLjYyOS0uMDAxLjg5LjgwNS4zOCAxLjE3NGwtNi4wMzMgNC4zNjcgMi4zMTYgNy4wOGMuMTk2LjYtLjQ5IDEuMDk4LS45OTkuNzI2TDEyIDE3Ljk4eiIvPgo8L3N2Zz4K"
-																											width="16px" height="16px" alt="star"><span>2.5</span>
+																											width="16px" height="16px" alt="star"><span>${comment.DL_GRADE}</span>
 																									</div>
 																								</div>
 																								<div
