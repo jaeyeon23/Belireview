@@ -23,6 +23,13 @@ public class MemberServiceImpl implements MemberService{
 		memberDAO.insertMember(map);		
 	}
 	
+	 @Override
+	public int checkId(String mem_id) throws Exception {
+		return memberDAO.checkId(mem_id);
+	}
 	
-	
+	 @Override
+	public int checkMember(Map<String, Object> map) throws Exception {
+		return memberDAO.checkMember(map);
+	}
 }

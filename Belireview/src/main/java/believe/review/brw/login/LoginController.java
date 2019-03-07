@@ -37,7 +37,7 @@ public class LoginController {
 
 		HttpSession session = request.getSession();
 
-		System.out.println("�븘�씠�뵒" + commandMap.get("ID"));
+		System.out.println("아이디 :" + commandMap.get("ID"));
 
 		Map<String, Object> chk = loginService.loginGo(commandMap.getMap());
 
