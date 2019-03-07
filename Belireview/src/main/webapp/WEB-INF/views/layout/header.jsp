@@ -15,6 +15,16 @@
 		},function(){
 			$(".abcd").css("display","none");
 		});
+		$(".efg").hover(function(){
+			$(".abcd").css("display","");
+		},function(){
+			$(".abcd").css("display","none");
+		}); 
+		$(".dd").hover(function(){
+			$(".abcd").css("display","");
+		},function(){
+			$(".abcd").css("display","none");
+		});
 	})  
 </script>
 <body>
@@ -102,7 +112,7 @@
 
                       <!-- Collect the nav links, forms, and other content for toggling -->
                       <div class="collapse navbar-collapse" id="cat-nav-mega">
-                          <ul class="nav navbar-nav abcd">
+                          <ul class="nav navbar-nav abcd efg">
                               <li class="active"><a href="#">장르</a></li>
                               
                               <li><a href="">로맨스</a></li>
