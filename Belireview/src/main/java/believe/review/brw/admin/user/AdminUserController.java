@@ -1,8 +1,8 @@
 package believe.review.brw.admin.user;
 
+import java.io.File;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -11,6 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import believe.review.brw.common.common.CommandMap;
 import believe.review.brw.common.util.Paging;
@@ -26,6 +28,14 @@ public class AdminUserController {
 	private String pagingHtml;  
 	private Paging page;
 	private String filePath = "C:\\Users\\¹ÚÀç¿¬\\Desktop\\Belireview\\Belireview\\src\\main\\webapp\\resources\\images\\user_profile\\";
+	private File file;
+	/*
+	Set keyset = commandMap.keySet();
+	System.out.println("Key set values are" + keyset);
+	
+	(result) Key set values are[password, sms_marketing, email_marketing, password_check, name, admin, tel, id, email]
+	
+	*/
 	
 	@Resource(name="adminUserService")
 	private AdminUserService adminUserService;
@@ -42,7 +52,7 @@ public class AdminUserController {
 		
 		totalCount = admin.size();
 		
-		page = new Paging(currentPage, totalCount, blockCount, blockPage, "/admin/users.br");
+		page = new Paging(currentPage, totalCount, blockCount, blockPage, "/brw/admin/users");
 		pagingHtml = page.getPagingHtml().toString();
 		
 		int lastCount = totalCount;
@@ -91,27 +101,27 @@ public class AdminUserController {
 	
 	@RequestMapping(value="/modify.br", method=RequestMethod.POST)
 	public String userModify(CommandMap commandMap, HttpServletRequest request, Model model) throws Exception{
-		/*
-		Set keyset = commandMap.keySet();
-		System.out.println("Key set values are" + keyset);
+		/*if(commandMap.containsKey("image_delete")) {
+			String file_name = adminUserService.selectUserOne_profile(commandMap.getMap());
+			
+			file = new File(filePath + file_name);
+			file.delete();
+		}*/
 		
-		(result) Key set values are[password, sms_marketing, email_marketing, password_check, name, admin, tel, id, email]
-		
-		*/
-
-		/*MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
+		MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
 		MultipartFile multipartFile = multipartRequest.getFile("profile_image");
 		
 		String fileName = multipartFile.getOriginalFilename();
+		
 		String IMAGEExtension = fileName.substring(fileName.lastIndexOf("."));
-		String fileName2 = (String)commandMap.get("id") + IMAGEExtension;
+		String fileName2 = (String)(commandMap.get("id")) + IMAGEExtension;
 		
 		commandMap.put("profile_image", fileName2);
+		
+		file = new File(filePath + fileName2);
+		
+		multipartFile.transferTo(file);
 		adminUserService.updateUserOne(commandMap.getMap());
-		
-		File file = new File(filePath + fileName2);
-		
-		multipartFile.transferTo(file);*/
 		
 		/*MultipartFile multipartFile = multipartHttpServletRequest.getFile("profile_image");
 		String fileName = multipartFile.getOriginalFilename();
@@ -126,8 +136,6 @@ public class AdminUserController {
 		}else {
 			commandMap.put("profile_image", null);
 		}*/
-
-		adminUserService.updateUserOne(commandMap.getMap());
 
 		return "redirect:/admin/users.br";
 	}

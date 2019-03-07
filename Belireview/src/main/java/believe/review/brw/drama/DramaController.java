@@ -1,12 +1,15 @@
 package believe.review.brw.drama;
 
+import java.util.List;
+import java.util.Map;
+
+import javax.annotation.Resource;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
-import javax.annotation.Resource;
-import java.util.List;
-import java.util.Map;
-import believe.review.brw.common.CommandMap;
+
+import believe.review.brw.common.common.CommandMap;
 
 @Controller
 
@@ -28,10 +31,14 @@ public class DramaController {
 	}
 
 	@RequestMapping(value = "dramaDetail.br")
-	public ModelAndView dramaDetail() throws Exception {
+	public ModelAndView dramaDetail(CommandMap commandMap) throws Exception {
 
 		ModelAndView mv = new ModelAndView("dramaDetail");
-
+		Map<String,Object> map = dramaService.dramaDetail(commandMap.getMap());
+		List<Map<String,Object>> comment = dramaService.dramaCommentByLike(map);
+		mv.addObject("map",map);
+		mv.addObject("comment",comment);
+		
 		return mv;
 
 	}

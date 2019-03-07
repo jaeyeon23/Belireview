@@ -19,6 +19,10 @@ public class AdminUserDAO extends AbstractDAO{
 		return (Integer) selectOne("admin.checkUser", map);
 	}
 
+	/*public String selectUserOne_profile(Map<String, Object> map){
+		return (String) selectOne("admin.selectUserOne_profile", map);
+	}*/
+	
 	@SuppressWarnings("unchecked")
 	public Map<String, Object> selectUserOne(String str){
 		return (Map<String, Object>) selectOne("admin.selectUserOne", str);

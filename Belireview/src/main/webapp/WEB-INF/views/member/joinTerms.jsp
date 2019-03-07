@@ -15,8 +15,8 @@
         <h2 class="blind">빌리뷰 회원가입</h2>
         <div class="join_content">
             <div class="join_form">
-                <form id="join_form" method="GET" action="/user2/V2Join.nhn?m=begin" >
-                    <input type="hidden" id="token_sjoin" name="token_sjoin" value="uKgeb9OiD5AQjFM0">
+                <form id="join_form" method="get" >
+                    
                     <!-- 약관동의 -->
                     <div class="terms_p">
                         <p class="terms_chk_all">
@@ -229,11 +229,11 @@
                         </ul>
                     </div>
                     <!-- //약관동의 -->
-
+					
                    
                     <div class="btn_area double">
-                        <span><!-- tg-text=terms_button_cancel --><a href="#" id="btnCancel" class="btn_type btn_default" role="button">비동의</a></span>
-                        <span><!-- tg-text=terms_button_agree --><a href="join.br" id="btnAgree" class="btn_type btn_primary" role="button">동의</a></span>
+                        <span><!-- tg-text=terms_button_cancel --><a href="/brw/main.br" id="btnCancel" class="btn_type btn_default" role="button">비동의</a></span>
+                        <span><!-- tg-text=terms_button_agree  onclick="javascript:checkSubmit()" --><a href="#" id="btnAgree" class="btn_type btn_primary" role="button" >동의</a></span>
                     </div>
                 </form>
 
@@ -245,20 +245,16 @@
     
     
     
-    <script type="text/JavaScript">
+    <script type="text/JavaScript">    
     $(document).ready(function() {
-        checkSupportedBorwser();
+        checkSupportedBorwser();   /* 브라우저체크 */
 
         $("#chk_all").prop("checked",false);
         setTerms();
 
-        $("#langSelect").change(function() {
-            changeLang();
-        })
-
-        $("#chk_all").click(function() {
-           location.hash = 'agreeBottom'; 
-            setTerms();
+        $("#chk_all").click(function() {  /* 전체 체크버튼이 눌리면  */
+           location.hash = 'agreeBottom'; /* agreeBottom 위치로이동 */
+           setTerms();
         })
 
         $("#termsService").click(function() {
@@ -277,21 +273,24 @@
             viewTerms();
         })
 
-        $("#btnCancel").click(function(event) {
-            clickcr(this, 'tos.disagree', '', '', event);
-            submitDisagree();
-            return false;
-        })
-
-        $("#btnAgree").click(function(event) {
-            clickcr(this, 'tos.agree', '', '', event);
-            submitAgree();
-            return false;
-        })
+        $("#btnAgree").click(function(event) {   /* 동의 버튼을 누르면 필수동의여부 체크후  이동 */
+    		if(!$("#termsService").prop("checked")){
+    			alert("필수이용약관에 동의해주세요.");
+    			return false;
+    		}
+    		else if(!$("#termsPrivacy").prop("checked")){
+    			alert("개인정보 수집에 동의해주세요.");
+    			return false;
+    		}
+    	 	else {
+    			join_form.action="join.br";
+    			join_form.submit();
+    		} 
+        }) 
     });
 
 
-    function setTerms() {
+    function setTerms() {          /* 전체 체크 동작 */
         if ($("#chk_all").is(":checked")) {
             $("#termsService").prop("checked",true);
             $("#termsPrivacy").prop("checked",true);
@@ -303,11 +302,10 @@
             $("#termsLocation").prop("checked",false);
             $("#termsEmail").prop("checked",false);
         }
-
         return true;
     }
 	
-    function checkSupportedBorwser() {
+    function checkSupportedBorwser() { /* 브라우저여부체크  */
         var ua = navigator.userAgent;
         var msg = "인터넷 익스플로러 8.0 이하 버전은 지원하지 않습니다.";
 
@@ -317,7 +315,7 @@
         }
     }
 
-    function viewTerms() {
+    function viewTerms() {   /* 4가지 항목 체크에 따른 천제체크표시 여부 */
 
         if( !$("#termsService").is(":checked") || !$("#termsPrivacy").is(":checked") || !$("#termsLocation").is(":checked") || !$("#termsEmail").is(":checked")) {
             $("#chk_all").prop("checked",false);
@@ -329,33 +327,7 @@
 
         return true;
     }
-    function checkTerms() {
-        var res = true;
-
-        if ($("#termsService").is(":checked") == false || $("#termsPrivacy").is(":checked") == false) {
-            $("#agreeMsg").show();
-            res = false;
-        } else {
-            $("#agreeMsg").hide();
-        }
-
-        return res;
-    }
-/*
-    function submitAgree() {
-        if (checkTerms() != true) {
-            return false;
-        }
-
-        $("#join_form").submit();
-        return true;
-    }
-
-    function submitDisagree() {
-        location.href = "http://www.naver.com";
-        return true;
-    }
- */
+ 
 </script>
     
 </body>

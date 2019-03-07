@@ -859,7 +859,7 @@
 														</section>
 													</div>
 												</div>
-											</div>
+										
 										
 												<div class="RoundedCornerBlock-s17n38ib-0 iyaHUY">
 													<section class="SectionWithHeader__Self-s1eyxltb-0 gAYeFO">
@@ -900,7 +900,7 @@
 																	</ul>
 																</div>
 												
-											<div class="MaxWidthCol-s1fpp771-0 fGpdkH">
+											
 												<div class="RoundedCornerBlock-s17n38ib-0 iyaHUY">
 													<section class="SectionWithHeader__Self-s1eyxltb-0 gAYeFO">
 														<div class="Grid-zydj2q-0 cspjno">

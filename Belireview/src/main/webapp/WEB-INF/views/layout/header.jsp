@@ -22,7 +22,7 @@
               <div class="top"> <!-- top -->
                   <div class="container">
                       <div class="top-control">
-                          <a href="">로그인</a><span>•</span><a href="http://localhost:8080/brw/member/joinTerms.br">회원가입</a>
+                          <a href="http://localhost:8080/brw/member/loginForm.br">로그인</a><span>•</span><a href="http://localhost:8080/brw/member/joinTerms.br">회원가입</a>
                       </div>
                   </div>
               </div> <!-- top end -->
@@ -40,7 +40,7 @@
                                           <span class="icon-bar"></span>
                                           <span class="icon-bar"></span>
                                       </button> -->
-                                      <a class="navbar-brand" href=""><img src="/brw/resources/images/logos.jpg" width="150px" alt=""></a>
+                                      <a class="navbar-brand" href="http://localhost:8080/brw/main.br"><img src="/brw/resources/images/logos.jpg" width="150px" alt=""></a>
                                   </div>
 
                                   <!-- Collect the nav links, forms, and other content for toggling -->

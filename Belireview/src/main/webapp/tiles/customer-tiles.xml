@@ -83,7 +83,13 @@
     
     
     <!-- /user -->
-    
+   <!--  로그인 -->
+    <definition name="loginForm" extends=".home">
+    	<put-attribute name="body" value="/WEB-INF/views/member/login.jsp"/>
+    </definition>
+    <definition name="findIdForm" extends=".home">
+    	<put-attribute name="body" value="/WEB-INF/views/member/findId.jsp"/>
+    </definition>
     
     
 
@@ -95,9 +101,18 @@
     <definition name="join" extends=".home">
     	<put-attribute name="body" value="/WEB-INF/views/member/join.jsp"/>
     </definition>
+    <definition name="joinComplete" extends=".home">
+    	<put-attribute name="body" value="/WEB-INF/views/member/joinComplete.jsp"/>
+    </definition>
     
 
 	<!-- 관리자 -->
+	
+	<definition name="adminMain" extends=".admin">
+    	<put-attribute name="body" value="/WEB-INF/views/main/main.jsp"/>
+    </definition>
+    
+    
     <definition name="/admin/*/*" extends=".admin">
     	<put-attribute name="body" value="/WEB-INF/views/admin/{1}/{2}.jsp"/>
     </definition>
