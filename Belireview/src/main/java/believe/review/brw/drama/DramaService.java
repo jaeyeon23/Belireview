@@ -9,10 +9,12 @@ public interface DramaService {
 	
 	Map<String,Object> dramaDetail(Map<String,Object> map) throws Exception;
 	
-	/*List<Map<String,Object>> dramaActor(Map<String,Object> map) throws Exception;*/
+	List<Map<String,Object>> dramaActor(Map<String,Object> map) throws Exception;
 	
 	List<Map<String,Object>> dramaCommentByRecent(Map<String, Object> map) throws Exception;
 	
 	List<Map<String,Object>> dramaCommentByLike(Map<String, Object> map) throws Exception;
+	
+	Map<String,Object> dramaName(Map<String,Object> map) throws Exception;
 
 }

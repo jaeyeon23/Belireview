@@ -312,8 +312,7 @@
 																			<div class="Row-s1apwm9x-0 lowZpE">
 																				<ul
 																					class="ContentPeopleSection__PeopleStackableUl-s1qdagi5-0 dCFwKD StackableUl__StyledStackableUl-gafxvv-1 dYcNoO VisualUl-s1vzev56-0 hgAYVH">
-																					<li
-																						class="ListItemWithProfilePhoto__Self-s1a35ruo-0 GRmjI"><a
+																					<li class="ListItemWithProfilePhoto__Self-s1a35ruo-0 GRmjI"><a
 																						lng="ko-KR"
 																						class="InnerPartOfListWithImage__LinkSelf-s11a1hqv-1 gmbtJD"
 																						title="장재현" href="/ko-KR/people/167398"><div
@@ -342,8 +341,8 @@
 																								</div>
 																								<div></div>
 																							</div></a></li>
-																					<li
-																						class="ListItemWithProfilePhoto__Self-s1a35ruo-0 GRmjI"><a
+																							<!-- 배우-->
+																						<li class="ListItemWithProfilePhoto__Self-s1a35ruo-0 GRmjI"><a
 																						lng="ko-KR"
 																						class="InnerPartOfListWithImage__LinkSelf-s11a1hqv-1 gmbtJD"
 																						title="이다윗" href="/ko-KR/people/193392"><div
@@ -366,12 +365,13 @@
 																								<div
 																									class="InnerPartOfListWithImage__Titles-s11a1hqv-4 jtpmaI">
 																									<div
-																										class="ListItemWithProfilePhoto__Title-s1a35ruo-1 cSGZfW">이다윗</div>
+																										class="ListItemWithProfilePhoto__Title-s1a35ruo-1 cSGZfW"></div>
 																									<div
 																										class="ListItemWithProfilePhoto__Subtitle-s1a35ruo-2 cbqRVo">조연</div>
 																								</div>
 																								<div></div>
 																							</div></a></li>
+																							
 																					<div
 																						class="StackableUl__SpinnerContainer-gafxvv-0 gddnxb"></div>
 																				</ul>
@@ -520,7 +520,7 @@
 																										class="BasicCommentItem__UserActionStatus-iqy0k7-4 cMGqAP">
 																										<img
 																											src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4KICAgIDxwYXRoIGZpbGw9IiM0QTRBNEEiIGZpbGwtcnVsZT0iZXZlbm9kZCIgZD0iTTEyIDE3Ljk4bC02LjAxNSA0LjM5MmMtLjUwOC4zNzItMS4xOTQtLjEyNi0uOTk4LS43MjVsMi4zMTctNy4wODEtNi4wMzUtNC4zNjdjLS41MS0uMzY5LS4yNDctMS4xNzUuMzgyLTEuMTc0bDcuNDQ3LjAxNiAyLjI4Ni03LjA5MWMuMTkyLS42IDEuMDQtLjYgMS4yMzMgMGwyLjI4NiA3LjA5IDcuNDQ3LS4wMTVjLjYyOS0uMDAxLjg5LjgwNS4zOCAxLjE3NGwtNi4wMzMgNC4zNjcgMi4zMTYgNy4wOGMuMTk2LjYtLjQ5IDEuMDk4LS45OTkuNzI2TDEyIDE3Ljk4eiIvPgo8L3N2Zz4K"
-																											width="16px" height="16px" alt="star"><span>2.5</span>
+																											width="16px" height="16px" alt="star"><span>${comment.DL_GRADE}</span>
 																									</div>
 																								</div>
 																								<div

@@ -59,9 +59,13 @@
 		FROM DRAMA WHERE DRAMA_NO = #{DRAMA_NO}
    </select>
    
-<!--    <select id="dramaActor" parameterType="hashmap" resultType="hashmap">
+   <select id="dramaActor" parameterType="hashmap" resultType="hashmap">
    		SELECT ACTOR_NAME,ACTOR_IMAGE FROM ACTOR WHERE ACTOR_DRAMA LIKE '%'||#{DRAMA_NAME}||'%'
-   </select> -->
+   </select>
+   
+   <select id="dramaName" parameterType="hashmap" resultType="hashmap">
+   		select DRAMA_NAME from DRAMA where DRAMA_NO = #{DRAMA_NO}
+   </select>
    
    <insert id="insertDrama"  parameterType="hashmap">
    INSERT INTO DRAMA(	
@@ -95,7 +99,6 @@ values (
 	0
 );
 </insert>
-
 
 
 	<!-- <select>
