@@ -34,8 +34,10 @@ public class DramaController {
 	public ModelAndView dramaDetail(CommandMap commandMap) throws Exception {
 
 		ModelAndView mv = new ModelAndView("dramaDetail");
+		
 		Map<String,Object> map = dramaService.dramaDetail(commandMap.getMap());
-		mv.addObject("map",map);
+		mv.addObject("map", map.get("map"));
+		mv.addObject("actor", map.get("actor"));
 		return mv;
 
 	}

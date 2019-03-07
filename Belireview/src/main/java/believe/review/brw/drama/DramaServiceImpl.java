@@ -1,5 +1,6 @@
 package believe.review.brw.drama;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -21,7 +22,16 @@ public class DramaServiceImpl  implements DramaService{
 	}
 	@Override
 	public Map<String, Object> dramaDetail(Map<String, Object> map) throws Exception {
-		return dramaDAO.dramaDetail(map);
+		
+		Map<String, Object> resultMap = new HashMap<String,Object>();
+		
+		Map<String, Object> tempMap = dramaDAO.dramaDetail(map);
+		resultMap.put("map", tempMap);
+		
+		List<Map<String,Object>> actor = dramaDAO.dramaDetailactor(map);
+	    resultMap.put("actor", actor);
+		
+		return resultMap;
 	}
 
 
