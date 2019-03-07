@@ -107,6 +107,12 @@
     
 
 	<!-- 관리자 -->
+	
+	<definition name="adminMain" extends=".admin">
+    	<put-attribute name="body" value="/WEB-INF/views/main/main.jsp"/>
+    </definition>
+    
+    
     <definition name="/admin/*/*" extends=".admin">
     	<put-attribute name="body" value="/WEB-INF/views/admin/{1}/{2}.jsp"/>
     </definition>

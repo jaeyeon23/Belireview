@@ -87,7 +87,7 @@ public class Paging {
 	}
 
 	// Search있는 생성자
-	public Paging(int currentPage, int totalCount, int blockCount, int blockPage,String url, int searchNum, String isSearch){
+	public Paging(int currentPage, int totalCount, int blockCount, int blockPage, String url, int orderby, String searchNum, String searchBox){
 		
 		this.blockCount = blockCount;
 		this.blockPage = blockPage;
@@ -113,16 +113,18 @@ public class Paging {
 			endPage = totalPage;
 		}
 		
+		
 		// 이전 block 페이지
 		pagingHtml = new StringBuffer();
 		if(currentPage > blockPage){
-			if(isSearch != "")
-				pagingHtml.append("<a class='page prv' href=" + url + ".br?currentPage=" + (startPage - 1) + "&searchNum="+searchNum+ "&isSearch="+isSearch+">");
+			if(searchBox != "")
+				pagingHtml.append("<a href=" + url + ".br?currentPage=" + (startPage - 1) + "&orderby=" + orderby + "&searchNum="+searchNum+ "&searchBox="+searchBox+">");
 			else                    
-				pagingHtml.append("<a class='page prv' href=" + url + ".br?currentPage=" + (startPage - 1) + ">");
+				pagingHtml.append("<a href=" + url + ".br?currentPage=" + (startPage - 1) + ">");
 			pagingHtml.append("&lt;");
 			pagingHtml.append("</a>");
 			}
+		
 		
 		//페이지 번호, 현재 페이지는 다르게 표시
 		for(int i = startPage; i <= endPage; i++){
@@ -130,24 +132,29 @@ public class Paging {
 				break;
 			}
 			if(i == currentPage){
-				pagingHtml.append("<strong>");
+				pagingHtml.append("<li class='active'>");
+				pagingHtml.append("<span>");
 				pagingHtml.append(i);
-				pagingHtml.append("</strong>");
+				pagingHtml.append("</span>");
+				pagingHtml.append("</li>");
 			}
 			else{
-				pagingHtml.append("<a class='page' href=" + url + ".br?currentPage=" + i);
-				if(isSearch != "")
-					pagingHtml.append("&isSearch=" + isSearch+"&searchNum="+searchNum);
+				pagingHtml.append("<li>");
+				pagingHtml.append("<a href=" + url + ".br?currentPage=" + i);
+				if(searchBox != "")
+					pagingHtml.append("&orderby=" + orderby + "&searchBox=" + searchBox+"&searchNum="+searchNum);
 				pagingHtml.append(">");
 				pagingHtml.append(i);
 				pagingHtml.append("</a>");
+				pagingHtml.append("</li>");
 			}
 		}
+		
 		// 다음 block 페이지
 		if(totalPage - startPage >= blockPage){
-			pagingHtml.append("<a class='page next' href=" + url + ".br?currentPage=" + (endPage + 1));
-			if(isSearch != "")
-				pagingHtml.append("&isSearch=" + isSearch+"&searchNum="+searchNum);
+			pagingHtml.append("<a href=" + url + ".br?currentPage=" + (endPage + 1));
+			if(searchBox != "")
+				pagingHtml.append("&orderby=" + orderby + "&searchBox=" + searchBox+"&searchNum="+searchNum);
 			pagingHtml.append(">");
 			pagingHtml.append("&gt;");
 			pagingHtml.append("</a>");
