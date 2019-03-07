@@ -35,9 +35,15 @@ public class DramaController {
 
 		ModelAndView mv = new ModelAndView("dramaDetail");
 		Map<String,Object> map = dramaService.dramaDetail(commandMap.getMap());
+		
 		List<Map<String,Object>> comment = dramaService.dramaCommentByLike(map);
+		List<Map<String,Object>> actor = dramaService.dramaActor(map); 
+		
 		mv.addObject("map",map);
 		mv.addObject("comment",comment);
+		mv.addObject("actor",actor);
+		
+		System.out.println(actor.get(0).get("ACTOR_NAME"));
 		
 		return mv;
 

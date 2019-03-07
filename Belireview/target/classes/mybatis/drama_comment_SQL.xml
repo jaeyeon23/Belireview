@@ -55,26 +55,25 @@ SELECT
 <!-- 댓글 좋아요 순 -->
 <select id="dramaCommentByLike" parameterType="hashmap" resultType="hashmap">
 	SELECT
-	  DRAMA_NO,
-	  DC_NO,
-	  ID,
-	  DC_REG_DATE,
-	  DC_CONTENT,
-	  DC_LIKE,
-	  DC_LIKE_ID,
-	  RNUM FROM 
-	  (SELECT
-	     DRAMA_NO,
-	     DC_NO,
-	     ID,
-	     DC_REG_DATE,
-	     DC_CONTENT,
-	     DC_LIKE,
-	     DC_LIKE_ID,
-	     ROWNUM RNUM FROM 
-	    (SELECT 
-	      *
-	      FROM DRAMA_COMMENT WHERE DRAMA_NO=to_number(#{DRAMA_NO}) ORDER BY DC_LIKE DESC) ORDER BY RNUM ASC) WHERE RNUM BETWEEN 1 AND 3
+		  DRAMA_NO,
+		  DC_NO,
+		  ID,
+		  DC_REG_DATE,
+		  DC_CONTENT,
+		  DC_LIKE,
+		  DC_LIKE_ID,
+		  RNUM FROM 
+		  (SELECT
+			     DRAMA_NO,
+			     DC_NO,
+			     ID,
+			     DC_REG_DATE,
+			     DC_CONTENT,
+			     DC_LIKE,
+			     DC_LIKE_ID,
+			     ROWNUM RNUM FROM 
+			    (SELECT DC.DRAMA_NO, DC.DC_NO,DC.ID,DC.DC_REG_DATE,DC.DC_CONTENT,DC.DC_LIKE,DC.DC_LIKE_ID,DL.DL_GRADE FROM DRAMA_LIKE DL, DRAMA_COMMENT DC
+			      WHERE DL.DRAMA_NO=DC.DRAMA_NO AND DL.ID=DC.ID ORDER BY DC_LIKE DESC) ORDER BY RNUM ASC) WHERE RNUM BETWEEN 1 AND 3
 </select>
 
 

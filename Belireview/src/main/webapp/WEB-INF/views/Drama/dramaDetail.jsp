@@ -312,8 +312,7 @@
 																			<div class="Row-s1apwm9x-0 lowZpE">
 																				<ul
 																					class="ContentPeopleSection__PeopleStackableUl-s1qdagi5-0 dCFwKD StackableUl__StyledStackableUl-gafxvv-1 dYcNoO VisualUl-s1vzev56-0 hgAYVH">
-																					<li
-																						class="ListItemWithProfilePhoto__Self-s1a35ruo-0 GRmjI"><a
+																					<li class="ListItemWithProfilePhoto__Self-s1a35ruo-0 GRmjI"><a
 																						lng="ko-KR"
 																						class="InnerPartOfListWithImage__LinkSelf-s11a1hqv-1 gmbtJD"
 																						title="장재현" href="/ko-KR/people/167398"><div
@@ -342,8 +341,8 @@
 																								</div>
 																								<div></div>
 																							</div></a></li>
-																					<li
-																						class="ListItemWithProfilePhoto__Self-s1a35ruo-0 GRmjI"><a
+																							<c:forEach items="actor" var="act"><!-- 배우-->
+																						<li class="ListItemWithProfilePhoto__Self-s1a35ruo-0 GRmjI"><a
 																						lng="ko-KR"
 																						class="InnerPartOfListWithImage__LinkSelf-s11a1hqv-1 gmbtJD"
 																						title="이다윗" href="/ko-KR/people/193392"><div
@@ -366,12 +365,13 @@
 																								<div
 																									class="InnerPartOfListWithImage__Titles-s11a1hqv-4 jtpmaI">
 																									<div
-																										class="ListItemWithProfilePhoto__Title-s1a35ruo-1 cSGZfW">이다윗</div>
+																										class="ListItemWithProfilePhoto__Title-s1a35ruo-1 cSGZfW"></div>
 																									<div
 																										class="ListItemWithProfilePhoto__Subtitle-s1a35ruo-2 cbqRVo">조연</div>
 																								</div>
 																								<div></div>
 																							</div></a></li>
+																							</c:forEach>
 																					<div
 																						class="StackableUl__SpinnerContainer-gafxvv-0 gddnxb"></div>
 																				</ul>
