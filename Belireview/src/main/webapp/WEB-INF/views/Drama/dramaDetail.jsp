@@ -341,39 +341,28 @@
 																								</div>
 																								<div></div>
 																							</div></a></li>
-																							<!-- 배우-->
-																						<li class="ListItemWithProfilePhoto__Self-s1a35ruo-0 GRmjI"><a
-																						lng="ko-KR"
-																						class="InnerPartOfListWithImage__LinkSelf-s11a1hqv-1 gmbtJD"
-																						title="이다윗" href="/ko-KR/people/193392"><div
-																								class="InnerPartOfListWithImage__ImageBlock-s11a1hqv-3 kXgAWr">
-																								<div
-																									class="ProfilePhoto__Self-s1v3isfu-1 cKevdV RoundedImageBlock-k5m4n5-0 gUZYtN">
-																									<div
-																										class="ProfilePhoto__ProfilePhotoImage-s1v3isfu-0 iEEsou"></div>
-																									<div
-																										class="ProfilePhoto__DefaultImageContainer-s1v3isfu-2 kPGxuy">
-																										<img
-																											class="defaultImage__ProfileImg-s1kn91bx-1 iaxVtx"
+																							<!-- 배우 --><c:forEach items="${actor}" var="act">
+																						<li class="ListItemWithProfilePhoto__Self-s1a35ruo-0 GRmjI">
+																							<a lng="ko-KR" class="InnerPartOfListWithImage__LinkSelf-s11a1hqv-1 gmbtJD" title="이다윗" href="/ko-KR/people/193392">
+																							<div class="InnerPartOfListWithImage__ImageBlock-s11a1hqv-3 kXgAWr">
+																								<div class="ProfilePhoto__Self-s1v3isfu-1 cKevdV RoundedImageBlock-k5m4n5-0 gUZYtN">
+																									<div class="ProfilePhoto__ProfilePhotoImage-s1v3isfu-0 iEEsou"></div>
+																									<div class="ProfilePhoto__DefaultImageContainer-s1v3isfu-2 kPGxuy">
+																										<img class="defaultImage__ProfileImg-s1kn91bx-1 iaxVtx"
 																											src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDQ4IDQ4Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgZmlsbD0iI0UwRTBFMCI+CiAgICAgICAgICAgIDxwYXRoIGQ9Ik0yNCAyMS4yNzhhOC41NyA4LjU3IDAgMCAxLTguNTcxLTguNTdBOC41NzEgOC41NzEgMCAxIDEgMjQgMjEuMjc3TTQzLjUxOSA0My44NjVjLjU2NCAwIDEuMDMzLS40NjggMS4wMDMtMS4wMzFDNDMuOTYzIDMyLjQyNCAzNC45ODkgMjQuMTUgMjQgMjQuMTVjLTEwLjk4OSAwLTE5Ljk2MyA4LjI3NC0yMC41MjIgMTguNjgzLS4wMy41NjMuNDM5IDEuMDMgMS4wMDMgMS4wM2gzOS4wMzh6Ii8+CiAgICAgICAgPC9nPgogICAgPC9nPgo8L3N2Zz4K"
 																											alt="이다윗의 사진">
 																									</div>
 																								</div>
 																							</div>
-																							<div
-																								class="InnerPartOfListWithImage__Info-s11a1hqv-5 hufKbr">
-																								<div
-																									class="InnerPartOfListWithImage__Titles-s11a1hqv-4 jtpmaI">
-																									<div
-																										class="ListItemWithProfilePhoto__Title-s1a35ruo-1 cSGZfW"></div>
-																									<div
-																										class="ListItemWithProfilePhoto__Subtitle-s1a35ruo-2 cbqRVo">조연</div>
+																							<div class="InnerPartOfListWithImage__Info-s11a1hqv-5 hufKbr">
+																								<div class="InnerPartOfListWithImage__Titles-s11a1hqv-4 jtpmaI">
+																									<div class="ListItemWithProfilePhoto__Title-s1a35ruo-1 cSGZfW">${act.ACTOR_NAME}</div><!-- 배우 -->
+																									<div class="ListItemWithProfilePhoto__Subtitle-s1a35ruo-2 cbqRVo">조연</div>
 																								</div>
 																								<div></div>
 																							</div></a></li>
-																							
-																					<div
-																						class="StackableUl__SpinnerContainer-gafxvv-0 gddnxb"></div>
+																							<!-- // 배우 --></c:forEach>
+																					<div class="StackableUl__SpinnerContainer-gafxvv-0 gddnxb"></div>
 																				</ul>
 																			</div>
 																		</div>

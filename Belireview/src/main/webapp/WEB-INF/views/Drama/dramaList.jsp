@@ -9,7 +9,7 @@
    <script src="<c:url value='/resources/js/common.js'/>" charset="utf-8"></script>
 </head>
 <body>
-	<div class="row" >
+	<div class="row a" >
 		<c:forEach items="${list}" var="dramaList" >
 			 <div class="col-sm-6 col-md-3">
 			 	<!-- <a href="#this" class="detail"> -->
