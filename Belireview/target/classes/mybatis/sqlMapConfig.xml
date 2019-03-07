@@ -24,6 +24,7 @@
 	<mappers>
 		<mapper resource="mybatis/admin_SQL.xml" />
 		<mapper resource="mybatis/drama_SQL.xml" />
+		<mapper resource="mybatis/drama_comment_SQL.xml" />
 		<mapper resource="mybatis/movie_SQL.xml" />
 		<mapper resource="mybatis/ad_SQL.xml" />
 		<!-- <mapper resource="mybatis/main_SQL.xml" />  -->

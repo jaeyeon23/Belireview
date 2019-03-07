@@ -33,8 +33,18 @@ public class DramaServiceImpl  implements DramaService{
 		
 		return resultMap;
 	}
-
-
+/*	@Override
+	public List<Map<String,Object>> dramaActor(Map<String, Object> map) throws Exception {
+		return dramaDAO.dramaActor(map);
+	}*/
+	@Override
+	public List<Map<String, Object>> dramaCommentByRecent(Map<String, Object> map) throws Exception {
+		return dramaDAO.dramaCommentByRecent(map);
+	}
+	@Override
+	public List<Map<String, Object>> dramaCommentByLike(Map<String, Object> map) throws Exception {
+		return dramaDAO.dramaCommentByLike(map);
+	}
 	
 
 }
