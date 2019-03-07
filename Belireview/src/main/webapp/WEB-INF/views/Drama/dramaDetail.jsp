@@ -73,7 +73,7 @@
 											<div class="ContentJumbotron__LeftBackground-yf8npk-6 cGzUVh"
 												color="#364052"></div>
 											<div class="ContentJumbotron__BlurPoster-yf8npk-4 WdAlN">
-												<img src="/brw/resources/images/3-girls.jpg"><!-- 이미지 -->
+												<img class="WdAlN" src="/brw/resources/images/3-girls.jpg"><!-- 이미지 -->
 												<div class="ContentJumbotron__LeftGradient-yf8npk-8 aCymu"
 													color="#364052"></div>
 												<div class="ContentJumbotron__RightGradient-yf8npk-9 gShorF"
@@ -541,8 +541,7 @@
 														</section>
 													</div>
 												</div>
-											</div>
-										
+											
 												<div class="RoundedCornerBlock-s17n38ib-0 iyaHUY">
 													<section class="SectionWithHeader__Self-s1eyxltb-0 gAYeFO">
 														<div class="Grid-zydj2q-0 cspjno">
@@ -552,7 +551,6 @@
 																	<h2 class="SectionWithHeader__Title-s1eyxltb-2 kwjefp">갤러리</h2>
 																	<span class="TitleSuffixForNumber-l2d30g-0 ejtPKl">703</span>
 																	<div class="SectionWithHeader__TopRight-s1eyxltb-3 bZaEfL">
-																			
 																		</div>
 																</header>
 															</div>
@@ -562,10 +560,8 @@
 																<div class="item">
 																	<ul id="content-slider" class="content-slider">
 																		<li>
-																			<h3>1</h3>
 																		</li>
 																		<li>
-																			<h3>2</h3>
 																		</li>
 																		<li>
 																			<h3>3</h3>
@@ -581,8 +577,6 @@
 																		</li>
 																	</ul>
 																</div>
-												
-											<div class="MaxWidthCol-s1fpp771-0 fGpdkH">
 												<div class="RoundedCornerBlock-s17n38ib-0 iyaHUY">
 													<section class="SectionWithHeader__Self-s1eyxltb-0 gAYeFO">
 														<div class="Grid-zydj2q-0 cspjno">
@@ -609,38 +603,12 @@
 																		<div class="Row-s1apwm9x-0 lowZpE">
 																			<ul
 																				class="ContentDeckSection__DeckHorizontalUl-s1xkjjf8-0 dGBnhH HorizontalUl__StyledHorizontalUl-s1lfz4bc-0 eVxIzP VisualUl-s1vzev56-0 hgAYVH">
-																				<li
-																					class="ContentDeckSection__DeckCollage-s1xkjjf8-1 eHppBK HorizontalListItem-tt0z2b-0 hRbPKu"><a
-																					lng="ko-KR" title="단 1%의 반전이라도!!!!!!"
-																					href="/ko-KR/decks/SAzhL1LStc7d"><div
-																							class="ContentDeckSection__DeckPostersBlock-s1xkjjf8-2 hTJJpD">
-																							<div
-																								class="LazyLoadingBackground__StylingMerged-cgbyi4-2 fiwrWr LazyLoadingBackground__Self-cgbyi4-0 dxPvni">
-																								<span
-																									class="LazyLoadingBackground__BackgroundImage-cgbyi4-1 bqtNip"
-																									data-background-image-id="209"></span>
-																							</div>
-																							<div
-																								class="LazyLoadingBackground__StylingMerged-cgbyi4-2 fiwrWr LazyLoadingBackground__Self-cgbyi4-0 dxPvni">
-																								<span
-																									class="LazyLoadingBackground__BackgroundImage-cgbyi4-1 bqtNip"
-																									data-background-image-id="210"></span>
-																							</div>
-																							<div
-																								class="LazyLoadingBackground__StylingMerged-cgbyi4-2 fiwrWr LazyLoadingBackground__Self-cgbyi4-0 dxPvni">
-																								<span
-																									class="LazyLoadingBackground__BackgroundImage-cgbyi4-1 bqtNip"
-																									data-background-image-id="211"></span>
-																							</div>
-																							<div
-																								class="LazyLoadingBackground__StylingMerged-cgbyi4-2 fiwrWr LazyLoadingBackground__Self-cgbyi4-0 dxPvni">
-																								<span
-																									class="LazyLoadingBackground__BackgroundImage-cgbyi4-1 bqtNip"
-																									data-background-image-id="212"></span>
-																							</div>
-																						</div>
-																						<ul
-																							class="ContentDeckSection__DeckInfo-s1xkjjf8-3 eoOquJ VisualUl-s1vzev56-0 hgAYVH">
+																				<li class="ContentDeckSection__DeckCollage-s1xkjjf8-1 eHppBK HorizontalListItem-tt0z2b-0 hRbPKu">
+																				<a lng="ko-KR" title="단 1%의 반전이라도!!!!!!" href="/ko-KR/decks/SAzhL1LStc7d">
+																					<div class="ContentDeckSection__DeckPostersBlock-s1xkjjf8-2 hTJJpD">
+																						<img src="/brw/resources/images/3-girls.jpg" width="227.5" height="326.88">
+																					</div>
+																						<ul class="ContentDeckSection__DeckInfo-s1xkjjf8-3 eoOquJ VisualUl-s1vzev56-0 hgAYVH">
 																							<li
 																								class="ContentDeckSection__DeckTitle-s1xkjjf8-4 gGVjvL"><div
 																									class="TextTruncate__Self-wvv1uj-0 laNFWG">
