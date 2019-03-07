@@ -345,8 +345,7 @@
 																						<li class="ListItemWithProfilePhoto__Self-s1a35ruo-0 GRmjI"><a
 																						lng="ko-KR"
 																						class="InnerPartOfListWithImage__LinkSelf-s11a1hqv-1 gmbtJD"
-																						title="이다윗" href="/ko-KR/people/193392"><div
-																								class="InnerPartOfListWithImage__ImageBlock-s11a1hqv-3 kXgAWr">
+																						title="이다윗" href="/ko-KR/people/193392"><div class="InnerPartOfListWithImage__ImageBlock-s11a1hqv-3 kXgAWr">
 																								<div
 																									class="ProfilePhoto__Self-s1v3isfu-1 cKevdV RoundedImageBlock-k5m4n5-0 gUZYtN">
 																									<div
