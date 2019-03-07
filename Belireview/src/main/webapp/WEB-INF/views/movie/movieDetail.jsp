@@ -32,30 +32,8 @@
 			width: 800px;
 		}
     </style>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script src="/brw/resources/js/lightslider.js"></script> 
-    <script>
-      
-    	 $(document).ready(function() {
-			$("#content-slider").lightSlider({
-                loop:true,
-              	auto:true,
-                keyPress:true
-            });
-            $('#image-gallery').lightSlider({
-                gallery:true,
-                item:1,
-                thumbItem:9,
-                slideMargin: 0,
-                speed:500,
-                auto:true,
-                loop:true,
-                onSliderLoad: function() {
-                    $('#image-gallery').removeClass('cS-hidden');
-                }  
-            });
-		});
-    </script>
+
+   
     <script src="/brw/resources/js/jquery-1.4.4.min.js"></script>
 	<script src="/brw/resources/js/slides.jquery.js"></script>
 	<script>
@@ -889,9 +867,8 @@
 																</header>
 															</div>
 														</div>
-														 <div
-															class="PrimitiveHorizontalScrollable__ScrollBarContainer-hy4esm-0 hUyjJn">
-																<body>
+														
+															
 	<div id="container"> 
 		<div id="example">
 			<!-- <img src="/brw/resources/images//new-ribbon.png" width="112" height="112" alt="New Ribbon" id="ribbon"> -->
@@ -928,11 +905,9 @@
 			<img src="/brw/resources/images/example-frame.png" width="739" height="341" alt="Example Frame" id="frame">
 		</div>
 	</div>
-
-												
-											
-												<div class="RoundedCornerBlock-s17n38ib-0 iyaHUY">
-													<section class="SectionWithHeader__Self-s1eyxltb-0 gAYeFO">
+							 
+									<hr class="Divider__StylingMergedDivider-s11un6bw-1 jtXrQz Divider-s11un6bw-0 cVxSEp">
+									<section class="SectionWithHeader__Self-s1eyxltb-0 gAYeFO">
 														<div class="Grid-zydj2q-0 cspjno">
 															<div class="Row-s1apwm9x-0 lowZpE">
 																<header
