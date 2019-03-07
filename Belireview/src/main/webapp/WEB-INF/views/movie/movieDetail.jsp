@@ -892,18 +892,18 @@
 														 <div
 															class="PrimitiveHorizontalScrollable__ScrollBarContainer-hy4esm-0 hUyjJn">
 																<body>
-	<div id="container">
+	<div id="container"> 
 		<div id="example">
 			<!-- <img src="/brw/resources/images//new-ribbon.png" width="112" height="112" alt="New Ribbon" id="ribbon"> -->
 			<div id="slides">
 				<div class="slides_container">
-					<img src="/brw/resources/images/slide-1.jpg" width="570" height="270" alt="Slide 1">
+					<img src="/brw/resources/images/3-girls.jpg" width="570" height="270" alt="Slide 1">
 					<!-- <a href="http://www.flickr.com/photos/stephangeyer/3020487807/" title="Taxi | Flickr - Photo Sharing!" target="_blank"> -->
 					
-					<img src="/brw/resources/images/slide-2.jpg" width="570" height="270" alt="Slide 2"></a>
+					<img src="/brw/resources/images/3-jacket.jpg" width="570" height="270" alt="Slide 2"></a>
 					
 					<!-- <a href="http://www.flickr.com/photos/childofwar/2984345060/" title="Happy Bokeh raining Day | Flickr - Photo Sharing!" target="_blank"> -->
-					<img src="/brw/resources/images/slide-3.jpg" width="570" height="270" alt="Slide 3"></a>
+					<img src="/brw/resources/images/3-man.jpg" width="570" height="270" alt="Slide 3"></a>
 					
 					<!-- <a href="http://www.flickr.com/photos/b-tal/117037943/" title="We Eat Light | Flickr - Photo Sharing!" target="_blank"> -->
 					<img src="/brw/resources/images//slide-4.jpg" width="570" height="270" alt="Slide 4"></a>
