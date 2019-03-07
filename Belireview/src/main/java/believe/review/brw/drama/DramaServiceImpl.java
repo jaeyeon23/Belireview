@@ -23,15 +23,7 @@ public class DramaServiceImpl  implements DramaService{
 	@Override
 	public Map<String, Object> dramaDetail(Map<String, Object> map) throws Exception {
 		
-		Map<String, Object> resultMap = new HashMap<String,Object>();
-		
-		Map<String, Object> tempMap = dramaDAO.dramaDetail(map);
-		resultMap.put("map", tempMap);
-		
-		List<Map<String,Object>> actor = dramaDAO.dramaDetailactor(map);
-	    resultMap.put("actor", actor);
-		
-		return resultMap;
+		return dramaDAO.dramaDetail(map);
 	}
 /*	@Override
 	public List<Map<String,Object>> dramaActor(Map<String, Object> map) throws Exception {
