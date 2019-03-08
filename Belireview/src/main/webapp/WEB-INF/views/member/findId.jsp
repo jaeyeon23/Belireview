@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>	
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,9 +12,11 @@
 		alert('${message}');
 	}
 	
+</script>	
+<script type="text/javascript">
 	function memberFindChk(){
 		
-		var mem = eval("document.memberFindForm");
+		var mem = eval("document.findIdForm");
 		
 		if(mem.name.value=="") {
 	        alert('이름을 입력하세요');
@@ -52,13 +55,13 @@
 				</div>
 				<div class="login_form">
 						<div class="row_group">
-							<form id="findIdForm" method="post" action="/brw/member/findId.br" onsubmit="return memberFindChk()">
+							<form id="findIdForm" method="post" action="/brw/member/findIdOk.br" onsubmit="return memberFindChk()">
 							<div class="join_row">
 								<h3 class="join_title">
 									<label for="name">이름</label>
 								</h3>
 								<span class="ps_box box_right_space"> 
-									<input type="text" id="NAME" name="NAME" title="이름" class="int" maxlength="40">
+									<input type="text" id="name" name="name" title="이름" class="int" maxlength="40">
 								</span>
 							</div>
 							<br>
@@ -67,7 +70,7 @@
 									<label for="email">이메일</label>
 								</h3>
 								<span class="ps_box int_email box_right_space"> 
-									<input type="text" id="EMAIL" name="EMAIL" maxlength="100" class="int" maxlength="100">
+									<input type="text" id="email" name="email" maxlength="100" class="int" maxlength="100" placeholder="이메일 주소 전체를 입력해주세요">
 								</span>
 							</div>
 							<div class="btn_area">
