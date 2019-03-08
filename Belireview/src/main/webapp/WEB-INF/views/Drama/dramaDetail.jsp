@@ -4,13 +4,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="/brw/resources/css/detail3.css">
- <meta charset="utf-8">
+<meta charset="utf-8">
+
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="">
-    <link rel="stylesheet"  href="/brw/resources/css/lightslider.css"/>
+   	<link rel="stylesheet" href="/brw/resources/css/detail3.css">
+   	
+    <link rel="stylesheet" href="/brw/resources/css/detailgenre.css">
+   	<script src="<c:url value='/resources/js/common.js'/>" charset="utf-8"></script>	
     <style>
     	ul{
 			list-style: none outside none;
@@ -32,33 +34,23 @@
 		.demo{
 			width: 800px;
 		}
-	  
     </style>
-    </style>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script src="/brw/resources/js/lightslider.js"></script> 
-    <script>
-      
-    	 $(document).ready(function() {
-			$("#content-slider").lightSlider({
-                loop:true,
-              	auto:true,
-                keyPress:true
-            });
-            $('#image-gallery').lightSlider({
-                gallery:true,
-                item:1,
-                thumbItem:9,
-                slideMargin: 0,
-                speed:500,
-                auto:true,
-                loop:true,
-                onSliderLoad: function() {
-                    $('#image-gallery').removeClass('cS-hidden');
-                }  
-            });
+
+   
+    <script src="/brw/resources/js/jquery-1.4.4.min.js"></script>
+	<script src="/brw/resources/js/slides.jquery.js"></script>
+	<script>
+		$(function(){
+			$('#slides').slides({
+				preload: true,
+				preloadImage: '/brw/resources/images/loading.gif',
+				play: 5000,
+				pause: 2500,
+				hoverPause: true
+			});
 		});
-    </script>
+	</script>
+	<link rel="stylesheet" href="/brw/resources/css/global.css">
 </head>
 <body>
 	<div id="root">
@@ -642,15 +634,14 @@
 															</div>
 															<div class="Grid-zydj2q-0 cspjno">
 																<div class="Row-s1apwm9x-0 lowZpE">
-																	<hr
-																		class="Divider__StylingMergedDivider-s11un6bw-1 kAeKXS Divider-s11un6bw-0 cVxSEp">
+																	<hr class="Divider__StylingMergedDivider-s11un6bw-1 kAeKXS Divider-s11un6bw-0 cVxSEp">
 																</div>
 															</div>
 														</section>
 													</div>
 												</div>
 
-												<div class="RoundedCornerBlock-s17n38ib-0 iyaHUY">
+	<div class="RoundedCornerBlock-s17n38ib-0 iyaHUY">
 													<section class="SectionWithHeader__Self-s1eyxltb-0 gAYeFO">
 														<div class="Grid-zydj2q-0 cspjno">
 															<div class="Row-s1apwm9x-0 lowZpE">
@@ -658,185 +649,99 @@
 																	class="SectionWithHeader__Header-s1eyxltb-1 cuiACK">
 																	<h2 class="SectionWithHeader__Title-s1eyxltb-2 kwjefp">갤러리</h2>
 																	<span class="TitleSuffixForNumber-l2d30g-0 ejtPKl">703</span>
-																	<div
-																		class="SectionWithHeader__TopRight-s1eyxltb-3 bZaEfL">
-																	</div>
+																	<div class="SectionWithHeader__TopRight-s1eyxltb-3 bZaEfL">
+																			
+																		</div>
 																</header>
 															</div>
 														</div>
-														<div
-															class="PrimitiveHorizontalScrollable__ScrollBarContainer-hy4esm-0 hUyjJn">
-															<div class="item">
-																<ul id="content-slider" class="content-slider">
-																	<li></li>
-																	<li></li>
-																	<li>
-																		<h3>3</h3>
-																	</li>
-																	<li>
-																		<h3>4</h3>
-																	</li>
-																	<li>
-																		<h3>5</h3>
-																	</li>
-																	<li>
-																		<h3>6</h3>
-																	</li>
-																</ul>
-															</div>
-															<div class="RoundedCornerBlock-s17n38ib-0 iyaHUY">
-																<section
-																	class="SectionWithHeader__Self-s1eyxltb-0 gAYeFO">
-																	<div class="Grid-zydj2q-0 cspjno">
-																		<div class="Row-s1apwm9x-0 lowZpE">
-																			<header
-																				class="SectionWithHeader__Header-s1eyxltb-1 cuiACK">
-																				<h2
-																					class="SectionWithHeader__Title-s1eyxltb-2 kwjefp">비슷한
-																					장르</h2>
-																				<span class="TitleSuffixForNumber-l2d30g-0 ejtPKl">703</span>
-																				<div
-																					class="SectionWithHeader__TopRight-s1eyxltb-3 bZaEfL">
-																					<div
-																						class="SectionWithViewMore__ViewMore-xtbl7q-0 bhbIbv">
-																						<a href="/brw/movie/movieComment.br">더보기</a>
-																					</div>
-																				</div>
-																			</header>
-																		</div>
-																	</div>
-																	<div
-																		class="PrimitiveHorizontalScrollable__ScrollBarContainer-hy4esm-0 hUyjJn">
-																		<div
-																			class="PrimitiveHorizontalScrollable__ScrollBar-hy4esm-1 bVhHTK">
-																			<div
-																				class="PrimitiveHorizontalScrollable__ScrollingInner-hy4esm-2 iGzmWK">
-																				<div class="Grid-zydj2q-0 cspjno">
-																					<div class="Row-s1apwm9x-0 lowZpE">
-																						<ul
-																							class="ContentDeckSection__DeckHorizontalUl-s1xkjjf8-0 dGBnhH HorizontalUl__StyledHorizontalUl-s1lfz4bc-0 eVxIzP VisualUl-s1vzev56-0 hgAYVH">
-																							<li
-																								class="ContentDeckSection__DeckCollage-s1xkjjf8-1 eHppBK HorizontalListItem-tt0z2b-0 hRbPKu">
-																								<a lng="ko-KR" title="단 1%의 반전이라도!!!!!!"
-																								href="/ko-KR/decks/SAzhL1LStc7d">
-																									<div
-																										class="ContentDeckSection__DeckPostersBlock-s1xkjjf8-2 hTJJpD">
-																										<img src="/brw/resources/images/3-girls.jpg">
-																									</div>
-																									<ul
-																										class="ContentDeckSection__DeckInfo-s1xkjjf8-3 eoOquJ VisualUl-s1vzev56-0 hgAYVH">
-																										<li
-																											class="ContentDeckSection__DeckTitle-s1xkjjf8-4 gGVjvL"><div
-																												class="TextTruncate__Self-wvv1uj-0 laNFWG">
-																												<div
-																													class="TextTruncate__Text-wvv1uj-1 gLsCNn"
-																													style="white-space: pre-line;">단 1%의
-																													반전이라도!!!!!!</div>
-																											</div></li>
-																										<li
-																											class="ContentDeckSection__DeckLikeCount-s1xkjjf8-5 iKvIaj">좋아요
-																											2426</li>
-																									</ul>
-																							</a>
-																							</li>
-																							
-																							
-																							<li class="ContentDeckSection__DeckCollage-s1xkjjf8-1 eHppBK HorizontalListItem-tt0z2b-0 hRbPKu"><a
-																								lng="ko-KR" title="IN THE CINEMA"
-																								href="/ko-KR/decks/4Y0spXPuIie6"><div
-																										class="ContentDeckSection__DeckPostersBlock-s1xkjjf8-2 hTJJpD">
-																										<
-																										<div
-																											class="LazyLoadingBackground__StylingMerged-cgbyi4-2 fiwrWr LazyLoadingBackground__Self-cgbyi4-0 dxPvni">
-																											<span
-																												class="LazyLoadingBackground__BackgroundImage-cgbyi4-1 bqtNip"
-																												data-background-image-id="223"><img class="fiwrWr" src="/brw/resources/images/3-girls.jpg"></span>
-																										</div>
-																									</div>
-																									<ul
-																										class="ContentDeckSection__DeckInfo-s1xkjjf8-3 eoOquJ VisualUl-s1vzev56-0 hgAYVH">
-																										<li
-																											class="ContentDeckSection__DeckTitle-s1xkjjf8-4 gGVjvL"><div
-																												class="TextTruncate__Self-wvv1uj-0 laNFWG">
-																												<div
-																													class="TextTruncate__Text-wvv1uj-1 gLsCNn"
-																													style="white-space: pre-line;">IN THE
-																													CINEMA</div>
-																											</div></li>
-																										<li
-																											class="ContentDeckSection__DeckLikeCount-s1xkjjf8-5 iKvIaj">좋아요
-																											54</li>
-																									</ul></a></li>
-																							<li
-																								class="ContentDeckSection__DeckCollage-s1xkjjf8-1 eHppBK HorizontalListItem-tt0z2b-0 hRbPKu"><a
-																								lng="ko-KR" title="신"
-																								href="/ko-KR/decks/SIycdWakv3Ju"><div
-																										class="ContentDeckSection__DeckPostersBlock-s1xkjjf8-2 hTJJpD">
-																										<div
-																											class="LazyLoadingBackground__StylingMerged-cgbyi4-2 fiwrWr LazyLoadingBackground__Self-cgbyi4-0 dxPvni">
-																											<span
-																												class="LazyLoadingBackground__BackgroundImage-cgbyi4-1 bqtNip"
-																												data-background-image-id="224"></span>
-																										</div>
-																										<div
-																											class="LazyLoadingBackground__StylingMerged-cgbyi4-2 fiwrWr LazyLoadingBackground__Self-cgbyi4-0 dxPvni">
-																											<span
-																												class="LazyLoadingBackground__BackgroundImage-cgbyi4-1 bqtNip"
-																												data-background-image-id="225"></span>
-																										</div>
-																										<div
-																											class="LazyLoadingBackground__StylingMerged-cgbyi4-2 fiwrWr LazyLoadingBackground__Self-cgbyi4-0 dxPvni">
-																											<span
-																												class="LazyLoadingBackground__BackgroundImage-cgbyi4-1 bqtNip"
-																												data-background-image-id="226"></span>
-																										</div>
-																										<div
-																											class="LazyLoadingBackground__StylingMerged-cgbyi4-2 fiwrWr LazyLoadingBackground__Self-cgbyi4-0 dxPvni">
-																											<span
-																												class="LazyLoadingBackground__BackgroundImage-cgbyi4-1 bqtNip"
-																												data-background-image-id="227"></span>
-																										</div>
-																									</div>
-																									<ul
-																										class="ContentDeckSection__DeckInfo-s1xkjjf8-3 eoOquJ VisualUl-s1vzev56-0 hgAYVH">
-																										<li
-																											class="ContentDeckSection__DeckTitle-s1xkjjf8-4 gGVjvL"><div
-																												class="TextTruncate__Self-wvv1uj-0 laNFWG">
-																												<div
-																													class="TextTruncate__Text-wvv1uj-1 gLsCNn"
-																													style="white-space: pre-line;">신</div>
-																											</div></li>
-																										<li
-																											class="ContentDeckSection__DeckLikeCount-s1xkjjf8-5 iKvIaj">좋아요
-																											43</li>
-																									</ul></a></li>
-																							<div
-																								class="SpinnerContainer__Self-s16nvp7b-0 dvymnj"></div>
-																						</ul>
-																					</div>
-																				</div>
+														
+															
+	<div id="container"> 
+		<div id="example">
+			<!-- <img src="/brw/resources/images//new-ribbon.png" width="112" height="112" alt="New Ribbon" id="ribbon"> -->
+			<div id="slides">
+				<div class="slides_container">
+					<img src="/brw/resources/images/3-girls.jpg" width="570" height="270" alt="Slide 1">
+					<!-- <a href="http://www.flickr.com/photos/stephangeyer/3020487807/" title="Taxi | Flickr - Photo Sharing!" target="_blank"> -->
+					
+					<img src="/brw/resources/images/3-jacket.jpg" width="570" height="270" alt="Slide 2"></a>
+					
+					<!-- <a href="http://www.flickr.com/photos/childofwar/2984345060/" title="Happy Bokeh raining Day | Flickr - Photo Sharing!" target="_blank"> -->
+					<img src="/brw/resources/images/3-man.jpg" width="570" height="270" alt="Slide 3"></a>
+					
+					<!-- <a href="http://www.flickr.com/photos/b-tal/117037943/" title="We Eat Light | Flickr - Photo Sharing!" target="_blank"> -->
+					<img src="/brw/resources/images//slide-4.jpg" width="570" height="270" alt="Slide 4"></a>
+					
+					<!-- <a href="http://www.flickr.com/photos/bu7amd/3447416780/" title="“I must go down to the sea again, to the lonely sea and the sky; and all I ask is a tall ship and a star to steer her by.” | Flickr - Photo Sharing!" target="_blank"> -->
+					<img src="/brw/resources/images/slide-5.jpg" width="570" height="270" alt="Slide 5"></a>
+					
+					<!-- <a href="http://www.flickr.com/photos/streetpreacher/2078765853/" title="twelve.inch | Flickr - Photo Sharing!" target="_blank"> -->
+					<img src="/brw/resources/images//slide-6.jpg" width="570" height="270" alt="Slide 6"></a>
+					
+					<!-- <a href="http://www.flickr.com/photos/aftab/3152515428/" title="Save my love for loneliness | Flickr - Photo Sharing!" target="_blank"> -->
+					<img src="/brw/resources/images/slide-7.jpg" width="570" height="270" alt="Slide 7"></a>
+				</div>
+				
+				<a href="#" class="prev">
+				<img src="/brw/resources/images/arrow-prev.png" width="24" height="43" alt="Arrow Prev"></a>
+				
+				<a href="#" class="next">
+				<img src="/brw/resources/images/arrow-next.png" width="24" height="43" alt="Arrow Next"></a>
+				
+			</div>
+			<img src="/brw/resources/images/example-frame.png" width="739" height="341" alt="Example Frame" id="frame">
+		</div>
+	</div>
+							 
+									<hr class="Divider__StylingMergedDivider-s11un6bw-1 jtXrQz Divider-s11un6bw-0 cVxSEp">
+									<section class="SectionWithHeader__Self-s1eyxltb-0 gAYeFO">
+														<div class="Grid-zydj2q-0 cspjno">
+															<div class="Row-s1apwm9x-0 lowZpE">
+																<header
+																	class="SectionWithHeader__Header-s1eyxltb-1 cuiACK">
+																	<h2 class="SectionWithHeader__Title-s1eyxltb-2 kwjefp">비슷한 장르</h2>
+																	<span class="TitleSuffixForNumber-l2d30g-0 ejtPKl">703</span>
+																	<div class="SectionWithHeader__TopRight-s1eyxltb-3 bZaEfL">
+																			<div class="SectionWithViewMore__ViewMore-xtbl7q-0 bhbIbv">
+																				<a href="/brw/movie/movieComment.br">더보기</a>
 																			</div>
 																		</div>
-																		<div
-																			class="arrow_button PrimitiveHorizontalScrollable__ArrowButtonBlock-hy4esm-3 kCjzvu"
-																			direction="left">
-																			<div
-																				class="PrimitiveHorizontalScrollable__BackwardButton-hy4esm-5 bWflCD"></div>
-																		</div>
-																		<div
-																			class="arrow_button PrimitiveHorizontalScrollable__ArrowButtonBlock-hy4esm-3 eweFwK"
-																			direction="right"></div>
-																	</div>
-																</section>
-																<div></div>
+																</header>
 															</div>
+															
 														</div>
+
+		<%--  <c:forEach items="${list}" var="dramaList" >  --%>
+			 <div class="col-sm-6 col-md-3">
+			 	<a href="/brw/drama/dramaDetail.br?DRAMA_NO=1&DRAMA_NAME=2">
+			    <div class="detailgenre">
+			      <img src="/brw/resources/images/3-girls.jpg">
+			      <%-- <input type='hidden' class='IDX' value="${dramaList.DRAMA_NO}"> --%>
+			      <div class="detailgenrefont">
+			        <h3>제목</h3>
+			        <p>조회수・평점</p>
+			      </div>
+			    </div>
+			    </a>
+			  </div>
+			 
+	<%-- 	 </c:forEach>  --%>
+
+														
+														
+														
+														
+													</section>
+													<div></div>
 												</div>
-												<div
-													class="ContentPage__HiddenBlockOnlyMdScreen-se3skp-10 jVScZl"></div>
 											</div>
 										</div>
+										<div
+											class="ContentPage__HiddenBlockOnlyMdScreen-se3skp-10 jVScZl"></div>
 									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 				</section>
