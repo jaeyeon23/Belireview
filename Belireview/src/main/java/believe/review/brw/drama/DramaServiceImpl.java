@@ -40,6 +40,10 @@ public class DramaServiceImpl  implements DramaService{
 	public Map<String, Object> dramaName(Map<String, Object> map) throws Exception {
 		return dramaDAO.dramaName(map);
 	}
+	/*@Override
+	public Map<String, Object> insertdramaComment(Map<String, Object> map) throws Exception {
+		return dramaDAO.dramaComment(map);
+	}*/
 	
 
 }

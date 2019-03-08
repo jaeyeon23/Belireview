@@ -32,6 +32,8 @@
 		.demo{
 			width: 800px;
 		}
+	  
+    </style>
     </style>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="/brw/resources/js/lightslider.js"></script> 
@@ -175,27 +177,108 @@
 									<div class="MaxWidthGrid-s193eej0-0 bWXpcH">
 										<div class="MaxWidthRow-s14yonsc-0 dCZZZZ">
 											<div class="MaxWidthCol-s1fpp771-0 fGpdkH">
-												<div
-													class="ContentMyCommentSection__SectionBlock-mhuscg-0 IsPDs">
+											<!-- 코멘트 작성 전 창 -->
+												<div class="ContentMyCommentSection__SectionBlock-mhuscg-0 IsPDs">
 													<div class="RoundedCornerBlock-s17n38ib-0 gPZLbT">
-														<section
-															class="ContentMyCommentSection__LeaveCommentSection-mhuscg-1 dxGvFB">
+														<section class="ContentMyCommentSection__LeaveCommentSection-mhuscg-1 dxGvFB">
 															<div class="Grid-zydj2q-0 cspjno">
 																<div class="Row-s1apwm9x-0 lowZpE">
-																	<div
-																		class="ContentMyCommentSection__LeaveCommentBlock-mhuscg-2 bvmyee">
+																	<div class="ContentMyCommentSection__LeaveCommentBlock-mhuscg-2 bvmyee">
 																		<h3
 																			class="ContentMyCommentSection__Title-mhuscg-11 inwTWL">이
 																			작품에 대한 김상협 님의 평가를 글로 남겨보세요.</h3>
 																		<div
 																			class="ContentMyCommentSection__ButtonBlock-mhuscg-12 kTSrnl">
-																			<button
-																				class="ContentMyCommentSection__LeaveCommentButton-mhuscg-10 kYniqf MediumButton-lenhbs-0 kzufqJ Button-s48yp1i-0 guqtOb StylelessButton-phxvo7-0 gsSopE">코멘트
-																				남기기</button>
+																			
+																			 <!-- modal 구동 버튼 (trigger) -->
+																			 <!-- 코멘트 작성창 -->
+																			<button type="button" class="ContentMyCommentSection__LeaveCommentButton-mhuscg-10 kYniqf MediumButton-lenhbs-0 kzufqJ Button-s48yp1i-0 guqtOb StylelessButton-phxvo7-0 gsSopE"
+																				data-toggle="modal"
+																				data-target="#myModal">코멘트 남기기</button>
+																		
+																			<!-- Modal -->
+																			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+																				<div class="modal-dialog" role="document">
+																					<div class="modal-content">
+																						<div class="modal-header">
+																							<button type="button" class="close"
+																								data-dismiss="modal" aria-label="Close">
+																								<span aria-hidden="true">&times;</span>
+																							</button>
+																							<h4 class="modal-title" id="myModalLabel" align="middle"><strong>${map.DRAMA_NAME}</strong></h4>
+																						
+																						</div>
+																						<div class="modal-body" align="center">
+																						<div class="row">
+																							<textarea style="resize: none;" name="comment" cols="70" rows="20" placeholder="이 작품에 대한 생각을 자유롭게 표현해주세요."></textarea></td>
+																							
+																						</div>
+																						</div>
+																						<div class="modal-footer">
+																						<button type="submit" class="btn btn-default" data-dismiss="modal">작성</button>
+																						
+																						</div>
+																				</div>
 																		</div>
 																	</div>
-																</div>
-															</div>
+																<%-- 	<!-- 코멘트 작성 완료시 뜨는 창 -->
+																				<div
+																					class="ContentMyCommentSection__SectionBlock-mhuscg-0 IsPDs">
+																					<div class="RoundedCornerBlock-s17n38ib-0 gPZLbT">
+																						<div class="Grid-zydj2q-0 cspjno">
+																							<div class="Row-s1apwm9x-0 lowZpE">
+																								<section
+																									class="ContentMyCommentSection__MyCommentSection-mhuscg-3 jAXTYm">
+																									<div
+																										class="ContentMyCommentSection__MyCommentBlock-mhuscg-6 fmWQqh">
+																										<div
+																											class="ContentMyCommentSection__MyProfilePhotoBlock-mhuscg-4 jKiAlO">
+																											<div
+																												class="ProfilePhoto__Self-s1v3isfu-1 fpMzxR RoundedImageBlock-k5m4n5-0 gUZYtN">
+																												<div
+																													class="ProfilePhoto__ProfilePhotoImage-s1v3isfu-0 jawsmT"></div>
+																												<div
+																													class="ProfilePhoto__DefaultImageContainer-s1v3isfu-2 kPGxuy">
+																													<img
+																														class="defaultImage__ProfileImg-s1kn91bx-1 iaxVtx"
+																														src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDQ4IDQ4Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgZmlsbD0iI0UwRTBFMCI+CiAgICAgICAgICAgIDxwYXRoIGQ9Ik0yNCAyMS4yNzhhOC41NyA4LjU3IDAgMCAxLTguNTcxLTguNTdBOC41NzEgOC41NzEgMCAxIDEgMjQgMjEuMjc3TTQzLjUxOSA0My44NjVjLjU2NCAwIDEuMDMzLS40NjggMS4wMDMtMS4wMzFDNDMuOTYzIDMyLjQyNCAzNC45ODkgMjQuMTUgMjQgMjQuMTVjLTEwLjk4OSAwLTE5Ljk2MyA4LjI3NC0yMC41MjIgMTguNjgzLS4wMy41NjMuNDM5IDEuMDMgMS4wMDMgMS4wM2gzOS4wMzh6Ii8+CiAgICAgICAgPC9nPgogICAgPC9nPgo8L3N2Zz4K"
+																														alt="김상협의 사진">
+																												</div>
+																											</div>
+																										</div>
+																										<div
+																											class="ContentMyCommentSection__MyComment-mhuscg-5 iBmFgp">
+																											<div
+																												class="TextTruncate__Self-wvv1uj-0 edeoAV">
+																												<div
+																													class="TextTruncate__Text-wvv1uj-1 gLsCNn"
+																													style="white-space: pre-line;">${ }</div>
+																											</div>
+																										</div>
+																										<ul
+																											class="ContentMyCommentSection__CommentUpdateButtons-mhuscg-7 UbRpK VisualUl-s1vzev56-0 hgAYVH">
+																											<li
+																												class="ContentMyCommentSection__CommentUpdateButtonListItem-mhuscg-8 rEOgj"><button
+																													class="ContentMyCommentSection__CommentUpdateButton-mhuscg-9 eSMTCV StylelessButton-phxvo7-0 gsSopE">
+																													<img
+																														src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOCIgaGVpZ2h0PSIxOCIgdmlld0JveD0iMCAwIDE4IDE4Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHBhdGggZmlsbD0iI0EwQTBBMCIgZD0iTTUuMjUgMTQuMjVoNy41di03LjVoMS41VjE1YS43NS43NSAwIDAgMS0uNzUuNzVoLTlhLjc1Ljc1IDAgMCAxLS43NS0uNzVWNi43NWgxLjV2Ny41ek0xMiA0LjVoMy43NVY2SDIuMjVWNC41SDZWM2EuNzUuNzUgMCAwIDEgLjc1LS43NWg0LjVBLjc1Ljc1IDAgMCAxIDEyIDN2MS41em0tMS41IDB2LS43NWgtM3YuNzVoM3pNNi43NSA2Ljc1aDEuNXY2Ljc1aC0xLjVWNi43NXptMyAwaDEuNXY2Ljc1aC0xLjVWNi43NXoiLz4KICAgIDwvZz4KPC9zdmc+Cg=="
+																														alt="delete comment">삭제
+																												</button></li>
+																											<li
+																												class="ContentMyCommentSection__CommentUpdateButtonListItem-mhuscg-8 rEOgj"><button
+																													class="ContentMyCommentSection__CommentUpdateButton-mhuscg-9 eSMTCV StylelessButton-phxvo7-0 gsSopE">
+																													<img
+																														src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOCIgaGVpZ2h0PSIxOCIgdmlld0JveD0iMCAwIDE4IDE4Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHBhdGggZmlsbD0iI0EwQTBBMCIgZD0iTTIuMTggMTUuMzlsLjcwMy0zLjk4IDMuNzEzIDMuNzEyLTMuOTgxLjcwMmEuMzc0LjM3NCAwIDAgMS0uNDM0LS40MzR6bTEuNDk4LTQuNzc2bDYuMzY0LTYuMzY0IDMuNzEzIDMuNzEyLTYuMzY0IDYuMzY0LTMuNzEzLTMuNzEyek0xNS42MDcgNS4wNGEuNzUuNzUgMCAwIDEgMCAxLjA2bC0xLjA2IDEuMDYxLTMuNzEzLTMuNzEyIDEuMDYtMS4wNmEuNzUuNzUgMCAwIDEgMS4wNiAwbDIuNjUzIDIuNjUxeiIvPgogICAgPC9nPgo8L3N2Zz4K"
+																														alt="edit comment">수정
+																												</button></li>
+																										</ul>
+																									</div>
+																								</section>
+																							</div>
+																						</div>
+																					</div>
+																				</div> --%>
+																		</div>
 														</section>
 													</div>
 												</div>
@@ -238,14 +321,11 @@
 																		<ul class="VisualUl-s1vzev56-0 hgAYVH">
 																			<li
 																				class="ContentReasonSection__ReasonListItem-s1eie0l9-2 ikOkkg"><div
-																					class="ContentReasonSection__ReasonTitle-s1eie0l9-3 hOKaLN">선호하는
-																					장르</div>
+																					class="ContentReasonSection__ReasonTitle-s1eie0l9-3 hOKaLN">선호하는 장르</div>
 																				<div
 																					class="ContentReasonSection__Tags-s1eie0l9-6 kCQkjw ContentReasonSection__ReasonValue-s1eie0l9-5 fIyVCO">
 																					<span class="Tag__TagLink-u797lx-0 cwYdug"
-																						color="#00aae6">#장르</span> <span
-																						class="Tag__TagLink-u797lx-0 dDivuT"
-																						color="#ff8644">#장르</span>
+																						color="#00aae6">#${map.DRAMA_GENRE}</span> 
 																				</div></li>
 																		</ul>
 																	</div>
@@ -254,23 +334,28 @@
 																</div>
 															</div>
 														</section>
+														
 														<section class="SectionWithHeader__Self-s1eyxltb-0 gAYeFO">
+														
 															<div class="Grid-zydj2q-0 cspjno">
 																<div class="Row-s1apwm9x-0 lowZpE">
 																	<header
 																		class="SectionWithHeader__Header-s1eyxltb-1 cuiACK">
 																		<h2 class="SectionWithHeader__Title-s1eyxltb-2 kwjefp">기본
 																			정보</h2>
-																		<div
-																			class="SectionWithHeader__TopRight-s1eyxltb-3 bZaEfL">
+																		
 																			<div
-																				class="SectionWithViewMore__ViewMore-xtbl7q-0 bhbIbv">
-																				<a href="/brw/movie/movieInfo.br">더보기</a>
+																				class="SectionWithHeader__TopRight-s1eyxltb-3 bZaEfL">
+																				<div
+																					class="SectionWithViewMore__ViewMore-xtbl7q-0 bhbIbv">
+																					<a href="/brw/drama/dramaInfo.br?DRAMA_NO=${map.DRAMA_NO}&DRAMA_NAME=${map.DRAMA_NAME}">더보기</a>
+																				</div>
 																			</div>
-																		</div>
+																		
 																	</header>
 																</div>
 															</div>
+															
 															<div class="Grid-zydj2q-0 cspjno">
 																<div class="Row-s1apwm9x-0 lowZpE">
 																	<article

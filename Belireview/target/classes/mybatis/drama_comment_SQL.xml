@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC " - //mybatis.org//DTD Config 3.0//EN" " http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="drama_comment">
 
-<!-- insert>
+<insert id="insertdramaComment" parameterType="hashmap" >
 INSERT INTO DRAMA_COMMENT 
 (
   DRAMA_NO,
@@ -24,7 +24,7 @@ VALUES
   #{DC_LIKE},
   #{DC_LIKE_ID}
 );
-</insert> -->
+</insert> 
 
 <!-- 댓글 최신순 -->
 <select id="dramaCommentByRecent" parameterType="hashmap" resultType="hashmap">
@@ -81,6 +81,21 @@ SELECT
 	      WHERE DL.DRAMA_LIKE_NO=DC.DRAMA_NO AND DL.ID=DC.ID ORDER BY DC_LIKE DESC) ORDER BY RNUM ASC) WHERE RNUM BETWEEN 1 AND 3
       
 </select>
+ <!-- 댓글 -->
+<!-- <select id="id_dramaComment" parameterType="hashmap" resultType="hashmap">
+	
+	SELECT
+		DRAMA_NO,
+		DC_NO,
+		ID,
+		DC_REG_DATE,
+		DC_CONTENT,
+		DC_LIKE,
+		DC_LIKE_ID
+	FROM
+		DRAMA_COMMENT
+	WHERE 
+		ID=#{ID} 
+</select>--> 
 
-
-</mapper>
+</mapper>     
