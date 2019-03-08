@@ -99,7 +99,7 @@
 													<div class="ContentJumbotron__PaneInner-yf8npk-13 eJceNg">
 														<h1 class="ContentJumbotron__Title-yf8npk-14 jCFeyL">${map.DRAMA_NAME}</h1><!-- 제목 -->
 														<div class="ContentJumbotron__Detail-yf8npk-15 bJHRjP">${map.DRAMA_DATE} ・ ${map.DRAMA_GENRE} ・ ${map.DRAMA_CHANNEL}</div><!-- 개봉일 장르 채널 -->
-														<div class="ContentJumbotron__ContentRatings-yf8npk-16 epsYAr">${map.DRAMA_GRADE}&nbsp;&nbsp;・&nbsp;&nbsp;<!-- <em>예상 ★2.7</em> --><!-- 평점 -->
+														<div class="ContentJumbotron__ContentRatings-yf8npk-16 epsYAr">평점 ★${map.DRAMA_GRADE}&nbsp;&nbsp;・&nbsp;&nbsp;<!-- <em>예상 ★2.7</em> --><!-- 평점 -->
 														</div>
 														<div
 															class="ContentJumbotron__ButtonBlock-yf8npk-17 bqrRYB">
@@ -528,7 +528,7 @@
 																	<header
 																		class="SectionWithHeader__Header-s1eyxltb-1 cuiACK">
 																		<h2 class="SectionWithHeader__Title-s1eyxltb-2 kwjefp">코멘트</h2>
-																		<span class="TitleSuffixForNumber-l2d30g-0 ejtPKl">4000+</span>
+																		<span class="TitleSuffixForNumber-l2d30g-0 ejtPKl">${totalCount}</span>
 																		<div
 																			class="SectionWithHeader__TopRight-s1eyxltb-3 bZaEfL">
 																			<div

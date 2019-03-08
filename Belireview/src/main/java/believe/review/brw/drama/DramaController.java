@@ -63,19 +63,25 @@ public class DramaController {
 	public ModelAndView dramaDetail(CommandMap commandMap/*, HttpServletRequest request*/) throws Exception {
 
 		ModelAndView mv = new ModelAndView("dramaDetail");
+		
+		
 		/*HttpSession session = request.getSession();*/
 		Map<String,Object> map = dramaService.dramaDetail(commandMap.getMap());
 		
 		List<Map<String,Object>> comment = dramaService.dramaCommentByLike(map);
 		List<Map<String,Object>> actor = dramaService.dramaActor(map); 
 		/*Map<String,Object> insertcomment = dramaService.insertdramaComment(commandMap.getMap());*/
-		
+		System.out.println("CONT"+map.get("DRAMA_NO"));
+		totalCount = (Integer)dramaService.totalDramaComment(map);
+		System.out.println(totalCount);
 		mv.addObject("map",map);
 		mv.addObject("comment",comment);
 		mv.addObject("actor",actor);
+		mv.addObject("totalCount",totalCount);
 	/*	mv.addObject("insertcomment",insertcomment);*/
 		
 		System.out.println(actor.get(0).get("ACTOR_NAME"));
+		
 		
 		return mv;
 

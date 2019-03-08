@@ -16,6 +16,8 @@ public interface DramaService {
 	List<Map<String,Object>> dramaCommentByLike(Map<String, Object> map) throws Exception;
 	
 	int totalDramaCount(Map<String,Object> map) throws Exception;
+	
+	int totalDramaComment(Map<String,Object> map) throws Exception;
 
 	/*Map<String,Object> insertdramaComment(Map<String,Object> map) throws Exception;*/
 
