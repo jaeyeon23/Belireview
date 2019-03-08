@@ -32,5 +32,9 @@ public class DramaDAO extends AbstractDAO{
 	public int totalDramaCount(Map<String, Object> map) throws Exception{
 		return (Integer) selectOne("drama.totalDramaCount",map);
 	}
-	
+	/*@SuppressWarnings("unchecked")
+	public Map<String, Object> dramaComment(Map<String, Object> map) throws Exception{
+		return(Map<String,Object>)selectOne("drama.insertdramaComment",map);
+	}
+	*/
 }

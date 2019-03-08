@@ -63,6 +63,7 @@
 			AS DRAMA_GRADE 
 		FROM DRAMA WHERE DRAMA_NO = #{DRAMA_NO}
    </select>
+ 
    
    <select id="dramaActor" parameterType="hashmap" resultType="hashmap">
    		SELECT ACTOR_NAME,ACTOR_IMAGE FROM ACTOR WHERE ACTOR_DRAMA LIKE '%'||#{DRAMA_NAME}||'%'

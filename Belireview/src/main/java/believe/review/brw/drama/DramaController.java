@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 import believe.review.brw.common.common.CommandMap;
 import believe.review.brw.common.util.Paging;
 
+
 @Controller
 
 @RequestMapping("/drama")
@@ -58,18 +59,21 @@ public class DramaController {
 
 	}
 
-	@RequestMapping(value = "dramaDetail.br")
-	public ModelAndView dramaDetail(CommandMap commandMap) throws Exception {
+	@RequestMapping(value="dramaDetail.br")
+	public ModelAndView dramaDetail(CommandMap commandMap/*, HttpServletRequest request*/) throws Exception {
 
 		ModelAndView mv = new ModelAndView("dramaDetail");
+		/*HttpSession session = request.getSession();*/
 		Map<String,Object> map = dramaService.dramaDetail(commandMap.getMap());
 		
 		List<Map<String,Object>> comment = dramaService.dramaCommentByLike(map);
 		List<Map<String,Object>> actor = dramaService.dramaActor(map); 
+		/*Map<String,Object> insertcomment = dramaService.insertdramaComment(commandMap.getMap());*/
 		
 		mv.addObject("map",map);
 		mv.addObject("comment",comment);
 		mv.addObject("actor",actor);
+	/*	mv.addObject("insertcomment",insertcomment);*/
 		
 		System.out.println(actor.get(0).get("ACTOR_NAME"));
 		
@@ -79,17 +83,23 @@ public class DramaController {
 
 	@RequestMapping(value = "dramaInfo.br")
 	public ModelAndView dramaInfo(CommandMap commandMap) throws Exception {
+
+
 		ModelAndView mv = new ModelAndView("dramaInfo");
+		Map<String,Object> map = dramaService.dramaDetail(commandMap.getMap());
 		
+		mv.addObject("map",map);
+
 		return mv;
 
 		
 	}
 
 	@RequestMapping(value = "dramaComment.br")
-	public ModelAndView dramaComment() throws Exception {
+	public ModelAndView dramaComment(CommandMap commandMap, HttpServletRequest request) throws Exception {
 
 		ModelAndView mv = new ModelAndView("dramaComment");
+		
 
 		return mv;
 
