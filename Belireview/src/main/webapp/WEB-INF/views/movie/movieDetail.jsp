@@ -32,30 +32,22 @@
 			width: 800px;
 		}
     </style>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script src="/brw/resources/js/lightslider.js"></script> 
-    <script>
-      
-    	 $(document).ready(function() {
-			$("#content-slider").lightSlider({
-                loop:true,
-              	auto:true,
-                keyPress:true
-            });
-            $('#image-gallery').lightSlider({
-                gallery:true,
-                item:1,
-                thumbItem:9,
-                slideMargin: 0,
-                speed:500,
-                auto:true,
-                loop:true,
-                onSliderLoad: function() {
-                    $('#image-gallery').removeClass('cS-hidden');
-                }  
-            });
+
+   
+    <script src="/brw/resources/js/jquery-1.4.4.min.js"></script>
+	<script src="/brw/resources/js/slides.jquery.js"></script>
+	<script>
+		$(function(){
+			$('#slides').slides({
+				preload: true,
+				preloadImage: '/brw/resources/images/loading.gif',
+				play: 5000,
+				pause: 2500,
+				hoverPause: true
+			});
 		});
-    </script>
+	</script>
+	<link rel="stylesheet" href="/brw/resources/css/global.css">
 </head>
 <body>
 	<div id="root">
@@ -875,34 +867,47 @@
 																</header>
 															</div>
 														</div>
-														 <div
-															class="PrimitiveHorizontalScrollable__ScrollBarContainer-hy4esm-0 hUyjJn">
-																<div class="item">
-																	<ul id="content-slider" class="content-slider">
-																		<li>
-																			<h3>1</h3>
-																		</li>
-																		<li>
-																			<h3>2</h3>
-																		</li>
-																		<li>
-																			<h3>3</h3>
-																		</li>
-																		<li>
-																			<h3>4</h3>
-																		</li>
-																		<li>
-																			<h3>5</h3>
-																		</li>
-																		<li>
-																			<h3>6</h3>
-																		</li>
-																	</ul>
-																</div>
-												
-											
-												<div class="RoundedCornerBlock-s17n38ib-0 iyaHUY">
-													<section class="SectionWithHeader__Self-s1eyxltb-0 gAYeFO">
+														
+															
+	<div id="container"> 
+		<div id="example">
+			<!-- <img src="/brw/resources/images//new-ribbon.png" width="112" height="112" alt="New Ribbon" id="ribbon"> -->
+			<div id="slides">
+				<div class="slides_container">
+					<img src="/brw/resources/images/3-girls.jpg" width="570" height="270" alt="Slide 1">
+					<!-- <a href="http://www.flickr.com/photos/stephangeyer/3020487807/" title="Taxi | Flickr - Photo Sharing!" target="_blank"> -->
+					
+					<img src="/brw/resources/images/3-jacket.jpg" width="570" height="270" alt="Slide 2"></a>
+					
+					<!-- <a href="http://www.flickr.com/photos/childofwar/2984345060/" title="Happy Bokeh raining Day | Flickr - Photo Sharing!" target="_blank"> -->
+					<img src="/brw/resources/images/3-man.jpg" width="570" height="270" alt="Slide 3"></a>
+					
+					<!-- <a href="http://www.flickr.com/photos/b-tal/117037943/" title="We Eat Light | Flickr - Photo Sharing!" target="_blank"> -->
+					<img src="/brw/resources/images//slide-4.jpg" width="570" height="270" alt="Slide 4"></a>
+					
+					<!-- <a href="http://www.flickr.com/photos/bu7amd/3447416780/" title="“I must go down to the sea again, to the lonely sea and the sky; and all I ask is a tall ship and a star to steer her by.” | Flickr - Photo Sharing!" target="_blank"> -->
+					<img src="/brw/resources/images/slide-5.jpg" width="570" height="270" alt="Slide 5"></a>
+					
+					<!-- <a href="http://www.flickr.com/photos/streetpreacher/2078765853/" title="twelve.inch | Flickr - Photo Sharing!" target="_blank"> -->
+					<img src="/brw/resources/images//slide-6.jpg" width="570" height="270" alt="Slide 6"></a>
+					
+					<!-- <a href="http://www.flickr.com/photos/aftab/3152515428/" title="Save my love for loneliness | Flickr - Photo Sharing!" target="_blank"> -->
+					<img src="/brw/resources/images/slide-7.jpg" width="570" height="270" alt="Slide 7"></a>
+				</div>
+				
+				<a href="#" class="prev">
+				<img src="/brw/resources/images/arrow-prev.png" width="24" height="43" alt="Arrow Prev"></a>
+				
+				<a href="#" class="next">
+				<img src="/brw/resources/images/arrow-next.png" width="24" height="43" alt="Arrow Next"></a>
+				
+			</div>
+			<img src="/brw/resources/images/example-frame.png" width="739" height="341" alt="Example Frame" id="frame">
+		</div>
+	</div>
+							 
+									<hr class="Divider__StylingMergedDivider-s11un6bw-1 jtXrQz Divider-s11un6bw-0 cVxSEp">
+									<section class="SectionWithHeader__Self-s1eyxltb-0 gAYeFO">
 														<div class="Grid-zydj2q-0 cspjno">
 															<div class="Row-s1apwm9x-0 lowZpE">
 																<header
