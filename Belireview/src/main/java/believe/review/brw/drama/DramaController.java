@@ -74,7 +74,7 @@ public class DramaController {
 		Map<String,Object> map = dramaService.dramaDetail(commandMap.getMap());
 		List<Map<String,Object>> comment = dramaService.dramaCommentByLike(map);
 		List<Map<String,Object>> actor = dramaService.dramaActor(map); 
-		List<Map<String,Object>> detailgenre = dramaService.detailgenre(commandMap.getMap());
+		List<Map<String,Object>> detailgenre = dramaService.detailgenre(map);
 		
 		/*Map<String,Object> insertcomment = dramaService.insertdramaComment(commandMap.getMap());*/
 		
