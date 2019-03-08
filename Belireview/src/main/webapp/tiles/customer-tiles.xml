@@ -103,6 +103,14 @@
     <definition name="findPwForm" extends=".home">
     	<put-attribute name="body" value="/WEB-INF/views/member/findPw.jsp"/>
     </definition>
+    
+    <definition name="findPwOk" extends=".home">
+    	<put-attribute name="body" value="/WEB-INF/views/member/findPwOk.jsp"/>
+    </definition>
+    
+    <definition name="findPwError" extends=".home">
+    	<put-attribute name="body" value="/WEB-INF/views/member/findPwError.jsp"/>
+    </definition>
 
     
     <!-- 회원가입 -->

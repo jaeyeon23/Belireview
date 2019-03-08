@@ -13,6 +13,12 @@ public interface LoginService {
 	
 	//비밀번호 바꾸기
 	void changePw(Map<String, Object> map) throws Exception;
+
+	String findEmail(Map<String, Object> map) throws Exception;
+	
+	
+	/*String checkMember(Map<String, Object> map)throws Exception;*/
+
 	
 /*	String findId(Map<String, Object> map) throws Exception;*/
 

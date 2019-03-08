@@ -57,6 +57,11 @@ public class AbstractDAO {
 		return sqlSession.selectList(queryId,params);
 	}
 	
-	
+	// 가입한 회원 아이디 중복 확인
+	@SuppressWarnings("rawtypes")
+	public String selectMemberId(String queryId, Object params) {
+		printQueryId(queryId);
+		return sqlSession.selectOne(queryId, params);
+	}
 	
 }

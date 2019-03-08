@@ -28,6 +28,15 @@ public class LoginDAO extends AbstractDAO{
 		sqlSession.update("member.changePw",map);
 	}
 	
+	// DB에서 아이디에 맞는 이메일가져오기
+	public String findEmail(Map<String, Object> map) throws Exception{
+		return sqlSession.selectOne("member.findEmail",map);
+	}
+	
+/*	public String checkMember(Map<String, Object> map)throws Exception{
+		return selectMemberId("member.checkMember",map);
+	}*/
+	
 /*	@SuppressWarnings("unchecked")
 	public Map<String, Object> loginMember(Map<String, Object> map) throws Exception{
 		return (Map<String, Object>) selectOne("member.selectOneMember", map);

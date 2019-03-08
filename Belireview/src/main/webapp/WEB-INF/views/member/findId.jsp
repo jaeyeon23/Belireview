@@ -19,13 +19,13 @@
 		var mem = eval("document.findIdForm");
 		
 		if(mem.name.value=="") {
-	        alert('이름을 입력하세요');
+	        alert('이름이 머에옇');
 	        mem.name.focus();
 	        return false;
 	    }
 
 	    if(mem.email.value=="") {
-	        alert('이메일을 입력해 주세요.');
+	        alert('이메일이 머에옇.');
 	        mem.email.focus();
 	        return false;
 	    }
@@ -76,7 +76,7 @@
 							<div class="btn_area">
 								<button type="submit" id="아이디 찾기" value="아이디찾기"
 									class="btn_type btn_primary">
-									<span>아이디찾기</span>
+									<span>확인</span>
 								</button>
 							</div>
 						</form>	
@@ -86,7 +86,7 @@
 				<div class="position_a">
 					<div class="find_info">
 							<center>
-								<a href="http://localhost:8080/brw/member/findPwForm.br">비밀번호 찾기</a> 
+								<a href="http://localhost:8080/brw/member/findPwForm.br">비밀번호 찾을까 말까?</a> 
 								<span class="bar" aria-hidden="true">|</span> 
 								<a href="http://localhost:8080/brw/member/loginForm.br">로그인</a>
 							</center>
