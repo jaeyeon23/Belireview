@@ -69,6 +69,45 @@
    		SELECT ACTOR_NAME,ACTOR_IMAGE FROM ACTOR WHERE ACTOR_DRAMA LIKE '%'||#{DRAMA_NAME}||'%'
    </select>
    
+   <select id="detailgenre" parameterType="hashmap" resultType="hashmap" >
+  <![CDATA[
+	SELECT
+ 			DRAMA_NO,
+			DRAMA_NAME,
+			DRAMA_DATE,
+			DRAMA_CHANNEL,
+			DRAMA_GENRE,
+			DRAMA_DIRECTOR,
+			DRAMA_CONTENT,
+			DRAMA_READCOUNT,
+			DRAMA_POSTER_IMAGE,
+			DRAMA_MAIN_IMAGE,
+			DRAMA_CONTENT_IMAGE,
+			DRAMA_EPISODE,
+			DRAMA_GRADE,
+			RNUM FROM 
+			(
+		SELECT
+				DRAMA_NO,
+				DRAMA_NAME,
+				to_char(DRAMA_DATE,'yyyy') as DRAMA_DATE,
+				DRAMA_CHANNEL,
+				DRAMA_GENRE,
+				DRAMA_DIRECTOR,
+				DRAMA_CONTENT,
+				DRAMA_READCOUNT,
+				DRAMA_POSTER_IMAGE,
+				DRAMA_MAIN_IMAGE,
+				DRAMA_CONTENT_IMAGE,
+				DRAMA_EPISODE,
+				DRAMA_GRADE,
+				ROWNUM RNUM FROM 
+				(SELECT *
+					FROM DRAMA WHERE DRAMA_NO!=5 and DRAMA_GENRE='액션' ORDER BY DRAMA_DATE DESC) ORDER BY RNUM ASC)WHERE RNUM BETWEEN 1 AND 4
+		]]>
+   </select>
+   
+   
    <insert id="insertDrama"  parameterType="hashmap">
    INSERT INTO DRAMA(	
 	DRAMA_NO,
@@ -101,6 +140,7 @@ values (
 	0
 );
 </insert>
+
 
 
 	<!-- <select>

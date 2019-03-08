@@ -64,15 +64,19 @@ public class DramaController {
 
 		ModelAndView mv = new ModelAndView("dramaDetail");
 		/*HttpSession session = request.getSession();*/
-		Map<String,Object> map = dramaService.dramaDetail(commandMap.getMap());
 		
+		
+		Map<String,Object> map = dramaService.dramaDetail(commandMap.getMap());
 		List<Map<String,Object>> comment = dramaService.dramaCommentByLike(map);
 		List<Map<String,Object>> actor = dramaService.dramaActor(map); 
+		List<Map<String,Object>> detailgenre = dramaService.detailgenre(commandMap.getMap());
+		
 		/*Map<String,Object> insertcomment = dramaService.insertdramaComment(commandMap.getMap());*/
 		
 		mv.addObject("map",map);
 		mv.addObject("comment",comment);
 		mv.addObject("actor",actor);
+		mv.addObject("detailgenre",detailgenre);
 	/*	mv.addObject("insertcomment",insertcomment);*/
 		
 		System.out.println(actor.get(0).get("ACTOR_NAME"));
