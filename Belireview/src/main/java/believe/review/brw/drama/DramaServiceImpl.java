@@ -39,12 +39,13 @@ public class DramaServiceImpl  implements DramaService{
 	public int totalDramaCount(Map<String, Object> map) throws Exception {
 		return dramaDAO.totalDramaCount(map);
 	}
-
+	
+	@Override
+	public List<Map<String, Object>> detailgenre(Map<String, Object> map) throws Exception {
+		return dramaDAO.detailgenre(map);
+	}
 	/*@Override
 	public Map<String, Object> insertdramaComment(Map<String, Object> map) throws Exception {
 		return dramaDAO.dramaComment(map);
 	}*/
-	
-
-
 }

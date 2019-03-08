@@ -796,21 +796,20 @@
 															
 														</div>
 
-		<%--  <c:forEach items="${list}" var="dramaList" >  --%>
+		 <c:forEach items="${detailgenre}" var="detailgenrelist" >
 			 <div class="col-sm-6 col-md-3">
 			 	<a href="/brw/drama/dramaDetail.br?DRAMA_NO=1&DRAMA_NAME=2">
 			    <div class="detailgenre">
 			      <img src="/brw/resources/images/3-girls.jpg">
 			      <%-- <input type='hidden' class='IDX' value="${dramaList.DRAMA_NO}"> --%>
 			      <div class="detailgenrefont">
-			        <h3>제목</h3>
-			        <p>조회수・평점</p>
+			        <h3>#${detailgenrelist.DRAMA_NAME}</h3>
+			        <p>#${detailgenrelist.DRAMA_DATE}・#${detailgenrelist.DRAMA_CHANNEL}</p>
 			      </div>
 			    </div>
 			    </a>
 			  </div>
-			 
-	<%-- 	 </c:forEach>  --%>
+		 </c:forEach>
 
 														
 														
