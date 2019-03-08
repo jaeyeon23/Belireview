@@ -49,7 +49,6 @@ public class MemberController {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("join");
 		
-		
 		mv.addObject("email_marketing", request.getParameter("termsEmail"));
 		mv.addObject("sms_marketing", request.getParameter("termsLocation"));
 		
@@ -69,15 +68,6 @@ public class MemberController {
 		
 		memberService.insertMember(memberMap, request);
 		
-		/*
-		 * session.setAttribute("ID", commandMap.get("id"));
-		 * session.setAttribute("PASSWORD", commandMap.get("password"));
-		 * session.setAttribute("NAME", commandMap.get("name"));
-		 * session.setAttribute("EMAIL", commandMap.get("email"));
-		 * session.setAttribute("TEL", commandMap.get("tel"));
-		 * session.setAttribute("ADMIN", 0); session.setAttribute("EMAIL_MARKETING", 1);
-		 * session.setAttribute("SMS_MARKETING", 1);
-		 */
 		mv.setViewName("joinComplete");
 		
 		mv.addObject("NAME",commandMap.get("name"));

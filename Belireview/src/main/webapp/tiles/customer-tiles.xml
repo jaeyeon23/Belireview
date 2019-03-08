@@ -76,7 +76,17 @@
     	<put-attribute name="body" value="/WEB-INF/views/user/userMovie.jsp"/>
     </definition>
     
+    <definition name="user" extends=".home">
+    	<put-attribute name="body" value="/WEB-INF/views/user/user.jsp"/>
+    </definition>
     
+    <definition name="modify" extends=".home">
+    	<put-attribute name="body" value="/WEB-INF/views/user/modify.jsp"/>
+    </definition>
+    
+    <definition name="pwdCheck" extends=".home">
+    	<put-attribute name="body" value="/WEB-INF/views/user/pwdCheck.jsp"/>
+    </definition>
     
     
     

@@ -234,10 +234,9 @@
                     </div>
                     <!-- //약관동의 -->
 					
-                   
                     <div class="btn_area double">
-                        <span><!-- tg-text=terms_button_cancel --><a href="/brw/main.br" id="btnCancel" class="btn_type btn_default" role="button">비동의</a></span>
-                        <span><!-- tg-text=terms_button_agree  onclick="javascript:checkSubmit()" --><a href="#" id="btnAgree" class="btn_type btn_primary" role="button" >동의</a></span>
+                        <span><a href="/brw/main.br" id="btnCancel" class="btn_type btn_default" role="button">비동의</a></span>
+                        <span><a href="#" id="btnAgree" class="btn_type btn_primary" role="button" >동의</a></span>
                     </div>
                 </form>
 

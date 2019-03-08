@@ -9,7 +9,7 @@
 	    
 </head>
 <body>
-<div id="wrap">${email_marketing}
+<div id="wrap">
 	<form id="join_form" name="join_form" method="post" action="join.br" onsubmit="return checkSubmit()">
 	<input type="hidden" id="email_marketing" name="email_marketing" value="${email_marketing}">
     <input type="hidden" id="sms_marketing" name="sms_marketing" value="${sms_marketing}">    
