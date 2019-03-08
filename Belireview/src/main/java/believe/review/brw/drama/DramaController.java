@@ -1,30 +1,58 @@
 package believe.review.brw.drama;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import believe.review.brw.common.common.CommandMap;
+import believe.review.brw.common.util.Paging;
 
 @Controller
 
 @RequestMapping("/drama")
 public class DramaController {
+	private Map<String,Integer> pageMap = new HashMap<String,Integer> ();
+	private int currentPage = 1;	 
+	private int totalCount;
+	private int blockCount = 1;	 
+	private int blockPage = 5; 	 
+	private String pagingHtml; 
+	private Paging page;
 	
 	@Resource(name="dramaService")
 	private DramaService dramaService;
 
 	@RequestMapping(value = "dramaList.br")
-	public ModelAndView dramaList(CommandMap commandMap) throws Exception {
-
+	public ModelAndView dramaList(CommandMap commandMap,HttpServletRequest request) throws Exception {
+		String p = request.getParameter("currentPage");
+		
+		if(p == null || p.trim().isEmpty() || p.equals("0")) {
+            currentPage = 1;
+        } else {
+            currentPage = Integer.parseInt(request.getParameter("currentPage"));
+        }
 		ModelAndView mv = new ModelAndView("dramaList");
-		List<Map<String,Object>> list = dramaService.selectBoardList();
+		
+		totalCount = (Integer)dramaService.totalDramaCount(commandMap.getMap());
+		
+		page = new Paging(currentPage, totalCount, blockCount, blockPage, "/brw/drama/dramaList");
+		pagingHtml = page.getPagingHtml().toString();
+		
+		pageMap.put("START",page.getStartCount());
+		pageMap.put("END",page.getEndCount());
+		
+		List<Map<String,Object>> list = dramaService.selectBoardList(pageMap);
+		
 		mv.addObject("list", list);
+		/*System.out.println(list.get(0).get("DRAMA_NO"));*/
+		mv.addObject("page",pagingHtml);
 		
 		return mv;
 
@@ -50,10 +78,9 @@ public class DramaController {
 	}
 
 	@RequestMapping(value = "dramaInfo.br")
-	public ModelAndView dramaInfo() throws Exception {
-
+	public ModelAndView dramaInfo(CommandMap commandMap) throws Exception {
 		ModelAndView mv = new ModelAndView("dramaInfo");
-
+		
 		return mv;
 
 		

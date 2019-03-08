@@ -26,7 +26,8 @@
 			  </div>
 		</c:forEach> 
 	</div>
-	<%@ include file="/WEB-INF/views/include/include-body.jspf" %>
+	${page}
+	<%-- <%@ include file="/WEB-INF/views/include/include-body.jspf" %> --%>
 	<!-- <script>
 	 $(document).ready(function(){
          $(".detail").on("click", function(e){ //글쓰기 버튼

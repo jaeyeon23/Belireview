@@ -2,7 +2,8 @@
 <!DOCTYPE mapper PUBLIC " - //mybatis.org//DTD Config 3.0//EN" " http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="drama">
 
-  <select id="selectBoardList" resultType="hashmap">
+  <select id="selectBoardList" parameterType="hashmap" resultType="hashmap" >
+  <![CDATA[
  		SELECT
  			DRAMA_NO,
 			DRAMA_NAME,
@@ -35,8 +36,12 @@
 				DRAMA_GRADE,
 				ROWNUM RNUM FROM 
 				(SELECT *
-					FROM DRAMA ORDER BY DRAMA_DATE DESC) ORDER BY RNUM ASC) WHERE RNUM BETWEEN 1 AND 5
-
+					FROM DRAMA ORDER BY DRAMA_DATE DESC) ORDER BY RNUM ASC) WHERE RNUM BETWEEN #{START} AND #{END}
+		]]>
+   </select>
+   
+   <select id="totalDramaCount" parameterType="hashmap" resultType="int">
+   		SELECT COUNT(*) AS COUNT FROM DRAMA
    </select>
    
    <select id="dramaDetail" parameterType="hashmap" resultType="hashmap">
@@ -61,10 +66,6 @@
    
    <select id="dramaActor" parameterType="hashmap" resultType="hashmap">
    		SELECT ACTOR_NAME,ACTOR_IMAGE FROM ACTOR WHERE ACTOR_DRAMA LIKE '%'||#{DRAMA_NAME}||'%'
-   </select>
-   
-   <select id="dramaName" parameterType="hashmap" resultType="hashmap">
-   		select DRAMA_NAME from DRAMA where DRAMA_NO = #{DRAMA_NO}
    </select>
    
    <insert id="insertDrama"  parameterType="hashmap">

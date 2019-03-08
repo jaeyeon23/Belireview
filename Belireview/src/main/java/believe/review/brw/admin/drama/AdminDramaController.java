@@ -100,7 +100,7 @@ public class AdminDramaController {
 		
 		int no = Integer.parseInt(request.getParameter("no"));
 
-		//±âÁ¸ ÀÌ¹ÌÁö Áö¿ì´Â ÄÚµå
+		//ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Úµï¿½
 		
 			
 		adminDramaService.deleteDramaImageOne(no);
@@ -123,7 +123,7 @@ public class AdminDramaController {
 			if(adminDramaService.checkDrama(commandMap.getMap()) > 0) {
 				adminDramaService.deleteDramaOne(commandMap.getMap());
 			}else {
-				String str = "Àß¸øµÈ ºñ¹Ð¹øÈ£ÀÔ´Ï´Ù";
+				String str = "ï¿½ß¸ï¿½ï¿½ï¿½ ï¿½ï¿½Ð¹ï¿½È£ï¿½Ô´Ï´ï¿½";
 				
 				model.addAttribute("str", str);
 			}

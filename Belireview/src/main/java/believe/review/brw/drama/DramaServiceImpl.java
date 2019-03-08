@@ -1,6 +1,5 @@
 package believe.review.brw.drama;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -17,8 +16,8 @@ public class DramaServiceImpl  implements DramaService{
 	
 	
 	@Override
-	public List<Map<String, Object>> selectBoardList() throws Exception {
-		return dramaDAO.selectBoardList();
+	public List<Map<String, Object>> selectBoardList(Map<String,Integer> map) throws Exception {
+		return dramaDAO.selectBoardList(map);
 	}
 	@Override
 	public Map<String, Object> dramaDetail(Map<String, Object> map) throws Exception {
@@ -37,9 +36,7 @@ public class DramaServiceImpl  implements DramaService{
 		return dramaDAO.dramaCommentByLike(map);
 	}
 	@Override
-	public Map<String, Object> dramaName(Map<String, Object> map) throws Exception {
-		return dramaDAO.dramaName(map);
+	public int totalDramaCount(Map<String, Object> map) throws Exception {
+		return dramaDAO.totalDramaCount(map);
 	}
-	
-
 }

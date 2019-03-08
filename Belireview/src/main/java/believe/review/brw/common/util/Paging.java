@@ -2,19 +2,19 @@ package believe.review.brw.common.util;
 
 public class Paging {
 
-	private int currentPage;   // ÇöÀçÆäÀÌÁö
-	private int totalCount;	 // ÀüÃ¼ °Ô½Ã¹° ¼ö
-	private int totalPage;	 // ÀüÃ¼ ÆäÀÌÁö ¼ö
-	private int blockCount;	 // ÇÑ ÆäÀÌÁöÀÇ  °Ô½Ã¹°ÀÇ ¼ö
-	private int blockPage;	 // ÇÑ È­¸é¿¡ º¸¿©ÁÙ ÆäÀÌÁö ¼ö
-	private int startCount;	 // ÇÑ ÆäÀÌÁö¿¡¼­ º¸¿©ÁÙ °Ô½Ã±ÛÀÇ ½ÃÀÛ ¹øÈ£
-	private int endCount;	 // ÇÑ ÆäÀÌÁö¿¡¼­ º¸¿©ÁÙ °Ô½Ã±ÛÀÇ ³¡ ¹øÈ£
-	private int startPage;	 // ½ÃÀÛ ÆäÀÌÁö
-	private int endPage;	 // ¸¶Áö¸· ÆäÀÌÁö
+	private int currentPage;   // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	private int totalCount;	 // ï¿½ï¿½Ã¼ ï¿½Ô½Ã¹ï¿½ ï¿½ï¿½
+	private int totalPage;	 // ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
+	private int blockCount;	 // ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½  ï¿½Ô½Ã¹ï¿½ï¿½ï¿½ ï¿½ï¿½
+	private int blockPage;	 // ï¿½ï¿½ È­ï¿½é¿¡ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
+	private int startCount;	 // ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô½Ã±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È£
+	private int endCount;	 // ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô½Ã±ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½È£
+	private int startPage;	 // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	private int endPage;	 // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
 	private StringBuffer pagingHtml;
 
-	// ÆäÀÌÂ¡ »ý¼ºÀÚ
+	// ï¿½ï¿½ï¿½ï¿½Â¡ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	public Paging(int currentPage, int totalCount, int blockCount,
 			int blockPage, String url) {
 
@@ -23,31 +23,33 @@ public class Paging {
 		this.currentPage = currentPage;
 		this.totalCount = totalCount;
 
-		// ÀüÃ¼ ÆäÀÌÁö ¼ö
+		// ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
 		totalPage = (int) Math.ceil((double) totalCount / blockCount);
 		if (totalPage == 0) {
 			totalPage = 1;
 		}
 
-		// ÇöÀç ÆäÀÌÁö°¡ ÀüÃ¼ ÆäÀÌÁö ¼öº¸´Ù Å©¸é ÀüÃ¼ ÆäÀÌÁö ¼ö·Î ¼³Á¤
+		// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Å©ï¿½ï¿½ ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		if (currentPage > totalPage) {
 			currentPage = totalPage;
 		}
 
-		// ÇöÀç ÆäÀÌÁöÀÇ Ã³À½°ú ¸¶Áö¸· ±ÛÀÇ ¹øÈ£ °¡Á®¿À±â.
-		startCount = (currentPage - 1) * blockCount;
+		// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È£ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.
+		startCount = (currentPage - 1) * blockCount ;
+		/*if(startCount==0)
+			startCount =1;*/
 		endCount = startCount + blockCount - 1;
 
-		// ½ÃÀÛ ÆäÀÌÁö¿Í ¸¶Áö¸· ÆäÀÌÁö °ª ±¸ÇÏ±â.
+		// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½Ï±ï¿½.
 		startPage = (int) ((currentPage - 1) / blockPage) * blockPage + 1;
 		endPage = startPage + blockPage - 1;
 
-		// ¸¶Áö¸· ÆäÀÌÁö°¡ ÀüÃ¼ ÆäÀÌÁö ¼öº¸´Ù Å©¸é ÀüÃ¼ ÆäÀÌÁö ¼ö·Î ¼³Á¤
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Å©ï¿½ï¿½ ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		if (endPage > totalPage) {
 			endPage = totalPage;
 		}
 
-		// ÀÌÀü block ÆäÀÌÁö
+		// ï¿½ï¿½ï¿½ï¿½ block ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		pagingHtml = new StringBuffer();
 		
 		if (currentPage > blockPage) {
@@ -56,7 +58,7 @@ public class Paging {
 			pagingHtml.append("</a>");
 		}
 
-		//ÆäÀÌÁö ¹øÈ£.ÇöÀç ÆäÀÌÁö´Â »¡°£»öÀ¸·Î °­Á¶ÇÏ°í ¸µÅ©¸¦ Á¦°Å.
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È£.ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½Å©ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
 		for (int i = startPage; i <= endPage; i++) {
 			if (i > totalPage) {
 				break;
@@ -78,7 +80,7 @@ public class Paging {
 			}
 		}
 
-		// ´ÙÀ½ block ÆäÀÌÁö
+		// ï¿½ï¿½ï¿½ï¿½ block ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		if (totalPage - startPage >= blockPage) {
 			pagingHtml.append("<a href=" + url + ".br?currentPage=" + (endPage + 1) + ">");
 			pagingHtml.append("&gt;");
@@ -86,7 +88,7 @@ public class Paging {
 		}
 	}
 
-	// SearchÀÖ´Â »ý¼ºÀÚ
+	// Searchï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	public Paging(int currentPage, int totalCount, int blockCount, int blockPage, String url, int orderby, String searchNum, String searchBox){
 		
 		this.blockCount = blockCount;
@@ -114,7 +116,7 @@ public class Paging {
 		}
 		
 		
-		// ÀÌÀü block ÆäÀÌÁö
+		// ï¿½ï¿½ï¿½ï¿½ block ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		pagingHtml = new StringBuffer();
 		if(currentPage > blockPage){
 			if(searchBox != "")
@@ -126,7 +128,7 @@ public class Paging {
 			}
 		
 		
-		//ÆäÀÌÁö ¹øÈ£, ÇöÀç ÆäÀÌÁö´Â ´Ù¸£°Ô Ç¥½Ã
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È£, ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù¸ï¿½ï¿½ï¿½ Ç¥ï¿½ï¿½
 		for(int i = startPage; i <= endPage; i++){
 			if(i > totalPage){
 				break;
@@ -150,7 +152,7 @@ public class Paging {
 			}
 		}
 		
-		// ´ÙÀ½ block ÆäÀÌÁö
+		// ï¿½ï¿½ï¿½ï¿½ block ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		if(totalPage - startPage >= blockPage){
 			pagingHtml.append("<a href=" + url + ".br?currentPage=" + (endPage + 1));
 			if(searchBox != "")
