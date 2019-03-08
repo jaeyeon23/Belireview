@@ -26,7 +26,13 @@
 			  </div>
 		</c:forEach> 
 	</div>
-	${page}
+	<nav>
+			<div class='pag-center'>
+				<ul class='pagination believe-pag'>
+					${page}
+				</ul>
+			</div>
+		</nav>
 	<%-- <%@ include file="/WEB-INF/views/include/include-body.jspf" %> --%>
 	<!-- <script>
 	 $(document).ready(function(){

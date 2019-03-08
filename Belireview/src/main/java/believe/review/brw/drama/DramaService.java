@@ -5,7 +5,7 @@ import java.util.Map;
 
 public interface DramaService {
 	
-	List<Map<String,Object>> selectBoardList(Map<String,Integer> map) throws Exception;
+	List<Map<String,Object>> selectBoardList(Map<String, Object>  map) throws Exception;
 	
 	Map<String,Object> dramaDetail(Map<String,Object> map) throws Exception;
 	

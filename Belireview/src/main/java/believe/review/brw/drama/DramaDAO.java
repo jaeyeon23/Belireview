@@ -10,7 +10,7 @@ import believe.review.brw.common.common.AbstractDAO;
 @Repository("dramaDAO")
 public class DramaDAO extends AbstractDAO{
 	@SuppressWarnings("unchecked")
-	public List<Map<String, Object>> selectBoardList(Map<String,Integer> map) throws Exception{
+	public List<Map<String, Object>> selectBoardList(Map<String, Object>  map) throws Exception{
 		return (List<Map<String, Object>>) selectList("drama.selectBoardList",map);
 	}
 	@SuppressWarnings("unchecked")
