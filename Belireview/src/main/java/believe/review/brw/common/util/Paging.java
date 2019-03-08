@@ -51,9 +51,11 @@ public class Paging {
 		pagingHtml = new StringBuffer();
 		
 		if (currentPage > blockPage) {
+			pagingHtml.append("<li>");
 			pagingHtml.append("<a href=" + url + ".br?currentPage=" + (startPage - 1) + ">");
-			pagingHtml.append("&lt;");
+			pagingHtml.append("<span>&lt;</span>");
 			pagingHtml.append("</a>");
+			pagingHtml.append("</li>");
 		}
 
 		//페이지 번호.현재 페이지는 빨간색으로 강조하고 링크를 제거.
@@ -80,14 +82,16 @@ public class Paging {
 
 		// 다음 block 페이지
 		if (totalPage - startPage >= blockPage) {
+			pagingHtml.append("<li>");
 			pagingHtml.append("<a href=" + url + ".br?currentPage=" + (endPage + 1) + ">");
-			pagingHtml.append("&gt;");
+			pagingHtml.append("<span>&gt;</span>");
 			pagingHtml.append("</a>");
+			pagingHtml.append("</li>");
 		}
 	}
 
 	// Search있는 생성자
-	public Paging(int currentPage, int totalCount, int blockCount, int blockPage, String url, int orderby, String searchNum, String searchBox){
+	public Paging(int currentPage, int totalCount, int blockCount, int blockPage, String url, String orderby, String searchNum, String searchBox){
 		
 		this.blockCount = blockCount;
 		this.blockPage = blockPage;
@@ -117,13 +121,17 @@ public class Paging {
 		// 이전 block 페이지
 		pagingHtml = new StringBuffer();
 		if(currentPage > blockPage){
-			if(searchBox != "")
+			pagingHtml.append("<li>");
+			
+			if(orderby != "" || searchBox != "") 
 				pagingHtml.append("<a href=" + url + ".br?currentPage=" + (startPage - 1) + "&orderby=" + orderby + "&searchNum="+searchNum+ "&searchBox="+searchBox+">");
 			else                    
 				pagingHtml.append("<a href=" + url + ".br?currentPage=" + (startPage - 1) + ">");
-			pagingHtml.append("&lt;");
+			
+			pagingHtml.append("<span>&lt;</span>");
 			pagingHtml.append("</a>");
-			}
+			pagingHtml.append("</li>");
+		}
 		
 		
 		//페이지 번호, 현재 페이지는 다르게 표시
@@ -141,7 +149,7 @@ public class Paging {
 			else{
 				pagingHtml.append("<li>");
 				pagingHtml.append("<a href=" + url + ".br?currentPage=" + i);
-				if(searchBox != "")
+				if(orderby != "" || searchBox != "")
 					pagingHtml.append("&orderby=" + orderby + "&searchBox=" + searchBox+"&searchNum="+searchNum);
 				pagingHtml.append(">");
 				pagingHtml.append(i);
@@ -152,12 +160,14 @@ public class Paging {
 		
 		// 다음 block 페이지
 		if(totalPage - startPage >= blockPage){
+			pagingHtml.append("<li>");
 			pagingHtml.append("<a href=" + url + ".br?currentPage=" + (endPage + 1));
-			if(searchBox != "")
+			if(orderby != "" || searchBox != "")
 				pagingHtml.append("&orderby=" + orderby + "&searchBox=" + searchBox+"&searchNum="+searchNum);
 			pagingHtml.append(">");
-			pagingHtml.append("&gt;");
+			pagingHtml.append("<span>&gt;</span>");
 			pagingHtml.append("</a>");
+			pagingHtml.append("</li>");
 		}
 	}
 

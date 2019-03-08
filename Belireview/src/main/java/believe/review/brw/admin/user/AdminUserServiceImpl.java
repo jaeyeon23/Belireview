@@ -17,8 +17,8 @@ public class AdminUserServiceImpl implements AdminUserService{
 	private AdminUserDAO adminUserDAO;
 
 	@Override
-	public List<Map<String, Object>> selectUserList() throws Exception {
-		return adminUserDAO.selectUserList();
+	public List<Map<String, Object>> selectUserList(Map<String, Object> map) throws Exception {
+		return adminUserDAO.selectUserList(map);
 	}
 
 	@Override
@@ -27,8 +27,18 @@ public class AdminUserServiceImpl implements AdminUserService{
 	}
 
 	@Override
+	public String selectUserOne_profile(String id) throws Exception {
+		return adminUserDAO.selectUserOne_profile(id);
+	}
+
+	@Override
 	public Map<String, Object> selectUserOne(String str) throws Exception {
 		return adminUserDAO.selectUserOne(str);
+	}
+
+	@Override
+	public void updateUserOne_profile(Map<String, Object> map) throws Exception {
+		adminUserDAO.updateUserOne_profile(map);
 	}
 
 	@Override
