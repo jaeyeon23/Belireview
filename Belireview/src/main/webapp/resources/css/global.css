@@ -17,7 +17,6 @@ body {
 	background:#efefef url(../img/background.png) repeat top center;
 	padding:20px 0;
 	position:relative;
-	text-shadow:0 1px 0 rgba(255,255,255,.8);
 	-webkit-font-smoothing: subpixel-antialiased;
 }
 
