@@ -3,13 +3,38 @@
 <mapper namespace="admin">
 
 <!-- User -->
-	<select id="selectUserList" resultType="hashmap">
+	<!-- 전체 사용자 리스트를 보여줄 때, 검색시 -->
+	<select id="selectUserList" resultType="hashmap" parameterType="hashmap">
 		SELECT 
 			*
 		FROM
-			member
+			member 
+		<if test='searchNum != null'>
+			<choose>
+				<when test='searchNum == "id"'>
+					WHERE id like '%'||#{searchBox}||'%'
+				</when>
+				<when test='searchNum == "name"'>
+					WHERE name like '%'||#{searchBox}||'%'
+				</when>
+			</choose>
+		</if>
+		<if test='orderby != null'>
+			<choose>
+				<when test='orderby == 1'>
+					order by member_no
+				</when>
+				<when test='orderby == 2'>
+					order by id
+				</when>
+				<when test='orderby == 3'>
+					order by name
+				</when>
+			</choose>
+		</if>
 	</select>
 
+	<!-- 사용자 삭제시 확인 -->
 	<select id="checkUser" resultType="int" parameterType="hashMap">
 		SELECT
 			count(*)
@@ -19,6 +44,7 @@
 			id=#{id} and password=#{password}
 	</select>
 	
+	<!-- 사용자 modify -->
 	<select id="selectUserOne" resultType="hashmap" parameterType="string">
 		SELECT
 			*
@@ -28,14 +54,23 @@
 			id=#{id}
 	</select>
 	
-	<!-- <select id="selectUserOne_profile" resultType="hashmap" parameterMap="string">
+	<select id="selectUserOne_profile" resultType="string" parameterType="string">
 		SELECT
 			profile_image
 		FROM
 			member
 		WHERE
-			id=#{id}	
-	</select> -->
+			id=#{id, jdbcType=VARCHAR}	
+	</select>
+	
+	<update id="updateUserOne_profile" parameterType="hashmap">
+		UPDATE
+			member 
+		SET
+			profile_image=#{profile_image, jdbcType=VARCHAR} 
+		WHERE
+			id=#{id, jdbcType=VARCHAR}
+	</update>
 	
 	<update id="updateUserOne" parameterType="hashmap">
 		UPDATE
@@ -60,13 +95,55 @@
 	</delete>
 	
 	<!-- Drama -->
-	<select id="selectDramaList" resultType="hashmap">
+	<select id="selectNextVal" resultType="int">
+		SELECT
+			LAST_NUMBER 
+		FROM
+			USER_SEQUENCES 
+		WHERE
+			SEQUENCE_NAME = 'SEQ_DRAMA_NO'	
+	</select>
+	
+	<select id="selectDramaList" resultType="hashmap" parameterType="hashmap">
 		SELECT
 			*
 		FROM
 			drama
-		ORDER BY
-			drama_no
+		<if test='searchNum != null'>
+			<choose>
+				<when test='searchNum == "director"'>
+					WHERE DRAMA_DIRECTOR like '%'||#{searchBox}||'%' 
+				</when>
+				<when test='searchNum == "genre"'>
+					WHERE DRAMA_GENRE like '%'||#{searchBox}||'%'
+				</when>
+				<when test='searchNum == "channel"'>
+					WHERE DRAMA_CHANNEL like '%'||#{searchBox}||'%'
+				</when>
+				<when test='searchNum == "name"'>
+					WHERE DRAMA_NAME like '%'||#{searchBox}||'%'
+				</when>
+			</choose>
+		</if>
+		<if test='orderby != null'>
+			<choose>
+				<when test='orderby == 1'>
+					order by DRAMA_READCOUNT DESC
+				</when>
+				<when test='orderby == 2'>
+					order by DRAMA_EPISODE DESC
+				</when>
+				<when test='orderby == 3'>
+					order by DRAMA_EPISODE
+				</when>
+				<when test='orderby == 4'>
+					order by DRAMA_GRADE DESC
+				</when>
+				<when test='orderby == 5'>
+					order by DRAMA_GRADE
+				</when>
+			</choose>
+		</if>
 	</select>
 	
 	<select id="selectDramaOne" parameterType="Integer" resultType="hashmap">
@@ -77,80 +154,42 @@
 		WHERE
 			drama_no=#{no}
 	</select>
-	<select id="selectDramaList_order" resultType="hashmap" parameterType="hashmap">
-		SELECT
-			*
-		FROM
-			drama 
-		<if test="searchNum != null">
-		WHERE
-			<choose>
-				<when test="searchNum == 'director'">
-					DRAMA_DIRECTOR LIKE '%'||#{searchBox}||'%' 
-				</when>
-				<when test="searchNum == 'genre'">
-					DRAMA_GENRE LIKE '%'||#{searchBox}||'%' 
-				</when>
-				<when test="searchNum == 'channel'">
-					DRAMA_CHANNEL LIKE '%'||#{searchBox}||'%' 
-				</when>
-				<when test="searchNum == 'name'">
-					DRAMA_NAME LIKE '%'||#{searchBox}||'%' 
-				</when>
-			</choose>
-		</if>
-		<if test="orderby != null">
-		ORDER BY 
-			<choose>
-				<when test="orderby == 1">
-					DRAMA_READCOUNT	
-				</when>
-				<when test="orderby == 2">
-					DRAMA_EPISODE DESC
-				</when>
-				<when test="orderby == 3">
-					DRAMA_EPISODE
-				</when>
-				<when test="orderby == 4">
-					DRAMA_GRADE DESC
-				</when>
-				<when test="orderby == 5">
-					DRAMA_GRADE 
-				</when>
-				<otherwise>
-					DRAMA_NO
-				</otherwise>
-			</choose>
-		</if>
-	</select>
 	
+	<insert id="writeDrama" parameterType="hashmap">
+		INSERT INTO
+			drama_no,
+			drama_name,
+			drama_date,
+			drama_channel,
+			drama_genre,
+			drama_director,
+			drama_content,
+			drama_poster_image,
+			drama_main_image,
+			drama_content_image,
+			drama_episode
+		DRAMA
+		VALUES(
+			SEQ_DRAMA_NO.CURRVAL,
+			#{name},
+			TO_DATE(#{date}),
+			#{channel},
+			#{genre},
+			#{director},
+			#{content},
+			#{poster_image},
+			#{content_image},
+			#{episode}
+		)			
+	</insert>
 	
 	<!-- 미완성 -->
-	<select id="checkDrama" resultType="int" parameterType="hashMap">
+<!-- 	<select id="checkDrama" resultType="int" parameterType="hashMap">
 		SELECT
 			count(*)
 		FROM
 			drama 
 		WHERE
 			drama_no=#{no}
-	</select>
-	
-	<delete id="deleteDramaOne" parameterType="hashmap">
-		DELETE
-		FROM
-			drama
-		WHERE
-			drama_no=#{no}
-	</delete>
-	
-	<delete id="deleteDramaImageOne" parameterType="int">
-		DELETE
-			drama_poster_image, 
-			drama_main_image, 
-			drama_content_image 
-		FROM
-			drama
-		WHERE
-			drama_no=#{no}
-	</delete>
+	</select> -->
 </mapper>

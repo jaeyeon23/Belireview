@@ -45,7 +45,9 @@
 	    <script src="/brw/resources/js/jquery.prettyPhoto.js"></script>
 	    <script src="/brw/resources/js/jquery.selectbox-0.2.js"></script>
 	    <script src="/brw/resources/js/theme-script.js"></script>
-
+	    
+	    <!-- admin -->
+	    <script src="/brw/resources/js/admin/post_to_url.js"></script>
 	</head>
 
 	<body>
