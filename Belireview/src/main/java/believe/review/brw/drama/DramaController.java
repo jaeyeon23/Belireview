@@ -84,8 +84,6 @@ public class DramaController {
 		mv.addObject("detailgenre",detailgenre);
 	/*	mv.addObject("insertcomment",insertcomment);*/
 		
-		System.out.println(actor.get(0).get("ACTOR_NAME"));
-		
 		return mv;
 
 	}
