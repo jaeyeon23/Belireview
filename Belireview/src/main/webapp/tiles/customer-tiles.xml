@@ -87,11 +87,30 @@
     <definition name="loginForm" extends=".home">
     	<put-attribute name="body" value="/WEB-INF/views/member/login.jsp"/>
     </definition>
+    
     <definition name="findIdForm" extends=".home">
     	<put-attribute name="body" value="/WEB-INF/views/member/findId.jsp"/>
     </definition>
     
+    <definition name="findIdError" extends=".home">
+    	<put-attribute name="body" value="/WEB-INF/views/member/findIdError.jsp"/>
+    </definition>
     
+    <definition name="findIdOk" extends=".home">
+    	<put-attribute name="body" value="/WEB-INF/views/member/findIdOk.jsp"/>
+    </definition>
+    
+    <definition name="findPwForm" extends=".home">
+    	<put-attribute name="body" value="/WEB-INF/views/member/findPw.jsp"/>
+    </definition>
+    
+    <definition name="findPwOk" extends=".home">
+    	<put-attribute name="body" value="/WEB-INF/views/member/findPwOk.jsp"/>
+    </definition>
+    
+    <definition name="findPwError" extends=".home">
+    	<put-attribute name="body" value="/WEB-INF/views/member/findPwError.jsp"/>
+    </definition>
 
     
     <!-- 회원가입 -->
