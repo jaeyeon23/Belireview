@@ -51,7 +51,8 @@
                                 </span>
                                 <a href="javascript:open_telBt();" class="btn_verify btn_primary" id="btnIpinSend" name="btnIpinSend" role="button">
                                     <span class="" id="btn_go" >수정</span>
-                                    <span class="" id="btn_go_ok" >수정완료</span> 
+                                    <span class="" id="btn_go_ok" >확인</span> 
+                                    <span class="" id="btn_go_re" >재수정</span> 
                                 </a>
                             </div>
                             <span class="error_next_box" id="telMsg" style="display:none" role="alert"></span>
@@ -98,7 +99,17 @@
                		<hr>
                		<font size="3" color="#403e72"><b>선택정보</b></font>
                		<h3 class="join_title"><label for="email">소식받기</label></h3>
-              
+              		<span class="input_chk">
+							<input type="checkbox" id="termsEmail" name="termsEmail" value="1" class="chk">
+							<label for="termsEmail">메일</label>
+					</span>
+							<input type="hidden"  id="termsEmail2" name="termsEmail" value="0" disabled class="chk">			 
+					<span class="input_chk">
+							<input type="checkbox" id="termsLocation" name="termsLocation" value="1" class="chk">
+							<label for="termsLocation">SNS</label>
+					</span>
+							<input type="hidden"  id="termsLocation2" name="termsLocation" value="0" disabled class="chk">    
+    
               
                 <div class="btn_area">
                 	<input type="submit" id="btnJoin" class="btn_type btn_primary" value="회원정보수정" >
@@ -112,9 +123,11 @@
 
 
 <script type="text/JavaScript">
-	$('#yes_btn').hide(); /* 인증완료버튼을 숨겨둠 */
+	$('#yes_btn').hide(); /* 이메일 인증완료버튼을 숨겨둠 */
 	
-	$('#btn_go_ok').hide(); /* 수정완료버튼을 숨겨둠 */
+	$('#btn_go_ok').hide(); /* 수정확인버튼을 숨겨둠 */
+	$('#btn_go_re').hide(); /* 재수정 버튼을 숨겨둠 */
+	
 	
 	
 	/* 가입버튼 클릭시 가입조건 만족 여부를 알려줄 스크립터 전역변수 */

@@ -37,14 +37,14 @@ public class MemberController {
 	@Resource(name="memberService")
 	private MemberService memberService;
 	
-	@RequestMapping(value="/joinTerms")  //step1 ¾à°üµ¿ÀÇ
+	@RequestMapping(value="/joinTerms")  //step1 ì•½ê´€ë™ì˜
 	public ModelAndView joinTerms(){
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("joinTerms");
 		return mv;
 	}
 	
-	@RequestMapping(value="/join", method=RequestMethod.GET)    //step2 Á¤º¸ÀÔ·Â
+	@RequestMapping(value="/join", method=RequestMethod.GET)    //step2 ì •ë³´ì…ë ¥
 	public ModelAndView joinForm(HttpServletRequest request){
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("join");
@@ -56,7 +56,7 @@ public class MemberController {
 		return mv;
 	}
 	
-	@RequestMapping(value="/join", method=RequestMethod.POST) //step3 °¡ÀÔ¿Ï·á
+	@RequestMapping(value="/join", method=RequestMethod.POST) //step3 ê°€ì…ì™„ë£Œ
 	public ModelAndView join(CommandMap commandMap, HttpServletRequest request) throws Exception{
 		ModelAndView mv = new ModelAndView();
 
@@ -74,29 +74,29 @@ public class MemberController {
 		return mv;
 	}
 	
-	//¾ÆÀÌµğÁßº¹¿©ºÎÃ¼Å©
+	//ì•„ì´ë””ì¤‘ë³µì—¬ë¶€ì²´í¬
 	@RequestMapping(value="/checkId")
 	@ResponseBody
 	public void checkId(HttpServletRequest request, HttpServletResponse response, CommandMap commandMap) throws Exception{
-		PrintWriter out = response.getWriter(); //ÀÚ¹Ù¿¡¼­ À¥À¸·Î  µ¥ÀÌÅÍ¸¦ Ãâ·ÂÇØÁÖ±â À§ÇØ »ç¿ë
+		PrintWriter out = response.getWriter(); //ìë°”ì—ì„œ ì›¹ìœ¼ë¡œ  ë°ì´í„°ë¥¼ ì¶œë ¥í•´ì£¼ê¸° ìœ„í•´ ì‚¬ìš©
 		String paramId= (request.getParameter("id") == null)?"":String.valueOf(request.getParameter("id"));
-		int checkId = memberService.checkId(paramId); //MODA¿¡¼­´Â joinService.chekcId·Î µÇ¾îÀÖ´Ù.
-		System.out.println("¾ÆÀÌµğÀÎÁõ : "+paramId);
-		System.out.println("Áßº¹È®ÀÎ °á°ú : "+checkId);
+		int checkId = memberService.checkId(paramId); //MODAì—ì„œëŠ” joinService.chekcIdë¡œ ë˜ì–´ìˆë‹¤.
+		System.out.println("ì•„ì´ë””ì¸ì¦ : "+paramId);
+		System.out.println("ì¤‘ë³µí™•ì¸ ê²°ê³¼ : "+checkId);
 		out.print(checkId);
 		out.flush();
 		out.close();
 	}
 
 	
-	//ÀÌ¸ŞÀÏ ÀÎÁõ¹Ş±âÀÌ ½ÃÀÛ!
-	@RequestMapping(value="/email_auth") //ÀÌ¸ŞÀÏ ÀÎÁõ¹Ş±â¸¦ ´©¸¥ÈÄ ÀÚ¹Ù½ºÅ©¸³Æ®¿¡¼­ ÀÌ¸ŞÀÏ°ª ¹ŞÀºÈÄ  µ¿ÀÛ
+	//ì´ë©”ì¼ ì¸ì¦ë°›ê¸°ì´ ì‹œì‘!
+	@RequestMapping(value="/email_auth") //ì´ë©”ì¼ ì¸ì¦ë°›ê¸°ë¥¼ ëˆ„ë¥¸í›„ ìë°”ìŠ¤í¬ë¦½íŠ¸ì—ì„œ ì´ë©”ì¼ê°’ ë°›ì€í›„  ë™ì‘
 	public ModelAndView email_auth(HttpServletResponse response, HttpServletRequest request,CommandMap Map)throws Exception{
 		
-		Email = (String) Map.getMap().get("email"); //Àü¿ª º¯¼ö : ÀÌ¸ŞÀÏ ÀÎÁõ½Ã À¯È¿¼ºÀ» À§ÇØ
+		Email = (String) Map.getMap().get("email"); //ì „ì—­ ë³€ìˆ˜ : ì´ë©”ì¼ ì¸ì¦ì‹œ ìœ íš¨ì„±ì„ ìœ„í•´
 		String email = (String) Map.getMap().get("email");
 		System.out.println("email = " + email);
-		Map.getMap().put("email", email); //Map¿¡ DBÄÃ·³¸íÀ¸·Î ÀÌ¸§À» Á¤Á¤ÇÑ ÈÄ ´Ù½Ã Map¿¡ Áı¾î³ÖÀ½
+		Map.getMap().put("email", email); //Mapì— DBì»¬ëŸ¼ëª…ìœ¼ë¡œ ì´ë¦„ì„ ì •ì •í•œ í›„ ë‹¤ì‹œ Mapì— ì§‘ì–´ë„£ìŒ
 		
 		int checkNum = memberService.checkMember(Map.getMap());
 		System.out.println("checkNum="+checkNum);
@@ -104,30 +104,30 @@ public class MemberController {
 		
 		if(checkNum==0)
 		{
-		authNUm = RandomNum(); //ÀÌ¸ŞÀÏ·Î ¹ß¼ÛµÇ´Â ÀÎÁõ¹øÈ£
+		authNUm = RandomNum(); //ì´ë©”ì¼ë¡œ ë°œì†¡ë˜ëŠ” ì¸ì¦ë²ˆí˜¸
 		sendEmail(email.toString(),authNUm);
-		System.out.println("¸ŞÀÏº¸³¿");
+		System.out.println("ë©”ì¼ë³´ëƒ„");
 		}
 		String checkNumString=String.valueOf(checkNum);
-		PrintWriter writer =response.getWriter(); //ÀÚ¹Ù¿¡¼­ À¥À¸·Î µ¥ÀÌÅÍ Àü¼Û script¿¡¼­ »ç¿ë data°¡ µÊ
+		PrintWriter writer =response.getWriter(); //ìë°”ì—ì„œ ì›¹ìœ¼ë¡œ ë°ì´í„° ì „ì†¡ scriptì—ì„œ ì‚¬ìš© dataê°€ ë¨
 		writer.write(checkNumString);
 		writer.flush();
 		writer.close();
 		
 		ModelAndView mv = new ModelAndView();
 		
-		mv.addObject("email",email); //ÀÌ¸ŞÀÏ
-		mv.addObject("authNum", authNUm); //ÀÎÁõ¹øÈ£
+		mv.addObject("email",email); //ì´ë©”ì¼
+		mv.addObject("authNum", authNUm); //ì¸ì¦ë²ˆí˜¸
 		mv.setViewName("join");
 		
-		System.out.println("¿Àµå³Ñ"+authNUm);
+		System.out.println("ì˜¤ë“œë„˜"+authNUm);
 		return mv;
 	}
 	
 	 @RequestMapping(value="/email_auth_success", method=RequestMethod.POST)
 	    public @ResponseBody int clickMethod (HttpServletRequest request,CommandMap Map) throws Exception   {
 	        
-	    	String MapEmail =(String)Map.getMap().get("email");  /*input°ªÀ¸·Î ¹Ş¾Æ¿Â ÀÌ¸ŞÀÏ°ú ÀÎÁõ¹øÈ£°ª*/
+	    	String MapEmail =(String)Map.getMap().get("email");  /*inputê°’ìœ¼ë¡œ ë°›ì•„ì˜¨ ì´ë©”ì¼ê³¼ ì¸ì¦ë²ˆí˜¸ê°’*/
 	    	String MapAuth = (String)Map.getMap().get("auth");
 	    	System.out.println("mapEmail : "+MapEmail);
 	    	System.out.println("mapAuth : "+MapAuth);
@@ -142,18 +142,18 @@ public class MemberController {
 	    		sss = 0;
 	    	}
 	    	
-	         System.out.println("authNUm¹¹³Ä?"+authNUm);
+	         System.out.println("authNUmë­ëƒ?"+authNUm);
 	        return sss;
 	    }
 
-	private void sendEmail(String email,String authNum)throws Exception{ //¸ŞÀÏÀ» º¸³»´Â ¸Ş¼­µå
+	private void sendEmail(String email,String authNum)throws Exception{ //ë©”ì¼ì„ ë³´ë‚´ëŠ” ë©”ì„œë“œ
 		String host ="smtp.gmail.com";
-		String subject = "ºô¸®ºä È¸¿ø°¡ÀÔ ÀÎÁõ¹øÈ£";    //Á¦¸ñ
-		String fromName ="ºô¸®ºä ÆÀ";                  //º¸³»´Â»ç¶÷ÀÌ¸§
-		String from="khiclass@gmail.com";//º¸³»´Â¸ŞÀÏ
+		String subject = "ë¹Œë¦¬ë·° íšŒì›ê°€ì… ì¸ì¦ë²ˆí˜¸";    //ì œëª©
+		String fromName ="ë¹Œë¦¬ë·° íŒ€";                  //ë³´ë‚´ëŠ”ì‚¬ëŒì´ë¦„
+		String from="khiclass@gmail.com";//ë³´ë‚´ëŠ”ë©”ì¼
 		String to1 = email;
 		
-		String content = "ÀÎÁõ¹øÈ£ : " + authNum;  //º»¹®
+		String content = "ì¸ì¦ë²ˆí˜¸ : " + authNum;  //ë³¸ë¬¸
 		
 		try{
 			Properties props = new Properties();
@@ -175,14 +175,14 @@ public class MemberController {
 			});
 			
 			Message msg = new MimeMessage(mailSession);
-			msg.setFrom(new InternetAddress(from,MimeUtility.encodeText(fromName,"UTF-8","B"))); //º¸³»´Â»ç¶÷¼³Á¤
+			msg.setFrom(new InternetAddress(from,MimeUtility.encodeText(fromName,"UTF-8","B"))); //ë³´ë‚´ëŠ”ì‚¬ëŒì„¤ì •
 			
 			InternetAddress[] address1 = {new InternetAddress(to1)};
 			
-			msg.setRecipients(Message.RecipientType.TO, address1); //¹Ş´Â»ç¶÷¼³Á¤1
-			msg.setSubject(subject); //Á¦¸ñ¼³Á¤
-			msg.setSentDate(new java.util.Date()); //º¸³»´Â ³¯Â¥¼³Á¤
-			msg.setContent(content,"text/html;charset=utf-8"); //³»¿ë¼³Á¤
+			msg.setRecipients(Message.RecipientType.TO, address1); //ë°›ëŠ”ì‚¬ëŒì„¤ì •1
+			msg.setSubject(subject); //ì œëª©ì„¤ì •
+			msg.setSentDate(new java.util.Date()); //ë³´ë‚´ëŠ” ë‚ ì§œì„¤ì •
+			msg.setContent(content,"text/html;charset=utf-8"); //ë‚´ìš©ì„¤ì •
 			
 			Transport.send(msg);
 		}catch (MessagingException e) {
@@ -196,7 +196,7 @@ public class MemberController {
 	}
 	
 	
-	public String RandomNum(){ //ÀÓÀÇÀÇ ·£´ıÇÑ 6ÀÚ¸®¼ıÀÚ »Ì¾ÆÁÜ 
+	public String RandomNum(){ //ì„ì˜ì˜ ëœë¤í•œ 6ìë¦¬ìˆ«ì ë½‘ì•„ì¤Œ 
 		StringBuffer buffer = new StringBuffer();
 		for(int i = 0;i<=6;i++){
 			int n= (int)(Math.random() * 10);
@@ -204,30 +204,6 @@ public class MemberController {
 		}
 		return buffer.toString();
 	}
-	//ÀÌ¸ŞÀÏÀÎÁõ Ãß°¡ ¿©±â±îÁö
+	//ì´ë©”ì¼ì¸ì¦ ì¶”ê°€ ì—¬ê¸°ê¹Œì§€
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

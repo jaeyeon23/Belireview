@@ -6,12 +6,12 @@ import javax.servlet.http.HttpServletRequest;
 
 public interface MemberService {
 	
-	//È¸¿ø°¡ÀÔ
+	//íšŒì›ê°€ì…
 	void insertMember(Map<String, Object> map, HttpServletRequest request) throws Exception;
 	
-	//È¸¿ø°¡ÀÔ IDÁßº¹Ã¼Å©
+	//íšŒì›ê°€ì… IDì¤‘ë³µì²´í¬
 	int checkId(String mem_id)throws Exception;
 	
-	//ÀÌ¸ŞÀÏÁ¸Àç¿©ºÎ
+	//ì´ë©”ì¼ì¡´ì¬ì—¬ë¶€
 	int checkMember(Map<String, Object> map)throws Exception;
 }

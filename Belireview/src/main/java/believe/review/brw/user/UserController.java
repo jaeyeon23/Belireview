@@ -16,7 +16,7 @@ public class UserController {
 	/*
 	 * @Resource(name="userService") private UserService userService;
 	 */
-	@RequestMapping(value="/user")  
+	@RequestMapping(value="/user")  //ë§ˆì´í˜ì´ì§€
 	public ModelAndView user(){
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("user");
@@ -24,7 +24,7 @@ public class UserController {
 	}
 	
 	
-	@RequestMapping(value="/userModifyPass")  // ¼öÁ¤ÆûÀ¸·Î ÀÌµ¿Àü ºñ¹Ğ¹øÈ£ È®ÀÎ 
+	@RequestMapping(value="/userModifyPass")  // ìˆ˜ì •í¼ìœ¼ë¡œ ì´ë™ì „ ë¹„ë°€ë²ˆí˜¸ í™•ì¸ 
 	public ModelAndView userModifyPass(){
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("pwdCheck");
@@ -33,7 +33,6 @@ public class UserController {
 	
 	@RequestMapping(value="/userModify", method=RequestMethod.GET)  
 	public ModelAndView userModify(){
-		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("modify");
 		return mv;
