@@ -56,7 +56,6 @@ public class DramaController {
 		
 		mv.addObject("totalCount", totalCount);
 		mv.addObject("list", list);
-		/*System.out.println(list.get(0).get("DRAMA_NO"));*/
 		mv.addObject("page",pagingHtml);
 		mv.addObject("currentPage",currentPage);
 		
