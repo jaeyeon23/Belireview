@@ -68,6 +68,8 @@ public class DramaController {
 	public ModelAndView dramaDetail(CommandMap commandMap/*, HttpServletRequest request*/) throws Exception {
 
 		ModelAndView mv = new ModelAndView("dramaDetail");
+		
+		
 		/*HttpSession session = request.getSession();*/
 		
 		
@@ -77,12 +79,16 @@ public class DramaController {
 		List<Map<String,Object>> detailgenre = dramaService.detailgenre(map);
 		
 		/*Map<String,Object> insertcomment = dramaService.insertdramaComment(commandMap.getMap());*/
+		totalCount = (Integer)dramaService.totalDramaComment(map);
 		
 		mv.addObject("map",map);
 		mv.addObject("comment",comment);
 		mv.addObject("actor",actor);
 		mv.addObject("detailgenre",detailgenre);
+		mv.addObject("totalCount",totalCount);
 	/*	mv.addObject("insertcomment",insertcomment);*/
+		
+		
 		
 		return mv;
 
