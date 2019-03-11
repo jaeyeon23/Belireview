@@ -33,33 +33,5 @@ public class LoginDAO extends AbstractDAO{
 		return sqlSession.selectOne("member.findEmail",map);
 	}
 	
-/*	public String checkMember(Map<String, Object> map)throws Exception{
-		return selectMemberId("member.checkMember",map);
-	}*/
-	
-/*	@SuppressWarnings("unchecked")
-	public Map<String, Object> loginMember(Map<String, Object> map) throws Exception{
-		return (Map<String, Object>) selectOne("member.selectOneMember", map);
-	}
-	*/
-/*	@SuppressWarnings("unchecked")
-	public Map<String, Object> selectOneMember(Map<String, Object> map)throws Exception {
-		// TODO Auto-generated method stub
-		return (Map<String,Object>) selectOne("member.selectOneMember",map);
-	}*/
-
-	/*@SuppressWarnings("unchecked")
-	public Map<String, Object> searchId(Map<String, Object> map)throws Exception {
-		// TODO Auto-generated method stub
-		return (Map<String,Object>) selectOne("member.serachId",map);
-	}
-
-	@SuppressWarnings("unchecked")
-	public Map<String, Object> searchPw(Map<String, Object> map)throws Exception {
-		// TODO Auto-generated method stub
-		return (Map<String,Object>) selectOne("member.searchPw",map);
-	}*/
-
-	
 
 }
