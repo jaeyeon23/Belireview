@@ -1,8 +1,12 @@
 package believe.review.brw.admin.drama;
 
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Enumeration;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -11,8 +15,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import believe.review.brw.common.common.CommandMap;
+import believe.review.brw.common.util.FileUtils;
 import believe.review.brw.common.util.Paging;
 
 @Controller
@@ -25,16 +34,23 @@ public class AdminDramaController {
 	private int blockPage = 5; 	 
 	private String pagingHtml;  
 	private Paging page;
+	private String filePath = "C:\\Users\\ï¿½ï¿½ï¿½ç¿¬\\Desktop\\Belireview\\Belireview\\src\\main\\webapp\\resources\\images\\user_profile\\";
 	
 	@Resource(name="adminDramaService")
 	private AdminDramaService adminDramaService;
 	
-	@RequestMapping(value="/drama.br", method=RequestMethod.GET)
-	public String dramaPage(HttpServletRequest request, CommandMap commandMap, Model model) throws Exception{
+	@Resource(name="fileUtils")
+	private FileUtils fileUtils;
+	
+	@RequestMapping(value="/drama.br")
+	public String dramaPage(@RequestParam(value="alert_value", defaultValue="default") String alert_value,HttpServletRequest request, CommandMap commandMap, Model model) throws Exception{
 		List<Map<String, Object>> admin = null;
-		int orderby = 0;
-		String searchNum = null;
-		String searchBox = null;
+		
+		String orderby = (String)commandMap.get("orderby");
+		String searchNum = (String)commandMap.get("searchNum");
+		String searchBox = (String)commandMap.get("searchBox");
+
+		admin = adminDramaService.selectDramaList(commandMap.getMap());
 		
 		if(request.getParameter("currentPage") == null || request.getParameter("currentPage").trim().isEmpty() || request.getParameter("currentPage").equals("0")) {
             currentPage = 1;
@@ -42,33 +58,11 @@ public class AdminDramaController {
             currentPage = Integer.parseInt(request.getParameter("currentPage"));
         }
 		
-		if(!commandMap.containsKey("orderby") && !commandMap.containsKey("searchNum")) {
-			admin = adminDramaService.selectDramaList();
+		totalCount = admin.size();
 			
-			model.addAttribute("admin", admin);
-			
-			totalCount = admin.size();
-			
+		if(orderby == null || searchNum == null) {
 			page = new Paging(currentPage, totalCount, blockCount, blockPage, "/brw/admin/drama");
 		}else {
-			admin = adminDramaService.selectDramaList_order(commandMap.getMap());
-			
-			model.addAttribute("admin", admin);
-			
-			if(commandMap.containsKey("orderby")) {
-				orderby = Integer.parseInt((String) commandMap.getMap().get("orderby"));
-				model.addAttribute("orderby", orderby);
-			}
-			
-			if(commandMap.containsKey("searchNum")) {
-				searchNum = (String)commandMap.getMap().get("searchNum");
-				searchBox = (String)commandMap.getMap().get("searchBox");
-				model.addAttribute("searchNum", searchNum);
-				model.addAttribute("searchBox", searchBox);
-			}
-			
-			totalCount = admin.size();
-			
 			page = new Paging(currentPage, totalCount, blockCount, blockPage, "/brw/admin/drama", orderby, searchNum, searchBox);
 		}
 		
@@ -81,18 +75,38 @@ public class AdminDramaController {
 		
 		admin = admin.subList(page.getStartCount(), lastCount);
 		
-		model.addAttribute("totalCount", totalCount);
 		model.addAttribute("pagingHtml", pagingHtml);
-		model.addAttribute("currentPage", currentPage);
 		
+		model.addAttribute("orderby", orderby);
+		model.addAttribute("searchNum", searchNum);
+		model.addAttribute("searchBox", searchBox);
+		
+		model.addAttribute("admin", admin);
+		
+		if(!alert_value.equals("default")) {
+			model.addAttribute("alert_value", alert_value);
+		}
 		
 		return "/admin/drama/adminDramaList";
 	}
 	
-	@RequestMapping(value="/drama/write.br")
-	public String dramaWrite(Model model) throws Exception{
+	@RequestMapping(value="/drama/write.br", method=RequestMethod.GET)
+	public String dramaWritePage(Model model) throws Exception{
 		
 		return "/admin/drama/adminDramaWrite";
+	}
+	
+	@RequestMapping(value="/drama/write.br", method=RequestMethod.POST)
+	public String dramaWrite(CommandMap commandMap, HttpServletRequest request, Model model) throws Exception{
+		int no = adminDramaService.selectNextVal();
+		
+		commandMap.put("no", no + 1);
+		
+		Map content_image = fileUtils.parseInsertFileInfo(commandMap.getMap(), request);
+		
+		commandMap.put("drama_content_image", content_image);
+		
+		return "redirect:/admin/drama.br";
 	}
 	
 	@RequestMapping(value="/drama/modify.br", method=RequestMethod.GET)
@@ -100,37 +114,42 @@ public class AdminDramaController {
 		
 		int no = Integer.parseInt(request.getParameter("no"));
 
-		//±âÁ¸ ÀÌ¹ÌÁö Áö¿ì´Â ÄÚµå
-		
-			
-		adminDramaService.deleteDramaImageOne(no);
 		Map<String, Object> update_drama_one = adminDramaService.selectDramaOne(no);
 		
 		model.addAttribute("admin", update_drama_one);
 		
 		return "/admin/drama/adminDramaModify";
 	}
-	
+	/*
 	@RequestMapping(value="/drama/modify.br", method=RequestMethod.POST)
 	public String dramaModify_action(Model model) throws Exception{
 		
 		return "redirect:/admin/drama.br";
 	}
-	
-	@RequestMapping(value="/drama/delete.br")
-	public String dramaDelete(CommandMap commandMap, Model model) throws Exception{
-		if(commandMap.containsKey("no") && commandMap.containsKey("password")) {
+		*/
+	@RequestMapping(value="/drama/delete.br", method=RequestMethod.POST)
+	public String dramaDelete(CommandMap commandMap, RedirectAttributes redirectAttributes) throws Exception{
+		String alert_value = null;
+		
+		/*if(commandMap.containsKey("no") && commandMap.containsKey("password")) {
 			if(adminDramaService.checkDrama(commandMap.getMap()) > 0) {
 				adminDramaService.deleteDramaOne(commandMap.getMap());
+				alert_value = "ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½";
 			}else {
-				String str = "Àß¸øµÈ ºñ¹Ð¹øÈ£ÀÔ´Ï´Ù";
+<<<<<<< HEAD
+				String str = "ï¿½ß¸ï¿½ï¿½ï¿½ ï¿½ï¿½Ð¹ï¿½È£ï¿½Ô´Ï´ï¿½";
 				
 				model.addAttribute("str", str);
+=======
+				alert_value = "ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ : ï¿½ï¿½Ð¹ï¿½È£ï¿½ï¿½ È®ï¿½ï¿½ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½";
+>>>>>>> origin/jyp
 			}
-		}
+		}*/
+		
+		redirectAttributes.addAttribute("alert_value", alert_value);
 		
 		return "redirect:/admin/drama.br";
 	}
-	
+
 	
 }

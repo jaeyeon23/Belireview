@@ -5,17 +5,27 @@
 <!DOCTYPE html>
 <html>
 <script>
-	$(function(){
-		$("#cat-nav").css("display","none");
-		$("#cat-nav").click(function(){
+	  $(function(){
+		$(".abcd").css("display","none");
+		$(".abcd").click(function(){
 			alert("a");
 		});
 		$(".mm").hover(function(){
-			$("#cat-nav").css("display","");
+			$(".abcd").css("display","");
 		},function(){
-			$("#cat-nav").css("display","none");
+			$(".abcd").css("display","none");
 		});
-	})
+		$(".efg").hover(function(){
+			$(".abcd").css("display","");
+		},function(){
+			$(".abcd").css("display","none");
+		}); 
+		$(".dd").hover(function(){
+			$(".abcd").css("display","");
+		},function(){
+			$(".abcd").css("display","none");
+		});
+	})  
 </script>
 <body>
 	 <div id="header"> <!-- header -->
@@ -118,7 +128,7 @@
 
                       <!-- Collect the nav links, forms, and other content for toggling -->
                       <div class="collapse navbar-collapse" id="cat-nav-mega">
-                          <ul class="nav navbar-nav">
+                          <ul class="nav navbar-nav abcd efg">
                               <li class="active"><a href="#">장르</a></li>
                               
                               <li><a href="">로맨스</a></li>

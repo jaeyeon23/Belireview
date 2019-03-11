@@ -8,6 +8,41 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript">
+	function orderby(url) {
+		var orderby = document.getElementById("orderby").value;
+	
+		var searchNum = '<c:out value="${searchNum}"/>';
+		var searchBox = '<c:out value="${searchBox}"/>';
+	
+		if (searchNum != null || searchNum != "") {
+			post_to_url(url, {
+				'orderby' : orderby,
+				'searchNum' : searchNum,
+				'searchBox' : searchBox
+			}, "GET");
+		} else {
+			post_to_url(url, {
+				'orderby' : orderby
+			}, "GET");
+		}
+	}
+	
+	function searchNum_Box(url) {
+		var searchNum = document.getElementById("searchNum").value;
+		var searchBox = document.getElementById("searchBox").value;
+		var orderby = "";
+	
+		if (searchNum == null || searchNum == "") {
+			location.href = url;
+		} else {
+			post_to_url(url, {
+				'orderby' : orderby,
+				'searchNum' : searchNum,
+				'searchBox' : searchBox
+			}, "GET");
+		}
+	}
+	
 	function delete_user(id) {
 		var check = confirm("정말로 삭제하시겠습니까?");
 		
@@ -19,44 +54,37 @@
 		}
 	}
 	
-	/* $(document).ready(function(){
-		var str = <c:out value="${str}"/>
-			
-		if(str != null){
-			alert(str);
-		}
-	}); */
-	
-	function post_to_url(path, params, method) {
-	    method = method || "post"; // 전송 방식 기본값을 POST로
-	 
-	    
-	    var form = document.createElement("form");
-	    form.setAttribute("method", method);
-	    form.setAttribute("action", path);
-	 
-	    //히든으로 값을 주입시킨다.
-	    for(var key in params) {
-	        var hiddenField = document.createElement("input");
-	        hiddenField.setAttribute("type", "hidden");
-	        hiddenField.setAttribute("name", key);
-	        hiddenField.setAttribute("value", params[key]);
-	 
-	        form.appendChild(hiddenField);
-	    }
-	 
-	    document.body.appendChild(form);
-	    form.submit();
-	}
-
 	function update_user(id){
 		location.href = "/brw/admin/modify.br?id="+id;
 	}
+
+	$(document).ready(function() {
+		var orderby = '<c:out value="${orderby}"/>';
+		var searchNum = '<c:out value="${searchNum}"/>';
+		
+		$("#orderby").val(orderby);
+		$("#searchNum").val(searchNum);
+		
+		var alert_value = '<c:out value="${alert_value}"/>';
+		
+		if(alert_value != null && alert_value != ""){
+			alert(alert_value);
+		}
+	});
+		
 </script>
 </head>
 <body>
 	<div class="container">
-		<table class="table" align="center">
+		<div style="margin:20pt auto; float: right; width: 20%;" onchange="orderby('/brw/admin/users.br')">
+			<select id="orderby" name="orderby" class="form-control">
+				<option value="">----</option>
+				<option value="1">번호순</option>
+				<option value="2">아이디순</option>
+				<option value="3">이름순</option>
+			</select>
+		</div>
+		<table class="table table-hover" align="center">
 			<thead>
 				<tr>
 					<th>NO</th>
@@ -150,12 +178,13 @@
 					</c:when>
 					<c:otherwise>
 						<tr>
-							<td colspan="4">사용자가 없습니다</td>
+							<td colspan="5">사용자가 없습니다</td>
 						</tr>
 					</c:otherwise>
 				</c:choose>
 			</tbody>
 		</table>
+		
 		<nav>
 			<div class='pag-center'>
 				<ul class='pagination believe-pag'>
@@ -163,6 +192,18 @@
 				</ul>
 			</div>
 		</nav>
+		
+		<div style="margin:20pt 30%;">
+			<select name="searchNum" id="searchNum" class="form-control" style="width: 20%; float: left; min-width: 70pt;">
+				<option value="">----</option>
+				<option value="id">아이디</option>
+				<option value="name">이름</option>
+			</select>
+			<div class="input-group">
+            	<input type="text" class="form-control search-wid" id="searchBox" placeholder="Search Here" value="${searchBox }" onkeypress="if (event.keyCode==13){searchNum_Box('/brw/admin/users.br');}">
+	            <a href="javascript:void(0);" onclick="searchNum_Box('/brw/admin/users.br');" class="input-group-addon btn-side-serach" id="basic-addon1"><i class="fa fa-search"></i></a>
+	        </div>			
+		</div>
 	</div>
 </body>
 </html>

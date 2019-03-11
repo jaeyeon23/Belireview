@@ -1,107 +1,156 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>	
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<link href="/brw/resources/Jcss/login.css" rel="stylesheet">
-
-<script type="text/javascript">
-	if ('${message}' != "") {
-		alert('${message}');
-	}
-	
-</script>	
-<script type="text/javascript">
-	function memberFindChk(){
-		
-		var mem = eval("document.findPwForm");
-		
-		if(mem.name.value=="") {
-	        alert('이름을 입력하세요');
-	        mem.name.focus();
-	        return false;
-	    }
-
-	    if(mem.email.value=="") {
-	        alert('이메일을 입력해 주세요.');
-	        mem.email.focus();
-	        return false;
-	    }
-		return true;
-	}
-	
-</script>
-<title>아이디찾기</title>
+<title>Insert title here</title>
 </head>
 <body>
-	<div id="wrap">
-		<!-- header -->
-		<div id="header">
-			<h1>
-				<center>
-					<img src="/brw/resources/images/logos.jpg" width="150px" alt="">
-				</center>
-				<br>
-			</h1>
-		</div>
-		<!-- container -->
-		<div id="container">
-			<!-- content -->
-			<div id="content">
-				<div class="title" aria-live="assertive">
-					<p></p>
-				</div>
-				<div class="login_form">
-						<div class="row_group">
-							<form id="findPwForm" method="post" action="/brw/member/findIdOk.br" onsubmit="return memberFindChk()">
-							<div class="join_row">
-								<h3 class="join_title">
-									<label for="id">아이디</label>
-								</h3>
-								<span class="ps_box box_right_space"> 
-									<input type="text" id="id" name="id" title="아이디" class="int" maxlength="40">
-								</span>
-							</div>
-							<div class="join_row">
-								<h3 class="join_title">
-									<label for="name">이름</label>
-								</h3>
-								<span class="ps_box box_right_space"> 
-									<input type="text" id="name" name="name" title="이름" class="int" maxlength="40">
-								</span>
-							</div>
-							<br>
-							<div class="join_row join_email">
-								<h3 class="join_title">
-									<label for="email">이메일</label>
-								</h3>
-								<span class="ps_box int_email box_right_space"> 
-									<input type="text" id="email" name="email" maxlength="100" class="int" maxlength="100" placeholder="이메일 주소 전체를 입력해주세요">
-								</span>
-							</div>
-							<div class="btn_area">
-								<button type="submit" id="비밀번호 찾기" value="비밀번호 찾기"
-									class="btn_type btn_primary">
-									<span>비밀번호찾기</span>
-								</button>
-							</div>
-						</form>	
-					</div>
-			</div>
-			
-				<div class="position_a">
-					<div class="find_info">
-							<center>
-								<a href="http://localhost:8080/brw/member/loginForm.br">로그인</a>
-								<span class="bar" aria-hidden="true">|</span> 
-								<a href="http://localhost:8080/brw/main.br">메인으로</a>
-							</center>
-					</div>
-				</div>
+<form name="frm" method="post" action="/brw/member/findPw.br">
 
+<input type="hidden" name="check_find" value="i">
+<div class="modal-search-privacy">
+	<ul class="nav nav-tabs" role="tablist">
+		<li role="presentation" class="area-name active"><a href="#search-id" aria-controls="home" role="tab" data-toggle="tab" onclick="check_find('i')" aria-expanded="true"><h5>아이디 찾기</h5></a></li>
+		<li role="presentation" class="street-address"><a href="#search-password" aria-controls="profile" role="tab" data-toggle="tab" onclick="check_find('p')" aria-expanded="false"><h5>비밀번호 찾기</h5></a></li>
+	</ul>
+	<div class="tab-content">
+		<!-- search-id//end -->
+		<div role="tabpanel" class="tab-pane" id="search-password">
+			
+			<div class="section-body list-horizontal">
+				<div class="list-item">
+					<div class="item-title col-xs-24 col-md-6">
+						<strong>이름</strong>
+					</div>
+					<div class="item-contents hasCol col-xs-24 col-md-18">
+						<div class="col-xs-20 col-lg-20 form-inline">
+							<input type="text" class="form-control" name="pwname" size="28">
+						</div>
+					</div>
+				</div>
+				
+				<div class="list-item">
+					<div class="item-title col-xs-24 col-md-6">
+						<strong>아이디</strong>
+					</div>
+					<div class="item-contents hasCol col-xs-24 col-md-18">
+						<div class="col-xs-20 col-lg-20 form-inline">
+							<input type="text" class="form-control" name="pwid" size="28">
+						</div>
+					</div>
+				</div>
+				
+				<!-- list-item//end -->
+				<div class="list-item">
+					<div class="item-title col-xs-24 col-md-6">
+						<label for="pcm-mobile"><strong>이메일</strong></label>
+					</div>
+						<div class="item-contents hasCol col-xs-24 col-md-18">
+							<div class="col-xs-20 col-lg-20 form-inline">	
+								<input name="pwemail" id="pwemail" class="form-control" size="28" type="email"> 
+							</div>
+						</div>
+						<div class="text-primary col-xs-24">
+							<p>초기화된 비밀번호를 이메일로 발송해 드립니다.</p>
+						</div>
+					</div>
+					
+				</div>
+				<!-- list-item//end -->
+			</div>
 		</div>
 	</div>
+	<!-- tab-content//end -->
+</div>
+<div class="modal-button">
+			<button type="submit" id="확인" value="확인"
+				class="btn_type btn_primary">
+				<span>아이디찾기</span>
+			</button>
+	</a>
+</div>
+</form>
+<!-- 본인인증 스크립트 -->
+<script>
+function check_find(a){
+	document.frm.check_find.value = a;
+}
+
+function popup_nice_open(){
+	var f = document.frm;
+	var check_find = f.check_find.value;
+	var idname = f.idname.value;
+	var pwname = f.pwname.value;
+	var mid = f.mem_id.value;
+	var idemail = f.idemail1.value+"@"+f.idemail2.value;
+	var pwemail = f.pwemail1.value+"@"+f.pwemail2.value;
+	console.log("로그 내용1"+pwemail);
+	if(check_find == 'i'){//아이디찾기일때
+		var mode = "find_id_chk";
+		console.log("로그 내용2"+idemail);
+		$.ajax({
+	        type: "POST",
+	        url: "/SIRORAGI/login/find",
+	        data: ({mode:mode,idemail:idemail,idname:idname,check_find:check_find}),
+	        //contentType: "text/plain; charset=euc-kr",
+	        success: function(data) {
+	        	console.log(data);
+	        	if(data != 0){
+	        		alert("가입하신 아이디는 "+ data +" 입니다.");
+	        	}else{
+	        		alert("해당정보로 가입된 아이디가 없습니다.");
+	        		
+	        		
+	        		//window.open("loginForm","_self").close();
+	        		//opener.open('about:blank','_self').close();
+	        		
+	        	}
+/* 	        	
+	        	if(data != null)    {
+	            	/* console.log("로그 내용2"+data); 
+	            } */
+	        },
+	        error: function(e){
+	         alert('error' + e);
+	        }
+	    });		
+		self.close();
+		close();
+	}else if(check_find == 'p'){//패스워드찾기일떄
+		console.log("로그 내용2"+pwemail);
+		var mode = "find_pw_chk";
+		$.ajax({
+	        type: "POST",
+	        url: "/SIRORAGI/login/find",
+	        data: ({mode:mode,pwemail:pwemail,mid:mid,pwname:pwname,check_find:check_find}),
+	        //contentType: "text/plain; charset=euc-kr",
+	        success: function(data) {
+	        	if(data != 0){
+	        		alert("가입하신 이메일로 비밀번호를 보냈습니다.");
+	        	}else{
+	        		alert("일치하는 정보가 없습니다.");
+	        	}
+/* 	        	
+	        	if(data != null)    {
+	            	/* console.log("로그 내용2"+data); 
+	            } */
+	        },
+	        error: function(e){
+	         alert('error' + e);
+	        }
+	    });		
+		self.close();
+	}
+}
+
+function g_popup_niceid(){
+	window.open('', 'popup', 'width=500, height=461, toolbar=no,directories=no,scrollbars=no,resizable=no,status=no,menubar=no,top=0,left=0');
+	document.frm_main.action = "https://check.namecheck.co.kr/checkplus_new_model4/checkplus.cb";
+	document.frm_main.target = "popup";
+	document.frm_main.submit();
+}
+</script>
 </body>
 </html>

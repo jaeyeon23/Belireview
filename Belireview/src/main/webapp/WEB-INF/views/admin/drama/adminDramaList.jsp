@@ -8,41 +8,39 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript">
-	function orderby() {
+	function orderby(url) {
 		var orderby = document.getElementById("orderby").value;
-		var searchNum = document.getElementById("searchNum").value;
-		var searchBox = document.getElementById("searchBox").value;
-		
-		if(orderby == null)
-			orderby = 0;
-		
-		if(searchBox != null){
-			post_to_url("/brw/admin/drama.br", {'orderby':orderby, 'searchNum':searchNum, 'searchBox':searchBox}, "GET");
-		}else{
-			post_to_url("/brw/admin/drama.br", {'orderby':orderby}, "GET");	
+	
+		var searchNum = '<c:out value="${searchNum}"/>';
+		var searchBox = '<c:out value="${searchBox}"/>';
+	
+		if (searchNum != null || searchNum != "") {
+			post_to_url(url, {
+				'orderby' : orderby,
+				'searchNum' : searchNum,
+				'searchBox' : searchBox
+			}, "GET");
+		} else {
+			post_to_url(url, {
+				'orderby' : orderby
+			}, "GET");
 		}
 	}
 	
-	function post_to_url(path, params, method) {
-	    method = method || "post"; // 전송 방식 기본값을 POST로
-	 
-	    
-	    var form = document.createElement("form");
-	    form.setAttribute("method", method);
-	    form.setAttribute("action", path);
-	 
-	    //히든으로 값을 주입시킨다.
-	    for(var key in params) {
-	        var hiddenField = document.createElement("input");
-	        hiddenField.setAttribute("type", "hidden");
-	        hiddenField.setAttribute("name", key);
-	        hiddenField.setAttribute("value", params[key]);
-	 
-	        form.appendChild(hiddenField);
-	    }
-	 
-	    document.body.appendChild(form);
-	    form.submit();
+	function searchNum_Box(url) {
+		var searchNum = document.getElementById("searchNum").value;
+		var searchBox = document.getElementById("searchBox").value;
+		var orderby = "";
+	
+		if (searchNum == null || searchNum == "") {
+			location.href = url;
+		} else {
+			post_to_url(url, {
+				'orderby' : orderby,
+				'searchNum' : searchNum,
+				'searchBox' : searchBox
+			}, "GET");
+		}
 	}
 	
 	function write_drama(){
@@ -64,6 +62,19 @@
 		}
 	}
 	
+	$(document).ready(function() {
+		var orderby = '<c:out value="${orderby}"/>';
+		var searchNum = '<c:out value="${searchNum}"/>';
+		
+		$("#orderby").val(orderby);
+		$("#searchNum").val(searchNum);
+		
+		var alert_value = '<c:out value="${alert_value}"/>';
+		
+		if(alert_value != null && alert_value != ""){
+			alert(alert_value);
+		}
+	});
 	
 </script>
 </head>
@@ -72,9 +83,9 @@
 		<div style="float:left; margin:20pt auto;">
 			<button class="btn btn-default" type="button" onclick="write_drama()">생성</button>
 		</div>
-		<div style="margin:20pt auto; float: right; width: 20%;" onchange="orderby()">
-			<%-- <c:if test="${orderby }"></c:if> --%>
+		<div style="margin:20pt auto; float: right; width: 20%;" onchange="orderby('/brw/admin/drama.br')">
 			<select id="orderby" name="orderby" class="form-control">
+				<option value="">----</option>
 				<option value="1">조회순</option>
 				<option value="2">장편순</option>
 				<option value="3">단편순 </option>
@@ -83,7 +94,18 @@
 			</select>
 		</div>
 		<table class="table table-hover">
-			<thead>
+			<thead align="center">
+				<colgroup>
+					<col width="5%" />
+					<col width="20%" />
+					<col width="10%" />
+					<col width="15%" />
+					<col width="10%" />
+					<col width="5%" />
+					<col width="5%" />
+					<col width="5%" />
+					<col width="25%" />
+				</colgroup>
 				<tr>
 					<th>NO</th>
 					<th>DRAMA</th>
@@ -125,21 +147,6 @@
 			</tbody>
 		</table>
 		
-		<div>
-			<select name="searchNum" id="searchNum" class="form-control" style="width: 10%; float: left;">
-				<option value="director">감독</option>
-				<option value="genre">장르</option>
-				<option value="channel">채널</option>
-				<option value="name">이름</option>
-			</select>
-			<div class="input-group col-md-4">
-				<form onsubmit="orderby()">
-	            	<input type="text" class="form-control search-wid" id="searchBox" placeholder="Search Here" value="${searchBox }">
-	            </form>
-	            <a href='javascript:void(0);' onclick="orderby();" class="input-group-addon btn-side-serach" id="basic-addon1"><i class="fa fa-search"></i></a>
-	        </div>			
-		</div>
-		
 		<nav>
 			<div class='pag-center'>
 				<ul class='pagination believe-pag'>
@@ -147,6 +154,21 @@
 				</ul>
 			</div>
 		</nav>
+		
+		<div style="margin:20pt 30%;">
+			<select name="searchNum" id="searchNum" class="form-control" style="width: 20%; float: left; min-width: 70pt;">
+				<option value="">----</option>
+				<option value="director">감독</option>
+				<option value="genre">장르</option>
+				<option value="channel">채널</option>
+				<option value="name">이름</option>
+			</select>
+			<div class="input-group">
+            	<input type="text" class="form-control search-wid" id="searchBox" placeholder="Search Here" value="${searchBox }" onkeypress="if (event.keyCode==13){searchNum_Box('/brw/admin/drama.br');}">
+	            <a href='javascript:void(0);' onclick="searchNum_Box('/brw/admin/drama.br');" class="input-group-addon btn-side-serach" id="basic-addon1"><i class="fa fa-search"></i></a>
+	        </div>			
+		</div>
+		
 	</div>
 </body>
 </html>

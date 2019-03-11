@@ -30,5 +30,16 @@ public class LoginServiceImpl implements LoginService{
 		loginDAO.changePw(map);
 	}
 	
+	@Override //아이디에 맞는 이메일불러오기
+	public String findEmail(Map<String, Object> map) throws Exception {
+		return loginDAO.findEmail(map);
+	}
+	
+	
+/*	@Override
+	public String checkMember(Map<String, Object> map) throws Exception {
+		return loginDAO.checkMember(map);
+
+	}*/
 
 }

@@ -1,7 +1,9 @@
 package believe.review.brw.login;
 
+import java.io.PrintWriter;
 import java.math.BigDecimal;
 import java.util.Map;
+import java.util.Properties;
 import java.util.Set;
 
 import javax.annotation.Resource;
@@ -20,6 +22,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import believe.review.brw.common.common.CommandMap;
@@ -28,6 +31,9 @@ import believe.review.brw.common.common.CommandMap;
 @RequestMapping("/member")
 public class LoginController {
 
+	String authNUm = "";
+	String Email = "";
+	
 	@Resource(name="loginService")
 	private LoginService loginService;
 	
@@ -148,9 +154,119 @@ public class LoginController {
 		mv.setViewName("findPwForm");
 		return mv;
 	}
-		
 	
+	@RequestMapping(value = "/findPw")
+	public ModelAndView clickMethod(HttpServletResponse response, HttpServletRequest request, CommandMap map)
+			throws Exception {
 
+		ModelAndView mv=new ModelAndView();
+		
+		String check_find = (String) map.getMap().get("check_find");
+		String pwname = (String) map.getMap().get("pwname");
+		String pwemail = (String) map.getMap().get("pwemail");
+		String pwid = (String) map.getMap().get("pwid");
+		String authNUm = "";
+		String str = "";
+
+		System.out.println("pw네임 :" + pwname + " pwemail:" + pwemail + " check_find :" + check_find + " 아이디 : " + pwid);
+
+		if (check_find.equals("p")) {
+
+			System.out.println("비밀번호 찾기 시작");
+
+			map.getMap().put("EMAIL", pwemail);
+			map.getMap().put("MEMBER_ID_FIND", pwid);
+			map.getMap().put("MEMBER_NAME", pwname);
+			System.out.println("test+++++++");
+			String findEmail = loginService.findEmail(map.getMap());
+			System.out.println("findEmail=" + findEmail);
+
+			if (findEmail != null) {
+				System.out.println("pwe메일 : " + pwemail + "find메일 : " + findEmail);
+				if (pwemail.equals(findEmail)) {
+					System.out.println("test++++++");
+					authNUm = RandomNum();// 랜덤숫자 String으로 넣고
+					map.getMap().put("PASSWORD_CHANGE", authNUm);
+					loginService.changePw(map.getMap()); // 랜덤숫자로 비밀번호 변경하고
+					sendEmail(findEmail, authNUm); // 메일발송
+					System.out.println("메일발송성공 변경된숫자 : " + authNUm);
+				
+				}
+			}
+
+			mv.addObject("authNUm",authNUm);
+			mv.setViewName("findPwOk");
+			return mv;
+			
+		} else {
+
+			mv.addObject("str",str);
+			mv.setViewName("findPwError");
+			return mv;
+		}
+		
+		
+
+	}
+	
+	private void sendEmail(String email,String authNum)throws Exception{ //메일을 보내는 메서드
+		String host ="smtp.gmail.com";
+		String subject = "Belireview 변경된 비밀번호 전달";
+		String fromName ="Belireview 관리자";
+		String from="khiclass@gmail.com";//보내는메일
+		String to1 = email;
+		
+		String content = "새로운 비밀번호 : " + authNum;
+			
+		try{
+			Properties props = new Properties();
+			
+			props.put("mail.smtp,starttls.enable","true");
+			props.put("mail.transport.protocol", "smtp");
+			props.put("mail.smtp.host",host);
+			props.setProperty("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+			
+			props.put("mail.smtp.port", "465");
+			props.put("mail.smtp.user", from);
+			props.put("mail.smtp.auth", "true");
+			
+			Session mailSession = Session.getInstance(props,new javax.mail.Authenticator(){
+					@Override
+					protected PasswordAuthentication getPasswordAuthentication(){
+				return new PasswordAuthentication("khiclass@gmail.com","khacademy");
+			}
+			});
+			
+			Message msg = new MimeMessage(mailSession);
+			msg.setFrom(new InternetAddress(from,MimeUtility.encodeText(fromName,"UTF-8","B"))); //보내는사람설정
+			
+			InternetAddress[] address1 = {new InternetAddress(to1)};
+			
+			msg.setRecipients(Message.RecipientType.TO, address1); //받는사람설정1
+			msg.setSubject(subject); //제목설정
+			msg.setSentDate(new java.util.Date()); //보내는 날짜설정
+			msg.setContent(content,"text/html;charset=utf-8"); //내용설정
+			
+			Transport.send(msg);
+		}catch (MessagingException e) {
+			e.printStackTrace();
+		Exception ex = new Exception();
+			throw ex;	
+		}catch (Exception e) {
+			e.printStackTrace();
+			
+		}
+	}
+	
+	
+	public String RandomNum(){ //임의의 랜덤한 6자리숫자 뽑아줌 
+		StringBuffer buffer = new StringBuffer();
+		for(int i = 0;i<=6;i++){
+			int n= (int)(Math.random() * 10);
+			buffer.append(n);
+		}
+		return buffer.toString();
+	}
 		
 	
 

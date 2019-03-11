@@ -57,13 +57,12 @@ public class AbstractDAO {
 		return sqlSession.selectList(queryId,params);
 	}
 	
-	// °¡ÀÔÇÑ È¸¿ø ¾ÆÀÌµğ Áßº¹ È®ÀÎ
-	@SuppressWarnings("rawtypes")
+	// ê°€ì…í•œ íšŒì› ì•„ì´ë”” ì¤‘ë³µ í™•ì¸
 	public int selectMemberId(String queryId, Object params) {
 		printQueryId(queryId);
 		return sqlSession.selectOne(queryId, params);
 	}
-
+	
 }
 
 
