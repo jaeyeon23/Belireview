@@ -18,7 +18,7 @@ import believe.review.brw.common.common.CommandMap;
 @RequestMapping("/user")
 public class UserController {
 	
-	@Resource(name="UserService") private UserService userService;
+	@Resource(name="userService") private UserService userService;
 	
 	@RequestMapping(value="/user.br")  
 	public ModelAndView user(){
@@ -57,14 +57,19 @@ public class UserController {
 		
 		ModelAndView mv = new ModelAndView("userMovie");
 		List<Map<String,Object>> userList = userService.UserMovieByRecent(commandMap.getMap());
-		System.out.println(userList.get(0).get("MOVIE_NAME"));
+		
 		mv.addObject("userList", userList);
 		return mv;
 	}
 	
 	@RequestMapping(value="/userMovielist")
-	public ModelAndView userMovielist() {
+	public ModelAndView userMovielist(CommandMap commandMap, HttpServletRequest request)throws Exception{
+		HttpSession session = request.getSession();
+		
 		ModelAndView mv = new ModelAndView("userMovielist");
+		List<Map<String,Object>> userMovieAll = userService.UserMovieAll(commandMap.getMap());
+		
+		mv.addObject("userMovieAll", userMovieAll);
 	
 		return mv;
 	}
