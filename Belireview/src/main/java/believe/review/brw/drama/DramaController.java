@@ -9,10 +9,13 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import believe.review.brw.common.common.CommandMap;
 import believe.review.brw.common.util.Paging;
+import believe.review.brw.user.UserService;
 
 
 @Controller
@@ -28,6 +31,10 @@ public class DramaController {
 	
 	@Resource(name="dramaService")
 	private DramaService dramaService;
+	
+	@Resource(name="UserService")
+	private UserService userService;
+	
 
 	@RequestMapping(value = "dramaList.br")
 	public ModelAndView dramaList(CommandMap commandMap,HttpServletRequest request) throws Exception {
@@ -63,7 +70,7 @@ public class DramaController {
 
 	}
 
-	@RequestMapping(value="dramaDetail.br")
+	@RequestMapping(value="dramaDetail.br", method = RequestMethod.GET)
 	public ModelAndView dramaDetail(CommandMap commandMap/*, HttpServletRequest request*/) throws Exception {
 
 		ModelAndView mv = new ModelAndView("dramaDetail");
@@ -92,6 +99,40 @@ public class DramaController {
 		return mv;
 
 	}
+	@RequestMapping(value="dramaDetail.br",method = RequestMethod.POST)
+	@ResponseBody
+	public Map<String,Object> dramaDe(CommandMap commandMap) throws Exception {
+
+		Map<String,Object> mv = commandMap.getMap();
+		
+		System.out.println(commandMap.getMap().get("id"));
+		System.out.println(commandMap.getMap().get("wish"));
+		
+		
+		
+		
+		/*HttpSession session = request.getSession();
+		
+		
+		Map<String,Object> map = dramaService.dramaDetail(commandMap.getMap());
+		List<Map<String,Object>> comment = dramaService.dramaCommentByLike(map);
+		List<Map<String,Object>> actor = dramaService.dramaActor(map); 
+		List<Map<String,Object>> detailgenre = dramaService.detailgenre(map);
+		
+		Map<String,Object> insertcomment = dramaService.insertdramaComment(commandMap.getMap());
+		totalCount = (Integer)dramaService.totalDramaComment(map);
+		
+		mv.put("map",map);
+		mv.put("comment",comment);
+		mv.put("actor",actor);
+		mv.put("detailgenre",detailgenre);
+		mv.put("totalCount",totalCount);
+		mv.addObject("insertcomment",insertcomment);*/
+		
+		return mv;
+
+	}
+	
 
 	@RequestMapping(value = "dramaInfo.br")
 	public ModelAndView dramaInfo(CommandMap commandMap) throws Exception {

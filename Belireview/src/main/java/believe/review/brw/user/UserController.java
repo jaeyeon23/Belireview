@@ -1,7 +1,11 @@
 package believe.review.brw.user;
 
+import java.util.List;
+import java.util.Map;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,10 +17,10 @@ import believe.review.brw.common.common.CommandMap;
 @Controller
 @RequestMapping("/user")
 public class UserController {
-	/*
-	 * @Resource(name="userService") private UserService userService;
-	 */
-	@RequestMapping(value="/user")  
+	
+	@Resource(name="UserService") private UserService userService;
+	
+	@RequestMapping(value="/user.br")  
 	public ModelAndView user(){
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("user");
@@ -24,7 +28,7 @@ public class UserController {
 	}
 	
 	
-	@RequestMapping(value="/userModifyPass")  // ¼öÁ¤ÆûÀ¸·Î ÀÌµ¿Àü ºñ¹Ð¹øÈ£ È®ÀÎ 
+	@RequestMapping(value="/userModifyPass")  // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½ï¿½ï¿½ ï¿½ï¿½Ð¹ï¿½È£ È®ï¿½ï¿½ 
 	public ModelAndView userModifyPass(){
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("pwdCheck");
@@ -48,8 +52,20 @@ public class UserController {
 	
 	
 	@RequestMapping(value="/userMovie")
-	public ModelAndView userMovie() {
+	public ModelAndView userMovie(CommandMap commandMap, HttpServletRequest request) throws Exception {
+		HttpSession session = request.getSession();
+		
 		ModelAndView mv = new ModelAndView("userMovie");
+		List<Map<String,Object>> userList = userService.UserMovieByRecent(commandMap.getMap());
+		System.out.println(userList.get(0).get("MOVIE_NAME"));
+		mv.addObject("userList", userList);
+		return mv;
+	}
+	
+	@RequestMapping(value="/userMovielist")
+	public ModelAndView userMovielist() {
+		ModelAndView mv = new ModelAndView("userMovielist");
+	
 		return mv;
 	}
 }
