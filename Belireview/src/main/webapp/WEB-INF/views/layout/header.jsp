@@ -4,7 +4,25 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
+
+<script src="<c:url value='/resources/js/common.js'/>" charset="utf-8"></script>
+
 <script>
+  $(function(){
+		$("a[name='search']").on("click", function(e){ 
+            e.preventDefault();
+            openSearch();
+		});
+		
+		
+  });
+  function openSearch(){
+		var comSubmit = new ComSubmit();
+       comSubmit.setUrl("<c:url value='/mainSearch.br' />");
+       comSubmit.addParam("searchText",$("input[name='searchText']").val());
+       comSubmit.submit();
+	}		
+
 	  $(function(){
 		$(".abcd").css("display","none");
 		$(".abcd").click(function(){
@@ -55,7 +73,8 @@
                                           <span class="icon-bar"></span>
                                           <span class="icon-bar"></span>
                                       </button> -->
-                                      <a class="navbar-brand" href="http://localhost:8080/brw/main.br"><img src="/brw/resources/images/logos.jpg" width="150px" alt=""></a>
+                                      <a class="navbar-brand" href="http://localhost:8080/brw/main.br">
+                                      <img src="/brw/resources/images/logos.jpg" width="150px" alt=""></a>
                                   </div>
 
                                   <!-- Collect the nav links, forms, and other content for toggling -->
@@ -103,13 +122,15 @@
                       <div class="srch-form">
                           <form class="side-search">
                               <div class="input-group">
-                                  <input type="text" class="form-control search-wid" placeholder="Search Here" aria-describedby="basic-addon2">
-                                  <a href="" class="input-group-addon btn-side-serach" id="basic-addon2"><i class="fa fa-search"></i></a>
+                                  <input type="text" name="searchText" class="form-control search-wid" placeholder="Search Here" aria-describedby="basic-addon2">
+                                  <a href="" name="search" class="input-group-addon btn-side-serach" id="basic-addon2">
+                                  <i class="fa fa-search"></i></a>
                               </div>
                           </form>
                       </div>
                   </div>
               </div> <!-- Nav -->
+              
               
               
               <div id="cat-nav">
@@ -149,5 +170,6 @@
               </div>
               </div>      
           </div> <!-- header -->
+          <%@ include file="/WEB-INF/views/include/include-body.jspf" %>
           </body>
 </html>

@@ -913,7 +913,7 @@
 																	<span class="TitleSuffixForNumber-l2d30g-0 ejtPKl">703</span>
 																	<div class="SectionWithHeader__TopRight-s1eyxltb-3 bZaEfL">
 																			<div class="SectionWithViewMore__ViewMore-xtbl7q-0 bhbIbv">
-																				<a href="/brw/movie/movieComment.br">더보기</a>
+																				<a href="/brw/drama/mainSearch.br">더보기</a>
 																			</div>
 																		</div>
 																</header>
