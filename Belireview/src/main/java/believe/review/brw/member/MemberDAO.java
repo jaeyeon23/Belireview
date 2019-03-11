@@ -4,31 +4,29 @@ import java.util.Map;
 
 import org.springframework.stereotype.Repository;
 
-import believe.review.brw.common.common.AbstractDAO;;
+import believe.review.brw.common.common.AbstractDAO;
 
 @Repository("memberDAO")
 public class MemberDAO extends AbstractDAO {
 	
-	//ȸ������
+
+	//회원가입
 	public void insertMember(Map<String, Object> map) throws Exception {
 		insert("member.insertMember", map);
 	}
 	
-	//���̵�üũ
+	//아이디체크
 	public int checkId(String mem_id) throws Exception {
 		return (Integer)selectOne("member.checkId", mem_id);
 	}
 	
-	//�̸������翩��üũ
+	//이메일존재여부체크
 	public int checkMember(Map<String, Object> map)throws Exception{
 		return selectMemberId("member.checkMember",map);
 	}
-		
-	
 	
 	//관리자
 	public int checkAdminSessionPw(Map<String, Object> map) throws Exception{
 		return (Integer) selectOne("member.checkAdminSessionPw", map);
 	}
 }
-
