@@ -9,21 +9,26 @@ import believe.review.brw.common.common.AbstractDAO;;
 @Repository("memberDAO")
 public class MemberDAO extends AbstractDAO {
 	
-	//È¸¿ø°¡ÀÔ
+	//È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	public void insertMember(Map<String, Object> map) throws Exception {
 		insert("member.insertMember", map);
 	}
 	
-	//¾ÆÀÌµğÃ¼Å©
+	//ï¿½ï¿½ï¿½Ìµï¿½Ã¼Å©
 	public int checkId(String mem_id) throws Exception {
 		return (Integer)selectOne("member.checkId", mem_id);
 	}
 	
-	//ÀÌ¸ŞÀÏÁ¸Àç¿©ºÎÃ¼Å©
+	//ï¿½Ì¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ç¿©ï¿½ï¿½Ã¼Å©
 	public int checkMember(Map<String, Object> map)throws Exception{
 		return selectMemberId("member.checkMember",map);
 	}
 		
-	 
+	
+	
+	//ê´€ë¦¬ì
+	public int checkAdminSessionPw(Map<String, Object> map) throws Exception{
+		return (Integer) selectOne("member.checkAdminSessionPw", map);
+	}
 }
 

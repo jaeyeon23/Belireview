@@ -32,7 +32,7 @@ public class DramaController {
 	@Resource(name="dramaService")
 	private DramaService dramaService;
 	
-	@Resource(name="UserService")
+	@Resource(name="userService")
 	private UserService userService;
 	
 

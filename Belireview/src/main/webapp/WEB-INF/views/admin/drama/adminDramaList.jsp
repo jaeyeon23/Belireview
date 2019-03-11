@@ -57,7 +57,7 @@
 		if(check == true){
 			var inputString = prompt('관리자 비밀번호를 입력하시오');
 			if(inputString != null){
-				post_to_url("/brw/admin/drama/delete.br", {'id':no, 'password':inputString}, "POST");
+				post_to_url("/brw/admin/drama/delete.br", {'no':no, 'password':inputString}, "POST");
 			}
 		}
 	}

@@ -6,12 +6,15 @@ import javax.servlet.http.HttpServletRequest;
 
 public interface MemberService {
 	
-	//È¸¿ø°¡ÀÔ
+	//È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	void insertMember(Map<String, Object> map, HttpServletRequest request) throws Exception;
 	
-	//È¸¿ø°¡ÀÔ IDÁßº¹Ã¼Å©
+	//È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ IDï¿½ßºï¿½Ã¼Å©
 	int checkId(String mem_id)throws Exception;
 	
-	//ÀÌ¸ŞÀÏÁ¸Àç¿©ºÎ
+	//ï¿½Ì¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ç¿©ï¿½ï¿½
 	int checkMember(Map<String, Object> map)throws Exception;
+	
+	//ê´€ë¦¬ì
+	public int checkAdminSessionPw(Map<String, Object> map) throws Exception;
 }

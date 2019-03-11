@@ -53,6 +53,29 @@
 			return false;
 		}
 		
+		if(f.show_file.checked == true){
+			if(f.poster_image.value == ""){
+    			alert("드라마 포스터를 확인해 주세요.");
+    			f.poster_image.focus();
+    			
+    			return false;
+    		}
+    		
+    		if(f.main_image.value == ""){
+    			alert("드라마 메인 이미지를 확인해 주세요.");
+    			f.main_image.focus();
+    			
+    			return false;
+    		}
+    		
+    		if(f.content_image.value == ""){
+    			alert("드라마 서브 이미지를 확인해 주세요.");
+    			f.content_image.focus();
+    			
+    			return false;
+    		}
+		}
+		
 		f.submit();
 	}
 
@@ -60,9 +83,52 @@
 		location.href = "/brw/admin/drama.br";
 	}
 	
-	$(document).ready(function() { 
+	$(document).ready(function() {
+		var drama_genre = '<c:out value="${admin.DRAMA_GENRE}"/>';
 		
+		$("#genre").val(drama_genre);
+		
+		$(".subb").hide();
+		$("#show_file").click(function() 
+		{
+			if($(".subb").css("display")=="none"){
+				$(".subb").slideUp("fast");
+				$("#text").html("기존 이미지 사용");				
+			}else{
+				$("#text").html("새로운 이미지 사용");
+			}
+			$(".subb").slideToggle("fast"); 
+		})
 	});
+	
+	
+	var gfv_count = 1;
+    
+    $(document).ready(function(){
+        $("#addFile").on("click", function(e){ //파일 추가 버튼
+            e.preventDefault();
+            fn_addFile();
+        });
+         
+        $("a[name='delete']").on("click", function(e){ //삭제 버튼
+            e.preventDefault();
+            fn_deleteFile($(this));
+        });
+    });
+
+    function fn_addFile(){
+        var str = "<p><input type='file' class='btn btn-primary btn-send-message' name='content_image_"+(gfv_count++)+"'><a href='#this' class='btn btn-link' name='delete'>삭제</a></p>";
+        $("#fileDiv").append(str);
+        $("a[name='delete']").on("click", function(e){ //삭제 버튼
+            e.preventDefault();
+            fn_deleteFile($(this));
+        });
+    }
+     
+    function fn_deleteFile(obj){
+        obj.parent().remove();
+    }
+    
 </script>
 </head>
 <body>
@@ -103,6 +169,8 @@
 						<option value="종교">종교</option>
 						<option value="SF">SF</option>
 						<option value="재난">재난</option>
+						<option value="드라마">드라마</option>
+						<option value="기타">기타</option>
 					</select>
 				</div>
 				<h3 class="blog-post-title">
@@ -115,7 +183,7 @@
 					CONTENT
 				</h3>
 				<div>
-					<textarea rows="8" cols="80" id="content" class="form-control">${admin.DRAMA_CONTENT }</textarea>
+					<textarea rows="8" cols="80" id="content" name="content" class="form-control">${admin.DRAMA_CONTENT }</textarea>
 				</div>
 				<h3 class="blog-post-title">
 					EPISODE
@@ -129,23 +197,34 @@
 				<div>
 					<input type="text" class="form-control search-wid" name="grade" value="${admin.DRAMA_GRADE }" readonly>
 				</div>
-				<h3 class="blog-post-title">
-					POSTER_IMAGE
-				</h3>
 				<div>
-					<input type="file" class="btn btn-primary btn-send-message" name="poster_image">
+					<br><br><strong>새로운 이미지 사용시 check</strong>
 				</div>
-				<h3 class="blog-post-title">
-					MAIN_IMAGE
-				</h3>
-				<div>
-					<input type="file" class="btn btn-primary btn-send-message" name="main_image">
+				<div id="show_file_menu">
+					<br><input type="checkbox" name="show_file" id="show_file"><span id="text">새로운 이미지 사용</span>
 				</div>
-				<h3 class="blog-post-title">
-					CONTENT_IMAGE
-				</h3>
-				<div>
-					<input type="file" class="btn btn-primary btn-send-message" name="content_image">
+				<div class="subb">
+					<h3 class="blog-post-title">
+						POSTER_IMAGE
+					</h3>
+					<div>
+						<input type="file" class="btn btn-primary btn-send-message" name="poster_image">
+					</div>
+					<h3 class="blog-post-title">
+						MAIN_IMAGE
+					</h3>
+					<div>
+						<input type="file" class="btn btn-primary btn-send-message" name="main_image">
+					</div>
+					<h3 class="blog-post-title">
+						CONTENT_IMAGE
+					</h3>
+					<div id="fileDiv">
+						<input type="file" class="btn btn-primary btn-send-message" name="content_image"><br>
+					</div>
+					<div>
+						<a href="#this" class="btn" id="addFile">파일 추가</a>
+					</div>	
 				</div>
 				
 				<div style="padding-top: 20pt; padding-bottom: 20pt">
