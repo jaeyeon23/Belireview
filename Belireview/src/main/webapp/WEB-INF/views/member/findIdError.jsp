@@ -9,7 +9,7 @@
 			history.back();
 		}
 		if(chk == 0){
-			alert('가입되어 있지 않는 이름입니다');
+			alert('일치하는 정보가 존재하지 않습니다.');
 			history.back();
 		}
 	}

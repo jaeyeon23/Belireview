@@ -35,11 +35,5 @@ public class LoginServiceImpl implements LoginService{
 		return loginDAO.findEmail(map);
 	}
 	
-	
-/*	@Override
-	public String checkMember(Map<String, Object> map) throws Exception {
-		return loginDAO.checkMember(map);
-
-	}*/
 
 }

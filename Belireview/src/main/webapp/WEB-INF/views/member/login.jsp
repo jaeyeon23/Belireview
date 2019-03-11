@@ -7,11 +7,33 @@
 <head>
 <meta charset="UTF-8">
 <link href="/brw/resources/Jcss/login.css" rel="stylesheet">
-
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 	if ('${message}' != "") {
 		alert('${message}');
 	}
+</script> -->
+<script>
+	if ('${message}' != "") {
+		alert('${message}');
+	}
+</script>	
+<script>	
+function fn_login() {  
+    
+    if($("#id").val().length < 1)
+    {
+     alert("아이디를 입력해주세요.");
+     return false;
+    }
+    else if($("#password").val().length < 1)
+    {
+     alert("비밀번호를 입력해주세요.");
+     return false;
+    }
+    else{
+    	return true;
+    }
+   }
 </script>
 <title>빌리뷰로그인</title>
 </head>
@@ -36,12 +58,12 @@
 				<div class="login_form">
 					<legend class="blind">로그인</legend>
 						<div class="row_group">
-							<form id="loginForm" method="post" action="/brw/member/login.br">
+							<form id="loginForm" method="post" action="login.br" >
 							<div class="join_row">
 								<span class="ps_box int_id"> 
 									<input type="text" id="id" name="id" class="int"  maxlength="20" placeholder="아이디"> 
-								<span class="error_next_box" id="idMsg" style="display: none" role="alert"></span>
-							</div>
+								</span>
+								<div class="error" id="err_empty_id" style="display:none" aria-live="assertive"></div>
 							<br>
 							<div class="join_row">
 								<span class="ps_box int_pass" id="pswd1Img"> 
@@ -59,7 +81,7 @@
 							</div>
 							<div class="btn_area">
 								<button type="submit" id="로그인" value="로그인"
-									class="btn_type btn_primary">
+									class="btn_type btn_primary" onclick="return fn_login()">
 									<span>로그인</span>
 								</button>
 							</div>
@@ -78,8 +100,9 @@
 						</center>
 					</div>
 				</div>
-
+		<br><br><br>
 		</div>
 	</div>
+
 </body>
 </html>
