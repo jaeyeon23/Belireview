@@ -39,7 +39,7 @@
                    
                     <div class="btn_area double">
                         <span><!-- tg-text=terms_button_cancel --><a href="/brw/main.br" id="btnCancel" class="btn_type btn_default" role="button">메인으로</a></span>
-                        <span><!-- tg-text=terms_button_agree --><a href="join.br" id="btnAgree" class="btn_type btn_primary" role="button">로그인</a></span>
+                        <span><!-- tg-text=terms_button_agree --><a href="loginForm.br" id="btnAgree" class="btn_type btn_primary" role="button">로그인</a></span>
                     </div>
                 </form>
 

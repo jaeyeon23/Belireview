@@ -79,8 +79,9 @@ VALUES
 		      WHERE DL.DRAMA_LIKE_NO=DC.DRAMA_NO AND DL.ID=DC.ID ORDER BY DC_LIKE DESC) ORDER BY RNUM ASC) WHERE RNUM BETWEEN 1 AND 3
 	</select>
 	
-	<select id="totalDramaComment" parameterType="hashmap" resultType="hashmap">
-		select count(*) from DRAMA_COMMENT where DRAMA_NO = #{DRAMA_NO}
+	<select id="totalDramaComment" parameterType="hashmap" resultType="int">
+		select count(*) as count from DRAMA_COMMENT where DRAMA_NO = 1
 	</select>
+
 
 </mapper>

@@ -53,9 +53,11 @@ public class Paging {
 		pagingHtml = new StringBuffer();
 		
 		if (currentPage > blockPage) {
+			pagingHtml.append("<li>");
 			pagingHtml.append("<a href=" + url + ".br?currentPage=" + (startPage - 1) + ">");
-			pagingHtml.append("&lt;");
+			pagingHtml.append("<span>&lt;</span>");
 			pagingHtml.append("</a>");
+			pagingHtml.append("</li>");
 		}
 
 		//������ ��ȣ.���� �������� ���������� �����ϰ� ��ũ�� ����.
@@ -82,14 +84,16 @@ public class Paging {
 
 		// ���� block ������
 		if (totalPage - startPage >= blockPage) {
+			pagingHtml.append("<li>");
 			pagingHtml.append("<a href=" + url + ".br?currentPage=" + (endPage + 1) + ">");
-			pagingHtml.append("&gt;");
+			pagingHtml.append("<span>&gt;</span>");
 			pagingHtml.append("</a>");
+			pagingHtml.append("</li>");
 		}
 	}
 
 	// Search�ִ� ������
-	public Paging(int currentPage, int totalCount, int blockCount, int blockPage, String url, int orderby, String searchNum, String searchBox){
+	public Paging(int currentPage, int totalCount, int blockCount, int blockPage, String url, String orderby, String searchNum, String searchBox){
 		
 		this.blockCount = blockCount;
 		this.blockPage = blockPage;
@@ -119,13 +123,17 @@ public class Paging {
 		// ���� block ������
 		pagingHtml = new StringBuffer();
 		if(currentPage > blockPage){
-			if(searchBox != "")
+			pagingHtml.append("<li>");
+			
+			if(orderby != "" || searchBox != "") 
 				pagingHtml.append("<a href=" + url + ".br?currentPage=" + (startPage - 1) + "&orderby=" + orderby + "&searchNum="+searchNum+ "&searchBox="+searchBox+">");
 			else                    
 				pagingHtml.append("<a href=" + url + ".br?currentPage=" + (startPage - 1) + ">");
-			pagingHtml.append("&lt;");
+			
+			pagingHtml.append("<span>&lt;</span>");
 			pagingHtml.append("</a>");
-			}
+			pagingHtml.append("</li>");
+		}
 		
 		
 		//������ ��ȣ, ���� �������� �ٸ��� ǥ��
@@ -143,7 +151,7 @@ public class Paging {
 			else{
 				pagingHtml.append("<li>");
 				pagingHtml.append("<a href=" + url + ".br?currentPage=" + i);
-				if(searchBox != "")
+				if(orderby != "" || searchBox != "")
 					pagingHtml.append("&orderby=" + orderby + "&searchBox=" + searchBox+"&searchNum="+searchNum);
 				pagingHtml.append(">");
 				pagingHtml.append(i);
@@ -154,12 +162,14 @@ public class Paging {
 		
 		// ���� block ������
 		if(totalPage - startPage >= blockPage){
+			pagingHtml.append("<li>");
 			pagingHtml.append("<a href=" + url + ".br?currentPage=" + (endPage + 1));
-			if(searchBox != "")
+			if(orderby != "" || searchBox != "")
 				pagingHtml.append("&orderby=" + orderby + "&searchBox=" + searchBox+"&searchNum="+searchNum);
 			pagingHtml.append(">");
-			pagingHtml.append("&gt;");
+			pagingHtml.append("<span>&gt;</span>");
 			pagingHtml.append("</a>");
+			pagingHtml.append("</li>");
 		}
 	}
 

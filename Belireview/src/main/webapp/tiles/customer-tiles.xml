@@ -76,22 +76,55 @@
     	<put-attribute name="body" value="/WEB-INF/views/user/userMovie.jsp"/>
     </definition>
     
+    <definition name="user" extends=".home">
+    	<put-attribute name="body" value="/WEB-INF/views/user/user.jsp"/>
+    </definition>
+    
+    <definition name="modify" extends=".home">
+    	<put-attribute name="body" value="/WEB-INF/views/user/modify.jsp"/>
+    </definition>
+    
+    <definition name="pwdCheck" extends=".home">
+    	<put-attribute name="body" value="/WEB-INF/views/user/pwdCheck.jsp"/>
+    </definition>
     
     
     
     
-    
+    <!-- 검색 -->
+        <definition name="mainSearch" extends=".home">
+    	<put-attribute name="body" value="/WEB-INF/views/main/mainSearch.jsp"/>
+    </definition>
     
     <!-- /user -->
    <!--  로그인 -->
     <definition name="loginForm" extends=".home">
     	<put-attribute name="body" value="/WEB-INF/views/member/login.jsp"/>
     </definition>
+    
     <definition name="findIdForm" extends=".home">
     	<put-attribute name="body" value="/WEB-INF/views/member/findId.jsp"/>
     </definition>
     
+    <definition name="findIdError" extends=".home">
+    	<put-attribute name="body" value="/WEB-INF/views/member/findIdError.jsp"/>
+    </definition>
     
+    <definition name="findIdOk" extends=".home">
+    	<put-attribute name="body" value="/WEB-INF/views/member/findIdOk.jsp"/>
+    </definition>
+    
+    <definition name="findPwForm" extends=".home">
+    	<put-attribute name="body" value="/WEB-INF/views/member/findPw.jsp"/>
+    </definition>
+    
+    <definition name="findPwOk" extends=".home">
+    	<put-attribute name="body" value="/WEB-INF/views/member/findPwOk.jsp"/>
+    </definition>
+    
+    <definition name="findPwError" extends=".home">
+    	<put-attribute name="body" value="/WEB-INF/views/member/findPwError.jsp"/>
+    </definition>
 
     
     <!-- 회원가입 -->

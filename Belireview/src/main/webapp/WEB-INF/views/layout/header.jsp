@@ -4,7 +4,25 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
+
+<script src="<c:url value='/resources/js/common.js'/>" charset="utf-8"></script>
+
 <script>
+  $(function(){
+		$("a[name='search']").on("click", function(e){ 
+            e.preventDefault();
+            openSearch();
+		});
+		
+		
+  });
+  function openSearch(){
+		var comSubmit = new ComSubmit();
+       comSubmit.setUrl("<c:url value='/mainSearch.br' />");
+       comSubmit.addParam("searchText",$("input[name='searchText']").val());
+       comSubmit.submit();
+	}		
+
 	  $(function(){
 		$(".abcd").css("display","none");
 		$(".abcd").click(function(){
@@ -32,7 +50,12 @@
               <div class="top"> <!-- top -->
                   <div class="container">
                       <div class="top-control">
-                          <a href="http://localhost:8080/brw/member/loginForm.br">로그인</a><span>•</span><a href="http://localhost:8080/brw/member/joinTerms.br">회원가입</a>
+                      	  <c:if test="${sessionScope.ID == null }">
+                          <a href="/brw/member/loginForm.br">로그인</a><span>•</span><a href="/brw/member/joinTerms.br">회원가입</a>
+                  		  </c:if>
+                  		   <c:if test="${sessionScope.ID != null }">
+                          <a href="/brw/member/logout.br">로그아웃</a><span>•</span><a href="/brw/user/user.br">마이페이지</a>
+                  		  </c:if>
                       </div>
                   </div>
               </div> <!-- top end -->
@@ -50,7 +73,8 @@
                                           <span class="icon-bar"></span>
                                           <span class="icon-bar"></span>
                                       </button> -->
-                                      <a class="navbar-brand" href="http://localhost:8080/brw/main.br"><img src="/brw/resources/images/logos.jpg" width="150px" alt=""></a>
+                                      <a class="navbar-brand" href="http://localhost:8080/brw/main.br">
+                                      <img src="/brw/resources/images/logos.jpg" width="150px" alt=""></a>
                                   </div>
 
                                   <!-- Collect the nav links, forms, and other content for toggling -->
@@ -66,7 +90,18 @@
                                           <li class="menu-search-form">
                                               <a href="#" id="open-srch-form"><img src="/brw/resources/images/srch.png" alt="srch"></a>
                                           </li>
-                                          <li><a href="#"><img src="/brw/resources/images/sample.JPG" alt="bag" width="60" height="45" style="border-radius:150px; margin-top:-10px; "></a></li>
+                                          <li>
+                                            <c:if test="${sessionScope.ID != null }">
+                                          	<a href="#">
+                                          	    <c:if test="${sessionScope.PROFILE_IMAGE == null }">
+                                          		<img src="/brw/resources/images/Temporary_img.JPG" alt="bag" width="60" height="45" style="border-radius:150px; margin-top:-10px; ">
+                                          		</c:if>
+                                          		<c:if test="${sessionScope.PROFILE_IMAGE != null }">
+                                          		<img src="/brw/resources/images/${sessionScope.PROFILE_IMAGE}" alt="bag" width="60" height="45" style="border-radius:150px; margin-top:-10px; ">
+                                          		</c:if>
+                                          	</a>
+                                          	</c:if>
+                                          </li>
                                           <li id="open-srch-form-mod">
                                               <div>
                                                   <form class="side-search">
@@ -87,13 +122,15 @@
                       <div class="srch-form">
                           <form class="side-search">
                               <div class="input-group">
-                                  <input type="text" class="form-control search-wid" placeholder="Search Here" aria-describedby="basic-addon2">
-                                  <a href="" class="input-group-addon btn-side-serach" id="basic-addon2"><i class="fa fa-search"></i></a>
+                                  <input type="text" name="searchText" class="form-control search-wid" placeholder="Search Here" aria-describedby="basic-addon2">
+                                  <a href="" name="search" class="input-group-addon btn-side-serach" id="basic-addon2">
+                                  <i class="fa fa-search"></i></a>
                               </div>
                           </form>
                       </div>
                   </div>
               </div> <!-- Nav -->
+              
               
               
               <div id="cat-nav">
@@ -133,5 +170,6 @@
               </div>
               </div>      
           </div> <!-- header -->
+          <%@ include file="/WEB-INF/views/include/include-body.jspf" %>
           </body>
 </html>

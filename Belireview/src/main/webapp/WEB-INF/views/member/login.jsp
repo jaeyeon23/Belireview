@@ -39,13 +39,13 @@
 							<form id="loginForm" method="post" action="/brw/member/login.br">
 							<div class="join_row">
 								<span class="ps_box int_id"> 
-									<input type="text" id="ID" name="ID" class="int"  maxlength="20" placeholder="아이디"> 
+									<input type="text" id="id" name="id" class="int"  maxlength="20" placeholder="아이디"> 
 								<span class="error_next_box" id="idMsg" style="display: none" role="alert"></span>
 							</div>
 							<br>
 							<div class="join_row">
 								<span class="ps_box int_pass" id="pswd1Img"> 
-								<input type="password" id="PASSWORD" name="PASSWORD" class="int" maxlength="20" placeholder="비밀번호"> 
+								<input type="password" id="password" name="password" class="int" maxlength="20" placeholder="비밀번호"> 
 								<span class="lbl"><span id="pswd1Span" class="step_txt"></span></span>
 									<div class="ly_v2" id="err_capslock" style="display: none;">
 										<div class="ly_box">
