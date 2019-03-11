@@ -39,7 +39,20 @@ public class UserServiceImpl implements UserService{
 	public List<Map<String, Object>> UserMovieAll(Map<String, Object> map) throws Exception {
 		return userDAO.UserMovieAll(map);
 	}
-
+	/*보고싶어요*/
+	@Override
+	public Map<String, Object> userWishList(Map<String, Object> map) throws Exception {
+		return userDAO.userWishList(map);
+	}
+	@Override
+	public void insertWishList(Map<String, Object> map) throws Exception {
+		userDAO.insertWishList(map);
+	}
+	@Override
+	public void updateWishList(Map<String, Object> map) throws Exception {
+		userDAO.updateWishList(map);
+	}
+	/*보고싶어요*/
 }
 
 

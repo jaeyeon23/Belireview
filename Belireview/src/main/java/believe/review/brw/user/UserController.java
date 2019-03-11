@@ -27,8 +27,6 @@ public class UserController {
 		mv.setViewName("user");
 		return mv;
 	}
-	
-	
 
 	@RequestMapping(value="/userModifyPass")  // 수정폼으로 이동전 비밀번호 확인 
 	public ModelAndView userModifyPass(){

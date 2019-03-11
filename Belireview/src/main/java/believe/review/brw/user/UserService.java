@@ -15,5 +15,13 @@ public interface UserService {
 	List<Map<String,Object>> UserMovieByRecent(Map<String, Object>  map) throws Exception;
 	
 	List<Map<String,Object>> UserMovieAll(Map<String, Object>  map) throws Exception;
+	
+	/*보고싶어요*/
+	Map<String, Object> userWishList(Map<String, Object> map) throws Exception;
+	
+	void insertWishList(Map<String, Object> map) throws Exception;
+	
+	void updateWishList(Map<String, Object> map) throws Exception;
+	/*보고싶어요*/
 		
 }

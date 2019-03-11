@@ -49,6 +49,35 @@
 			FROM MOVIE_LIKE
 			WHERE ID=#{ID}) ORDER BY MOVIE_DATE)
 	</select>
+	
+	<select id="userWishList" parameterType="hashmap" resultType="hashmap"><!-- 보고싶어요 -->
+		select * from mypage where mypage_id=#{id}
+	</select>
+	
+	<insert id="insertWishList" parameterType="hashmap"> <!-- 보고싶어요 저장-->
+		insert into mypage
+		<choose>
+		    <when  test='movie_no != null'>
+		      	(mypage_id,mypage_movie) values(#{id},#{movie_no})
+		    </when>
+		    <otherwise>
+		     	(mypage_id,mypage_drama) values(#{id},#{drama_no})
+		    </otherwise>
+	 	</choose>
+	</insert>
+	
+	<update id="updateWishList" parameterType="hashmap"><!-- 보고싶어요 수정-->
+		update mypage set 
+		<choose>
+			<when  test='movie_no != null'>
+		      	mypage_movie=#{movie_no}
+		    </when>
+		    <otherwise>
+		     	mypage_drama=#{drama_no}
+		    </otherwise>
+	    </choose>
+	    where mypage_id=#{id}
+	</update>
 
 	<!-- 수정후회원정보불러오기 -->
 	<select id="UserGo" parameterType="hashmap" resultType="hashmap">

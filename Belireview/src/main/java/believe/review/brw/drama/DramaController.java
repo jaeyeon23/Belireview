@@ -1,5 +1,6 @@
 package believe.review.brw.drama;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -74,15 +75,11 @@ public class DramaController {
 	public ModelAndView dramaDetail(CommandMap commandMap/*, HttpServletRequest request*/) throws Exception {
 
 		ModelAndView mv = new ModelAndView("dramaDetail");
-		
-		
 		/*HttpSession session = request.getSession();*/
-		
-		
-		Map<String,Object> map = dramaService.dramaDetail(commandMap.getMap());
-		List<Map<String,Object>> comment = dramaService.dramaCommentByLike(map);
-		List<Map<String,Object>> actor = dramaService.dramaActor(map); 
-		List<Map<String,Object>> detailgenre = dramaService.detailgenre(map);
+		Map<String,Object> map = dramaService.dramaDetail(commandMap.getMap());//상세보기
+		List<Map<String,Object>> comment = dramaService.dramaCommentByLike(map);//댓
+		List<Map<String,Object>> actor = dramaService.dramaActor(map); //출연배우
+		List<Map<String,Object>> detailgenre = dramaService.detailgenre(map);//비슷한장르
 		
 		/*Map<String,Object> insertcomment = dramaService.insertdramaComment(commandMap.getMap());*/
 		totalCount = (Integer)dramaService.totalDramaComment(map);
@@ -94,8 +91,6 @@ public class DramaController {
 		mv.addObject("totalCount",totalCount);
 	/*	mv.addObject("insertcomment",insertcomment);*/
 		
-		
-		
 		return mv;
 
 	}
@@ -104,30 +99,49 @@ public class DramaController {
 	public Map<String,Object> dramaDe(CommandMap commandMap) throws Exception {
 
 		Map<String,Object> mv = commandMap.getMap();
+		/*보고싶어요*/
+		System.out.println(mv.get("drama_no"));
+		System.out.println(mv.get("id"));
+		System.out.println(mv.get("wish"));
+		System.out.println(mv.get("rating"));
 		
-		System.out.println(commandMap.getMap().get("id"));
-		System.out.println(commandMap.getMap().get("wish"));
+		if(mv.get("wish")!=null) {
+			Map<String,Object> map = userService.userWishList(mv);
+			
+			if(map==null) {//위시리스트에 아무것도 없을때 
+				System.out.println("널");
+				userService.insertWishList(mv);
+			}
+			else {//위시리스트에 값이 있을때
+				System.out.println("하하");
+				String[] str = map.get("MYPAGE_DRAMA").toString().split(",");
+				boolean exist = false;
+				String drama_no = "";
+				for(String s : str) {
+					if(mv.get("drama_no").equals(s)) {
+						exist = true;
+					}else {
+						drama_no += s+",";
+					}
+				}
+				/*System.out.println(exist);*/
+				if(!exist) {
+					drama_no += mv.get("drama_no");
+					mv.put("add", "add");
+				}else {
+					mv.put("subtract", "subtract");
+				}
+				/*System.out.println(drama_no);*/
+				mv.put("drama_no", drama_no);
+				/*System.out.println(mv.get("drama_no"));*/
+				userService.updateWishList(mv);
+			}
+		}
+		/*평점*/
+		if(mv.get("rating")!=null) {
+			
+		}
 		
-		
-		
-		
-		/*HttpSession session = request.getSession();
-		
-		
-		Map<String,Object> map = dramaService.dramaDetail(commandMap.getMap());
-		List<Map<String,Object>> comment = dramaService.dramaCommentByLike(map);
-		List<Map<String,Object>> actor = dramaService.dramaActor(map); 
-		List<Map<String,Object>> detailgenre = dramaService.detailgenre(map);
-		
-		Map<String,Object> insertcomment = dramaService.insertdramaComment(commandMap.getMap());
-		totalCount = (Integer)dramaService.totalDramaComment(map);
-		
-		mv.put("map",map);
-		mv.put("comment",comment);
-		mv.put("actor",actor);
-		mv.put("detailgenre",detailgenre);
-		mv.put("totalCount",totalCount);
-		mv.addObject("insertcomment",insertcomment);*/
 		
 		return mv;
 
