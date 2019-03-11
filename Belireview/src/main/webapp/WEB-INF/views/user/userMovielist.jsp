@@ -119,7 +119,7 @@
 													<div class="Grid-zydj2q-0 cspjno">
 														<div class="Row-s1apwm9x-0 lowZpE">
 															<ul class="ContentGrid__ContentGridUsedInArchive-x2fbsz-1 gScTqD ContentGrid-x2fbsz-0 cwhjMF VisualUl-s1vzev56-0 hgAYVH">
-																//////////<c:forEach items="${userList}" var="movielist" >
+																<%-- <c:forEach items="${userList}" var="movielist" > --%>
 																<li class="ContentListItemWithPoster__Self-swai1z-0 hKRvvO"><a
 																	lng="ko-KR" title="배트맨 대 슈퍼맨: 저스티스의 시작"
 																	href="/ko-KR/contents/mdKBRkR"><div
