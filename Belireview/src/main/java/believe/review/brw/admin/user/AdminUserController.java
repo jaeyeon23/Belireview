@@ -25,11 +25,11 @@ public class AdminUserController {
 
 	private int currentPage = 1;	 
 	private int totalCount; 		 
-	private int blockCount = 9;	 
+	private int blockCount = 1;	 
 	private int blockPage = 5; 	 
 	private String pagingHtml;  
 	private Paging page;
-	private String filePath = "C:\\Users\\¹ÚÀç¿¬\\Desktop\\Belireview\\Belireview\\src\\main\\webapp\\resources\\images\\user_profile\\";
+	private String filePath = "C:\\Users\\ï¿½ï¿½ï¿½ç¿¬\\Desktop\\Belireview\\Belireview\\src\\main\\webapp\\resources\\images\\user_profile\\";
 	private File file;
 	/*
 	Set keyset = commandMap.keySet();
@@ -98,9 +98,9 @@ public class AdminUserController {
 		if(commandMap.containsKey("id") && commandMap.containsKey("password")) {
 			if(adminUserService.checkUser(commandMap.getMap()) > 0) {
 				adminUserService.deleteUserOne(commandMap.getMap());
-				alert_value = "»èÁ¦ ¼º°ø";
+				alert_value = "ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½";
 			}else {
-				alert_value = "»èÁ¦ ½ÇÆÐ : ºñ¹Ð¹øÈ£¸¦ È®ÀÎÇØÁÖ¼¼¿ä";
+				alert_value = "ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ : ï¿½ï¿½Ð¹ï¿½È£ï¿½ï¿½ È®ï¿½ï¿½ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½";
 			}
 		}
 		

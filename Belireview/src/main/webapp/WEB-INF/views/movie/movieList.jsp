@@ -8,7 +8,7 @@
    <link rel="stylesheet" href="/brw/resources/css/list.css">
 </head>
 <body>
-	<div class="row">
+	<div class="row a">
 		<c:forEach items="${list}" var="movieList" >
 			 <div class="col-sm-6 col-md-3">
 			 	<a href="/brw/movie/movieDetail.br">
