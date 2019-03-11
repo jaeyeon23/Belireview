@@ -37,7 +37,7 @@
 	<insert id="insertMember" parameterType="hashmap">
 		<![CDATA[
 		INSERT INTO MEMBER(MEMBER_NO, ID, PASSWORD, NAME, EMAIL, TEL, ADMIN, REGDATE, EMAIL_MARKETING, SMS_MARKETING) 
-		VALUES(SEQ_MEMBER_NO.nextVal, #{id}, #{password}, #{name}, #{email}, #{tel}, '0', SYSDATE , '1', '1')
+		VALUES(SEQ_MEMBER_NO.nextVal, #{id}, #{password}, #{name}, #{email}, #{tel}, '0', SYSDATE , #{email_marketing} , #{sms_marketing})
 		]]>
 	 </insert>  
 	 
@@ -47,6 +47,12 @@
    		   SELECT COUNT(*) FROM MEMBER WHERE ID = #{id}
    		]]>
    	 </select>
+   	 <!-- 이메일존재여부체크 -->
+	 <select id="checkMember" parameterType="hashmap" resultType="java.lang.Integer">
+		<![CDATA[
+			SELECT COUNT(email) FROM MEMBER WHERE EMAIL = #{email}
+		]]>
+	 </select>
 	
 </mapper>
    <!--   

@@ -13,7 +13,7 @@
 		<c:forEach items="${list}" var="dramaList" >
 			 <div class="col-sm-6 col-md-3">
 			 	<!-- <a href="#this" class="detail"> -->
-			 	<a href="/brw/drama/dramaDetail.br?DRAMA_NO=${dramaList.DRAMA_NO}&DRAMA_NAME=${dramaList.DRAMA_NAME}">
+			 	<a href="/brw/drama/dramaDetail.br?DRAMA_NO=${dramaList.DRAMA_NO}&DRAMA_NAME=${dramaList.DRAMA_NAME}&DRAMA_GENRE=${dramaList.DRAMA_GENRE}">
 			    <div class="thumbnail">
 			      <img src="/brw/resources/images/3-girls.jpg">
 			      <%-- <input type='hidden' class='IDX' value="${dramaList.DRAMA_NO}"> --%>
@@ -26,7 +26,14 @@
 			  </div>
 		</c:forEach> 
 	</div>
-	<%@ include file="/WEB-INF/views/include/include-body.jspf" %>
+	<nav>
+			<div class='pag-center'>
+				<ul class='pagination believe-pag'>
+					${page}
+				</ul>
+			</div>
+		</nav>
+	<%-- <%@ include file="/WEB-INF/views/include/include-body.jspf" %> --%>
 	<!-- <script>
 	 $(document).ready(function(){
          $(".detail").on("click", function(e){ //글쓰기 버튼

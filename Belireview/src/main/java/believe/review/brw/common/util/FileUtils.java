@@ -1,7 +1,6 @@
-/*package believe.review.brw.common.util;
+package believe.review.brw.common.util;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -15,47 +14,70 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 @Component("fileUtils")
-public class FileUtils {//user_profile\\
-	private static final String filePath = "C:\\Users\\ï¿½ï¿½ï¿½ç¿¬\\Desktop\\Belireview\\Belireview\\src\\main\\webapp\\resources\\images\\";
-	
-	public Map<String, Object> parseInsertFileInfo(HttpServletRequest request) throws Exception{
+public class FileUtils {
+	private static final String filePath = "C:\\Users\\¹ÚÀç¿¬\\Desktop\\Belireview\\Belireview\\src\\main\\webapp\\resources\\images\\";
+
+	public Map<String, Object> parseInsertFileInfo(Map<String,Object> map, HttpServletRequest request) throws Exception{
 		MultipartHttpServletRequest multipartHttpServletRequest = (MultipartHttpServletRequest)request;
 		Iterator<String> iterator = multipartHttpServletRequest.getFileNames();
 		
 		MultipartFile multipartFile = null;
 		String originalFileName = null;
 		String originalFileExtension = null;
-		String storedFileName = null;
+		String storedFileName = null;	//ÆÄÀÏ ÇÏ³ª¾¿
+		String poster_image = null;
+		String main_image = null;
+		String content_image = null;	//DB¿¡ ÀúÀåµÉ ÆÄÀÏµéÀÇ ÀÌ¸§ +=
+		int count = 1;
 		
-		List<Map<String, Object>> list = new ArrayList<Map<String,Object>>();
-		Map<String, Object> fileMap	= null; //listMap->fileMap
-		
-		String boardIdx = (String)map.get("IDX");
+		Map<String, Object> listMap = new HashMap<String, Object>();
 		
 		File file = new File(filePath);
+		
+		if(iterator.hasNext()) {
+			multipartFile = multipartHttpServletRequest.getFile(iterator.next());
+			if(multipartFile.isEmpty() == false) {
+				originalFileName = multipartFile.getOriginalFilename();
+				originalFileExtension = originalFileName.substring(originalFileName.lastIndexOf("."));
+				
+				poster_image = map.get("media") + "_poster_image_" + map.get("no") + originalFileExtension;
+			}
+			
+			listMap.put("poster_image", poster_image);
+		}
+		
+		if(iterator.hasNext()) {
+			multipartFile = multipartHttpServletRequest.getFile(iterator.next());
+			if(multipartFile.isEmpty() == false) {
+				originalFileName = multipartFile.getOriginalFilename();
+				originalFileExtension = originalFileName.substring(originalFileName.lastIndexOf("."));
+				
+				main_image = map.get("media") + "_main_image_" + map.get("no") + originalFileExtension;
+			}
+			
+			listMap.put("poster_image", poster_image);
+		}
 		
 		while(iterator.hasNext()) {
 			multipartFile = multipartHttpServletRequest.getFile(iterator.next());
 			if(multipartFile.isEmpty() == false) {
 				originalFileName = multipartFile.getOriginalFilename();
 				originalFileExtension = originalFileName.substring(originalFileName.lastIndexOf("."));
-				storedFileName = YogiUtils.getRandomString() + originalFileExtension;
 				
-				file = new File(filePath+storedFileName);
+				storedFileName = map.get("media") + "_content_image_" + map.get("no") + count++ + originalFileExtension;
+				if(content_image != null) {
+					content_image += ", ";
+				}
+				
+				content_image += storedFileName;
+						
+				file = new File(filePath + storedFileName);
 				multipartFile.transferTo(file);
-				
-				fileMap = new HashMap<String, Object>();
-				listMap.put("BOARD_IDX", boardIdx);
-				fileMap.put("ORIGINAL_FILE_NAME", originalFileName);
-				fileMap.put("STORED_FILE_NAME", storedFileName);
-				listMap.put("FILE_SIZE", multipartFile.getSize());
-				list.add(listMap);
-				
 			}
 		}
-		return fileMap;
-	}
-	
+		
+		listMap.put("content_image", content_image);
 
+		return listMap;
+	}
 }
-*/

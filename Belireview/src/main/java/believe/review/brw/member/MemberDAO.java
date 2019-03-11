@@ -14,7 +14,16 @@ public class MemberDAO extends AbstractDAO {
 		insert("member.insertMember", map);
 	}
 	
+	//아이디체크
+	public int checkId(String mem_id) throws Exception {
+		return (Integer)selectOne("member.checkId", mem_id);
+	}
 	
+	//이메일존재여부체크
+	public int checkMember(Map<String, Object> map)throws Exception{
+		return selectMemberId("member.checkMember",map);
+	}
+		
 	 
 }
 

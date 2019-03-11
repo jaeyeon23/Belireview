@@ -4,13 +4,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="/brw/resources/css/detail3.css">
- <meta charset="utf-8">
+<meta charset="utf-8">
+
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="">
-    <link rel="stylesheet"  href="/brw/resources/css/lightslider.css"/>
+   	<link rel="stylesheet" href="/brw/resources/css/detail3.css">
+   	
+    <link rel="stylesheet" href="/brw/resources/css/detailgenre.css">
+   	<script src="<c:url value='/resources/js/common.js'/>" charset="utf-8"></script>	
     <style>
     	ul{
 			list-style: none outside none;
@@ -33,30 +35,176 @@
 			width: 800px;
 		}
     </style>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script src="/brw/resources/js/lightslider.js"></script> 
-    <script>
-      
-    	 $(document).ready(function() {
-			$("#content-slider").lightSlider({
-                loop:true,
-              	auto:true,
-                keyPress:true
-            });
-            $('#image-gallery').lightSlider({
-                gallery:true,
-                item:1,
-                thumbItem:9,
-                slideMargin: 0,
-                speed:500,
-                auto:true,
-                loop:true,
-                onSliderLoad: function() {
-                    $('#image-gallery').removeClass('cS-hidden');
-                }  
-            });
+
+   
+    <script src="/brw/resources/js/jquery-1.4.4.min.js"></script>
+	<script src="/brw/resources/js/slides.jquery.js"></script>
+	<script>
+		$(function(){
+			$('#slides').slides({
+				preload: true,
+				preloadImage: '/brw/resources/images/loading.gif',
+				play: 5000,
+				pause: 2500,
+				hoverPause: true
+			});
 		});
-    </script>
+		$(function(){
+			var initValue = $('.gZASBp > div').attr("class").split(" ")[1];
+					
+			var f = $('.gZASBp > a.r1');
+			
+			f.hover(function() {
+				$('.gZASBp > div' ).removeClass(initValue).addClass('r1');
+			}, function() {
+				$('.gZASBp > div' ).removeClass('r1').addClass(initValue);
+			});
+			f.click(function(){
+				if(initValue == 'r1'){
+					initValue = 'r0';
+				}
+				else{
+					initValue = 'r1';
+				}
+			});
+			
+			f = $('.gZASBp > a.r2');
+			f.hover(function() {
+				$('.gZASBp > div' ).removeClass(initValue).addClass('r2');
+			}, function() {
+				$('.gZASBp > div' ).removeClass('r2').addClass(initValue);
+			});
+			f.click(function(){
+				if(initValue == 'r2'){
+					initValue = 'r0';
+				}
+				else{
+					initValue = 'r2';
+				}
+			});
+			
+			f = $('.gZASBp > a.r3');
+			f.hover(function() {
+				$('.gZASBp > div' ).removeClass(initValue).addClass('r3');
+			}, function() {
+				$('.gZASBp > div' ).removeClass('r3').addClass(initValue);
+			});
+			f.click(function(){
+				if(initValue == 'r3'){
+					initValue = 'r0';
+				}else{
+					initValue = 'r3';
+				}
+			});
+			
+			f = $('.gZASBp > a.r4');
+			f.hover(function() {
+				$('.gZASBp > div' ).removeClass(initValue).addClass('r4');
+			}, function() {
+				$('.gZASBp > div' ).removeClass('r4').addClass(initValue);
+			});
+			f.click(function(){
+				if(initValue == 'r4'){
+					initValue = 'r0';
+				}
+				else{
+					initValue = 'r4';
+				}
+			});
+			
+			f = $('.gZASBp > a.r5');
+			f.hover(function() {
+				$('.gZASBp > div' ).removeClass(initValue).addClass('r5');
+			}, function() {
+				$('.gZASBp > div' ).removeClass('r5').addClass(initValue);
+			});
+			f.click(function(){
+				if(initValue == 'r5'){
+					initValue = 'r0';
+				}
+				else{
+					initValue = 'r5';
+				}
+			});
+			
+			f = $('.gZASBp > a.r6');
+			f.hover(function() {
+				$('.gZASBp > div' ).removeClass(initValue).addClass('r6');
+			}, function() {
+				$('.gZASBp > div' ).removeClass('r6').addClass(initValue);
+			});
+			f.click(function(){
+				if(initValue == 'r6'){
+					initValue = 'r0';
+				}
+				else{
+					initValue = 'r6';
+				}
+			});
+			
+			f = $('.gZASBp > a.r7');
+			f.hover(function() {
+				$('.gZASBp > div' ).removeClass(initValue).addClass('r7');
+			}, function() {
+				$('.gZASBp > div' ).removeClass('r7').addClass(initValue);
+			});
+			f.click(function(){
+				if(initValue == 'r7'){
+					initValue = 'r0';
+				}
+				else{
+					initValue = 'r7';
+				}
+			});
+			
+			f = $('.gZASBp > a.r8');
+			f.hover(function() {
+				$('.gZASBp > div' ).removeClass(initValue).addClass('r8');
+			}, function() {
+				$('.gZASBp > div' ).removeClass('r8').addClass(initValue);
+			});
+			f.click(function(){
+				if(initValue == 'r8'){
+					initValue = 'r0';
+				}
+				else{
+					initValue = 'r8';
+				}
+			});
+			
+			f = $('.gZASBp > a.r9');
+			f.hover(function() {
+				$('.gZASBp > div' ).removeClass(initValue).addClass('r9');
+			}, function() {
+				$('.gZASBp > div' ).removeClass('r9').addClass(initValue);
+			});
+			f.click(function(){
+				if(initValue == 'r9'){
+					initValue = 'r0';
+				}
+				else{
+					initValue = 'r9';
+				}
+			});
+			
+			f = $('.gZASBp > a.r10');
+			f.hover(function() {
+				$('.gZASBp > div' ).removeClass(initValue).addClass('r10');
+			}, function() {
+				$('.gZASBp > div' ).removeClass('r10').addClass(initValue);
+			});
+			f.click(function(){
+				if(initValue == 'r10'){
+					initValue = 'r0';
+				}
+				else{
+					initValue = 'r10';
+				}
+			});
+		});
+	</script>
+	
+	<link rel="stylesheet" href="/brw/resources/css/global.css">
 </head>
 <body>
 	<div id="root">
@@ -105,7 +253,7 @@
 													<div class="ContentJumbotron__PaneInner-yf8npk-13 eJceNg">
 														<h1 class="ContentJumbotron__Title-yf8npk-14 jCFeyL">${map.DRAMA_NAME}</h1><!-- 제목 -->
 														<div class="ContentJumbotron__Detail-yf8npk-15 bJHRjP">${map.DRAMA_DATE} ・ ${map.DRAMA_GENRE} ・ ${map.DRAMA_CHANNEL}</div><!-- 개봉일 장르 채널 -->
-														<div class="ContentJumbotron__ContentRatings-yf8npk-16 epsYAr">${map.DRAMA_GRADE}&nbsp;&nbsp;・&nbsp;&nbsp;<!-- <em>예상 ★2.7</em> --><!-- 평점 -->
+														<div class="ContentJumbotron__ContentRatings-yf8npk-16 epsYAr">평점 ★${map.DRAMA_GRADE}&nbsp;&nbsp;・&nbsp;&nbsp;<!-- <em>예상 ★2.7</em> --><!-- 평점 -->
 														</div>
 														<div
 															class="ContentJumbotron__ButtonBlock-yf8npk-17 bqrRYB">
@@ -162,6 +310,16 @@
 																			class="RatingControl__StarImg-s2c1yoc-9 irzhJG UIImg-s3jz6tx-0 gBImux"
 																			src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0NCIgaGVpZ2h0PSI0NCIgdmlld0JveD0iMCAwIDQ0IDQ0Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHBhdGggZmlsbD0iI0ZGREQ2MyIgZD0iTTIyIDMzLjQ0NEw5LjgzIDQyLjMyN2MtLjc4NC41NzItMS44NDItLjE5Ni0xLjUzOS0xLjExOGw0LjY4Ny0xNC4zMkwuNzY5IDE4LjA2Yy0uNzg3LS41NjktLjM4My0xLjgxMi41ODgtMS44MWwxNS4wNjcuMDMzIDQuNjI0LTE0LjM0Yy4yOTgtLjkyNCAxLjYwNi0uOTI0IDEuOTA0IDBsNC42MjQgMTQuMzQgMTUuMDY3LS4wMzNjLjk3MS0uMDAyIDEuMzc1IDEuMjQxLjU4OCAxLjgxbC0xMi4yMDkgOC44MjkgNC42ODggMTQuMzJjLjMwMi45MjItLjc1NiAxLjY5LTEuNTQgMS4xMThMMjIgMzMuNDQ0eiIvPgogICAgPC9nPgo8L3N2Zz4K"></span>
 																	</div>
+																	<a class="r10" ></a>
+																	<a class="r9" ></a>
+																	<a class="r8" ></a>
+																	<a class="r7" ></a>
+																	<a class="r6" ></a>
+																	<a class="r5" ></a>
+																	<a class="r4" ></a>
+																	<a class="r3" ></a>
+																	<a class="r2" ></a>
+																	<a class="r1" ></a>
 																</div>
 															</div>
 														</div>
@@ -175,27 +333,108 @@
 									<div class="MaxWidthGrid-s193eej0-0 bWXpcH">
 										<div class="MaxWidthRow-s14yonsc-0 dCZZZZ">
 											<div class="MaxWidthCol-s1fpp771-0 fGpdkH">
-												<div
-													class="ContentMyCommentSection__SectionBlock-mhuscg-0 IsPDs">
+											<!-- 코멘트 작성 전 창 -->
+												<div class="ContentMyCommentSection__SectionBlock-mhuscg-0 IsPDs">
 													<div class="RoundedCornerBlock-s17n38ib-0 gPZLbT">
-														<section
-															class="ContentMyCommentSection__LeaveCommentSection-mhuscg-1 dxGvFB">
+														<section class="ContentMyCommentSection__LeaveCommentSection-mhuscg-1 dxGvFB">
 															<div class="Grid-zydj2q-0 cspjno">
 																<div class="Row-s1apwm9x-0 lowZpE">
-																	<div
-																		class="ContentMyCommentSection__LeaveCommentBlock-mhuscg-2 bvmyee">
+																	<div class="ContentMyCommentSection__LeaveCommentBlock-mhuscg-2 bvmyee">
 																		<h3
 																			class="ContentMyCommentSection__Title-mhuscg-11 inwTWL">이
 																			작품에 대한 김상협 님의 평가를 글로 남겨보세요.</h3>
 																		<div
 																			class="ContentMyCommentSection__ButtonBlock-mhuscg-12 kTSrnl">
-																			<button
-																				class="ContentMyCommentSection__LeaveCommentButton-mhuscg-10 kYniqf MediumButton-lenhbs-0 kzufqJ Button-s48yp1i-0 guqtOb StylelessButton-phxvo7-0 gsSopE">코멘트
-																				남기기</button>
+																			
+																			 <!-- modal 구동 버튼 (trigger) -->
+																			 <!-- 코멘트 작성창 -->
+																			<button type="button" class="ContentMyCommentSection__LeaveCommentButton-mhuscg-10 kYniqf MediumButton-lenhbs-0 kzufqJ Button-s48yp1i-0 guqtOb StylelessButton-phxvo7-0 gsSopE"
+																				data-toggle="modal"
+																				data-target="#myModal">코멘트 남기기</button>
+																		
+																			<!-- Modal -->
+																			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+																				<div class="modal-dialog" role="document">
+																					<div class="modal-content">
+																						<div class="modal-header">
+																							<button type="button" class="close"
+																								data-dismiss="modal" aria-label="Close">
+																								<span aria-hidden="true">&times;</span>
+																							</button>
+																							<h4 class="modal-title" id="myModalLabel" align="middle"><strong>${map.DRAMA_NAME}</strong></h4>
+																						
+																						</div>
+																						<div class="modal-body" align="center">
+																						<div class="row">
+																							<textarea style="resize: none;" name="comment" cols="70" rows="20" placeholder="이 작품에 대한 생각을 자유롭게 표현해주세요."></textarea></td>
+																							
+																						</div>
+																						</div>
+																						<div class="modal-footer">
+																						<button type="submit" class="btn btn-default" data-dismiss="modal">작성</button>
+																						
+																						</div>
+																				</div>
 																		</div>
 																	</div>
-																</div>
-															</div>
+																<%-- 	<!-- 코멘트 작성 완료시 뜨는 창 -->
+																				<div
+																					class="ContentMyCommentSection__SectionBlock-mhuscg-0 IsPDs">
+																					<div class="RoundedCornerBlock-s17n38ib-0 gPZLbT">
+																						<div class="Grid-zydj2q-0 cspjno">
+																							<div class="Row-s1apwm9x-0 lowZpE">
+																								<section
+																									class="ContentMyCommentSection__MyCommentSection-mhuscg-3 jAXTYm">
+																									<div
+																										class="ContentMyCommentSection__MyCommentBlock-mhuscg-6 fmWQqh">
+																										<div
+																											class="ContentMyCommentSection__MyProfilePhotoBlock-mhuscg-4 jKiAlO">
+																											<div
+																												class="ProfilePhoto__Self-s1v3isfu-1 fpMzxR RoundedImageBlock-k5m4n5-0 gUZYtN">
+																												<div
+																													class="ProfilePhoto__ProfilePhotoImage-s1v3isfu-0 jawsmT"></div>
+																												<div
+																													class="ProfilePhoto__DefaultImageContainer-s1v3isfu-2 kPGxuy">
+																													<img
+																														class="defaultImage__ProfileImg-s1kn91bx-1 iaxVtx"
+																														src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDQ4IDQ4Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgZmlsbD0iI0UwRTBFMCI+CiAgICAgICAgICAgIDxwYXRoIGQ9Ik0yNCAyMS4yNzhhOC41NyA4LjU3IDAgMCAxLTguNTcxLTguNTdBOC41NzEgOC41NzEgMCAxIDEgMjQgMjEuMjc3TTQzLjUxOSA0My44NjVjLjU2NCAwIDEuMDMzLS40NjggMS4wMDMtMS4wMzFDNDMuOTYzIDMyLjQyNCAzNC45ODkgMjQuMTUgMjQgMjQuMTVjLTEwLjk4OSAwLTE5Ljk2MyA4LjI3NC0yMC41MjIgMTguNjgzLS4wMy41NjMuNDM5IDEuMDMgMS4wMDMgMS4wM2gzOS4wMzh6Ii8+CiAgICAgICAgPC9nPgogICAgPC9nPgo8L3N2Zz4K"
+																														alt="김상협의 사진">
+																												</div>
+																											</div>
+																										</div>
+																										<div
+																											class="ContentMyCommentSection__MyComment-mhuscg-5 iBmFgp">
+																											<div
+																												class="TextTruncate__Self-wvv1uj-0 edeoAV">
+																												<div
+																													class="TextTruncate__Text-wvv1uj-1 gLsCNn"
+																													style="white-space: pre-line;">${ }</div>
+																											</div>
+																										</div>
+																										<ul
+																											class="ContentMyCommentSection__CommentUpdateButtons-mhuscg-7 UbRpK VisualUl-s1vzev56-0 hgAYVH">
+																											<li
+																												class="ContentMyCommentSection__CommentUpdateButtonListItem-mhuscg-8 rEOgj"><button
+																													class="ContentMyCommentSection__CommentUpdateButton-mhuscg-9 eSMTCV StylelessButton-phxvo7-0 gsSopE">
+																													<img
+																														src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOCIgaGVpZ2h0PSIxOCIgdmlld0JveD0iMCAwIDE4IDE4Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHBhdGggZmlsbD0iI0EwQTBBMCIgZD0iTTUuMjUgMTQuMjVoNy41di03LjVoMS41VjE1YS43NS43NSAwIDAgMS0uNzUuNzVoLTlhLjc1Ljc1IDAgMCAxLS43NS0uNzVWNi43NWgxLjV2Ny41ek0xMiA0LjVoMy43NVY2SDIuMjVWNC41SDZWM2EuNzUuNzUgMCAwIDEgLjc1LS43NWg0LjVBLjc1Ljc1IDAgMCAxIDEyIDN2MS41em0tMS41IDB2LS43NWgtM3YuNzVoM3pNNi43NSA2Ljc1aDEuNXY2Ljc1aC0xLjVWNi43NXptMyAwaDEuNXY2Ljc1aC0xLjVWNi43NXoiLz4KICAgIDwvZz4KPC9zdmc+Cg=="
+																														alt="delete comment">삭제
+																												</button></li>
+																											<li
+																												class="ContentMyCommentSection__CommentUpdateButtonListItem-mhuscg-8 rEOgj"><button
+																													class="ContentMyCommentSection__CommentUpdateButton-mhuscg-9 eSMTCV StylelessButton-phxvo7-0 gsSopE">
+																													<img
+																														src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOCIgaGVpZ2h0PSIxOCIgdmlld0JveD0iMCAwIDE4IDE4Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHBhdGggZmlsbD0iI0EwQTBBMCIgZD0iTTIuMTggMTUuMzlsLjcwMy0zLjk4IDMuNzEzIDMuNzEyLTMuOTgxLjcwMmEuMzc0LjM3NCAwIDAgMS0uNDM0LS40MzR6bTEuNDk4LTQuNzc2bDYuMzY0LTYuMzY0IDMuNzEzIDMuNzEyLTYuMzY0IDYuMzY0LTMuNzEzLTMuNzEyek0xNS42MDcgNS4wNGEuNzUuNzUgMCAwIDEgMCAxLjA2bC0xLjA2IDEuMDYxLTMuNzEzLTMuNzEyIDEuMDYtMS4wNmEuNzUuNzUgMCAwIDEgMS4wNiAwbDIuNjUzIDIuNjUxeiIvPgogICAgPC9nPgo8L3N2Zz4K"
+																														alt="edit comment">수정
+																												</button></li>
+																										</ul>
+																									</div>
+																								</section>
+																							</div>
+																						</div>
+																					</div>
+																				</div> --%>
+																		</div>
 														</section>
 													</div>
 												</div>
@@ -238,14 +477,11 @@
 																		<ul class="VisualUl-s1vzev56-0 hgAYVH">
 																			<li
 																				class="ContentReasonSection__ReasonListItem-s1eie0l9-2 ikOkkg"><div
-																					class="ContentReasonSection__ReasonTitle-s1eie0l9-3 hOKaLN">선호하는
-																					장르</div>
+																					class="ContentReasonSection__ReasonTitle-s1eie0l9-3 hOKaLN">선호하는 장르</div>
 																				<div
 																					class="ContentReasonSection__Tags-s1eie0l9-6 kCQkjw ContentReasonSection__ReasonValue-s1eie0l9-5 fIyVCO">
 																					<span class="Tag__TagLink-u797lx-0 cwYdug"
-																						color="#00aae6">#장르</span> <span
-																						class="Tag__TagLink-u797lx-0 dDivuT"
-																						color="#ff8644">#장르</span>
+																						color="#00aae6">#${map.DRAMA_GENRE}</span> 
 																				</div></li>
 																		</ul>
 																	</div>
@@ -254,23 +490,28 @@
 																</div>
 															</div>
 														</section>
+														
 														<section class="SectionWithHeader__Self-s1eyxltb-0 gAYeFO">
+														
 															<div class="Grid-zydj2q-0 cspjno">
 																<div class="Row-s1apwm9x-0 lowZpE">
 																	<header
 																		class="SectionWithHeader__Header-s1eyxltb-1 cuiACK">
 																		<h2 class="SectionWithHeader__Title-s1eyxltb-2 kwjefp">기본
 																			정보</h2>
-																		<div
-																			class="SectionWithHeader__TopRight-s1eyxltb-3 bZaEfL">
+																		
 																			<div
-																				class="SectionWithViewMore__ViewMore-xtbl7q-0 bhbIbv">
-																				<a href="/brw/movie/movieInfo.br">더보기</a>
+																				class="SectionWithHeader__TopRight-s1eyxltb-3 bZaEfL">
+																				<div
+																					class="SectionWithViewMore__ViewMore-xtbl7q-0 bhbIbv">
+																					<a href="/brw/drama/dramaInfo.br?DRAMA_NO=${map.DRAMA_NO}">더보기</a>
+																				</div>
 																			</div>
-																		</div>
+																		
 																	</header>
 																</div>
 															</div>
+															
 															<div class="Grid-zydj2q-0 cspjno">
 																<div class="Row-s1apwm9x-0 lowZpE">
 																	<article
@@ -451,7 +692,7 @@
 																	<header
 																		class="SectionWithHeader__Header-s1eyxltb-1 cuiACK">
 																		<h2 class="SectionWithHeader__Title-s1eyxltb-2 kwjefp">코멘트</h2>
-																		<span class="TitleSuffixForNumber-l2d30g-0 ejtPKl">4000+</span>
+																		<span class="TitleSuffixForNumber-l2d30g-0 ejtPKl">${totalCount}</span>
 																		<div
 																			class="SectionWithHeader__TopRight-s1eyxltb-3 bZaEfL">
 																			<div
@@ -557,15 +798,14 @@
 															</div>
 															<div class="Grid-zydj2q-0 cspjno">
 																<div class="Row-s1apwm9x-0 lowZpE">
-																	<hr
-																		class="Divider__StylingMergedDivider-s11un6bw-1 kAeKXS Divider-s11un6bw-0 cVxSEp">
+																	<hr class="Divider__StylingMergedDivider-s11un6bw-1 kAeKXS Divider-s11un6bw-0 cVxSEp">
 																</div>
 															</div>
 														</section>
 													</div>
 												</div>
 
-												<div class="RoundedCornerBlock-s17n38ib-0 iyaHUY">
+	<div class="RoundedCornerBlock-s17n38ib-0 iyaHUY">
 													<section class="SectionWithHeader__Self-s1eyxltb-0 gAYeFO">
 														<div class="Grid-zydj2q-0 cspjno">
 															<div class="Row-s1apwm9x-0 lowZpE">
@@ -573,185 +813,98 @@
 																	class="SectionWithHeader__Header-s1eyxltb-1 cuiACK">
 																	<h2 class="SectionWithHeader__Title-s1eyxltb-2 kwjefp">갤러리</h2>
 																	<span class="TitleSuffixForNumber-l2d30g-0 ejtPKl">703</span>
-																	<div
-																		class="SectionWithHeader__TopRight-s1eyxltb-3 bZaEfL">
-																	</div>
+																	<div class="SectionWithHeader__TopRight-s1eyxltb-3 bZaEfL">
+																			
+																		</div>
 																</header>
 															</div>
 														</div>
-														<div
-															class="PrimitiveHorizontalScrollable__ScrollBarContainer-hy4esm-0 hUyjJn">
-															<div class="item">
-																<ul id="content-slider" class="content-slider">
-																	<li></li>
-																	<li></li>
-																	<li>
-																		<h3>3</h3>
-																	</li>
-																	<li>
-																		<h3>4</h3>
-																	</li>
-																	<li>
-																		<h3>5</h3>
-																	</li>
-																	<li>
-																		<h3>6</h3>
-																	</li>
-																</ul>
-															</div>
-															<div class="RoundedCornerBlock-s17n38ib-0 iyaHUY">
-																<section
-																	class="SectionWithHeader__Self-s1eyxltb-0 gAYeFO">
-																	<div class="Grid-zydj2q-0 cspjno">
-																		<div class="Row-s1apwm9x-0 lowZpE">
-																			<header
-																				class="SectionWithHeader__Header-s1eyxltb-1 cuiACK">
-																				<h2
-																					class="SectionWithHeader__Title-s1eyxltb-2 kwjefp">비슷한
-																					장르</h2>
-																				<span class="TitleSuffixForNumber-l2d30g-0 ejtPKl">703</span>
-																				<div
-																					class="SectionWithHeader__TopRight-s1eyxltb-3 bZaEfL">
-																					<div
-																						class="SectionWithViewMore__ViewMore-xtbl7q-0 bhbIbv">
-																						<a href="/brw/movie/movieComment.br">더보기</a>
-																					</div>
-																				</div>
-																			</header>
-																		</div>
-																	</div>
-																	<div
-																		class="PrimitiveHorizontalScrollable__ScrollBarContainer-hy4esm-0 hUyjJn">
-																		<div
-																			class="PrimitiveHorizontalScrollable__ScrollBar-hy4esm-1 bVhHTK">
-																			<div
-																				class="PrimitiveHorizontalScrollable__ScrollingInner-hy4esm-2 iGzmWK">
-																				<div class="Grid-zydj2q-0 cspjno">
-																					<div class="Row-s1apwm9x-0 lowZpE">
-																						<ul
-																							class="ContentDeckSection__DeckHorizontalUl-s1xkjjf8-0 dGBnhH HorizontalUl__StyledHorizontalUl-s1lfz4bc-0 eVxIzP VisualUl-s1vzev56-0 hgAYVH">
-																							<li
-																								class="ContentDeckSection__DeckCollage-s1xkjjf8-1 eHppBK HorizontalListItem-tt0z2b-0 hRbPKu">
-																								<a lng="ko-KR" title="단 1%의 반전이라도!!!!!!"
-																								href="/ko-KR/decks/SAzhL1LStc7d">
-																									<div
-																										class="ContentDeckSection__DeckPostersBlock-s1xkjjf8-2 hTJJpD">
-																										<img src="/brw/resources/images/3-girls.jpg">
-																									</div>
-																									<ul
-																										class="ContentDeckSection__DeckInfo-s1xkjjf8-3 eoOquJ VisualUl-s1vzev56-0 hgAYVH">
-																										<li
-																											class="ContentDeckSection__DeckTitle-s1xkjjf8-4 gGVjvL"><div
-																												class="TextTruncate__Self-wvv1uj-0 laNFWG">
-																												<div
-																													class="TextTruncate__Text-wvv1uj-1 gLsCNn"
-																													style="white-space: pre-line;">단 1%의
-																													반전이라도!!!!!!</div>
-																											</div></li>
-																										<li
-																											class="ContentDeckSection__DeckLikeCount-s1xkjjf8-5 iKvIaj">좋아요
-																											2426</li>
-																									</ul>
-																							</a>
-																							</li>
-																							
-																							
-																							<li class="ContentDeckSection__DeckCollage-s1xkjjf8-1 eHppBK HorizontalListItem-tt0z2b-0 hRbPKu"><a
-																								lng="ko-KR" title="IN THE CINEMA"
-																								href="/ko-KR/decks/4Y0spXPuIie6"><div
-																										class="ContentDeckSection__DeckPostersBlock-s1xkjjf8-2 hTJJpD">
-																										<
-																										<div
-																											class="LazyLoadingBackground__StylingMerged-cgbyi4-2 fiwrWr LazyLoadingBackground__Self-cgbyi4-0 dxPvni">
-																											<span
-																												class="LazyLoadingBackground__BackgroundImage-cgbyi4-1 bqtNip"
-																												data-background-image-id="223"><img class="fiwrWr" src="/brw/resources/images/3-girls.jpg"></span>
-																										</div>
-																									</div>
-																									<ul
-																										class="ContentDeckSection__DeckInfo-s1xkjjf8-3 eoOquJ VisualUl-s1vzev56-0 hgAYVH">
-																										<li
-																											class="ContentDeckSection__DeckTitle-s1xkjjf8-4 gGVjvL"><div
-																												class="TextTruncate__Self-wvv1uj-0 laNFWG">
-																												<div
-																													class="TextTruncate__Text-wvv1uj-1 gLsCNn"
-																													style="white-space: pre-line;">IN THE
-																													CINEMA</div>
-																											</div></li>
-																										<li
-																											class="ContentDeckSection__DeckLikeCount-s1xkjjf8-5 iKvIaj">좋아요
-																											54</li>
-																									</ul></a></li>
-																							<li
-																								class="ContentDeckSection__DeckCollage-s1xkjjf8-1 eHppBK HorizontalListItem-tt0z2b-0 hRbPKu"><a
-																								lng="ko-KR" title="신"
-																								href="/ko-KR/decks/SIycdWakv3Ju"><div
-																										class="ContentDeckSection__DeckPostersBlock-s1xkjjf8-2 hTJJpD">
-																										<div
-																											class="LazyLoadingBackground__StylingMerged-cgbyi4-2 fiwrWr LazyLoadingBackground__Self-cgbyi4-0 dxPvni">
-																											<span
-																												class="LazyLoadingBackground__BackgroundImage-cgbyi4-1 bqtNip"
-																												data-background-image-id="224"></span>
-																										</div>
-																										<div
-																											class="LazyLoadingBackground__StylingMerged-cgbyi4-2 fiwrWr LazyLoadingBackground__Self-cgbyi4-0 dxPvni">
-																											<span
-																												class="LazyLoadingBackground__BackgroundImage-cgbyi4-1 bqtNip"
-																												data-background-image-id="225"></span>
-																										</div>
-																										<div
-																											class="LazyLoadingBackground__StylingMerged-cgbyi4-2 fiwrWr LazyLoadingBackground__Self-cgbyi4-0 dxPvni">
-																											<span
-																												class="LazyLoadingBackground__BackgroundImage-cgbyi4-1 bqtNip"
-																												data-background-image-id="226"></span>
-																										</div>
-																										<div
-																											class="LazyLoadingBackground__StylingMerged-cgbyi4-2 fiwrWr LazyLoadingBackground__Self-cgbyi4-0 dxPvni">
-																											<span
-																												class="LazyLoadingBackground__BackgroundImage-cgbyi4-1 bqtNip"
-																												data-background-image-id="227"></span>
-																										</div>
-																									</div>
-																									<ul
-																										class="ContentDeckSection__DeckInfo-s1xkjjf8-3 eoOquJ VisualUl-s1vzev56-0 hgAYVH">
-																										<li
-																											class="ContentDeckSection__DeckTitle-s1xkjjf8-4 gGVjvL"><div
-																												class="TextTruncate__Self-wvv1uj-0 laNFWG">
-																												<div
-																													class="TextTruncate__Text-wvv1uj-1 gLsCNn"
-																													style="white-space: pre-line;">신</div>
-																											</div></li>
-																										<li
-																											class="ContentDeckSection__DeckLikeCount-s1xkjjf8-5 iKvIaj">좋아요
-																											43</li>
-																									</ul></a></li>
-																							<div
-																								class="SpinnerContainer__Self-s16nvp7b-0 dvymnj"></div>
-																						</ul>
-																					</div>
-																				</div>
+														
+															
+	<div id="container"> 
+		<div id="example">
+			<!-- <img src="/brw/resources/images//new-ribbon.png" width="112" height="112" alt="New Ribbon" id="ribbon"> -->
+			<div id="slides">
+				<div class="slides_container">
+					<img src="/brw/resources/images/3-girls.jpg" width="570" height="270" alt="Slide 1">
+					<!-- <a href="http://www.flickr.com/photos/stephangeyer/3020487807/" title="Taxi | Flickr - Photo Sharing!" target="_blank"> -->
+					
+					<img src="/brw/resources/images/3-jacket.jpg" width="570" height="270" alt="Slide 2"></a>
+					
+					<!-- <a href="http://www.flickr.com/photos/childofwar/2984345060/" title="Happy Bokeh raining Day | Flickr - Photo Sharing!" target="_blank"> -->
+					<img src="/brw/resources/images/3-man.jpg" width="570" height="270" alt="Slide 3"></a>
+					
+					<!-- <a href="http://www.flickr.com/photos/b-tal/117037943/" title="We Eat Light | Flickr - Photo Sharing!" target="_blank"> -->
+					<img src="/brw/resources/images//slide-4.jpg" width="570" height="270" alt="Slide 4"></a>
+					
+					<!-- <a href="http://www.flickr.com/photos/bu7amd/3447416780/" title="“I must go down to the sea again, to the lonely sea and the sky; and all I ask is a tall ship and a star to steer her by.” | Flickr - Photo Sharing!" target="_blank"> -->
+					<img src="/brw/resources/images/slide-5.jpg" width="570" height="270" alt="Slide 5"></a>
+					
+					<!-- <a href="http://www.flickr.com/photos/streetpreacher/2078765853/" title="twelve.inch | Flickr - Photo Sharing!" target="_blank"> -->
+					<img src="/brw/resources/images//slide-6.jpg" width="570" height="270" alt="Slide 6"></a>
+					
+					<!-- <a href="http://www.flickr.com/photos/aftab/3152515428/" title="Save my love for loneliness | Flickr - Photo Sharing!" target="_blank"> -->
+					<img src="/brw/resources/images/slide-7.jpg" width="570" height="270" alt="Slide 7"></a>
+				</div>
+				
+				<a href="#" class="prev">
+				<img src="/brw/resources/images/arrow-prev.png" width="24" height="43" alt="Arrow Prev"></a>
+				
+				<a href="#" class="next">
+				<img src="/brw/resources/images/arrow-next.png" width="24" height="43" alt="Arrow Next"></a>
+				
+			</div>
+			<img src="/brw/resources/images/example-frame.png" width="739" height="341" alt="Example Frame" id="frame">
+		</div>
+	</div>
+							 
+									<hr class="Divider__StylingMergedDivider-s11un6bw-1 jtXrQz Divider-s11un6bw-0 cVxSEp">
+									<section class="SectionWithHeader__Self-s1eyxltb-0 gAYeFO">
+														<div class="Grid-zydj2q-0 cspjno">
+															<div class="Row-s1apwm9x-0 lowZpE">
+																<header
+																	class="SectionWithHeader__Header-s1eyxltb-1 cuiACK">
+																	<h2 class="SectionWithHeader__Title-s1eyxltb-2 kwjefp">비슷한 장르</h2>
+																	<span class="TitleSuffixForNumber-l2d30g-0 ejtPKl">703</span>
+																	<div class="SectionWithHeader__TopRight-s1eyxltb-3 bZaEfL">
+																			<div class="SectionWithViewMore__ViewMore-xtbl7q-0 bhbIbv">
+																				<a href="/brw/movie/movieComment.br">더보기</a>
 																			</div>
 																		</div>
-																		<div
-																			class="arrow_button PrimitiveHorizontalScrollable__ArrowButtonBlock-hy4esm-3 kCjzvu"
-																			direction="left">
-																			<div
-																				class="PrimitiveHorizontalScrollable__BackwardButton-hy4esm-5 bWflCD"></div>
-																		</div>
-																		<div
-																			class="arrow_button PrimitiveHorizontalScrollable__ArrowButtonBlock-hy4esm-3 eweFwK"
-																			direction="right"></div>
-																	</div>
-																</section>
-																<div></div>
+																</header>
 															</div>
+															
 														</div>
+
+		 <c:forEach items="${detailgenre}" var="detailgenrelist" >
+			 <div class="col-sm-6 col-md-3">
+			 	<a href="/brw/drama/dramaDetail.br?DRAMA_NO=1&DRAMA_NAME=2">
+			    <div class="detailgenre">
+			      <img src="/brw/resources/images/3-girls.jpg">
+			      <%-- <input type='hidden' class='IDX' value="${dramaList.DRAMA_NO}"> --%>
+			      <div class="detailgenrefont">
+			        <h3>#${detailgenrelist.DRAMA_NAME}</h3>
+			        <p>#${detailgenrelist.DRAMA_DATE}・#${detailgenrelist.DRAMA_CHANNEL}</p>
+			      </div>
+			    </div>
+			    </a>
+			  </div>
+		 </c:forEach>
+
+														
+														
+														
+														
+													</section>
+													<div></div>
 												</div>
-												<div
-													class="ContentPage__HiddenBlockOnlyMdScreen-se3skp-10 jVScZl"></div>
 											</div>
 										</div>
+										<div
+											class="ContentPage__HiddenBlockOnlyMdScreen-se3skp-10 jVScZl"></div>
 									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 				</section>

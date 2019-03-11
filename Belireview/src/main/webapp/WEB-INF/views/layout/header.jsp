@@ -32,7 +32,12 @@
               <div class="top"> <!-- top -->
                   <div class="container">
                       <div class="top-control">
-                          <a href="http://localhost:8080/brw/member/loginForm.br">로그인</a><span>•</span><a href="http://localhost:8080/brw/member/joinTerms.br">회원가입</a>
+                      	  <c:if test="${sessionScope.ID == null }">
+                          <a href="/brw/member/loginForm.br">로그인</a><span>•</span><a href="/brw/member/joinTerms.br">회원가입</a>
+                  		  </c:if>
+                  		   <c:if test="${sessionScope.ID != null }">
+                          <a href="/brw/member/logout.br">로그아웃</a><span>•</span><a href="/brw/user/user.br">마이페이지</a>
+                  		  </c:if>
                       </div>
                   </div>
               </div> <!-- top end -->
@@ -66,7 +71,18 @@
                                           <li class="menu-search-form">
                                               <a href="#" id="open-srch-form"><img src="/brw/resources/images/srch.png" alt="srch"></a>
                                           </li>
-                                          <li><a href="#"><img src="/brw/resources/images/sample.JPG" alt="bag" width="60" height="45" style="border-radius:150px; margin-top:-10px; "></a></li>
+                                          <li>
+                                            <c:if test="${sessionScope.ID != null }">
+                                          	<a href="#">
+                                          	    <c:if test="${sessionScope.PROFILE_IMAGE == null }">
+                                          		<img src="/brw/resources/images/Temporary_img.JPG" alt="bag" width="60" height="45" style="border-radius:150px; margin-top:-10px; ">
+                                          		</c:if>
+                                          		<c:if test="${sessionScope.PROFILE_IMAGE != null }">
+                                          		<img src="/brw/resources/images/${sessionScope.PROFILE_IMAGE}" alt="bag" width="60" height="45" style="border-radius:150px; margin-top:-10px; ">
+                                          		</c:if>
+                                          	</a>
+                                          	</c:if>
+                                          </li>
                                           <li id="open-srch-form-mod">
                                               <div>
                                                   <form class="side-search">

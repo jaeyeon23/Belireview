@@ -5,7 +5,7 @@ import java.util.Map;
 
 public interface DramaService {
 	
-	List<Map<String,Object>> selectBoardList() throws Exception;
+	List<Map<String,Object>> selectBoardList(Map<String, Object>  map) throws Exception;
 	
 	Map<String,Object> dramaDetail(Map<String,Object> map) throws Exception;
 	
@@ -15,6 +15,12 @@ public interface DramaService {
 	
 	List<Map<String,Object>> dramaCommentByLike(Map<String, Object> map) throws Exception;
 	
-	Map<String,Object> dramaName(Map<String,Object> map) throws Exception;
+	List<Map<String,Object>> detailgenre(Map<String, Object> map) throws Exception;
+	
+	int totalDramaCount(Map<String,Object> map) throws Exception;
+	
+	int totalDramaComment(Map<String,Object> map) throws Exception;
+
+	/*Map<String,Object> insertdramaComment(Map<String,Object> map) throws Exception;*/
 
 }

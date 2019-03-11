@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -57,6 +59,10 @@
 	function cancel(){
 		location.href = "/brw/admin/drama.br";
 	}
+	
+	$(document).ready(function() { 
+		
+	});
 </script>
 </head>
 <body>
@@ -67,7 +73,14 @@
 					NAME
 				</h3>
 				<div>
-					<input type="text" class="form-control search-wid" name="id" value="${admin.DRAMA_NAME }">
+					<input type="text" class="form-control search-wid" name="name" value="${admin.DRAMA_NAME }">
+				</div>
+				<h3 class="blog-post-title">
+					DATE
+				</h3>
+				<div>${fn:substring(TextValue,0,3) }
+					<c:set value="${admin.DRAMA_DATE }" var="drama_date"></c:set>
+					<input type="date" class="form-control search-wid" name="date" value="${fn:substring(drama_date,0,10) }">
 				</div>
 				<h3 class="blog-post-title">
 					CHANNEL
@@ -79,7 +92,18 @@
 					GENRE
 				</h3>
 				<div>
-					<input type="text" class="form-control search-wid" name="genre" value="${admin.DRAMA_GENRE }">
+					<select id="genre" name="genre" class="form-control">
+						<option value="로맨스">로맨스</option>
+						<option value="공포•호러">공포•호러</option>
+						<option value="판타지">판타지</option>
+						<option value="메디컬">메디컬</option>
+						<option value="애니메이션">애니메이션</option>
+						<option value="예능">예능</option>
+						<option value="코미디">코미디</option>
+						<option value="종교">종교</option>
+						<option value="SF">SF</option>
+						<option value="재난">재난</option>
+					</select>
 				</div>
 				<h3 class="blog-post-title">
 					DIRECTOR

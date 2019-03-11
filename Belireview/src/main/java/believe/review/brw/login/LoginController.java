@@ -88,6 +88,8 @@ public class LoginController {
 					session.setAttribute("TEL", chk.get("TEL"));
 					session.setAttribute("EMAIL", chk.get("EMAIL"));
 					session.setAttribute("ADMIN", chk.get("ADMIN"));
+					session.setAttribute("PROFILE_IMAGE", chk.get("PROFILE_IMAGE"));
+					session.setAttribute("PASSWORD", chk.get("PASSWORD"));
 
 					return mv;
 				} else {

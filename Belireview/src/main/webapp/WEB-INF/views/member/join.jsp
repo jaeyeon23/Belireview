@@ -10,9 +10,10 @@
 </head>
 <body>
 <div id="wrap">
-	<form id="join_form" name="join_form" method="post" action="join.br">
-	<!-- <input type="hidden" id="email_marketing" name="email_marketing" value="1">
-     -->
+	<form id="join_form" name="join_form" method="post" action="join.br" onsubmit="return checkSubmit()">
+	<input type="hidden" id="email_marketing" name="email_marketing" value="${email_marketing}">
+    <input type="hidden" id="sms_marketing" name="sms_marketing" value="${sms_marketing}">    
+    
     <!-- container -->
     <div id="container" role="main">
         <div id="content">
@@ -73,40 +74,24 @@
                             <div class="int_mobile_area">
                                 <span class="ps_box int_mobile">
                                 	<input type="text" id="email" name="email" placeholder="이메일 입력" aria-label="이메일 입력" class="int" maxlength="60">
-                                   <!--  <input type="tel" id="iphoneNo" name="iphoneNo" placeholder="전화번호 입력" aria-label="전화번호 입력" class="int" maxlength="16"> -->
                                 </span>
-                                <a href="#" class="btn_verify btn_primary" id="btnIpinSend" role="button">
-                                    <span class="">인증번호 받기</span>
+                                <a href="javascript:email_code();" class="btn_verify btn_primary" id="btnIpinSend" name="btnIpinSend" role="button">
+                                    <span class="" id="no_btn" >인증번호받기</span>
+                                    <span class="" id="yes_btn" >인증완료</span>
                                 </a>
                             </div>
                             <div class="ps_box_disable box_right_space" id="iauthNoBox">
-                                <input type="tel" id="iauthNo" name="iauthNo" placeholder="인증번호 입력하세요" aria-label="인증번호 입력하세요" aria-describedby="iwa_verify" class="int" disabled maxlength="4">
-                                <label id="iwa_verify" for="iauthNo" class="lbl">
-                                    <span class="wa_blind">인증받은 후 인증번호를 입력해야 합니다.</span>
-                                    <span class="input_code" id="iauthNoCode" style="display:none;"></span>
-                                </label>
+                                <input type="tel" id="iauthNo" name="iauthNo" placeholder="인증번호를 입력하세요" aria-label="인증번호를 입력하세요" aria-describedby="iwa_verify" class="int" disabled maxlength="7">
                             </div>
-                            <span class="error_next_box" id="emailNoMsg" style="display:none" role="alert">필수 정보입니다.</span>
-                            <span class="error_next_box" id="iauthNoMsg" style="display:none" role="alert">필수 정보입니다.</span>
-                            <span class="error_next_box" id="ijoinMsg" style="display:none" role="alert">필수 정보입니다.</span>
-                        </div>
+                            <span class="error_next_box" id="emailMsg" style="display:none" role="alert">필수 정보입니다.</span>
+                      </div>
 				
-                   
-                  <!--   <div class="join_row join_email">
-                        <h3 class="join_title"><label for="email">본인 확인 이메일<span class="terms_choice">(필수)</span></label></h3>
-                        <span class="ps_box int_email box_right_space">
-							<input type="text" id="email" name="email" maxlength="100" class="int" maxlength="100">
-						</span>
-                    </div>
-                    <span class="error_next_box" id="emailMsg" style="display:none" role="alert"></span> -->
-                   
                 </div>
               
               
                 <div class="btn_area">
                 	<input type="submit" id="btnJoin" class="btn_type btn_primary" value="가입하기" >
-                <!-- 	<button type="button" id="btnJoin" class="btn_type btn_primary"><span>가입하기</span></button>   onclick="javascript:checkSubmit()"
-                 --></div>
+                </div>
             </div>
         </div>
     </div>
@@ -116,6 +101,15 @@
 
 
 <script type="text/JavaScript">
+	$('#yes_btn').hide(); /* 인증완료버튼을 숨겨둠 */
+	
+	/* 가입버튼 클릭시 가입조건 만족 여부를 알려줄 스크립터 전역변수 */
+	var id_ok ="";
+	var password_ok ="";
+	var email_ok ="";
+	var name_ok="";
+	var tel_ok="";
+	
 	var idFlag = false;
 	var pwFlag = false;
 	
@@ -134,29 +128,16 @@
             showErrorMsg(oMsg,"필수 정보입니다.");
             return false;
         }else{
-        	oMsg.slideUp();
+        	$.post("checkId.br", {id:id} ,function(data){
+        		if (data==1){
+        			showErrorMsg(oMsg,"이미 등록된 아이디입니다.");
+                    return false;
+        		} else {
+        			showSuccessMsg(oMsg, "사용가능한 아이디입니다.");
+        			id_ok= "ok"; 
+        		}
+        	});	
         }
-        
-        /* 아이디중복여부 */
-        $.ajax({
-            type:"GET",
-            url: "/user2/joinAjax.nhn?m=checkId&id=" + id ,
-            success : function(data) {
-                var result = data.substr(4);
-
-                if (result == "Y") {
-                    if (event == "first") {
-                        showSuccessMsg(oMsg, "사용가능한 아이디입니다.");
-                    } else {
-                        hideMsg(oMsg);
-                    }
-                    idFlag = true;
-                } else {
-                    showErrorMsg(oMsg, "이미 사용중인 아이디입니다.");
-                }
-            }
-        });
-        /* 끝  */
         return true;
     }
 	
@@ -201,6 +182,7 @@
             return false;
         }else{
         	showSuccessMsg(oMsg,"일치합니다.");
+        	password_ok ="ok";
         	return true;
         }
         return true;
@@ -220,6 +202,7 @@
             return false;
         }else{
         	oMsg.slideUp();
+        	name_ok ="ok";
         }
 
         return true;
@@ -238,6 +221,7 @@
             return false;
         }else{
         	oMsg.slideUp();
+        	tel_ok = "ok";
         }
 
         return true;
@@ -249,7 +233,7 @@
 	});
 	function checkEmail() {
         var email = $("#email").val();
-        var oMsg = $("#emailNoMsg");
+        var oMsg = $("#emailMsg");
 
         if ( email == "") {
             showErrorMsg(oMsg,"필수 정보입니다.");
@@ -261,6 +245,93 @@
         return true;
     }
 	
+
+	/* 이메일인증 */
+	function email_code(){
+		var auth_email = $("#email").val(); //회원가입누를때 이메일 바꿔 내는것을 방지 ||인증을 받은 이메일 자바스크립트의 전역변수에 넣기
+		var email = $("#email").val();
+		var oMsg = $("#emailMsg");
+
+		$.ajax({
+			type : "POST",
+			url : "email_auth.br",
+			data : ({
+				mode : "email_code",
+				email : email
+			}),
+			success : function(data) {
+				console.log(data);
+				if (data != 0) {
+					showErrorMsg(oMsg,"이미 가입된 이메일 입니다. 다른이메일을 입력해주세요");
+				} else {
+					showSuccessMsg(oMsg, "인증번호를 요청하신 이메일로 발송했습니다.");
+					var auth2 = document.getElementById("iauthNo"); /* 이메일인증번호를 보낼 시 인증번호input칸이 풀린다 이유: 이메일값과 인증번호값을 넣지않고 회원가입을 하는것을 막기위해 */
+					auth2.removeAttribute("disabled"); /* 인증번호 input칸의 disabled속성을 삭제 */
+				}
+
+				if (data != null) {
+					console.log("로그 내용2" + data);
+				}
+			},
+			error : function(e) {
+				showErrorMsg(oMsg,"알맞은 이메일로 인증해주세요.");
+			}
+		});
+
+	}
+	
+	
+	/* 인증번호 일치여부 */
+	$("input[name = iauthNo]").blur(function() {
+		member_send();
+	});
+	function member_send() {
+		var email = $("#email").val();
+		var auth = $("#iauthNo").val();
+		var oMsg = $("#emailMsg");
+		
+		$.ajax({
+			type : "POST",
+			url : "email_auth_success.br",
+			data : ({
+				email : email,
+				auth : auth
+			}),
+			success : function(data) {
+				console.log("로그 내용1");
+				if (data == 1) {
+					showSuccessMsg(oMsg,"인증이 완료되었습니다.");
+					var auth2 = document.getElementById("iauthNo"); /* 인증창닫기위해서  */
+					auth2.setAttribute("disabled", "disabled"); /* 인증완료 후 인증창 닫힘 */
+					
+					var auth3 = document.getElementById("email"); /* 인증창닫기위해서  */
+				    auth3.setAttribute("disabled", "disabled"); /* 인증완료 후 이메일변경불가 닫힘 */
+					
+
+					$('#no_btn').hide(); /* 인증번호에서 */
+					$('#yes_btn').show(); /* 인증완료로 바꿈 */
+					$("#btnIpinSend").click(function(event){ 
+         				   event.preventDefault(); // a링크 이동막음
+         				   showSuccessMsg(oMsg,"이미 인증이 완료되었습니다.");
+     				}); 
+					
+					email_ok ="ok";
+
+
+				} else {
+					showErrorMsg(oMsg, "인증번호가 맞지않습니다. 다시 입력하세요.");
+					f.auth.value = "";
+					console.log("로그 내용3");
+				}
+			},
+			error : function(e) {
+				showErrorMsg(oMsg,"잠시후 다시 시도해주세요.");
+			}
+		});
+	}
+
+	/* 이메일인증끝 */
+
 	/* 메시지 출력 */
 	function showErrorMsg(obj, msg) {
 		obj.attr("class", "error_next_box");
@@ -273,22 +344,32 @@
 		obj.slideDown();
 	}
 
-	function showAuthDefaultBox(oBox, oCode) {
-		oBox.attr("class", "ps_box");
-		oCode.html("");
-		oCode.hide();
-	}
+	
+	
+	/* 가입하기를 눌렀을때 */
+	function checkSubmit(){
+		var join_form = document.join_form;
+		if ( id_ok == "") {
+			alert('아이디를 확인해주세요.');
+			return false;
+		} else if (password_ok == "") {
+			alert('비밀번호를 다시 확인해주세요.');
+			return false;
+		} else if (name_ok == "") {
+			alert("이름을 확인해주세요.");
+			return false;
+		} else if (tel_ok == "") {
+			alert("전화번호를 확인해주세요.");
+			return false;
+		} else if (email_ok == "") {
+			alert("이메일인증을 완료해주세요.");
+			return false;
+		} else {
+			var auth5 = document.getElementById("email"); /* disabled일 경우 값이 null이되므로 가입조건이 모두만족하면  */
+			auth5.removeAttribute("disabled"); /* 이메일 input칸의 disabled속성을 삭제하여 넘겨줌 */
 
-	function showAuthSuccessBox(oBox, oCode, msg) {
-		oBox.attr("class", "ps_box accord");
-		oCode.html(msg);
-		oCode.show();
-	}
-
-	function showAuthErrorBox(oBox, oCode, msg) {
-		oBox.attr("class", "ps_box discord");
-		oCode.html(msg);
-		oCode.show();
+			return true;
+		}
 	}
 </script>
 
