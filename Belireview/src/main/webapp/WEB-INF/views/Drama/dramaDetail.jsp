@@ -12,7 +12,7 @@
    	<link rel="stylesheet" href="/brw/resources/css/detail3.css">
    	
     <link rel="stylesheet" href="/brw/resources/css/detailgenre.css">
-   	<script src="<c:url value='/resources/js/common.js'/>" charset="utf-8"></script>	
+   	<%-- <script src="<c:url value='/resources/js/common.js'/>" charset="utf-8"></script>	 --%>
     <style>
     	ul{
 			list-style: none outside none;
@@ -41,55 +41,58 @@
     
 	<script src="/brw/resources/js/slides.jquery.js"></script>
 	<script>
-		var s = "${ID}";
-		 
+		var id = "${ID}";
+		 /* 로그인 유무 */
 		$(function(){ 
-			
-			if(s==""||s==null){
-				$(".gsSopE").click(function(){
+			if(id==""||id==null){
+				$(".gsSopE").click(function(){//보고싶어요
 					alert("로그인 해주세요.");
 					location.href="<c:url value='/member/loginForm.br' />"
 					});
-				$(".gZASBp").click(function(){
+				$(".gZASBp").click(function(){//별점
 					alert("로그인 해주세요.");
 					location.href="<c:url value='/member/loginForm.br' />"
 				});
 			}else{
 				$(".IsPDs").css("display","block");
 				
-				$(".vv").click(function(){
+				$(".vv").click(function(){//보고싶어요
 					wish();
 					return;
 					});
-				$(".gZASBp").click(function(){
+				$(".gZASBp").click(function(){//별점
 					openDetail();
 					return;
 				});
 			}
 		});
+		 /* 로그인 유무 */
 		
-		function openDetail(){
-			var q = <%=request.getParameter("DRAMA_NO")%>
-			var comSubmit = new ComSubmit();
-			comSubmit.setUrl("<c:url value='/drama/dramaDetail.br' />");
-			comSubmit.addParam("DRAMA_NO",q);
-			comSubmit.submit();
-		}
+		 
+		 /* 보고싶어요 */
 		function wish(){
-			var id = "${ID}";
 			$.ajax({
 				async : true,  
 				type : 'POST',
-				data : {id:id},
+				data : {id:id , wish:"true" , no:<%=request.getParameter("DRAMA_NO")%>},
 				url:"<c:url value='/drama/dramaDetail.br' />",
 				success : function(result){
 					alert("a");
 				}
 			})
 		}
+		/* 보고싶어요 */
+		
+		/* 별점 */
+		function rating(){
+			$.ajax({
+				
+			})
+		}
+		/* 별점 */
 		
 		
-		
+		/* 이미지슬라이드 */
 		$(function(){
 			$('#slides').slides({
 				preload: true,
@@ -99,6 +102,9 @@
 				hoverPause: true
 			});
 		});
+		/* 이미지 슬라이드 */
+		
+		/* 별점 */
 		$(function(){
 			
 			if(s==""||s==null){}
@@ -256,6 +262,7 @@
 				});
 			}
 		});
+		/* 별점 */
 	</script>
 	
 	<link rel="stylesheet" href="/brw/resources/css/global.css">

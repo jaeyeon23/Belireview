@@ -103,9 +103,10 @@ public class DramaController {
 	@ResponseBody
 	public Map<String,Object> dramaDe(CommandMap commandMap) throws Exception {
 
-		Map<String,Object> mv = new HashMap<String,Object>();
+		Map<String,Object> mv = commandMap.getMap();
 		
 		System.out.println(commandMap.getMap().get("id"));
+		System.out.println(commandMap.getMap().get("wish"));
 		
 		
 		
