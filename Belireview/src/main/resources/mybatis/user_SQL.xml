@@ -50,5 +50,4 @@ WHERE MOVIE_NO IN
 	WHERE ID=#{ID}) ORDER BY MOVIE_DATE)
 </select>
 
-
 </mapper>
