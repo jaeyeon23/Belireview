@@ -65,4 +65,35 @@ public class FileUtils {
 
 		return listMap;
 	}
+	
+	public void fileDelete(Map<String, Object> map, String filePath, String media) throws Exception{
+		String poster_image = null;
+		String main_image = null;
+		String[] content_image = null;
+		File file = null;
+		
+		if(media.equals("drama")) {
+			poster_image = (String) map.get("DRAMA_POSTER_IMAGE");
+			main_image = (String)map.get("DRAMA_MAIN_IMAGE");
+			content_image = ((String) map.get("DRAMA_CONTENT_IMAGE")).split(",");
+		}else if(media.equals("movie")) {
+			poster_image = (String) map.get("MOVIE_POSTER_IMAGE");
+			main_image = (String)map.get("MOVIE_MAIN_IMAGE");
+			content_image = ((String) map.get("MOVIE_GALLERY_IMAGE")).split(",");
+		}else if(media.equals("ad")) {
+			poster_image = (String)map.get("AD_POSTER_IMAGE");
+			main_image = (String)map.get("AD_MAIN_IMAGE");
+			content_image = ((String) map.get("AD_CONTENT_IMAGE")).split(",");
+		}
+		
+		file = new File(filePath + "poster\\" + poster_image);
+		file.delete();
+		file = new File(filePath + "main\\" + main_image);
+		file.delete();
+		
+		for(int i = 0 ; i < content_image.length ; i++) {
+			file = new File(filePath + "content\\" + content_image[i]);
+			file.delete();
+		}
+	}
 }

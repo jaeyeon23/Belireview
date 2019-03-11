@@ -1,4 +1,4 @@
-package believe.review.brw.admin.drama;
+package believe.review.brw.admin.movie;
 
 import java.util.HashMap;
 import java.util.List;
@@ -22,19 +22,19 @@ import believe.review.brw.member.MemberService;
 
 @Controller
 @RequestMapping("/admin")
-public class AdminDramaController {
-
+public class AdminMovieController {
+	
 	private int currentPage = 1;	 
 	private int totalCount; 		 
 	private int blockCount = 9;	 
 	private int blockPage = 5; 	 
 	private String pagingHtml;  
 	private Paging page;
-	private String filePath = "C:\\Users\\박재연\\Desktop\\Belireview\\Belireview\\src\\main\\webapp\\resources\\images\\drama\\";
+	private String filePath = "C:\\Users\\박재연\\Desktop\\Belireview\\Belireview\\src\\main\\webapp\\resources\\images\\movie\\";
 	private HttpSession session = null;
-	
-	@Resource(name="adminDramaService")
-	private AdminDramaService adminDramaService;
+
+	@Resource(name="adminMovieService")
+	private AdminMovieService adminMovieService;
 	
 	@Resource(name="memberService")
 	private MemberService memberService;
@@ -42,15 +42,15 @@ public class AdminDramaController {
 	@Resource(name="fileUtils")
 	private FileUtils fileUtils;
 	
-	@RequestMapping(value="/drama.br")
-	public String dramaPage(@RequestParam(value="alert_value", defaultValue="default") String alert_value, HttpServletRequest request, CommandMap commandMap, Model model) throws Exception{
+	@RequestMapping(value="/movie.br")
+	public String moviePage(@RequestParam(value="alert_value", defaultValue="default") String alert_value, HttpServletRequest request, CommandMap commandMap, Model model) throws Exception{
 		List<Map<String, Object>> admin = null;
 		
 		String orderby = (String)commandMap.get("orderby");
 		String searchNum = (String)commandMap.get("searchNum");
 		String searchBox = (String)commandMap.get("searchBox");
-
-		admin = adminDramaService.selectDramaList(commandMap.getMap());
+		
+		admin = adminMovieService.selectMovieList(commandMap.getMap());
 		
 		if(request.getParameter("currentPage") == null || request.getParameter("currentPage").trim().isEmpty() || request.getParameter("currentPage").equals("0")) {
             currentPage = 1;
@@ -61,9 +61,9 @@ public class AdminDramaController {
 		totalCount = admin.size();
 			
 		if(orderby == null || searchNum == null) {
-			page = new Paging(currentPage, totalCount, blockCount, blockPage, "/brw/admin/drama");
+			page = new Paging(currentPage, totalCount, blockCount, blockPage, "/brw/admin/movie");
 		}else {
-			page = new Paging(currentPage, totalCount, blockCount, blockPage, "/brw/admin/drama", orderby, searchNum, searchBox);
+			page = new Paging(currentPage, totalCount, blockCount, blockPage, "/brw/admin/movie", orderby, searchNum, searchBox);
 		}
 		
 		pagingHtml = page.getPagingHtml().toString();
@@ -87,18 +87,18 @@ public class AdminDramaController {
 			model.addAttribute("alert_value", alert_value);
 		}
 		
-		return "/admin/drama/adminDramaList";
+		return "/admin/movie/adminMovieList";
 	}
 	
-	@RequestMapping(value="/drama/write.br", method=RequestMethod.GET)
-	public String dramaWritePage(Model model) throws Exception{
+	@RequestMapping(value="/movie/write.br", method=RequestMethod.GET)
+	public String movieWritePage(Model model) throws Exception{
 		
-		return "/admin/drama/adminDramaWrite";
+		return "/admin/movie/adminMovieWrite";
 	}
 	
-	@RequestMapping(value="/drama/write.br", method=RequestMethod.POST)
-	public String dramaWrite(CommandMap commandMap, HttpServletRequest request, Model model) throws Exception{
-		int no = adminDramaService.selectNextVal();
+	@RequestMapping(value="/movie/write.br", method=RequestMethod.POST)
+	public String movieWrite(CommandMap commandMap, HttpServletRequest request, Model model) throws Exception{
+		int no = adminMovieService.selectNextVal_movie();
 		
 		commandMap.put("no", no);
 		
@@ -107,48 +107,48 @@ public class AdminDramaController {
 		commandMap.put("poster_image", listMap.get("poster_image"));
 		commandMap.put("main_image", listMap.get("main_image"));
 		commandMap.put("content_image", listMap.get("content_image"));
+				
+		adminMovieService.writeMovie(commandMap.getMap());
 		
-		adminDramaService.writeDrama(commandMap.getMap());
-		
-		return "redirect:/admin/drama.br";
+		return "redirect:/admin/movie.br";
 	}
 	
-	@RequestMapping(value="/drama/modify.br", method=RequestMethod.GET)
-	public String dramaModifyPage(HttpServletRequest request, Model model) throws Exception{
+	@RequestMapping(value="/movie/modify.br", method=RequestMethod.GET)
+	public String movieModifyPage(HttpServletRequest request, Model model) throws Exception{
 		
 		int no = Integer.parseInt(request.getParameter("no"));
-
-		Map<String, Object> update_drama_one = adminDramaService.selectDramaOne(no);
 		
-		model.addAttribute("admin", update_drama_one);
+		Map<String, Object> update_movie_one = adminMovieService.selectMovieOne(no);
 		
-		return "/admin/drama/adminDramaModify";
+		model.addAttribute("admin", update_movie_one);
+		
+		return "/admin/movie/adminMovieModify";
 	}
 	
-	@RequestMapping(value="/drama/modify.br", method=RequestMethod.POST)
-	public String dramaModify(CommandMap commandMap, HttpServletRequest request, Model model) throws Exception{
+	@RequestMapping(value="/movie/modify.br", method=RequestMethod.POST)
+	public String movieModify(CommandMap commandMap, HttpServletRequest request, Model model) throws Exception{
 		Map<String, Object> map = new HashMap<String, Object>();
 		
 		if(commandMap.containsKey("show_file")) {
-			//새로운 파일
-			map = adminDramaService.selectDramaOne(Integer.parseInt((String)commandMap.get("no")));
-			fileUtils.fileDelete(map, filePath, "drama");
+			map = adminMovieService.selectMovieOne(Integer.parseInt((String)commandMap.get("no")));
 			
-			commandMap.put("media", "drama");
+			fileUtils.fileDelete(map, filePath, "movie");
+			
+			commandMap.put("media", "movie");
 			map = fileUtils.parseInsertFileInfo(commandMap.getMap(), request, filePath);
 			
 			commandMap.put("poster_image", map.get("poster_image"));
 			commandMap.put("main_image", map.get("main_image"));
 			commandMap.put("content_image", map.get("content_image"));
-		}	
+		}
 		
-		adminDramaService.updateDramaOne(commandMap.getMap());
+		adminMovieService.updateMovieOne(commandMap.getMap());
 		
-		return "redirect:/admin/drama.br";
+		return "redirect:/admin/movie.br";
 	}
-
-	@RequestMapping(value="/drama/delete.br", method=RequestMethod.POST)
-	public String dramaDelete(CommandMap commandMap, HttpServletRequest request, RedirectAttributes redirectAttributes) throws Exception{
+	
+	@RequestMapping(value="/movie/delete.br", method=RequestMethod.POST)
+	public String movieDelete(CommandMap commandMap, HttpServletRequest request, RedirectAttributes redirectAttributes) throws Exception{
 		String alert_value = null;
 		session = request.getSession();
 		
@@ -158,11 +158,11 @@ public class AdminDramaController {
 		map.put("password", commandMap.get("password"));
 		
 		if(commandMap.containsKey("no") && commandMap.containsKey("password")) {
-			if(adminDramaService.checkDrama(commandMap.getMap()) == 1 && memberService.checkAdminSessionPw(map) == 1) {
-				map = adminDramaService.selectDramaOne(Integer.parseInt((String)commandMap.get("no")));
-				fileUtils.fileDelete(map, filePath, "drama");
+			if(adminMovieService.checkMovie(commandMap.getMap()) == 1 && memberService.checkAdminSessionPw(map) == 1) {
+				map = adminMovieService.selectMovieOne(Integer.parseInt((String) commandMap.get("no")));
+				fileUtils.fileDelete(map, filePath, "movie");
 				
-				adminDramaService.deleteDramaOne(commandMap.getMap());
+				adminMovieService.deleteMovieOne(commandMap.getMap());
 				
 				alert_value = "삭제 성공!";
 			}else {
@@ -172,8 +172,6 @@ public class AdminDramaController {
 		
 		redirectAttributes.addAttribute("alert_value", alert_value);
 		
-		return "redirect:/admin/drama.br";
+		return "redirect:/admin/movie.br";
 	}
-
-	
 }

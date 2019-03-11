@@ -96,14 +96,10 @@
 	
 	<!-- Drama -->
 	<select id="selectNextVal" resultType="int">
-		<!-- SELECT
-			LAST_NUMBER 
+		SELECT
+			SEQ_DRAMA_NO.NEXTVAL
 		FROM
-			USER_SEQUENCES 
-		WHERE
-			SEQUENCE_NAME = 'SEQ_DRAMA_NO'	 -->
-			
-		select seq_drama_no.nextval from dual      
+			DUAL
 	</select>
 	
 	<select id="selectDramaList" resultType="hashmap" parameterType="hashmap">
@@ -186,13 +182,273 @@
 		)			
 	</insert>
 	
-	<!-- 미완성 -->
-<!-- 	<select id="checkDrama" resultType="int" parameterType="hashMap">
+	<select id="checkDrama" resultType="int" parameterType="hashMap">
 		SELECT
 			count(*)
 		FROM
 			drama 
 		WHERE
 			drama_no=#{no}
-	</select> -->
+	</select>
+	
+	<update id="updateDramaOne" parameterType="hashMap">
+		UPDATE 
+			DRAMA
+		SET
+			DRAMA_NAME=#{name},
+			DRAMA_DATE=TO_DATE(#{date}), 
+			DRAMA_CHANNEL=#{channel},
+			DRAMA_GENRE=#{genre},
+			DRAMA_DIRECTOR=#{director},
+			DRAMA_CONTENT=#{content},
+			DRAMA_EPISODE=#{episode}
+			<if test="main_image != null">
+				, DRAMA_MAIN_IMAGE=#{main_image},
+				DRAMA_POSTER_IMAGE=#{poster_image},
+				DRAMA_CONTENT_IMAGE=#{content_image} 
+			</if>
+		WHERE
+			DRAMA_NO=#{no}	
+	</update>
+	
+	<delete id="deleteDramaOne" parameterType="hashMap">
+		DELETE
+		FROM
+			DRAMA
+		WHERE
+			DRAMA_NO=#{no}
+	</delete>
+	
+<!-- 	Movie -->
+	<select id="selectMovieList" resultType="hashmap" parameterType="hashmap">
+		SELECT
+			*
+		FROM
+			movie
+		<if test='searchNum != null'>
+			<choose>
+				<when test='searchNum == "director"'>
+					WHERE MOVIE_DIRECTOR like '%'||#{searchBox}||'%' 
+				</when>
+				<when test='searchNum == "genre"'>
+					WHERE MOVIE_GENRE like '%'||#{searchBox}||'%'
+				</when>
+				<when test='searchNum == "country"'>
+					WHERE MOVIE_COUNTRY=#{searchBox}
+				</when>
+				<when test='searchNum == "name"'>
+					WHERE MOVIE_NAME like '%'||#{searchBox}||'%'
+				</when>
+			</choose>
+		</if>
+		<if test='orderby != null'>
+			<choose>
+				<when test='orderby == 1'>
+					order by MOVIE_READCOUNT DESC
+				</when>
+				<when test='orderby == 2'>
+					order by MOVIE_RUNNINGTIME 
+				</when>
+				<when test='orderby == 3'>
+					order by MOVIE_RUNNINGTIME DESC
+				</when>
+				<when test='orderby == 4'>
+					order by MOVIE_GRADE DESC
+				</when>
+				<when test='orderby == 5'>
+					order by MOVIE_GRADE
+				</when>
+			</choose>
+		</if>
+	</select>
+	
+	<select id="selectNextVal_movie" resultType="int">
+		SELECT
+			SEQ_MOVIE_NO.NEXTVAL
+		FROM
+			DUAL
+	</select>
+	
+	<select id="selectMovieOne" parameterType="Integer" resultType="hashmap">
+		SELECT
+			*
+		FROM
+			movie
+		WHERE
+			movie_no=#{no}
+	</select>
+	
+	<insert id="writeMovie" parameterType="hashmap">
+		INSERT INTO MOVIE(
+			movie_no,
+			movie_name,
+			movie_date,
+			movie_country,
+			movie_genre,
+			movie_total_count,
+			movie_director,
+			movie_content,
+			movie_runningtime, 
+			movie_poster_image,
+			movie_main_image,
+			movie_gallery_image
+		)
+		VALUES(
+			SEQ_MOVIE_NO.CURRVAL, 
+			#{name},
+			TO_DATE(#{date}),
+			#{country},
+			#{genre},
+			#{total_count},
+			#{director},
+			#{content},
+			#{runningtime},
+			#{poster_image},
+			#{main_image},
+			#{content_image}
+		)			
+	</insert>
+	
+	<update id="updateMovieOne" parameterType="hashMap">
+		UPDATE 
+			MOVIE
+		SET
+			MOVIE_NAME=#{name},
+			MOVIE_DATE=TO_DATE(#{date}), 
+			MOVIE_COUNTRY=#{country},
+			MOVIE_GENRE=#{genre},
+			MOVIE_TOTAL_COUNT=#{total_count},
+			MOVIE_DIRECTOR=#{director},
+			MOVIE_CONTENT=#{content},
+			MOVIE_RUNNINGTIME=#{runningtime}
+			<if test="main_image != null">
+				, MOVIE_MAIN_IMAGE=#{main_image},
+				MOVIE_POSTER_IMAGE=#{poster_image}, 
+				MOVIE_GALLERY_IMAGE=#{content_image} 
+			</if>
+		WHERE
+			MOVIE_NO=#{no}	
+	</update>
+	
+	<select id="checkMovie" resultType="int" parameterType="hashMap">
+		SELECT
+			count(*)
+		FROM
+			movie 
+		WHERE
+			movie_no=#{no}
+	</select>
+	
+	<delete id="deleteMovieOne" parameterType="hashMap">
+		DELETE
+		FROM
+			MOVIE
+		WHERE
+			MOVIE_NO=#{no}
+	</delete>
+	
+	<!-- Advertisement -->
+	<select id="selectAdList" resultType="hashmap" parameterType="hashmap">
+		SELECT
+			*
+		FROM
+			AD
+		<if test='searchNum != null'>
+			<choose>
+				<when test='searchNum == "company"'>
+					WHERE AD_COMPANY like '%'||#{searchBox}||'%' 
+				</when>
+				<when test='searchNum == "name"'>
+					WHERE AD_NAME like '%'||#{searchBox}||'%'
+				</when>
+			</choose>
+		</if>
+		<if test='orderby != null'>
+			<choose>
+				<when test='orderby == 1'>
+					order by AD_READCOUNT DESC
+				</when>
+				<when test='orderby == 2'>
+					order by AD_GRADE DESC
+				</when>
+				<when test='orderby == 3'>
+					order by AD_GRADE
+				</when>
+			</choose>
+		</if>
+	</select>
+	
+	<select id="selectNextVal_ad" resultType="int">
+		SELECT
+			SEQ_AD_NO.NEXTVAL
+		FROM
+			DUAL
+	</select>
+	
+	<insert id="writeAd" parameterType="hashmap">
+		INSERT INTO AD(
+			ad_no,
+			ad_name,
+			ad_link,
+			ad_content,
+			ad_company,
+			ad_poster_image,
+			ad_main_image,
+			ad_content_image
+		)
+		VALUES(
+			SEQ_AD_NO.CURRVAL, 
+			#{name},
+			#{link},
+			#{content},
+			#{company},
+			#{poster_image},
+			#{main_image},
+			#{content_image}
+		)			
+	</insert>
+	
+	<select id="selectAdOne" parameterType="Integer" resultType="hashmap">
+		SELECT
+			*
+		FROM
+			AD
+		WHERE
+			ad_no=#{no}
+	</select>
+	
+	<update id="updateAdOne" parameterType="hashMap">
+		UPDATE 
+			AD
+		SET
+			AD_NAME=#{name},
+			AD_LINK=#{link},
+			AD_CONTENT=#{content},
+			AD_COMPANY=#{company}
+			<if test="main_image != null">
+				, AD_MAIN_IMAGE=#{main_image},
+				AD_POSTER_IMAGE=#{poster_image},
+				AD_CONTENT_IMAGE=#{content_image} 
+			</if>
+		WHERE
+			AD_NO=#{no}	
+	</update>
+	
+	<select id="checkAd" resultType="int" parameterType="hashMap">
+		SELECT
+			count(*)
+		FROM
+			AD 
+		WHERE
+			ad_no=#{no}
+	</select>
+	
+	<delete id="deleteAdOne" parameterType="hashMap">
+		DELETE
+		FROM
+			AD
+		WHERE
+			AD_NO=#{no}
+	</delete>
+	
 </mapper>

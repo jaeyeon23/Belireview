@@ -18,8 +18,13 @@
 	 <div id="header"> <!-- header -->
               <div class="top"> <!-- top -->
                   <div class="container">
-                      <div class="top-control">
-                          <a href="">로그인</a><span>•</span><a href="">회원가입</a>
+                     <div class="top-control">
+                      	  <c:if test="${sessionScope.ID == null }">
+                          <a href="/brw/member/loginForm.br">로그인</a><span>•</span><a href="/brw/member/joinTerms.br">회원가입</a>
+                  		  </c:if>
+                  		   <c:if test="${sessionScope.ID != null }">
+                          <a href="/brw/member/logout.br">로그아웃</a><span>•</span><a href="/brw/user/user.br">마이페이지</a>
+                  		  </c:if>
                       </div>
                   </div>
               </div> <!-- top end -->
