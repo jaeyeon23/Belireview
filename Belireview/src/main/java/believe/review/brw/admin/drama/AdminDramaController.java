@@ -1,10 +1,5 @@
 package believe.review.brw.admin.drama;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Enumeration;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -16,8 +11,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import believe.review.brw.common.common.CommandMap;
@@ -34,7 +27,7 @@ public class AdminDramaController {
 	private int blockPage = 5; 	 
 	private String pagingHtml;  
 	private Paging page;
-	private String filePath = "C:\\Users\\박재연\\Desktop\\Belireview\\Belireview\\src\\main\\webapp\\resources\\images\\user_profile\\";
+	private String filePath = "C:\\Users\\박재연\\Desktop\\Belireview\\Belireview\\src\\main\\webapp\\resources\\images\\drama\\";
 	
 	@Resource(name="adminDramaService")
 	private AdminDramaService adminDramaService;
@@ -100,11 +93,15 @@ public class AdminDramaController {
 	public String dramaWrite(CommandMap commandMap, HttpServletRequest request, Model model) throws Exception{
 		int no = adminDramaService.selectNextVal();
 		
-		commandMap.put("no", no + 1);
+		commandMap.put("no", no);
 		
-		String content_image = fileUtils.parseInsertFileInfo(commandMap.getMap(), request);
+		Map<String, Object> listMap = fileUtils.parseInsertFileInfo(commandMap.getMap(), request, filePath);
 		
-		commandMap.put("drama_content_image", content_image);
+		commandMap.put("poster_image", listMap.get("poster_image"));
+		commandMap.put("main_image", listMap.get("main_image"));
+		commandMap.put("content_image", listMap.get("content_image"));
+		
+		adminDramaService.writeDrama(commandMap.getMap());
 		
 		return "redirect:/admin/drama.br";
 	}
@@ -120,13 +117,7 @@ public class AdminDramaController {
 		
 		return "/admin/drama/adminDramaModify";
 	}
-	/*
-	@RequestMapping(value="/drama/modify.br", method=RequestMethod.POST)
-	public String dramaModify_action(Model model) throws Exception{
-		
-		return "redirect:/admin/drama.br";
-	}
-		*/
+
 	@RequestMapping(value="/drama/delete.br", method=RequestMethod.POST)
 	public String dramaDelete(CommandMap commandMap, RedirectAttributes redirectAttributes) throws Exception{
 		String alert_value = null;

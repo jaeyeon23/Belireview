@@ -151,6 +151,8 @@
 						<option value="종교">종교</option>
 						<option value="SF">SF</option>
 						<option value="재난">재난</option>
+						<option value="드라마">드라마</option>
+						<option value="기타">기타</option>
 					</select>
 				</div>
 				<h3 class="blog-post-title">
@@ -163,7 +165,7 @@
 					CONTENT
 				</h3>
 				<div>
-					<textarea rows="8" cols="80" id="content" class="form-control"></textarea>
+					<textarea rows="8" cols="80" id="content" name="content" class="form-control"></textarea>
 				</div>
 				<h3 class="blog-post-title">
 					EPISODE

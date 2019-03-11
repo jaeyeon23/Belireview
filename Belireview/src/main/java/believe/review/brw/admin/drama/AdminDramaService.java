@@ -10,4 +10,6 @@ public interface AdminDramaService {
 	public Map<String, Object> selectDramaOne(int no) throws Exception;
 	
 	public int selectNextVal() throws Exception;
+	
+	public void writeDrama(Map<String, Object> map) throws Exception;
 }

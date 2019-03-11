@@ -4,6 +4,16 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
+<script type="text/javascript">
+	$(document).ready(function(){
+		//전체주소
+        console.log("url : "+$(location).attr('href'));
+ 
+		//http://localhost:8080/brw/admin/drama.br
+        //http:, localhost:port번호, index.html ?test=tttt 순으로 나누어져 있습니다.
+        console.log("url : "+$(location).attr('protocol')+"//"+$(location).attr('host')+""+$(location).attr('pathname')+""+$(location).attr('search'));
+	});
+</script>
 <body>
 	 <div id="header"> <!-- header -->
               <div class="top"> <!-- top -->
@@ -27,27 +37,25 @@
                                           <span class="icon-bar"></span>
                                           <span class="icon-bar"></span>
                                       </button> -->
-                                      <a class="navbar-brand" href=""><img src="/brw/resources/images/logos.jpg" width="150px" alt=""></a>
+                                      <a class="navbar-brand" href="/brw/main.br"><img src="/brw/resources/images/logos.jpg" width="150px" alt=""></a>
                                   </div>
 
                                   <!-- Collect the nav links, forms, and other content for toggling -->
                                   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                                       <ul class="nav navbar-nav">
-                                          <li class="active"><a href="">Home <span class="sr-only">(current)</span></a></li>
-                                          <li><a href="">Drama</a></li>
-                                          <li><a href="">Movie</a></li>
-                                          <li><a href="">Advertisement</a></li>
-                                          <li><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Admin <i class="fa fa-angle-down"></i></a>
+                                          <li class="active"><a href="/brw/main.br">Home <span class="sr-only">(current)</span></a></li>
+                                          <li><a href="/brw/drama/dramaList.br">Drama</a></li>
+                                          <li><a href="/brw/movie/movieList.br">Movie</a></li>
+                                          <li><a href="/brw/ad/adList.br">Advertisement</a></li>
+                                          <li><a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Admin <i class="fa fa-angle-down"></i></a>
 			                                  <ul class="dropdown-menu megamenu" role="menu">
 			                                      <li>
 		                                              <div class="mega-sub">
-		                                                  <div class="mega-sub-title">All Clothing</div>
 		                                                  <ul>
 		                                                      <li><a href="/brw/admin/users.br">Users</a></li>
 		                                                      <li><a href="/brw/admin/drama.br">Drama</a></li>
 		                                                      <li><a href="/brw/admin/movie.br">Movie</a></li>
 		                                                      <li><a href="/brw/admin/ad.br">Advertisement</a></li>
-		                                                      <li><a href="/brw/admin/qa.br">Q&A</a></li>
 		                                                  </ul>
 		                                              </div>
                                          		 </li>

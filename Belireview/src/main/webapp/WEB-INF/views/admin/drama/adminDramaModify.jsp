@@ -60,8 +60,10 @@
 		location.href = "/brw/admin/drama.br";
 	}
 	
-	$(document).ready(function() { 
+	$(document).ready(function() {
+		var drama_genre = '<c:out value="${admin.DRAMA_GENRE}"/>';
 		
+		$("#genre").val(drama_genre);
 	});
 </script>
 </head>
@@ -103,6 +105,8 @@
 						<option value="종교">종교</option>
 						<option value="SF">SF</option>
 						<option value="재난">재난</option>
+						<option value="드라마">드라마</option>
+						<option value="기타">기타</option>
 					</select>
 				</div>
 				<h3 class="blog-post-title">

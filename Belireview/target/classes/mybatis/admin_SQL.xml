@@ -96,12 +96,14 @@
 	
 	<!-- Drama -->
 	<select id="selectNextVal" resultType="int">
-		SELECT
+		<!-- SELECT
 			LAST_NUMBER 
 		FROM
 			USER_SEQUENCES 
 		WHERE
-			SEQUENCE_NAME = 'SEQ_DRAMA_NO'	
+			SEQUENCE_NAME = 'SEQ_DRAMA_NO'	 -->
+			
+		select seq_drama_no.nextval from dual      
 	</select>
 	
 	<select id="selectDramaList" resultType="hashmap" parameterType="hashmap">
@@ -156,7 +158,7 @@
 	</select>
 	
 	<insert id="writeDrama" parameterType="hashmap">
-		INSERT INTO
+		INSERT INTO DRAMA(
 			drama_no,
 			drama_name,
 			drama_date,
@@ -168,9 +170,9 @@
 			drama_main_image,
 			drama_content_image,
 			drama_episode
-		DRAMA
+		)
 		VALUES(
-			SEQ_DRAMA_NO.CURRVAL,
+			SEQ_DRAMA_NO.CURRVAL, 
 			#{name},
 			TO_DATE(#{date}),
 			#{channel},
@@ -178,6 +180,7 @@
 			#{director},
 			#{content},
 			#{poster_image},
+			#{main_image},
 			#{content_image},
 			#{episode}
 		)			

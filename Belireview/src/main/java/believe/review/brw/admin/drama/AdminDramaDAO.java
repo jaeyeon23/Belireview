@@ -24,4 +24,7 @@ public class AdminDramaDAO extends AbstractDAO{
 		return (Integer) selectOne("admin.selectNextVal");
 	}
 	
+	public void writeDrama(Map<String, Object> map) {
+		insert("admin.writeDrama", map);
+	}
 }
