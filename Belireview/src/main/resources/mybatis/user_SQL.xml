@@ -2,5 +2,27 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="user">
+
+	<!-- 수정후회원정보불러오기 -->
+	<select id="UserGo" parameterType="hashmap" resultType="hashmap">
+		<![CDATA[
+			SELECT * FROM MEMBER WHERE ID=#{id}
+		]]>
+	</select>
+	
+	<!-- 회원정보수정 -->
+	<update id="changeUser" parameterType="hashmap">
+		<![CDATA[
+		UPDATE MEMBER
+        SET 
+            NAME = #{name},
+            PASSWORD = #{password},
+            TEL = #{tel},
+            EMAIL = #{email},
+            EMAIL_MARKETING = #{email_marketing},
+            SMS_MARKETING = #{sms_marketing}                      
+    	WHERE ID = #{id}
+		]]>
+	</update>
 	
 </mapper>

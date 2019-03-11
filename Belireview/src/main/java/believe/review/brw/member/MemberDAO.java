@@ -4,7 +4,7 @@ import java.util.Map;
 
 import org.springframework.stereotype.Repository;
 
-import believe.review.brw.common.common.AbstractDAO;;
+import believe.review.brw.common.common.AbstractDAO;
 
 @Repository("memberDAO")
 public class MemberDAO extends AbstractDAO {
