@@ -76,6 +76,10 @@
     	<put-attribute name="body" value="/WEB-INF/views/user/userMovie.jsp"/>
     </definition>
     
+    <definition name="userMovielist" extends=".home">
+    	<put-attribute name="body" value="/WEB-INF/views/user/userMovielist.jsp"/>
+    </definition>
+    
     <definition name="user" extends=".home">
     	<put-attribute name="body" value="/WEB-INF/views/user/user.jsp"/>
     </definition>
