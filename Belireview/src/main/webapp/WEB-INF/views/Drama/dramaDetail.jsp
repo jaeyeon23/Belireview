@@ -49,7 +49,161 @@
 				hoverPause: true
 			});
 		});
+		$(function(){
+			var initValue = $('.gZASBp > div').attr("class").split(" ")[1];
+					
+			var f = $('.gZASBp > a.r1');
+			
+			f.hover(function() {
+				$('.gZASBp > div' ).removeClass(initValue).addClass('r1');
+			}, function() {
+				$('.gZASBp > div' ).removeClass('r1').addClass(initValue);
+			});
+			f.click(function(){
+				if(initValue == 'r1'){
+					initValue = 'r0';
+				}
+				else{
+					initValue = 'r1';
+				}
+			});
+			
+			f = $('.gZASBp > a.r2');
+			f.hover(function() {
+				$('.gZASBp > div' ).removeClass(initValue).addClass('r2');
+			}, function() {
+				$('.gZASBp > div' ).removeClass('r2').addClass(initValue);
+			});
+			f.click(function(){
+				if(initValue == 'r2'){
+					initValue = 'r0';
+				}
+				else{
+					initValue = 'r2';
+				}
+			});
+			
+			f = $('.gZASBp > a.r3');
+			f.hover(function() {
+				$('.gZASBp > div' ).removeClass(initValue).addClass('r3');
+			}, function() {
+				$('.gZASBp > div' ).removeClass('r3').addClass(initValue);
+			});
+			f.click(function(){
+				if(initValue == 'r3'){
+					initValue = 'r0';
+				}else{
+					initValue = 'r3';
+				}
+			});
+			
+			f = $('.gZASBp > a.r4');
+			f.hover(function() {
+				$('.gZASBp > div' ).removeClass(initValue).addClass('r4');
+			}, function() {
+				$('.gZASBp > div' ).removeClass('r4').addClass(initValue);
+			});
+			f.click(function(){
+				if(initValue == 'r4'){
+					initValue = 'r0';
+				}
+				else{
+					initValue = 'r4';
+				}
+			});
+			
+			f = $('.gZASBp > a.r5');
+			f.hover(function() {
+				$('.gZASBp > div' ).removeClass(initValue).addClass('r5');
+			}, function() {
+				$('.gZASBp > div' ).removeClass('r5').addClass(initValue);
+			});
+			f.click(function(){
+				if(initValue == 'r5'){
+					initValue = 'r0';
+				}
+				else{
+					initValue = 'r5';
+				}
+			});
+			
+			f = $('.gZASBp > a.r6');
+			f.hover(function() {
+				$('.gZASBp > div' ).removeClass(initValue).addClass('r6');
+			}, function() {
+				$('.gZASBp > div' ).removeClass('r6').addClass(initValue);
+			});
+			f.click(function(){
+				if(initValue == 'r6'){
+					initValue = 'r0';
+				}
+				else{
+					initValue = 'r6';
+				}
+			});
+			
+			f = $('.gZASBp > a.r7');
+			f.hover(function() {
+				$('.gZASBp > div' ).removeClass(initValue).addClass('r7');
+			}, function() {
+				$('.gZASBp > div' ).removeClass('r7').addClass(initValue);
+			});
+			f.click(function(){
+				if(initValue == 'r7'){
+					initValue = 'r0';
+				}
+				else{
+					initValue = 'r7';
+				}
+			});
+			
+			f = $('.gZASBp > a.r8');
+			f.hover(function() {
+				$('.gZASBp > div' ).removeClass(initValue).addClass('r8');
+			}, function() {
+				$('.gZASBp > div' ).removeClass('r8').addClass(initValue);
+			});
+			f.click(function(){
+				if(initValue == 'r8'){
+					initValue = 'r0';
+				}
+				else{
+					initValue = 'r8';
+				}
+			});
+			
+			f = $('.gZASBp > a.r9');
+			f.hover(function() {
+				$('.gZASBp > div' ).removeClass(initValue).addClass('r9');
+			}, function() {
+				$('.gZASBp > div' ).removeClass('r9').addClass(initValue);
+			});
+			f.click(function(){
+				if(initValue == 'r9'){
+					initValue = 'r0';
+				}
+				else{
+					initValue = 'r9';
+				}
+			});
+			
+			f = $('.gZASBp > a.r10');
+			f.hover(function() {
+				$('.gZASBp > div' ).removeClass(initValue).addClass('r10');
+			}, function() {
+				$('.gZASBp > div' ).removeClass('r10').addClass(initValue);
+			});
+			f.click(function(){
+				if(initValue == 'r10'){
+					initValue = 'r0';
+				}
+				else{
+					initValue = 'r10';
+				}
+			});
+		});
 	</script>
+	
 	<link rel="stylesheet" href="/brw/resources/css/global.css">
 </head>
 <body>
@@ -156,6 +310,16 @@
 																			class="RatingControl__StarImg-s2c1yoc-9 irzhJG UIImg-s3jz6tx-0 gBImux"
 																			src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0NCIgaGVpZ2h0PSI0NCIgdmlld0JveD0iMCAwIDQ0IDQ0Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHBhdGggZmlsbD0iI0ZGREQ2MyIgZD0iTTIyIDMzLjQ0NEw5LjgzIDQyLjMyN2MtLjc4NC41NzItMS44NDItLjE5Ni0xLjUzOS0xLjExOGw0LjY4Ny0xNC4zMkwuNzY5IDE4LjA2Yy0uNzg3LS41NjktLjM4My0xLjgxMi41ODgtMS44MWwxNS4wNjcuMDMzIDQuNjI0LTE0LjM0Yy4yOTgtLjkyNCAxLjYwNi0uOTI0IDEuOTA0IDBsNC42MjQgMTQuMzQgMTUuMDY3LS4wMzNjLjk3MS0uMDAyIDEuMzc1IDEuMjQxLjU4OCAxLjgxbC0xMi4yMDkgOC44MjkgNC42ODggMTQuMzJjLjMwMi45MjItLjc1NiAxLjY5LTEuNTQgMS4xMThMMjIgMzMuNDQ0eiIvPgogICAgPC9nPgo8L3N2Zz4K"></span>
 																	</div>
+																	<a class="r10" ></a>
+																	<a class="r9" ></a>
+																	<a class="r8" ></a>
+																	<a class="r7" ></a>
+																	<a class="r6" ></a>
+																	<a class="r5" ></a>
+																	<a class="r4" ></a>
+																	<a class="r3" ></a>
+																	<a class="r2" ></a>
+																	<a class="r1" ></a>
 																</div>
 															</div>
 														</div>
@@ -340,7 +504,7 @@
 																				class="SectionWithHeader__TopRight-s1eyxltb-3 bZaEfL">
 																				<div
 																					class="SectionWithViewMore__ViewMore-xtbl7q-0 bhbIbv">
-																					<a href="/brw/drama/dramaInfo.br?DRAMA_NO=${map.DRAMA_NO}&DRAMA_NAME=${map.DRAMA_NAME}">더보기</a>
+																					<a href="/brw/drama/dramaInfo.br?DRAMA_NO=${map.DRAMA_NO}">더보기</a>
 																				</div>
 																			</div>
 																		
@@ -712,21 +876,20 @@
 															
 														</div>
 
-		<%--  <c:forEach items="${list}" var="dramaList" >  --%>
+		 <c:forEach items="${detailgenre}" var="detailgenrelist" >
 			 <div class="col-sm-6 col-md-3">
 			 	<a href="/brw/drama/dramaDetail.br?DRAMA_NO=1&DRAMA_NAME=2">
 			    <div class="detailgenre">
 			      <img src="/brw/resources/images/3-girls.jpg">
 			      <%-- <input type='hidden' class='IDX' value="${dramaList.DRAMA_NO}"> --%>
 			      <div class="detailgenrefont">
-			        <h3>제목</h3>
-			        <p>조회수・평점</p>
+			        <h3>#${detailgenrelist.DRAMA_NAME}</h3>
+			        <p>#${detailgenrelist.DRAMA_DATE}・#${detailgenrelist.DRAMA_CHANNEL}</p>
 			      </div>
 			    </div>
 			    </a>
 			  </div>
-			 
-	<%-- 	 </c:forEach>  --%>
+		 </c:forEach>
 
 														
 														

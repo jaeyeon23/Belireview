@@ -218,22 +218,25 @@
                            
                             <li class="terms_bx">
 									<span class="input_chk">
-										<input type="checkbox" id="termsEmail" name="termsEmail" value="Y" class="chk">
+										<input type="checkbox" id="termsEmail" name="termsEmail" value="1" class="chk">
 										<label for="termsEmail">신규소식 ・ 알림 메일 수신<span class="terms_choice terms_no">(선택)</span></label>
 									</span>
+										 <input type="hidden"  id="termsEmail2" name="termsEmail" value="0" disabled class="chk">    
+    
 									<span class="input_chk">
-										<input type="checkbox" id="termsLocation" name="termsLocation" value="Y" class="chk">
+										<input type="checkbox" id="termsLocation" name="termsLocation" value="1" class="chk">
 										<label for="termsLocation">신규소식 ・ 알림 SNS 수신<span class="terms_choice terms_no">(선택)</span></label>
 									</span>
+										<input type="hidden"  id="termsLocation2" name="termsLocation" value="0" disabled class="chk">    
+    
                             </li>
                         </ul>
                     </div>
                     <!-- //약관동의 -->
 					
-                   
                     <div class="btn_area double">
-                        <span><!-- tg-text=terms_button_cancel --><a href="/brw/main.br" id="btnCancel" class="btn_type btn_default" role="button">비동의</a></span>
-                        <span><!-- tg-text=terms_button_agree  onclick="javascript:checkSubmit()" --><a href="#" id="btnAgree" class="btn_type btn_primary" role="button" >동의</a></span>
+                        <span><a href="/brw/main.br" id="btnCancel" class="btn_type btn_default" role="button">비동의</a></span>
+                        <span><a href="#" id="btnAgree" class="btn_type btn_primary" role="button" >동의</a></span>
                     </div>
                 </form>
 
@@ -245,7 +248,8 @@
     
     
     
-    <script type="text/JavaScript">    
+    <script type="text/JavaScript"> 
+    
     $(document).ready(function() {
         checkSupportedBorwser();   /* 브라우저체크 */
 
@@ -281,8 +285,22 @@
     		else if(!$("#termsPrivacy").prop("checked")){
     			alert("개인정보 수집에 동의해주세요.");
     			return false;
-    		}
-    	 	else {
+    		} else {    	 
+    			if(!$("#termsEmail").prop("checked")){ // 이메일수신 체크된게 아니면 (disabled=true면 value값 넘어가지않음)
+    				var auth7 = document.getElementById("termsEmail2"); // termsEmail2의
+    				auth7.removeAttribute("disabled");    //disabled값지우고  
+
+    				var auth8 = document.getElementById("termsEmail"); //termsEmail의
+    				auth8.setAttribute("disabled", "disabled");   		 //disabled 값줌 							
+        		} 
+    			if(!$("#termsLocation").prop("checked")){ // sms수신 체크된게 아니면   (disabled=true면 value값 넘어가지않음)
+    				var auth9 = document.getElementById("termsLocation2"); //termsLocation2의
+    				auth9.removeAttribute("disabled");                        //disabled값지우고 
+
+    				var auth10 = document.getElementById("termsLocation"); //termsLocation
+    				auth10.setAttribute("disabled", "disabled"); 				 //disabled 값줌 					
+        		}
+    			
     			join_form.action="join.br";
     			join_form.submit();
     		} 

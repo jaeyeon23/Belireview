@@ -19,7 +19,6 @@ import believe.review.brw.common.util.Paging;
 
 @RequestMapping("/drama")
 public class DramaController {
-	private Map<String,Integer> pageMap = new HashMap<String,Integer> ();
 	private int currentPage = 1;	 
 	private int totalCount;
 	private int blockCount = 1;	 
@@ -41,19 +40,24 @@ public class DramaController {
         }
 		ModelAndView mv = new ModelAndView("dramaList");
 		
-		totalCount = (Integer)dramaService.totalDramaCount(commandMap.getMap());
+		List<Map<String,Object>> list = dramaService.selectBoardList(commandMap.getMap());
+		
+		totalCount = list.size();
 		
 		page = new Paging(currentPage, totalCount, blockCount, blockPage, "/brw/drama/dramaList");
 		pagingHtml = page.getPagingHtml().toString();
 		
-		pageMap.put("START",page.getStartCount());
-		pageMap.put("END",page.getEndCount());
+		int lastCount = totalCount;
 		
-		List<Map<String,Object>> list = dramaService.selectBoardList(pageMap);
+		if(page.getEndCount() < totalCount)
+			lastCount = page.getEndCount() + 1;
 		
+		list = list.subList(page.getStartCount(), lastCount);
+		
+		mv.addObject("totalCount", totalCount);
 		mv.addObject("list", list);
-		/*System.out.println(list.get(0).get("DRAMA_NO"));*/
 		mv.addObject("page",pagingHtml);
+		mv.addObject("currentPage",currentPage);
 		
 		return mv;
 
@@ -66,21 +70,23 @@ public class DramaController {
 		
 		
 		/*HttpSession session = request.getSession();*/
-		Map<String,Object> map = dramaService.dramaDetail(commandMap.getMap());
 		
+		
+		Map<String,Object> map = dramaService.dramaDetail(commandMap.getMap());
 		List<Map<String,Object>> comment = dramaService.dramaCommentByLike(map);
 		List<Map<String,Object>> actor = dramaService.dramaActor(map); 
+		List<Map<String,Object>> detailgenre = dramaService.detailgenre(map);
+		
 		/*Map<String,Object> insertcomment = dramaService.insertdramaComment(commandMap.getMap());*/
-		System.out.println("CONT"+map.get("DRAMA_NO"));
 		totalCount = (Integer)dramaService.totalDramaComment(map);
-		System.out.println(totalCount);
+		
 		mv.addObject("map",map);
 		mv.addObject("comment",comment);
 		mv.addObject("actor",actor);
+		mv.addObject("detailgenre",detailgenre);
 		mv.addObject("totalCount",totalCount);
 	/*	mv.addObject("insertcomment",insertcomment);*/
 		
-		System.out.println(actor.get(0).get("ACTOR_NAME"));
 		
 		
 		return mv;

@@ -10,7 +10,7 @@ import believe.review.brw.common.common.AbstractDAO;
 @Repository("dramaDAO")
 public class DramaDAO extends AbstractDAO{
 	@SuppressWarnings("unchecked")
-	public List<Map<String, Object>> selectBoardList(Map<String,Integer> map) throws Exception{
+	public List<Map<String, Object>> selectBoardList(Map<String, Object>  map) throws Exception{
 		return (List<Map<String, Object>>) selectList("drama.selectBoardList",map);
 	}
 	@SuppressWarnings("unchecked")
@@ -32,8 +32,12 @@ public class DramaDAO extends AbstractDAO{
 	public int totalDramaCount(Map<String, Object> map) throws Exception{
 		return (Integer) selectOne("drama.totalDramaCount",map);
 	}
+	@SuppressWarnings("unchecked")
+	public List<Map<String,Object>> detailgenre(Map<String, Object> map) throws Exception{
+		return (List<Map<String,Object>>)selectList("drama.detailgenre",map);
+	}
+	
 	public int totalDramaComment(Map<String, Object> map) throws Exception{
-		//System.out.println("DAO"+map.get("DRAMA_NO"));
 		return (Integer) selectOne("drama_comment.totalDramaComment",map);
 	}
 	/*@SuppressWarnings("unchecked")
