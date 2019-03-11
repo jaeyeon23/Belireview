@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC " - //mybatis.org//DTD Config 3.0//EN" " http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="admin">
+
+<!-- User -->
+	<select id="selectUserList" resultType="hashmap">
+		SELECT 
+			*
+		FROM
+			member
+	</select>
+
+	<select id="checkUser" resultType="int" parameterType="hashMap">
+		SELECT
+			count(*)
+		FROM
+			member
+		WHERE
+			id=#{id} and password=#{password}
+	</select>
+	
+	<select id="selectUserOne" resultType="hashmap" parameterType="string">
+		SELECT
+			*
+		FROM
+			member
+		WHERE
+			id=#{id}
+	</select>
+	
+	<!-- <select id="selectUserOne_profile" resultType="hashmap" parameterMap="string">
+		SELECT
+			profile_image
+		FROM
+			member
+		WHERE
+			id=#{id}	
+	</select> -->
+	
+	<update id="updateUserOne" parameterType="hashmap">
+		UPDATE
+			member
+		SET
+			<if test="profile_image != null">
+				profile_image=#{profile_image},  
+			</if>
+			password=#{password}, name=#{name}, tel=#{tel}, 
+			admin=to_number(#{admin}),
+			email_marketing=to_number(#{email_marketing}), sms_marketing=to_number(#{sms_marketing}) 
+		WHERE
+			id=#{id}	
+	</update>
+	
+	<delete id="deleteUserOne" parameterType="hashmap">
+		DELETE
+		FROM
+			member
+		WHERE
+			id=#{id} and password=#{password}
+	</delete>
+	
+	<!-- Drama -->
+	<select id="selectDramaList" resultType="hashmap">
+		SELECT
+			*
+		FROM
+			drama
+		ORDER BY
+			drama_no
+	</select>
+	
+	<select id="selectDramaOne" parameterType="Integer" resultType="hashmap">
+		SELECT
+			*
+		FROM
+			drama
+		WHERE
+			drama_no=#{no}
+	</select>
+	<select id="selectDramaList_order" resultType="hashmap" parameterType="hashmap">
+		SELECT
+			*
+		FROM
+			drama 
+		<if test="searchNum != null">
+		WHERE
+			<choose>
+				<when test="searchNum == 'director'">
+					DRAMA_DIRECTOR LIKE '%'||#{searchBox}||'%' 
+				</when>
+				<when test="searchNum == 'genre'">
+					DRAMA_GENRE LIKE '%'||#{searchBox}||'%' 
+				</when>
+				<when test="searchNum == 'channel'">
+					DRAMA_CHANNEL LIKE '%'||#{searchBox}||'%' 
+				</when>
+				<when test="searchNum == 'name'">
+					DRAMA_NAME LIKE '%'||#{searchBox}||'%' 
+				</when>
+			</choose>
+		</if>
+		<if test="orderby != null">
+		ORDER BY 
+			<choose>
+				<when test="orderby == 1">
+					DRAMA_READCOUNT	
+				</when>
+				<when test="orderby == 2">
+					DRAMA_EPISODE DESC
+				</when>
+				<when test="orderby == 3">
+					DRAMA_EPISODE
+				</when>
+				<when test="orderby == 4">
+					DRAMA_GRADE DESC
+				</when>
+				<when test="orderby == 5">
+					DRAMA_GRADE 
+				</when>
+				<otherwise>
+					DRAMA_NO
+				</otherwise>
+			</choose>
+		</if>
+	</select>
+	
+	
+	<!-- 미완성 -->
+	<select id="checkDrama" resultType="int" parameterType="hashMap">
+		SELECT
+			count(*)
+		FROM
+			drama 
+		WHERE
+			drama_no=#{no}
+	</select>
+	
+	<delete id="deleteDramaOne" parameterType="hashmap">
+		DELETE
+		FROM
+			drama
+		WHERE
+			drama_no=#{no}
+	</delete>
+	
+	<delete id="deleteDramaImageOne" parameterType="int">
+		DELETE
+			drama_poster_image, 
+			drama_main_image, 
+			drama_content_image 
+		FROM
+			drama
+		WHERE
+			drama_no=#{no}
+	</delete>
+</mapper>

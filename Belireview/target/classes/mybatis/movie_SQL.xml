@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC " - //mybatis.org//DTD Config 3.0//EN" " http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="movie">
+	<select id="selectBoardList" resultType="hashmap">
+		select
+			MOVIE_NO,
+			MOVIE_NAME,
+			MOVIE_DATE,
+			MOVIE_COUNTRY,
+			MOVIE_GENRE,
+			MOVIE_TOTAL_COUNT,
+			MOVIE_DIRECTOR,
+			MOVIE_CONTENT,
+			MOVIE_RUNNINGTIME,
+			MOVIE_READCOUNT,
+			MOVIE_POSTER_IMAGE,
+			MOVIE_MAIN_IMAGE,
+			MOVIE_GALLERY_IMAGE,
+			MOVIE_GRADE,
+			RNUM from 
+		  (select
+				MOVIE_NO,
+				MOVIE_NAME,
+				to_char(MOVIE_DATE,'yyyy') as MOVIE_DATE,
+				MOVIE_COUNTRY,
+				MOVIE_GENRE,
+				MOVIE_TOTAL_COUNT,
+				MOVIE_DIRECTOR,
+				MOVIE_CONTENT,
+				MOVIE_RUNNINGTIME,
+				MOVIE_READCOUNT,
+				MOVIE_POSTER_IMAGE,
+				MOVIE_MAIN_IMAGE,
+				MOVIE_GALLERY_IMAGE,
+				MOVIE_GRADE,
+				ROWNUM RNUM from 
+				(select   *	  from MOVIE order by MOVIE_DATE desc) order by RNUM asc) where RNUM between 1 and 5
+	</select>
+	
+</mapper>
