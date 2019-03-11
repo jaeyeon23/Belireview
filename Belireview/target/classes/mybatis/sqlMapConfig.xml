@@ -5,13 +5,14 @@
 <configuration>
 	   		<!-- mybatis 기본 세팅 -->
 	<settings>
-		<setting name="cacheEnabled"              value="true"/>  
+		<setting name="cacheEnabled"              value="false"/>  
         <setting name="lazyLoadingEnabled"        value="false"/>  
         <setting name="multipleResultSetsEnabled" value="true"/>  
         <setting name="useColumnLabel"            value="true"/>  
         <setting name="useGeneratedKeys"          value="false"/>  
         <setting name="defaultExecutorType"       value="SIMPLE"/>  
         <setting name="defaultStatementTimeout"   value="25000"/>  
+        <setting name="jdbcTypeForNull" 		  value="NULL" />
 	</settings>
 	
 	<!-- typeAliases를 넣어야 할 경우 -->
@@ -31,6 +32,5 @@
 		 <mapper resource="mybatis/member_SQL.xml" />
 		 <mapper resource="mybatis/user_SQL.xml" />
 	</mappers>
-	
 </configuration>
 

@@ -18,6 +18,8 @@
 		]]>
 	</select>
 	
+	
+	
 	<!-- 비밀번호찾기 -->
 	<select id="findEmail" parameterType="hashmap" resultType="string">
 		<![CDATA[
@@ -53,6 +55,19 @@
 			SELECT COUNT(email) FROM MEMBER WHERE EMAIL = #{email}
 		]]>
 	 </select>
+	
+	
+	
+	
+	<!-- 관리자 -->
+	<select id="checkAdminSessionPw" parameterType="hashMap" resultType="int">
+		SELECT 
+			count(*) 
+		FROM 
+			MEMBER 
+		WHERE 
+			ID=#{id} and PASSWORD=#{password}
+	</select>
 	
 </mapper>
    <!--   

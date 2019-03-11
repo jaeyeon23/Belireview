@@ -37,7 +37,7 @@
 										<div class="SectionWithHeader__TopRight-s1eyxltb-3 bZaEfL">
 											<div class="SectionWithViewMore__ViewMore-xtbl7q-0 bhbIbv">
 												<a lng="ko-KR"
-													href="/brw/user/userMovielist.br">더보기</a>
+													href="/brw/user/userMovielist.br?ID=${sessionScope.ID}">더보기</a>
 											</div>
 										</div>
 									</header>

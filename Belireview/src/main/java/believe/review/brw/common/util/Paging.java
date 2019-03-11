@@ -2,19 +2,18 @@ package believe.review.brw.common.util;
 
 public class Paging {
 
-	private int currentPage;   // ����������
-	private int totalCount;	 // ��ü �Խù� ��
-	private int totalPage;	 // ��ü ������ ��
-	private int blockCount;	 // �� ��������  �Խù��� ��
-	private int blockPage;	 // �� ȭ�鿡 ������ ������ ��
-	private int startCount;	 // �� ���������� ������ �Խñ��� ���� ��ȣ
-	private int endCount;	 // �� ���������� ������ �Խñ��� �� ��ȣ
-	private int startPage;	 // ���� ������
-	private int endPage;	 // ������ ������
+	private int currentPage;  
+	private int totalCount;	
+	private int totalPage;	
+	private int blockCount;	 
+	private int blockPage;	
+	private int startCount;	
+	private int endCount;	 
+	private int startPage;	
+	private int endPage;	
 
 	private StringBuffer pagingHtml;
 
-	// ����¡ ������
 	public Paging(int currentPage, int totalCount, int blockCount,
 			int blockPage, String url) {
 
@@ -23,33 +22,25 @@ public class Paging {
 		this.currentPage = currentPage;
 		this.totalCount = totalCount;
 
-		// ��ü ������ ��
 		totalPage = (int) Math.ceil((double) totalCount / blockCount);
 		if (totalPage == 0) {
 			totalPage = 1;
 		}
 
-		// ���� �������� ��ü ������ ������ ũ�� ��ü ������ ���� ����
 		if (currentPage > totalPage) {
 			currentPage = totalPage;
 		}
 
-		// ���� �������� ó���� ������ ���� ��ȣ ��������.
-		startCount = (currentPage - 1) * blockCount ;
-		/*if(startCount==0)
-			startCount =1;*/
+		startCount = (currentPage - 1) * blockCount;
 		endCount = startCount + blockCount - 1;
 
-		// ���� �������� ������ ������ �� ���ϱ�.
 		startPage = (int) ((currentPage - 1) / blockPage) * blockPage + 1;
 		endPage = startPage + blockPage - 1;
 
-		// ������ �������� ��ü ������ ������ ũ�� ��ü ������ ���� ����
 		if (endPage > totalPage) {
 			endPage = totalPage;
 		}
 
-		// ���� block ������
 		pagingHtml = new StringBuffer();
 		
 		if (currentPage > blockPage) {
@@ -60,7 +51,6 @@ public class Paging {
 			pagingHtml.append("</li>");
 		}
 
-		//������ ��ȣ.���� �������� ���������� �����ϰ� ��ũ�� ����.
 		for (int i = startPage; i <= endPage; i++) {
 			if (i > totalPage) {
 				break;
@@ -82,7 +72,6 @@ public class Paging {
 			}
 		}
 
-		// ���� block ������
 		if (totalPage - startPage >= blockPage) {
 			pagingHtml.append("<li>");
 			pagingHtml.append("<a href=" + url + ".br?currentPage=" + (endPage + 1) + ">");
@@ -92,7 +81,6 @@ public class Paging {
 		}
 	}
 
-	// Search�ִ� ������
 	public Paging(int currentPage, int totalCount, int blockCount, int blockPage, String url, String orderby, String searchNum, String searchBox){
 		
 		this.blockCount = blockCount;
@@ -120,7 +108,6 @@ public class Paging {
 		}
 		
 		
-		// ���� block ������
 		pagingHtml = new StringBuffer();
 		if(currentPage > blockPage){
 			pagingHtml.append("<li>");
@@ -136,7 +123,6 @@ public class Paging {
 		}
 		
 		
-		//������ ��ȣ, ���� �������� �ٸ��� ǥ��
 		for(int i = startPage; i <= endPage; i++){
 			if(i > totalPage){
 				break;
@@ -160,7 +146,6 @@ public class Paging {
 			}
 		}
 		
-		// ���� block ������
 		if(totalPage - startPage >= blockPage){
 			pagingHtml.append("<li>");
 			pagingHtml.append("<a href=" + url + ".br?currentPage=" + (endPage + 1));

@@ -61,7 +61,7 @@
 					return;
 					});
 				$(".gZASBp").click(function(){//별점
-					openDetail();
+					rating();
 					return;
 				});
 			}
@@ -74,10 +74,18 @@
 			$.ajax({
 				async : true,  
 				type : 'POST',
-				data : {id:id , wish:"true" , no:<%=request.getParameter("DRAMA_NO")%>},
+				data : {id:id , wish:"w" , drama_no:<%=request.getParameter("DRAMA_NO")%>},
 				url:"<c:url value='/drama/dramaDetail.br' />",
 				success : function(result){
-					alert("a");
+					var w = result;
+					var a = "취소";
+					var s = "보고싶어요";
+					if(w.add){
+						$(".juRlmb").html(a);
+					}
+					if(w.subtract){
+						$(".juRlmb").html(s);
+					}
 				}
 			})
 		}
@@ -86,9 +94,16 @@
 		/* 별점 */
 		function rating(){
 			$.ajax({
-				
+				async : true,  
+				type : 'POST',
+				data : {id:id , rating:"r" , drama_no:<%=request.getParameter("DRAMA_NO")%>},
+				url:"<c:url value='/drama/dramaDetail.br' />",
+				success : function(result){
+					
+				}
+				/* $('.gZASBp > a.r1'); */
 			})
-		}
+		} 
 		/* 별점 */
 		
 		
@@ -107,7 +122,7 @@
 		/* 별점 */
 		$(function(){
 			
-			if(s==""||s==null){}
+			if(id==""||id==null){}
 			else{
 				var initValue = $('.gZASBp > div').attr("class").split(" ")[1];
 						
@@ -267,7 +282,7 @@
 	
 	<link rel="stylesheet" href="/brw/resources/css/global.css">
 </head>
-<body>
+<body> aaaaf aw 
 	<div id="root">
 		<div class="App__Self-m1g4ja-0 iBpXSE">
 			<div class="NavTabManager__NavContainer-dbid0l-0 hhxQev">

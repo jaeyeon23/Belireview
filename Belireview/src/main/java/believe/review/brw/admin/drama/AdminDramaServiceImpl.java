@@ -31,5 +31,23 @@ public class AdminDramaServiceImpl implements AdminDramaService{
 		return adminDramaDAO.selectNextVal();
 	}
 
-	
+	@Override
+	public void writeDrama(Map<String, Object> map) throws Exception {
+		adminDramaDAO.writeDrama(map);
+	}
+
+	@Override
+	public int checkDrama(Map<String, Object> map) throws Exception {
+		return adminDramaDAO.checkDrama(map);
+	}
+
+	@Override
+	public void deleteDramaOne(Map<String, Object> map) throws Exception{
+		adminDramaDAO.deleteDramaOne(map);
+	}
+
+	@Override
+	public void updateDramaOne(Map<String, Object> map) throws Exception {
+		adminDramaDAO.updateDramaOne(map);
+	}
 }

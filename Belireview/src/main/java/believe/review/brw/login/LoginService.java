@@ -17,22 +17,5 @@ public interface LoginService {
 	String findEmail(Map<String, Object> map) throws Exception;
 	
 	
-	/*String checkMember(Map<String, Object> map)throws Exception;*/
-
-	
-/*	String findId(Map<String, Object> map) throws Exception;*/
-
-/*	//비밀번호 찾기
-	void findPasswd(Map<String, Object> map) throws Exception;*/
-	
-	
-/*	Map<String, Object> loginMember(Map<String,Object> map)throws Exception;
-	*/
-/*	Map<String,Object> searchId(Map<String,Object> map)throws Exception;
-	
-	Map<String,Object> searchPw(Map<String,Object> map)throws Exception;
-	*/
-	
-	
 }
 
