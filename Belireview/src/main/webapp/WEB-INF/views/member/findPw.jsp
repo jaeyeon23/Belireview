@@ -13,7 +13,7 @@
 	}
 	
 </script>	
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 	function memberFindChk(){
 		
 		var mem = eval("document.findPwForm");
@@ -32,7 +32,7 @@
 		return true;
 	}
 	
-</script>
+</script> -->
 <title>아이디찾기</title>
 </head>
 <body>
@@ -51,13 +51,13 @@
 			<div id="content">
 				<div class="login_form">
 						<div class="row_group">
-							<form id="findPwForm" method="post" action="/brw/member/findPw.br" onsubmit="return memberFindChk()">
+							<form id="findPwForm" method="post" action="/brw/member/findPw.br">
 							<div class="join_row">
 								<h3 class="join_title">
 									<label for="id">아이디</label>
 								</h3>
 								<span class="ps_box box_right_space"> 
-									<input type="text" id="id" name="id" title="아이디" class="int" maxlength="40">
+									<input type="text" id="pwid" name="pwid" title="아이디" class="int" maxlength="40">
 								</span>
 							</div>
 							<div class="join_row">
@@ -65,7 +65,7 @@
 									<label for="name">이름</label>
 								</h3>
 								<span class="ps_box box_right_space"> 
-									<input type="text" id="name" name="name" title="이름" class="int" maxlength="40">
+									<input type="text" id="pwname" name="pwname" title="이름" class="int" maxlength="40">
 								</span>
 							</div>
 							<br>
@@ -74,7 +74,7 @@
 									<label for="email">이메일</label>
 								</h3>
 								<span class="ps_box int_email box_right_space"> 
-									<input type="text" id="email" name="email" maxlength="100" class="int" placeholder="이메일 주소 전체를 입력해주세요">
+									<input type="text" id="pwemail" name="pwemail" maxlength="100" class="int" placeholder="이메일 주소 전체를 입력해주세요">
 								</span>
 								<br>
 								<div class="text-primary col-xs-24">
