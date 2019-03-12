@@ -86,6 +86,17 @@
 		]]>
 	</select>
 	
+	<!-- 프로필사진수정 -->
+	<update id="UserProfile" parameterType="hashmap">
+	 	<![CDATA[
+		UPDATE MEMBER
+        SET 
+            PROFILE_IMAGE = #{PROFILE_IMAGE}                         
+       WHERE 
+       		ID = #{ID}
+		]]>
+	</update>
+	
 	<!-- 회원정보수정 -->
 	<update id="changeUser" parameterType="hashmap">
 		<![CDATA[

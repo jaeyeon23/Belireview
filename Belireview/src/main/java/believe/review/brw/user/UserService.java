@@ -11,6 +11,9 @@ public interface UserService {
 	
 	// 수정된 회원정보 불러오기
 	Map<String, Object> userGo(Map<String, Object> map) throws Exception;
+	// 프로필사진수정
+	void UserProfile(Map<String, Object> memberMap, HttpServletRequest request)throws Exception;
+	
 	
 	List<Map<String,Object>> UserMovieByRecent(Map<String, Object>  map) throws Exception;
 	

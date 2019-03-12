@@ -11,6 +11,8 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import believe.review.brw.common.common.CommandMap;
@@ -27,22 +29,39 @@ public class UserController {
 		mv.setViewName("user");
 		return mv;
 	}
+	
+	@RequestMapping(value="/userModify_Pro", method=RequestMethod.POST)   //프로필사진변경
+	public ModelAndView userProfile(CommandMap commandMap, HttpServletRequest request) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		Map<String, Object> Pmap=new HashMap<String, Object>();
+		Pmap = commandMap.getMap();
+		HttpSession session = request.getSession();
+		
+		userService.UserProfile(Pmap, request);
+		
+		//세션 이미지 변경 
+		Map<String, Object> usermem = userService.userGo(commandMap.getMap());
+		session.setAttribute("PROFILE_IMAGE", usermem.get("PROFILE_IMAGE"));
+		 
+		mv.setViewName("user");
+		return mv;
+	}
 
 	@RequestMapping(value="/userModifyPass")  // 수정폼으로 이동전 비밀번호 확인 
 	public ModelAndView userModifyPass(){
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("pwdCheck");
 		return mv;
-	}
+	}	
 	
-	@RequestMapping(value="/userModify", method=RequestMethod.GET)  
+	@RequestMapping(value="/userModify", method=RequestMethod.GET)   //정보수정폼
 	public ModelAndView userModify(){
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("modify");
 		return mv;
 	}
-	
-	@RequestMapping(value="/userModify", method=RequestMethod.POST)  
+
+	@RequestMapping(value="/userModify", method=RequestMethod.POST)  //폼값 받아 회원정보수정
 	public ModelAndView userModify(CommandMap commandMap, HttpServletRequest request) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		HttpSession session = request.getSession();
@@ -70,6 +89,7 @@ public class UserController {
 		mv.setViewName("user");		
 		return mv;
 	}
+	
 	
 	
 	@RequestMapping(value="/userMovie")
