@@ -29,11 +29,6 @@ public class UserServiceImpl implements UserService{
 	public Map<String, Object> userGo(Map<String, Object> map) throws Exception {
 		return userDAO.selectId(map);
 	}
-	
-	@Override
-	public List<Map<String, Object>> UserMovieByRecent(Map<String, Object> map) throws Exception {
-		return userDAO.UserMovieByRecent(map);
-	}
 
 	@Override
 	public List<Map<String, Object>> UserMovieAll(Map<String, Object> map) throws Exception {
@@ -53,6 +48,24 @@ public class UserServiceImpl implements UserService{
 		userDAO.updateWishList(map);
 	}
 	/*보고싶어요*/
+
+	@Override
+	public List<Map<String, Object>> selectUserGrade(Map<String, Object> map) throws Exception {
+		return userDAO.selectUserGrade(map);
+	}
+
+	@Override
+	public List<Map<String, Object>> userDramaList(Map<String, Object> map) throws Exception {
+		return userDAO.userDramaList(map);
+	}
+	
+	@Override
+	public List<Map<String, Object>> userMovieList(Map<String, Object> map) throws Exception {
+		return userDAO.userMovieList(map);
+	}
+	
+	
+	
 }
 
 
