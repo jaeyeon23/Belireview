@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 
 public interface MemberService {
 	
+
 	//회원가입
 	void insertMember(Map<String, Object> map, HttpServletRequest request) throws Exception;
 	
@@ -14,4 +15,7 @@ public interface MemberService {
 	
 	//이메일존재여부
 	int checkMember(Map<String, Object> map)throws Exception;
+	
+	//관리자
+	public int checkAdminSessionPw(Map<String, Object> map) throws Exception;
 }

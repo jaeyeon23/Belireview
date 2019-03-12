@@ -96,8 +96,8 @@ public class LoginController {
 
 					return mv;
 				} else {
-					mv.addObject("message", "비밀번호를 확인해주세요.");
 					mv.setViewName("loginForm");
+					mv.addObject("message", "비밀번호를 확인해주세요.");
 					return mv;
 				}
 			}
@@ -106,7 +106,7 @@ public class LoginController {
 	}	 
 		 
 	
-	@RequestMapping(value = "/logout.br")		//로그아웃
+	@RequestMapping(value = "/logout.br")
 	   public ModelAndView logout(HttpServletRequest request, CommandMap commandMap) {
 	      HttpSession session = request.getSession(false);
 	      if (session != null)
@@ -130,6 +130,7 @@ public class LoginController {
 		
 		ModelAndView mv=new ModelAndView();
  		
+		
 		Map<String, Object> chk = loginService.findId(commandMap.getMap());
  		
  		
@@ -139,14 +140,19 @@ public class LoginController {
 			mv.setViewName("findIdError");
 			return mv;
  		} else {
- 			
+
+ 			/*if(!chk.get("EMAIL").equals(commandMap.get("email"))) {
+ 				memberFindChk=-1;
+ 				mv.addObject("memberFindChk",memberFindChk);
+ 				mv.setViewName("findIdError");
+ 			}else {*/
  			memberFindChk = 1;
  			mv.addObject("NAME",commandMap.get("name"));
 			mv.addObject("ID",chk.get("ID"));
 			mv.addObject("memberFindChk", memberFindChk);
 			mv.setViewName("findIdOk");
-			return mv;
-		
+/*ㅁ*/
+ 			return mv;
  		}
  		
  	}

@@ -9,6 +9,7 @@ import believe.review.brw.common.common.AbstractDAO;
 @Repository("memberDAO")
 public class MemberDAO extends AbstractDAO {
 	
+
 	//회원가입
 	public void insertMember(Map<String, Object> map) throws Exception {
 		insert("member.insertMember", map);
@@ -23,6 +24,9 @@ public class MemberDAO extends AbstractDAO {
 	public int checkMember(Map<String, Object> map)throws Exception{
 		return selectMemberId("member.checkMember",map);
 	}
-		
-	 
+	
+	//관리자
+	public int checkAdminSessionPw(Map<String, Object> map) throws Exception{
+		return (Integer) selectOne("member.checkAdminSessionPw", map);
+	}
 }

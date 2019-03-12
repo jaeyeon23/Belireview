@@ -1,5 +1,6 @@
 package believe.review.brw.user;
 
+import java.util.List;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -26,8 +27,7 @@ public class UserController {
 		mv.setViewName("user");
 		return mv;
 	}
-	
-	
+
 	@RequestMapping(value="/userModifyPass")  // 수정폼으로 이동전 비밀번호 확인 
 	public ModelAndView userModifyPass(){
 		ModelAndView mv = new ModelAndView();
@@ -66,8 +66,6 @@ public class UserController {
 		 session.setAttribute("EMAIL_MARKETING", usermem.get("EMAIL_MARKETING"));
 		 session.setAttribute("SMS_MARKETING", usermem.get("SMS_MARKETING"));
 		 
-		 
-		
 		
 		mv.setViewName("user");		
 		return mv;
@@ -75,8 +73,25 @@ public class UserController {
 	
 	
 	@RequestMapping(value="/userMovie")
-	public ModelAndView userMovie() {
+	public ModelAndView userMovie(CommandMap commandMap, HttpServletRequest request) throws Exception {
+		HttpSession session = request.getSession();
+		
 		ModelAndView mv = new ModelAndView("userMovie");
+		List<Map<String,Object>> userList = userService.UserMovieByRecent(commandMap.getMap());
+		
+		mv.addObject("userList", userList);
+		return mv;
+	}
+	
+	@RequestMapping(value="/userMovielist")
+	public ModelAndView userMovielist(CommandMap commandMap, HttpServletRequest request)throws Exception{
+		HttpSession session = request.getSession();
+		
+		ModelAndView mv = new ModelAndView("userMovielist");
+		List<Map<String,Object>> userMovieAll = userService.UserMovieAll(commandMap.getMap());
+		
+		mv.addObject("userMovieAll", userMovieAll);
+	
 		return mv;
 	}
 }

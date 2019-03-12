@@ -11,5 +11,17 @@ public interface UserService {
 	
 	// 수정된 회원정보 불러오기
 	Map<String, Object> userGo(Map<String, Object> map) throws Exception;
+	
+	List<Map<String,Object>> UserMovieByRecent(Map<String, Object>  map) throws Exception;
+	
+	List<Map<String,Object>> UserMovieAll(Map<String, Object>  map) throws Exception;
+	
+	/*보고싶어요*/
+	Map<String, Object> userWishList(Map<String, Object> map) throws Exception;
+	
+	void insertWishList(Map<String, Object> map) throws Exception;
+	
+	void updateWishList(Map<String, Object> map) throws Exception;
+	/*보고싶어요*/
 		
 }
