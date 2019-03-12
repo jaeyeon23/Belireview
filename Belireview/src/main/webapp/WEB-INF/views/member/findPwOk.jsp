@@ -38,7 +38,6 @@
                         <p class="terms_chk_all">
 								<span class="input_chk">
 									${ID}님! 비밀번호 변경이 완료되었습니다.<br>
-									<hr>
 									변경된 비밀번호를 이메일로 확인하세요.<br>									
 								</span>
                         </p>

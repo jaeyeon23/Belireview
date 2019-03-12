@@ -40,4 +40,13 @@ public class UserDAO extends AbstractDAO {
 	}
 	/*보고싶어요*/
 	
+	@SuppressWarnings("unchecked")
+	public int checkPwd(Map<String, Object> map) throws Exception {
+		return (Integer) selectOne("user.checkPwd", map);
+	}
+	
+	@SuppressWarnings("unchecked")
+	public void deleteMember(Map<String, Object> map) throws Exception {
+		update("user.deleteMember", map);
+	}
 }

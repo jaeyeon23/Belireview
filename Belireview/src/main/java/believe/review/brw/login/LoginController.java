@@ -168,6 +168,8 @@ public class LoginController {
 	public ModelAndView clickMethod(HttpServletResponse response, HttpServletRequest request, CommandMap map)
 			throws Exception {
 
+		int memberFindChk;
+		
 		ModelAndView mv=new ModelAndView();
 		
 		//String check_find = (String) map.getMap().get("check_find");
@@ -205,8 +207,9 @@ public class LoginController {
 			return mv;
 			
 		} else{
-
+			memberFindChk=0;
 			mv.addObject("str", str);
+			mv.addObject("memberFindChk",memberFindChk);
 			mv.setViewName("findPwError");
 
 			return mv;

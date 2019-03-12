@@ -53,6 +53,15 @@ public class UserServiceImpl implements UserService{
 		userDAO.updateWishList(map);
 	}
 	/*보고싶어요*/
+	@Override
+	public int checkPwd(Map<String, Object> map) throws Exception {
+		return userDAO.checkPwd(map);
+	}
+
+	@Override
+	public void deleteMember(Map<String, Object> map) throws Exception {
+		userDAO.deleteMember(map);
+	}
 }
 
 

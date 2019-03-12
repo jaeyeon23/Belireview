@@ -94,4 +94,17 @@ public class UserController {
 	
 		return mv;
 	}
+	
+	@RequestMapping(value="/userDelete", method=RequestMethod.POST)
+	public int userdelete(CommandMap commandMap, HttpSession session)throws Exception{
+		
+		int result = 0;
+		result = userService.checkPwd(commandMap.getMap());
+		if(result==1) {
+			userService.deleteMember(commandMap.getMap());
+			session.invalidate();		
+		}
+		return result;
+	}
+	
 }

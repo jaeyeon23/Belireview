@@ -101,4 +101,18 @@
 		]]>
 	</update>
 	
+	<!-- 회원탈퇴하기 -->
+	
+	<update id="deleteMember" parameterType="hashmap">
+	<![CDATA[
+		UPDATE MEMBER SET STATUS='Y' WHERE ID=#{id}
+	]]>
+	</update>
+	
+	<select id="checkPwd" parameterType="hashmap" resultType="int">
+   	<![CDATA[
+   		select count(*) from member where password=#{PASSWORD} and id=#{ID}
+   	]]>
+   </select>
+	
 </mapper>
