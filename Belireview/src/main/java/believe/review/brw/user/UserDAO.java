@@ -20,10 +20,6 @@ public class UserDAO extends AbstractDAO {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<Map<String, Object>> UserMovieByRecent(Map<String, Object>  map) throws Exception{
-		return (List<Map<String, Object>>) selectList("user.UserMovieByRecent",map);
-	}
-	@SuppressWarnings("unchecked")
 	public List<Map<String, Object>> UserMovieAll(Map<String, Object>  map) throws Exception{
 		return (List<Map<String, Object>>) selectList("user.UserMovieAll",map);
 	}
@@ -40,4 +36,18 @@ public class UserDAO extends AbstractDAO {
 	}
 	/*보고싶어요*/
 	
+	@SuppressWarnings("unchecked")
+	public List<Map<String, Object>> selectUserGrade(Map<String, Object>  map) throws Exception{
+		return (List<Map<String, Object>>) selectList("user.selectUserGrade",map);
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Map<String, Object>> userDramaList(Map<String, Object>  map) throws Exception{
+		return (List<Map<String, Object>>) selectList("user.userDramaList",map);
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Map<String, Object>> userMovieList(Map<String, Object>  map) throws Exception{
+		return (List<Map<String, Object>>) selectList("user.userMovieList",map);
+	}
 }

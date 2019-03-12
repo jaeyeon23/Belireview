@@ -37,5 +37,6 @@
 				ROWNUM RNUM from 
 				(select   *	  from MOVIE order by MOVIE_DATE desc) order by RNUM asc) where RNUM between 1 and 5
 	</select>
+
 	
 </mapper>
