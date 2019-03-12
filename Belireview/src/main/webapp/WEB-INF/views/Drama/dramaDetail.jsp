@@ -50,8 +50,8 @@
 				$(".juRlmb").html("취소");
 			 }
 			 if(grade != ""){
-				 alert("gggg");
-			 }
+			  	alert("gggg");
+			 } 
 		 });  
 		 /* 로그인 유무 */
 		$(function(){ 

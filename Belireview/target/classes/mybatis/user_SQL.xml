@@ -109,12 +109,12 @@
 		SELECT
 				DRAMA_NO,
 				DRAMA_NAME,
-				DRAMA_POSTER_IMAGE,
+				DRAMA_POSTER_IMAGE
 	    FROM 
 				DRAMA
 		WHERE DRAMA_NO IN 
-		<foreach collection="codeList" item="a" open="(" close=")" separator=",">
-			#{a}
+		<foreach collection="a" item="s" open="(" close=")" separator=",">
+			#{s}
 		</foreach>
 		
    </select>
@@ -123,7 +123,7 @@
 		SELECT
 				MOVIE_NO,
 				MOVIE_NAME,
-				MOVIE_POSTER_IMAGE,
+				MOVIE_POSTER_IMAGE
 	    FROM 
 				MOVIE
 		WHERE MOVIE_NO IN 
