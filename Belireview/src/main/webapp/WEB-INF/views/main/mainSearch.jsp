@@ -31,8 +31,8 @@
 										class="PrimitiveHorizontalScrollable__ScrollingInner-hy4esm-2 iGzmWK">
 										<div class="Grid-zydj2q-0 cspjno">
 											<div class="Row-s1apwm9x-0 lowZpE">
-												<ul
-													class="HorizontalUlWithContentPosterList__StyledHorizontalUlWithContentPosterList-rp5ukn-0 kVCLyu HorizontalUl__StyledHorizontalUl-s1lfz4bc-0 fbzjBz VisualUl-s1vzev56-0 hgAYVH">
+												<ul class="HorizontalUlWithContentPosterList__StyledHorizontalUlWithContentPosterList-rp5ukn-0 kVCLyu HorizontalUl__StyledHorizontalUl-s1lfz4bc-0 fbzjBz VisualUl-s1vzev56-0 hgAYVH">
+													<c:forEach items="${searchMain}" var="result">
 													<li class="ContentListItemWithPoster__Self-swai1z-0 hKRvvO">
 													<a lng="ko-KR" title="${request}" href="/ko-KR/contents/tP8w03R">
 														<div class="ContentListItemWithPoster__ContentPosterBlock-swai1z-1 kxDIaJ">
@@ -41,12 +41,13 @@
 															</div>
 														</div>
 														<div class="ContentListItemWithPoster__ContentInfo-swai1z-2 kVeCGy">
-															<div class="SearchResultsSection__TopResultItemTitle-s1qazrkm-1 kBOijn">도깨비</div>
-															<div class="SearchResultsSection__TopResultItemExtraInfo-s1qazrkm-2 dGUMNT">2016 ・ tvN</div>
-															<div class="SearchResultsSection__TopResultContentType-s1qazrkm-3 eeOgLY">TV</div>
+															<div class="SearchResultsSection__TopResultItemTitle-s1qazrkm-1 kBOijn">${result.NAME}</div>
+															<div class="SearchResultsSection__TopResultItemExtraInfo-s1qazrkm-2 dGUMNT">${result.DATE} ・ ${result.GENRE}</div>
+															<div class="SearchResultsSection__TopResultContentType-s1qazrkm-3 eeOgLY">${result.TYPE} </div>
 														</div>
 														</a>
 													</li>
+													</c:forEach>
 												</ul>
 											</div>
 										</div>
