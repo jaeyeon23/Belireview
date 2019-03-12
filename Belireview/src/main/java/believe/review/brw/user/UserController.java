@@ -93,12 +93,7 @@ public class UserController {
 	    mv.addObject("userWishList",userWishList);
 		mv.addObject("userDramaList",userDramaList);
 		mv.addObject("userMovieList",userMovieList);
-		if(userMovieList == null) {
-			System.out.println("널");
-		}else {
-			System.out.println("안널");
-		}
-		
+
 
 		return mv;
 	}

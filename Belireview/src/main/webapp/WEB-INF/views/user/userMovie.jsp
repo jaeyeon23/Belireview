@@ -870,8 +870,7 @@
 																							<div class="Row-s1apwm9x-0 lowZpE">
 																							<ul
 																								class="ContentGrid__ContentGridUsedInArchive-x2fbsz-1 gScTqD ContentGrid-x2fbsz-0 cwhjMF VisualUl-s1vzev56-0 hgAYVH">
-																								<c:forEach items="${selectUserGrade}"
-																									var="UserGrade">
+																								<c:forEach items="${selectUserGrade}" var="UserGrade">
 																									<c:if test="${UserGrade.ML_GRADE == 0.5}">
 																										<li
 																											class="ContentListItemWithPoster__Self-swai1z-0 hKRvvO">
@@ -932,7 +931,7 @@
 																		<div class="Grid-zydj2q-0 cspjno">
 																			<div class="Row-s1apwm9x-0 lowZpE">
 																				<ul class="ContentGrid__ContentGridUsedInArchive-x2fbsz-1 gScTqD ContentGrid-x2fbsz-0 cwhjMF VisualUl-s1vzev56-0 hgAYVH">
-																					<c:forEach items="${userMovieAll}" var="userMovieAll">
+																					<c:forEach items="${userMovieList}" var="userMovie">
 																						<li class="ContentListItemWithPoster__Self-swai1z-0 hKRvvO">
 																						<a lng="ko-KR" title="배트맨 대 슈퍼맨: 저스티스의 시작"
 																							href="/ko-KR/contents/mdKBRkR">
@@ -945,9 +944,9 @@
 																								</div>
 																								<div class="ContentListItemWithPoster__ContentInfo-swai1z-2 kVeCGy">
 																									<div
-																										class="ContentListItemWithPoster__ContentTitle-swai1z-3 dXMJZW">${userMovieAll.MOVIE_NAME}</div>
+																										class="ContentListItemWithPoster__ContentTitle-swai1z-3 dXMJZW">${userMovie.MOVIE_NAME}</div>
 																									<div
-																										class="ContentListItemWithPoster__ContentRating-swai1z-4 jYxobl">★${userMovieAll.MOVIE_GRADE}</div>
+																										class="ContentListItemWithPoster__ContentRating-swai1z-4 jYxobl">★${userMovie.MOVIE_GRADE}</div>
 																								</div>
 																						</a></li>
 																					</c:forEach>
