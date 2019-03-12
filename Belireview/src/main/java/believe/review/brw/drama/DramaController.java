@@ -81,10 +81,10 @@ public class DramaController {
 		List<Map<String,Object>> actor = dramaService.dramaActor(map); //출연배우
 		List<Map<String,Object>> detailgenre = dramaService.detailgenre(map);//비슷한장르
 		
-		if(session.getAttribute("ID")!=null) {//로그인
+		if(session.getAttribute("ID")!=null) {//로그인했을때
 			map.put("ID", session.getAttribute("ID"));
 			Map<String,Object> tmp = userService.userWishList(map);
-			if(tmp.get("MYPAGE_DRAMA")!=null) {
+			if(tmp.get("MYPAGE_DRAMA")!=null) {//보고싶어요
 				String str[] = tmp.get("MYPAGE_DRAMA").toString().split(",");
 				for(String s : str) {
 					if(map.get("DRAMA_NO").toString().equals(s)) {
@@ -94,7 +94,7 @@ public class DramaController {
 			}
 			tmp = dramaService.existGrade(map);
 		
-			if(tmp!=null) {
+			if(tmp!=null) {//별점
 				System.out.println(tmp.get("DL_GRADE"));
 				double g = Double.parseDouble(tmp.get("DL_GRADE").toString())*2;
 				System.out.println(g);

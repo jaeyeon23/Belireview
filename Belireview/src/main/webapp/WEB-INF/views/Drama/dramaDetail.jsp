@@ -51,7 +51,9 @@
 			 }
 			 if(grade != ""){
 			  	alert("gggg");
-			 } 
+			 }else{
+				 $(".gZASBp > div").
+			 }
 		 });  
 		 /* 로그인 유무 */
 		$(function(){ 
@@ -398,8 +400,7 @@
 																<div class="RatingText__Self-s2g271e-0 ccOSgS">평가하기</div>
 															</div>
 															<div class="RatingControl__Self-s2c1yoc-0 ixVNUo">
-																<div
-																	class="RatingControl__UnratedStars-s2c1yoc-1 gZASBp">
+																<div class="RatingControl__UnratedStars-s2c1yoc-1 gZASBp">
 																	<span
 																		class="RatingControl__StarImg-s2c1yoc-9 irzhJG UIImg-s3jz6tx-0 kBCBic"
 																		src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0NCIgaGVpZ2h0PSI0NCIgdmlld0JveD0iMCAwIDQ0IDQ0Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHBhdGggZmlsbD0iI0VFRSIgZD0iTTIyIDMzLjQ0NEw5LjgzIDQyLjMyN2MtLjc4NC41NzItMS44NDItLjE5Ni0xLjUzOS0xLjExOGw0LjY4Ny0xNC4zMkwuNzY5IDE4LjA2Yy0uNzg3LS41NjktLjM4My0xLjgxMi41ODgtMS44MWwxNS4wNjcuMDMzIDQuNjI0LTE0LjM0Yy4yOTgtLjkyNCAxLjYwNi0uOTI0IDEuOTA0IDBsNC42MjQgMTQuMzQgMTUuMDY3LS4wMzNjLjk3MS0uMDAyIDEuMzc1IDEuMjQxLjU4OCAxLjgxbC0xMi4yMDkgOC44MjkgNC42ODggMTQuMzJjLjMwMi45MjItLjc1NiAxLjY5LTEuNTQgMS4xMThMMjIgMzMuNDQ0eiIvPgogICAgPC9nPgo8L3N2Zz4K"></span><span
