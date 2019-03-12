@@ -10,10 +10,7 @@
 </head>
 <body>
 <div id="wrap">
-	<form id="join_form" name="join_form" method="post" action="#" onsubmit="return checkSubmit()">
-	
-	<input type="hidden" id="email_marketing" name="email_marketing" value="${email_marketing}">
-    <input type="hidden" id="sms_marketing" name="sms_marketing" value="${sms_marketing}">    
+	<form id="join_form" name="join_form" method="post" action="userModify.br" onsubmit="return checkSubmit()">
     
     <!-- container -->
     <div id="container" role="main">
@@ -28,6 +25,7 @@
                         <h3 class="join_title"><label for="id">아이디</label></h3>
                         <div class="ps_box_disable box_right_space" >
                             <input type="text" id="id" name="id" value="${ID}" aria-describedby="iwa_verify" class="int" disabled maxlength="20">
+    						 
                         </div>
                     </div>
                     
@@ -46,12 +44,12 @@
                     <div class="join_row join_mobile">
                             <h3 class="join_title"><label for="tel">전화번호</label></h3>
                             <div class="int_mobile_area">
-                                <span class="ps_box_disable box_right_space">
-                                	<input type="text" id="tel" name="tel" value="${TEL}" class="int" maxlength="10" disabled>
+                                <span class="ps_box box_right_space">
+                                	<input type="text" id="tel" name="tel" numberOnly value="${TEL}" class="int" maxlength="11" disabled>
                                 </span>
-                                <a href="javascript:open_telBt();" class="btn_verify btn_primary" id="btnIpinSend" name="btnIpinSend" role="button">
-                                    <span class="" id="btn_go" >수정</span>
-                                    <span class="" id="btn_go_ok" >수정완료</span> 
+                                <a href="javascript:open_telBt();" class="btn_verify btn_primary" role="button">
+                                    <span class="" id="btn_go">수정</span>
+                                    <span class="" id="btn_go_ok">취소</span> 
                                 </a>
                             </div>
                             <span class="error_next_box" id="telMsg" style="display:none" role="alert"></span>
@@ -62,14 +60,19 @@
                             <h3 class="join_title"><label for="email">이메일 인증</label></h3>
                             <div class="int_mobile_area">
                                 <span class="ps_box int_mobile">
-                                	<input type="text" id="email" name="email" value="${EMAIL}" class="int" maxlength="60">
+                                	<input type="text" id="email" name="email" value="${EMAIL}" class="int" maxlength="60" disabled>
                                 </span>
-                                <a href="javascript:email_code();" class="btn_verify btn_primary" id="btnIpinSend" name="btnIpinSend" role="button">
-                                    <span class="" id="no_btn" >인증번호받기</span>
-                                    <span class="" id="yes_btn" >인증완료</span>
-                                    <!--  <span class="" id="yes_btn_go" >수정</span> -->
+                                <a href="javascript:email_btn();" class="btn_verify btn_primary" id="btnIpinSend" name="btnIpinSend" role="button">
+                                    <span class="" id="yes_btn" >수정</span>
+                                    <span class="" id="no_btn" >취소</span>
                                 </a>
+                                
                             </div>
+                            <a href="javascript:email_code();" class="btn_verify btn_primary" id="btnIpinSend2" name="btnIpinSend2" role="button">
+                                    <span class="" id="go_mail">인증메일발송</span>
+                                    <span class="" id="go_mail2">인증 완료</span>
+                            </a>
+                            
                             <div class="ps_box_disable box_right_space" id="iauthNoBox">
                                 <input type="tel" id="iauthNo" name="iauthNo" placeholder="인증번호를 입력하세요" aria-label="인증번호를 입력하세요" aria-describedby="iwa_verify" class="int" disabled maxlength="7">
                             </div>
@@ -98,7 +101,17 @@
                		<hr>
                		<font size="3" color="#403e72"><b>선택정보</b></font>
                		<h3 class="join_title"><label for="email">소식받기</label></h3>
-              
+              		<span class="input_chk">
+							<input type="checkbox" id="termsEmail" name="termsEmail" value="1" class="chk">
+							<label for="termsEmail">메일</label>
+					</span>
+							<input type="hidden"  id="termsEmail2" name="termsEmail" value="0" disabled class="chk">			 
+					<span class="input_chk">
+							<input type="checkbox" id="termsLocation" name="termsLocation" value="1" class="chk">
+							<label for="termsLocation">SNS</label>
+					</span>
+							<input type="hidden"  id="termsLocation2" name="termsLocation" value="0" disabled class="chk">    
+    
               
                 <div class="btn_area">
                 	<input type="submit" id="btnJoin" class="btn_type btn_primary" value="회원정보수정" >
@@ -112,13 +125,23 @@
 
 
 <script type="text/JavaScript">
-	$('#yes_btn').hide(); /* 인증완료버튼을 숨겨둠 */
+	$('#no_btn').hide(); /* 이메일 변경 취소을 숨겨둠 */
 	
-	$('#btn_go_ok').hide(); /* 수정완료버튼을 숨겨둠 */
+	$('#btn_go_ok').hide(); /* 취소버튼을 숨겨둠 */
+	$('#go_mail').hide(); /* 인증메일번호 숨김 */
+	$('#go_mail2').hide(); /* 인증메일번호 숨김 */
+	
+	
+	/* 회원수신동의여부에따른 체크표시 */
+	if("${EMAIL_MARKETING}" == 1){ 
+		$("#termsEmail").prop("checked",true);		
+	}
+	if("${SMS_MARKETING}" == 1){
+		$("#termsLocation").prop("checked",true);		
+	}
 	
 	
 	/* 가입버튼 클릭시 가입조건 만족 여부를 알려줄 스크립터 전역변수 */
-	var id_ok ="";
 	var password_ok ="";
 	var email_ok ="";
 	var name_ok="";
@@ -127,56 +150,8 @@
 	var idFlag = false;
 	var pwFlag = false;
 	
-	/* 아이디입력여부 */
-	$("input[name = id]").blur(function() {
-		var idFlag = false;
-		checkId("first");
-	});
-	function checkId(event) {
-        if(idFlag) return true;
-
-        var id = $("#id").val();
-        var oMsg = $("#idMsg");
-
-        if ( id == "") {
-            showErrorMsg(oMsg,"필수 정보입니다.");
-            return false;
-        }else{
-        	$.post("checkId.br", {id:id} ,function(data){
-        		if (data==1){
-        			showErrorMsg(oMsg,"이미 등록된 아이디입니다.");
-                    return false;
-        		} else {
-        			showSuccessMsg(oMsg, "사용가능한 아이디입니다.");
-        			id_ok= "ok"; 
-        		}
-        	});	
-        }
-        return true;
-    }
 	
-	
-	/* 비밀번호입력여부 */
-	$("input[name = password]").blur(function() {
-		var pwFlag = false;
-		checkPassword();
-	});
-	function checkPassword() {
-        if(pwFlag) return true;
-
-        var password = $("#password").val();
-        var oMsg = $("#pswd1Msg");
-
-        if ( password == "") {
-            showErrorMsg(oMsg,"필수 정보입니다.");
-            return false;
-        }else{
-        	oMsg.slideUp();
-        }
-        
-        return true;
-    }
-	/* 비밀번호 일치여부 */
+	/* 변경 비밀번호 일치여부 */
 	$("input[name = pswd2]").blur(function() {
 		checkPswd2();
 	});
@@ -186,18 +161,15 @@
         
         var oMsg = $("#pswd2Msg");
 
-        if ( pswd2.val() == "") {
-            showErrorMsg(oMsg,"필수 정보입니다.");
-            return false;
-        }
-        
-        if( pswd2.val() != password.val() ){
-        	showErrorMsg(oMsg,"비밀번호가 불일치합니다.");
-            return false;
-        }else{
-        	showSuccessMsg(oMsg,"일치합니다.");
-        	password_ok ="ok";
-        	return true;
+        if ( pswd2.val() != "") {
+        	if( pswd2.val() != password.val() ){
+            	showErrorMsg(oMsg,"비밀번호가 불일치합니다.");
+                return false;
+            }else{
+            	showSuccessMsg(oMsg,"일치합니다.");
+            	password_ok ="ok";
+            	return true;
+            }
         }
         return true;
     }
@@ -221,6 +193,13 @@
 
         return true;
     }
+	
+	/* 전화번호 번호만 입력가능하게  */
+	$(function(){
+   		$("input:text[numberOnly]").on("keyup", function() {
+		    $(this).val($(this).val().replace(/[^0-9]/g,""));
+		});
+	});
 	
 	/* 전화번호입력여부 */
 	$("input[name = tel]").blur(function() {
@@ -260,15 +239,45 @@
     }
 	
 
-	/* 이메일인증 */
+	/* 이메일 수정 버튼 활성화*/
+	function email_btn(){
+		var oMsg = $("#emailMsg");
+		var iauthNo2 = $('#iauthNo').val();
+		
+		
+		 var bb6 = document.getElementById("email");
+		
+		 if( bb6.disabled == true ){
+			showSuccessMsg(oMsg,"새로운 이메일을 입력해주세요. 회원정보수정을 누르면 변경이 완료됩니다.");
+			bb6.removeAttribute("disabled");  
+			$('#no_btn').show();  //취소
+			$('#go_mail').show(); //인증메일보내기
+			$('#yes_btn').hide(); //수정
+		 }else if(bb6.disabled == false){
+			 
+			var frm = document.join_form;
+			frm.email.value= "${EMAIL}";
+			frm.iauthNo.value= "";
+			bb6.setAttribute("disabled", "disabled");
+			oMsg.slideUp(); 
+			$('#yes_btn').show(); //수정
+			$('#go_mail').hide(); //인증메일 숨김
+			$('#no_btn').hide(); //취소버튼도숨김
+			$('#go_mail2').hide(); //인증완료 숨김
+			
+		 }
+
+	}
+	
+	/* 이메일 인증*/
 	function email_code(){
 		var auth_email = $("#email").val(); //회원가입누를때 이메일 바꿔 내는것을 방지 ||인증을 받은 이메일 자바스크립트의 전역변수에 넣기
 		var email = $("#email").val();
 		var oMsg = $("#emailMsg");
-
+		
 		$.ajax({
 			type : "POST",
-			url : "email_auth.br",
+			url : "/brw/member/email_auth.br",
 			data : ({
 				mode : "email_code",
 				email : email
@@ -279,8 +288,8 @@
 					showErrorMsg(oMsg,"이미 가입된 이메일 입니다. 다른이메일을 입력해주세요");
 				} else {
 					showSuccessMsg(oMsg, "인증번호를 요청하신 이메일로 발송했습니다.");
-					var auth2 = document.getElementById("iauthNo"); /* 이메일인증번호를 보낼 시 인증번호input칸이 풀린다 이유: 이메일값과 인증번호값을 넣지않고 회원가입을 하는것을 막기위해 */
-					auth2.removeAttribute("disabled"); /* 인증번호 input칸의 disabled속성을 삭제 */
+					var auth2 = document.getElementById("iauthNo"); //이메일인증번호를 보낼 시 인증번호input칸이 풀린다 이유: 이메일값과 인증번호값을 넣지않고 회원가입을 하는것을 막기위해 
+					auth2.removeAttribute("disabled"); // 인증번호 input칸의 disabled속성을 삭제
 				}
 
 				if (data != null) {
@@ -290,7 +299,7 @@
 			error : function(e) {
 				showErrorMsg(oMsg,"알맞은 이메일로 인증해주세요.");
 			}
-		});
+		}); 
 
 	}
 	
@@ -306,7 +315,7 @@
 		
 		$.ajax({
 			type : "POST",
-			url : "email_auth_success.br",
+			url : "/brw/member/email_auth_success.br",
 			data : ({
 				email : email,
 				auth : auth
@@ -316,15 +325,15 @@
 				if (data == 1) {
 					showSuccessMsg(oMsg,"인증이 완료되었습니다.");
 					var auth2 = document.getElementById("iauthNo"); /* 인증창닫기위해서  */
-					auth2.setAttribute("disabled", "disabled"); /* 인증완료 후 인증창 닫힘 */
+					auth2.setAttribute("disabled", "disabled"); /* 인증완료 후 인증번호입력창 닫힘 */
 					
-					var auth3 = document.getElementById("email"); /* 인증창닫기위해서  */
-				    auth3.setAttribute("disabled", "disabled"); /* 인증완료 후 이메일변경불가 닫힘 */
+					var auth3 = document.getElementById("email"); /* 닫기위해서  */
+				    auth3.setAttribute("disabled", "disabled"); /* 인증완료 후 이메일변경불가로 닫힘 */
 					
-
-					$('#no_btn').hide(); /* 인증번호에서 */
-					$('#yes_btn').show(); /* 인증완료로 바꿈 */
-					$("#btnIpinSend").click(function(event){ 
+				   
+					$('#go_mail').hide(); /* 인증메일전송에서 */
+					$('#go_mail2').show(); /* 인증완료로 바꿈 */
+					$("#btnIpinSend2").click(function(event){ 
          				   event.preventDefault(); // a링크 이동막음
          				   showSuccessMsg(oMsg,"이미 인증이 완료되었습니다.");
      				}); 
@@ -363,59 +372,74 @@
 	/* 가입하기를 눌렀을때 */
 	function checkSubmit(){
 		var join_form = document.join_form;
-		if ( id_ok == "") {
-			alert('아이디를 확인해주세요.');
+		 
+		if ( join_form.password.value != join_form.pswd2.value) {
+			alert('바꾸실 비밀번호를 다시 확인해주세요.');
 			return false;
-		} else if (password_ok == "") {
-			alert('비밀번호를 다시 확인해주세요.');
-			return false;
-		} else if (name_ok == "") {
+		} else if (join_form.name.value == "") {
 			alert("이름을 확인해주세요.");
 			return false;
-		} else if (tel_ok == "") {
+		} else if ( join_form.tel.value == "") {
 			alert("전화번호를 확인해주세요.");
 			return false;
-		} else if (email_ok == "") {
+		} else if (join_form.email.value == "") {
 			alert("이메일인증을 완료해주세요.");
 			return false;
-		} else {
-			var auth5 = document.getElementById("email"); /* disabled일 경우 값이 null이되므로 가입조건이 모두만족하면  */
-			auth5.removeAttribute("disabled"); /* 이메일 input칸의 disabled속성을 삭제하여 넘겨줌 */
+		} else { 
+			if (password_ok == "") {
+				join_form.password.value= "${PASSWORD}";
+			} 
+			
+			if(!$("#termsEmail").prop("checked")){ // 이메일수신 체크된게 아니면 (disabled=true면 value값 넘어가지않음)
+				var auth7 = document.getElementById("termsEmail2"); // termsEmail2의
+				auth7.removeAttribute("disabled");    //disabled값지우고  
+
+				var auth8 = document.getElementById("termsEmail"); //termsEmail의
+				auth8.setAttribute("disabled", "disabled");   		 //disabled 값줌 							
+    		} 
+			if(!$("#termsLocation").prop("checked")){ // sms수신 체크된게 아니면   (disabled=true면 value값 넘어가지않음)
+				var auth9 = document.getElementById("termsLocation2"); //termsLocation2의
+				auth9.removeAttribute("disabled");                        //disabled값지우고 
+
+				var auth10 = document.getElementById("termsLocation"); //termsLocation
+				auth10.setAttribute("disabled", "disabled"); 				 //disabled 값줌 					
+    		}
+			
+			
+			document.getElementById("email").removeAttribute("disabled"); /* 이메일 input칸의 disabled속성을 삭제하여 넘겨줌 */
+			document.getElementById("tel").removeAttribute("disabled"); /* 전화번호 input칸의 disabled속성을 삭제하여 넘겨줌 */
+			document.getElementById("id").removeAttribute("disabled"); /* 아이디 input칸의 disabled속성을 삭제하여 넘겨줌 */
+			
+			alert("회원정보수정을 완료하였습니다.")
 
 			return true;
-		}
+		} 
 	}
 	
 	
 	
 	/* 회원수정용 추가 스크립트 시작*/
 	/* 전화번호 수정버튼 클릭시 버튼 활성화 */
-	function open_telBt() {
+	function open_telBt(){
 			var oMsg = $("#telMsg");
+			
+			var bb1 = document.getElementById("tel");
 		
-			/* if ( "#btn_go_ok" == hide) {
-			 */	
-				showSuccessMsg(oMsg,"새로운번호를 입력해주세요.");
-				var bb1 = document.getElementById("tel");
-				bb1.removeAttribute("disabled"); 
+			 if( bb1.disabled == true ){
+				showSuccessMsg(oMsg,"새로운 전화번호를 입력해주세요. 회원정보수정을 누르면 변경이 완료됩니다.");
+			/* 	var bb1 = document.getElementById("tel");*/
+				bb1.removeAttribute("disabled");  
 				$('#btn_go_ok').show(); 
 				$('#btn_go').hide();
-				
-				/* var auth3 = document.getElementById("email"); 
-				auth3.setAttribute("disabled", "disabled"); 
-					
-
-				$('#no_btn').hide(); 
-				$('#yes_btn').show(); 
-				$("#btnIpinSend").click(function(event){ 
-         		   event.preventDefault(); 
-         		   showSuccessMsg(oMsg,"이미 인증이 완료되었습니다.");
-     			}); 
-					
-					email_ok ="ok";  */
-
-
-			/* }  */
+			 }else if(bb1.disabled == false){
+				var frm = document.join_form;
+				frm.tel.value= "${TEL}";
+				bb1.setAttribute("disabled", "disabled");
+				oMsg.slideUp();
+				$('#btn_go').show(); 
+				$('#btn_go_ok').hide();
+			 }
+			 
 	}
 </script>
 

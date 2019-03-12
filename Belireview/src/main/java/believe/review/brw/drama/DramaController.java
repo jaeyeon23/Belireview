@@ -1,5 +1,6 @@
 package believe.review.brw.drama;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -9,10 +10,13 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import believe.review.brw.common.common.CommandMap;
 import believe.review.brw.common.util.Paging;
+import believe.review.brw.user.UserService;
 
 
 @Controller
@@ -28,6 +32,10 @@ public class DramaController {
 	
 	@Resource(name="dramaService")
 	private DramaService dramaService;
+	
+	@Resource(name="userService")
+	private UserService userService;
+	
 
 	@RequestMapping(value = "dramaList.br")
 	public ModelAndView dramaList(CommandMap commandMap,HttpServletRequest request) throws Exception {
@@ -63,19 +71,15 @@ public class DramaController {
 
 	}
 
-	@RequestMapping(value="dramaDetail.br")
+	@RequestMapping(value="dramaDetail.br", method = RequestMethod.GET)
 	public ModelAndView dramaDetail(CommandMap commandMap/*, HttpServletRequest request*/) throws Exception {
 
 		ModelAndView mv = new ModelAndView("dramaDetail");
-		
-		
 		/*HttpSession session = request.getSession();*/
-		
-		
-		Map<String,Object> map = dramaService.dramaDetail(commandMap.getMap());
-		List<Map<String,Object>> comment = dramaService.dramaCommentByLike(map);
-		List<Map<String,Object>> actor = dramaService.dramaActor(map); 
-		List<Map<String,Object>> detailgenre = dramaService.detailgenre(map);
+		Map<String,Object> map = dramaService.dramaDetail(commandMap.getMap());//상세보기
+		List<Map<String,Object>> comment = dramaService.dramaCommentByLike(map);//댓
+		List<Map<String,Object>> actor = dramaService.dramaActor(map); //출연배우
+		List<Map<String,Object>> detailgenre = dramaService.detailgenre(map);//비슷한장르
 		
 		/*Map<String,Object> insertcomment = dramaService.insertdramaComment(commandMap.getMap());*/
 		totalCount = (Integer)dramaService.totalDramaComment(map);
@@ -87,11 +91,62 @@ public class DramaController {
 		mv.addObject("totalCount",totalCount);
 	/*	mv.addObject("insertcomment",insertcomment);*/
 		
+		return mv;
+
+	}
+	@RequestMapping(value="dramaDetail.br",method = RequestMethod.POST)
+	@ResponseBody
+	public Map<String,Object> dramaDe(CommandMap commandMap) throws Exception {
+
+		Map<String,Object> mv = commandMap.getMap();
+		/*보고싶어요*/
+		System.out.println(mv.get("drama_no"));
+		System.out.println(mv.get("id"));
+		System.out.println(mv.get("wish"));
+		System.out.println(mv.get("rating"));
+		
+		if(mv.get("wish")!=null) {
+			Map<String,Object> map = userService.userWishList(mv);
+			
+			if(map==null) {//위시리스트에 아무것도 없을때 
+				System.out.println("널");
+				userService.insertWishList(mv);
+			}
+			else {//위시리스트에 값이 있을때
+				System.out.println("하하");
+				String[] str = map.get("MYPAGE_DRAMA").toString().split(",");
+				boolean exist = false;
+				String drama_no = "";
+				for(String s : str) {
+					if(mv.get("drama_no").equals(s)) {
+						exist = true;
+					}else {
+						drama_no += s+",";
+					}
+				}
+				/*System.out.println(exist);*/
+				if(!exist) {
+					drama_no += mv.get("drama_no");
+					mv.put("add", "add");
+				}else {
+					mv.put("subtract", "subtract");
+				}
+				/*System.out.println(drama_no);*/
+				mv.put("drama_no", drama_no);
+				/*System.out.println(mv.get("drama_no"));*/
+				userService.updateWishList(mv);
+			}
+		}
+		/*평점*/
+		if(mv.get("rating")!=null) {
+			
+		}
 		
 		
 		return mv;
 
 	}
+	
 
 	@RequestMapping(value = "dramaInfo.br")
 	public ModelAndView dramaInfo(CommandMap commandMap) throws Exception {

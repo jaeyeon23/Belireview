@@ -551,7 +551,7 @@
 .iyaHUY{background:#fff;border-color:#e3e3e3 !important;overflow:hidden;}.iyaHUY:empty{display:none;}@media (min-width:719px) and (max-width:1023px){.iyaHUY{border-right:1px solid;border-left:1px solid;border-bottom:1px solid;border-bottom-right-radius:6px;border-bottom-left-radius:6px;}}@media (min-width:1023px){.iyaHUY{border-right:1px solid;border-left:1px solid;border-bottom:1px solid;border-bottom-right-radius:6px;border-bottom-left-radius:6px;}}
 /* sc-component-id: ContentMyCommentSection__SectionBlock-mhuscg-0 */
 
-@media (min-width:719px){.IsPDs{margin:0 0 12px;}}
+@media (min-width:719px){.IsPDs{margin:0 0 12px; display: none;}}
 /* sc-component-id: ContentMyCommentSection__LeaveCommentSection-mhuscg-1 */
 
 .dxGvFB{background:#fff;padding:25px 0 30px;border-top:solid 1px #e3e3e3;}@media (min-width:719px){.dxGvFB{padding:12px 0;border-top:0;}}

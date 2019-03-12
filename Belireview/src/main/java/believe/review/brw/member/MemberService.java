@@ -6,13 +6,14 @@ import javax.servlet.http.HttpServletRequest;
 
 public interface MemberService {
 	
-	//ȸ������
+
+	//회원가입
 	void insertMember(Map<String, Object> map, HttpServletRequest request) throws Exception;
 	
-	//ȸ������ ID�ߺ�üũ
+	//회원가입 ID중복체크
 	int checkId(String mem_id)throws Exception;
 	
-	//�̸������翩��
+	//이메일존재여부
 	int checkMember(Map<String, Object> map)throws Exception;
 	
 	//관리자
