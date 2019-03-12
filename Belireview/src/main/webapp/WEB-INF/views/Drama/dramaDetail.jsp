@@ -45,10 +45,13 @@
 		var grade = "${grade}";
 		var wi = "${wish}";
 		 
-		  $(function(){
+		 $(function(){
 			 if(wi!=""){
-					$(".juRlmb").html("취소");
-				}
+				$(".juRlmb").html("취소");
+			 }
+			 if(grade != ""){
+				 alert("gggg");
+			 }
 		 });  
 		 /* 로그인 유무 */
 		$(function(){ 

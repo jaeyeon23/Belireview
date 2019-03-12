@@ -84,7 +84,7 @@ public class DramaController {
 		if(session.getAttribute("ID")!=null) {//로그인
 			map.put("ID", session.getAttribute("ID"));
 			Map<String,Object> tmp = userService.userWishList(map);
-			if(tmp!=null) {
+			if(tmp.get("MYPAGE_DRAMA")!=null) {
 				String str[] = tmp.get("MYPAGE_DRAMA").toString().split(",");
 				for(String s : str) {
 					if(map.get("DRAMA_NO").toString().equals(s)) {
@@ -96,7 +96,7 @@ public class DramaController {
 		
 			if(tmp!=null) {
 				System.out.println(tmp.get("DL_GRADE"));
-				float g = Integer.parseInt(tmp.get("DL_GRADE").toString())*2;
+				double g = Double.parseDouble(tmp.get("DL_GRADE").toString())*2;
 				System.out.println(g);
 				mv.addObject("grade",g);
 			}
