@@ -2,5 +2,103 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="user">
+	<select id="UserMovieByRecent" parameterType="hashmap" resultType="hashmap">
+		SELECT
+			MOVIE_NO,
+			MOVIE_NAME,
+			MOVIE_DATE,
+			MOVIE_POSTER_IMAGE,
+			TO_CHAR(MOVIE_GRADE,'0.0') AS MOVIE_GRADE,
+			RNUM
+		FROM
+		(
+		SELECT 
+			MOVIE_NO,
+			MOVIE_NAME,
+			MOVIE_DATE,
+			MOVIE_POSTER_IMAGE,
+			MOVIE_GRADE,
+			ROWNUM RNUM
+		FROM MOVIE 
+		WHERE MOVIE_NO IN 
+			(SELECT MOVIE_LIKE_NO
+			FROM MOVIE_LIKE
+			WHERE ID=#{ID}) ORDER BY MOVIE_DATE) WHERE RNUM BETWEEN 1 AND 10
+	</select>
+	
+	<select id="UserMovieAll" parameterType="hashmap" resultType="hashmap">
+		SELECT
+			MOVIE_NO,
+			MOVIE_NAME,
+			MOVIE_DATE,
+			MOVIE_POSTER_IMAGE,
+			TO_CHAR(MOVIE_GRADE,'0.0') AS MOVIE_GRADE,
+			RNUM
+		FROM
+		(
+		SELECT 
+			MOVIE_NO,
+			MOVIE_NAME,
+			MOVIE_DATE,
+			MOVIE_POSTER_IMAGE,
+			MOVIE_GRADE,
+			ROWNUM RNUM
+		FROM MOVIE 
+		WHERE MOVIE_NO IN 
+			(SELECT MOVIE_LIKE_NO
+			FROM MOVIE_LIKE
+			WHERE ID=#{ID}) ORDER BY MOVIE_DATE)
+	</select>
+	
+	<select id="userWishList" parameterType="hashmap" resultType="hashmap"><!-- 보고싶어요 -->
+		select * from mypage where mypage_id=#{id}
+	</select>
+	
+	<insert id="insertWishList" parameterType="hashmap"> <!-- 보고싶어요 저장-->
+		insert into mypage
+		<choose>
+		    <when  test='movie_no != null'>
+		      	(mypage_id,mypage_movie) values(#{id},#{movie_no})
+		    </when>
+		    <otherwise>
+		     	(mypage_id,mypage_drama) values(#{id},#{drama_no})
+		    </otherwise>
+	 	</choose>
+	</insert>
+	
+	<update id="updateWishList" parameterType="hashmap"><!-- 보고싶어요 수정-->
+		update mypage set 
+		<choose>
+			<when  test='movie_no != null'>
+		      	mypage_movie=#{movie_no}
+		    </when>
+		    <otherwise>
+		     	mypage_drama=#{drama_no}
+		    </otherwise>
+	    </choose>
+	    where mypage_id=#{id}
+	</update>
+
+	<!-- 수정후회원정보불러오기 -->
+	<select id="UserGo" parameterType="hashmap" resultType="hashmap">
+		<![CDATA[
+			SELECT * FROM MEMBER WHERE ID=#{id}
+		]]>
+	</select>
+	
+	<!-- 회원정보수정 -->
+	<update id="changeUser" parameterType="hashmap">
+		<![CDATA[
+		UPDATE MEMBER
+        SET 
+            NAME = #{name},
+            PASSWORD = #{password},
+            TEL = #{tel},
+            EMAIL = #{email},
+            EMAIL_MARKETING = #{email_marketing},
+            SMS_MARKETING = #{sms_marketing}                      
+    	WHERE ID = #{id}
+		]]>
+	</update>
 	
 </mapper>

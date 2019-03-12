@@ -12,7 +12,7 @@
    	<link rel="stylesheet" href="/brw/resources/css/detail3.css">
    	
     <link rel="stylesheet" href="/brw/resources/css/detailgenre.css">
-   	<script src="<c:url value='/resources/js/common.js'/>" charset="utf-8"></script>	
+   	<%-- <script src="<c:url value='/resources/js/common.js'/>" charset="utf-8"></script>	 --%>
     <style>
     	ul{
 			list-style: none outside none;
@@ -38,8 +38,76 @@
 
    
     <script src="/brw/resources/js/jquery-1.4.4.min.js"></script>
+    
 	<script src="/brw/resources/js/slides.jquery.js"></script>
 	<script>
+		var id = "${ID}";
+		 /* 로그인 유무 */
+		$(function(){ 
+			if(id==""||id==null){
+				$(".gsSopE").click(function(){//보고싶어요
+					alert("로그인 해주세요.");
+					location.href="<c:url value='/member/loginForm.br' />"
+					});
+				$(".gZASBp").click(function(){//별점
+					alert("로그인 해주세요.");
+					location.href="<c:url value='/member/loginForm.br' />"
+				});
+			}else{
+				$(".IsPDs").css("display","block");
+				
+				$(".vv").click(function(){//보고싶어요
+					wish();
+					return;
+					});
+				$(".gZASBp").click(function(){//별점
+					rating();
+					return;
+				});
+			}
+		});
+		 /* 로그인 유무 */
+		
+		 
+		 /* 보고싶어요 */
+		function wish(){
+			$.ajax({
+				async : true,  
+				type : 'POST',
+				data : {id:id , wish:"w" , drama_no:<%=request.getParameter("DRAMA_NO")%>},
+				url:"<c:url value='/drama/dramaDetail.br' />",
+				success : function(result){
+					var w = result;
+					var a = "취소";
+					var s = "보고싶어요";
+					if(w.add){
+						$(".juRlmb").html(a);
+					}
+					if(w.subtract){
+						$(".juRlmb").html(s);
+					}
+				}
+			})
+		}
+		/* 보고싶어요 */
+		
+		/* 별점 */
+		function rating(){
+			$.ajax({
+				async : true,  
+				type : 'POST',
+				data : {id:id , rating:"r" , drama_no:<%=request.getParameter("DRAMA_NO")%>},
+				url:"<c:url value='/drama/dramaDetail.br' />",
+				success : function(result){
+					
+				}
+				/* $('.gZASBp > a.r1'); */
+			})
+		} 
+		/* 별점 */
+		
+		
+		/* 이미지슬라이드 */
 		$(function(){
 			$('#slides').slides({
 				preload: true,
@@ -49,159 +117,166 @@
 				hoverPause: true
 			});
 		});
+		/* 이미지 슬라이드 */
+		
+		/* 별점 */
 		$(function(){
-			var initValue = $('.gZASBp > div').attr("class").split(" ")[1];
-					
-			var f = $('.gZASBp > a.r1');
 			
-			f.hover(function() {
-				$('.gZASBp > div' ).removeClass(initValue).addClass('r1');
-			}, function() {
-				$('.gZASBp > div' ).removeClass('r1').addClass(initValue);
-			});
-			f.click(function(){
-				if(initValue == 'r1'){
-					initValue = 'r0';
-				}
-				else{
-					initValue = 'r1';
-				}
-			});
-			
-			f = $('.gZASBp > a.r2');
-			f.hover(function() {
-				$('.gZASBp > div' ).removeClass(initValue).addClass('r2');
-			}, function() {
-				$('.gZASBp > div' ).removeClass('r2').addClass(initValue);
-			});
-			f.click(function(){
-				if(initValue == 'r2'){
-					initValue = 'r0';
-				}
-				else{
-					initValue = 'r2';
-				}
-			});
-			
-			f = $('.gZASBp > a.r3');
-			f.hover(function() {
-				$('.gZASBp > div' ).removeClass(initValue).addClass('r3');
-			}, function() {
-				$('.gZASBp > div' ).removeClass('r3').addClass(initValue);
-			});
-			f.click(function(){
-				if(initValue == 'r3'){
-					initValue = 'r0';
-				}else{
-					initValue = 'r3';
-				}
-			});
-			
-			f = $('.gZASBp > a.r4');
-			f.hover(function() {
-				$('.gZASBp > div' ).removeClass(initValue).addClass('r4');
-			}, function() {
-				$('.gZASBp > div' ).removeClass('r4').addClass(initValue);
-			});
-			f.click(function(){
-				if(initValue == 'r4'){
-					initValue = 'r0';
-				}
-				else{
-					initValue = 'r4';
-				}
-			});
-			
-			f = $('.gZASBp > a.r5');
-			f.hover(function() {
-				$('.gZASBp > div' ).removeClass(initValue).addClass('r5');
-			}, function() {
-				$('.gZASBp > div' ).removeClass('r5').addClass(initValue);
-			});
-			f.click(function(){
-				if(initValue == 'r5'){
-					initValue = 'r0';
-				}
-				else{
-					initValue = 'r5';
-				}
-			});
-			
-			f = $('.gZASBp > a.r6');
-			f.hover(function() {
-				$('.gZASBp > div' ).removeClass(initValue).addClass('r6');
-			}, function() {
-				$('.gZASBp > div' ).removeClass('r6').addClass(initValue);
-			});
-			f.click(function(){
-				if(initValue == 'r6'){
-					initValue = 'r0';
-				}
-				else{
-					initValue = 'r6';
-				}
-			});
-			
-			f = $('.gZASBp > a.r7');
-			f.hover(function() {
-				$('.gZASBp > div' ).removeClass(initValue).addClass('r7');
-			}, function() {
-				$('.gZASBp > div' ).removeClass('r7').addClass(initValue);
-			});
-			f.click(function(){
-				if(initValue == 'r7'){
-					initValue = 'r0';
-				}
-				else{
-					initValue = 'r7';
-				}
-			});
-			
-			f = $('.gZASBp > a.r8');
-			f.hover(function() {
-				$('.gZASBp > div' ).removeClass(initValue).addClass('r8');
-			}, function() {
-				$('.gZASBp > div' ).removeClass('r8').addClass(initValue);
-			});
-			f.click(function(){
-				if(initValue == 'r8'){
-					initValue = 'r0';
-				}
-				else{
-					initValue = 'r8';
-				}
-			});
-			
-			f = $('.gZASBp > a.r9');
-			f.hover(function() {
-				$('.gZASBp > div' ).removeClass(initValue).addClass('r9');
-			}, function() {
-				$('.gZASBp > div' ).removeClass('r9').addClass(initValue);
-			});
-			f.click(function(){
-				if(initValue == 'r9'){
-					initValue = 'r0';
-				}
-				else{
-					initValue = 'r9';
-				}
-			});
-			
-			f = $('.gZASBp > a.r10');
-			f.hover(function() {
-				$('.gZASBp > div' ).removeClass(initValue).addClass('r10');
-			}, function() {
-				$('.gZASBp > div' ).removeClass('r10').addClass(initValue);
-			});
-			f.click(function(){
-				if(initValue == 'r10'){
-					initValue = 'r0';
-				}
-				else{
-					initValue = 'r10';
-				}
-			});
+			if(id==""||id==null){}
+			else{
+				var initValue = $('.gZASBp > div').attr("class").split(" ")[1];
+				
+				var f = $('.gZASBp > a.r1');
+				f.hover(function() {
+					$('.gZASBp > div' ).removeClass(initValue).addClass('r1');
+				}, function() {
+					$('.gZASBp > div' ).removeClass('r1').addClass(initValue);
+				});
+				f.click(function(){
+					if(initValue == 'r1'){
+						initValue = 'r0';
+					}
+					else{
+						initValue = 'r1';
+					}
+				});
+				
+				f = $('.gZASBp > a.r2');
+				f.hover(function() {
+					$('.gZASBp > div' ).removeClass(initValue).addClass('r2');
+				}, function() {
+					$('.gZASBp > div' ).removeClass('r2').addClass(initValue);
+				});
+				f.click(function(){
+					if(initValue == 'r2'){
+						initValue = 'r0';
+					}
+					else{
+						initValue = 'r2';
+					}
+				});
+				
+				f = $('.gZASBp > a.r3');
+				f.hover(function() {
+					$('.gZASBp > div' ).removeClass(initValue).addClass('r3');
+				}, function() {
+					$('.gZASBp > div' ).removeClass('r3').addClass(initValue);
+				});
+				f.click(function(){
+					if(initValue == 'r3'){
+						initValue = 'r0';
+					}else{
+						initValue = 'r3';
+					}
+				});
+				
+				f = $('.gZASBp > a.r4');
+				f.hover(function() {
+					$('.gZASBp > div' ).removeClass(initValue).addClass('r4');
+				}, function() {
+					$('.gZASBp > div' ).removeClass('r4').addClass(initValue);
+				});
+				f.click(function(){
+					if(initValue == 'r4'){
+						initValue = 'r0';
+					}
+					else{
+						initValue = 'r4';
+					}
+				});
+				
+				f = $('.gZASBp > a.r5');
+				f.hover(function() {
+					$('.gZASBp > div' ).removeClass(initValue).addClass('r5');
+				}, function() {
+					$('.gZASBp > div' ).removeClass('r5').addClass(initValue);
+				});
+				f.click(function(){
+					if(initValue == 'r5'){
+						initValue = 'r0';
+					}
+					else{
+						initValue = 'r5';
+					}
+				});
+				
+				f = $('.gZASBp > a.r6');
+				f.hover(function() {
+					$('.gZASBp > div' ).removeClass(initValue).addClass('r6');
+				}, function() {
+					$('.gZASBp > div' ).removeClass('r6').addClass(initValue);
+				});
+				f.click(function(){
+					if(initValue == 'r6'){
+						initValue = 'r0';
+					}
+					else{
+						initValue = 'r6';
+					}
+				});
+				
+				f = $('.gZASBp > a.r7');
+				f.hover(function() {
+					$('.gZASBp > div' ).removeClass(initValue).addClass('r7');
+				}, function() {
+					$('.gZASBp > div' ).removeClass('r7').addClass(initValue);
+				});
+				f.click(function(){
+					if(initValue == 'r7'){
+						initValue = 'r0';
+					}
+					else{
+						initValue = 'r7';
+					}
+				});
+				
+				f = $('.gZASBp > a.r8');
+				f.hover(function() {
+					$('.gZASBp > div' ).removeClass(initValue).addClass('r8');
+				}, function() {
+					$('.gZASBp > div' ).removeClass('r8').addClass(initValue);
+				});
+				f.click(function(){
+					if(initValue == 'r8'){
+						initValue = 'r0';
+					}
+					else{
+						initValue = 'r8';
+					}
+				});
+				
+				f = $('.gZASBp > a.r9');
+				f.hover(function() {
+					$('.gZASBp > div' ).removeClass(initValue).addClass('r9');
+				}, function() {
+					$('.gZASBp > div' ).removeClass('r9').addClass(initValue);
+				});
+				f.click(function(){
+					if(initValue == 'r9'){
+						initValue = 'r0';
+					}
+					else{
+						initValue = 'r9';
+					}
+				});
+				
+				f = $('.gZASBp > a.r10');
+				f.hover(function() {
+					$('.gZASBp > div' ).removeClass(initValue).addClass('r10');
+				}, function() {
+					$('.gZASBp > div' ).removeClass('r10').addClass(initValue);
+				});
+				f.click(function(){
+					if(initValue == 'r10'){
+						initValue = 'r0';
+					}
+					else{
+						initValue = 'r10';
+					}
+				}); 
+			}
 		});
+		/* 별점 */
 	</script>
 	
 	<link rel="stylesheet" href="/brw/resources/css/global.css">
@@ -259,21 +334,12 @@
 															class="ContentJumbotron__ButtonBlock-yf8npk-17 bqrRYB">
 															<div class="ContentActionButton__Self-s1nnw805-0 esugeU">
 																<button
-																	class="ContentActionButton__ActionButton-s1nnw805-1 kLIPfy StylelessButton-phxvo7-0 gsSopE">
+																	class="ContentActionButton__ActionButton-s1nnw805-1 kLIPfy StylelessButton-phxvo7-0 gsSopE vv">
 																	<span
 																		class="ContentActionButton__StatusWithImage-s1nnw805-2 fUUvwT"><span
 																		class="ContentActionButton__StatusImage-s1nnw805-3 eNXtVj UIImg-s3jz6tx-0 ytaVa"
 																		src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMjRweCIgaGVpZ2h0PSIyNHB4IiB2aWV3Qm94PSIwIDAgMjQgMjQiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8IS0tIEdlbmVyYXRvcjogc2tldGNodG9vbCA1MC4yICg1NTA0NykgLSBodHRwOi8vd3d3LmJvaGVtaWFuY29kaW5nLmNvbS9za2V0Y2ggLS0+CiAgICA8dGl0bGU+NjMwMjYxNEEtQzhBMy00MkMwLTlDQzctQTBEQzNDOEM1NTVDPC90aXRsZT4KICAgIDxkZXNjPkNyZWF0ZWQgd2l0aCBza2V0Y2h0b29sLjwvZGVzYz4KICAgIDxkZWZzPjwvZGVmcz4KICAgIDxnIGlkPSJJY29ucy0mYW1wOy1Bc3NldHMiIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPgogICAgICAgIDxnIGlkPSJJY29uLS8tSWNBZGRXaGl0ZSIgZmlsbD0iI0ZGRkZGRiI+CiAgICAgICAgICAgIDxyZWN0IGlkPSJSZWN0YW5nbGUtMyIgeD0iMTEiIHk9IjQuNSIgd2lkdGg9IjIiIGhlaWdodD0iMTUiIHJ4PSIxIj48L3JlY3Q+CiAgICAgICAgICAgIDxyZWN0IGlkPSJSZWN0YW5nbGUtMy1Db3B5IiB4PSI0LjUiIHk9IjExIiB3aWR0aD0iMTUiIGhlaWdodD0iMiIgcng9IjEiPjwvcmVjdD4KICAgICAgICA8L2c+CiAgICA8L2c+Cjwvc3ZnPg=="></span><span
 																		class="ContentActionButton__ActionStatus-s1nnw805-4 juRlmb">보고싶어요</span></span>
-																</button>
-																<button
-																	class="ContentActionButton__ActionDropDownButton-s1nnw805-5 honxC StylelessButton-phxvo7-0 gsSopE"
-																	aria-label="Open action sheet">
-																	<svg
-																		class="ArrowDropDown__ArrowDropDownSvg-s1q43qr1-0 jcYGoT"
-																		fill="" width="24" height="24" viewBox="0 0 24 24">
-																		<path fill="#FFF" fill-rule="evenodd"
-																			d="M12 16l6-6H6z"></path></svg>
 																</button>
 															</div>
 														</div>
@@ -868,7 +934,7 @@
 																	<span class="TitleSuffixForNumber-l2d30g-0 ejtPKl">703</span>
 																	<div class="SectionWithHeader__TopRight-s1eyxltb-3 bZaEfL">
 																			<div class="SectionWithViewMore__ViewMore-xtbl7q-0 bhbIbv">
-																				<a href="/brw/movie/movieComment.br">더보기</a>
+																				<a href="/brw/drama/mainSearch.br">더보기</a>
 																			</div>
 																		</div>
 																</header>
@@ -955,5 +1021,6 @@
 			</div>
 		</div>
 	</div>
+	<%@ include file="/WEB-INF/views/include/include-body.jspf" %>
 </body>
 </html>

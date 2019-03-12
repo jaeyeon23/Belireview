@@ -56,6 +56,19 @@
 		]]>
 	 </select>
 	
+	
+	
+	
+	<!-- 관리자 -->
+	<select id="checkAdminSessionPw" parameterType="hashMap" resultType="int">
+		SELECT 
+			count(*) 
+		FROM 
+			MEMBER 
+		WHERE 
+			ID=#{id} and PASSWORD=#{password}
+	</select>
+	
 </mapper>
    <!--   
 	

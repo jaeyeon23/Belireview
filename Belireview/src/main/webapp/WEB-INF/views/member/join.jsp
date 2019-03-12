@@ -63,7 +63,7 @@
                     <div class="join_row">
                         <h3 class="join_title"><label for="name">전화번호</label></h3>
                         <span class="ps_box box_right_space">
-							<input type="text" id="tel" name="tel" title="전화번호"  placeholder="- 제외하고입력"  class="int" maxlength="40">
+							<input type="text" id="tel" name="tel" numberOnly title="전화번호"  placeholder="- 제외하고입력"  class="int" maxlength="11">
 						</span>
 						<span class="error_next_box" id="telMsg" style="display:none" role="alert"></span>
                     </div>
@@ -208,6 +208,13 @@
         return true;
     }
 	
+	/* 전화번호 번호만 입력가능하게  */
+	$(function(){
+   		$("input:text[numberOnly]").on("keyup", function() {
+		    $(this).val($(this).val().replace(/[^0-9]/g,""));
+		});
+	});
+
 	/* 전화번호입력여부 */
 	$("input[name = tel]").blur(function() {
 		checkTel();

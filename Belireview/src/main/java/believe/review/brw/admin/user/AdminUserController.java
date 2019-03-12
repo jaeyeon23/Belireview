@@ -1,6 +1,7 @@
 package believe.review.brw.admin.user;
 
 import java.io.File;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -25,11 +26,11 @@ public class AdminUserController {
 
 	private int currentPage = 1;	 
 	private int totalCount; 		 
-	private int blockCount = 1;	 
+	private int blockCount = 9;	 
 	private int blockPage = 5; 	 
 	private String pagingHtml;  
 	private Paging page;
-	private String filePath = "C:\\Users\\���翬\\Desktop\\Belireview\\Belireview\\src\\main\\webapp\\resources\\images\\user_profile\\";
+	private String filePath = "C:\\Users\\박재연\\Desktop\\Belireview\\Belireview\\src\\main\\webapp\\resources\\images\\user_profile\\";
 	private File file;
 	/*
 	Set keyset = commandMap.keySet();
@@ -94,13 +95,20 @@ public class AdminUserController {
 	@RequestMapping(value = "/delete.br", method=RequestMethod.POST)
 	public String userDelete(CommandMap commandMap, RedirectAttributes redirectAttributes) throws Exception{
 		String alert_value = null;
+		Map<String, Object> map = new HashMap<String, Object>();
 		
 		if(commandMap.containsKey("id") && commandMap.containsKey("password")) {
 			if(adminUserService.checkUser(commandMap.getMap()) > 0) {
+				map = adminUserService.selectUserOne((String)commandMap.get("id"));
+				
+				file = new File(filePath + map.get("PROFILE_IMAGE"));
+				file.delete();
+
 				adminUserService.deleteUserOne(commandMap.getMap());
-				alert_value = "���� ����";
+				
+				alert_value = "계정 삭제";
 			}else {
-				alert_value = "���� ���� : ��й�ȣ�� Ȯ�����ּ���";
+				alert_value = "삭제 실패 : 비밀번호를 확인하세요";
 			}
 		}
 		

@@ -1,28 +1,24 @@
 package believe.review.brw.admin.drama;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Enumeration;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import believe.review.brw.common.common.CommandMap;
 import believe.review.brw.common.util.FileUtils;
 import believe.review.brw.common.util.Paging;
+import believe.review.brw.member.MemberService;
 
 @Controller
 @RequestMapping("/admin")
@@ -34,16 +30,20 @@ public class AdminDramaController {
 	private int blockPage = 5; 	 
 	private String pagingHtml;  
 	private Paging page;
-	private String filePath = "C:\\Users\\���翬\\Desktop\\Belireview\\Belireview\\src\\main\\webapp\\resources\\images\\user_profile\\";
+	private String filePath = "C:\\Users\\박재연\\Desktop\\Belireview\\Belireview\\src\\main\\webapp\\resources\\images\\drama\\";
+	private HttpSession session = null;
 	
 	@Resource(name="adminDramaService")
 	private AdminDramaService adminDramaService;
+	
+	@Resource(name="memberService")
+	private MemberService memberService;
 	
 	@Resource(name="fileUtils")
 	private FileUtils fileUtils;
 	
 	@RequestMapping(value="/drama.br")
-	public String dramaPage(@RequestParam(value="alert_value", defaultValue="default") String alert_value,HttpServletRequest request, CommandMap commandMap, Model model) throws Exception{
+	public String dramaPage(@RequestParam(value="alert_value", defaultValue="default") String alert_value, HttpServletRequest request, CommandMap commandMap, Model model) throws Exception{
 		List<Map<String, Object>> admin = null;
 		
 		String orderby = (String)commandMap.get("orderby");
@@ -100,17 +100,21 @@ public class AdminDramaController {
 	public String dramaWrite(CommandMap commandMap, HttpServletRequest request, Model model) throws Exception{
 		int no = adminDramaService.selectNextVal();
 		
-		commandMap.put("no", no + 1);
+		commandMap.put("no", no);
 		
-		Map content_image = fileUtils.parseInsertFileInfo(commandMap.getMap(), request);
+		Map<String, Object> listMap = fileUtils.parseInsertFileInfo(commandMap.getMap(), request, filePath);
 		
-		commandMap.put("drama_content_image", content_image);
+		commandMap.put("poster_image", listMap.get("poster_image"));
+		commandMap.put("main_image", listMap.get("main_image"));
+		commandMap.put("content_image", listMap.get("content_image"));
+		
+		adminDramaService.writeDrama(commandMap.getMap());
 		
 		return "redirect:/admin/drama.br";
 	}
 	
 	@RequestMapping(value="/drama/modify.br", method=RequestMethod.GET)
-	public String dramaModify(HttpServletRequest request, Model model) throws Exception{
+	public String dramaModifyPage(HttpServletRequest request, Model model) throws Exception{
 		
 		int no = Integer.parseInt(request.getParameter("no"));
 
@@ -120,31 +124,51 @@ public class AdminDramaController {
 		
 		return "/admin/drama/adminDramaModify";
 	}
-	/*
+	
 	@RequestMapping(value="/drama/modify.br", method=RequestMethod.POST)
-	public String dramaModify_action(Model model) throws Exception{
+	public String dramaModify(CommandMap commandMap, HttpServletRequest request, Model model) throws Exception{
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		if(commandMap.containsKey("show_file")) {
+			//새로운 파일
+			map = adminDramaService.selectDramaOne(Integer.parseInt((String)commandMap.get("no")));
+			fileUtils.fileDelete(map, filePath, "drama");
+			
+			commandMap.put("media", "drama");
+			map = fileUtils.parseInsertFileInfo(commandMap.getMap(), request, filePath);
+			
+			commandMap.put("poster_image", map.get("poster_image"));
+			commandMap.put("main_image", map.get("main_image"));
+			commandMap.put("content_image", map.get("content_image"));
+		}	
+		
+		adminDramaService.updateDramaOne(commandMap.getMap());
 		
 		return "redirect:/admin/drama.br";
 	}
-		*/
+
 	@RequestMapping(value="/drama/delete.br", method=RequestMethod.POST)
-	public String dramaDelete(CommandMap commandMap, RedirectAttributes redirectAttributes) throws Exception{
+	public String dramaDelete(CommandMap commandMap, HttpServletRequest request, RedirectAttributes redirectAttributes) throws Exception{
 		String alert_value = null;
+		session = request.getSession();
 		
-		/*if(commandMap.containsKey("no") && commandMap.containsKey("password")) {
-			if(adminDramaService.checkDrama(commandMap.getMap()) > 0) {
-				adminDramaService.deleteDramaOne(commandMap.getMap());
-				alert_value = "���� ����";
-			}else {
-<<<<<<< HEAD
-				String str = "�߸��� ��й�ȣ�Դϴ�";
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		map.put("id", session.getAttribute("ID"));
+		map.put("password", commandMap.get("password"));
+		
+		if(commandMap.containsKey("no") && commandMap.containsKey("password")) {
+			if(adminDramaService.checkDrama(commandMap.getMap()) == 1 && memberService.checkAdminSessionPw(map) == 1) {
+				map = adminDramaService.selectDramaOne(Integer.parseInt((String)commandMap.get("no")));
+				fileUtils.fileDelete(map, filePath, "drama");
 				
-				model.addAttribute("str", str);
-=======
-				alert_value = "���� ���� : ��й�ȣ�� Ȯ�����ּ���";
->>>>>>> origin/jyp
+				adminDramaService.deleteDramaOne(commandMap.getMap());
+				
+				alert_value = "삭제 성공!";
+			}else {
+				alert_value = "삭제 실패 : 비밀번호를 확인하세요!";
 			}
-		}*/
+		}
 		
 		redirectAttributes.addAttribute("alert_value", alert_value);
 		
