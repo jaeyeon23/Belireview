@@ -2,7 +2,12 @@ package believe.review.brw.main;
 
 import java.text.DateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
+import java.util.Map;
+
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import believe.review.brw.common.common.CommandMap;
+import believe.review.brw.drama.DramaService;
+
 
 
 @Controller
@@ -38,6 +45,10 @@ public class MainController {
 	      return "main";
 	   }
 	   
+
+		@Resource(name="mainService")
+		private MainService mainService;
+		
 	   @RequestMapping(value="/admin/main.br")
 	   public String admin_home(Model model) throws Exception{
 		   
@@ -46,11 +57,21 @@ public class MainController {
 	   
 	   @RequestMapping(value = "mainSearch.br")
 		
-		public ModelAndView mainSearch(CommandMap commandMap) throws Exception {
+		public ModelAndView mainSearch(CommandMap commandMap, HttpServletRequest request) throws Exception {
 
 			ModelAndView mv = new ModelAndView("mainSearch");
+			List<Map<String,Object>> searchMain = mainService.mainSerach(commandMap.getMap());
+			List<Map<String,Object>> searchMovie = mainService.movieSerach(commandMap.getMap());
+			List<Map<String,Object>> searchDrama = mainService.dramaSerach(commandMap.getMap());
+			List<Map<String,Object>> searchAd = mainService.adSerach(commandMap.getMap());
 			
+			mv.addObject("request",request.getParameter("searchText"));
+			/*mv.addObject("searchMain",searchMain);*/
+			mv.addObject("searchMovie",searchMovie);
+			mv.addObject("searchDrama",searchDrama);
+			mv.addObject("searchAd",searchAd);
 
+			
 			return mv;
 		}	
 }
