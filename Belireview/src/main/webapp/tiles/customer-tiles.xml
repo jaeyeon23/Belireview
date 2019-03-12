@@ -95,6 +95,10 @@
     
     
     
+    <!-- 검색 -->
+        <definition name="mainSearch" extends=".home">
+    	<put-attribute name="body" value="/WEB-INF/views/main/mainSearch.jsp"/>
+    </definition>
     
     <!-- /user -->
    <!--  로그인 -->
