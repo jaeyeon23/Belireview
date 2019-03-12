@@ -42,6 +42,14 @@
 	<script src="/brw/resources/js/slides.jquery.js"></script>
 	<script>
 		var id = "${ID}";
+		var grade = "${grade}";
+		var wi = "${wish}";
+		 
+		  $(function(){
+			 if(wi!=""){
+					$(".juRlmb").html("취소");
+				}
+		 });  
 		 /* 로그인 유무 */
 		$(function(){ 
 			if(id==""||id==null){
@@ -59,10 +67,6 @@
 				$(".vv").click(function(){//보고싶어요
 					wish();
 					return;
-					});
-				$(".gZASBp").click(function(){//별점
-					rating();
-					return;
 				});
 			}
 		});
@@ -74,7 +78,7 @@
 			$.ajax({
 				async : true,  
 				type : 'POST',
-				data : {id:id , wish:"w" , drama_no:<%=request.getParameter("DRAMA_NO")%>},
+				data : {ID:id , WISH:"w" , DRAMA_NO:<%=request.getParameter("DRAMA_NO")%>},
 				url:"<c:url value='/drama/dramaDetail.br' />",
 				success : function(result){
 					var w = result;
@@ -92,14 +96,14 @@
 		/* 보고싶어요 */
 		
 		/* 별점 */
-		function rating(){
+		function rating(r){
 			$.ajax({
 				async : true,  
 				type : 'POST',
-				data : {id:id , rating:"r" , drama_no:<%=request.getParameter("DRAMA_NO")%>},
+				data : {ID:id , RATING:r , DRAMA_NO:<%=request.getParameter("DRAMA_NO")%>},
 				url:"<c:url value='/drama/dramaDetail.br' />",
 				success : function(result){
-					
+					alert("gg");
 				}
 				/* $('.gZASBp > a.r1'); */
 			})
@@ -127,6 +131,7 @@
 				var initValue = $('.gZASBp > div').attr("class").split(" ")[1];
 				
 				var f = $('.gZASBp > a.r1');
+				var r = 0;
 				f.hover(function() {
 					$('.gZASBp > div' ).removeClass(initValue).addClass('r1');
 				}, function() {
@@ -135,9 +140,13 @@
 				f.click(function(){
 					if(initValue == 'r1'){
 						initValue = 'r0';
+						r=0;
+						rating(r);
 					}
 					else{
 						initValue = 'r1';
+						r=0.5;
+						rating(r);
 					}
 				});
 				
@@ -150,9 +159,13 @@
 				f.click(function(){
 					if(initValue == 'r2'){
 						initValue = 'r0';
+						r=0;
+						rating(r);
 					}
 					else{
 						initValue = 'r2';
+						r=1;
+						rating(r);
 					}
 				});
 				
@@ -165,8 +178,12 @@
 				f.click(function(){
 					if(initValue == 'r3'){
 						initValue = 'r0';
+						r=0;
+						rating(r);
 					}else{
 						initValue = 'r3';
+						r=1.5;
+						rating(r);
 					}
 				});
 				
@@ -179,9 +196,13 @@
 				f.click(function(){
 					if(initValue == 'r4'){
 						initValue = 'r0';
+						r=0;
+						rating(r);
 					}
 					else{
 						initValue = 'r4';
+						r=2;
+						rating(r);
 					}
 				});
 				
@@ -194,9 +215,13 @@
 				f.click(function(){
 					if(initValue == 'r5'){
 						initValue = 'r0';
+						r=0;
+						rating(r);
 					}
 					else{
 						initValue = 'r5';
+						r=2.5;
+						rating(r);
 					}
 				});
 				
@@ -209,9 +234,13 @@
 				f.click(function(){
 					if(initValue == 'r6'){
 						initValue = 'r0';
+						r=0;
+						rating(r);
 					}
 					else{
 						initValue = 'r6';
+						r=3;
+						rating(r);
 					}
 				});
 				
@@ -224,9 +253,13 @@
 				f.click(function(){
 					if(initValue == 'r7'){
 						initValue = 'r0';
+						r=0;
+						rating(r);
 					}
 					else{
 						initValue = 'r7';
+						r=3.5;
+						rating(r);
 					}
 				});
 				
@@ -239,9 +272,13 @@
 				f.click(function(){
 					if(initValue == 'r8'){
 						initValue = 'r0';
+						r=0;
+						rating(r);
 					}
 					else{
 						initValue = 'r8';
+						r=4;
+						rating(r);
 					}
 				});
 				
@@ -254,9 +291,13 @@
 				f.click(function(){
 					if(initValue == 'r9'){
 						initValue = 'r0';
+						r=0;
+						rating(r);
 					}
 					else{
 						initValue = 'r9';
+						r=4.5;
+						rating(r);
 					}
 				});
 				
@@ -269,9 +310,13 @@
 				f.click(function(){
 					if(initValue == 'r10'){
 						initValue = 'r0';
+						r=0;
+						rating(r);
 					}
 					else{
 						initValue = 'r10';
+						r=5;
+						rating(r);
 					}
 				}); 
 			}

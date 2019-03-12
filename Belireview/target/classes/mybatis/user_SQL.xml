@@ -51,17 +51,17 @@
 	</select>
 	
 	<select id="userWishList" parameterType="hashmap" resultType="hashmap"><!-- 보고싶어요 -->
-		select * from mypage where mypage_id=#{id}
+		select * from mypage where mypage_id=#{ID}
 	</select>
 	
 	<insert id="insertWishList" parameterType="hashmap"> <!-- 보고싶어요 저장-->
 		insert into mypage
 		<choose>
 		    <when  test='movie_no != null'>
-		      	(mypage_id,mypage_movie) values(#{id},#{movie_no})
+		      	(mypage_id,mypage_movie) values(#{ID},#{MOVIE_NO})
 		    </when>
 		    <otherwise>
-		     	(mypage_id,mypage_drama) values(#{id},#{drama_no})
+		     	(mypage_id,mypage_drama) values(#{ID},#{DRAMA_NO})
 		    </otherwise>
 	 	</choose>
 	</insert>
@@ -70,13 +70,13 @@
 		update mypage set 
 		<choose>
 			<when  test='movie_no != null'>
-		      	mypage_movie=#{movie_no}
+		      	mypage_movie=#{MOVIE_NO}
 		    </when>
 		    <otherwise>
-		     	mypage_drama=#{drama_no}
+		     	mypage_drama=#{DRAMA_NO}
 		    </otherwise>
 	    </choose>
-	    where mypage_id=#{id}
+	    where mypage_id=#{ID}
 	</update>
 
 	<!-- 수정후회원정보불러오기 -->

@@ -21,7 +21,7 @@ public class UserController {
 	
     @Resource(name="userService") private UserService userService;
 	 
-	@RequestMapping(value="/user")  //마이페이지
+	@RequestMapping(value="/user.br")  //마이페이지
 	public ModelAndView user(){
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("user");
