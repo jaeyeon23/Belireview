@@ -44,24 +44,27 @@
 		obj.slideDown();
 	}
 	
-	/* 이름입력여부 */
-	$("input[name = name]").blur(function() {
-		checkName();
+
+	$(document).ready(function(){
+		/* 이름입력여부 */
+		$("input[name = name]").blur(function(){
+			checkName();
+		});
+		function checkName() {
+	        var name = $("#name").val();
+	        var oMsg = $("#nameMsg");
+	
+	        if ( name == "") {
+	            showErrorMsg(oMsg,"필수 정보입니다.");
+	            return false;
+	        }else{
+	        	oMsg.slideUp();
+	        	name_ok ="ok";
+	        }
+	
+	        return true;
+	    }
 	});
-	function checkName() {
-        var name = $("#name").val();
-        var oMsg = $("#nameMsg");
-
-        if ( name == "") {
-            showErrorMsg(oMsg,"필수 정보입니다.");
-            return false;
-        }else{
-        	oMsg.slideUp();
-        	name_ok ="ok";
-        }
-
-        return true;
-    }
 	
 	
 </script>
