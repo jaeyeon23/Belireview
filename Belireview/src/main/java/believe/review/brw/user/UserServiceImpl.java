@@ -11,13 +11,20 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Service;
 
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+
 import believe.review.brw.user.UserDAO;
+import believe.review.brw.common.util.FileUtils;
 
 @Service("userService")
 public class UserServiceImpl implements UserService{
 	
 	@Resource(name="userDAO")
 	private UserDAO userDAO;
+	
+	@Resource(name="fileUtils")
+	private FileUtils fileUtils;
 
 	
 	@Override
@@ -29,6 +36,21 @@ public class UserServiceImpl implements UserService{
 	public Map<String, Object> userGo(Map<String, Object> map) throws Exception {
 		return userDAO.selectId(map);
 	}
+	
+	//프로필사진수정
+	@Override
+	public void UserProfile(Map<String, Object> map, HttpServletRequest request) throws Exception {
+		userDAO.UserProfile(map);
+		
+		Map<String,Object> list = fileUtils.parseInsertFileInfo(map, request);
+			userDAO.UserProfile(list);
+	}
+	
+	/*@Override
+	public List<Map<String, Object>> UserMovieByRecent(Map<String, Object> map) throws Exception {
+		return userDAO.UserMovieByRecent(map);
+	}*/
+
 
 	@Override
 	public List<Map<String, Object>> UserMovieAll(Map<String, Object> map) throws Exception {

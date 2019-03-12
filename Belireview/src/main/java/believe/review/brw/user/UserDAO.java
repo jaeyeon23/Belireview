@@ -18,6 +18,13 @@ public class UserDAO extends AbstractDAO {
 	public Map<String, Object> selectId(Map<String, Object> map) throws Exception {
 		return (Map<String, Object>) selectOne("user.UserGo", map);
 	}
+	// 프로필사진수정
+	public void UserProfile(Map<String, Object> map) throws Exception {
+	
+		System.out.println(map.get("PROFILE_IMAGE"));
+		
+		update("user.UserProfile", map);
+	}
 	
 	@SuppressWarnings("unchecked")
 	public List<Map<String, Object>> UserMovieAll(Map<String, Object>  map) throws Exception{

@@ -148,7 +148,7 @@ public class MemberController {
 
 	private void sendEmail(String email,String authNum)throws Exception{ //메일을 보내는 메서드
 		String host ="smtp.gmail.com";
-		String subject = "빌리뷰 회원가입 인증번호";    //제목
+		String subject = "빌리뷰 이메일 인증";    //제목
 		String fromName ="빌리뷰 팀";                  //보내는사람이름
 		String from="khiclass@gmail.com";//보내는메일
 		String to1 = email;

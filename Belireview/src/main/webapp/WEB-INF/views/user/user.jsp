@@ -6,6 +6,13 @@
 <head>
 <meta charset="UTF-8">
  	<link href="/brw/resources/Jcss/user.css" rel="stylesheet">    
+ 	
+    <script src="/brw/resources/js/jquery-1.4.4.min.js"></script>
+    <style type="text/css">
+    	#pro_mus:hover{
+    		cursor: pointer;
+    	}
+    </style>
 </head>
 <body>
 		<div class="UserPage__Container-s1uda3mb-1 MccqW">
@@ -21,14 +28,15 @@
 						<div class="Grid-zydj2q-0 cspjno">
 							<div class="Row-s1apwm9x-0 lowZpE">
 								<header class="UserPage__ProfileHeader-s1uda3mb-4 hLoozo">
-									<div class="ProfilePhoto__Self-s1v3isfu-1 khVLwR RoundedImageBlock-k5m4n5-0 gUZYtN">
+									<div class="ProfilePhoto__Self-s1v3isfu-1 khVLwR RoundedImageBlock-k5m4n5-0 gUZYtN" data-toggle="modal" data-target="#myModal" id="pro_mus">
 									<c:if test="${sessionScope.PROFILE_IMAGE == null }">
                                           <img src="/brw/resources/images/Temporary_img.JPG" alt="bag" width="130%" height="130%" >
                                     </c:if>
                                     <c:if test="${sessionScope.PROFILE_IMAGE != null }">
-                                          <img src="/brw/resources/images/${sessionScope.PROFILE_IMAGE}" alt="bag" width="100%" height="100%" >
+                                          <img src="/brw/resources/images/user_profile/${sessionScope.PROFILE_IMAGE}" alt="bag" width="100%" height="100%" >
                                     </c:if>
 									</div>
+										<img src="/brw/resources/images/ican/set_ups.JPG" width="20" height="20" style="position:relative; border-radius:170px; margin-left:40px; margin-top:-20px;" data-toggle="modal"  id="pro_mus" data-target="#myModal" >
 									<div class="UserPage__NameBlock-s1uda3mb-5 ircOdU">
 										<h1 class="UserPage__Name-s1uda3mb-6 bBzugj">
 											${sessionScope.NAME} 님
@@ -94,5 +102,92 @@
 				</div>
 			</div>
 		</div>
+
+
+	<!-- Modal -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="myModalLabel" align="middle">
+						<strong>프로필사진변경</strong>
+					</h4>
+				</div>
+				<form method="post" name="frm" enctype="multipart/form-data" class="probootstrap-form" action="userModify_Pro.br" onsubmit="return check();">
+				<input type="hidden"  id="id" name="id" value="${ID}" >
+				<div class="modal-body" align="center">
+					<div class="row">
+							<c:if test="${PROFILE_IMAGE == null }">
+								<img src="/brw/resources/images/Temporary_img.JPG" alt="profile_img" height="100px" width="90px"  id="proimg">
+							</c:if>
+							<c:if test="${PROFILE_IMAGE != null }">
+								<img src="/brw/resources/images/user_profile/${sessionScope.PROFILE_IMAGE}" alt="profile_img" height="100px" width="90px"  id="proimg">
+							</c:if>
+						<br>
+						<input type="file" id="profile_image" name="profile_image" accept="image/gif,image/jpeg,image/png, image/jpg" onchange="chk_file_type(this)" />
+					</div>
+				</div>
+				<div class="modal-footer">
+					<input type="submit" class="btn btn-default"  value="변경">
+				</div>
+				</form>
+			</div>
+		</div>
+		</div>
+		
+		
+		
+		<script type="text/JavaScript">
+			function check() {
+				alert("프로필변경이 완료되었습니다");				
+			}	
+		
+			/* 프로필시진 변경 관련 스크립뜨 */
+			function chk_file_type(obj) { /*이미지 파일만 올릴수 있게 설정 */
+				var file_kind = obj.value.lastIndexOf('.');
+				var file_name = obj.value.substring(file_kind + 1, obj.length);
+				var file_type = file_name.toLowerCase();
+
+				var check_file_type = new Array();
+
+				check_file_type = [ 'jpg', 'gif', 'png', 'jpeg', 'bmp' ];
+
+				if (check_file_type.indexOf(file_type) == -1) {
+					alert('이미지 파일만 선택할 수 있습니다.');
+					var parent_Obj = obj.parentNode
+					var node = parent_Obj
+							.replaceChild(obj.cloneNode(true), obj);
+					return false;
+				}
+			}
+
+			$(document).ready(function() {
+				/*  이미지 미리보기  */
+				function readURL(input) {
+					if (input.files && input.files[0]) {
+						var reader = new FileReader(); //파일을 읽기 위한 FileReader객체 생성
+						reader.onload = function(e) {
+							//파일 읽어들이기를 성공했을때 호출되는 이벤트 핸들러
+							$('#proimg').attr('src', e.target.result);
+							//이미지 Tag의 SRC속성에 읽어들인 File내용을 지정
+							//(아래 코드에서 읽어들인 dataURL형식)
+						}
+						reader.readAsDataURL(input.files[0]);
+						//File내용을 읽어 dataURL형식의 문자열로 저장
+					}
+				}//readURL()--
+
+				//file 양식으로 이미지를 선택(값이 변경) 되었을때 처리하는 코드
+				$("#profile_image").change(function() {
+					//alert(this.value); //선택한 이미지 경로 표시
+					readURL(this);
+				});
+			});
+		</script>
 </body>
 </html>
