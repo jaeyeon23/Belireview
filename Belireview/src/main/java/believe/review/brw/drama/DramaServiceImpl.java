@@ -58,8 +58,8 @@ public class DramaServiceImpl  implements DramaService{
 		
 	}
 	@Override
-	public void deleteGrade(Map<String, Object> map) throws Exception {
-		dramaDAO.deleteGrade(map);
+	public void updateGrade(Map<String, Object> map) throws Exception {
+		dramaDAO.updateGrade(map);
 	}
 	
 

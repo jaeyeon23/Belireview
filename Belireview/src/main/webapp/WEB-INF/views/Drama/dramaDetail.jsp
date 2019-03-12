@@ -44,20 +44,22 @@
 		var id = "${ID}";
 		var grade = "${grade}";
 		var wi = "${wish}";
-		 
+		var ra = "" 
 		 $(function(){
-			 if(wi!=""){
+			 if(wi!=""){//보고싶어요에있을때
 				$(".juRlmb").html("취소");
 			 }
-			 if(grade != ""){
-			  	alert("gggg");
+			 if(grade != ""){//평가했을때
+			  	var rr = "r"+"${grade}";
+			  	$('.r0').removeClass('r0').addClass(rr);
+			  	$('.ccOSgS').html("${ra}");
 			 }else{
-				 $(".gZASBp > div").
+				 $('.ccOSgS').html("평가하기");
 			 }
 		 });  
 		 /* 로그인 유무 */
 		$(function(){ 
-			if(id==""||id==null){
+			if(id==""||id==null){//비로그인
 				$(".gsSopE").click(function(){//보고싶어요
 					alert("로그인 해주세요.");
 					location.href="<c:url value='/member/loginForm.br' />"
@@ -66,7 +68,7 @@
 					alert("로그인 해주세요.");
 					location.href="<c:url value='/member/loginForm.br' />"
 				});
-			}else{
+			}else{//로그인
 				$(".IsPDs").css("display","block");
 				
 				$(".vv").click(function(){//보고싶어요
@@ -87,7 +89,7 @@
 				url:"<c:url value='/drama/dramaDetail.br' />",
 				success : function(result){
 					var w = result;
-					var a = "취소";
+					var a = "보기싫어요";
 					var s = "보고싶어요";
 					if(w.add){
 						$(".juRlmb").html(a);
@@ -101,18 +103,18 @@
 		/* 보고싶어요 */
 		
 		/* 별점 */
-		function rating(r){
+		function rating(rr){
 			$.ajax({
 				async : true,  
 				type : 'POST',
-				data : {ID:id , RATING:r , DRAMA_NO:<%=request.getParameter("DRAMA_NO")%>},
+				data : {ID:id , RATING:rr , DRAMA_NO:<%=request.getParameter("DRAMA_NO")%>},
 				url:"<c:url value='/drama/dramaDetail.br' />",
 				success : function(result){
-					alert("gg");
+					
 				}
 				/* $('.gZASBp > a.r1'); */
 			})
-		} 
+		}
 		/* 별점 */
 		
 		
@@ -129,52 +131,91 @@
 		/* 이미지 슬라이드 */
 		
 		/* 별점 */
+		var initValue = 'r0';
+		alert(initValue);
+	
+		function ho(r){
+			var tmp = 'r'+r;
+			$('.gZASBp > div' ).removeClass(initValue).addClass(tmp);
+		}
+		function hoho(r){
+			var tmp = 'r'+r;
+			$('.gZASBp > div' ).removeClass(tmp).addClass(initValue);
+		}
+				
+		function clcl(r){
+			var rr = 0;
+			var tmp = 'r'+r;
+			if(initValue == tmp){
+				initValue = 'r0';
+				rating(rr);
+			}
+			else{
+				initValue = tmp;
+				rr= r*0.5;
+				rating(rr);
+			}
+		}
+	
 		$(function(){
 			
 			if(id==""||id==null){}
 			else{
-				var initValue = $('.gZASBp > div').attr("class").split(" ")[1];
+				/* initValue = $('.gZASBp > div').attr("class").split(" ")[1]; */
+				alert(initValue);
 				
 				var f = $('.gZASBp > a.r1');
-				var r = 0;
-				f.hover(function() {
-					$('.gZASBp > div' ).removeClass(initValue).addClass('r1');
-				}, function() {
-					$('.gZASBp > div' ).removeClass('r1').addClass(initValue);
-				});
-				f.click(function(){
-					if(initValue == 'r1'){
-						initValue = 'r0';
-						r=0;
-						rating(r);
-					}
-					else{
-						initValue = 'r1';
-						r=0.5;
-						rating(r);
-					}
-				});
+				alert(f);
+				var r = 1;
+				f.hover(ho(r), hoho(r));
+				f.click(clcl(r));
 				
 				f = $('.gZASBp > a.r2');
-				f.hover(function() {
-					$('.gZASBp > div' ).removeClass(initValue).addClass('r2');
-				}, function() {
-					$('.gZASBp > div' ).removeClass('r2').addClass(initValue);
-				});
-				f.click(function(){
-					if(initValue == 'r2'){
-						initValue = 'r0';
-						r=0;
-						rating(r);
-					}
-					else{
-						initValue = 'r2';
-						r=1;
-						rating(r);
-					}
-				});
+				r = 2;
+				f.hover(ho(r), hoho(r));
+				f.click(clcl(r));
 				
 				f = $('.gZASBp > a.r3');
+				r = 3;
+				f.hover(ho(r), hoho(r));
+				f.click(clcl(r));
+				
+				f = $('.gZASBp > a.r4');
+				r = 4;
+				f.hover(ho(r), hoho(r));
+				f.click(clcl(r));
+				
+				f = $('.gZASBp > a.r5');
+				r = 5;
+				f.hover(ho(r), hoho(r));
+				f.click(clcl(r));
+				
+				f = $('.gZASBp > a.r6');
+				r = 6;
+				f.hover(ho(r), hoho(r));
+				f.click(clcl(r));
+				
+				f = $('.gZASBp > a.r7');
+				r = 7;
+				f.hover(ho(r), hoho(r));
+				f.click(clcl(r));
+				
+				f = $('.gZASBp > a.r8');
+				r = 8;
+				f.hover(ho(r), hoho(r));
+				f.click(clcl(r));
+				
+				f = $('.gZASBp > a.r9');
+				r = 9;
+				f.hover(ho(r), hoho(r));
+				f.click(clcl(r));
+				
+				f = $('.gZASBp > a.r10');
+				r = 10;
+				f.hover(ho(r), hoho(r));
+				f.click(clcl(r));
+				
+				/* f = $('.gZASBp > a.r3');
 				f.hover(function() {
 					$('.gZASBp > div' ).removeClass(initValue).addClass('r3');
 				}, function() {
@@ -323,7 +364,7 @@
 						r=5;
 						rating(r);
 					}
-				}); 
+				});  */
 			}
 		});
 		/* 별점 */
@@ -331,7 +372,7 @@
 	
 	<link rel="stylesheet" href="/brw/resources/css/global.css">
 </head>
-<body>
+<body>aaa a a a
 	<div id="root">
 		<div class="App__Self-m1g4ja-0 iBpXSE">
 			<div class="NavTabManager__NavContainer-dbid0l-0 hhxQev">
@@ -397,7 +438,7 @@
 															class="ContentJumbotronRatingControl__Self-s1cw42ub-0 hIpgGL">
 															<div
 																class="ContentJumbotronRatingControl__Title-s1cw42ub-1 hqGvwK">
-																<div class="RatingText__Self-s2g271e-0 ccOSgS">평가하기</div>
+																<div class="RatingText__Self-s2g271e-0 ccOSgS"></div>
 															</div>
 															<div class="RatingControl__Self-s2c1yoc-0 ixVNUo">
 																<div class="RatingControl__UnratedStars-s2c1yoc-1 gZASBp">

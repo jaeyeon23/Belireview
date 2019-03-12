@@ -95,10 +95,12 @@ public class DramaController {
 			tmp = dramaService.existGrade(map);
 		
 			if(tmp!=null) {//별점
+				String[] ra = {"평가하기","최악이에요","싫어요","재미없어요","별로에요","부족해요","보통이에요","볼만해요","재미있어요","훌륭해요!","최고에요!"};
 				System.out.println(tmp.get("DL_GRADE"));
-				double g = Double.parseDouble(tmp.get("DL_GRADE").toString())*2;
-				System.out.println(g);
+				int g = (int)(Double.parseDouble(tmp.get("DL_GRADE").toString())*2);
+				System.out.println("g"+g);
 				mv.addObject("grade",g);
+				mv.addObject("ra",ra[g]);
 			}
 		}
 		System.out.println(session.getAttribute("ID"));
@@ -171,7 +173,8 @@ public class DramaController {
 				dramaService.addGrade(mv);
 			}else {//별점이 있을때
 				System.out.println("별점");
-				dramaService.deleteGrade(mv);
+				System.out.println(map.get("DL_GRADE"));
+				dramaService.updateGrade(mv);
 			}
 		}
 		/*평점*/

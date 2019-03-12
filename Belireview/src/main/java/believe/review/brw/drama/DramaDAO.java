@@ -47,8 +47,8 @@ public class DramaDAO extends AbstractDAO{
 	public void addGrade(Map<String, Object> map) throws Exception{
 		insert("drama.addGrade", map);
 	}
-	public void deleteGrade(Map<String, Object> map) throws Exception{
-		delete("drama.deleteGrade", map);
+	public void updateGrade(Map<String, Object> map) throws Exception{
+		delete("drama.updateGrade", map);
 	}
 	
 	
