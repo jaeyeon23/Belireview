@@ -21,7 +21,7 @@ public class UserController {
 	
     @Resource(name="userService") private UserService userService;
 	 
-	@RequestMapping(value="/user")  //마이페이지
+	@RequestMapping(value="/user.br")  //마이페이지
 	public ModelAndView user(){
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("user");
@@ -77,21 +77,31 @@ public class UserController {
 		HttpSession session = request.getSession();
 		
 		ModelAndView mv = new ModelAndView("userMovie");
-		List<Map<String,Object>> userList = userService.UserMovieByRecent(commandMap.getMap());
-		
-		mv.addObject("userList", userList);
-		return mv;
-	}
-	
-	@RequestMapping(value="/userMovielist")
-	public ModelAndView userMovielist(CommandMap commandMap, HttpServletRequest request)throws Exception{
-		HttpSession session = request.getSession();
-		
-		ModelAndView mv = new ModelAndView("userMovielist");
 		List<Map<String,Object>> userMovieAll = userService.UserMovieAll(commandMap.getMap());
-		
+		List<Map<String,Object>> selectUserGrade = userService.selectUserGrade(commandMap.getMap());
 		mv.addObject("userMovieAll", userMovieAll);
-	
+		mv.addObject("selectUserGrade", selectUserGrade);
+		Map<String, Object> userWishList = userService.userWishList(commandMap.getMap());
+		
+		
+		String[] str = userWishList.get("MYPAGE_MOVIE").toString().split(",");
+	    commandMap.put("a", str); 
+	    
+	    List<Map<String,Object>> userDramaList = userService.userDramaList(commandMap.getMap());
+	    List<Map<String,Object>> userMovieList = userService.userMovieList(commandMap.getMap());
+		
+	    mv.addObject("userWishList",userWishList);
+		mv.addObject("userDramaList",userDramaList);
+		mv.addObject("userMovieList",userMovieList);
+		if(userMovieList == null) {
+			System.out.println("널");
+		}else {
+			System.out.println("안널");
+		}
+		
+
 		return mv;
 	}
+	
+	
 }
