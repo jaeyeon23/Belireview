@@ -40,13 +40,52 @@ public class UserDAO extends AbstractDAO {
 	}
 	/*보고싶어요*/
 	
-	@SuppressWarnings("unchecked")
-	public int checkPwd(Map<String, Object> map) throws Exception {
-		return (Integer) selectOne("user.checkPwd", map);
-	}
+/*	@SuppressWarnings("unchecked")
+	public Map<String, Object> checkPwd(Map<String, Object> map) throws Exception {
+		return (Map<String, Object>) selectOne("user.checkPwd", map);
+	}*/
 	
-	@SuppressWarnings("unchecked")
+/*	@SuppressWarnings("unchecked")
 	public void deleteMember(Map<String, Object> map) throws Exception {
 		update("user.deleteMember", map);
+	}*/
+	
+	/*회원탈퇴 삭제하기*/
+	
+	@SuppressWarnings("unchecked")
+	Map<String, Object> myinfoDetail(Map<String, Object> map) throws Exception {
+		return (Map<String, Object>) selectOne("user.myinfoDetail", map);
+	}
+	
+	public void deleteUserOne(Map<String, Object> map) {
+		delete("admin.deleteUserOne", map);
+	}
+	
+	public void deleteMyPage(Map<String, Object> map) {
+		delete("admin.deleteMyPage", map);
+	}
+	
+	public void deleteAdLike(Map<String, Object> map) {
+		delete("admin.deleteAdLike", map);
+	}
+	
+	public void deleteAdComment(Map<String, Object> map) {
+		delete("admin.deleteAdComment", map);
+	}
+	
+	public void deleteDramaLike(Map<String, Object> map) {
+		delete("admin.deleteDramaLike", map);
+	}
+	
+	public void deleteDramaComment(Map<String, Object> map) {
+		delete("admin.deleteDramaComment", map);
+	}
+	
+	public void deleteMovieLike(Map<String, Object> map) {
+		delete("admin.deleteMovieLike", map);
+	}
+	
+	public void deleteMovieComment(Map<String, Object> map) {
+		delete("admin.deleteMovieComment", map);
 	}
 }

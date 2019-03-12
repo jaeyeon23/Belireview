@@ -99,7 +99,7 @@
 					</section>					
 				</div>
 				<br>
-					<a href="http://localhost:8080/brw/user/userDelete.br" class="del_link">계정삭제하기</a>
+					<a href="/brw/user/userDeleteForm.br" class="del_link">계정삭제하기</a>
 				<br>	
 				</div>
 		</div>

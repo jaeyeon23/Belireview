@@ -1,3 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC " - //mybatis.org//DTD Config 3.0//EN" " http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="main">
+	<select id="dramaListTop8" resultType="hashmap">
+		<![CDATA[
+		SELECT
+			DRAMA_NO, 
+			DRAMA_NAME,
+			DRAMA_DATE,
+			DRAMA_CHANNEL,
+			DRAMA_GENRE,
+			DRAMA_DIRECTOR,
+			DRAMA_CONTENT,
+			DRAMA_READCOUNT,
+			DRAMA_POSTER_IMAGE,
+			DRAMA_MAIN_IMAGE,
+			DRAMA_CONTENT_IMAGE, 
+			DRAMA_EPISODE,
+			DRAMA_GRADE,
+			r
+		FROM
+			(SELECT
+				DRAMA_NO, 
+				DRAMA_NAME,
+				DRAMA_DATE,
+				DRAMA_CHANNEL,
+				DRAMA_GENRE,
+				DRAMA_DIRECTOR,
+				DRAMA_CONTENT,
+				DRAMA_READCOUNT,
+				DRAMA_POSTER_IMAGE,
+				DRAMA_MAIN_IMAGE,
+				DRAMA_CONTENT_IMAGE, 
+				DRAMA_EPISODE,
+				DRAMA_GRADE,
+				ROWNUM r
+			FROM
+				DRAMA
+			ORDER BY
+				DRAMA_READCOUNT DESC
+			)	
+		WHERE
+			r >= 1 AND r <= 8
+		]]>
+	</select>
 </mapper>

@@ -103,16 +103,28 @@
 	
 	<!-- 회원탈퇴하기 -->
 	
+	<select id="myinfoDetail" parameterType="hashmap" resultType="hashmap">
+			<![CDATA[
+				SELECT * FROM MEMBER WHERE ID=#{id}
+			]]>
+		</select>
+	
 	<update id="deleteMember" parameterType="hashmap">
 	<![CDATA[
 		UPDATE MEMBER SET STATUS='Y' WHERE ID=#{id}
 	]]>
 	</update>
 	
-	<select id="checkPwd" parameterType="hashmap" resultType="int">
+<!-- 	<select id="checkPwd" parameterType="hashmap" resultType="int">
    	<![CDATA[
-   		select count(*) from member where password=#{PASSWORD} and id=#{ID}
+   		SELECT
+			count(*)
+		FROM
+			member
+		WHERE
+			id=#{id} and password=#{password}
    	]]>
-   </select>
+   </select> -->
+   
 	
 </mapper>

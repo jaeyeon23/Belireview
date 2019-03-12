@@ -6,6 +6,7 @@ import java.util.Map;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -53,15 +54,25 @@ public class UserServiceImpl implements UserService{
 		userDAO.updateWishList(map);
 	}
 	/*보고싶어요*/
+	
 	@Override
-	public int checkPwd(Map<String, Object> map) throws Exception {
-		return userDAO.checkPwd(map);
+	public Map<String, Object> myinfoDetail(Map<String, Object> map) throws Exception {
+		return userDAO.myinfoDetail(map);
+	}
+	
+	@Transactional
+	@Override
+	public void deleteUserOne(Map<String, Object> map) throws Exception {
+		userDAO.deleteMyPage(map);
+		userDAO.deleteAdLike(map);
+		userDAO.deleteAdComment(map);
+		userDAO.deleteDramaLike(map);
+		userDAO.deleteDramaComment(map);
+		userDAO.deleteMovieLike(map);
+		userDAO.deleteMovieComment(map);
+		userDAO.deleteUserOne(map);
 	}
 
-	@Override
-	public void deleteMember(Map<String, Object> map) throws Exception {
-		userDAO.deleteMember(map);
-	}
 }
 
 

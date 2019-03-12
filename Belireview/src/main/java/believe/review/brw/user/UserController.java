@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -95,16 +96,66 @@ public class UserController {
 		return mv;
 	}
 	
-	@RequestMapping(value="/userDelete", method=RequestMethod.POST)
-	public int userdelete(CommandMap commandMap, HttpSession session)throws Exception{
-		
-		int result = 0;
-		result = userService.checkPwd(commandMap.getMap());
-		if(result==1) {
-			userService.deleteMember(commandMap.getMap());
-			session.invalidate();		
-		}
-		return result;
+	@RequestMapping(value="/userDeleteForm")
+	public ModelAndView userDeleteForm(){
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("userDeleteForm");
+		return mv;
 	}
+	
+	@RequestMapping(value="/userDeletechk")
+	public ModelAndView userDeletechk(){
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("userDeletechk");
+		return mv;
+	}
+	
+	@RequestMapping(value="/userDelete")
+	public ModelAndView userDelete(CommandMap commandMap, HttpServletRequest request)throws Exception{
+		
+		ModelAndView mv=new ModelAndView();
+		HttpSession session = request.getSession();
+		int check = 0;
+		
+		Map<String, Object> member = userService.myinfoDetail(commandMap.getMap());
+		if(member.get("PASSWORD").equals(commandMap.get("password"))) {
+			userService.deleteUserOne(commandMap.getMap());
+			session.invalidate();
+			check = 0;
+			mv.addObject("check",check);
+			mv.setViewName("userDelete");
+			return mv;
+						
+		}else {
+			check = 1;
+			mv.addObject("check",check);
+			mv.setViewName("userDelete");
+			return mv;
+		}
+			
+	}
+		
+		/*ModelAndView mv = new ModelAndView();
+		
+		String member_id = session.getAttribute("id").toString();
+		String member_pw = request.getParameter("password");
+		
+		int deleteCheck;
+
+		Map<String, Object> userdel = userService.checkPwd(commandMap.getMap());
+
+		if (userdel.get("password").equals(session.getAttribute(member_pw))) {
+			// 비밀번호가 맞으면
+			deleteCheck = 1;
+			// 삭제쿼리 ㄱㄱ
+			userService.deleteUserOne(commandMap.getMap());
+			session.removeAttribute("member_id");
+		} else {
+			deleteCheck = -1;
+		}
+		mv.addObject("deleteCheck", deleteCheck);
+		mv.setViewName("/user/deleteOK");
+		return mv;
+	}*/
 	
 }
