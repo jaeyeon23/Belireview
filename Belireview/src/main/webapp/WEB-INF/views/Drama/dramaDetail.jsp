@@ -125,9 +125,8 @@
 			if(id==""||id==null){}
 			else{
 				var initValue = $('.gZASBp > div').attr("class").split(" ")[1];
-						
-				var f = $('.gZASBp > a.r1');
 				
+				var f = $('.gZASBp > a.r1');
 				f.hover(function() {
 					$('.gZASBp > div' ).removeClass(initValue).addClass('r1');
 				}, function() {
@@ -274,7 +273,7 @@
 					else{
 						initValue = 'r10';
 					}
-				});
+				}); 
 			}
 		});
 		/* 별점 */
@@ -282,7 +281,7 @@
 	
 	<link rel="stylesheet" href="/brw/resources/css/global.css">
 </head>
-<body> aaaaf aw 
+<body>
 	<div id="root">
 		<div class="App__Self-m1g4ja-0 iBpXSE">
 			<div class="NavTabManager__NavContainer-dbid0l-0 hhxQev">
