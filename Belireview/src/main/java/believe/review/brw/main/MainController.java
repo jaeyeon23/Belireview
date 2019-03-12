@@ -1,8 +1,9 @@
 package believe.review.brw.main;
 
-import java.text.DateFormat;
-import java.util.Date;
-import java.util.Locale;
+import java.util.List;
+import java.util.Map;
+
+import javax.annotation.Resource;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,43 +15,29 @@ import org.springframework.web.servlet.ModelAndView;
 
 import believe.review.brw.common.common.CommandMap;
 
-
 @Controller
 public class MainController {
-	 private static final Logger logger = LoggerFactory.getLogger(MainController.class);
+	private static final Logger logger = LoggerFactory.getLogger(MainController.class);
 
-	   /**
-	    * Simply selects the home view to render by returning its name.
-	    */
+	@Resource(name="mainService")
+	private MainService mainService;
+	
+	@RequestMapping(value = "/main.br", method = RequestMethod.GET)
+	public String home(Model model) throws Exception{
 
-	   @RequestMapping(value = "/main.br", method = RequestMethod.GET)
-	   public String home(Locale locale, Model model) {
-
-	      logger.info("Welcome home! The client locale is {}.", locale);
-
-	      Date date = new Date();
-	      DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-
-	      String formattedDate = dateFormat.format(date);
-
-	      model.addAttribute("serverTime", formattedDate);
-
-	      return "main";
-	   }
-	   
-	   @RequestMapping(value="/admin/main.br")
-	   public String admin_home(Model model) throws Exception{
-		   
-		   return "adminMain";
-	   }
-	   
-	   @RequestMapping(value = "mainSearch.br")
+		List<Map<String, Object>> drama_list = mainService.dramaListTop8();
 		
-		public ModelAndView mainSearch(CommandMap commandMap) throws Exception {
+		model.addAttribute("drama_list", drama_list);
+		
+		return "main";
+	}
 
-			ModelAndView mv = new ModelAndView("mainSearch");
-			
+	@RequestMapping(value = "mainSearch.br")
 
-			return mv;
-		}	
+	public ModelAndView mainSearch(CommandMap commandMap) throws Exception {
+
+		ModelAndView mv = new ModelAndView("mainSearch");
+
+		return mv;
+	}
 }

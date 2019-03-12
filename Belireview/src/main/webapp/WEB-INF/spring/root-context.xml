@@ -22,12 +22,14 @@
 		<property name="password" value="oracle" />
 	</bean>
 
-	<bean id="dataSource"
-		class="net.sf.log4jdbc.Log4jdbcProxyDataSource">
+	<bean id="dataSource" class="net.sf.log4jdbc.Log4jdbcProxyDataSource">
 		<constructor-arg ref="dataSourceSpied" />
-		<!-- <property name="logFormatter"> <bean class="net.sf.log4jdbc.tools.Log4JdbcCustomFormatter"> 
-			<property name="loggingType" value="MULTI_LINE" /> <property name="margin" 
-			value="19" /> <property name="sqlPrefix" value="SQL:::" /> </bean> </property> -->
+		<property name="logFormatter"> 
+			<bean class="net.sf.log4jdbc.tools.Log4JdbcCustomFormatter"> 
+				<property name="loggingType" value="MULTI_LINE" /> 
+				<property name="sqlPrefix" value="SQL:::" /> 
+			</bean> 
+		</property>
 	</bean>
 
 	<bean id="sqlSessionFactory"
@@ -40,8 +42,14 @@
 	<bean id="sqlSessionTemplate"
 		class="org.mybatis.spring.SqlSessionTemplate" destroy-method="close">
 		<constructor-arg ref="sqlSessionFactory" />
-
 	</bean>
+	
+	<!-- Transaction Manager --> 
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager"> 
+		<property name="dataSource" ref="dataSource" /> 
+	</bean> 
+	
+	<tx:annotation-driven transaction-manager="transactionManager" />
 
 
 	<!-- Gmail -->
