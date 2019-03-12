@@ -131,10 +131,8 @@
 		/* 이미지 슬라이드 */
 		
 		/* 별점 */
-		var initValue = 'r0';
-		alert(initValue);
-	
-		function ho(r){
+		
+	/* 	function ho(r){
 			var tmp = 'r'+r;
 			$('.gZASBp > div' ).removeClass(initValue).addClass(tmp);
 		}
@@ -155,22 +153,117 @@
 				rr= r*0.5;
 				rating(rr);
 			}
-		}
+		} */
 	
 		$(function(){
 			
 			if(id==""||id==null){}
 			else{
-				/* initValue = $('.gZASBp > div').attr("class").split(" ")[1]; */
-				alert(initValue);
-				
+				initValue = $('.gZASBp > div').attr("class").split(" ")[1];
+
 				var f = $('.gZASBp > a.r1');
-				alert(f);
 				var r = 1;
-				f.hover(ho(r), hoho(r));
-				f.click(clcl(r));
+				/* f.hover(function() {
+					ho(r);
+				}, function() {
+					hoho(r);
+				});
+				f.click(function() {
+					clcl(r)
+				});
+				var f = $('.gZASBp > a.r2');
+				var r = 2;
+				f.hover(function() {
+					ho(r);
+				}, function() {
+					hoho(r);
+				});
+				f.click(function() {
+					clcl(r)
+				});
+				var f = $('.gZASBp > a.r3');
+				var r = 3;
+				f.hover(function() {
+					ho(r);
+				}, function() {
+					hoho(r);
+				});
+				f.click(function() {
+					clcl(r)
+				});
+				var f = $('.gZASBp > a.r4');
+				var r = 4;
+				f.hover(function() {
+					ho(r);
+				}, function() {
+					hoho(r);
+				});
+				f.click(function() {
+					clcl(r)
+				});
+				var f = $('.gZASBp > a.r5');
+				var r = 5;
+				f.hover(function() {
+					ho(r);
+				}, function() {
+					hoho(r);
+				});
+				f.click(function() {
+					clcl(r)
+				});
+				var f = $('.gZASBp > a.r6');
+				var r = 6;
+				f.hover(function() {
+					ho(r);
+				}, function() {
+					hoho(r);
+				});
+				f.click(function() {
+					clcl(r)
+				});
+				var f = $('.gZASBp > a.r7');
+				var r = 7;
+				f.hover(function() {
+					ho(r);
+				}, function() {
+					hoho(r);
+				});
+				f.click(function() {
+					clcl(r)
+				});
+				var f = $('.gZASBp > a.r8');
+				var r = 8;
+				f.hover(function() {
+					ho(r);
+				}, function() {
+					hoho(r);
+				});
+				f.click(function() {
+					clcl(r)
+				});
+				var f = $('.gZASBp > a.r9');
+				var r = 9;
+				f.hover(function() {
+					ho(r);
+				}, function() {
+					hoho(r);
+				});
+				f.click(function() {
+					clcl(r)
+				});
+				var f = $('.gZASBp > a.r10');
+				var r = 10;
+				f.hover(function() {
+					ho(r);
+				}, function() {
+					hoho(r);
+				});
+				f.click(function() {
+					clcl(r)
+				}); */
 				
-				f = $('.gZASBp > a.r2');
+				
+				/* f = $('.gZASBp > a.r2');
 				r = 2;
 				f.hover(ho(r), hoho(r));
 				f.click(clcl(r));
@@ -213,9 +306,9 @@
 				f = $('.gZASBp > a.r10');
 				r = 10;
 				f.hover(ho(r), hoho(r));
-				f.click(clcl(r));
+				f.click(clcl(r)); */
 				
-				/* f = $('.gZASBp > a.r3');
+				f = $('.gZASBp > a.r3');
 				f.hover(function() {
 					$('.gZASBp > div' ).removeClass(initValue).addClass('r3');
 				}, function() {
@@ -364,7 +457,7 @@
 						r=5;
 						rating(r);
 					}
-				});  */
+				});  
 			}
 		});
 		/* 별점 */
