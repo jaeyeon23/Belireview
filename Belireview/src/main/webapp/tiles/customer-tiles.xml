@@ -99,10 +99,7 @@
     <definition name="userDeletechk" extends=".home">
     	<put-attribute name="body" value="/WEB-INF/views/user/userDeletechk.jsp"/>
     </definition>
-    
-   <definition name="userDelete" extends=".home">
-    	<put-attribute name="body" value="/WEB-INF/views/user/userDelete.jsp"/>
-    </definition>
+   
     
     <!-- 검색 -->
         <definition name="mainSearch" extends=".home">

@@ -8,6 +8,7 @@
 </head>
 <body>
 	<form name="memberDelete" action="userDelete.br" onsubmit="return memberDeleteChk()">
+		<input type="hidden" name="id" value="${ID }">
 		<div class="tbl_type_01">
 			<center>
 				<table>
@@ -21,7 +22,7 @@
 					<tbody>
 						<tr>
 							<th scope="row">비밀번호</th>
-							<td><input type="password" class="txt w220" name="password" /></td>
+							<td><input type="password" class="txt w220" name="password" id="password" /></td>
 						</tr>
 					</tbody>
 				</table>
@@ -35,14 +36,22 @@
 		</div>
 		<br>
 	</form>
-
-	<script type="text/javascript">
+	
+<script type="text/javascript">
 	function memberDeleteChk(){
+		var pw = $("#password").val();
+		
+		var user_pw = "${PASSWORD}";
+		
 		if(document.memberDelete.password.value == ""){
 			alert("비밀번호를 입력하세요.");
 			document.memberDelete.password.focus();
 			return false;
+		}else if(pw!=user_pw){
+			alert('비밀번호를 확인해주세요.');
+			return false;
 		}
+		alert('탈퇴가 완료되었습니다.');
 		return true;
 	}
 </script>

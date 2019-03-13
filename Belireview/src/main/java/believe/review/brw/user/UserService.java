@@ -24,10 +24,8 @@ public interface UserService {
 	void updateWishList(Map<String, Object> map) throws Exception;
 	/*보고싶어요*/
 	
-/*	void deleteMember(Map<String,Object> map)throws Exception;
-	*/
-	public void deleteUserOne(Map<String, Object> map) throws Exception;
+	//Map<String, Object> myinfoDetail(Map<String, Object> map) throws Exception;
 
-	Map<String, Object> myinfoDetail(Map<String, Object> map) throws Exception;
+	void deleteUserOne(Map<String, Object> map) throws Exception;
 	
 }

@@ -55,10 +55,6 @@ public class UserServiceImpl implements UserService{
 	}
 	/*보고싶어요*/
 	
-	@Override
-	public Map<String, Object> myinfoDetail(Map<String, Object> map) throws Exception {
-		return userDAO.myinfoDetail(map);
-	}
 	
 	@Transactional
 	@Override

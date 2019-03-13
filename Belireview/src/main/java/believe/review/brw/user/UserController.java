@@ -115,47 +115,14 @@ public class UserController {
 		
 		ModelAndView mv=new ModelAndView();
 		HttpSession session = request.getSession();
-		int check = 0;
-		
-		Map<String, Object> member = userService.myinfoDetail(commandMap.getMap());
-		if(member.get("PASSWORD").equals(commandMap.get("password"))) {
-			userService.deleteUserOne(commandMap.getMap());
-			session.invalidate();
-			check = 0;
-			mv.addObject("check",check);
-			mv.setViewName("userDelete");
-			return mv;
-						
-		}else {
-			check = 1;
-			mv.addObject("check",check);
-			mv.setViewName("userDelete");
-			return mv;
-		}
+
+		System.out.println("id" + commandMap.get("id"));
+		userService.deleteUserOne(userService.userGo(commandMap.getMap()));
+		session.invalidate();
+
+		mv.setViewName("main");
+		return mv;
 			
 	}
-		
-		/*ModelAndView mv = new ModelAndView();
-		
-		String member_id = session.getAttribute("id").toString();
-		String member_pw = request.getParameter("password");
-		
-		int deleteCheck;
-
-		Map<String, Object> userdel = userService.checkPwd(commandMap.getMap());
-
-		if (userdel.get("password").equals(session.getAttribute(member_pw))) {
-			// 비밀번호가 맞으면
-			deleteCheck = 1;
-			// 삭제쿼리 ㄱㄱ
-			userService.deleteUserOne(commandMap.getMap());
-			session.removeAttribute("member_id");
-		} else {
-			deleteCheck = -1;
-		}
-		mv.addObject("deleteCheck", deleteCheck);
-		mv.setViewName("/user/deleteOK");
-		return mv;
-	}*/
 	
 }

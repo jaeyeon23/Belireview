@@ -52,40 +52,35 @@ public class UserDAO extends AbstractDAO {
 	
 	/*회원탈퇴 삭제하기*/
 	
-	@SuppressWarnings("unchecked")
-	Map<String, Object> myinfoDetail(Map<String, Object> map) throws Exception {
-		return (Map<String, Object>) selectOne("user.myinfoDetail", map);
-	}
-	
 	public void deleteUserOne(Map<String, Object> map) {
-		delete("admin.deleteUserOne", map);
+		delete("user.deleteUserOne", map);
 	}
 	
 	public void deleteMyPage(Map<String, Object> map) {
-		delete("admin.deleteMyPage", map);
+		delete("user.deleteMyPage", map);
 	}
 	
 	public void deleteAdLike(Map<String, Object> map) {
-		delete("admin.deleteAdLike", map);
+		delete("user.deleteAdLike", map);
 	}
 	
 	public void deleteAdComment(Map<String, Object> map) {
-		delete("admin.deleteAdComment", map);
+		delete("user.deleteAdComment", map);
 	}
 	
 	public void deleteDramaLike(Map<String, Object> map) {
-		delete("admin.deleteDramaLike", map);
+		delete("user.deleteDramaLike", map);
 	}
 	
 	public void deleteDramaComment(Map<String, Object> map) {
-		delete("admin.deleteDramaComment", map);
+		delete("user.deleteDramaComment", map);
 	}
 	
 	public void deleteMovieLike(Map<String, Object> map) {
-		delete("admin.deleteMovieLike", map);
+		delete("user.deleteMovieLike", map);
 	}
 	
 	public void deleteMovieComment(Map<String, Object> map) {
-		delete("admin.deleteMovieComment", map);
+		delete("user.deleteMovieComment", map);
 	}
 }
