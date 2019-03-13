@@ -84,11 +84,13 @@ public class DramaController {
 		if(session.getAttribute("ID")!=null) {//로그인했을때
 			map.put("ID", session.getAttribute("ID"));
 			Map<String,Object> tmp = userService.userWishList(map);
-			if(tmp.get("MYPAGE_DRAMA")!=null) {//보고싶어요
-				String str[] = tmp.get("MYPAGE_DRAMA").toString().split(",");
-				for(String s : str) {
-					if(map.get("DRAMA_NO").toString().equals(s)) {
-						mv.addObject("wish","wish");
+			if(tmp!=null) {
+				if(tmp.get("MYPAGE_DRAMA")!=null) {//보고싶어요
+					String str[] = tmp.get("MYPAGE_DRAMA").toString().split(",");
+					for(String s : str) {
+						if(map.get("DRAMA_NO").toString().equals(s)) {
+							mv.addObject("wish","wish");
+						}
 					}
 				}
 			}
@@ -179,6 +181,11 @@ public class DramaController {
 		}
 		/*평점*/
 		
+		//댓
+		if(mv.get("COM")!=null) {
+			System.out.println("COM"+mv.get("COM"));
+		}
+		//댓
 		
 		return mv;
 

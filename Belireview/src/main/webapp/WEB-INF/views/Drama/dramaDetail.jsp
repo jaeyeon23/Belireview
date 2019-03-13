@@ -75,11 +75,27 @@
 					wish();
 					return;
 				});
+				$('.wc').click(function(){
+					alert('aa');
+					comment();
+				}); 
 			}
 		});
 		 /* 로그인 유무 */
 		
 		 
+		function comment(){
+			 alert('comment');
+			 $.ajax({
+				 async:true,
+				 type:'POST',
+				 data:{ID:id,COM:$('.com').val(), DRAMA_NO:<%=request.getParameter("DRAMA_NO")%>},
+				 url:"<c:url value='/drama/dramaDetail.br' />",
+				 success:function(result){
+					 alert('a');
+				 }
+			 })
+		}
 		 /* 보고싶어요 */
 		function wish(){
 			$.ajax({
@@ -463,9 +479,9 @@
 		/* 별점 */
 	</script>
 	
-	<link rel="stylesheet" href="/brw/resources/css/global.css">
+	<link rel="stylesheet" href="/brw/resources/css/global2.css">
 </head>
-<body>aaa a a a
+<body> 
 	<div id="root">
 		<div class="App__Self-m1g4ja-0 iBpXSE">
 			<div class="NavTabManager__NavContainer-dbid0l-0 hhxQev">
@@ -590,8 +606,7 @@
 																<div class="Row-s1apwm9x-0 lowZpE">
 																	<div class="ContentMyCommentSection__LeaveCommentBlock-mhuscg-2 bvmyee">
 																		<h3
-																			class="ContentMyCommentSection__Title-mhuscg-11 inwTWL">이
-																			작품에 대한 김상협 님의 평가를 글로 남겨보세요.</h3>
+																			class="ContentMyCommentSection__Title-mhuscg-11 inwTWL">이 작품에 대한 ${map.ID} 님의 평가를 글로 남겨보세요.</h3>
 																		<div
 																			class="ContentMyCommentSection__ButtonBlock-mhuscg-12 kTSrnl">
 																			
@@ -615,12 +630,12 @@
 																						</div>
 																						<div class="modal-body" align="center">
 																						<div class="row">
-																							<textarea style="resize: none;" name="comment" cols="70" rows="20" placeholder="이 작품에 대한 생각을 자유롭게 표현해주세요."></textarea></td>
+																							<textarea style="resize: none;" class="com" name="comment" cols="70" rows="20" placeholder="이 작품에 대한 생각을 자유롭게 표현해주세요."></textarea></td>
 																							
 																						</div>
 																						</div>
 																						<div class="modal-footer">
-																						<button type="submit" class="btn btn-default" data-dismiss="modal">작성</button>
+																						<button type="submit" class="btn btn-default wc" data-dismiss="modal">작성</button>
 																						
 																						</div>
 																				</div>
