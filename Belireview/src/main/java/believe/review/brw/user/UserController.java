@@ -104,17 +104,17 @@ public class UserController {
 		mv.addObject("selectUserGrade", selectUserGrade);
 		Map<String, Object> userWishList = userService.userWishList(commandMap.getMap());
 		
-		
-		String[] str = userWishList.get("MYPAGE_MOVIE").toString().split(",");
-	    commandMap.put("a", str); 
-	    
-	    List<Map<String,Object>> userDramaList = userService.userDramaList(commandMap.getMap());
-	    List<Map<String,Object>> userMovieList = userService.userMovieList(commandMap.getMap());
-		
-	    mv.addObject("userWishList",userWishList);
-		mv.addObject("userDramaList",userDramaList);
-		mv.addObject("userMovieList",userMovieList);
-
+		if(userWishList!=null) {
+			String[] str = userWishList.get("MYPAGE_MOVIE").toString().split(",");
+		    commandMap.put("a", str); 
+		    
+		    List<Map<String,Object>> userDramaList = userService.userDramaList(commandMap.getMap());
+		    List<Map<String,Object>> userMovieList = userService.userMovieList(commandMap.getMap());
+			
+		    mv.addObject("userWishList",userWishList);
+			mv.addObject("userDramaList",userDramaList);
+			mv.addObject("userMovieList",userMovieList);
+		}
 
 		return mv;
 	}

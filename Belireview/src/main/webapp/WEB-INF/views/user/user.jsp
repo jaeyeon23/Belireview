@@ -11,7 +11,6 @@
 }
 </style>
 <meta charset="UTF-8">
-<<<<<<< HEAD
  	<link href="/brw/resources/Jcss/user.css" rel="stylesheet">    
  	
     <script src="/brw/resources/js/jquery-1.4.4.min.js"></script>
@@ -20,9 +19,6 @@
     		cursor: pointer;
     	}
     </style>
-=======
-<link href="/brw/resources/Jcss/user.css" rel="stylesheet">    
->>>>>>> origin/주영
 </head>
 <body>
 		<div class="UserPage__Container-s1uda3mb-1 MccqW">
