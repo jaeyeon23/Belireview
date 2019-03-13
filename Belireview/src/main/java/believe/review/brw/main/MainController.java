@@ -52,14 +52,16 @@ public class MainController {
 			
 			for(int i=0 ;i<searchMovie.size();i++) {
 				Map<String,Object> tmp = new HashMap<String,Object>();
+				tmp.put("NO", searchMovie.get(i).get("MOVIE_NO"));
 				tmp.put("NAME", searchMovie.get(i).get("MOVIE_NAME"));
 				tmp.put("DATE", searchMovie.get(i).get("MOVIE_DATE"));
 				tmp.put("GENRE", searchMovie.get(i).get("MOVIE_GENRE"));
-				tmp.put("TYPE", "ÏòÅÌôî");
+				tmp.put("TYPE", "øµ»≠");
 				searchMain.add(i,tmp);
 			}
 			for(int i=searchMain.size(), j=0;j<searchDrama.size();j++,i++) {
 				Map<String,Object> tmp = new HashMap<String,Object>();
+				tmp.put("NO", searchDrama.get(j).get("DRAMA_NO"));
 				tmp.put("NAME", searchDrama.get(j).get("DRAMA_NAME"));
 				tmp.put("DATE", searchDrama.get(j).get("DRAMA_DATE"));
 				tmp.put("GENRE", searchDrama.get(j).get("DRAMA_GENRE"));
@@ -68,10 +70,11 @@ public class MainController {
 			}
 			for(int i=searchMain.size(),j=0;j<searchAd.size();j++,i++) {
 				Map<String,Object> tmp = new HashMap<String,Object>();
+				tmp.put("NO", searchAd.get(j).get("AD_NO"));
 				tmp.put("NAME", searchAd.get(j).get("AD_NAME"));
 				tmp.put("DATE", searchAd.get(j).get("AD_READCOUNT"));
 				tmp.put("GENRE", searchAd.get(j).get("AD_COMPANY"));
-				tmp.put("TYPE", "Í¥ëÍ≥†");
+				tmp.put("TYPE", "±§∞Ì");
 				searchMain.add(i,tmp);
 			}
 			
