@@ -416,7 +416,7 @@ html[lang=en] .input_chk label, html[lang=zh-Hans] .input_chk label,
 :root .input_chk input:checked+label:before {
 	content: '';
 	background: #f5f6f7
-		url(https://static.nid.naver.com/images/ui/myinfo/pc_chcek_on_s_20.png)
+		url(http://localhost:8080/brw/resources/images/ican/m_chcek_on_s_21.png)
 		no-repeat 0 0;
 	-webkit-background-size: 20px 20px;
 	background-size: 20px 20px
@@ -425,7 +425,7 @@ html[lang=en] .input_chk label, html[lang=zh-Hans] .input_chk label,
 :root .terms_chk_all .input_chk input:checked+label:before {
 	content: '';
 	background: #f5f6f7
-		url(https://static.nid.naver.com/images/ui/myinfo/pc_check_on_l_24.png)
+		url(http://localhost:8080/brw/resources/images/ican/m_check_on_l_25.png)
 		no-repeat 0 0;
 	-webkit-background-size: 24px 24px;
 	background-size: 24px 24px
@@ -1429,14 +1429,14 @@ html[lang=en] .join_success_txt+.btn_area {
 	}
 	:root .input_chk input:checked+label:before {
 		background: #f5f6f7
-			url(https://static.nid.naver.com/images/ui/myinfo/m_chcek_on_s_20.png)
+			url(http://localhost:8080/brw/resources/images/ican/m_chcek_on_s_21.png)
 			no-repeat 0 0;
 		-webkit-background-size: 20px 20px;
 		background-size: 20px 20px
 	}
 	:root .terms_chk_all .input_chk input:checked+label:before {
 		background: #f5f6f7
-			url(https://static.nid.naver.com/images/ui/myinfo/m_check_on_l_24.png)
+			url(http://localhost:8080/brw/resources/images/ican/m_check_on_l_25.png)
 			no-repeat 0 0;
 		-webkit-background-size: 24px 24px;
 		background-size: 24px 24px
