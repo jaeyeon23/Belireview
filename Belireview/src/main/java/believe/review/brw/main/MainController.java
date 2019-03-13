@@ -31,6 +31,20 @@ public class MainController {
 		
 		return "main";
 	}
+	
+	@RequestMapping(value = "/admin/main.br", method = RequestMethod.GET)
+	public String adminhome(Model model) throws Exception{
+
+		List<Map<String, Object>> drama_list = mainService.dramaListTop8();
+		List<Map<String, Object>> movie_list = mainService.movieListTop8();
+		List<Map<String, Object>> ad_list = mainService.adListTop8();
+		
+		model.addAttribute("drama_list", drama_list);
+		model.addAttribute("movie_list", movie_list);
+		model.addAttribute("ad_list", ad_list);
+		
+		return "adminMain";
+	}
 
 	@RequestMapping(value = "mainSearch.br")
 

@@ -17,6 +17,14 @@ public class MainServiceImpl implements MainService{
 	public List<Map<String, Object>> dramaListTop8() throws Exception {
 		return mainDAO.dramaListTop8();
 	}
-	
-	
+
+	@Override
+	public List<Map<String, Object>> movieListTop8() throws Exception {
+		return mainDAO.movieListTop8();
+	}
+
+	@Override
+	public List<Map<String, Object>> adListTop8() throws Exception {
+		return mainDAO.adListTop8();
+	}
 }

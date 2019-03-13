@@ -37,10 +37,92 @@
 			FROM
 				DRAMA
 			ORDER BY
-				DRAMA_READCOUNT DESC
+				DRAMA_READCOUNT DESC 
 			)	
 		WHERE
 			r >= 1 AND r <= 8
+		]]>
+	</select>
+	
+	<select id="movieListTop8" resultType="hashmap">
+		<![CDATA[
+		SELECT
+			MOVIE_NO,
+			MOVIE_NAME,
+			MOVIE_DATE,
+			MOVIE_COUNTRY,
+			MOVIE_GENRE,
+			MOVIE_TOTAL_COUNT,
+			MOVIE_DIRECTOR,
+			MOVIE_CONTENT,
+			MOVIE_RUNNINGTIME,
+			MOVIE_READCOUNT,
+			MOVIE_POSTER_IMAGE,
+			MOVIE_MAIN_IMAGE,
+			MOVIE_GALLERY_IMAGE,
+			MOVIE_GRADE,
+			r 
+		FROM
+			(SELECT
+				MOVIE_NO,
+				MOVIE_NAME,
+				MOVIE_DATE,
+				MOVIE_COUNTRY,
+				MOVIE_GENRE,
+				MOVIE_TOTAL_COUNT,
+				MOVIE_DIRECTOR,
+				MOVIE_CONTENT,
+				MOVIE_RUNNINGTIME,
+				MOVIE_READCOUNT,
+				MOVIE_POSTER_IMAGE,
+				MOVIE_MAIN_IMAGE,
+				MOVIE_GALLERY_IMAGE,
+				MOVIE_GRADE,
+				ROWNUM r
+			FROM
+				MOVIE
+			ORDER BY
+				MOVIE_READCOUNT DESC
+			)
+		WHERE
+			r >=1 and r <= 8
+		]]>
+	</select>
+	
+	<select id="adListTop8" resultType="hashmap">
+		<![CDATA[
+			SELECT
+				AD_NO,
+				AD_NAME,
+				AD_LINK,
+				AD_CONTENT,
+				AD_COMPANY,
+				AD_READCOUNT,
+				AD_POSTER_IMAGE,
+				AD_MAIN_IMAGE,
+				AD_CONTENT_IMAGE,
+				AD_GRADE,
+				r
+			FROM
+				(SELECT
+					AD_NO,
+					AD_NAME,
+					AD_LINK,
+					AD_CONTENT,
+					AD_COMPANY,
+					AD_READCOUNT,
+					AD_POSTER_IMAGE,
+					AD_MAIN_IMAGE,
+					AD_CONTENT_IMAGE,
+					AD_GRADE,
+					ROWNUM r
+				FROM
+					AD
+				ORDER BY
+					AD_READCOUNT DESC
+				)
+			WHERE
+				r >= 1 and r <= 8
 		]]>
 	</select>
 </mapper>

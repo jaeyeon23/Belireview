@@ -14,4 +14,14 @@ public class MainDAO extends AbstractDAO{
 	public List<Map<String, Object>> dramaListTop8(){
 		return selectList("main.dramaListTop8");
 	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Map<String, Object>> movieListTop8(){
+		return selectList("main.movieListTop8");
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Map<String, Object>> adListTop8(){
+		return selectList("main.adListTop8");
+	}
 }
