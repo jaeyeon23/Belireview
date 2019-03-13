@@ -56,7 +56,7 @@ public class MainController {
 				tmp.put("NAME", searchMovie.get(i).get("MOVIE_NAME"));
 				tmp.put("DATE", searchMovie.get(i).get("MOVIE_DATE"));
 				tmp.put("GENRE", searchMovie.get(i).get("MOVIE_GENRE"));
-				tmp.put("TYPE", "øµ»≠");
+				tmp.put("TYPE", "ÏòÅÌôî");
 				searchMain.add(i,tmp);
 			}
 			for(int i=searchMain.size(), j=0;j<searchDrama.size();j++,i++) {
@@ -74,7 +74,7 @@ public class MainController {
 				tmp.put("NAME", searchAd.get(j).get("AD_NAME"));
 				tmp.put("DATE", searchAd.get(j).get("AD_READCOUNT"));
 				tmp.put("GENRE", searchAd.get(j).get("AD_COMPANY"));
-				tmp.put("TYPE", "±§∞Ì");
+				tmp.put("TYPE", "Í¥ëÍ≥†");
 				searchMain.add(i,tmp);
 			}
 			
