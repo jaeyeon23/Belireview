@@ -2,11 +2,6 @@
 <!DOCTYPE mapper PUBLIC " - //mybatis.org//DTD Config 3.0//EN" " http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="main">
 
- 	<select id="selectMainSerach" parameterType="hashmap" resultType="hashmap">
-
-
-	</select> 
-
 	<select id="selectMovieSerach" parameterType="hashmap"
 		resultType="hashmap">
 		
@@ -43,7 +38,7 @@
 				MOVIE_GRADE,
 				ROWNUM RNUM from 
 				(SELECT *
-					FROM MOVIE WHERE MOVIE_NAME LIKE '%'||#{searchText}||'%' ORDER BY MOVIE_DATE DESC) ORDER BY RNUM ASC)WHERE RNUM BETWEEN 1 AND 8
+					FROM MOVIE WHERE MOVIE_NAME LIKE '%'||#{searchText}||'%' ORDER BY MOVIE_DATE DESC) ORDER BY RNUM ASC)WHERE RNUM BETWEEN 1 AND 10
 		]]>
 
 	</select>
@@ -82,7 +77,7 @@
 				DRAMA_GRADE,
 				ROWNUM RNUM FROM 
 				(SELECT *
-					FROM DRAMA WHERE DRAMA_NAME LIKE '%'||#{searchText}||'%' ORDER BY DRAMA_DATE DESC) ORDER BY RNUM ASC)WHERE RNUM BETWEEN 1 AND 8
+					FROM DRAMA WHERE DRAMA_NAME LIKE '%'||#{searchText}||'%' ORDER BY DRAMA_DATE DESC) ORDER BY RNUM ASC)WHERE RNUM BETWEEN 1 AND 10
 		]]>
 
 	</select>
@@ -116,7 +111,7 @@
 				AD_GRADE,
 				ROWNUM RNUM FROM 
 				(SELECT *
-				FROM AD WHERE AD_NAME LIKE '%'||#{searchText}||'%' ORDER BY AD_READCOUNT DESC) ORDER BY RNUM ASC)WHERE RNUM BETWEEN 1 AND 4
+				FROM AD WHERE AD_NAME LIKE '%'||#{searchText}||'%' ORDER BY AD_READCOUNT DESC) ORDER BY RNUM ASC)WHERE RNUM BETWEEN 1 AND 10
 ]]>
 	</select>
 </mapper>

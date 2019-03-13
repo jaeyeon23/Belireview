@@ -34,7 +34,28 @@
 												<ul class="HorizontalUlWithContentPosterList__StyledHorizontalUlWithContentPosterList-rp5ukn-0 kVCLyu HorizontalUl__StyledHorizontalUl-s1lfz4bc-0 fbzjBz VisualUl-s1vzev56-0 hgAYVH">
 													<c:forEach items="${searchMain}" var="result">
 													<li class="ContentListItemWithPoster__Self-swai1z-0 hKRvvO">
-													<a lng="ko-KR" title="${request}" href="/ko-KR/contents/tP8w03R">
+													<%-- <a lng="ko-KR" title="${request}" href="/brw/movie/movieDetail.br?MOVIE_NO=${result.NO}"> --%>
+													<c:choose>
+														<c:when test="${result.TYPE=='영화'}">
+														<a lng="ko-KR" title="${request}" href="/brw/movie/movieDetail.br?MOVIE_NO=${result.NO}">
+														</c:when>
+														<c:when test="${result.TYPE=='TV'}">
+														<a lng="ko-KR" title="${request}" href="/brw/drama/dramaDetail.br?DRAMA_NO=${result.NO}">
+														</c:when>
+														<c:otherwise>
+														<a lng="ko-KR" title="${request}" href="/brw/ad/adDetail.br?AD_NO=${result.NO}">
+														</c:otherwise>
+													</c:choose>
+													
+													<%-- <c:if test = "${result.TYPE}" equals "영화">
+													<a lng="ko-KR" title="${request}" href="/brw/movie/movieDetail.br?MOVIE_NO=${result.NO}">
+													</c:if>
+													<c:if test = "${result.TYPE}" equals "TV">
+													<a lng="ko-KR" title="${request}" href="/brw/drama/dramaDetail.br?DRAMA_NO=${result.NO}">
+													</c:if>
+													<c:if test = "${result.TYPE}" equals "광고">
+													<a lng="ko-KR" title="${request}" href="/brw/ad/adDetail.br?AD_NO=${result.NO}">
+													</c:if> --%>
 														<div class="ContentListItemWithPoster__ContentPosterBlock-swai1z-1 kxDIaJ">
 															<div class="LazyLoadingImg__Self-s1jb87ps-0 csJkbb">
 															<img class="LazyLoadingImg__Self-s1jb87ps-0 csJkbb" data-image-id="10" src="/brw/resources/images/3-girls.jpg">
@@ -84,7 +105,7 @@
 												<ul	class="SearchResultsSection__ResultStackableUl-s1qazrkm-4 gdjZVu StackableUl__StyledStackableUl-gafxvv-1 LNYRd VisualUl-s1vzev56-0 hgAYVH">
 													<c:forEach items="${searchMovie}" var="movie">
 													<li class="StackableListItem-s18nuw36-0 cIJjio">
-													<a lng="ko-KR" class="InnerPartOfListWithImage__LinkSelf-s11a1hqv-1 gmbtJD" title="${request}" href="/ko-KR/contents/tP8w03R">
+													<a lng="ko-KR" class="InnerPartOfListWithImage__LinkSelf-s11a1hqv-1 gmbtJD" title="${request}" href="/brw/movie/movieDetail.br?MOVIE_NO=${movie.MOVIE_NO}">
 														<div class="InnerPartOfListWithImage__ImageBlock-s11a1hqv-3 kXgAWr">
 																<div class="LazyLoadingBackground__StylingMerged-cgbyi4-2 kDLFDU LazyLoadingBackground__Self-cgbyi4-0 dxPvni">
 																	<span class="LazyLoadingBackground__BackgroundImage-cgbyi4-1 jhdCRo" data-background-image-id="27">
@@ -143,7 +164,7 @@
 													<li class="StackableListItem-s18nuw36-0 cIJjio"><a
 														lng="ko-KR"
 														class="InnerPartOfListWithImage__LinkSelf-s11a1hqv-1 gmbtJD"
-														title="${request}" href="/ko-KR/contents/tP8w03R"><div
+														title="${request}" href="/brw/drama/dramaDetail.br?DRAMA_NO=${drama.DRAMA_NO}"><div
 																class="InnerPartOfListWithImage__ImageBlock-s11a1hqv-3 kXgAWr">
 																<div
 																	class="LazyLoadingBackground__StylingMerged-cgbyi4-2 kDLFDU LazyLoadingBackground__Self-cgbyi4-0 dxPvni">
@@ -205,7 +226,7 @@
 													<li class="StackableListItem-s18nuw36-0 cIJjio"><a
 														lng="ko-KR"
 														class="InnerPartOfListWithImage__LinkSelf-s11a1hqv-1 gmbtJD"
-														title="도깨비" href="/ko-KR/contents/tP8w03R"><div
+														title="${request}" href="/brw/ad/adDetail.br?AD_NO=${ad.AD_NO}"><div
 																class="InnerPartOfListWithImage__ImageBlock-s11a1hqv-3 kXgAWr">
 																<div
 																	class="LazyLoadingBackground__StylingMerged-cgbyi4-2 kDLFDU LazyLoadingBackground__Self-cgbyi4-0 dxPvni">
