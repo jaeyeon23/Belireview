@@ -6,6 +6,7 @@ import java.util.Map;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service("adminMovieService")
 public class AdminMovieServiceImpl implements AdminMovieService{
@@ -43,8 +44,11 @@ public class AdminMovieServiceImpl implements AdminMovieService{
 		return adminMovieDAO.checkMovie(map);
 	}
 
+	@Transactional
 	@Override
 	public void deleteMovieOne(Map<String, Object> map) throws Exception {
+		adminMovieDAO.deleteMovieLikeOne(map);
+		adminMovieDAO.deleteMovieCommentOne(map);
 		adminMovieDAO.deleteMovieOne(map);
 	}	
 }

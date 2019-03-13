@@ -45,6 +45,7 @@
 		var grade = "${grade}";
 		var wi = "${wish}";
 		var ra = "" 
+		var initValue = "${initValue}";
 		 $(function(){
 			 if(wi!=""){//보고싶어요에있을때
 				$(".juRlmb").html("취소");
@@ -54,7 +55,7 @@
 			  	$('.r0').removeClass('r0').addClass(rr);
 			  	$('.ccOSgS').html("${ra}");
 			 }else{
-				 $('.ccOSgS').html("평가하기");
+				$('.ccOSgS').html("평가하기");
 			 }
 		 });  
 		 /* 로그인 유무 */
@@ -148,181 +149,52 @@
 		
 		/* 별점 */
 		
-	/* 	function ho(r){
-			var tmp = 'r'+r;
-			$('.gZASBp > div' ).removeClass(initValue).addClass(tmp);
-		}
-		function hoho(r){
-			var tmp = 'r'+r;
-			$('.gZASBp > div' ).removeClass(tmp).addClass(initValue);
-		}
-				
-		function clcl(r){
-			var rr = 0;
-			var tmp = 'r'+r;
-			if(initValue == tmp){
-				initValue = 'r0';
-				rating(rr);
-			}
-			else{
-				initValue = tmp;
-				rr= r*0.5;
-				rating(rr);
-			}
-		} */
 	
 		$(function(){
 			
 			if(id==""||id==null){}
 			else{
-				initValue = $('.gZASBp > div').attr("class").split(" ")[1];
+				/* initValue = $('.gZASBp > div').attr("class").split(" ")[1]; */
 
 				var f = $('.gZASBp > a.r1');
-				var r = 1;
-				/* f.hover(function() {
-					ho(r);
-				}, function() {
-					hoho(r);
-				});
-				f.click(function() {
-					clcl(r)
-				});
-				var f = $('.gZASBp > a.r2');
-				var r = 2;
 				f.hover(function() {
-					ho(r);
+					$('.gZASBp > div' ).removeClass(initValue).addClass('r1');
 				}, function() {
-					hoho(r);
+					$('.gZASBp > div' ).removeClass('r1').addClass(initValue);
 				});
-				f.click(function() {
-					clcl(r)
+				f.click(function(){
+					if(initValue == 'r1'){
+						initValue = 'r0';
+						r=0;
+						$('.ccOSgS').html("평가하기");
+						rating(r);
+					}else{
+						initValue = 'r1';
+						r=0.5;
+						$('.ccOSgS').html("최악이에요");
+						rating(r);
+					}
 				});
-				var f = $('.gZASBp > a.r3');
-				var r = 3;
+				
+				f = $('.gZASBp > a.r2');
 				f.hover(function() {
-					ho(r);
+					$('.gZASBp > div' ).removeClass(initValue).addClass('r2');
 				}, function() {
-					hoho(r);
+					$('.gZASBp > div' ).removeClass('r2').addClass(initValue);
 				});
-				f.click(function() {
-					clcl(r)
+				f.click(function(){
+					if(initValue == 'r2'){
+						initValue = 'r0';
+						r=0;
+						$('.ccOSgS').html("평가하기");
+						rating(r);
+					}else{
+						initValue = 'r2';
+						r=1;
+						$('.ccOSgS').html("싫어요");
+						rating(r);
+					}
 				});
-				var f = $('.gZASBp > a.r4');
-				var r = 4;
-				f.hover(function() {
-					ho(r);
-				}, function() {
-					hoho(r);
-				});
-				f.click(function() {
-					clcl(r)
-				});
-				var f = $('.gZASBp > a.r5');
-				var r = 5;
-				f.hover(function() {
-					ho(r);
-				}, function() {
-					hoho(r);
-				});
-				f.click(function() {
-					clcl(r)
-				});
-				var f = $('.gZASBp > a.r6');
-				var r = 6;
-				f.hover(function() {
-					ho(r);
-				}, function() {
-					hoho(r);
-				});
-				f.click(function() {
-					clcl(r)
-				});
-				var f = $('.gZASBp > a.r7');
-				var r = 7;
-				f.hover(function() {
-					ho(r);
-				}, function() {
-					hoho(r);
-				});
-				f.click(function() {
-					clcl(r)
-				});
-				var f = $('.gZASBp > a.r8');
-				var r = 8;
-				f.hover(function() {
-					ho(r);
-				}, function() {
-					hoho(r);
-				});
-				f.click(function() {
-					clcl(r)
-				});
-				var f = $('.gZASBp > a.r9');
-				var r = 9;
-				f.hover(function() {
-					ho(r);
-				}, function() {
-					hoho(r);
-				});
-				f.click(function() {
-					clcl(r)
-				});
-				var f = $('.gZASBp > a.r10');
-				var r = 10;
-				f.hover(function() {
-					ho(r);
-				}, function() {
-					hoho(r);
-				});
-				f.click(function() {
-					clcl(r)
-				}); */
-				
-				
-				/* f = $('.gZASBp > a.r2');
-				r = 2;
-				f.hover(ho(r), hoho(r));
-				f.click(clcl(r));
-				
-				f = $('.gZASBp > a.r3');
-				r = 3;
-				f.hover(ho(r), hoho(r));
-				f.click(clcl(r));
-				
-				f = $('.gZASBp > a.r4');
-				r = 4;
-				f.hover(ho(r), hoho(r));
-				f.click(clcl(r));
-				
-				f = $('.gZASBp > a.r5');
-				r = 5;
-				f.hover(ho(r), hoho(r));
-				f.click(clcl(r));
-				
-				f = $('.gZASBp > a.r6');
-				r = 6;
-				f.hover(ho(r), hoho(r));
-				f.click(clcl(r));
-				
-				f = $('.gZASBp > a.r7');
-				r = 7;
-				f.hover(ho(r), hoho(r));
-				f.click(clcl(r));
-				
-				f = $('.gZASBp > a.r8');
-				r = 8;
-				f.hover(ho(r), hoho(r));
-				f.click(clcl(r));
-				
-				f = $('.gZASBp > a.r9');
-				r = 9;
-				f.hover(ho(r), hoho(r));
-				f.click(clcl(r));
-				
-				f = $('.gZASBp > a.r10');
-				r = 10;
-				f.hover(ho(r), hoho(r));
-				f.click(clcl(r)); */
 				
 				f = $('.gZASBp > a.r3');
 				f.hover(function() {
@@ -334,10 +206,12 @@
 					if(initValue == 'r3'){
 						initValue = 'r0';
 						r=0;
+						$('.ccOSgS').html("평가하기");
 						rating(r);
 					}else{
 						initValue = 'r3';
 						r=1.5;
+						$('.ccOSgS').html("재미없어요");
 						rating(r);
 					}
 				});
@@ -352,11 +226,13 @@
 					if(initValue == 'r4'){
 						initValue = 'r0';
 						r=0;
+						$('.ccOSgS').html("평가하기");
 						rating(r);
 					}
 					else{
 						initValue = 'r4';
 						r=2;
+						$('.ccOSgS').html("별로에요");
 						rating(r);
 					}
 				});
@@ -371,11 +247,13 @@
 					if(initValue == 'r5'){
 						initValue = 'r0';
 						r=0;
+						$('.ccOSgS').html("평가하기");
 						rating(r);
 					}
 					else{
 						initValue = 'r5';
 						r=2.5;
+						$('.ccOSgS').html("부족해요");
 						rating(r);
 					}
 				});
@@ -390,11 +268,13 @@
 					if(initValue == 'r6'){
 						initValue = 'r0';
 						r=0;
+						$('.ccOSgS').html("평가하기");
 						rating(r);
 					}
 					else{
 						initValue = 'r6';
 						r=3;
+						$('.ccOSgS').html("보통이에요");
 						rating(r);
 					}
 				});
@@ -409,11 +289,13 @@
 					if(initValue == 'r7'){
 						initValue = 'r0';
 						r=0;
+						$('.ccOSgS').html("평가하기");
 						rating(r);
 					}
 					else{
 						initValue = 'r7';
 						r=3.5;
+						$('.ccOSgS').html("볼만해요");
 						rating(r);
 					}
 				});
@@ -428,11 +310,13 @@
 					if(initValue == 'r8'){
 						initValue = 'r0';
 						r=0;
+						$('.ccOSgS').html("평가하기");
 						rating(r);
 					}
 					else{
 						initValue = 'r8';
 						r=4;
+						$('.ccOSgS').html("재미있어요");
 						rating(r);
 					}
 				});
@@ -447,11 +331,13 @@
 					if(initValue == 'r9'){
 						initValue = 'r0';
 						r=0;
+						$('.ccOSgS').html("평가하기");
 						rating(r);
 					}
 					else{
 						initValue = 'r9';
 						r=4.5;
+						$('.ccOSgS').html("훌륭해요!");
 						rating(r);
 					}
 				});
@@ -466,14 +352,16 @@
 					if(initValue == 'r10'){
 						initValue = 'r0';
 						r=0;
+						$('.ccOSgS').html("평가하기");
 						rating(r);
 					}
 					else{
 						initValue = 'r10';
 						r=5;
+						$('.ccOSgS').html("최고에요!");
 						rating(r);
 					}
-				});  
+				});
 			}
 		});
 		/* 별점 */
@@ -835,8 +723,7 @@
 																									</div>
 																								</div>
 																							</div>
-																							<div
-																								class="InnerPartOfListWithImage__Info-s11a1hqv-5 hufKbr">
+																							<div class="InnerPartOfListWithImage__Info-s11a1hqv-5 hufKbr">
 																								<div
 																									class="InnerPartOfListWithImage__Titles-s11a1hqv-4 jtpmaI">
 																									<div

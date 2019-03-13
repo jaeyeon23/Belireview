@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service("adminUserService")
 public class AdminUserServiceImpl implements AdminUserService{
@@ -46,8 +47,16 @@ public class AdminUserServiceImpl implements AdminUserService{
 		adminUserDAO.updateUserOne(map);
 	}
 
+	@Transactional
 	@Override
 	public void deleteUserOne(Map<String, Object> map) throws Exception {
+		adminUserDAO.deleteMyPage(map);
+		adminUserDAO.deleteAdLike(map);
+		adminUserDAO.deleteAdComment(map);
+		adminUserDAO.deleteDramaLike(map);
+		adminUserDAO.deleteDramaComment(map);
+		adminUserDAO.deleteMovieLike(map);
+		adminUserDAO.deleteMovieComment(map);
 		adminUserDAO.deleteUserOne(map);
 	}
 }

@@ -98,14 +98,14 @@ public class DramaController {
 		
 			if(tmp!=null) {//별점
 				String[] ra = {"평가하기","최악이에요","싫어요","재미없어요","별로에요","부족해요","보통이에요","볼만해요","재미있어요","훌륭해요!","최고에요!"};
-				System.out.println(tmp.get("DL_GRADE"));
 				int g = (int)(Double.parseDouble(tmp.get("DL_GRADE").toString())*2);
-				System.out.println("g"+g);
 				mv.addObject("grade",g);
 				mv.addObject("ra",ra[g]);
+				mv.addObject("initValue","r"+g);
+			}else {
+				mv.addObject("initValue","r0");
 			}
 		}
-		System.out.println(session.getAttribute("ID"));
 		
 		/*Map<String,Object> insertcomment = dramaService.insertdramaComment(commandMap.getMap());*/
 		totalCount = (Integer)dramaService.totalDramaComment(map);
@@ -115,6 +115,7 @@ public class DramaController {
 		mv.addObject("actor",actor);
 		mv.addObject("detailgenre",detailgenre);
 		mv.addObject("totalCount",totalCount);
+		
 	/*	mv.addObject("insertcomment",insertcomment);*/
 		
 		return mv;
@@ -126,20 +127,14 @@ public class DramaController {
 
 		Map<String,Object> mv = commandMap.getMap();
 		/*보고싶어요*/
-		System.out.println(mv.get("DRAMA_NO"));
-		System.out.println(mv.get("ID"));
-		System.out.println(mv.get("WISH"));
-		System.out.println(mv.get("RATING"));
 		
 		if(mv.get("WISH")!=null) {
 			Map<String,Object> map = userService.userWishList(mv);
 			
 			if(map==null) {//위시리스트에 아무것도 없을때 
-				System.out.println("널");
 				userService.insertWishList(mv);
 			}
 			else {//위시리스트에 값이 있을때
-				System.out.println("하하");
 				String[] str = map.get("MYPAGE_DRAMA").toString().split(",");
 				boolean exist = false;
 				String drama_no = "";
@@ -150,16 +145,13 @@ public class DramaController {
 						drama_no += s+",";
 					}
 				}
-				/*System.out.println(exist);*/
 				if(!exist) {
 					drama_no += mv.get("DRAMA_NO");
 					mv.put("add", "add");
 				}else {
 					mv.put("subtract", "subtract");
 				}
-				/*System.out.println(drama_no);*/
 				mv.put("DRAMA_NO", drama_no);
-				/*System.out.println(mv.get("drama_no"));*/
 				userService.updateWishList(mv);
 			}
 		}
@@ -167,15 +159,10 @@ public class DramaController {
 		
 		/*평점*/
 		if(mv.get("RATING")!=null) {
-			System.out.println("별점");
-			System.out.println(mv.get("RATING"));
 			Map<String,Object> map = dramaService.existGrade(mv);
 			if(map==null) {//별점이 없을때
-				System.out.println("널");
 				dramaService.addGrade(mv);
 			}else {//별점이 있을때
-				System.out.println("별점");
-				System.out.println(map.get("DL_GRADE"));
 				dramaService.updateGrade(mv);
 			}
 		}
@@ -183,10 +170,19 @@ public class DramaController {
 		
 		//댓
 		if(mv.get("COM")!=null) {
-			System.out.println("COM"+mv.get("COM"));
+			Map<String,Object> map = dramaService.myComment(mv);
+			if(map==null) {
+				System.out.println("작성");
+				dramaService.writeDramaComment(mv);
+				map = dramaService.myComment(mv);
+			}else {
+				System.out.println("작성ㄴㄴ");
+			}
+			System.out.println(map.get("DC_CONTENT"));
+			mv.put("myCom",map);
+			System.out.println(mv.get("myCom"));
 		}
 		//댓
-		
 		return mv;
 
 	}

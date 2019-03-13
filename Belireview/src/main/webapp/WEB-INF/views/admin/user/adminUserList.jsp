@@ -118,7 +118,7 @@
 										<button class="btn btn-danger" type="button" onclick="delete_user('${list.ID}')">삭제</button>
 
 										<!-- modal 구동 버튼 (trigger) --> 
-										<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal${list.ID }">프로필 미리보기</button>
+										<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal${list.ID}">프로필 미리보기</button>
 										<!-- Modal -->
 										<div class="modal fade" id="myModal${list.ID }" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 											<div class="modal-dialog" role="document">

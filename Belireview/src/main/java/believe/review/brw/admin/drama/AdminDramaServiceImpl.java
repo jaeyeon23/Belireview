@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service("adminDramaService")
 public class AdminDramaServiceImpl implements AdminDramaService{
@@ -42,12 +43,17 @@ public class AdminDramaServiceImpl implements AdminDramaService{
 	}
 
 	@Override
-	public void deleteDramaOne(Map<String, Object> map) throws Exception{
-		adminDramaDAO.deleteDramaOne(map);
-	}
-
-	@Override
 	public void updateDramaOne(Map<String, Object> map) throws Exception {
 		adminDramaDAO.updateDramaOne(map);
 	}
+	
+	@Transactional
+	@Override
+	public void deleteDramaOne(Map<String, Object> map) throws Exception{
+		adminDramaDAO.deleteDramaLikeOne(map);
+		adminDramaDAO.deleteDramaCommentOne(map);
+		adminDramaDAO.deleteDramaOne(map);
+	}
+
+	
 }

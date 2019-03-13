@@ -11,8 +11,15 @@ import believe.review.brw.common.common.AbstractDAO;
 
 public class MovieDAO extends AbstractDAO {
 	@SuppressWarnings("unchecked")
-	public List<Map<String, Object>> selectBoardList() throws Exception{
-		return (List<Map<String, Object>>) selectList("movie.selectBoardList");
+	public List<Map<String, Object>> selectBoardList(Map<String, Object>  map) throws Exception{
+		return (List<Map<String, Object>>) selectList("movie.selectBoardList",map);
 	}
-
+	@SuppressWarnings("unchecked")
+	public List<Map<String,Object>> movieCommentByRecent(Map<String, Object> map) throws Exception{
+		return (List<Map<String,Object>>)selectList("movie_comment.movieCommentByRecent",map);
+	}
+	@SuppressWarnings("unchecked")
+	public List<Map<String,Object>> movieCommentByLike(Map<String, Object> map) throws Exception{
+		return (List<Map<String,Object>>)selectList("movie_comment.movieCommentByLike",map);
+	}
 }

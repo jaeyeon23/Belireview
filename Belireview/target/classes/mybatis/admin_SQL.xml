@@ -94,6 +94,56 @@
 			id=#{id} and password=#{password}
 	</delete>
 	
+	<delete id="deleteMyPage" parameterType="hashmap">
+		DELETE
+		FROM
+			MYPAGE
+		WHERE
+			MYPAGE_ID=#{id}
+	</delete>
+	<delete id="deleteAdLike" parameterType="hashmap">
+		DELETE
+		FROM
+			AD_LIKE
+		WHERE
+			ID=#{id}
+	</delete>
+	<delete id="deleteAdComment" parameterType="hashmap">
+		DELETE
+		FROM
+			AD_COMMENT
+		WHERE
+			ID=#{id}
+	</delete>
+	<delete id="deleteDramaLike" parameterType="hashmap">
+		DELETE
+		FROM
+			DRAMA_LIKE
+		WHERE
+			ID=#{id}
+	</delete>
+	<delete id="deleteDramaComment" parameterType="hashmap">
+		DELETE
+		FROM
+			DRAMA_COMMENT
+		WHERE
+			ID=#{id}
+	</delete>
+	<delete id="deleteMovieLike" parameterType="hashmap">
+		DELETE
+		FROM
+			MOVIE_LIKE
+		WHERE
+			ID=#{id}
+	</delete>
+	<delete id="deleteMovieComment" parameterType="hashmap">
+		DELETE
+		FROM
+			MOVIE_COMMENT
+		WHERE
+			ID=#{id}
+	</delete>
+	
 	<!-- Drama -->
 	<select id="selectNextVal" resultType="int">
 		SELECT
@@ -219,6 +269,23 @@
 			DRAMA_NO=#{no}
 	</delete>
 	
+	<delete id="deleteDramaCommentOne" parameterType="hashMap">
+		DELETE
+		FROM
+			DRAMA_COMMENT
+		WHERE
+			DRAMA_NO=#{no}
+	</delete>
+	
+	<delete id="deleteDramaLikeOne" parameterType="hashMap">
+		DELETE
+		FROM
+			DRAMA_LIKE
+		WHERE
+			DRAMA_NO=#{no}
+	</delete>
+	
+
 <!-- 	Movie -->
 	<select id="selectMovieList" resultType="hashmap" parameterType="hashmap">
 		SELECT
@@ -347,6 +414,22 @@
 			MOVIE_NO=#{no}
 	</delete>
 	
+	<delete id="deleteMovieCommentOne" parameterType="hashMap">
+		DELETE
+		FROM
+			MOVIE_COMMENT
+		WHERE
+			MOVIE_NO=#{no}
+	</delete>
+	
+	<delete id="deleteMovieLikeOne" parameterType="hashMap">
+		DELETE
+		FROM
+			MOVIE_LIKE
+		WHERE
+			MOVIE_NO=#{no}
+	</delete>
+	
 	<!-- Advertisement -->
 	<select id="selectAdList" resultType="hashmap" parameterType="hashmap">
 		SELECT
@@ -447,6 +530,22 @@
 		DELETE
 		FROM
 			AD
+		WHERE
+			AD_NO=#{no}
+	</delete>
+	
+	<delete id="deleteAdCommentOne" parameterType="hashMap">
+		DELETE
+		FROM
+			AD_COMMENT
+		WHERE
+			AD_NO=#{no}
+	</delete>
+	
+	<delete id="deleteAdLikeOne" parameterType="hashMap">
+		DELETE
+		FROM
+			AD_LIKE
 		WHERE
 			AD_NO=#{no}
 	</delete>
