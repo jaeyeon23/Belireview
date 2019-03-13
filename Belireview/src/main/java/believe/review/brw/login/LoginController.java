@@ -1,10 +1,8 @@
 package believe.review.brw.login;
 
-import java.io.PrintWriter;
 import java.math.BigDecimal;
 import java.util.Map;
 import java.util.Properties;
-import java.util.Set;
 
 import javax.annotation.Resource;
 import javax.mail.Message;
@@ -22,7 +20,6 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import believe.review.brw.common.common.CommandMap;
@@ -70,7 +67,7 @@ public class LoginController {
 					session.setAttribute("NAME", chk.get("NAME"));
 					session.setAttribute("ADMIN", chk.get("ADMIN"));
 
-					mv.setViewName("redirect:/admin/main.br");
+					mv.setViewName("redirect:/main.br");
 					return mv;
 				} else {
 					mv.setViewName("loginForm");

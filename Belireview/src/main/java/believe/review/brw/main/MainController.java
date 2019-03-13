@@ -25,24 +25,22 @@ public class MainController {
 	@Resource(name="mainService")
 	private MainService mainService;
 	
-		@RequestMapping(value = "/main.br", method = RequestMethod.GET)
-		public String home(Model model) throws Exception{
-	
-			List<Map<String, Object>> drama_list = mainService.dramaListTop8();
-			
-			model.addAttribute("drama_list", drama_list);
-			
-			return "main";
-		}
+	@RequestMapping(value = "/main.br", method = RequestMethod.GET)
+	public String home(Model model) throws Exception{
+
+		List<Map<String, Object>> drama_list = mainService.dramaListTop8();
+		List<Map<String, Object>> movie_list = mainService.movieListTop8();
+		List<Map<String, Object>> ad_list = mainService.adListTop8();
 		
-	   @RequestMapping(value="/admin/main.br")
-	   public String admin_home(Model model) throws Exception{
-		   
-		   return "adminMain";
-	   }
-	   
-	   @RequestMapping(value = "mainSearch.br")
-		public ModelAndView mainSearch(CommandMap commandMap, HttpServletRequest request) throws Exception {
+		model.addAttribute("drama_list", drama_list);
+		model.addAttribute("movie_list", movie_list);
+		model.addAttribute("ad_list", ad_list);
+		
+		return "main";
+	}
+	
+	@RequestMapping(value = "mainSearch.br")
+	public ModelAndView mainSearch(CommandMap commandMap,HttpServletRequest request) throws Exception {
 
 			ModelAndView mv = new ModelAndView("mainSearch");
 			List<Map<String,Object>> searchMain = new ArrayList<Map<String,Object>>();

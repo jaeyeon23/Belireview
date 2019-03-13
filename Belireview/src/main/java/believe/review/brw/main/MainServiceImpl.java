@@ -5,11 +5,7 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
-import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
-
-import believe.review.brw.drama.DramaDAO;
-import believe.review.brw.drama.DramaService;
 
 @Service("mainService")
 public class MainServiceImpl implements MainService{
@@ -38,4 +34,14 @@ public class MainServiceImpl implements MainService{
 		return mainDAO.adSerach(map);
 
 	}
+
+	@Override
+	public List<Map<String, Object>> movieListTop8() throws Exception {
+		return mainDAO.movieListTop8();
 	}
+
+	@Override
+	public List<Map<String, Object>> adListTop8() throws Exception {
+		return mainDAO.adListTop8();
+	}
+}
