@@ -169,7 +169,7 @@ public class DramaController {
 		/*평점*/
 		
 		//댓
-		if(mv.get("COM")!=null) {
+		if(mv.get("COM")!=null) { 
 			Map<String,Object> map = dramaService.myComment(mv);
 			if(map==null) {
 				System.out.println("작성");
