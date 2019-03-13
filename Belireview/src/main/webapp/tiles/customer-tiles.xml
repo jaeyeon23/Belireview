@@ -88,8 +88,14 @@
     	<put-attribute name="body" value="/WEB-INF/views/user/pwdCheck.jsp"/>
     </definition>
     
+    <definition name="userDeleteForm" extends=".home">
+    	<put-attribute name="body" value="/WEB-INF/views/user/userDeleteForm.jsp"/>
+    </definition>
     
-    
+    <definition name="userDeletechk" extends=".home">
+    	<put-attribute name="body" value="/WEB-INF/views/user/userDeletechk.jsp"/>
+    </definition>
+   
     
     <!-- 검색 -->
         <definition name="mainSearch" extends=".home">

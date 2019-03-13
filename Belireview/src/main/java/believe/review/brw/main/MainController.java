@@ -1,11 +1,8 @@
 package believe.review.brw.main;
 
-import java.text.DateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -21,34 +18,22 @@ import org.springframework.web.servlet.ModelAndView;
 
 import believe.review.brw.common.common.CommandMap;
 
-
-
 @Controller
 public class MainController {
-	 private static final Logger logger = LoggerFactory.getLogger(MainController.class);
+	private static final Logger logger = LoggerFactory.getLogger(MainController.class);
 
-	   /**
-	    * Simply selects the home view to render by returning its name.
-	    */
-
-	   @RequestMapping(value = "/main.br", method = RequestMethod.GET)
-	   public String home(Locale locale, Model model) {
-
-	      logger.info("Welcome home! The client locale is {}.", locale);
-
-	      Date date = new Date();
-	      DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-
-	      String formattedDate = dateFormat.format(date);
-
-	      model.addAttribute("serverTime", formattedDate);
-
-	      return "main";
-	   }
-	   
-
-		@Resource(name="mainService")
-		private MainService mainService;
+	@Resource(name="mainService")
+	private MainService mainService;
+	
+		@RequestMapping(value = "/main.br", method = RequestMethod.GET)
+		public String home(Model model) throws Exception{
+	
+			List<Map<String, Object>> drama_list = mainService.dramaListTop8();
+			
+			model.addAttribute("drama_list", drama_list);
+			
+			return "main";
+		}
 		
 	   @RequestMapping(value="/admin/main.br")
 	   public String admin_home(Model model) throws Exception{
@@ -57,7 +42,6 @@ public class MainController {
 	   }
 	   
 	   @RequestMapping(value = "mainSearch.br")
-		
 		public ModelAndView mainSearch(CommandMap commandMap, HttpServletRequest request) throws Exception {
 
 			ModelAndView mv = new ModelAndView("mainSearch");

@@ -12,9 +12,12 @@ import believe.review.brw.drama.DramaDAO;
 import believe.review.brw.drama.DramaService;
 
 @Service("mainService")
-
 public class MainServiceImpl implements MainService{
 	
+	@Override
+	public List<Map<String, Object>> dramaListTop8() throws Exception {
+		return mainDAO.dramaListTop8();
+	}
 	@Resource(name="mainDAO")
 	private MainDAO mainDAO;
 

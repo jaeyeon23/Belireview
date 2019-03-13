@@ -168,55 +168,54 @@ public class LoginController {
 	public ModelAndView clickMethod(HttpServletResponse response, HttpServletRequest request, CommandMap map)
 			throws Exception {
 
+		int memberFindChk;
+		
 		ModelAndView mv=new ModelAndView();
 		
-		String check_find = (String) map.getMap().get("check_find");
+		//String check_find = (String) map.getMap().get("check_find");
 		String pwname = (String) map.getMap().get("pwname");
 		String pwemail = (String) map.getMap().get("pwemail");
 		String pwid = (String) map.getMap().get("pwid");
 		String authNUm = "";
 		String str = "";
 
-		System.out.println("pw네임 :" + pwname + " pwemail:" + pwemail + " check_find :" + check_find + " 아이디 : " + pwid);
+		System.out.println("pw네임 :" + pwname + " pwemail:" + pwemail + " 아이디 : " + pwid);
 
-		if (check_find.equals("p")) {
+		System.out.println("비밀번호 찾기 시작");
 
-			System.out.println("비밀번호 찾기 시작");
+		map.getMap().put("EMAIL", pwemail);
+		map.getMap().put("MEMBER_ID_FIND", pwid);
+		map.getMap().put("MEMBER_NAME", pwname);
+		System.out.println("test+++++++");
+		String findEmail = loginService.findEmail(map.getMap());
+		System.out.println("findEmail=" + findEmail);
 
-			map.getMap().put("EMAIL", pwemail);
-			map.getMap().put("MEMBER_ID_FIND", pwid);
-			map.getMap().put("MEMBER_NAME", pwname);
-			System.out.println("test+++++++");
-			String findEmail = loginService.findEmail(map.getMap());
-			System.out.println("findEmail=" + findEmail);
+		if (findEmail != null) {
+			System.out.println("pwe메일 : " + pwemail + "find메일 : " + findEmail);
+			if (pwemail.equals(findEmail)) {
+				System.out.println("test++++++");
+				authNUm = RandomNum();// 랜덤숫자 String으로 넣고
+				map.getMap().put("PASSWORD_CHANGE", authNUm);
+				loginService.changePw(map.getMap()); // 랜덤숫자로 비밀번호 변경하고
+				sendEmail(findEmail, authNUm); // 메일발송
+				System.out.println("메일발송성공 변경된숫자 : " + authNUm);
 
-			if (findEmail != null) {
-				System.out.println("pwe메일 : " + pwemail + "find메일 : " + findEmail);
-				if (pwemail.equals(findEmail)) {
-					System.out.println("test++++++");
-					authNUm = RandomNum();// 랜덤숫자 String으로 넣고
-					map.getMap().put("PASSWORD_CHANGE", authNUm);
-					loginService.changePw(map.getMap()); // 랜덤숫자로 비밀번호 변경하고
-					sendEmail(findEmail, authNUm); // 메일발송
-					System.out.println("메일발송성공 변경된숫자 : " + authNUm);
-				
-				}
 			}
-
-			mv.addObject("authNUm",authNUm);
+			mv.addObject("ID",map.get("pwid"));
+			mv.addObject("authNUm", authNUm);
 			mv.setViewName("findPwOk");
 			return mv;
 			
-		} else {
-
-			mv.addObject("str",str);
+		} else{
+			memberFindChk=0;
+			mv.addObject("str", str);
+			mv.addObject("memberFindChk",memberFindChk);
 			mv.setViewName("findPwError");
-			return mv;
-		}
-		
-		
 
+			return mv;
+		} 
 	}
+		
 	
 	private void sendEmail(String email,String authNum)throws Exception{ //메일을 보내는 메서드
 		String host ="smtp.gmail.com";

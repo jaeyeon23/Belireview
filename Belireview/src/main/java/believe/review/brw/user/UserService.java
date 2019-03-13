@@ -31,4 +31,8 @@ public interface UserService {
 	
 	List<Map<String,Object>> userMovieList(Map<String, Object>  map) throws Exception;
 		
+	//Map<String, Object> myinfoDetail(Map<String, Object> map) throws Exception;
+
+	void deleteUserOne(Map<String, Object> map) throws Exception;
+	
 }

@@ -39,4 +39,12 @@ public class AdminMovieDAO extends AbstractDAO{
 	public void deleteMovieOne(Map<String, Object> map) {
 		delete("admin.deleteMovieOne", map);
 	}
+	
+	public void deleteMovieCommentOne(Map<String, Object> map) {
+		delete("admin.deleteMovieCommentOne", map);
+	}
+	
+	public void deleteMovieLikeOne(Map<String, Object> map) {
+		delete("admin.deleteMovieLikeOne", map);
+	}
 }

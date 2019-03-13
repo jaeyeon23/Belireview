@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -123,5 +124,33 @@ public class UserController {
 		return mv;
 	}
 	
+	@RequestMapping(value="/userDeleteForm")
+	public ModelAndView userDeleteForm(){
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("userDeleteForm");
+		return mv;
+	}
+	
+	@RequestMapping(value="/userDeletechk")
+	public ModelAndView userDeletechk(){
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("userDeletechk");
+		return mv;
+	}
+	
+	@RequestMapping(value="/userDelete")
+	public ModelAndView userDelete(CommandMap commandMap, HttpServletRequest request)throws Exception{
+		
+		ModelAndView mv=new ModelAndView();
+		HttpSession session = request.getSession();
+
+		System.out.println("id" + commandMap.get("id"));
+		userService.deleteUserOne(userService.userGo(commandMap.getMap()));
+		session.invalidate();
+
+		mv.setViewName("main");
+		return mv;
+			
+	}
 	
 }

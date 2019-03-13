@@ -4,7 +4,14 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style type="text/css">
+ .del_link {
+		color:grey;
+		float:right;
+}
+</style>
 <meta charset="UTF-8">
+<<<<<<< HEAD
  	<link href="/brw/resources/Jcss/user.css" rel="stylesheet">    
  	
     <script src="/brw/resources/js/jquery-1.4.4.min.js"></script>
@@ -13,6 +20,9 @@
     		cursor: pointer;
     	}
     </style>
+=======
+<link href="/brw/resources/Jcss/user.css" rel="stylesheet">    
+>>>>>>> origin/주영
 </head>
 <body>
 		<div class="UserPage__Container-s1uda3mb-1 MccqW">
@@ -97,10 +107,13 @@
 									<div class="PrimitiveHorizontalScrollable__ForwardButton-hy4esm-4 cfipNh"></div>
 								</div>
 							</div>
-						</div>
-					</section>
+						</div>					
+					</section>					
 				</div>
-			</div>
+				<br>
+					<a href="/brw/user/userDeleteForm.br" class="del_link">계정삭제하기</a>
+				<br>	
+				</div>
 		</div>
 
 

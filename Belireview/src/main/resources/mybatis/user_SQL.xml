@@ -143,6 +143,72 @@
 		</foreach>
 		
    </select>
+	<!-- 회원탈퇴하기 -->
 
+<!-- 	<select id="myinfoDetail" parameterType="hashmap"
+		resultType="hashmap">
+			<![CDATA[
+				SELECT * FROM MEMBER WHERE ID=#{id}
+			]]>
+	</select> -->
+
+	<delete id="deleteUserOne" parameterType="hashmap">
+		DELETE
+		FROM
+		MEMBER
+		WHERE
+		ID=#{ID} and PASSWORD=#{PASSWORD}
+	</delete>
+
+	<delete id="deleteMyPage" parameterType="hashmap">
+		DELETE
+		FROM
+		MYPAGE
+		WHERE
+		MYPAGE_ID=#{ID}
+	</delete>
+	<delete id="deleteAdLike" parameterType="hashmap">
+		DELETE
+		FROM
+		AD_LIKE
+		WHERE
+		ID=#{id}
+	</delete>
+	<delete id="deleteAdComment" parameterType="hashmap">
+		DELETE
+		FROM
+		AD_COMMENT
+		WHERE
+		ID=#{ID}
+	</delete>
+	<delete id="deleteDramaLike" parameterType="hashmap">
+		DELETE
+		FROM
+		DRAMA_LIKE
+		WHERE
+		ID=#{ID}
+	</delete>
+	<delete id="deleteDramaComment" parameterType="hashmap">
+		DELETE
+		FROM
+		DRAMA_COMMENT
+		WHERE
+		ID=#{ID}
+	</delete>
+	<delete id="deleteMovieLike" parameterType="hashmap">
+		DELETE
+		FROM
+		MOVIE_LIKE
+		WHERE
+		ID=#{ID}
+	</delete>
+	<delete id="deleteMovieComment" parameterType="hashmap">
+		DELETE
+		FROM
+		MOVIE_COMMENT
+		WHERE
+		ID=#{ID}
+	</delete>
+   
 	
 </mapper>
