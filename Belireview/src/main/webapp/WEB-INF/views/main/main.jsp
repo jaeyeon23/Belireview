@@ -163,219 +163,129 @@
 
 						<div id="myTabContent" class="tab-content">
 							<!-- drama start -->
-							<div role="tabpanel" class="tab-pane fade in active" id="1"
-								aria-labelledby="cat-1">
+							<div role="tabpanel" class="tab-pane fade in active" id="1"	aria-labelledby="cat-1">
 								<div class="row clearfix">
 									<c:forEach items="${drama_list }" var="list" varStatus="status">
 										<div class="col-md-3 prdct-grid">
 											<div class="product-fade">
 												<div class="product-fade-wrap">
-													<c:choose>
-														<c:when test="${status.index == 0 }">
-															<div id="product-image" class="owl-carousel owl-theme">
-														</c:when>
-														<c:otherwise>
-															<div id="product-image${status.index + 1 }" class="owl-carousel owl-theme">
-														</c:otherwise>
-													</c:choose>
-													<c:forTokens items="${list.DRAMA_CONTENT_IMAGE }"
-														var="image" delims=", ">
-														<div class="item">
-															<img src="/brw/resources/images/drama/content/${image }"
-																class="img-responsive">
-														</div>
-													</c:forTokens>
-												</div>
-												<div class="product-fade-ct">
-													<div class="product-fade-control">
-														<div class="to-left">
-															<a href=""><i class="fa fa-heart"></i></a> <a href=""><i
-																class="fa fa-retweet"></i></a> <a href=""><i
-																class="fa fa-search"></i></a>
-														</div>
-														<div class="to-right">
-															<c:choose>
-																<c:when test="${status.index == 0 }">
-																	<div id="product-control"
-																		class="owl-carousel owl-theme clearfix">
-																</c:when>
-																<c:otherwise>
-																	<div id="product-control${status.index + 1 }"
-																		class="owl-carousel owl-theme clearfix">
-																</c:otherwise>
-															</c:choose>
-															<c:forTokens items="${list.DRAMA_CONTENT_IMAGE }"
-																var="image" delims=", ">
-																<div class="item">
-																	<div class="bullets"></div>
-																</div>
-															</c:forTokens>
-														</div>
+													<div id="product-image${status.index + 1 }" class="owl-carousel owl-theme">
+		                                        	<c:forTokens items="${list.DRAMA_CONTENT_IMAGE }" var="image" delims=", ">
+			                                            <div class="item"><img src="/brw/resources/images/drama/content/${image }" alt="" class="img-responsive"></div>
+			                                        </c:forTokens>
+			                                        </div>
+													<div class="product-fade-ct">
+			                                        	<div class="product-fade-control">
+				                                            <div class="to-left">
+				                                                <a href=""><i class="fa fa-heart"></i></a>
+				                                                <a href=""><i class="fa fa-search"></i></a>
+				                                            </div>
+			                                                <div class="to-right">
+																<div id="product-control${status.index + 1 }" class="owl-carousel owl-theme">
+		                                                    	<c:forTokens items="${list.DRAMA_CONTENT_IMAGE }" var="image" delims=", ">
+		                                                        	<div class="item"><div class="bullets"></div></div>
+		                                                        </c:forTokens>
+			                                                    </div>
+			                                                </div>
+			                                                <div class="clearfix"></div>
+			                                               	<a href="" class="btn btn-to-cart"><span>자세히 보기</span><div class="clearfix"></div></a>
+			                                            </div>
 													</div>
-													<div class="clearfix"></div>
-													<a href="" class="btn btn-to-cart"><span>자세히 보기</span>
-													<div class="clearfix"></div></a>
 												</div>
-
+			                                </div>
+			                                <div class="product-name">
+												<a href="">${list.DRAMA_NAME }</a>
 											</div>
-										</div>
-								</div>
-
-								<div class="product-name">
-									<a href="">${list.DRAMA_NAME }</a>
+			                            </div>
+									</c:forEach>
 								</div>
 							</div>
-							</c:forEach>
-						</div>
-					</div>
-					<!-- drama end -->
-
-					<div role="tabpanel" class="tab-pane fade in active" id="2"
-						aria-labelledby="cat-2">
-						<div class="row clearfix">
-							<c:forEach items="${movie_list }" var="list" varStatus="status">
-								<div class="col-md-3 prdct-grid">
-									<div class="product-fade">
-										<div class="product-fade-wrap">
-											<c:choose>
-												<c:when test="${status.index == 0 }">
-													<div id="product-image" class="owl-carousel owl-theme">
-												</c:when>
-												<c:otherwise>
-													<div id="product-image${status.index + 1 }"
-														class="owl-carousel owl-theme">
-												</c:otherwise>
-											</c:choose>
-											<c:forTokens items="${list.MOVIE_GALLERY_IMAGE }" var="image"
-												delims=", ">
-												<div class="item">
-													<img src="/brw/resources/images/movie/content/${image }"
-														class="img-responsive">
+							<!-- drama end -->
+							
+							<!-- movie start -->
+							<div role="tabpanel" class="tab-pane fade in active" id="2"	aria-labelledby="cat-2">
+								<div class="row clearfix">
+									<c:forEach items="${movie_list }" var="list" varStatus="status">
+										<div class="col-md-3 prdct-grid">
+											<div class="product-fade">
+												<div class="product-fade-wrap">
+													<div id="product-image${status.index + 1 }" class="owl-carousel owl-theme">
+		                                        	<c:forTokens items="${list.MOVIE_GALLERY_IMAGE }" var="image" delims=", ">
+			                                            <div class="item"><img src="/brw/resources/images/drama/content/${image }" alt="" class="img-responsive"></div>
+			                                        </c:forTokens>
+			                                        </div>
+													<div class="product-fade-ct">
+			                                        	<div class="product-fade-control">
+				                                            <div class="to-left">
+				                                                <a href=""><i class="fa fa-heart"></i></a>
+				                                                <a href=""><i class="fa fa-search"></i></a>
+				                                            </div>
+			                                                <div class="to-right">
+																<div id="product-control${status.index + 1 }" class="owl-carousel owl-theme">
+		                                                    	<c:forTokens items="${list.MOVIE_GALLERY_IMAGE }" var="image" delims=", ">
+		                                                        	<div class="item"><div class="bullets"></div></div>
+		                                                        </c:forTokens>
+			                                                    </div>
+			                                                </div>
+			                                                <div class="clearfix"></div>
+			                                               	<a href="" class="btn btn-to-cart"><span>자세히 보기</span><div class="clearfix"></div></a>
+			                                            </div>
+													</div>
 												</div>
-											</c:forTokens>
-										</div>
-										<div class="product-fade-ct">
-											<div class="product-fade-control">
-												<div class="to-left">
-													<a href=""><i class="fa fa-heart"></i></a> <a href=""><i
-														class="fa fa-retweet"></i></a> <a href=""><i
-														class="fa fa-search"></i></a>
-												</div>
-												<div class="to-right">
-													<c:choose>
-														<c:when test="${status.index == 0 }">
-															<div id="product-control"
-																class="owl-carousel owl-theme clearfix">
-														</c:when>
-														<c:otherwise>
-															<div id="product-control${status.index + 1 }"
-																class="owl-carousel owl-theme clearfix">
-														</c:otherwise>
-													</c:choose>
-													<c:forTokens items="${list.MOVIE_GALLERY_IMAGE }"
-														var="image" delims=", ">
-														<div class="item">
-															<div class="bullets"></div>
-														</div>
-													</c:forTokens>
-												</div>
+			                                </div>
+			                                <div class="product-name">
+												<a href="">${list.MOVIE_NAME }</a>
 											</div>
-											<div class="clearfix"></div>
-											<a href="" class="btn btn-to-cart"><span>자세히 보기</span>
-											<div class="clearfix"></div></a>
-										</div>
-
-									</div>
+			                            </div>
+									</c:forEach>
 								</div>
-						</div>
-
-						<div class="product-name">
-							<a href="">${list.MOVIE_NAME }</a>
-						</div>
-					</div>
-					</c:forEach>
-				</div>
-			</div>
-
-			<div role="tabpanel" class="tab-pane fade in active" id="3"
-				aria-labelledby="cat-3">
-				<div class="row clearfix">
-					<c:forEach items="${ad_list }" var="list" varStatus="status">
-						<div class="col-md-3 prdct-grid">
-							<div class="product-fade">
-								<div class="product-fade-wrap">
-									<c:choose>
-										<c:when test="${status.index == 0 }">
-											<div id="product-image" class="owl-carousel owl-theme">
-										</c:when>
-										<c:otherwise>
-											<div id="product-image${status.index + 1 }"
-												class="owl-carousel owl-theme">
-										</c:otherwise>
-									</c:choose>
-									<c:forTokens items="${list.AD_CONTENT_IMAGE }" var="image"
-										delims=", ">
-										<div class="item">
-											<img src="/brw/resources/images/ad/content/${image }"
-												class="img-responsive">
-										</div>
-									</c:forTokens>
-								</div>
-								<div class="product-fade-ct">
-									<div class="product-fade-control">
-										<div class="to-left">
-											<a href=""><i class="fa fa-heart"></i></a> <a href=""><i
-												class="fa fa-retweet"></i></a> <a href=""><i
-												class="fa fa-search"></i></a>
-										</div>
-										<div class="to-right">
-											<c:choose>
-												<c:when test="${status.index == 0 }">
-													<div id="product-control"
-														class="owl-carousel owl-theme clearfix">
-												</c:when>
-												<c:otherwise>
-													<div id="product-control${status.index + 1 }"
-														class="owl-carousel owl-theme clearfix">
-												</c:otherwise>
-											</c:choose>
-											<c:forTokens items="${list.AD_CONTENT_IMAGE }" var="image"
-												delims=", ">
-												<div class="item">
-													<div class="bullets"></div>
-												</div>
-											</c:forTokens>
-										</div>
-									</div>
-									<div class="clearfix"></div>
-									<a href="" class="btn btn-to-cart"><span>자세히 보기</span>
-									<div class="clearfix"></div></a>
-								</div>
-
 							</div>
+							<!-- movie end -->
+							
+							<!-- ad start -->
+							<div role="tabpanel" class="tab-pane fade in active" id="3"	aria-labelledby="cat-3">
+								<div class="row clearfix">
+									<c:forEach items="${ad_list }" var="list" varStatus="status">
+										<div class="col-md-3 prdct-grid">
+											<div class="product-fade">
+												<div class="product-fade-wrap">
+													<div id="product-image${status.index + 1 }" class="owl-carousel owl-theme">
+		                                        	<c:forTokens items="${list.AD_CONTENT_IMAGE }" var="image" delims=", ">
+			                                            <div class="item"><img src="/brw/resources/images/drama/content/${image }" alt="" class="img-responsive"></div>
+			                                        </c:forTokens>
+			                                        </div>
+													<div class="product-fade-ct">
+			                                        	<div class="product-fade-control">
+				                                            <div class="to-left">
+				                                                <a href=""><i class="fa fa-heart"></i></a>
+				                                                <a href=""><i class="fa fa-search"></i></a>
+				                                            </div>
+			                                                <div class="to-right">
+																<div id="product-control${status.index + 1 }" class="owl-carousel owl-theme">
+		                                                    	<c:forTokens items="${list.AD_CONTENT_IMAGE }" var="image" delims=", ">
+		                                                        	<div class="item"><div class="bullets"></div></div>
+		                                                        </c:forTokens>
+			                                                    </div>
+			                                                </div>
+			                                                <div class="clearfix"></div>
+			                                               	<a href="" class="btn btn-to-cart"><span>자세히 보기</span><div class="clearfix"></div></a>
+			                                            </div>
+													</div>
+												</div>
+			                                </div>
+			                                <div class="product-name">
+												<a href="">${list.AD_NAME }</a>
+											</div>
+			                            </div>
+									</c:forEach>
+								</div>
+							</div>
+							<!-- ad end -->
 						</div>
-				</div>
-
-				<div class="product-name">
-					<a href="">${list.AD_NAME }</a>
-				</div>
-			</div>
-			</c:forEach>
-		</div>
-	</div>
-
-	<div class="content-offers">
-		<div class="container">
-			<div class="ct-offers">
-				<div class="ct-offers-title">
-					Tommy Hilfiger<br />Women’s
-				</div>
-				<p>The generated Lorem Ipsum is therefore always free from
-					repetition, injected humour</p>
-				<a href="" class="btn btn-blue">Discover more Product</a>
-			</div>
-		</div>
-	</div>
+		           </div>
+              </div>
+          </div>
+      </div>
 
 	<div class="brands">
 		<div class="container">
@@ -434,44 +344,19 @@
 			</div>
 		</div>
 	</div>
-
-
-	<div class="rec-blog">
+	
+	<div class="content-offers">
 		<div class="container">
-			<div class="rec-blog-inner">
-				<div class="blog-title">
-					<span>The Blog</span>
+			<div class="ct-offers">
+				<div class="ct-offers-title">
+					Tommy Hilfiger<br />Women’s
 				</div>
-				<div class="row">
-					<div class="col-md-4 blog-ct">
-						<a href=""><img src="/brw/resources/images/rec-1.jpg" alt=""
-							class="img-responsive"></a>
-						<div class="blog-ct-title">
-							<a href="">Sed ut perspiciatis unde omnis iste natus error
-								sit voluptatem accusantium doloremque !</a> <span>May 11,2014</span>
-						</div>
-					</div>
-					<div class="col-md-4 blog-ct">
-						<a href=""><img src="/brw/resources/images/rec-2.jpg" alt=""
-							class="img-responsive"></a>
-						<div class="blog-ct-title">
-							<a href="">Voluptatem accusantium doloremque</a> <span>May
-								11,2014</span>
-						</div>
-					</div>
-					<div class="col-md-4 blog-ct">
-						<a href=""><img src="/brw/resources/images/rec-3.jpg" alt=""
-							class="img-responsive"></a>
-						<div class="blog-ct-title">
-							<a href="">Voluptatem accusantium doloremque</a> <span>May
-								11,2014</span>
-						</div>
-					</div>
-				</div>
+				<p>The generated Lorem Ipsum is therefore always free from
+					repetition, injected humour</p>
+				<a href="" class="btn btn-blue">Discover more Product</a>
 			</div>
 		</div>
 	</div>
-
 	</div>
 	<!-- Content -->
 </body>

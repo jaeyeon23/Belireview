@@ -1140,13 +1140,15 @@ blockquote{
 
 
 .content-offers{
-    min-height:490px;
+	margin-top:5%;
+    min-height:650px;
     width:100%;
-    background:url(images/bg-offers.jpg) no-repeat left center;
+    background:url(images/content-offers.jpg) no-repeat right center;
     margin-bottom:100px;
     
 }
 .ct-offers{
+	color:white;
     max-width:435px;
     float:right;
     text-align:left;
@@ -1156,7 +1158,7 @@ blockquote{
 .ct-offers p{
     margin:30px 0;
     font-size:20px;
-    color: #1f1e38 ;
+    /* color: #1f1e38 ; */
     line-height: 36px;
 }
 .ct-offers .btn{
@@ -1172,7 +1174,7 @@ blockquote{
     font-size:44px;
     font-weight:700;
     line-height: normal;
-    color:#1f1e38 ;
+   /*  color:#1f1e38 ; */
     text-transform: uppercase;
 }
 

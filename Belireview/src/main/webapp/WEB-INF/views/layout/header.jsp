@@ -67,12 +67,12 @@
                               <!-- <div class="container-fluid"> -->
                                   <!-- Brand and toggle get grouped for better mobile display -->
                                   <div class="navbar-header">
-                                     <!--  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                                      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                                           <span class="sr-only">Toggle navigation</span>
                                           <span class="icon-bar"></span>
                                           <span class="icon-bar"></span>
                                           <span class="icon-bar"></span>
-                                      </button> -->
+                                      </button>
                                       <a class="navbar-brand" href="http://localhost:8080/brw/main.br">
                                       <img src="/brw/resources/images/logos.jpg" width="150px" alt=""></a>
                                   </div>
@@ -80,10 +80,26 @@
                                   <!-- Collect the nav links, forms, and other content for toggling -->
                                   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                                       <ul class="nav navbar-nav">
-                                          <li class="active"><a href="">Home <span class="sr-only">(current)</span></a></li>
-                                          <li><a class="dd" href="/brw/drama/dramaList.br">Drama</a></li>
-                                          <li><a class="mm" href="/brw/movie/movieList.br">Movie</a></li>
-                                          <li><a class="aa" href="/brw/ad/adList.br">Advertisement</a></li>
+                                          <li class="active"><a href="/brw/main.br">Home <span class="sr-only">(current)</span></a></li>
+                                          <li><a class="" href="/brw/drama/dramaList.br">Drama</a></li>
+                                          <li><a class="" href="/brw/movie/movieList.br">Movie</a></li>
+                                          <li><a class="" href="/brw/ad/adList.br">Advertisement</a></li>
+                                          <c:if test="${sessionScope.ADMIN == 1 }">
+                                          	<li><a href="" class="dropdown-toggle active" data-toggle="dropdown" role="button" aria-expanded="false">Admin <i class="fa fa-angle-down"></i></a>
+				                                <ul class="dropdown-menu megamenu" role="menu">
+		                                		    <li>
+			                                            <div class="mega-sub">
+				                   	                        <ul>
+					                                            <li><a href="/brw/admin/users.br">Users</a></li>
+							    								<li><a href="/brw/admin/drama.br">Drama</a></li>
+					                                            <li><a href="/brw/admin/movie.br">Movie</a></li>
+							                 					<li><a href="/brw/admin/ad.br">Advertisement</a></li>
+						                                    </ul>
+					                                    </div>
+		                                         	</li>
+	                                         	</ul>
+                                     	  	</li>
+                                          </c:if>
                                       </ul>
                                      
                                       <ul class="nav navbar-nav navbar-right">
@@ -136,16 +152,16 @@
               <div id="cat-nav">
               <div class="container">
                   <nav class="navbar navbar-default">
-                      <!-- <div class="container-fluid"> -->
+                      <div class="container-fluid">
                       <!-- Brand and toggle get grouped for better mobile display -->
-                      <div class="navbar-header">
+                      <!-- <div class="navbar-header">
                           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#cat-nav-mega">
                               <span class="sr-only">Toggle navigation</span>
                               <span class="icon-bar"></span>
                               <span class="icon-bar"></span>
                               <span class="icon-bar"></span>
                           </button>
-                      </div>
+                      </div> -->
 
                       <!-- Collect the nav links, forms, and other content for toggling -->
                       <div class="collapse navbar-collapse" id="cat-nav-mega">
@@ -165,7 +181,7 @@
                           </ul>
                            
                       </div><!-- /.navbar-collapse -->
-                      <!--</div> -->
+                      </div>
                   </nav>
               </div>
               </div>      

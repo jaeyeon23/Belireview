@@ -322,8 +322,8 @@ jQuery(document).ready(function($) {
     /*------------------------------- Product preview ---------------------------------------*/
     
     $(function(){
-        var sync1 = $("#product-image");
-        var sync2 = $("#product-control");
+        var sync1 = $("#product-image1");
+        var sync2 = $("#product-control1");
  
         sync1.owlCarousel({
             singleItem : true,
