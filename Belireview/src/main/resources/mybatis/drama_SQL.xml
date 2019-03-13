@@ -115,8 +115,8 @@
 		insert into drama_like values(#{DRAMA_NO},#{ID},#{RATING})
 	</insert>
 	
-	<delete id="deleteGrade" parameterType="hashmap">
-		delete drama_like where drama_like_no=#{DRAMA_NO} and id=#{ID}		
+	<delete id="updateGrade" parameterType="hashmap">
+		update drama_like set dl_grade=#{RATING} where drama_like_no=#{DRAMA_NO} and id=#{ID}		
 	</delete>
 	
 

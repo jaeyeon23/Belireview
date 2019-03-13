@@ -9,6 +9,100 @@
 <title>Insert title here</title>
 
 <script>
+	$(function(){
+		$('.vv').css('display',"none");
+	})
+	$(function(){
+		$('.r1').click(function(){
+			var submenu = $(this).find('.vv');
+			if( submenu.is(":visible") ){
+				submenu.slideUp();
+            }else{
+            	submenu.slideDown();
+            }
+		})
+		$('.r2').click(function(){
+			var submenu = $(this).find('.vv');
+			if( submenu.is(":visible") ){
+                submenu.slideUp();
+            }else{
+                submenu.slideDown();
+            }
+		})
+		$('.r3').click(function(){
+			var submenu = $(this).find('.vv');
+			if( submenu.is(":visible") ){
+                submenu.slideUp();
+            }else{
+                submenu.slideDown();
+            }
+		})
+		$('.r4').click(function(){
+			var submenu = $(this).find('.vv');
+			if( submenu.is(":visible") ){
+                submenu.slideUp();
+            }else{
+                submenu.slideDown();
+            }
+		})
+		$('.r5').click(function(){
+			var submenu = $(this).find('.vv');
+			if( submenu.is(":visible") ){
+                submenu.slideUp();
+            }else{
+                submenu.slideDown();
+            }
+		})
+		$('.r5').click(function(){
+			var submenu = $(this).find('.vv');
+			if( submenu.is(":visible") ){
+                submenu.slideUp();
+            }else{
+                submenu.slideDown();
+            }
+		})
+		$('.r6').click(function(){
+			var submenu = $(this).find('.vv');
+			if( submenu.is(":visible") ){
+                submenu.slideUp();
+            }else{
+                submenu.slideDown();
+            }
+		})
+		$('.r7').click(function(){
+			var submenu = $(this).find('.vv');
+			if( submenu.is(":visible") ){
+                submenu.slideUp();
+            }else{
+                submenu.slideDown();
+            }
+		})
+		$('.r8').click(function(){
+			var submenu = $(this).find('.vv');
+			if( submenu.is(":visible") ){
+                submenu.slideUp();
+            }else{
+                submenu.slideDown();
+            }
+		})
+		$('.r9').click(function(){
+			var submenu = $(this).find('.vv');
+			if( submenu.is(":visible") ){
+                submenu.slideUp();
+            }else{
+                submenu.slideDown();
+            }
+		})
+		$('.r10').click(function(){
+			var submenu = $(this).find('.vv');
+			if( submenu.is(":visible") ){
+                submenu.slideUp();
+            }else{
+                submenu.slideDown();
+            }
+		})
+	});
+	
 	$(function() {
 		$('.all').click(function() {
 			$('.all').removeClass('kSevvv').addClass('hyUMrr');
@@ -86,8 +180,7 @@
 							<section class="ArchiveRatingsPage__AllSection-s1ojhyk5-0 fMnTHB">
 								<div class="Grid-zydj2q-0 cspjno">
 									<div class="Row-s1apwm9x-0 lowZpE">
-										<ul
-											class="ContentGrid__ContentGridUsedInArchive-x2fbsz-1 gScTqD ContentGrid-x2fbsz-0 cwhjMF VisualUl-s1vzev56-0 hgAYVH">
+										<ul class="ContentGrid__ContentGridUsedInArchive-x2fbsz-1 gScTqD ContentGrid-x2fbsz-0 cwhjMF VisualUl-s1vzev56-0 hgAYVH">
 											<c:forEach items="${userMovieAll}" var="userMovieAll">
 												<li class="ContentListItemWithPoster__Self-swai1z-0 hKRvvO"><a
 													lng="ko-KR" title="배트맨 대 슈퍼맨: 저스티스의 시작"
@@ -101,7 +194,7 @@
 														</div>
 														<div class="ContentListItemWithPoster__ContentInfo-swai1z-2 kVeCGy">
 															<div
-																class="ContentListItemWithPoster__ContentTitle-swai1z-3 dXMJZW">${userMovieAll.MOVIE_NAME}</div>
+																class="ContentListItemWithPoster__ContentTitle-swai1z-3 dXMJZW">a</div>
 															<div
 																class="ContentListItemWithPoster__ContentRating-swai1z-4 jYxobl">★${userMovieAll.MOVIE_GRADE}</div>
 														</div>
@@ -119,19 +212,15 @@
 						<!-- 점수별 -->
 						<div class="HideableBlock__Self-ikumnu-0 cknbzg grade_data">
 							<section class="ArchiveRatingsPage__ByRatingSections-s1ojhyk5-1 fmQknq">
-								<section class="SectionWithHeader__Self-s1eyxltb-0 gAYeFO">
+								<c:forEach  var="i" begin="1" end="10" step="1" varStatus="stat">
+									<c:set var="rating" value="${((10-i)*0.5)+0.5}"></c:set>
+								<section class="SectionWithHeader__Self-s1eyxltb-0 gAYeFO r${i}"><!-- 5점 -->
 									<div class="Grid-zydj2q-0 cspjno">
 										<div class="Row-s1apwm9x-0 lowZpE">
 											<header class="SectionWithHeader__Header-s1eyxltb-1 cuiACK">
-												<h3 class="SectionWithHeader__Title-s1eyxltb-2 kwjefp">5.0점 준 영화</h3>
+												<h3 class="SectionWithHeader__Title-s1eyxltb-2 kwjefp">${rating}점 준 영화 </h3>
 												<span class="TitleSuffixForNumber-l2d30g-0 ejtPKl"> <!-- 5.0준 영화 개수 -->
 												</span>
-												<div class="SectionWithHeader__TopRight-s1eyxltb-3 bZaEfL">
-													<div class="SectionWithViewMore__ViewMore-xtbl7q-0 bhbIbv">
-														<a lng="ko-KR"
-															href="/ko-KR/users/zNM5NAwr22v26/contents/movies/ratings/10">더보기</a>
-													</div>
-												</div>
 											</header>
 										</div>
 									</div>
@@ -141,9 +230,9 @@
 												<section	class="ArchiveRatingsPage__AllSection-s1ojhyk5-0 fMnTHB">
 													<div class="Grid-zydj2q-0 cspjno">
 														<div class="Row-s1apwm9x-0 lowZpE">
-															<ul class="ContentGrid__ContentGridUsedInArchive-x2fbsz-1 gScTqD ContentGrid-x2fbsz-0 cwhjMF VisualUl-s1vzev56-0 hgAYVH">
+															<ul class="ContentGrid__ContentGridUsedInArchive-x2fbsz-1 gScTqD ContentGrid-x2fbsz-0 cwhjMF VisualUl-s1vzev56-0 hgAYVH vv rr${i}">
 																<c:forEach items="${selectUserGrade}" var="UserGrade">
-																	 <c:if test="${UserGrade.ML_GRADE == 5.0}">  
+																	 <c:if test="${UserGrade.ML_GRADE == rating}">  
 																<li class="ContentListItemWithPoster__Self-swai1z-0 hKRvvO">
 																	<a lng="ko-KR" title="배트맨 대 슈퍼맨: 저스티스의 시작" href="/ko-KR/contents/mdKBRkR">
 																		<div class="ContentListItemWithPoster__ContentPosterBlock-swai1z-1 kxDIaJ">
@@ -156,7 +245,7 @@
 																		<div class="ContentListItemWithPoster__ContentInfo-swai1z-2 kVeCGy">
 																			<div class="ContentListItemWithPoster__ContentTitle-swai1z-3 dXMJZW">${UserGrade.MOVIE_NAME}</div>
 																			<div class="ContentListItemWithPoster__ContentRating-swai1z-4 jYxobl">★${UserGrade.ML_GRADE}</div>
-																		</div>
+																		</div> 
 																</a>
 																</li>
 																 </c:if> 
@@ -182,747 +271,9 @@
 									</div>
 									<hr
 										class="Divider__StylingMergedDivider-s11un6bw-1 boBaEC Divider-s11un6bw-0 cVxSEp">
+								</section><!-- 5점 -->
+								</c:forEach>
 								</section>
-								<section class="ArchiveRatingsPage__ByRatingSections-s1ojhyk5-1 fmQknq">
-									<section class="SectionWithHeader__Self-s1eyxltb-0 gAYeFO">
-										<div class="Grid-zydj2q-0 cspjno">
-											<div class="Row-s1apwm9x-0 lowZpE">
-												<header class="SectionWithHeader__Header-s1eyxltb-1 cuiACK">
-													<h3 class="SectionWithHeader__Title-s1eyxltb-2 kwjefp">4.5점
-														준 영화</h3>
-													<span class="TitleSuffixForNumber-l2d30g-0 ejtPKl">
-														<!-- 4.5준 영화 개수 -->
-													</span>
-													<div class="SectionWithHeader__TopRight-s1eyxltb-3 bZaEfL">
-														<div class="SectionWithViewMore__ViewMore-xtbl7q-0 bhbIbv">
-															<a lng="ko-KR"
-																href="/ko-KR/users/zNM5NAwr22v26/contents/movies/ratings/10">더보기</a>
-														</div>
-													</div>
-												</header>
-											</div>
-										</div>
-										<div
-											class="PrimitiveHorizontalScrollable__ScrollBarContainer-hy4esm-0 hUyjJn">
-											<section class="SectionWithShrinkHeaderAndTabs__TabContentsContainer-tt2x7j-0 dnkVDn">
-												<div class="HideableBlock__Self-ikumnu-0 hgPHZk">
-													<section
-														class="ArchiveRatingsPage__AllSection-s1ojhyk5-0 fMnTHB">
-														<div class="Grid-zydj2q-0 cspjno">
-															<div class="Row-s1apwm9x-0 lowZpE">
-																<ul class="ContentGrid__ContentGridUsedInArchive-x2fbsz-1 gScTqD ContentGrid-x2fbsz-0 cwhjMF VisualUl-s1vzev56-0 hgAYVH">
-																<c:forEach items="${selectUserGrade}" var="UserGrade">
-																	<c:if test="${UserGrade.ML_GRADE == 4.5}">
-																		<li
-																			class="ContentListItemWithPoster__Self-swai1z-0 hKRvvO">
-																			<a lng="ko-KR" title="배트맨 대 슈퍼맨: 저스티스의 시작"
-																			href="/ko-KR/contents/mdKBRkR">
-																				<div class="ContentListItemWithPoster__ContentPosterBlock-swai1z-1 kxDIaJ">
-																					<div class="LazyLoadingImg__Self-s1jb87ps-0 csJkbb">
-																						<img
-																							class="LazyLoadingImg__Image-s1jb87ps-1 csJkbb"
-																							data-image-id="1"
-																							src="https://dhgywazgeek0d.cloudfront.net/watcha/image/upload/c_fill,h_700,q_80,w_490/v1466152598/nzclx33kbkeecgvtl7ms.jpg">
-																					</div>
-																				</div>
-																				<div class="ContentListItemWithPoster__ContentInfo-swai1z-2 kVeCGy">
-																					<div
-																						class="ContentListItemWithPoster__ContentTitle-swai1z-3 dXMJZW">${UserGrade.MOVIE_NAME}</div>
-																					<div
-																						class="ContentListItemWithPoster__ContentRating-swai1z-4 jYxobl">★${UserGrade.ML_GRADE}</div>
-																				</div>
-																		</a>
-																		</li>
-																	</c:if>
-																</c:forEach>
-															</ul>
-															</div>
-														</div>
-														<div class="PrimitiveInfinityScroll__Self-abb99t-0 iMsRxa"></div>
-													</section>
-												</div>
-												<div
-													class="arrow_button PrimitiveHorizontalScrollable__ArrowButtonBlock-hy4esm-3 kCjzvu"
-													direction="left">
-													<div
-														class="PrimitiveHorizontalScrollable__BackwardButton-hy4esm-5 bWflCD"></div>
-												</div>
-												<div
-													class="arrow_button PrimitiveHorizontalScrollable__ArrowButtonBlock-hy4esm-3 dllGvg"
-													direction="right">
-													<div
-														class="PrimitiveHorizontalScrollable__ForwardButton-hy4esm-4 cfipNh"></div>
-												</div>
-										</div>
-										<hr
-											class="Divider__StylingMergedDivider-s11un6bw-1 boBaEC Divider-s11un6bw-0 cVxSEp">
-									</section>
-									<section class="ArchiveRatingsPage__ByRatingSections-s1ojhyk5-1 fmQknq">
-										<section class="SectionWithHeader__Self-s1eyxltb-0 gAYeFO">
-											<div class="Grid-zydj2q-0 cspjno">
-												<div class="Row-s1apwm9x-0 lowZpE">
-													<header class="SectionWithHeader__Header-s1eyxltb-1 cuiACK">
-														<h3 class="SectionWithHeader__Title-s1eyxltb-2 kwjefp">4.0점
-															준 영화</h3>
-														<span class="TitleSuffixForNumber-l2d30g-0 ejtPKl">
-															<!-- 4.0준 영화 개수 -->
-														</span>
-														<div class="SectionWithHeader__TopRight-s1eyxltb-3 bZaEfL">
-															<div
-																class="SectionWithViewMore__ViewMore-xtbl7q-0 bhbIbv">
-																<a lng="ko-KR"
-																	href="/ko-KR/users/zNM5NAwr22v26/contents/movies/ratings/10">더보기</a>
-															</div>
-														</div>
-													</header>
-												</div>
-											</div>
-											<div
-												class="PrimitiveHorizontalScrollable__ScrollBarContainer-hy4esm-0 hUyjJn">
-												<section class="SectionWithShrinkHeaderAndTabs__TabContentsContainer-tt2x7j-0 dnkVDn">
-													<div class="HideableBlock__Self-ikumnu-0 hgPHZk">
-														<section
-															class="ArchiveRatingsPage__AllSection-s1ojhyk5-0 fMnTHB">
-															<div class="Grid-zydj2q-0 cspjno">
-																<div class="Row-s1apwm9x-0 lowZpE">
-																<ul
-																	class="ContentGrid__ContentGridUsedInArchive-x2fbsz-1 gScTqD ContentGrid-x2fbsz-0 cwhjMF VisualUl-s1vzev56-0 hgAYVH">
-																	<c:forEach items="${selectUserGrade}" var="UserGrade">
-																		<c:if test="${UserGrade.ML_GRADE == 4.0}">
-																			<li
-																				class="ContentListItemWithPoster__Self-swai1z-0 hKRvvO">
-																				<a lng="ko-KR" title="배트맨 대 슈퍼맨: 저스티스의 시작"
-																				href="/ko-KR/contents/mdKBRkR">
-																					<div class="ContentListItemWithPoster__ContentPosterBlock-swai1z-1 kxDIaJ">
-																						<div
-																							class="LazyLoadingImg__Self-s1jb87ps-0 csJkbb">
-																							<img
-																								class="LazyLoadingImg__Image-s1jb87ps-1 csJkbb"
-																								data-image-id="1"
-																								src="https://dhgywazgeek0d.cloudfront.net/watcha/image/upload/c_fill,h_700,q_80,w_490/v1466152598/nzclx33kbkeecgvtl7ms.jpg">
-																						</div>
-																					</div>
-																					<div class="ContentListItemWithPoster__ContentInfo-swai1z-2 kVeCGy">
-																						<div
-																							class="ContentListItemWithPoster__ContentTitle-swai1z-3 dXMJZW">${UserGrade.MOVIE_NAME}</div>
-																						<div
-																							class="ContentListItemWithPoster__ContentRating-swai1z-4 jYxobl">★${UserGrade.ML_GRADE}</div>
-																					</div>
-																			</a>
-																			</li>
-																		</c:if>
-																	</c:forEach>
-																</ul>
-															</div>
-															</div>
-															<div
-																class="PrimitiveInfinityScroll__Self-abb99t-0 iMsRxa"></div>
-														</section>
-													</div>
-													<div
-														class="arrow_button PrimitiveHorizontalScrollable__ArrowButtonBlock-hy4esm-3 kCjzvu"
-														direction="left">
-														<div
-															class="PrimitiveHorizontalScrollable__BackwardButton-hy4esm-5 bWflCD"></div>
-													</div>
-													<div
-														class="arrow_button PrimitiveHorizontalScrollable__ArrowButtonBlock-hy4esm-3 dllGvg"
-														direction="right">
-														<div
-															class="PrimitiveHorizontalScrollable__ForwardButton-hy4esm-4 cfipNh"></div>
-													</div>
-											</div>
-											<hr
-												class="Divider__StylingMergedDivider-s11un6bw-1 boBaEC Divider-s11un6bw-0 cVxSEp">
-										</section>
-										<section class="ArchiveRatingsPage__ByRatingSections-s1ojhyk5-1 fmQknq">
-											<section class="SectionWithHeader__Self-s1eyxltb-0 gAYeFO">
-												<div class="Grid-zydj2q-0 cspjno">
-													<div class="Row-s1apwm9x-0 lowZpE">
-														<header
-															class="SectionWithHeader__Header-s1eyxltb-1 cuiACK">
-															<h3 class="SectionWithHeader__Title-s1eyxltb-2 kwjefp">3.5점
-																준 영화</h3>
-															<span class="TitleSuffixForNumber-l2d30g-0 ejtPKl">
-																<!-- 3.5준 영화 개수 -->
-															</span>
-															<div
-																class="SectionWithHeader__TopRight-s1eyxltb-3 bZaEfL">
-																<div
-																	class="SectionWithViewMore__ViewMore-xtbl7q-0 bhbIbv">
-																	<a lng="ko-KR"
-																		href="/ko-KR/users/zNM5NAwr22v26/contents/movies/ratings/10">더보기</a>
-																</div>
-															</div>
-														</header>
-													</div>
-												</div>
-												<div
-													class="PrimitiveHorizontalScrollable__ScrollBarContainer-hy4esm-0 hUyjJn">
-													<section class="SectionWithShrinkHeaderAndTabs__TabContentsContainer-tt2x7j-0 dnkVDn">
-														<div class="HideableBlock__Self-ikumnu-0 hgPHZk">
-															<section
-																class="ArchiveRatingsPage__AllSection-s1ojhyk5-0 fMnTHB">
-																<div class="Grid-zydj2q-0 cspjno">
-																	<div class="Row-s1apwm9x-0 lowZpE">
-																	<ul
-																		class="ContentGrid__ContentGridUsedInArchive-x2fbsz-1 gScTqD ContentGrid-x2fbsz-0 cwhjMF VisualUl-s1vzev56-0 hgAYVH">
-																		<c:forEach items="${selectUserGrade}" var="UserGrade">
-																			<c:if test="${UserGrade.ML_GRADE == 3.5}">
-																				<li
-																					class="ContentListItemWithPoster__Self-swai1z-0 hKRvvO">
-																					<a lng="ko-KR" title="배트맨 대 슈퍼맨: 저스티스의 시작"
-																					href="/ko-KR/contents/mdKBRkR">
-																						<div class="ContentListItemWithPoster__ContentPosterBlock-swai1z-1 kxDIaJ">
-																							<div
-																								class="LazyLoadingImg__Self-s1jb87ps-0 csJkbb">
-																								<img
-																									class="LazyLoadingImg__Image-s1jb87ps-1 csJkbb"
-																									data-image-id="1"
-																									src="https://dhgywazgeek0d.cloudfront.net/watcha/image/upload/c_fill,h_700,q_80,w_490/v1466152598/nzclx33kbkeecgvtl7ms.jpg">
-																							</div>
-																						</div>
-																						<div class="ContentListItemWithPoster__ContentInfo-swai1z-2 kVeCGy">
-																							<div
-																								class="ContentListItemWithPoster__ContentTitle-swai1z-3 dXMJZW">${UserGrade.MOVIE_NAME}</div>
-																							<div
-																								class="ContentListItemWithPoster__ContentRating-swai1z-4 jYxobl">★${UserGrade.ML_GRADE}</div>
-																						</div>
-																				</a>
-																				</li>
-																			</c:if>
-																		</c:forEach>
-																	</ul>
-																</div>
-																</div>
-																<div
-																	class="PrimitiveInfinityScroll__Self-abb99t-0 iMsRxa"></div>
-															</section>
-														</div>
-														<div
-															class="arrow_button PrimitiveHorizontalScrollable__ArrowButtonBlock-hy4esm-3 kCjzvu"
-															direction="left">
-															<div
-																class="PrimitiveHorizontalScrollable__BackwardButton-hy4esm-5 bWflCD"></div>
-														</div>
-														<div
-															class="arrow_button PrimitiveHorizontalScrollable__ArrowButtonBlock-hy4esm-3 dllGvg"
-															direction="right">
-															<div
-																class="PrimitiveHorizontalScrollable__ForwardButton-hy4esm-4 cfipNh"></div>
-														</div>
-												</div>
-												<hr
-													class="Divider__StylingMergedDivider-s11un6bw-1 boBaEC Divider-s11un6bw-0 cVxSEp">
-											</section>
-											<section class="ArchiveRatingsPage__ByRatingSections-s1ojhyk5-1 fmQknq">
-												<section class="SectionWithHeader__Self-s1eyxltb-0 gAYeFO">
-													<div class="Grid-zydj2q-0 cspjno">
-														<div class="Row-s1apwm9x-0 lowZpE">
-															<header
-																class="SectionWithHeader__Header-s1eyxltb-1 cuiACK">
-																<h3 class="SectionWithHeader__Title-s1eyxltb-2 kwjefp">3.0점
-																	준 영화</h3>
-																<span class="TitleSuffixForNumber-l2d30g-0 ejtPKl">
-																	<!-- 3.0준 영화 개수 -->
-																</span>
-																<div
-																	class="SectionWithHeader__TopRight-s1eyxltb-3 bZaEfL">
-																	<div
-																		class="SectionWithViewMore__ViewMore-xtbl7q-0 bhbIbv">
-																		<a lng="ko-KR"
-																			href="/ko-KR/users/zNM5NAwr22v26/contents/movies/ratings/10">더보기</a>
-																	</div>
-																</div>
-															</header>
-														</div>
-													</div>
-													<div
-														class="PrimitiveHorizontalScrollable__ScrollBarContainer-hy4esm-0 hUyjJn">
-														<section class="SectionWithShrinkHeaderAndTabs__TabContentsContainer-tt2x7j-0 dnkVDn">
-															<div class="HideableBlock__Self-ikumnu-0 hgPHZk">
-																<section
-																	class="ArchiveRatingsPage__AllSection-s1ojhyk5-0 fMnTHB">
-																	<div class="Grid-zydj2q-0 cspjno">
-																		<div class="Row-s1apwm9x-0 lowZpE">
-																		<ul
-																			class="ContentGrid__ContentGridUsedInArchive-x2fbsz-1 gScTqD ContentGrid-x2fbsz-0 cwhjMF VisualUl-s1vzev56-0 hgAYVH">
-																			<c:forEach items="${selectUserGrade}" var="UserGrade">
-																				<c:if test="${UserGrade.ML_GRADE == 3.0}">
-																					<li
-																						class="ContentListItemWithPoster__Self-swai1z-0 hKRvvO">
-																						<a lng="ko-KR" title="배트맨 대 슈퍼맨: 저스티스의 시작"
-																						href="/ko-KR/contents/mdKBRkR">
-																							<div class="ContentListItemWithPoster__ContentPosterBlock-swai1z-1 kxDIaJ">
-																								<div
-																									class="LazyLoadingImg__Self-s1jb87ps-0 csJkbb">
-																									<img
-																										class="LazyLoadingImg__Image-s1jb87ps-1 csJkbb"
-																										data-image-id="1"
-																										src="https://dhgywazgeek0d.cloudfront.net/watcha/image/upload/c_fill,h_700,q_80,w_490/v1466152598/nzclx33kbkeecgvtl7ms.jpg">
-																								</div>
-																							</div>
-																							<div class="ContentListItemWithPoster__ContentInfo-swai1z-2 kVeCGy">
-																								<div
-																									class="ContentListItemWithPoster__ContentTitle-swai1z-3 dXMJZW">${UserGrade.MOVIE_NAME}</div>
-																								<div
-																									class="ContentListItemWithPoster__ContentRating-swai1z-4 jYxobl">★${UserGrade.ML_GRADE}</div>
-																							</div>
-																					</a>
-																					</li>
-																				</c:if>
-																			</c:forEach>
-																		</ul>
-																	</div>
-																	</div>
-																	<div
-																		class="PrimitiveInfinityScroll__Self-abb99t-0 iMsRxa"></div>
-																</section>
-															</div>
-															<div
-																class="arrow_button PrimitiveHorizontalScrollable__ArrowButtonBlock-hy4esm-3 kCjzvu"
-																direction="left">
-																<div
-																	class="PrimitiveHorizontalScrollable__BackwardButton-hy4esm-5 bWflCD"></div>
-															</div>
-															<div
-																class="arrow_button PrimitiveHorizontalScrollable__ArrowButtonBlock-hy4esm-3 dllGvg"
-																direction="right">
-																<div
-																	class="PrimitiveHorizontalScrollable__ForwardButton-hy4esm-4 cfipNh"></div>
-															</div>
-													</div>
-													<hr
-														class="Divider__StylingMergedDivider-s11un6bw-1 boBaEC Divider-s11un6bw-0 cVxSEp">
-												</section>
-												<section
-													class="ArchiveRatingsPage__ByRatingSections-s1ojhyk5-1 fmQknq">
-													<section class="SectionWithHeader__Self-s1eyxltb-0 gAYeFO">
-														<div class="Grid-zydj2q-0 cspjno">
-															<div class="Row-s1apwm9x-0 lowZpE">
-																<header
-																	class="SectionWithHeader__Header-s1eyxltb-1 cuiACK">
-																	<h3 class="SectionWithHeader__Title-s1eyxltb-2 kwjefp">2.5점
-																		준 영화</h3>
-																	<span class="TitleSuffixForNumber-l2d30g-0 ejtPKl">
-																		<!-- 2.5준 영화 개수 -->
-																	</span>
-																	<div
-																		class="SectionWithHeader__TopRight-s1eyxltb-3 bZaEfL">
-																		<div
-																			class="SectionWithViewMore__ViewMore-xtbl7q-0 bhbIbv">
-																			<a lng="ko-KR"
-																				href="/ko-KR/users/zNM5NAwr22v26/contents/movies/ratings/10">더보기</a>
-																		</div>
-																	</div>
-																</header>
-															</div>
-														</div>
-														<div
-															class="PrimitiveHorizontalScrollable__ScrollBarContainer-hy4esm-0 hUyjJn">
-														<section
-															class="SectionWithShrinkHeaderAndTabs__TabContentsContainer-tt2x7j-0 dnkVDn">
-															<div class="HideableBlock__Self-ikumnu-0 hgPHZk">
-																<section
-																	class="ArchiveRatingsPage__AllSection-s1ojhyk5-0 fMnTHB">
-																	<div class="Grid-zydj2q-0 cspjno">
-																		<div class="Row-s1apwm9x-0 lowZpE">
-																			<ul
-																				class="ContentGrid__ContentGridUsedInArchive-x2fbsz-1 gScTqD ContentGrid-x2fbsz-0 cwhjMF VisualUl-s1vzev56-0 hgAYVH">
-																				<c:forEach items="${selectUserGrade}"
-																					var="UserGrade">
-																					<c:if test="${UserGrade.ML_GRADE == 2.5}">
-																						<li
-																							class="ContentListItemWithPoster__Self-swai1z-0 hKRvvO">
-																							<a lng="ko-KR" title="배트맨 대 슈퍼맨: 저스티스의 시작"
-																							href="/ko-KR/contents/mdKBRkR">
-																								<div class="ContentListItemWithPoster__ContentPosterBlock-swai1z-1 kxDIaJ">
-																									<div
-																										class="LazyLoadingImg__Self-s1jb87ps-0 csJkbb">
-																										<img
-																											class="LazyLoadingImg__Image-s1jb87ps-1 csJkbb"
-																											data-image-id="1"
-																											src="https://dhgywazgeek0d.cloudfront.net/watcha/image/upload/c_fill,h_700,q_80,w_490/v1466152598/nzclx33kbkeecgvtl7ms.jpg">
-																									</div>
-																								</div>
-																								<div class="ContentListItemWithPoster__ContentInfo-swai1z-2 kVeCGy">
-																									<div
-																										class="ContentListItemWithPoster__ContentTitle-swai1z-3 dXMJZW">${UserGrade.MOVIE_NAME}</div>
-																									<div
-																										class="ContentListItemWithPoster__ContentRating-swai1z-4 jYxobl">★${UserGrade.ML_GRADE}</div>
-																								</div>
-																						</a>
-																						</li>
-																					</c:if>
-																				</c:forEach>
-																			</ul>
-																		</div>
-																	</div>
-																	<div
-																		class="PrimitiveInfinityScroll__Self-abb99t-0 iMsRxa"></div>
-																</section>
-															</div>
-															<div
-																class="arrow_button PrimitiveHorizontalScrollable__ArrowButtonBlock-hy4esm-3 kCjzvu"
-																direction="left">
-																<div
-																	class="PrimitiveHorizontalScrollable__BackwardButton-hy4esm-5 bWflCD"></div>
-															</div>
-															<div
-																class="arrow_button PrimitiveHorizontalScrollable__ArrowButtonBlock-hy4esm-3 dllGvg"
-																direction="right">
-																<div
-																	class="PrimitiveHorizontalScrollable__ForwardButton-hy4esm-4 cfipNh"></div>
-															</div>
-													</div>
-														<hr
-															class="Divider__StylingMergedDivider-s11un6bw-1 boBaEC Divider-s11un6bw-0 cVxSEp">
-													</section>
-													<section class="ArchiveRatingsPage__ByRatingSections-s1ojhyk5-1 fmQknq">
-														<section class="SectionWithHeader__Self-s1eyxltb-0 gAYeFO">
-															<div class="Grid-zydj2q-0 cspjno">
-																<div class="Row-s1apwm9x-0 lowZpE">
-																	<header
-																		class="SectionWithHeader__Header-s1eyxltb-1 cuiACK">
-																		<h3 class="SectionWithHeader__Title-s1eyxltb-2 kwjefp">2.0점
-																			준 영화</h3>
-																		<span class="TitleSuffixForNumber-l2d30g-0 ejtPKl">
-																			<!-- 2.0준 영화 개수 -->
-																		</span>
-																		<div
-																			class="SectionWithHeader__TopRight-s1eyxltb-3 bZaEfL">
-																			<div
-																				class="SectionWithViewMore__ViewMore-xtbl7q-0 bhbIbv">
-																				<a lng="ko-KR"
-																					href="/ko-KR/users/zNM5NAwr22v26/contents/movies/ratings/10">더보기</a>
-																			</div>
-																		</div>
-																	</header>
-																</div>
-															</div>
-															<div
-																class="PrimitiveHorizontalScrollable__ScrollBarContainer-hy4esm-0 hUyjJn">
-																<section
-																	class="SectionWithShrinkHeaderAndTabs__TabContentsContainer-tt2x7j-0 dnkVDn">
-																	<div class="HideableBlock__Self-ikumnu-0 hgPHZk">
-																		<section
-																			class="ArchiveRatingsPage__AllSection-s1ojhyk5-0 fMnTHB">
-																			<div class="Grid-zydj2q-0 cspjno">
-																				<div class="Row-s1apwm9x-0 lowZpE">
-																				<ul
-																					class="ContentGrid__ContentGridUsedInArchive-x2fbsz-1 gScTqD ContentGrid-x2fbsz-0 cwhjMF VisualUl-s1vzev56-0 hgAYVH">
-																					<c:forEach items="${selectUserGrade}"
-																						var="UserGrade">
-																						<c:if test="${UserGrade.ML_GRADE == 2.0}">
-																							<li
-																								class="ContentListItemWithPoster__Self-swai1z-0 hKRvvO">
-																								<a lng="ko-KR" title="배트맨 대 슈퍼맨: 저스티스의 시작"
-																								href="/ko-KR/contents/mdKBRkR">
-																									<div
-																										class="ContentListItemWithPoster__ContentPosterBlock-swai1z-1 kxDIaJ">
-																										<div
-																											class="LazyLoadingImg__Self-s1jb87ps-0 csJkbb">
-																											<img
-																												class="LazyLoadingImg__Image-s1jb87ps-1 csJkbb"
-																												data-image-id="1"
-																												src="https://dhgywazgeek0d.cloudfront.net/watcha/image/upload/c_fill,h_700,q_80,w_490/v1466152598/nzclx33kbkeecgvtl7ms.jpg">
-																										</div>
-																									</div>
-																									<div
-																										class="ContentListItemWithPoster__ContentInfo-swai1z-2 kVeCGy">
-																										<div
-																											class="ContentListItemWithPoster__ContentTitle-swai1z-3 dXMJZW">${UserGrade.MOVIE_NAME}</div>
-																										<div
-																											class="ContentListItemWithPoster__ContentRating-swai1z-4 jYxobl">★${UserGrade.ML_GRADE}</div>
-																									</div>
-																							</a>
-																							</li>
-																						</c:if>
-																					</c:forEach>
-																				</ul>
-																			</div>
-																			</div>
-																			<div
-																				class="PrimitiveInfinityScroll__Self-abb99t-0 iMsRxa"></div>
-																		</section>
-																	</div>
-																	<div
-																		class="arrow_button PrimitiveHorizontalScrollable__ArrowButtonBlock-hy4esm-3 kCjzvu"
-																		direction="left">
-																		<div
-																			class="PrimitiveHorizontalScrollable__BackwardButton-hy4esm-5 bWflCD"></div>
-																	</div>
-																	<div
-																		class="arrow_button PrimitiveHorizontalScrollable__ArrowButtonBlock-hy4esm-3 dllGvg"
-																		direction="right">
-																		<div
-																			class="PrimitiveHorizontalScrollable__ForwardButton-hy4esm-4 cfipNh"></div>
-																	</div>
-															</div>
-															<hr
-																class="Divider__StylingMergedDivider-s11un6bw-1 boBaEC Divider-s11un6bw-0 cVxSEp">
-														</section>
-														<section
-															class="ArchiveRatingsPage__ByRatingSections-s1ojhyk5-1 fmQknq">
-															<section
-																class="SectionWithHeader__Self-s1eyxltb-0 gAYeFO">
-																<div class="Grid-zydj2q-0 cspjno">
-																	<div class="Row-s1apwm9x-0 lowZpE">
-																		<header
-																			class="SectionWithHeader__Header-s1eyxltb-1 cuiACK">
-																			<h3
-																				class="SectionWithHeader__Title-s1eyxltb-2 kwjefp">1.5점
-																				준 영화</h3>
-																			<span class="TitleSuffixForNumber-l2d30g-0 ejtPKl">
-																				<!-- 1.5준 영화 개수 -->
-																			</span>
-																			<div
-																				class="SectionWithHeader__TopRight-s1eyxltb-3 bZaEfL">
-																				<div
-																					class="SectionWithViewMore__ViewMore-xtbl7q-0 bhbIbv">
-																					<a lng="ko-KR"
-																						href="/ko-KR/users/zNM5NAwr22v26/contents/movies/ratings/10">더보기</a>
-																				</div>
-																			</div>
-																		</header>
-																	</div>
-																</div>
-																<div
-																	class="PrimitiveHorizontalScrollable__ScrollBarContainer-hy4esm-0 hUyjJn">
-																	<section
-																		class="SectionWithShrinkHeaderAndTabs__TabContentsContainer-tt2x7j-0 dnkVDn">
-																		<div class="HideableBlock__Self-ikumnu-0 hgPHZk">
-																			<section
-																				class="ArchiveRatingsPage__AllSection-s1ojhyk5-0 fMnTHB">
-																				<div class="Grid-zydj2q-0 cspjno">
-																					<div class="Row-s1apwm9x-0 lowZpE">
-																					<ul
-																						class="ContentGrid__ContentGridUsedInArchive-x2fbsz-1 gScTqD ContentGrid-x2fbsz-0 cwhjMF VisualUl-s1vzev56-0 hgAYVH">
-																						<c:forEach items="${selectUserGrade}"
-																							var="UserGrade">
-																							<c:if test="${UserGrade.ML_GRADE == 1.5}">
-																								<li
-																									class="ContentListItemWithPoster__Self-swai1z-0 hKRvvO">
-																									<a lng="ko-KR" title="배트맨 대 슈퍼맨: 저스티스의 시작"
-																									href="/ko-KR/contents/mdKBRkR">
-																										<div
-																											class="ContentListItemWithPoster__ContentPosterBlock-swai1z-1 kxDIaJ">
-																											<div
-																												class="LazyLoadingImg__Self-s1jb87ps-0 csJkbb">
-																												<img
-																													class="LazyLoadingImg__Image-s1jb87ps-1 csJkbb"
-																													data-image-id="1"
-																													src="https://dhgywazgeek0d.cloudfront.net/watcha/image/upload/c_fill,h_700,q_80,w_490/v1466152598/nzclx33kbkeecgvtl7ms.jpg">
-																											</div>
-																										</div>
-																										<div
-																											class="ContentListItemWithPoster__ContentInfo-swai1z-2 kVeCGy">
-																											<div
-																												class="ContentListItemWithPoster__ContentTitle-swai1z-3 dXMJZW">${UserGrade.MOVIE_NAME}</div>
-																											<div
-																												class="ContentListItemWithPoster__ContentRating-swai1z-4 jYxobl">★${UserGrade.ML_GRADE}</div>
-																										</div>
-																								</a>
-																								</li>
-																							</c:if>
-																						</c:forEach>
-																					</ul>
-																				</div>
-																				</div>
-																				<div
-																					class="PrimitiveInfinityScroll__Self-abb99t-0 iMsRxa"></div>
-																			</section>
-																		</div>
-																		<div
-																			class="arrow_button PrimitiveHorizontalScrollable__ArrowButtonBlock-hy4esm-3 kCjzvu"
-																			direction="left">
-																			<div
-																				class="PrimitiveHorizontalScrollable__BackwardButton-hy4esm-5 bWflCD"></div>
-																		</div>
-																		<div
-																			class="arrow_button PrimitiveHorizontalScrollable__ArrowButtonBlock-hy4esm-3 dllGvg"
-																			direction="right">
-																			<div
-																				class="PrimitiveHorizontalScrollable__ForwardButton-hy4esm-4 cfipNh"></div>
-																		</div>
-																</div>
-																<hr
-																	class="Divider__StylingMergedDivider-s11un6bw-1 boBaEC Divider-s11un6bw-0 cVxSEp">
-															</section>
-															<section
-																class="ArchiveRatingsPage__ByRatingSections-s1ojhyk5-1 fmQknq">
-																<section
-																	class="SectionWithHeader__Self-s1eyxltb-0 gAYeFO">
-																	<div class="Grid-zydj2q-0 cspjno">
-																		<div class="Row-s1apwm9x-0 lowZpE">
-																			<header
-																				class="SectionWithHeader__Header-s1eyxltb-1 cuiACK">
-																				<h3
-																					class="SectionWithHeader__Title-s1eyxltb-2 kwjefp">1.0점
-																					준 영화</h3>
-																				<span class="TitleSuffixForNumber-l2d30g-0 ejtPKl">
-																					<!-- 1.0준 영화 개수 -->
-																				</span>
-																				<div
-																					class="SectionWithHeader__TopRight-s1eyxltb-3 bZaEfL">
-																					<div
-																						class="SectionWithViewMore__ViewMore-xtbl7q-0 bhbIbv">
-																						<a lng="ko-KR"
-																							href="/ko-KR/users/zNM5NAwr22v26/contents/movies/ratings/10">더보기</a>
-																					</div>
-																				</div>
-																			</header>
-																		</div>
-																	</div>
-																	<div
-																		class="PrimitiveHorizontalScrollable__ScrollBarContainer-hy4esm-0 hUyjJn">
-																		<section
-																			class="SectionWithShrinkHeaderAndTabs__TabContentsContainer-tt2x7j-0 dnkVDn">
-																			<div class="HideableBlock__Self-ikumnu-0 hgPHZk">
-																				<section
-																					class="ArchiveRatingsPage__AllSection-s1ojhyk5-0 fMnTHB">
-																					<div class="Grid-zydj2q-0 cspjno">
-																						<div class="Row-s1apwm9x-0 lowZpE">
-																							<ul
-																								class="ContentGrid__ContentGridUsedInArchive-x2fbsz-1 gScTqD ContentGrid-x2fbsz-0 cwhjMF VisualUl-s1vzev56-0 hgAYVH">
-																							<c:forEach items="${selectUserGrade}"
-																								var="UserGrade">
-																								<c:if test="${UserGrade.ML_GRADE == 1.0}">
-																									<li
-																										class="ContentListItemWithPoster__Self-swai1z-0 hKRvvO">
-																										<a lng="ko-KR" title="배트맨 대 슈퍼맨: 저스티스의 시작"
-																										href="/ko-KR/contents/mdKBRkR">
-																											<div class="ContentListItemWithPoster__ContentPosterBlock-swai1z-1 kxDIaJ">
-																												<div
-																													class="LazyLoadingImg__Self-s1jb87ps-0 csJkbb">
-																													<img
-																														class="LazyLoadingImg__Image-s1jb87ps-1 csJkbb"
-																														data-image-id="1"
-																														src="https://dhgywazgeek0d.cloudfront.net/watcha/image/upload/c_fill,h_700,q_80,w_490/v1466152598/nzclx33kbkeecgvtl7ms.jpg">
-																												</div>
-																											</div>
-																											<div class="ContentListItemWithPoster__ContentInfo-swai1z-2 kVeCGy">
-																												<div
-																													class="ContentListItemWithPoster__ContentTitle-swai1z-3 dXMJZW">${UserGrade.MOVIE_NAME}</div>
-																												<div
-																													class="ContentListItemWithPoster__ContentRating-swai1z-4 jYxobl">★${UserGrade.ML_GRADE}</div>
-																											</div>
-																									</a>
-																									</li>
-																								</c:if>
-																							</c:forEach>
-																						</ul>
-																						</div>
-																					</div>
-																					<div
-																						class="PrimitiveInfinityScroll__Self-abb99t-0 iMsRxa"></div>
-																				</section>
-																			</div>
-																			<div
-																				class="arrow_button PrimitiveHorizontalScrollable__ArrowButtonBlock-hy4esm-3 kCjzvu"
-																				direction="left">
-																				<div
-																					class="PrimitiveHorizontalScrollable__BackwardButton-hy4esm-5 bWflCD"></div>
-																			</div>
-																			<div
-																				class="arrow_button PrimitiveHorizontalScrollable__ArrowButtonBlock-hy4esm-3 dllGvg"
-																				direction="right">
-																				<div
-																					class="PrimitiveHorizontalScrollable__ForwardButton-hy4esm-4 cfipNh"></div>
-																			</div>
-																	</div>
-																	<hr
-																		class="Divider__StylingMergedDivider-s11un6bw-1 boBaEC Divider-s11un6bw-0 cVxSEp">
-																</section>
-																<section
-																	class="ArchiveRatingsPage__ByRatingSections-s1ojhyk5-1 fmQknq">
-																	<section
-																		class="SectionWithHeader__Self-s1eyxltb-0 gAYeFO">
-																		<div class="Grid-zydj2q-0 cspjno">
-																			<div class="Row-s1apwm9x-0 lowZpE">
-																				<header
-																					class="SectionWithHeader__Header-s1eyxltb-1 cuiACK">
-																					<h3
-																						class="SectionWithHeader__Title-s1eyxltb-2 kwjefp">0.5점
-																						준 영화</h3>
-																					<span class="TitleSuffixForNumber-l2d30g-0 ejtPKl">
-																						<!-- 0.5준 영화 개수 -->
-																					</span>
-																					<div
-																						class="SectionWithHeader__TopRight-s1eyxltb-3 bZaEfL">
-																						<div
-																							class="SectionWithViewMore__ViewMore-xtbl7q-0 bhbIbv">
-																							<a lng="ko-KR"
-																								href="/ko-KR/users/zNM5NAwr22v26/contents/movies/ratings/10">더보기</a>
-																						</div>
-																					</div>
-																				</header>
-																			</div>
-																		</div>
-																		<div
-																			class="PrimitiveHorizontalScrollable__ScrollBarContainer-hy4esm-0 hUyjJn">
-																			<section
-																				class="SectionWithShrinkHeaderAndTabs__TabContentsContainer-tt2x7j-0 dnkVDn">
-																				<div class="HideableBlock__Self-ikumnu-0 hgPHZk">
-																					<section
-																						class="ArchiveRatingsPage__AllSection-s1ojhyk5-0 fMnTHB">
-																						<div class="Grid-zydj2q-0 cspjno">
-																							<div class="Row-s1apwm9x-0 lowZpE">
-																							<ul
-																								class="ContentGrid__ContentGridUsedInArchive-x2fbsz-1 gScTqD ContentGrid-x2fbsz-0 cwhjMF VisualUl-s1vzev56-0 hgAYVH">
-																								<c:forEach items="${selectUserGrade}"
-																									var="UserGrade">
-																									<c:if test="${UserGrade.ML_GRADE == 0.5}">
-																										<li
-																											class="ContentListItemWithPoster__Self-swai1z-0 hKRvvO">
-																											<a lng="ko-KR" title="배트맨 대 슈퍼맨: 저스티스의 시작"
-																											href="/ko-KR/contents/mdKBRkR">
-																												<div
-																													class="ContentListItemWithPoster__ContentPosterBlock-swai1z-1 kxDIaJ">
-																													<div
-																														class="LazyLoadingImg__Self-s1jb87ps-0 csJkbb">
-																														<img
-																															class="LazyLoadingImg__Image-s1jb87ps-1 csJkbb"
-																															data-image-id="1"
-																															src="https://dhgywazgeek0d.cloudfront.net/watcha/image/upload/c_fill,h_700,q_80,w_490/v1466152598/nzclx33kbkeecgvtl7ms.jpg">
-																													</div>
-																												</div>
-																												<div
-																													class="ContentListItemWithPoster__ContentInfo-swai1z-2 kVeCGy">
-																													<div
-																														class="ContentListItemWithPoster__ContentTitle-swai1z-3 dXMJZW">${UserGrade.MOVIE_NAME}</div>
-																													<div
-																														class="ContentListItemWithPoster__ContentRating-swai1z-4 jYxobl">★${UserGrade.ML_GRADE}</div>
-																												</div>
-																										</a>
-																										</li>
-																									</c:if>
-																								</c:forEach>
-																							</ul>
-																						</div>
-																						</div>
-																						<div
-																							class="PrimitiveInfinityScroll__Self-abb99t-0 iMsRxa"></div>
-																					</section>
-																				</div>
-
-																				<div
-																					class="arrow_button PrimitiveHorizontalScrollable__ArrowButtonBlock-hy4esm-3 kCjzvu"
-																					direction="left">
-																					<div
-																						class="PrimitiveHorizontalScrollable__BackwardButton-hy4esm-5 bWflCD"></div>
-																				</div>
-																				<div
-																					class="arrow_button PrimitiveHorizontalScrollable__ArrowButtonBlock-hy4esm-3 dllGvg"
-																					direction="right">
-																					<div
-																						class="PrimitiveHorizontalScrollable__ForwardButton-hy4esm-4 cfipNh"></div>
-																				</div>
-																		</div>
-																		<hr
-																			class="Divider__StylingMergedDivider-s11un6bw-1 boBaEC Divider-s11un6bw-0 cVxSEp">
-																	</section>
-																</section>
 															</div>
 															<!-- 보고싶어요 -->
 															<section class="SectionWithShrinkHeaderAndTabs__TabContentsContainer-tt2x7j-0 dnkVDn">

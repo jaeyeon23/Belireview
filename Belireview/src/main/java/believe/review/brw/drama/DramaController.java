@@ -84,21 +84,25 @@ public class DramaController {
 		if(session.getAttribute("ID")!=null) {//로그인했을때
 			map.put("ID", session.getAttribute("ID"));
 			Map<String,Object> tmp = userService.userWishList(map);
-			if(tmp.get("MYPAGE_DRAMA")!=null) {//보고싶어요
-				String str[] = tmp.get("MYPAGE_DRAMA").toString().split(",");
-				for(String s : str) {
-					if(map.get("DRAMA_NO").toString().equals(s)) {
-						mv.addObject("wish","wish");
+			if(tmp!=null) {
+				if(tmp.get("MYPAGE_DRAMA")!=null) {//보고싶어요
+					String str[] = tmp.get("MYPAGE_DRAMA").toString().split(",");
+					for(String s : str) {
+						if(map.get("DRAMA_NO").toString().equals(s)) {
+							mv.addObject("wish","wish");
+						}
 					}
 				}
 			}
 			tmp = dramaService.existGrade(map);
 		
 			if(tmp!=null) {//별점
+				String[] ra = {"평가하기","최악이에요","싫어요","재미없어요","별로에요","부족해요","보통이에요","볼만해요","재미있어요","훌륭해요!","최고에요!"};
 				System.out.println(tmp.get("DL_GRADE"));
-				double g = Double.parseDouble(tmp.get("DL_GRADE").toString())*2;
-				System.out.println(g);
+				int g = (int)(Double.parseDouble(tmp.get("DL_GRADE").toString())*2);
+				System.out.println("g"+g);
 				mv.addObject("grade",g);
+				mv.addObject("ra",ra[g]);
 			}
 		}
 		System.out.println(session.getAttribute("ID"));
@@ -171,11 +175,17 @@ public class DramaController {
 				dramaService.addGrade(mv);
 			}else {//별점이 있을때
 				System.out.println("별점");
-				dramaService.deleteGrade(mv);
+				System.out.println(map.get("DL_GRADE"));
+				dramaService.updateGrade(mv);
 			}
 		}
 		/*평점*/
 		
+		//댓
+		if(mv.get("COM")!=null) {
+			System.out.println("COM"+mv.get("COM"));
+		}
+		//댓
 		
 		return mv;
 

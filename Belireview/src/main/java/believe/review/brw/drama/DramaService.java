@@ -25,7 +25,7 @@ public interface DramaService {
 	
 	void addGrade(Map<String,Object> map) throws Exception;
 	
-	void deleteGrade(Map<String,Object> map) throws Exception;
+	void updateGrade(Map<String,Object> map) throws Exception;
 
 	/*Map<String,Object> insertdramaComment(Map<String,Object> map) throws Exception;*/
 
