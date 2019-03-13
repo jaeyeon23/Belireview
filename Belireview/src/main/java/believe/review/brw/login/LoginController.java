@@ -220,12 +220,30 @@ public class LoginController {
 	
 	private void sendEmail(String email,String authNum)throws Exception{ //메일을 보내는 메서드
 		String host ="smtp.gmail.com";
-		String subject = "Belireview 변경된 비밀번호 전달";
+		String subject = "Belireview 임시 비밀 번호";
 		String fromName ="Belireview 관리자";
 		String from="khiclass@gmail.com";//보내는메일
 		String to1 = email;
 		
-		String content = "새로운 비밀번호 : " + authNum;
+		//String content = "새로운 비밀번호 : " + authNum;
+		
+		String content = "<div id = 'all' style='width: 600px; height: 500px; font-family: 나눔고딕;'>" +
+				 "<div id='hd' style='background: #403e72; padding:30px 30px 30px;'>" +
+				 "<font size='6' color='white'><b>BeilReview </b></font>"
+				 + "<font size='4' color='white'> 계정</font></div>"
+				 + "<div id='bodys' style='height: 250px; margin:40px 40px 5px 40px;'>"
+				 + "<h2>빌리뷰 비밀번호 변경 안내입니다.</h2>"
+				 + "<font size='2'>아래 임시 비밀번호로 로그인 후 비밀번호를 수정해주세요.</font><br><br><br>"
+				 + "<hr size='2' noshade color='#D5D5D5'><div style='margin:30px 20px 30px 20px;'><font size='2'>임시 비밀번호 &nbsp;&nbsp;&nbsp;&nbsp;<b>" 
+				 + authNum + "</b></font></div><hr size='2' noshade color='#D5D5D5'>"
+				 + "</div>"
+				 + "<div id='ft' style='height: 3px; background: #EAEAEA;'></div>"
+				 + "<div style='height: 100px; margin:20px 40px 0 40px ; background: white;'>"
+				 + "<font color='#747474'><h4>본 메일은 발신전용입니다.<br>"
+				 + "문의사항은 khiclass@gmail.com 로 문의부탁드립니다.<br>"
+				 + "Copyright © Team.BeilReview</h4></font></div>"
+				 + "<div id='ft' style='height: 30px; background: #EAEAEA; margin-top:-15px;'></div>"
+				 + "</div>";
 			
 		try{
 			Properties props = new Properties();
