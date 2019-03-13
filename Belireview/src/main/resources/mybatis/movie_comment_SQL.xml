@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC " - //mybatis.org//DTD Config 3.0//EN" " http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="movie_comment">
 
-<insert>
+<!-- <insert>
 INSERT INTO MOVIE_COMMENT 
 (
   MOVIE_NO,
@@ -23,10 +24,10 @@ VALUES
   #{MC_LIKE},
   #{MC_LIKE_ID}
 );
-</insert>
+</insert> -->
 
 <!-- 댓글 최신순 -->
-<select>
+<select id="movieCommentByRecent" parameterType="hashmap" resultType="hashmap">
 SELECT
   MOVIE_NO,
   MC_NO,
@@ -47,11 +48,11 @@ SELECT
      ROWNUM RNUM FROM 
     (SELECT 
       *
-      FROM MOVIE_COMMENT ORDER BY MC_REG_DATE DESC) ORDER BY RNUM ASC) WHERE RNUM BETWEEN #{START} AND #{END}
+      FROM MOVIE_COMMENT ORDER BY MC_REG_DATE DESC) ORDER BY RNUM ASC) WHERE RNUM BETWEEN 1 AND 5
 </select>
 
 <!-- 댓글 좋아요 순 -->
-<select>
+<select id="movieCommentByLike" parameterType="hashmap" resultType="hashmap">
 SELECT
   MOVIE_NO,
   MC_NO,
@@ -72,7 +73,7 @@ SELECT
      ROWNUM RNUM FROM 
     (SELECT 
       *
-      FROM MOVIE_COMMENT ORDER BY MC_LIKE DESC) ORDER BY RNUM ASC) WHERE RNUM BETWEEN #{START} AND #{END}
+      FROM MOVIE_COMMENT ORDER BY MC_LIKE DESC) ORDER BY RNUM ASC) WHERE RNUM BETWEEN 1 AND 5
 </select>
 
 </mapper>

@@ -685,8 +685,7 @@
 																									</div>
 																								</div>
 																							</div>
-																							<div
-																								class="InnerPartOfListWithImage__Info-s11a1hqv-5 hufKbr">
+																							<div class="InnerPartOfListWithImage__Info-s11a1hqv-5 hufKbr">
 																								<div
 																									class="InnerPartOfListWithImage__Titles-s11a1hqv-4 jtpmaI">
 																									<div
