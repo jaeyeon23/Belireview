@@ -14,12 +14,21 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import believe.review.brw.common.common.CommandMap;
+import believe.review.brw.common.util.Paging;
 
 @Controller
 public class MainController {
+	private int currentPage = 1;	 
+	private int totalCount;
+	private int blockCount = 10;	 
+	private int blockPage = 5; 	 
+	private String pagingHtml; 
+	private Paging page;
+	
 	private static final Logger logger = LoggerFactory.getLogger(MainController.class);
 
 	@Resource(name="mainService")
@@ -41,48 +50,139 @@ public class MainController {
 	
 	@RequestMapping(value = "mainSearch.br")
 	public ModelAndView mainSearch(CommandMap commandMap,HttpServletRequest request) throws Exception {
-
-			ModelAndView mv = new ModelAndView("mainSearch");
-			List<Map<String,Object>> searchMain = new ArrayList<Map<String,Object>>();
-			List<Map<String,Object>> searchMovie = mainService.movieSerach(commandMap.getMap());
-			List<Map<String,Object>> searchDrama = mainService.dramaSerach(commandMap.getMap());
-			List<Map<String,Object>> searchAd = mainService.adSerach(commandMap.getMap());
-			
-			for(int i=0 ;i<searchMovie.size();i++) {
-				Map<String,Object> tmp = new HashMap<String,Object>();
-				tmp.put("NO", searchMovie.get(i).get("MOVIE_NO"));
-				tmp.put("NAME", searchMovie.get(i).get("MOVIE_NAME"));
-				tmp.put("DATE", searchMovie.get(i).get("MOVIE_DATE"));
-				tmp.put("GENRE", searchMovie.get(i).get("MOVIE_GENRE"));
-				tmp.put("TYPE", "영화");
-				searchMain.add(i,tmp);
-			}
-			for(int i=searchMain.size(), j=0;j<searchDrama.size();j++,i++) {
-				Map<String,Object> tmp = new HashMap<String,Object>();
-				tmp.put("NO", searchDrama.get(j).get("DRAMA_NO"));
-				tmp.put("NAME", searchDrama.get(j).get("DRAMA_NAME"));
-				tmp.put("DATE", searchDrama.get(j).get("DRAMA_DATE"));
-				tmp.put("GENRE", searchDrama.get(j).get("DRAMA_GENRE"));
-				tmp.put("TYPE", "TV");
-				searchMain.add(i,tmp);
-			}
-			for(int i=searchMain.size(),j=0;j<searchAd.size();j++,i++) {
-				Map<String,Object> tmp = new HashMap<String,Object>();
-				tmp.put("NO", searchAd.get(j).get("AD_NO"));
-				tmp.put("NAME", searchAd.get(j).get("AD_NAME"));
-				tmp.put("DATE", searchAd.get(j).get("AD_READCOUNT"));
-				tmp.put("GENRE", searchAd.get(j).get("AD_COMPANY"));
-				tmp.put("TYPE", "광고");
-				searchMain.add(i,tmp);
-			}
-			
+		
+		String p = request.getParameter("currentPage");
+		System.out.println(p);
+		
+		if(p == null || p.trim().isEmpty() || p.equals("0")) {
+            currentPage = 1;
+        } else {
+            currentPage = Integer.parseInt(request.getParameter("currentPage"));
+        }
+		ModelAndView mv = new ModelAndView("mainSearch");
+		
+		List<Map<String,Object>> searchMain = new ArrayList<Map<String,Object>>();
+		List<Map<String,Object>> searchMovie = mainService.movieSerach(commandMap.getMap());
+		List<Map<String,Object>> searchDrama = mainService.dramaSerach(commandMap.getMap());
+		List<Map<String,Object>> searchAd = mainService.adSerach(commandMap.getMap());
+		
+		for(int i=0 ;i<searchMovie.size();i++) {
+			Map<String,Object> tmp = new HashMap<String,Object>();
+			tmp.put("NO", searchMovie.get(i).get("MOVIE_NO"));
+			tmp.put("NAME", searchMovie.get(i).get("MOVIE_NAME"));
+			tmp.put("DATE", searchMovie.get(i).get("MOVIE_DATE"));
+			tmp.put("GENRE", searchMovie.get(i).get("MOVIE_GENRE"));
+			tmp.put("TYPE", "영화");
+			searchMain.add(i,tmp);
+		}
+		for(int i=searchMain.size(), j=0;j<searchDrama.size();j++,i++) {
+			Map<String,Object> tmp = new HashMap<String,Object>();
+			tmp.put("NO", searchDrama.get(j).get("DRAMA_NO"));
+			tmp.put("NAME", searchDrama.get(j).get("DRAMA_NAME"));
+			tmp.put("DATE", searchDrama.get(j).get("DRAMA_DATE"));
+			tmp.put("GENRE", searchDrama.get(j).get("DRAMA_GENRE"));
+			tmp.put("TYPE", "TV");
+			searchMain.add(i,tmp);
+		}
+		for(int i=searchMain.size(),j=0;j<searchAd.size();j++,i++) {
+			Map<String,Object> tmp = new HashMap<String,Object>();
+			tmp.put("NO", searchAd.get(j).get("AD_NO"));
+			tmp.put("NAME", searchAd.get(j).get("AD_NAME"));
+			tmp.put("DATE", searchAd.get(j).get("AD_READCOUNT"));
+			tmp.put("GENRE", searchAd.get(j).get("AD_COMPANY"));
+			tmp.put("TYPE", "광고");
+			searchMain.add(i,tmp);
+		}
+		
+		totalCount = searchMain.size();
+		
+		page = new Paging(currentPage, totalCount, blockCount, blockPage, "/brw/main/mainSearch");
+		pagingHtml = page.getPagingHtml().toString();
+		
+		int lastCount = totalCount;
+		
+		if(page.getEndCount() < totalCount)
+			lastCount = page.getEndCount() + 1;
+		
+		searchMain = searchMain.subList(page.getStartCount(), lastCount);
+					System.out.println(totalCount);
+					System.out.println(searchMain);
+					
 			mv.addObject("request",request.getParameter("searchText"));
 			mv.addObject("searchMain",searchMain);
 			mv.addObject("searchMovie",searchMovie);
 			mv.addObject("searchDrama",searchDrama);
 			mv.addObject("searchAd",searchAd);
 
-			
+			return mv;
+		}	
+	@RequestMapping(value = "mainSearch2.br")
+	@ResponseBody
+	public Map mainSearch2(CommandMap commandMap,HttpServletRequest request) throws Exception {
+		
+		String p = request.getParameter("currentPage");
+		System.out.println(p);
+		
+		if(p == null || p.trim().isEmpty() || p.equals("0")) {
+            currentPage = 1;
+        } else {
+            currentPage = Integer.parseInt(request.getParameter("currentPage"));
+        }
+		Map mv = new HashMap();
+		
+		List<Map<String,Object>> searchMain = new ArrayList<Map<String,Object>>();
+		List<Map<String,Object>> searchMovie = mainService.movieSerach(commandMap.getMap());
+		List<Map<String,Object>> searchDrama = mainService.dramaSerach(commandMap.getMap());
+		List<Map<String,Object>> searchAd = mainService.adSerach(commandMap.getMap());
+		
+		for(int i=0 ;i<searchMovie.size();i++) {
+			Map<String,Object> tmp = new HashMap<String,Object>();
+			tmp.put("NO", searchMovie.get(i).get("MOVIE_NO"));
+			tmp.put("NAME", searchMovie.get(i).get("MOVIE_NAME"));
+			tmp.put("DATE", searchMovie.get(i).get("MOVIE_DATE"));
+			tmp.put("GENRE", searchMovie.get(i).get("MOVIE_GENRE"));
+			tmp.put("TYPE", "영화");
+			searchMain.add(i,tmp);
+		}
+		for(int i=searchMain.size(), j=0;j<searchDrama.size();j++,i++) {
+			Map<String,Object> tmp = new HashMap<String,Object>();
+			tmp.put("NO", searchDrama.get(j).get("DRAMA_NO"));
+			tmp.put("NAME", searchDrama.get(j).get("DRAMA_NAME"));
+			tmp.put("DATE", searchDrama.get(j).get("DRAMA_DATE"));
+			tmp.put("GENRE", searchDrama.get(j).get("DRAMA_GENRE"));
+			tmp.put("TYPE", "TV");
+			searchMain.add(i,tmp);
+		}
+		for(int i=searchMain.size(),j=0;j<searchAd.size();j++,i++) {
+			Map<String,Object> tmp = new HashMap<String,Object>();
+			tmp.put("NO", searchAd.get(j).get("AD_NO"));
+			tmp.put("NAME", searchAd.get(j).get("AD_NAME"));
+			tmp.put("DATE", searchAd.get(j).get("AD_READCOUNT"));
+			tmp.put("GENRE", searchAd.get(j).get("AD_COMPANY"));
+			tmp.put("TYPE", "광고");
+			searchMain.add(i,tmp);
+		}
+		
+		totalCount = searchMain.size();
+		
+		page = new Paging(currentPage, totalCount, blockCount, blockPage, "/brw/main/mainSearch");
+		pagingHtml = page.getPagingHtml().toString();
+		
+		int lastCount = totalCount;
+		
+		if(page.getEndCount() < totalCount)
+			lastCount = page.getEndCount() + 1;
+		
+		searchMain = searchMain.subList(page.getStartCount(), lastCount);
+					System.out.println(totalCount);
+					System.out.println(searchMain);
+					
+			mv.put("request",request.getParameter("searchText"));
+			mv.put("searchMain",searchMain);
+			mv.put("searchMovie",searchMovie);
+			mv.put("searchDrama",searchDrama);
+			mv.put("searchAd",searchAd);
+
 			return mv;
 		}	
 }
