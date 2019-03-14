@@ -13,8 +13,8 @@
 	<div id="root">
 		<div class="App__Self-m1g4ja-0 iBpXSE">
 			<div class="NavTabManager__NavContainer-dbid0l-0 hhxQev">
+				<section class="NavTabManager__Main-dbid0l-1 ikHAvF">
 					<section class="SearchResultsSection__Self-s1qazrkm-0 nEgxe">
-						
 						<section class="SectionWithHeader__Self-s1eyxltb-0 cVpbhx">
 							<div class="Grid-zydj2q-0 cspjno">
 								<div class="Row-s1apwm9x-0 lowZpE">
@@ -46,16 +46,6 @@
 														<a lng="ko-KR" title="${request}" href="/brw/ad/adDetail.br?AD_NO=${result.NO}">
 														</c:otherwise>
 													</c:choose>
-													
-													<%-- <c:if test = "${result.TYPE}" equals "영화">
-													<a lng="ko-KR" title="${request}" href="/brw/movie/movieDetail.br?MOVIE_NO=${result.NO}">
-													</c:if>
-													<c:if test = "${result.TYPE}" equals "TV">
-													<a lng="ko-KR" title="${request}" href="/brw/drama/dramaDetail.br?DRAMA_NO=${result.NO}">
-													</c:if>
-													<c:if test = "${result.TYPE}" equals "광고">
-													<a lng="ko-KR" title="${request}" href="/brw/ad/adDetail.br?AD_NO=${result.NO}">
-													</c:if> --%>
 														<div class="ContentListItemWithPoster__ContentPosterBlock-swai1z-1 kxDIaJ">
 															<div class="LazyLoadingImg__Self-s1jb87ps-0 csJkbb">
 															<img class="LazyLoadingImg__Self-s1jb87ps-0 csJkbb" data-image-id="10" src="/brw/resources/images/3-girls.jpg">
@@ -69,14 +59,22 @@
 														</a>
 													</li>
 													</c:forEach>
+													<div class="SpinnerContainer__Self-s16nvp7b-0 dvymnj"></div>
 												</ul>
 											</div>
 										</div>
 									</div>
 								</div>
+								<div class="arrow_button PrimitiveHorizontalScrollable__ArrowButtonBlock-hy4esm-3 blMCgo" direction="left">
+									<div PrimitiveHorizontalScrollable__BackwardButton-hy4esm-5 bWflCD">
+									</div>
+								</div>
+							</div>
+							<div class="arrow_button PrimitiveHorizontalScrollable__ArrowButtonBlock-hy4esm-3 dllGvg" direction="right">
+								<div class="PrimitiveHorizontalScrollable__ForwardButton-hy4esm-4 cfipNh">
+								</div>
 							</div>
 							<hr	class="Divider__StylingMergedDivider-s11un6bw-1 kwWkAv Divider-s11un6bw-0 cVxSEp">
-							
 						</section>
 						
 						
@@ -259,7 +257,9 @@
 						</section>
 						
 					</section>
-				<footer class="BottomNavTab__Self-s4qy030-0 enKJRs">
+				</section>
+				
+				<!-- <footer class="BottomNavTab__Self-s4qy030-0 enKJRs">
 					<nav class="BottomNavTab__Nav-s4qy030-1 cYcXMw">
 						<ul
 							class="BottomNavTab__NavTabUl-s4qy030-2 dXUUJN VisualUl-s1vzev56-0 hgAYVH">
@@ -292,7 +292,7 @@
 									<div class="BottomNavTabItem__TabName-s3ngus-1 dlSxZx">마이페이지</div></a></li>
 						</ul>
 					</nav>
-				</footer>
+				</footer> -->
 			</div>
 		</div>
 	</div>
