@@ -156,13 +156,11 @@
 				data : {ID:id , RATING:rr , DRAMA_NO:<%=request.getParameter("DRAMA_NO")%>},
 				url:"<c:url value='/drama/dramaDetail.br' />",
 				success : function(result){
-					
 				}
 				/* $('.gZASBp > a.r1'); */
 			})
 		}
 		/* 별점 */
-		
 		
 		/* 이미지슬라이드 */
 		$(function(){
@@ -614,13 +612,12 @@
 																						alt="delete comment">삭제
 																				</button></li>
 																			<li
-																				class="ContentMyCommentSection__CommentUpdateButtonListItem-mhuscg-8 rEOgj"><button type="button"
+																				class="ContentMyCommentSection__CommentUpdateButtonListItem-mhuscg-8 rEOgj"><button
 																					class="ContentMyCommentSection__CommentUpdateButton-mhuscg-9 eSMTCV StylelessButton-phxvo7-0 gsSopE updateComment">
 																					<img
 																						src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOCIgaGVpZ2h0PSIxOCIgdmlld0JveD0iMCAwIDE4IDE4Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHBhdGggZmlsbD0iI0EwQTBBMCIgZD0iTTIuMTggMTUuMzlsLjcwMy0zLjk4IDMuNzEzIDMuNzEyLTMuOTgxLjcwMmEuMzc0LjM3NCAwIDAgMS0uNDM0LS40MzR6bTEuNDk4LTQuNzc2bDYuMzY0LTYuMzY0IDMuNzEzIDMuNzEyLTYuMzY0IDYuMzY0LTMuNzEzLTMuNzEyek0xNS42MDcgNS4wNGEuNzUuNzUgMCAwIDEgMCAxLjA2bC0xLjA2IDEuMDYxLTMuNzEzLTMuNzEyIDEuMDYtMS4wNmEuNzUuNzUgMCAwIDEgMS4wNiAwbDIuNjUzIDIuNjUxeiIvPgogICAgPC9nPgo8L3N2Zz4K"
-																						alt="edit comment" data-toggle="modal" data-target="#myModal">수정
+																						alt="edit comment">수정
 																				</button></li>
-																				
 																		</ul>
 																	</div>
 																</section>
