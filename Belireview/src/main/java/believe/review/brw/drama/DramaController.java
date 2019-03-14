@@ -183,9 +183,7 @@ public class DramaController {
 			}else {
 				System.out.println("작성ㄴㄴ");
 			}
-			System.out.println(map.get("DC_CONTENT"));
 			mv.put("myCom",map);
-			System.out.println(mv.get("myCom"));
 		}
 		//댓
 		//댓삭제

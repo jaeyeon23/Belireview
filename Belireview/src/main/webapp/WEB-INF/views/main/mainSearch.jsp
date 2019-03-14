@@ -25,33 +25,7 @@
 			url:"<c:url value='/mainSearch2.br'/>",
 			
 			success:function(result){
-				var r = result.searchMain;
-				var str = "";
-				$(r).each(function(){
-					str += '<li class="ContentListItemWithPoster__Self-swai1z-0 hKRvvO">'+
-					'<c:choose>'+
-						"<c:when test=${result.TYPE=='영화'}>"+
-						'<a href="/brw/movie/movieDetail.br?MOVIE_NO=${result.NO}">'+
-						'</c:when>'+
-						"<c:when test=+${result.TYPE=='영화'}>"+
-						'<a href="/brw/drama/dramaDetail.br?DRAMA_NO=${result.NO}">'+
-						'</c:when>'+
-						'<c:otherwise>'+
-						'<a href="/brw/ad/adDetail.br?AD_NO=${result.NO}">'+
-						'</c:otherwise>'+
-					'</c:choose>'+
-						'<div class="ContentListItemWithPoster__ContentPosterBlock-swai1z-1 kxDIaJ">'+
-							'<div class="LazyLoadingImg__Self-s1jb87ps-0 csJkbb">'+
-								'<img class="LazyLoadingImg__Self-s1jb87ps-0 csJkbb" data-image-id="20" src="/brw/resources/images/3-girls.jpg">'+
-								'</div>'+
-						'</div>'+
-						'<div class="ContentListItemWithPoster__ContentInfo-swai1z-2 kVeCGy">'+
-							'<div class="SearchResultsSection__TopResultItemTitle-s1qazrkm-1 kBOijn">${result.NAME}</div>'+
-							'<div class="SearchResultsSection__TopResultItemExtraInfo-s1qazrkm-2 dGUMNT">${result.DATE} ・${result.GENRE}</div>'+
-							'<div class="SearchResultsSection__TopResultContentType-s1qazrkm-3 eeOgLY">${result.DATE}</div>'+
-						'</div></a></li>'
-				})
-			$(".mm").html(str);		
+				$(".mm").html(result.searchMain);		
 			}
 		})
 	}
@@ -85,23 +59,18 @@
 												<ul class="HorizontalUlWithContentPosterList__StyledHorizontalUlWithContentPosterList-rp5ukn-0 kVCLyu HorizontalUl__StyledHorizontalUl-s1lfz4bc-0 fbzjBz VisualUl-s1vzev56-0 hgAYVH mm">
 													<c:forEach items="${searchMain}" var="result">
 													<li class="ContentListItemWithPoster__Self-swai1z-0 hKRvvO">
-													<%-- <a lng="ko-KR" title="${request}" href="/brw/movie/movieDetail.br?MOVIE_NO=${result.NO}"> --%>
 													<c:choose>
 														<c:when test="${result.TYPE=='영화'}">
-														<a lng="ko-KR" title="${request}" href="/brw/movie/movieDetail.br?MOVIE_NO=${result.NO}">
+														<a lng="ko-KR" title="${request}" href="/brw/movie/movieDetail.br?MOVIE_NO=${result.NO}"></a>
 														</c:when>
 														<c:when test="${result.TYPE=='TV'}">
-														<a lng="ko-KR" title="${request}" href="/brw/drama/dramaDetail.br?DRAMA_NO=${result.NO}">
+														<a lng="ko-KR" title="${request}" href="/brw/drama/dramaDetail.br?DRAMA_NO=${result.NO}"></a>
 														</c:when>
 														<c:otherwise>
-														<a lng="ko-KR" title="${request}" href="/brw/ad/adDetail.br?AD_NO=${result.NO}">
+														<a lng="ko-KR" title="${request}" href="/brw/ad/adDetail.br?AD_NO=${result.NO}"></a>
 														</c:otherwise>
 													</c:choose>
 														<div class="ContentListItemWithPoster__ContentPosterBlock-swai1z-1 kxDIaJ">
-															<!-- <div class="LazyLoadingImg__Self-s1jb87ps-0 csJkbb">
-															<img class="LazyLoadingImg__Self-s1jb87ps-0 csJkbb" data-image-id="10" src="/brw/resources/images/3-girls.jpg">
-															</div> -->
-															<!-- 수정본 -->
 															<div class="LazyLoadingImg__Self-s1jb87ps-0 csJkbb">
 																<img class="LazyLoadingImg__Self-s1jb87ps-0 csJkbb"
 																		data-image-id="20" src="/brw/resources/images/3-girls.jpg"">

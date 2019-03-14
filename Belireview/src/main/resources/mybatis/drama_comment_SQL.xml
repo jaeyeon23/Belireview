@@ -26,7 +26,7 @@
 	</insert>
 	
 	<select id="myComment" parameterType="hashmap" resultType="hashmap">
-		select * from drama_comment where dc_no=#{DC_NO} and drama_no=#{DRAMA_NO}
+		select * from drama_comment where dc_no=#{DC_NO} and id=#{ID}
 	</select>
 
 	<!-- 댓글 최신순 -->
