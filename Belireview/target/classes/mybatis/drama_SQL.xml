@@ -116,7 +116,7 @@
 	</insert>
 	
 	<delete id="updateGrade" parameterType="hashmap">
-		update drama_like set dl_grade=#{RATING} where drama_like_no=#{DRAMA_NO} and id=#{ID}		
+		update drama_like set dl_grade  =#{RATING} where drama_like_no=#{DRAMA_NO} and id=#{ID}		
 	</delete>
 	
 

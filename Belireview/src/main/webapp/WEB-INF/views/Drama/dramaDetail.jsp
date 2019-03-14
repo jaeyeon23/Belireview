@@ -848,7 +848,7 @@
 																			class="SectionWithHeader__TopRight-s1eyxltb-3 bZaEfL">
 																			<div
 																				class="SectionWithViewMore__ViewMore-xtbl7q-0 bhbIbv">
-																				<a href="/brw/movie/movieComment.br">더보기</a>
+																				<a href="/brw/drama/dramaComment.br?DRAMA_NO=${map.DRAMA_NO}">더보기</a>
 																			</div>
 																		</div>
 																	</header>
@@ -930,8 +930,7 @@
 																							</div>
 																						</li>
 																					</c:forEach>
-																					<div
-																						class="SpinnerContainer__Self-s16nvp7b-0 dvymnj"></div>
+																					<div class="SpinnerContainer__Self-s16nvp7b-0 dvymnj"></div>
 																				</ul>
 																			</div>
 																		</div>
