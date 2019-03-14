@@ -14,9 +14,20 @@ public class MovieServiceImpl implements MovieService{
 	private MovieDAO movieDAO;
 	
 	@Override
-	public List<Map<String, Object>> selectBoardList() throws Exception{
-		return movieDAO.selectBoardList();
-		
+	public List<Map<String, Object>> selectBoardList(Map<String, Object>  map) throws Exception {
+		return movieDAO.selectBoardList(map);
 	}
+
+	@Override
+	public List<Map<String, Object>> movieCommentByRecent(Map<String, Object> map) throws Exception {
+		return movieDAO.movieCommentByRecent(map);
+	}
+
+	@Override
+	public List<Map<String, Object>> movieCommentByLike(Map<String, Object> map) throws Exception {
+		return movieDAO.movieCommentByLike(map);
+	}
+	
+	
 
 }

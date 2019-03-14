@@ -106,6 +106,19 @@
 					FROM DRAMA WHERE DRAMA_NO != #{DRAMA_NO} and DRAMA_GENRE = #{DRAMA_GENRE} ORDER BY DRAMA_DATE DESC) ORDER BY RNUM ASC)WHERE RNUM BETWEEN 1 AND 4
 		]]>
    </select>
+   
+   	<select id="existGrade" parameterType="hashmap" resultType="hashmap">
+   		select * from drama_like where drama_like_no=#{DRAMA_NO} and id=#{ID}
+	</select>
+	
+	<insert id="addGrade" parameterType="hashmap">
+		insert into drama_like values(#{DRAMA_NO},#{ID},#{RATING})
+	</insert>
+	
+	<delete id="updateGrade" parameterType="hashmap">
+		update drama_like set dl_grade=#{RATING} where drama_like_no=#{DRAMA_NO} and id=#{ID}		
+	</delete>
+	
 
 	<!-- <select>
 		SELECT * FROM DRAMA WHERE DRAMA_NO=#{DRAMA_NO}

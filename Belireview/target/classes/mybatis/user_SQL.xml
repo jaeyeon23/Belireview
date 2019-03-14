@@ -2,30 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="user">
-	<select id="UserMovieByRecent" parameterType="hashmap" resultType="hashmap">
-		SELECT
-			MOVIE_NO,
-			MOVIE_NAME,
-			MOVIE_DATE,
-			MOVIE_POSTER_IMAGE,
-			TO_CHAR(MOVIE_GRADE,'0.0') AS MOVIE_GRADE,
-			RNUM
-		FROM
-		(
-		SELECT 
-			MOVIE_NO,
-			MOVIE_NAME,
-			MOVIE_DATE,
-			MOVIE_POSTER_IMAGE,
-			MOVIE_GRADE,
-			ROWNUM RNUM
-		FROM MOVIE 
-		WHERE MOVIE_NO IN 
-			(SELECT MOVIE_LIKE_NO
-			FROM MOVIE_LIKE
-			WHERE ID=#{ID}) ORDER BY MOVIE_DATE) WHERE RNUM BETWEEN 1 AND 10
-	</select>
-	
+
 	<select id="UserMovieAll" parameterType="hashmap" resultType="hashmap">
 		SELECT
 			MOVIE_NO,
@@ -51,17 +28,17 @@
 	</select>
 	
 	<select id="userWishList" parameterType="hashmap" resultType="hashmap"><!-- 보고싶어요 -->
-		select * from mypage where mypage_id=#{id}
+		select * from mypage where mypage_id=#{ID}
 	</select>
 	
 	<insert id="insertWishList" parameterType="hashmap"> <!-- 보고싶어요 저장-->
 		insert into mypage
 		<choose>
 		    <when  test='movie_no != null'>
-		      	(mypage_id,mypage_movie) values(#{id},#{movie_no})
+		      	(mypage_id,mypage_movie) values(#{ID},#{MOVIE_NO})
 		    </when>
 		    <otherwise>
-		     	(mypage_id,mypage_drama) values(#{id},#{drama_no})
+		     	(mypage_id,mypage_drama) values(#{ID},#{DRAMA_NO})
 		    </otherwise>
 	 	</choose>
 	</insert>
@@ -70,13 +47,13 @@
 		update mypage set 
 		<choose>
 			<when  test='movie_no != null'>
-		      	mypage_movie=#{movie_no}
+		      	mypage_movie=#{MOVIE_NO}
 		    </when>
 		    <otherwise>
-		     	mypage_drama=#{drama_no}
+		     	mypage_drama=#{DRAMA_NO}
 		    </otherwise>
 	    </choose>
-	    where mypage_id=#{id}
+	    where mypage_id=#{ID}
 	</update>
 
 	<!-- 수정후회원정보불러오기 -->
@@ -111,5 +88,128 @@
     	WHERE ID = #{id}
 		]]>
 	</update>
+	
+	<select id="selectUserGrade" parameterType="hashmap" resultType="hashmap">	
+	SELECT 
+		(SELECT
+		 MOVIE_NAME
+	FROM MOVIE 
+	WHERE
+		MOVIE_NO = MOVIE_LIKE_NO)
+		MOVIE_NAME,
+(SELECT
+		 MOVIE_POSTER_IMAGE
+	FROM MOVIE 
+	WHERE
+		MOVIE_NO = MOVIE_LIKE_NO) IMAGE,
+		ID,
+		TO_CHAR(ML_GRADE,'0.0') AS ML_GRADE,
+		RNUM
+	FROM(
+	SELECT 
+		MOVIE_LIKE_NO,
+		ID,
+		ML_GRADE,
+		ROWNUM RNUM
+	FROM MOVIE_LIKE
+	WHERE ID=#{ID}) 
+	WHERE RNUM BETWEEN 1 AND 10
+	</select>
+	
+	<select id="userDramaList" parameterType="hashmap" resultType="hashmap">
+		SELECT
+				DRAMA_NO,
+				DRAMA_NAME,
+				DRAMA_POSTER_IMAGE
+	    FROM 
+				DRAMA
+		WHERE DRAMA_NO IN 
+		<foreach collection="a" item="s" open="(" close=")" separator=",">
+			#{s}
+		</foreach>
+		
+   </select>
+   
+   <select id="userMovieList" parameterType="hashmap" resultType="hashmap">
+		SELECT
+				MOVIE_NO,
+				MOVIE_NAME,
+				MOVIE_POSTER_IMAGE,
+				MOVIE_GRADE
+	    FROM 
+				MOVIE
+		WHERE MOVIE_NO IN 
+		<foreach collection="a" item="s" open="(" close=")" separator=",">
+			#{s}
+		</foreach>
+		
+   </select>
+	<!-- 회원탈퇴하기 -->
+
+<!-- 	<select id="myinfoDetail" parameterType="hashmap"
+		resultType="hashmap">
+			<![CDATA[
+				SELECT * FROM MEMBER WHERE ID=#{id}
+			]]>
+	</select> -->
+
+	<delete id="deleteUserOne" parameterType="hashmap">
+		DELETE
+		FROM
+		MEMBER
+		WHERE
+		ID=#{ID} and PASSWORD=#{PASSWORD}
+	</delete>
+
+	<delete id="deleteMyPage" parameterType="hashmap">
+		DELETE
+		FROM
+		MYPAGE
+		WHERE
+		MYPAGE_ID=#{ID}
+	</delete>
+	<delete id="deleteAdLike" parameterType="hashmap">
+		DELETE
+		FROM
+		AD_LIKE
+		WHERE
+		ID=#{id}
+	</delete>
+	<delete id="deleteAdComment" parameterType="hashmap">
+		DELETE
+		FROM
+		AD_COMMENT
+		WHERE
+		ID=#{ID}
+	</delete>
+	<delete id="deleteDramaLike" parameterType="hashmap">
+		DELETE
+		FROM
+		DRAMA_LIKE
+		WHERE
+		ID=#{ID}
+	</delete>
+	<delete id="deleteDramaComment" parameterType="hashmap">
+		DELETE
+		FROM
+		DRAMA_COMMENT
+		WHERE
+		ID=#{ID}
+	</delete>
+	<delete id="deleteMovieLike" parameterType="hashmap">
+		DELETE
+		FROM
+		MOVIE_LIKE
+		WHERE
+		ID=#{ID}
+	</delete>
+	<delete id="deleteMovieComment" parameterType="hashmap">
+		DELETE
+		FROM
+		MOVIE_COMMENT
+		WHERE
+		ID=#{ID}
+	</delete>
+   
 	
 </mapper>

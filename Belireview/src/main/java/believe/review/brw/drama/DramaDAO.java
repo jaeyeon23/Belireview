@@ -40,6 +40,24 @@ public class DramaDAO extends AbstractDAO{
 	public int totalDramaComment(Map<String, Object> map) throws Exception{
 		return (Integer) selectOne("drama_comment.totalDramaComment",map);
 	}
+	@SuppressWarnings("unchecked")
+	public Map<String, Object> existGrade(Map<String, Object> map) throws Exception{
+		return(Map<String,Object>)selectOne("drama.existGrade",map);
+	}
+	public void addGrade(Map<String, Object> map) throws Exception{
+		insert("drama.addGrade", map);
+	}
+	public void updateGrade(Map<String, Object> map) throws Exception{
+		delete("drama.updateGrade", map);
+	}
+	public void writeDramaComment(Map<String, Object> map) throws Exception{
+		insert("drama_comment.writeDramaComment", map);
+	}
+	@SuppressWarnings("unchecked")
+	public Map<String, Object> myComment(Map<String, Object> map) throws Exception{
+		return(Map<String,Object>)selectOne("drama_comment.myComment",map);
+	}
+	
 	/*@SuppressWarnings("unchecked")
 	public Map<String, Object> dramaComment(Map<String, Object> map) throws Exception{
 		return(Map<String,Object>)selectOne("drama.insertdramaComment",map);

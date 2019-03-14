@@ -1,7 +1,7 @@
 package believe.review.brw.admin.user;
 
-import java.util.Map;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Repository;
 
@@ -38,5 +38,34 @@ public class AdminUserDAO extends AbstractDAO{
 	
 	public void deleteUserOne(Map<String, Object> map) {
 		delete("admin.deleteUserOne", map);
+	}
+	
+	//삭제 트랜잭션
+	public void deleteMyPage(Map<String, Object> map) {
+		delete("admin.deleteMyPage", map);
+	}
+	
+	public void deleteAdLike(Map<String, Object> map) {
+		delete("admin.deleteAdLike", map);
+	}
+	
+	public void deleteAdComment(Map<String, Object> map) {
+		delete("admin.deleteAdComment", map);
+	}
+	
+	public void deleteDramaLike(Map<String, Object> map) {
+		delete("admin.deleteDramaLike", map);
+	}
+	
+	public void deleteDramaComment(Map<String, Object> map) {
+		delete("admin.deleteDramaComment", map);
+	}
+	
+	public void deleteMovieLike(Map<String, Object> map) {
+		delete("admin.deleteMovieLike", map);
+	}
+	
+	public void deleteMovieComment(Map<String, Object> map) {
+		delete("admin.deleteMovieComment", map);
 	}
 }

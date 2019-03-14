@@ -22,7 +22,7 @@ public class MovieController {
    public ModelAndView movieList(CommandMap commandMap) throws Exception {
 	   
       ModelAndView mv = new ModelAndView("movieList");
-      List<Map<String,Object>> list = movieService.selectBoardList();
+      List<Map<String,Object>> list = movieService.selectBoardList(commandMap.getMap());
       mv.addObject("list",list);
       return mv;
    }
@@ -40,8 +40,12 @@ public class MovieController {
    }
    
    @RequestMapping(value="/movieComment")
-   public ModelAndView movieComment() {
+   public ModelAndView movieComment(CommandMap commandMap)throws Exception {
+	   
       ModelAndView mv = new ModelAndView("movieComment");
+      List<Map<String,Object>> commentList = movieService.movieCommentByLike(commandMap.getMap());
+      mv.addObject("commentList",commentList);
+ 
       return mv;
    }
    

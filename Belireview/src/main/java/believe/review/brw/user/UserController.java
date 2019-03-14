@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -23,7 +24,7 @@ public class UserController {
 	
     @Resource(name="userService") private UserService userService;
 	 
-	@RequestMapping(value="/user")  //마이페이지
+	@RequestMapping(value="/user.br")  //마이페이지
 	public ModelAndView user(){
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("user");
@@ -97,21 +98,54 @@ public class UserController {
 		HttpSession session = request.getSession();
 		
 		ModelAndView mv = new ModelAndView("userMovie");
-		List<Map<String,Object>> userList = userService.UserMovieByRecent(commandMap.getMap());
-		
-		mv.addObject("userList", userList);
-		return mv;
-	}
-	
-	@RequestMapping(value="/userMovielist")
-	public ModelAndView userMovielist(CommandMap commandMap, HttpServletRequest request)throws Exception{
-		HttpSession session = request.getSession();
-		
-		ModelAndView mv = new ModelAndView("userMovielist");
 		List<Map<String,Object>> userMovieAll = userService.UserMovieAll(commandMap.getMap());
-		
+		List<Map<String,Object>> selectUserGrade = userService.selectUserGrade(commandMap.getMap());
 		mv.addObject("userMovieAll", userMovieAll);
-	
+		mv.addObject("selectUserGrade", selectUserGrade);
+		Map<String, Object> userWishList = userService.userWishList(commandMap.getMap());
+		
+		if(userWishList!=null) {
+			String[] str = userWishList.get("MYPAGE_MOVIE").toString().split(",");
+		    commandMap.put("a", str); 
+		    
+		    List<Map<String,Object>> userDramaList = userService.userDramaList(commandMap.getMap());
+		    List<Map<String,Object>> userMovieList = userService.userMovieList(commandMap.getMap());
+			
+		    mv.addObject("userWishList",userWishList);
+			mv.addObject("userDramaList",userDramaList);
+			mv.addObject("userMovieList",userMovieList);
+		}
+
 		return mv;
 	}
+	
+	@RequestMapping(value="/userDeleteForm")
+	public ModelAndView userDeleteForm(){
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("userDeleteForm");
+		return mv;
+	}
+	
+	@RequestMapping(value="/userDeletechk")
+	public ModelAndView userDeletechk(){
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("userDeletechk");
+		return mv;
+	}
+	
+	@RequestMapping(value="/userDelete")
+	public ModelAndView userDelete(CommandMap commandMap, HttpServletRequest request)throws Exception{
+		
+		ModelAndView mv=new ModelAndView();
+		HttpSession session = request.getSession();
+
+		System.out.println("id" + commandMap.get("id"));
+		userService.deleteUserOne(userService.userGo(commandMap.getMap()));
+		session.invalidate();
+
+		mv.setViewName("main");
+		return mv;
+			
+	}
+	
 }

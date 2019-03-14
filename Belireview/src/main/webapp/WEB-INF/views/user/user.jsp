@@ -4,6 +4,12 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style type="text/css">
+ .del_link {
+		color:grey;
+		float:right;
+}
+</style>
 <meta charset="UTF-8">
  	<link href="/brw/resources/Jcss/user.css" rel="stylesheet">    
  	
@@ -97,10 +103,13 @@
 									<div class="PrimitiveHorizontalScrollable__ForwardButton-hy4esm-4 cfipNh"></div>
 								</div>
 							</div>
-						</div>
-					</section>
+						</div>					
+					</section>					
 				</div>
-			</div>
+				<br>
+					<a href="/brw/user/userDeleteForm.br" class="del_link">계정삭제하기</a>
+				<br>	
+				</div>
 		</div>
 
 

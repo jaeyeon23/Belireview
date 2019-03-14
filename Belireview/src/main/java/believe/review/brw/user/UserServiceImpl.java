@@ -6,6 +6,7 @@ import java.util.Map;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -46,11 +47,10 @@ public class UserServiceImpl implements UserService{
 			userDAO.UserProfile(list);
 	}
 	
-	@Override
+	/*@Override
 	public List<Map<String, Object>> UserMovieByRecent(Map<String, Object> map) throws Exception {
 		return userDAO.UserMovieByRecent(map);
-	}
-
+	}*/
 
 
 	@Override
@@ -71,6 +71,34 @@ public class UserServiceImpl implements UserService{
 		userDAO.updateWishList(map);
 	}
 	/*보고싶어요*/
+
+	@Override
+	public List<Map<String, Object>> selectUserGrade(Map<String, Object> map) throws Exception {
+		return userDAO.selectUserGrade(map);
+	}
+
+	@Override
+	public List<Map<String, Object>> userDramaList(Map<String, Object> map) throws Exception {
+		return userDAO.userDramaList(map);
+	}
+	
+	@Override
+	public List<Map<String, Object>> userMovieList(Map<String, Object> map) throws Exception {
+		return userDAO.userMovieList(map);
+	}
+	@Transactional
+	@Override
+	public void deleteUserOne(Map<String, Object> map) throws Exception {
+		userDAO.deleteMyPage(map);
+		userDAO.deleteAdLike(map);
+		userDAO.deleteAdComment(map);
+		userDAO.deleteDramaLike(map);
+		userDAO.deleteDramaComment(map);
+		userDAO.deleteMovieLike(map);
+		userDAO.deleteMovieComment(map);
+		userDAO.deleteUserOne(map);
+	}
+
 }
 
 

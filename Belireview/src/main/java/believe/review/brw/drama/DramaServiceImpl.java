@@ -48,6 +48,28 @@ public class DramaServiceImpl  implements DramaService{
 	public int totalDramaComment(Map<String, Object> map) throws Exception {
 		return dramaDAO.totalDramaComment(map);
 	}
+	@Override
+	public Map<String, Object> existGrade(Map<String, Object> map) throws Exception {
+		return dramaDAO.existGrade(map);
+	}
+	@Override
+	public void addGrade(Map<String, Object> map) throws Exception {
+		dramaDAO.addGrade(map);
+		
+	}
+	@Override
+	public void updateGrade(Map<String, Object> map) throws Exception {
+		dramaDAO.updateGrade(map);
+	}
+	@Override
+	public void writeDramaComment(Map<String, Object> map) throws Exception{
+		dramaDAO.writeDramaComment(map);
+	}
+	@Override
+	public Map<String, Object> myComment(Map<String, Object> map) throws Exception{
+		return dramaDAO.myComment(map);
+	}
+	
 
 	/*@Override
 	public Map<String, Object> insertdramaComment(Map<String, Object> map) throws Exception {

@@ -8,13 +8,12 @@ body { line-height:1; color:black; background:white; }
 ol,ul { list-style:none; }
 table { border-collapse:separate; border-spacing:0; }
 caption,th,td { text-align:left; font-weight:normal; }
-blockquote:before,blockquote:after,q:before,q:after { content:""; }
+blockquote:before,blockquote:after,q:before,q:after {content:"";}
 blockquote,q { quotes:"" ""; }
 
 body { 
 	letter-spacing:0;
 	color:#434343;
-	background:#efefef url(../img/background.png) repeat top center;
 	padding:20px 0;
 	position:relative;
 	-webkit-font-smoothing: subpixel-antialiased;

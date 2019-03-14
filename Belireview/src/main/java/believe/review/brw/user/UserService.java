@@ -15,8 +15,6 @@ public interface UserService {
 	void UserProfile(Map<String, Object> memberMap, HttpServletRequest request)throws Exception;
 	
 	
-	List<Map<String,Object>> UserMovieByRecent(Map<String, Object>  map) throws Exception;
-	
 	List<Map<String,Object>> UserMovieAll(Map<String, Object>  map) throws Exception;
 	
 	/*보고싶어요*/
@@ -26,5 +24,15 @@ public interface UserService {
 	
 	void updateWishList(Map<String, Object> map) throws Exception;
 	/*보고싶어요*/
+	
+	List<Map<String,Object>> selectUserGrade(Map<String, Object>  map) throws Exception;
+	
+	List<Map<String,Object>> userDramaList(Map<String, Object>  map) throws Exception;
+	
+	List<Map<String,Object>> userMovieList(Map<String, Object>  map) throws Exception;
 		
+	//Map<String, Object> myinfoDetail(Map<String, Object> map) throws Exception;
+
+	void deleteUserOne(Map<String, Object> map) throws Exception;
+	
 }
