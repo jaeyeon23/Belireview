@@ -26,7 +26,7 @@
 	</insert>
 	
 	<select id="myComment" parameterType="hashmap" resultType="hashmap">
-		select * from drama_comment where dc_no=#{DC_NO} and id=#{ID}
+		select * from drama_comment where id=#{ID} AND DRAMA_NO=#{DRAMA_NO}
 	</select>
 
 	<!-- 댓글 최신순 -->
@@ -87,7 +87,7 @@
 	</select>
 	
 	<delete id="deleteComment" parameterType="hashmap">
-		delete drama_comment where drama_no=#{DRAMA_NO} and dc_no=#{DC_NO}
+		delete drama_comment where drama_no=#{DRAMA_NO} and ID=#{ID}
 	</delete>
 	
 	<!-- 코멘트 좋아요-->
@@ -95,6 +95,10 @@
 		update DRAMA_COMMENT
 			set DC_LIKE = #{DC_LIKE}, DC_LIKE_ID=#{DC_LIKE_ID}
 		where DRAMA_NO=#{DRAMA_NO} AND DC_NO=#{DC_NO}
+	</update>
+	
+	<update id="updateDramaComment" parameterType="hashmap">
+		update drama_comment set dc_content=#{MCOM} where id=#{ID} and drama_no=${DRAMA_NO}
 	</update>
 	
 

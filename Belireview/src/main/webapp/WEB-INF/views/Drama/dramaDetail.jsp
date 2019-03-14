@@ -46,7 +46,7 @@
 		var wi = "${wish}";
 		var ra = "" 
 		var initValue = "${initValue}";
-		var myCom = "${myComment}";
+		var mcc = "${myComment}";
 		
 		 $(function(){
 			 if(wi!=""){//보고싶어요에있을때
@@ -72,7 +72,7 @@
 					location.href="<c:url value='/member/loginForm.br' />"
 				});
 			}else{//로그인
-				if(myCom != ""){
+				if(mcc != ""){
 					$(".writeComment").css("display","none");
 					$(".existComment").css("display","block");
 				}else{
@@ -89,8 +89,8 @@
 				 $('.deleteComment').click(function(){
 					deleteComment();
 				}); 
-				 $('.updateComment').click(function(){
-					
+				 $('.mc').click(function(){
+					updateComment();
 				}); 
 			}
 		});
@@ -105,13 +105,25 @@
 				 success:function(result){
 					$(".writeComment").css("display","block");
 					$(".existComment").css("display","none");
+					
 				 }
 			 })
 			 
 		} 
 		function updateComment(){
+			$.ajax({
+				 async:true,
+				 type:'POST',
+				 data:{ID:id,MCOM:$('.com2').val(), DRAMA_NO:<%=request.getParameter("DRAMA_NO")%>},
+				 url:"<c:url value='/drama/dramaDetail.br' />",
+				 success:function(result){
+					$(".writeComment").css("display","none");
+					$(".existComment").css("display","block");
+					alert(result.myCom.DC_CONTENT);
+					$(".gLsCNn").html(result.myCom.DC_CONTENT);
+				 }
+			 })
 		} 
-		
 		function comment(){
 			 $.ajax({
 				 async:true,
@@ -525,17 +537,16 @@
 																		<h3
 																			class="ContentMyCommentSection__Title-mhuscg-11 inwTWL">이
 																			작품에 대한 ${map.ID} 님의 평가를 글로 남겨보세요.</h3>
-																		<div
-																			class="ContentMyCommentSection__ButtonBlock-mhuscg-12 kTSrnl">
+																		<div class="ContentMyCommentSection__ButtonBlock-mhuscg-12 kTSrnl">
 																			<!-- modal 구동 버튼 (trigger) -->
 																			<!-- 코멘트 작성창 -->
 																			<button type="button"
 																				class="ContentMyCommentSection__LeaveCommentButton-mhuscg-10 kYniqf MediumButton-lenhbs-0 kzufqJ Button-s48yp1i-0 guqtOb StylelessButton-phxvo7-0 gsSopE"
-																				data-toggle="modal" data-target="#myModal">코멘트
+																				data-toggle="modal" data-target="#myModal1">코멘트
 																				남기기</button>
 
 																			<!-- Modal -->
-																			<div class="modal fade" id="myModal" tabindex="-1"
+																			<div class="modal fade" id="myModal1" tabindex="-1"
 																				role="dialog" aria-labelledby="myModalLabel">
 																				<div class="modal-dialog" role="document">
 																					<div class="modal-content">
@@ -612,13 +623,42 @@
 																						alt="delete comment">삭제
 																				</button></li>
 																			<li
-																				class="ContentMyCommentSection__CommentUpdateButtonListItem-mhuscg-8 rEOgj"><button
-																					class="ContentMyCommentSection__CommentUpdateButton-mhuscg-9 eSMTCV StylelessButton-phxvo7-0 gsSopE updateComment">
+																				class="ContentMyCommentSection__CommentUpdateButtonListItem-mhuscg-8 rEOgj"><button data-toggle="modal" data-target="#myModal2" 
+																					class="ContentMyCommentSection__CommentUpdateButton-mhuscg-9 eSMTCV StylelessButton-phxvo7-0 gsSopE">
 																					<img
 																						src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOCIgaGVpZ2h0PSIxOCIgdmlld0JveD0iMCAwIDE4IDE4Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHBhdGggZmlsbD0iI0EwQTBBMCIgZD0iTTIuMTggMTUuMzlsLjcwMy0zLjk4IDMuNzEzIDMuNzEyLTMuOTgxLjcwMmEuMzc0LjM3NCAwIDAgMS0uNDM0LS40MzR6bTEuNDk4LTQuNzc2bDYuMzY0LTYuMzY0IDMuNzEzIDMuNzEyLTYuMzY0IDYuMzY0LTMuNzEzLTMuNzEyek0xNS42MDcgNS4wNGEuNzUuNzUgMCAwIDEgMCAxLjA2bC0xLjA2IDEuMDYxLTMuNzEzLTMuNzEyIDEuMDYtMS4wNmEuNzUuNzUgMCAwIDEgMS4wNiAwbDIuNjUzIDIuNjUxeiIvPgogICAgPC9nPgo8L3N2Zz4K"
 																						alt="edit comment">수정
 																				</button></li>
 																		</ul>
+																			<!-- Modal -->
+																			<div class="modal fade" id="myModal2" tabindex="-1"
+																				role="dialog" aria-labelledby="myModalLabel">
+																				<div class="modal-dialog" role="document">
+																					<div class="modal-content">
+																						<div class="modal-header">
+																							<button type="button" class="close"
+																								data-dismiss="modal" aria-label="Close">
+																								<span aria-hidden="true">&times;</span>
+																							</button>
+																							<h4 class="modal-title" id="myModalLabel"
+																								align="middle">
+																								<strong>${map.DRAMA_NAME}</strong>
+																							</h4>
+
+																						</div>
+																						<div class="modal-body" align="center">
+																							<div class="row">
+																								<textarea style="resize: none;" class="com2" name="comment" cols="70" rows="20" ></textarea>
+																							</div>
+																						</div>
+																						<div class="modal-footer">
+																							<button type="submit" class="btn btn-default mc"
+																								data-dismiss="modal">작성</button>
+
+																						</div>
+																					</div>
+																				</div>
+																			</div>
 																	</div>
 																</section>
 															</div>
@@ -710,10 +750,6 @@
 																				· ${map.DRAMA_CHANNEL} · ${map.DRAMA_GENRE}</span><br>
 																			<span
 																				class="ContentOverviewSection__OverviewMeta-s1yclw10-2 bvwFIW">${map.DRAMA_EPISODE}</span>
-																		</div>
-																		<div class="TextTruncate__Self-wvv1uj-0 bzjOJW">
-																			<div class="TextTruncate__Text-wvv1uj-1 gLsCNn"
-																				style="white-space: pre-line;">${map.DRAMA_CONTENT}</div>
 																		</div>
 																	</article>
 																	<hr

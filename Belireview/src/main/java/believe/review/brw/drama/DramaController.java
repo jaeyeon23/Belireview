@@ -186,13 +186,26 @@ public class DramaController {
 			mv.put("myCom",map);
 		}
 		//댓
+		
 		//댓삭제
 		if(mv.get("DELCOM")!=null) {
 			dramaService.deleteComment(mv);
 		}
 		//댓삭제
+		
+		//댓수정
+		if(mv.get("MCOM")!=null) { 
+			System.out.println(mv.get("MCOM"));
+			dramaService.updateDramaComment(mv);
+			System.out.println("수정완료");
+			Map<String,Object> map = dramaService.myComment(mv);
+			System.out.println(map.get("DC_CONTENT"));
+			
+			mv.put("myCom",map);
+		}
+		//댓수정
+		
 		return mv;
-
 	}
 	
 

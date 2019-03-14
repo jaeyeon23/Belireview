@@ -12,16 +12,33 @@
 	var currentPage = 1;
 	var searchText = "${request}";
 	$(function(){
-		$(".mainPlus").click(function(){
-			mainPlus();
-		})		
+		$(".mainNext").click(function(){
+			currentPage += 1;
+			mainNext(currentPage);
+		})
+		$(".mainPrev").click(function(){
+			currentPage = currentPage -1 < 1 ? 1:currentPage-1;
+			mainPrev(currentPage);
+		})	
 	})
 
-	function mainPlus(){
+	function mainNext(currentPage){
 		$.ajax({
 			async:true,
 			type:'POST',
-			data:{currentPage:currentPage+1, searchText:searchText},
+			data:{currentPage:currentPage, searchText:searchText},
+			url:"<c:url value='/mainSearch2.br'/>",
+			
+			success:function(result){
+				$(".mm").html(result.searchMain);		
+			}
+		})
+	}
+	function mainPrev(currentPage){
+		$.ajax({
+			async:true,
+			type:'POST',
+			data:{currentPage:currentPage, searchText:searchText},
 			url:"<c:url value='/mainSearch2.br'/>",
 			
 			success:function(result){
@@ -90,11 +107,11 @@
 								</div>
 								
 								<div class="arrow_button PrimitiveHorizontalScrollable__ArrowButtonBlock-hy4esm-3 blMCgo" direction="left">
-									<div class="PrimitiveHorizontalScrollable__BackwardButton-hy4esm-5 bWflCD mainMinus"></div>
+									<div class="PrimitiveHorizontalScrollable__BackwardButton-hy4esm-5 bWflCD mainPrev"></div>
 								</div>
 								
 								<div class="arrow_button PrimitiveHorizontalScrollable__ArrowButtonBlock-hy4esm-3 eweFwK" direction="right">
-									<div class="PrimitiveHorizontalScrollable__ForwardButton-hy4esm-4 cfipNh mainPlus "></div>
+									<div class="PrimitiveHorizontalScrollable__ForwardButton-hy4esm-4 cfipNh mainNext "></div>
 								</div>
 								
 							</div>
