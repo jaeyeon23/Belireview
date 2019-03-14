@@ -60,6 +60,9 @@ public class DramaDAO extends AbstractDAO{
 	public void deleteComment(Map<String, Object> map) throws Exception{
 		delete("drama_comment.deleteComment", map);
 	}
+	public void dramaCommentLike(Map<String, Object> map) throws Exception {
+		update("drama_comment.dramaCommentLike", map);
+	}
 	
 	/*@SuppressWarnings("unchecked")
 	public Map<String, Object> dramaComment(Map<String, Object> map) throws Exception{

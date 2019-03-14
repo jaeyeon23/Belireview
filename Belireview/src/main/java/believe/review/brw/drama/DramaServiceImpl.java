@@ -73,6 +73,10 @@ public class DramaServiceImpl  implements DramaService{
 	public void deleteComment(Map<String, Object> map) throws Exception{
 		dramaDAO.deleteComment(map);
 	}
+	public void dramaCommentLike(Map<String, Object> map) throws Exception {
+		dramaDAO.dramaCommentLike(map);
+	}
+	
 
 	/*@Override
 	public Map<String, Object> insertdramaComment(Map<String, Object> map) throws Exception {
