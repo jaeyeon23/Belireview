@@ -1,10 +1,8 @@
 package believe.review.brw.login;
 
-import java.io.PrintWriter;
 import java.math.BigDecimal;
 import java.util.Map;
 import java.util.Properties;
-import java.util.Set;
 
 import javax.annotation.Resource;
 import javax.mail.Message;
@@ -22,7 +20,6 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import believe.review.brw.common.common.CommandMap;
@@ -70,7 +67,7 @@ public class LoginController {
 					session.setAttribute("NAME", chk.get("NAME"));
 					session.setAttribute("ADMIN", chk.get("ADMIN"));
 
-					mv.setViewName("redirect:/admin/main.br");
+					mv.setViewName("redirect:/main.br");
 					return mv;
 				} else {
 					mv.setViewName("loginForm");
@@ -168,64 +165,81 @@ public class LoginController {
 	public ModelAndView clickMethod(HttpServletResponse response, HttpServletRequest request, CommandMap map)
 			throws Exception {
 
+		int memberFindChk;
+		
 		ModelAndView mv=new ModelAndView();
 		
-		String check_find = (String) map.getMap().get("check_find");
+		//String check_find = (String) map.getMap().get("check_find");
 		String pwname = (String) map.getMap().get("pwname");
 		String pwemail = (String) map.getMap().get("pwemail");
 		String pwid = (String) map.getMap().get("pwid");
 		String authNUm = "";
 		String str = "";
 
-		System.out.println("pw네임 :" + pwname + " pwemail:" + pwemail + " check_find :" + check_find + " 아이디 : " + pwid);
+		System.out.println("pw네임 :" + pwname + " pwemail:" + pwemail + " 아이디 : " + pwid);
 
-		if (check_find.equals("p")) {
+		System.out.println("비밀번호 찾기 시작");
 
-			System.out.println("비밀번호 찾기 시작");
+		map.getMap().put("EMAIL", pwemail);
+		map.getMap().put("MEMBER_ID_FIND", pwid);
+		map.getMap().put("MEMBER_NAME", pwname);
+		System.out.println("test+++++++");
+		String findEmail = loginService.findEmail(map.getMap());
+		System.out.println("findEmail=" + findEmail);
 
-			map.getMap().put("EMAIL", pwemail);
-			map.getMap().put("MEMBER_ID_FIND", pwid);
-			map.getMap().put("MEMBER_NAME", pwname);
-			System.out.println("test+++++++");
-			String findEmail = loginService.findEmail(map.getMap());
-			System.out.println("findEmail=" + findEmail);
+		if (findEmail != null) {
+			System.out.println("pwe메일 : " + pwemail + "find메일 : " + findEmail);
+			if (pwemail.equals(findEmail)) {
+				System.out.println("test++++++");
+				authNUm = RandomNum();// 랜덤숫자 String으로 넣고
+				map.getMap().put("PASSWORD_CHANGE", authNUm);
+				loginService.changePw(map.getMap()); // 랜덤숫자로 비밀번호 변경하고
+				sendEmail(findEmail, authNUm); // 메일발송
+				System.out.println("메일발송성공 변경된숫자 : " + authNUm);
 
-			if (findEmail != null) {
-				System.out.println("pwe메일 : " + pwemail + "find메일 : " + findEmail);
-				if (pwemail.equals(findEmail)) {
-					System.out.println("test++++++");
-					authNUm = RandomNum();// 랜덤숫자 String으로 넣고
-					map.getMap().put("PASSWORD_CHANGE", authNUm);
-					loginService.changePw(map.getMap()); // 랜덤숫자로 비밀번호 변경하고
-					sendEmail(findEmail, authNUm); // 메일발송
-					System.out.println("메일발송성공 변경된숫자 : " + authNUm);
-				
-				}
 			}
-
-			mv.addObject("authNUm",authNUm);
+			mv.addObject("ID",map.get("pwid"));
+			mv.addObject("authNUm", authNUm);
 			mv.setViewName("findPwOk");
 			return mv;
 			
-		} else {
-
-			mv.addObject("str",str);
+		} else{
+			memberFindChk=0;
+			mv.addObject("str", str);
+			mv.addObject("memberFindChk",memberFindChk);
 			mv.setViewName("findPwError");
-			return mv;
-		}
-		
-		
 
+			return mv;
+		} 
 	}
+		
 	
 	private void sendEmail(String email,String authNum)throws Exception{ //메일을 보내는 메서드
 		String host ="smtp.gmail.com";
-		String subject = "Belireview 변경된 비밀번호 전달";
+		String subject = "Belireview 임시 비밀 번호";
 		String fromName ="Belireview 관리자";
 		String from="khiclass@gmail.com";//보내는메일
 		String to1 = email;
 		
-		String content = "새로운 비밀번호 : " + authNum;
+		//String content = "새로운 비밀번호 : " + authNum;
+		
+		String content = "<div id = 'all' style='width: 600px; height: 500px; font-family: 나눔고딕;'>" +
+				 "<div id='hd' style='background: #403e72; padding:30px 30px 30px;'>" +
+				 "<font size='6' color='white'><b>BeilReview </b></font>"
+				 + "<font size='4' color='white'> 계정</font></div>"
+				 + "<div id='bodys' style='height: 250px; margin:40px 40px 5px 40px;'>"
+				 + "<h2>빌리뷰 비밀번호 변경 안내입니다.</h2>"
+				 + "<font size='2'>아래 임시 비밀번호로 로그인 후 비밀번호를 수정해주세요.</font><br><br><br>"
+				 + "<hr size='2' noshade color='#D5D5D5'><div style='margin:30px 20px 30px 20px;'><font size='2'>임시 비밀번호 &nbsp;&nbsp;&nbsp;&nbsp;<b>" 
+				 + authNum + "</b></font></div><hr size='2' noshade color='#D5D5D5'>"
+				 + "</div>"
+				 + "<div id='ft' style='height: 3px; background: #EAEAEA;'></div>"
+				 + "<div style='height: 100px; margin:20px 40px 0 40px ; background: white;'>"
+				 + "<font color='#747474'><h4>본 메일은 발신전용입니다.<br>"
+				 + "문의사항은 khiclass@gmail.com 로 문의부탁드립니다.<br>"
+				 + "Copyright © Team.BeilReview</h4></font></div>"
+				 + "<div id='ft' style='height: 30px; background: #EAEAEA; margin-top:-15px;'></div>"
+				 + "</div>";
 			
 		try{
 			Properties props = new Properties();

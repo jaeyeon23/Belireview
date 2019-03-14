@@ -13,7 +13,7 @@
                                   <div class="wid-title">Welcome to</div>
                                   <img src="/brw/resources/images/logos.jpg" width="150px" alt="ft-logo">
                                   <p>
-                                      Believe isCommerce WordPress theme. It has<br/>everything you need to start selling today! <a href="">Get this theme on ThemeForest!</a>
+                                      	영화, TV, 도서를 검색하고 4억개의 평점과 리뷰를 만나보세요.
                                   </p>
                                   <ul class="ft-soc clearfix">
                                       <li><a href=""><i class="fa fa-facebook-square"></i></a></li>
@@ -29,12 +29,10 @@
                               <div class="quick-links">
                                   <div class="wid-title">Quick Links</div>
                                   <ul>
-                                      <li><a href="index.html">Home</a></li>
-                                      <li><a href="#">About US</a></li>
-                                      <li><a href="contact.html">contact US</a></li>
-                                      <li><a href="#">deals</a></li>
-                                      <li><a href="blog.html">blog</a></li>
-                                      <li><a href="#">help</a></li>
+                                      <li><a href="main.br">Home</a></li>
+                                      <li><a href="/brw/drama/dramaList.br">DRAMA</a></li>
+                                      <li><a href="/brw/movie/movieList.br">MOVIE</a></li>
+                                      <li><a href="/brw/ad/adList.br">ADVERTISEMENT</a></li>
                                   </ul>
                               </div>
                           </div>

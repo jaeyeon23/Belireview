@@ -1,0 +1,76 @@
+#content {
+    position: relative;
+    padding: 32px 51px 95px;
+}
+body, button, input, select, table, textarea {
+    font-family: Dotum,sans-serif;
+    font-size: 12px;
+}
+#content::after {
+    display: block;
+    clear: both;
+    content: "";
+}
+.c_header h2 {
+    font-size: 20px;
+    line-height: 22px;
+    position: relative;
+    color: #333;
+}
+body, button, dd, dl, dt, fieldset, form, h1, h2, h3, h4, h5, h6, input, legend, li, ol, p, select, table, td, textarea, th, ul {
+    margin: 0;
+    padding: 0;
+}.c_header .contxt {
+    line-height: 19px;
+    padding-top: 10px;
+    letter-spacing: -1px;
+    color: #666;
+}
+.section_delete :first-child.h_dropout {
+    margin-top: 0px;
+}
+.h_dropout {
+    font-size: 12px;
+    margin-top: 30px;
+    margin-bottom: 0px !important;
+    padding-left: 13px;
+    color: #333;
+    background: url(https://static.nid.naver.com/images/web/user/sp_ico.png) no-repeat 0 3px;
+}
+.dropout_dsc {
+    font-size: 12px;
+    line-height: 19px;
+    padding: 10px 0 0 12px;
+    color: #666;
+}
+.tbl_type {
+    font-size: 12px;
+    position: relative;
+    width: 100%;
+    margin: 11px auto 0;
+    table-layout: fixed;
+    border-spacing: 0px;
+    border-collapse: collapse;
+    color: #333;
+    border: 0;
+    border-top: 1px solid #ededed;
+}
+body, button, input, select, table, textarea {
+    font-family: Dotum,sans-serif;
+    font-size: 12px;
+}
+.tbl_type th {
+    font-size: 12px;
+    font-weight: 400;
+    padding-left: 21px;
+    text-align: left;
+    letter-spacing: -1px;
+    border-right: 1px solid #ededed;
+}
+.tbl_type td, .tbl_type th {
+    padding: 16px 0 13px;
+    color: #777;
+    border: 0;
+    border-bottom: 1px solid #ededed;
+}
+

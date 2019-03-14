@@ -6,6 +6,7 @@ import java.util.Map;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service("adminAdService")
 public class AdminAdServiceImpl implements AdminAdService{
@@ -43,8 +44,11 @@ public class AdminAdServiceImpl implements AdminAdService{
 		return adminAdDAO.checkAd(map);
 	}
 
+	@Transactional
 	@Override
 	public void deleteAdOne(Map<String, Object> map) throws Exception {
+		adminAdDAO.deleteAdLikeOne(map);
+		adminAdDAO.deleteAdCommentOne(map);
 		adminAdDAO.deleteAdOne(map);
 	}
 }

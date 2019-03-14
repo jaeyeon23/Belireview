@@ -44,15 +44,23 @@
 		var id = "${ID}";
 		var grade = "${grade}";
 		var wi = "${wish}";
-		 
-		  $(function(){
-			 if(wi!=""){
-					$(".juRlmb").html("취소");
-				}
+		var ra = "" 
+		var initValue = "${initValue}";
+		 $(function(){
+			 if(wi!=""){//보고싶어요에있을때
+				$(".juRlmb").html("취소");
+			 }
+			 if(grade != ""){//평가했을때
+			  	var rr = "r"+"${grade}";
+			  	$('.r0').removeClass('r0').addClass(rr);
+			  	$('.ccOSgS').html("${ra}");
+			 }else{
+				$('.ccOSgS').html("평가하기");
+			 }
 		 });  
 		 /* 로그인 유무 */
 		$(function(){ 
-			if(id==""||id==null){
+			if(id==""||id==null){//비로그인
 				$(".gsSopE").click(function(){//보고싶어요
 					alert("로그인 해주세요.");
 					location.href="<c:url value='/member/loginForm.br' />"
@@ -61,18 +69,34 @@
 					alert("로그인 해주세요.");
 					location.href="<c:url value='/member/loginForm.br' />"
 				});
-			}else{
+			}else{//로그인
 				$(".IsPDs").css("display","block");
 				
 				$(".vv").click(function(){//보고싶어요
 					wish();
 					return;
 				});
+				$('.wc').click(function(){
+					alert('aa');
+					comment();
+				}); 
 			}
 		});
 		 /* 로그인 유무 */
 		
 		 
+		function comment(){
+			 alert('comment');
+			 $.ajax({
+				 async:true,
+				 type:'POST',
+				 data:{ID:id,COM:$('.com').val(), DRAMA_NO:<%=request.getParameter("DRAMA_NO")%>},
+				 url:"<c:url value='/drama/dramaDetail.br' />",
+				 success:function(result){
+					 alert('a');
+				 }
+			 })
+		}
 		 /* 보고싶어요 */
 		function wish(){
 			$.ajax({
@@ -82,7 +106,7 @@
 				url:"<c:url value='/drama/dramaDetail.br' />",
 				success : function(result){
 					var w = result;
-					var a = "취소";
+					var a = "보기싫어요";
 					var s = "보고싶어요";
 					if(w.add){
 						$(".juRlmb").html(a);
@@ -96,18 +120,18 @@
 		/* 보고싶어요 */
 		
 		/* 별점 */
-		function rating(r){
+		function rating(rr){
 			$.ajax({
 				async : true,  
 				type : 'POST',
-				data : {ID:id , RATING:r , DRAMA_NO:<%=request.getParameter("DRAMA_NO")%>},
+				data : {ID:id , RATING:rr , DRAMA_NO:<%=request.getParameter("DRAMA_NO")%>},
 				url:"<c:url value='/drama/dramaDetail.br' />",
 				success : function(result){
-					alert("gg");
+					
 				}
 				/* $('.gZASBp > a.r1'); */
 			})
-		} 
+		}
 		/* 별점 */
 		
 		
@@ -124,14 +148,15 @@
 		/* 이미지 슬라이드 */
 		
 		/* 별점 */
+		
+	
 		$(function(){
 			
 			if(id==""||id==null){}
 			else{
-				var initValue = $('.gZASBp > div').attr("class").split(" ")[1];
-				
+				/* initValue = $('.gZASBp > div').attr("class").split(" ")[1]; */
+
 				var f = $('.gZASBp > a.r1');
-				var r = 0;
 				f.hover(function() {
 					$('.gZASBp > div' ).removeClass(initValue).addClass('r1');
 				}, function() {
@@ -141,11 +166,12 @@
 					if(initValue == 'r1'){
 						initValue = 'r0';
 						r=0;
+						$('.ccOSgS').html("평가하기");
 						rating(r);
-					}
-					else{
+					}else{
 						initValue = 'r1';
 						r=0.5;
+						$('.ccOSgS').html("최악이에요");
 						rating(r);
 					}
 				});
@@ -160,11 +186,12 @@
 					if(initValue == 'r2'){
 						initValue = 'r0';
 						r=0;
+						$('.ccOSgS').html("평가하기");
 						rating(r);
-					}
-					else{
+					}else{
 						initValue = 'r2';
 						r=1;
+						$('.ccOSgS').html("싫어요");
 						rating(r);
 					}
 				});
@@ -179,10 +206,12 @@
 					if(initValue == 'r3'){
 						initValue = 'r0';
 						r=0;
+						$('.ccOSgS').html("평가하기");
 						rating(r);
 					}else{
 						initValue = 'r3';
 						r=1.5;
+						$('.ccOSgS').html("재미없어요");
 						rating(r);
 					}
 				});
@@ -197,11 +226,13 @@
 					if(initValue == 'r4'){
 						initValue = 'r0';
 						r=0;
+						$('.ccOSgS').html("평가하기");
 						rating(r);
 					}
 					else{
 						initValue = 'r4';
 						r=2;
+						$('.ccOSgS').html("별로에요");
 						rating(r);
 					}
 				});
@@ -216,11 +247,13 @@
 					if(initValue == 'r5'){
 						initValue = 'r0';
 						r=0;
+						$('.ccOSgS').html("평가하기");
 						rating(r);
 					}
 					else{
 						initValue = 'r5';
 						r=2.5;
+						$('.ccOSgS').html("부족해요");
 						rating(r);
 					}
 				});
@@ -235,11 +268,13 @@
 					if(initValue == 'r6'){
 						initValue = 'r0';
 						r=0;
+						$('.ccOSgS').html("평가하기");
 						rating(r);
 					}
 					else{
 						initValue = 'r6';
 						r=3;
+						$('.ccOSgS').html("보통이에요");
 						rating(r);
 					}
 				});
@@ -254,11 +289,13 @@
 					if(initValue == 'r7'){
 						initValue = 'r0';
 						r=0;
+						$('.ccOSgS').html("평가하기");
 						rating(r);
 					}
 					else{
 						initValue = 'r7';
 						r=3.5;
+						$('.ccOSgS').html("볼만해요");
 						rating(r);
 					}
 				});
@@ -273,11 +310,13 @@
 					if(initValue == 'r8'){
 						initValue = 'r0';
 						r=0;
+						$('.ccOSgS').html("평가하기");
 						rating(r);
 					}
 					else{
 						initValue = 'r8';
 						r=4;
+						$('.ccOSgS').html("재미있어요");
 						rating(r);
 					}
 				});
@@ -292,11 +331,13 @@
 					if(initValue == 'r9'){
 						initValue = 'r0';
 						r=0;
+						$('.ccOSgS').html("평가하기");
 						rating(r);
 					}
 					else{
 						initValue = 'r9';
 						r=4.5;
+						$('.ccOSgS').html("훌륭해요!");
 						rating(r);
 					}
 				});
@@ -311,22 +352,24 @@
 					if(initValue == 'r10'){
 						initValue = 'r0';
 						r=0;
+						$('.ccOSgS').html("평가하기");
 						rating(r);
 					}
 					else{
 						initValue = 'r10';
 						r=5;
+						$('.ccOSgS').html("최고에요!");
 						rating(r);
 					}
-				}); 
+				});
 			}
 		});
 		/* 별점 */
 	</script>
 	
-	<link rel="stylesheet" href="/brw/resources/css/global.css">
+	<link rel="stylesheet" href="/brw/resources/css/global2.css">
 </head>
-<body>
+<body> 
 	<div id="root">
 		<div class="App__Self-m1g4ja-0 iBpXSE">
 			<div class="NavTabManager__NavContainer-dbid0l-0 hhxQev">
@@ -392,11 +435,10 @@
 															class="ContentJumbotronRatingControl__Self-s1cw42ub-0 hIpgGL">
 															<div
 																class="ContentJumbotronRatingControl__Title-s1cw42ub-1 hqGvwK">
-																<div class="RatingText__Self-s2g271e-0 ccOSgS">평가하기</div>
+																<div class="RatingText__Self-s2g271e-0 ccOSgS"></div>
 															</div>
 															<div class="RatingControl__Self-s2c1yoc-0 ixVNUo">
-																<div
-																	class="RatingControl__UnratedStars-s2c1yoc-1 gZASBp">
+																<div class="RatingControl__UnratedStars-s2c1yoc-1 gZASBp">
 																	<span
 																		class="RatingControl__StarImg-s2c1yoc-9 irzhJG UIImg-s3jz6tx-0 kBCBic"
 																		src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0NCIgaGVpZ2h0PSI0NCIgdmlld0JveD0iMCAwIDQ0IDQ0Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHBhdGggZmlsbD0iI0VFRSIgZD0iTTIyIDMzLjQ0NEw5LjgzIDQyLjMyN2MtLjc4NC41NzItMS44NDItLjE5Ni0xLjUzOS0xLjExOGw0LjY4Ny0xNC4zMkwuNzY5IDE4LjA2Yy0uNzg3LS41NjktLjM4My0xLjgxMi41ODgtMS44MWwxNS4wNjcuMDMzIDQuNjI0LTE0LjM0Yy4yOTgtLjkyNCAxLjYwNi0uOTI0IDEuOTA0IDBsNC42MjQgMTQuMzQgMTUuMDY3LS4wMzNjLjk3MS0uMDAyIDEuMzc1IDEuMjQxLjU4OCAxLjgxbC0xMi4yMDkgOC44MjkgNC42ODggMTQuMzJjLjMwMi45MjItLjc1NiAxLjY5LTEuNTQgMS4xMThMMjIgMzMuNDQ0eiIvPgogICAgPC9nPgo8L3N2Zz4K"></span><span
@@ -452,8 +494,7 @@
 																<div class="Row-s1apwm9x-0 lowZpE">
 																	<div class="ContentMyCommentSection__LeaveCommentBlock-mhuscg-2 bvmyee">
 																		<h3
-																			class="ContentMyCommentSection__Title-mhuscg-11 inwTWL">이
-																			작품에 대한 김상협 님의 평가를 글로 남겨보세요.</h3>
+																			class="ContentMyCommentSection__Title-mhuscg-11 inwTWL">이 작품에 대한 ${map.ID} 님의 평가를 글로 남겨보세요.</h3>
 																		<div
 																			class="ContentMyCommentSection__ButtonBlock-mhuscg-12 kTSrnl">
 																			
@@ -477,12 +518,12 @@
 																						</div>
 																						<div class="modal-body" align="center">
 																						<div class="row">
-																							<textarea style="resize: none;" name="comment" cols="70" rows="20" placeholder="이 작품에 대한 생각을 자유롭게 표현해주세요."></textarea></td>
+																							<textarea style="resize: none;" class="com" name="comment" cols="70" rows="20" placeholder="이 작품에 대한 생각을 자유롭게 표현해주세요."></textarea></td>
 																							
 																						</div>
 																						</div>
 																						<div class="modal-footer">
-																						<button type="submit" class="btn btn-default" data-dismiss="modal">작성</button>
+																						<button type="submit" class="btn btn-default wc" data-dismiss="modal">작성</button>
 																						
 																						</div>
 																				</div>
@@ -682,8 +723,7 @@
 																									</div>
 																								</div>
 																							</div>
-																							<div
-																								class="InnerPartOfListWithImage__Info-s11a1hqv-5 hufKbr">
+																							<div class="InnerPartOfListWithImage__Info-s11a1hqv-5 hufKbr">
 																								<div
 																									class="InnerPartOfListWithImage__Titles-s11a1hqv-4 jtpmaI">
 																									<div

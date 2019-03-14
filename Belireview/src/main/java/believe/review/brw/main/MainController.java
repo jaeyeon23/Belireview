@@ -1,11 +1,8 @@
 package believe.review.brw.main;
 
-import java.text.DateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -21,44 +18,29 @@ import org.springframework.web.servlet.ModelAndView;
 
 import believe.review.brw.common.common.CommandMap;
 
-
-
 @Controller
 public class MainController {
-	 private static final Logger logger = LoggerFactory.getLogger(MainController.class);
+	private static final Logger logger = LoggerFactory.getLogger(MainController.class);
 
-	   /**
-	    * Simply selects the home view to render by returning its name.
-	    */
+	@Resource(name="mainService")
+	private MainService mainService;
+	
+	@RequestMapping(value = "/main.br", method = RequestMethod.GET)
+	public String home(Model model) throws Exception{
 
-	   @RequestMapping(value = "/main.br", method = RequestMethod.GET)
-	   public String home(Locale locale, Model model) {
-
-	      logger.info("Welcome home! The client locale is {}.", locale);
-
-	      Date date = new Date();
-	      DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-
-	      String formattedDate = dateFormat.format(date);
-
-	      model.addAttribute("serverTime", formattedDate);
-
-	      return "main";
-	   }
-	   
-
-		@Resource(name="mainService")
-		private MainService mainService;
+		List<Map<String, Object>> drama_list = mainService.dramaListTop8();
+		List<Map<String, Object>> movie_list = mainService.movieListTop8();
+		List<Map<String, Object>> ad_list = mainService.adListTop8();
 		
-	   @RequestMapping(value="/admin/main.br")
-	   public String admin_home(Model model) throws Exception{
-		   
-		   return "adminMain";
-	   }
-	   
-	   @RequestMapping(value = "mainSearch.br")
+		model.addAttribute("drama_list", drama_list);
+		model.addAttribute("movie_list", movie_list);
+		model.addAttribute("ad_list", ad_list);
 		
-		public ModelAndView mainSearch(CommandMap commandMap, HttpServletRequest request) throws Exception {
+		return "main";
+	}
+	
+	@RequestMapping(value = "mainSearch.br")
+	public ModelAndView mainSearch(CommandMap commandMap,HttpServletRequest request) throws Exception {
 
 			ModelAndView mv = new ModelAndView("mainSearch");
 			List<Map<String,Object>> searchMain = new ArrayList<Map<String,Object>>();
@@ -72,7 +54,7 @@ public class MainController {
 				tmp.put("NAME", searchMovie.get(i).get("MOVIE_NAME"));
 				tmp.put("DATE", searchMovie.get(i).get("MOVIE_DATE"));
 				tmp.put("GENRE", searchMovie.get(i).get("MOVIE_GENRE"));
-				tmp.put("TYPE", "øµ»≠");
+				tmp.put("TYPE", "ÏòÅÌôî");
 				searchMain.add(i,tmp);
 			}
 			for(int i=searchMain.size(), j=0;j<searchDrama.size();j++,i++) {
@@ -90,7 +72,7 @@ public class MainController {
 				tmp.put("NAME", searchAd.get(j).get("AD_NAME"));
 				tmp.put("DATE", searchAd.get(j).get("AD_READCOUNT"));
 				tmp.put("GENRE", searchAd.get(j).get("AD_COMPANY"));
-				tmp.put("TYPE", "±§∞Ì");
+				tmp.put("TYPE", "Í¥ëÍ≥†");
 				searchMain.add(i,tmp);
 			}
 			

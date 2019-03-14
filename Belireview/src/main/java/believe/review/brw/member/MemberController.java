@@ -148,12 +148,29 @@ public class MemberController {
 
 	private void sendEmail(String email,String authNum)throws Exception{ //메일을 보내는 메서드
 		String host ="smtp.gmail.com";
-		String subject = "빌리뷰 회원가입 인증번호";    //제목
-		String fromName ="빌리뷰 팀";                  //보내는사람이름
+		String subject = "빌리뷰 이메일 인증";    //제목
+		String fromName ="빌리뷰 팀";		 //보내는사람이름
 		String from="khiclass@gmail.com";//보내는메일
 		String to1 = email;
 		
-		String content = "인증번호 : " + authNum;  //본문
+
+		String content = "<div id = 'all' style='width: 600px; height: 500px; font-family: 나눔고딕;'>" +
+						 "<div id='hd' style='background: #403e72; padding:30px 30px 30px;'>" +
+						 "<font size='6' color='white'><b>BeilReview </b></font>"
+						 + "<font size='4' color='white'> 계정</font></div>"
+						 + "<div id='bodys' style='height: 250px; margin:40px 40px 5px 40px;'>"
+						 + "<h2>빌리뷰 이메일 인증을 위한 인증번호입니다.</h2>"
+						 + "<font size='2'>아래 인증번호를 확인하여 이메일 주소 인증을 완료해 주세요.</font><br><br><br>"
+						 + "<hr size='2' noshade color='#D5D5D5'><div style='margin:30px 20px 30px 20px;'><font size='2'>인증번호 &nbsp;&nbsp;&nbsp;&nbsp;<b>" 
+						 + authNum + "</b></font></div><hr size='2' noshade color='#D5D5D5'>"
+						 + "</div>"
+						 + "<div id='ft' style='height: 3px; background: #EAEAEA;'></div>"
+						 + "<div style='height: 100px; margin:20px 40px 0 40px ; background: white;'>"
+						 + "<font color='#747474'><h4>본 메일은 발신전용입니다.<br>"
+						 + "문의사항은 khiclass@gmail.com 로 문의부탁드립니다.<br>"
+						 + "Copyright © Team.BeilReview</h4></font></div>"
+						 + "<div id='ft' style='height: 30px; background: #EAEAEA; margin-top:-15px;'></div>"
+						 + "</div>";
 		
 		try{
 			Properties props = new Properties();

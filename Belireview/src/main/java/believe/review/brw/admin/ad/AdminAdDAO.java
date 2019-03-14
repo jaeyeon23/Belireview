@@ -39,4 +39,12 @@ public class AdminAdDAO extends AbstractDAO{
 	public void deleteAdOne(Map<String, Object> map) {
 		delete("admin.deleteAdOne", map);
 	}
+	
+	public void deleteAdCommentOne(Map<String, Object> map) {
+		delete("admin.deleteAdCommentOne", map);
+	}
+	
+	public void deleteAdLikeOne(Map<String, Object> map) {
+		delete("admin.deleteAdLikeOne", map);
+	}
 }

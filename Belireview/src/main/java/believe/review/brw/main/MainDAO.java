@@ -3,7 +3,6 @@ package believe.review.brw.main;
 import java.util.List;
 import java.util.Map;
 
-import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Repository;
 
 import believe.review.brw.common.common.AbstractDAO;
@@ -30,6 +29,17 @@ public class MainDAO extends AbstractDAO {
 	public List<Map<String, Object>> adSerach(Map<String, Object>  map) throws Exception{
 		return (List<Map<String, Object>>) selectList("main.selectAdSerach",map);
 	}
+	@SuppressWarnings("unchecked")
+	public List<Map<String, Object>> dramaListTop8(){
+		return selectList("main.dramaListTop8");
+	}
+	@SuppressWarnings("unchecked")
+	public List<Map<String, Object>> movieListTop8(){
+		return selectList("main.movieListTop8");
+	}
 	
-	
+	@SuppressWarnings("unchecked")
+	public List<Map<String, Object>> adListTop8(){
+		return selectList("main.adListTop8");
+	}
 }

@@ -7,89 +7,61 @@
 <meta charset="UTF-8">
 <link href="/brw/resources/Jcss/login.css" rel="stylesheet">
 
-<!-- <script type="text/javascript">
-	if ('${message}' != "") {
-		alert('${message}');
-	}
-	
-</script>	
- -->
-<!-- <script>
-function findIdForm() {  
-    
-    if($("#name").val().length < 1)
-    {
-     alert("이름을 입력해주세요.");
-    }
-    else if($("#email").val().length < 1)
-    {
-     alert("이메일을 입력해주세요.");
-    }
-   }
-</script> -->
-<!-- <script type="text/javascript">
-	function memberFindChk(){
-		
-		var mem = eval("document.findIdForm");
-		
-		if(mem.name.value=="") {
-	        alert('이름을 입력하세요.');
-	        mem.name.focus();
-	        return false;
-	    }
+<script>
 
-	    if(mem.email.value=="") {
-	        alert('이메일을 입력하세요.');
-	        mem.email.focus();
-	        return false;
-	    }
+/* 메시지 출력 */
+
+	function showErrorMsg(obj, msg) {
+		obj.attr("class", "error_next_box");
+		obj.html(msg);
+		obj.slideDown();
+	}
+	function showSuccessMsg(obj, msg) {
+		obj.attr("class", "error_next_box green");
+		obj.html(msg);
+		obj.slideDown();
+	}
+	$(document).ready(function() {
+
+		$("input[name = name]").blur(function() {
+			checkName();
+		});
+
+		$("input[name = email]").blur(function() {
+			checkEmail();
+		});
+
+	});
+
+	function checkName() {
+		var name = $("#name").val();
+		var oMsg = $("#nameMsg");
+
+		if (name == "") {
+			showErrorMsg(oMsg, "이름을 입력해주세요.");
+			return false;
+		} else {
+			oMsg.slideUp();
+			name_ok = "ok";
+		}
+
 		return true;
 	}
-	
-</script> -->
 
-<!-- <script>
+	function checkEmail() {
+		var email = $("#email").val();
+		var oMsg = $("#emailMsg");
 
-var email_ok ="";
-var name_ok="";
+		if (email == "") {
+			showErrorMsg(oMsg, "이메일을 입력해주세요.");
+			return false;
+		} else {
+			oMsg.slideUp();
+		}
 
-
-$("input[name = name]").blur(function() {
-	checkName();
-});
-function checkName() {
-    var name = $("#name").val();
-    var oMsg = $("#nameMsg");
-
-    if ( name == "") {
-        showErrorMsg(oMsg,"필수 정보입니다.");
-        return false;
-    }else{
-    	oMsg.slideUp();
-    	name_ok ="ok";
-    }
-
-    return true;
-}
-
-$("input[name = email]").blur(function() {
-	checkEmail();
-});
-function checkEmail() {
-    var email = $("#email").val();
-    var oMsg = $("#emailMsg");
-
-    if ( email == "") {
-        showErrorMsg(oMsg,"필수 정보입니다.");
-        return false;
-    }else{
-    	oMsg.slideUp();
-    }
-
-    return true;
-}
-
-</script> -->
+		return true;
+	}
+</script>
 <title>아이디찾기</title>
 </head>
 <body>
@@ -120,8 +92,7 @@ function checkEmail() {
 								<span class="ps_box box_right_space"> 
 									<input type="text" id="name" name="name" title="이름" class="int" maxlength="40">
 								</span>
-								<span class="error_next_box" id="nameMsg" style="display:none" role="alert"></span>
-                   
+								<span class="error_next_box" id="nameMsg" style="display:none" role="alert"></span>              
 							</div>
 							<br>
 							<div class="join_row join_email">
@@ -129,9 +100,9 @@ function checkEmail() {
 									<label for="email">이메일</label>
 								</h3>
 								<span class="ps_box int_email box_right_space"> 
-									<input type="text" id="email" name="email" maxlength="100" class="int" maxlength="100" placeholder="이메일 주소 전체를 입력해주세요">
-									<span class="error_next_box" id="emailMsg" style="display:none" role="alert"></span>
+									<input type="text" id="email" name="email" class="int" maxlength="100" placeholder="이메일 주소 전체를 입력해주세요">
 								</span>
+								<span class="error_next_box" id="emailMsg" style="display:none" role="alert"></span>
 							</div>
 							<div class="btn_area">
 								<button type="submit" id="아이디 찾기" value="아이디찾기"
@@ -146,7 +117,7 @@ function checkEmail() {
 				<div class="position_a">
 					<div class="find_info">
 							<center>
-								<a href="http://localhost:8080/brw/member/findPwForm.br">비밀번호 찾을까 말까?</a> 
+								<a href="http://localhost:8080/brw/member/findPwForm.br">비밀번호 찾기</a> 
 								<span class="bar" aria-hidden="true">|</span> 
 								<a href="http://localhost:8080/brw/member/loginForm.br">로그인</a>
 							</center>

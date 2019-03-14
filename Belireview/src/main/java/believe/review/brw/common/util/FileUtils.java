@@ -5,7 +5,10 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
+import java.text.SimpleDateFormat;
+
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
@@ -96,4 +99,49 @@ public class FileUtils {
 			file.delete();
 		}
 	}
+
+	//user용
+	private static final String filePath_P = "C:\\인영\\sts\\Belireview\\Belireview\\src\\main\\webapp\\resources\\images\\user_profile\\";
+	
+	public Map<String, Object> parseInsertFileInfo(Map<String, Object> map, HttpServletRequest request)
+			throws Exception {
+		
+		HttpSession session = request.getSession();
+		MultipartHttpServletRequest multipartHttpServletRequest = (MultipartHttpServletRequest) request;
+		Iterator<String> iterator = multipartHttpServletRequest.getFileNames();
+
+		MultipartFile multipartFile = null;
+		String originalFileName = null;
+		String newFileName = null;
+
+		Map<String, Object> listMap = new HashMap<String, Object>();
+
+		String MEMBER_ID = map.get("id").toString(); // 멤버 아이디
+		
+		File file = new File(filePath_P);
+		if (file.exists() == false) { //디렉토리가 존재하지 않는다면 디렉토리 만듬
+			file.mkdirs();
+		}
+		
+
+		file = new File(filePath_P + session.getAttribute("PROFILE_IMAGE"));
+		file.delete();
+		
+		while (iterator.hasNext()) {
+			multipartFile = multipartHttpServletRequest.getFile(iterator.next());
+			if (multipartFile.isEmpty() == false) {
+				originalFileName = multipartFile.getOriginalFilename();
+				SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd-HHmmss-");
+				newFileName = formatter.format(System.currentTimeMillis()) + originalFileName;
+				
+				file = new File(filePath_P + newFileName);
+				multipartFile.transferTo(file);
+
+				listMap.put("ID", MEMBER_ID);
+				listMap.put("PROFILE_IMAGE",newFileName);
+			}
+		}
+		return listMap;
+	}
+	
 }

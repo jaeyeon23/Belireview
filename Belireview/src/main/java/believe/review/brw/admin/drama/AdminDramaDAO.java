@@ -32,11 +32,19 @@ public class AdminDramaDAO extends AbstractDAO{
 		return (Integer) selectOne("admin.checkDrama", map);
 	}
 
+	public void updateDramaOne(Map<String, Object> map) {
+		update("admin.updateDramaOne", map);
+	}
+	
 	public void deleteDramaOne(Map<String, Object> map) {
 		delete("admin.deleteDramaOne", map);
 	}
 	
-	public void updateDramaOne(Map<String, Object> map) {
-		update("admin.updateDramaOne", map);
+	public void deleteDramaLikeOne(Map<String, Object> map) {
+		delete("admin.deleteDramaLikeOne", map);
+	}
+	
+	public void deleteDramaCommentOne(Map<String, Object> map) {
+		delete("admin.deleteDramaCommentOne", map);
 	}
 }
