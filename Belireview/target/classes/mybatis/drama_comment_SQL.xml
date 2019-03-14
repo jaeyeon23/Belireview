@@ -85,6 +85,10 @@
 	<select id="totalDramaComment" parameterType="hashmap" resultType="int">
 		select count(*) as count from DRAMA_COMMENT where DRAMA_NO = 1
 	</select>
+	
+	<delete id="deleteComment" parameterType="hashmap">
+		delete drama_comment where drama_no=#{DRAMA_NO} and dc_no=#{DC_NO}
+	</delete>
 
 
 </mapper>

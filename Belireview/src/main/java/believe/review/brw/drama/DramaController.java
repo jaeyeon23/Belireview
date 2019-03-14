@@ -105,6 +105,10 @@ public class DramaController {
 			}else {
 				mv.addObject("initValue","r0");
 			}
+			tmp = dramaService.myComment(map);
+			if(tmp!=null) {
+				mv.addObject("myComment",tmp);
+			}
 		}
 		
 		/*Map<String,Object> insertcomment = dramaService.insertdramaComment(commandMap.getMap());*/
@@ -183,6 +187,11 @@ public class DramaController {
 			System.out.println(mv.get("myCom"));
 		}
 		//댓
+		//댓삭제
+		if(mv.get("DELCOM")!=null) {
+			dramaService.deleteComment(mv);
+		}
+		//댓삭제
 		return mv;
 
 	}
