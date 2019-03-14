@@ -113,7 +113,7 @@
                                           		<img src="/brw/resources/images/Temporary_img.JPG" alt="bag" width="60" height="45" style="border-radius:150px; margin-top:-10px; ">
                                           		</c:if>
                                           		<c:if test="${sessionScope.PROFILE_IMAGE != null }">
-                                          		<img src="/brw/resources/images/${sessionScope.PROFILE_IMAGE}" alt="bag" width="60" height="45" style="border-radius:150px; margin-top:-10px; ">
+                                          		<img src="/brw/resources/images/user_profile/${sessionScope.PROFILE_IMAGE}" alt="bag" width="60" height="45" style="border-radius:150px; margin-top:-10px; ">
                                           		</c:if>
                                           	</a>
                                           	</c:if>
