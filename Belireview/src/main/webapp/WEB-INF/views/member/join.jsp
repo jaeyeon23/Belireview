@@ -261,7 +261,7 @@
 
 		$.ajax({
 			type : "POST",
-			url : "email_auth.br",
+			url : "email_auth.br?${_csrf.parameterName}=${_csrf.token}",
 			data : ({
 				mode : "email_code",
 				email : email

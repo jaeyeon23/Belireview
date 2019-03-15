@@ -30,6 +30,10 @@
 	    <!-- lightbox -->
 	    <link href="/brw/resources/css/prettyPhoto.css" rel="stylesheet">
 	    
+	    <!-- 메뉴  -->
+	    <script language="JavaScript" src="/brw/resources/js/script.js"></script>
+	    
+	    
 	    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	    <script src="/brw/resources/js/library.js"></script>
 	    <!-- Include all compiled plugins (below), or include individual files as needed -->
