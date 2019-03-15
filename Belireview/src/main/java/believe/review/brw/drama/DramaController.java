@@ -83,8 +83,8 @@ public class DramaController {
 		List<Map<String,Object>> detailgenre = dramaService.detailgenre(map);//비슷한장르
 		List<Map<String,Object>> gradeRatio = dramaService.gradeRatio(map);//별점비율
 		String[] image = map.get("DRAMA_CONTENT_IMAGE").toString().split(",");
-		for(String s :image) {
-			s += s.replace("\\p{Z}","");
+		for(int i=0;i<image.length;i++) {
+			image[i] = image[i].trim();
 		}
 		int[] ratio = new int[11];
 		for(int i=0;i<gradeRatio.size();i++) {

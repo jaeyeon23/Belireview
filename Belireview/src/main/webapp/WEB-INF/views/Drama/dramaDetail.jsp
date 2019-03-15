@@ -457,7 +457,7 @@
 											<div class="ContentJumbotron__LeftBackground-yf8npk-6 cGzUVh"
 												color="#364052"></div>
 											<div class="ContentJumbotron__BlurPoster-yf8npk-4 WdAlN">
-												<img class="WdAlN" src="/brw/resources/images/3-girls.jpg"><!-- 이미지 -->
+												<img class="WdAlN" src="/brw/resources/images/drama/main/${map.DRAMA_MAIN_IMAGE}"><!-- 이미지 -->
 												<div class="ContentJumbotron__LeftGradient-yf8npk-8 aCymu"
 													color="#364052"></div>
 												<div class="ContentJumbotron__RightGradient-yf8npk-9 gShorF"
@@ -473,9 +473,7 @@
 													<div
 														class="ContentJumbotron__PosterWithRankingInfoBlock-yf8npk-10 cIaqHU">
 														<div class="LazyLoadingImg__Self-s1jb87ps-0 cjQTNJ">
-															<img class="LazyLoadingImg__Self-s1jb87ps-0 cjQTNJ"
-																alt="사바하의 포스터" data-image-id="100"
-																src="https://dhgywazgeek0d.cloudfront.net/watcha/image/upload/c_fill,h_400,q_80,w_280/v1547575268/nc6h9mynmwu5zi7n7jr0.jpg">
+															<img class="LazyLoadingImg__Self-s1jb87ps-0 cjQTNJ" src="/brw/resources/images/drama/poster/${map.DRAMA_POSTER_IMAGE}">
 														</div>
 													</div>
 												</div>
@@ -1080,24 +1078,8 @@
 			<div id="slides">
 				<div class="slides_container">
 					<c:forEach begin="0" step="1" items="${image}"  varStatus="status" var='img'>
-						<div class="ree" style="display:none;">${i}</div>
 						<img src="/brw/resources/images/drama/content/${img}" width="570" height="270" alt="Slide ${status.index+1}">
 					</c:forEach>
-					<%-- <c:forEach>
-					
-					
-					<img src="/brw/resources/images/3-jacket.jpg" width="570" height="270" alt="Slide 2">
-					
-					<img src="/brw/resources/images/3-man.jpg" width="570" height="270" alt="Slide 3">
-					
-					<img src="/brw/resources/images//slide-4.jpg" width="570" height="270" alt="Slide 4">
-					
-					<img src="/brw/resources/images/slide-5.jpg" width="570" height="270" alt="Slide 5">
-					
-					<img src="/brw/resources/images//slide-6.jpg" width="570" height="270" alt="Slide 6">
-					
-					<img src="/brw/resources/images/slide-7.jpg" width="570" height="270" alt="Slide 7">
-					</c:forEach> --%>
 				</div>
 				
 				<a href="#" class="prev">
@@ -1133,7 +1115,7 @@
 			 <div class="col-sm-6 col-md-3">
 			 	<a href="/brw/drama/dramaDetail.br?DRAMA_NO=1&DRAMA_NAME=2">
 			    <div class="detailgenre">
-			      <img src="/brw/resources/images/3-girls.jpg">
+			      <img src="/brw/resources/images/drama/poster/${detailgenrelist.DRAMA_POSTER_IMAGE}">
 			      <%-- <input type='hidden' class='IDX' value="${dramaList.DRAMA_NO}"> --%>
 			      <div class="detailgenrefont">
 			        <h3>#${detailgenrelist.DRAMA_NAME}</h3>
@@ -1143,11 +1125,6 @@
 			    </a>
 			  </div>
 		 </c:forEach>
-	
-														
-														
-														
-														
 													</section>
 													<div></div>
 												</div>
@@ -1164,35 +1141,6 @@
 			</div>
 		</div>
 	</div>
-
-
-	<script>
-        window.ga=function(){ga.q.push(arguments)};ga.q=[];ga.l=+new Date;
-        ga("create","UA-27006241-7","auto");
-      </script>
-
-
-	<script src="https://browser.sentry-cdn.com/4.6.4/bundle.min.js"
-		crossorigin="anonymous"></script>
-
-
-
-	<script
-		src="https://d2rlq84xifqisi.cloudfront.net/javascripts/web.252a3d891922d57180ff.js"
-		crossorigin="anonymous"></script>
-
-
-	<script src="https://www.google-analytics.com/analytics.js" async=""
-		defer=""></script>
-
-
-	<script>
-        if ('serviceWorker' in navigator) {
-          window.addEventListener('load', function() {
-            navigator.serviceWorker.register('https://watcha.com/sw.js');
-          });
-        }
-      </script>
 
 	<div id="fb-root" class=" fb_reset">
 		<div

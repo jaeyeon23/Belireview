@@ -7,7 +7,7 @@
 <head>
 <meta charset="utf-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="/brw/resources/css/mainsearch3.css">
+<link rel="stylesheet" href="/brw/resources/css/mainsearch4.css">
 <script type="text/javascript">
 	var currentPage = 1;
 	var searchText = "${request}";
