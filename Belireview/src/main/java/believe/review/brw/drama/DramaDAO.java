@@ -70,6 +70,16 @@ public class DramaDAO extends AbstractDAO{
 	public List<Map<String,Object>> gradeRatio(Map<String, Object> map) throws Exception{
 		return (List<Map<String,Object>>)selectList("drama.gradeRatio",map);
 	}
+	public int grade(Map<String, Object> map) throws Exception{
+		return (Integer) selectOne("drama.grade",map);
+	}
+	public double ratingPrediction(Map<String, Object> map) throws Exception{
+		if(selectOne("drama.ratingPrediction",map)!=null) {
+			return (Double) selectOne("drama.ratingPrediction",map);
+		}
+			return 0;
+	}
+	
 	
 	/*@SuppressWarnings("unchecked")
 	public Map<String, Object> dramaComment(Map<String, Object> map) throws Exception{

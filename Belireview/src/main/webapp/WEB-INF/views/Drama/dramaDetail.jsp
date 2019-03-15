@@ -10,7 +10,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="">
    	<link rel="stylesheet" href="/brw/resources/css/detail2.css">
-   	<link rel="stylesheet" href="/brw/resources/css/detail3.css">
+   	<link rel="stylesheet" href="/brw/resources/css/detail.css">
     <link rel="stylesheet" href="/brw/resources/css/detailgenre.css">
    	<%-- <script src="<c:url value='/resources/js/common.js'/>" charset="utf-8"></script>	 --%>
     <style>
@@ -82,6 +82,8 @@
 		 $(function(){
 			 if(wi!=""){//보고싶어요에있을때
 				$(".juRlmb").html("보기싫어요");
+				$(".esugeU").css("background","#f6f6f6");
+				$(".vv").css('color','#ff2f6e');
 			 }
 			 if(grade != ""){//평가했을때
 			  	var rr = "r"+"${grade}";
@@ -150,7 +152,6 @@
 				 success:function(result){
 					$(".writeComment").css("display","none");
 					$(".existComment").css("display","block");
-					alert(result.myCom.DC_CONTENT);
 					$(".gLsCNn").html(result.myCom.DC_CONTENT);
 				 }
 			 })
@@ -164,7 +165,6 @@
 				 success:function(result){
 					$(".writeComment").css("display","none");
 					$(".existComment").css("display","block");
-					alert(result.myCom.DC_CONTENT);
 					$(".gLsCNn").html(result.myCom.DC_CONTENT);
 				 }
 			 })
@@ -182,9 +182,13 @@
 					var s = "보고싶어요";
 					if(w.add){
 						$(".juRlmb").html(a);
+						$(".esugeU").css("background","#f6f6f6");
+						$(".vv").css('color','#ff2f6e');
 					}
 					if(w.subtract){
 						$(".juRlmb").html(s);
+						$(".esugeU").css("background",'#ff2f6e');
+						$(".vv").css('color','#f6f6f6');
 					}
 				}
 			})
@@ -489,23 +493,17 @@
 														<div class="ContentJumbotron__Detail-yf8npk-15 bJHRjP">${map.DRAMA_DATE} ・ ${map.DRAMA_GENRE} ・ ${map.DRAMA_CHANNEL}</div><!-- 개봉일 장르 채널 -->
 														<div class="ContentJumbotron__ContentRatings-yf8npk-16 epsYAr">평점 ★${map.DRAMA_GRADE}&nbsp;&nbsp;・&nbsp;&nbsp;<!-- <em>예상 ★2.7</em> --><!-- 평점 -->
 														</div>
-														<div
-															class="ContentJumbotron__ButtonBlock-yf8npk-17 bqrRYB">
+														<div class="ContentJumbotron__ButtonBlock-yf8npk-17 bqrRYB">
 															<div class="ContentActionButton__Self-s1nnw805-0 esugeU">
-																<button
-																	class="ContentActionButton__ActionButton-s1nnw805-1 kLIPfy StylelessButton-phxvo7-0 gsSopE vv">
-																	<span
-																		class="ContentActionButton__StatusWithImage-s1nnw805-2 fUUvwT"><span
-																		class="ContentActionButton__StatusImage-s1nnw805-3 eNXtVj UIImg-s3jz6tx-0 ytaVa"
-																		src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMjRweCIgaGVpZ2h0PSIyNHB4IiB2aWV3Qm94PSIwIDAgMjQgMjQiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8IS0tIEdlbmVyYXRvcjogc2tldGNodG9vbCA1MC4yICg1NTA0NykgLSBodHRwOi8vd3d3LmJvaGVtaWFuY29kaW5nLmNvbS9za2V0Y2ggLS0+CiAgICA8dGl0bGU+NjMwMjYxNEEtQzhBMy00MkMwLTlDQzctQTBEQzNDOEM1NTVDPC90aXRsZT4KICAgIDxkZXNjPkNyZWF0ZWQgd2l0aCBza2V0Y2h0b29sLjwvZGVzYz4KICAgIDxkZWZzPjwvZGVmcz4KICAgIDxnIGlkPSJJY29ucy0mYW1wOy1Bc3NldHMiIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPgogICAgICAgIDxnIGlkPSJJY29uLS8tSWNBZGRXaGl0ZSIgZmlsbD0iI0ZGRkZGRiI+CiAgICAgICAgICAgIDxyZWN0IGlkPSJSZWN0YW5nbGUtMyIgeD0iMTEiIHk9IjQuNSIgd2lkdGg9IjIiIGhlaWdodD0iMTUiIHJ4PSIxIj48L3JlY3Q+CiAgICAgICAgICAgIDxyZWN0IGlkPSJSZWN0YW5nbGUtMy1Db3B5IiB4PSI0LjUiIHk9IjExIiB3aWR0aD0iMTUiIGhlaWdodD0iMiIgcng9IjEiPjwvcmVjdD4KICAgICAgICA8L2c+CiAgICA8L2c+Cjwvc3ZnPg=="></span><span
-																		class="ContentActionButton__ActionStatus-s1nnw805-4 juRlmb">보고싶어요</span></span>
+																<button class="ContentActionButton__ActionButton-s1nnw805-1 kLIPfy StylelessButton-phxvo7-0 gsSopE vv">
+																	<span class="ContentActionButton__StatusWithImage-s1nnw805-2 fUUvwT">
+																		<span class="ContentActionButton__ActionStatus-s1nnw805-4 juRlmb">보고싶어요</span>
+																	</span>
 																</button>
 															</div>
 														</div>
-														<div
-															class="ContentJumbotronRatingControl__Self-s1cw42ub-0 hIpgGL">
-															<div
-																class="ContentJumbotronRatingControl__Title-s1cw42ub-1 hqGvwK">
+														<div class="ContentJumbotronRatingControl__Self-s1cw42ub-0 hIpgGL">
+															<div class="ContentJumbotronRatingControl__Title-s1cw42ub-1 hqGvwK">
 																<div class="RatingText__Self-s2g271e-0 ccOSgS"></div>
 															</div>
 															<div class="RatingControl__Self-s2c1yoc-0 ixVNUo">
@@ -620,47 +618,36 @@
 													<div class="RoundedCornerBlock-s17n38ib-0 gPZLbT">
 														<div class="Grid-zydj2q-0 cspjno">
 															<div class="Row-s1apwm9x-0 c1">
-																<section
-																	class="ContentMyCommentSection__MyCommentSection-mhuscg-3 jAXTYm">
-																	<div
-																		class="ContentMyCommentSection__MyCommentBlock-mhuscg-6 fmWQqh">
-																		<div
-																			class="ContentMyCommentSection__MyProfilePhotoBlock-mhuscg-4 jKiAlO">
-																			<div
-																				class="ProfilePhoto__Self-s1v3isfu-1 fpMzxR RoundedImageBlock-k5m4n5-0 gUZYtN">
-																				<div
-																					class="ProfilePhoto__ProfilePhotoImage-s1v3isfu-0 jawsmT"></div>
-																				<div
-																					class="ProfilePhoto__DefaultImageContainer-s1v3isfu-2 kPGxuy">
-																					<img
-																						class="defaultImage__ProfileImg-s1kn91bx-1 iaxVtx"
-																						src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDQ4IDQ4Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgZmlsbD0iI0UwRTBFMCI+CiAgICAgICAgICAgIDxwYXRoIGQ9Ik0yNCAyMS4yNzhhOC41NyA4LjU3IDAgMCAxLTguNTcxLTguNTdBOC41NzEgOC41NzEgMCAxIDEgMjQgMjEuMjc3TTQzLjUxOSA0My44NjVjLjU2NCAwIDEuMDMzLS40NjggMS4wMDMtMS4wMzFDNDMuOTYzIDMyLjQyNCAzNC45ODkgMjQuMTUgMjQgMjQuMTVjLTEwLjk4OSAwLTE5Ljk2MyA4LjI3NC0yMC41MjIgMTguNjgzLS4wMy41NjMuNDM5IDEuMDMgMS4wMDMgMS4wM2gzOS4wMzh6Ii8+CiAgICAgICAgPC9nPgogICAgPC9nPgo8L3N2Zz4K" >
+																<section class="ContentMyCommentSection__MyCommentSection-mhuscg-3 jAXTYm">
+																	<div class="ContentMyCommentSection__MyCommentBlock-mhuscg-6 fmWQqh">
+																		<div class="ContentMyCommentSection__MyProfilePhotoBlock-mhuscg-4 jKiAlO">
+																			<div class="ProfilePhoto__Self-s1v3isfu-1 fpMzxR RoundedImageBlock-k5m4n5-0 gUZYtN">
+																				<div class="ProfilePhoto__ProfilePhotoImage-s1v3isfu-0 jawsmT"></div>
+																				<div class="ProfilePhoto__DefaultImageContainer-s1v3isfu-2 kPGxuy">
+																					<img class="defaultImage__ProfileImg-s1kn91bx-1 iaxVtx"
+																						src="/brw/resources/images/${PROFILE_IMAGE}" >
 																				</div>
 																			</div>
 																		</div>
-																		<div
-																			class="ContentMyCommentSection__MyComment-mhuscg-5 iBmFgp">
+																		<div class="ContentMyCommentSection__MyComment-mhuscg-5 iBmFgp">
 																			<div class="TextTruncate__Self-wvv1uj-0 edeoAV">
 																				<div class="TextTruncate__Text-wvv1uj-1 gLsCNn"
 																					style="white-space: pre-line;">${myComment.DC_CONTENT}</div><!-- 댓글내용 -->
 																			</div>
 																		</div>
-																		<ul
-																			class="ContentMyCommentSection__CommentUpdateButtons-mhuscg-7 UbRpK VisualUl-s1vzev56-0 hgAYVH">
-																			<li
-																				class="ContentMyCommentSection__CommentUpdateButtonListItem-mhuscg-8 rEOgj"><button
-																					class="ContentMyCommentSection__CommentUpdateButton-mhuscg-9 eSMTCV StylelessButton-phxvo7-0 gsSopE deleteComment">
-																					<img
-																						src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOCIgaGVpZ2h0PSIxOCIgdmlld0JveD0iMCAwIDE4IDE4Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHBhdGggZmlsbD0iI0EwQTBBMCIgZD0iTTUuMjUgMTQuMjVoNy41di03LjVoMS41VjE1YS43NS43NSAwIDAgMS0uNzUuNzVoLTlhLjc1Ljc1IDAgMCAxLS43NS0uNzVWNi43NWgxLjV2Ny41ek0xMiA0LjVoMy43NVY2SDIuMjVWNC41SDZWM2EuNzUuNzUgMCAwIDEgLjc1LS43NWg0LjVBLjc1Ljc1IDAgMCAxIDEyIDN2MS41em0tMS41IDB2LS43NWgtM3YuNzVoM3pNNi43NSA2Ljc1aDEuNXY2Ljc1aC0xLjVWNi43NXptMyAwaDEuNXY2Ljc1aC0xLjVWNi43NXoiLz4KICAgIDwvZz4KPC9zdmc+Cg=="
+																		<ul class="ContentMyCommentSection__CommentUpdateButtons-mhuscg-7 UbRpK VisualUl-s1vzev56-0 hgAYVH">
+																			<li class="ContentMyCommentSection__CommentUpdateButtonListItem-mhuscg-8 rEOgj">
+																				<button class="ContentMyCommentSection__CommentUpdateButton-mhuscg-9 eSMTCV StylelessButton-phxvo7-0 gsSopE deleteComment">
+																					<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOCIgaGVpZ2h0PSIxOCIgdmlld0JveD0iMCAwIDE4IDE4Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHBhdGggZmlsbD0iI0EwQTBBMCIgZD0iTTUuMjUgMTQuMjVoNy41di03LjVoMS41VjE1YS43NS43NSAwIDAgMS0uNzUuNzVoLTlhLjc1Ljc1IDAgMCAxLS43NS0uNzVWNi43NWgxLjV2Ny41ek0xMiA0LjVoMy43NVY2SDIuMjVWNC41SDZWM2EuNzUuNzUgMCAwIDEgLjc1LS43NWg0LjVBLjc1Ljc1IDAgMCAxIDEyIDN2MS41em0tMS41IDB2LS43NWgtM3YuNzVoM3pNNi43NSA2Ljc1aDEuNXY2Ljc1aC0xLjVWNi43NXptMyAwaDEuNXY2Ljc1aC0xLjVWNi43NXoiLz4KICAgIDwvZz4KPC9zdmc+Cg=="
 																						alt="delete comment">삭제
-																				</button></li>
-																			<li
-																				class="ContentMyCommentSection__CommentUpdateButtonListItem-mhuscg-8 rEOgj"><button data-toggle="modal" data-target="#myModal2" 
-																					class="ContentMyCommentSection__CommentUpdateButton-mhuscg-9 eSMTCV StylelessButton-phxvo7-0 gsSopE">
-																					<img
-																						src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOCIgaGVpZ2h0PSIxOCIgdmlld0JveD0iMCAwIDE4IDE4Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHBhdGggZmlsbD0iI0EwQTBBMCIgZD0iTTIuMTggMTUuMzlsLjcwMy0zLjk4IDMuNzEzIDMuNzEyLTMuOTgxLjcwMmEuMzc0LjM3NCAwIDAgMS0uNDM0LS40MzR6bTEuNDk4LTQuNzc2bDYuMzY0LTYuMzY0IDMuNzEzIDMuNzEyLTYuMzY0IDYuMzY0LTMuNzEzLTMuNzEyek0xNS42MDcgNS4wNGEuNzUuNzUgMCAwIDEgMCAxLjA2bC0xLjA2IDEuMDYxLTMuNzEzLTMuNzEyIDEuMDYtMS4wNmEuNzUuNzUgMCAwIDEgMS4wNiAwbDIuNjUzIDIuNjUxeiIvPgogICAgPC9nPgo8L3N2Zz4K"
+																				</button>
+																			</li>
+																			<li class="ContentMyCommentSection__CommentUpdateButtonListItem-mhuscg-8 rEOgj">
+																				<button data-toggle="modal" data-target="#myModal2"  class="ContentMyCommentSection__CommentUpdateButton-mhuscg-9 eSMTCV StylelessButton-phxvo7-0 gsSopE">
+																					<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOCIgaGVpZ2h0PSIxOCIgdmlld0JveD0iMCAwIDE4IDE4Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHBhdGggZmlsbD0iI0EwQTBBMCIgZD0iTTIuMTggMTUuMzlsLjcwMy0zLjk4IDMuNzEzIDMuNzEyLTMuOTgxLjcwMmEuMzc0LjM3NCAwIDAgMS0uNDM0LS40MzR6bTEuNDk4LTQuNzc2bDYuMzY0LTYuMzY0IDMuNzEzIDMuNzEyLTYuMzY0IDYuMzY0LTMuNzEzLTMuNzEyek0xNS42MDcgNS4wNGEuNzUuNzUgMCAwIDEgMCAxLjA2bC0xLjA2IDEuMDYxLTMuNzEzLTMuNzEyIDEuMDYtMS4wNmEuNzUuNzUgMCAwIDEgMS4wNiAwbDIuNjUzIDIuNjUxeiIvPgogICAgPC9nPgo8L3N2Zz4K"
 																						alt="edit comment">수정
-																				</button></li>
+																				</button>
+																			</li>
 																		</ul>
 																			<!-- Modal -->
 																			<div class="modal fade" id="myModal2" tabindex="-1"
@@ -704,24 +691,16 @@
 														<section class="SectionWithHeader__Self-s1eyxltb-0 gAYeFO">
 															<div class="Grid-zydj2q-0 cspjno">
 																<div class="Row-s1apwm9x-0 lowZpE">
-																	<header
-																		class="SectionWithHeader__Header-s1eyxltb-1 cuiACK">
-																		<h2 class="SectionWithHeader__Title-s1eyxltb-2 kwjefp">내
-																			예상별점</h2>
-																		<div
-																			class="SectionWithHeader__TopRight-s1eyxltb-3 bZaEfL">
-																			<div
-																				class="ContentReasonSection__MyPredictedRatingBlock-s1eie0l9-0 gLxsYG">
-																				★2.7
-																				<div
-																					class="ProfilePhoto__Self-s1v3isfu-1 fAYBdd RoundedImageBlock-k5m4n5-0 gUZYtN">
-																					<div
-																						class="ProfilePhoto__ProfilePhotoImage-s1v3isfu-0 jawsmT"></div>
-																					<div
-																						class="ProfilePhoto__DefaultImageContainer-s1v3isfu-2 kPGxuy">
-																						<img
-																							class="defaultImage__ProfileImg-s1kn91bx-1 iaxVtx"
-																							src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDQ4IDQ4Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgZmlsbD0iI0UwRTBFMCI+CiAgICAgICAgICAgIDxwYXRoIGQ9Ik0yNCAyMS4yNzhhOC41NyA4LjU3IDAgMCAxLTguNTcxLTguNTdBOC41NzEgOC41NzEgMCAxIDEgMjQgMjEuMjc3TTQzLjUxOSA0My44NjVjLjU2NCAwIDEuMDMzLS40NjggMS4wMDMtMS4wMzFDNDMuOTYzIDMyLjQyNCAzNC45ODkgMjQuMTUgMjQgMjQuMTVjLTEwLjk4OSAwLTE5Ljk2MyA4LjI3NC0yMC41MjIgMTguNjgzLS4wMy41NjMuNDM5IDEuMDMgMS4wMDMgMS4wM2gzOS4wMzh6Ii8+CiAgICAgICAgPC9nPgogICAgPC9nPgo8L3N2Zz4K">
+																	<header class="SectionWithHeader__Header-s1eyxltb-1 cuiACK">
+																		<h2 class="SectionWithHeader__Title-s1eyxltb-2 kwjefp">내 예상별점</h2>
+																		<div class="SectionWithHeader__TopRight-s1eyxltb-3 bZaEfL">
+																			<div class="ContentReasonSection__MyPredictedRatingBlock-s1eie0l9-0 gLxsYG">
+																				${ratingPrediction}
+																				<div class="ProfilePhoto__Self-s1v3isfu-1 fAYBdd RoundedImageBlock-k5m4n5-0 gUZYtN">
+																					<div class="ProfilePhoto__ProfilePhotoImage-s1v3isfu-0 jawsmT"></div>
+																					<div class="ProfilePhoto__DefaultImageContainer-s1v3isfu-2 kPGxuy">
+																						<img class="defaultImage__ProfileImg-s1kn91bx-1 iaxVtx"
+																							src="/brw/resources/images/${PROFILE_IMAGE}">
 																					</div>
 																				</div>
 																			</div>
@@ -781,7 +760,7 @@
 																				class="ContentOverviewSection__OverviewMeta-s1yclw10-2 bvwFIW">${map.DRAMA_DATE}
 																				· ${map.DRAMA_CHANNEL} · ${map.DRAMA_GENRE}</span><br>
 																			<span
-																				class="ContentOverviewSection__OverviewMeta-s1yclw10-2 bvwFIW">${map.DRAMA_EPISODE}</span>
+																				class="ContentOverviewSection__OverviewMeta-s1yclw10-2 bvwFIW">${map.DRAMA_EPISODE}부작</span>
 																		</div>
 																	</article>
 																	<hr
@@ -808,17 +787,13 @@
 																			<div class="Row-s1apwm9x-0 lowZpE">
 																				<ul
 																					class="ContentPeopleSection__PeopleStackableUl-s1qdagi5-0 dCFwKD StackableUl__StyledStackableUl-gafxvv-1 dYcNoO VisualUl-s1vzev56-0 hgAYVH">
-																					<li class="ListItemWithProfilePhoto__Self-s1a35ruo-0 GRmjI"><a
-																						lng="ko-KR"
-																						class="InnerPartOfListWithImage__LinkSelf-s11a1hqv-1 gmbtJD"
-																						title="장재현" href="/ko-KR/people/167398"><div
-																								class="InnerPartOfListWithImage__ImageBlock-s11a1hqv-3 kXgAWr">
-																								<div
-																									class="ProfilePhoto__Self-s1v3isfu-1 cKevdV RoundedImageBlock-k5m4n5-0 gUZYtN">
-																									<div
-																										class="ProfilePhoto__ProfilePhotoImage-s1v3isfu-0 ctlVML"></div>
-																									<div
-																										class="ProfilePhoto__DefaultImageContainer-s1v3isfu-2 kPGxuy">
+																					<li class="ListItemWithProfilePhoto__Self-s1a35ruo-0 GRmjI">
+																						<a lng="ko-KR" class="InnerPartOfListWithImage__LinkSelf-s11a1hqv-1 gmbtJD"
+																							title="장재현" href="/ko-KR/people/167398">
+																							<div class="InnerPartOfListWithImage__ImageBlock-s11a1hqv-3 kXgAWr">
+																								<div class="ProfilePhoto__Self-s1v3isfu-1 cKevdV RoundedImageBlock-k5m4n5-0 gUZYtN">
+																									<div class="ProfilePhoto__ProfilePhotoImage-s1v3isfu-0 ctlVML"></div>
+																									<div class="ProfilePhoto__DefaultImageContainer-s1v3isfu-2 kPGxuy">
 																										<img
 																											class="defaultImage__ProfileImg-s1kn91bx-1 iaxVtx"
 																											src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDQ4IDQ4Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgZmlsbD0iI0UwRTBFMCI+CiAgICAgICAgICAgIDxwYXRoIGQ9Ik0yNCAyMS4yNzhhOC41NyA4LjU3IDAgMCAxLTguNTcxLTguNTdBOC41NzEgOC41NzEgMCAxIDEgMjQgMjEuMjc3TTQzLjUxOSA0My44NjVjLjU2NCAwIDEuMDMzLS40NjggMS4wMDMtMS4wMzFDNDMuOTYzIDMyLjQyNCAzNC45ODkgMjQuMTUgMjQgMjQuMTVjLTEwLjk4OSAwLTE5Ljk2MyA4LjI3NC0yMC41MjIgMTguNjgzLS4wMy41NjMuNDM5IDEuMDMgMS4wMDMgMS4wM2gzOS4wMzh6Ii8+CiAgICAgICAgPC9nPgogICAgPC9nPgo8L3N2Zz4K"
@@ -852,7 +827,6 @@
 																							<div class="InnerPartOfListWithImage__Info-s11a1hqv-5 hufKbr">
 																								<div class="InnerPartOfListWithImage__Titles-s11a1hqv-4 jtpmaI">
 																									<div class="ListItemWithProfilePhoto__Title-s1a35ruo-1 cSGZfW">${act.ACTOR_NAME}</div><!-- 배우 -->
-																									<div class="ListItemWithProfilePhoto__Subtitle-s1a35ruo-2 cbqRVo">조연</div>
 																								</div>
 																								<div></div>
 																							</div></a></li>
@@ -889,7 +863,7 @@
 																			그래프</h2>
 																		<span
 																			class="ContentRatingStatSection__RatingStatHeaderTopRight-s19qkcc2-0 itGSeD">평균
-																			${map.DRAMA_GRADE}<br> <strong>(3만명)</strong>
+																			${map.DRAMA_GRADE}<br> <strong>(${totalGrade}명)</strong>
 																		</span>
 																	</header>
 																</div>

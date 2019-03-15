@@ -145,6 +145,14 @@
 		DELETE DRAMA WHERE DRAMA_NO=#{DRAMA_NO}
 	</delete> -->
 	
+	<select id="grade" parameterType="hashmap" resultType="int">
+   		select count(*) from drama_like where drama_like_no=#{DRAMA_NO}
+	</select>
+	
+	<select id="ratingPrediction" parameterType="hashmap" resultType="double">
+		select round(avg(DL_GRADE),1) from drama_like where drama_like_no in (select drama_no from drama where drama_genre=#{DRAMA_GENRE}) and id=#{ID}
+	</select>
+	
 	<select id="gradeRatio" parameterType="hashmap" resultType="hashmap">
 		  with t as(		
 		  		SELECT '0.5' GRADE, count(*) A FROM drama_like where DL_GRADE=0.5 and drama_like_no=#{DRAMA_NO} UNION ALL

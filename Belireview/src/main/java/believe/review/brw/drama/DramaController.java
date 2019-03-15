@@ -81,19 +81,22 @@ public class DramaController {
 		List<Map<String,Object>> comment = dramaService.dramaCommentByLike(map);//댓
 		List<Map<String,Object>> actor = dramaService.dramaActor(map); //출연배우
 		List<Map<String,Object>> detailgenre = dramaService.detailgenre(map);//비슷한장르
-		List<Map<String,Object>> gradeRatio = dramaService.gradeRatio(map);//별점비율
+		int totalGrade = dramaService.grade(map);
+		if(totalGrade!=0){
+			List<Map<String,Object>> gradeRatio = dramaService.gradeRatio(map);//별점비율
+			int[] ratio = new int[11];
+			for(int i=0;i<gradeRatio.size();i++) {
+				ratio[i] = (int)(Double.parseDouble(gradeRatio.get(i).get("RATIO").toString())*2);
+				if(ratio[i]>100)
+					ratio[i] = 100;
+			}
+			mv.addObject("ratio",ratio);
+		}
 		String[] image = map.get("DRAMA_CONTENT_IMAGE").toString().split(",");
 		for(int i=0;i<image.length;i++) {
 			image[i] = image[i].trim();
 		}
-		int[] ratio = new int[11];
-		for(int i=0;i<gradeRatio.size();i++) {
-			ratio[i] = (int)(Double.parseDouble(gradeRatio.get(i).get("RATIO").toString())*2);
-			if(ratio[i]>100)
-				ratio[i] = 100;
-			System.out.println((int)(Double.parseDouble(gradeRatio.get(i).get("RATIO").toString())*2));
-		}
-		
+		double ratingPrediction = 0;
 		if(session.getAttribute("ID")!=null) {//로그인했을때
 			map.put("ID", session.getAttribute("ID"));
 			Map<String,Object> tmp = userService.userWishList(map);
@@ -122,6 +125,7 @@ public class DramaController {
 			if(tmp!=null) {
 				mv.addObject("myComment",tmp);
 			}
+			ratingPrediction = dramaService.ratingPrediction(map);
 		}
 		
 		/*Map<String,Object> insertcomment = dramaService.insertdramaComment(commandMap.getMap());*/
@@ -132,9 +136,15 @@ public class DramaController {
 		mv.addObject("comment",comment);
 		mv.addObject("actor",actor);
 		mv.addObject("detailgenre",detailgenre);
-		mv.addObject("ratio",ratio);
 		mv.addObject("image",image);
 		mv.addObject("totalCount",totalCount);
+		mv.addObject("totalGrade",totalGrade);
+		mv.addObject("ratingPrediction",ratingPrediction);
+		if(session.getAttribute("PROFILE_IMAGE")!=null) {
+			mv.addObject("PROFILE_IMAGE","user_profile/"+session.getAttribute("PROFILE_IMAGE"));
+		}else
+			mv.addObject("PROFILE_IMAGE","Temporary_img.JPG");
+		
 		
 	/*	mv.addObject("insertcomment",insertcomment);*/
 		
@@ -193,7 +203,6 @@ public class DramaController {
 		if(mv.get("COM")!=null) { 
 			map = dramaService.myComment(mv);
 			if(map==null) {
-				System.out.println("작성");
 				dramaService.writeDramaComment(mv);
 				map = dramaService.myComment(mv);
 			}else {
@@ -211,11 +220,8 @@ public class DramaController {
 		
 		//댓수정
 		if(mv.get("MCOM")!=null) { 
-			System.out.println(mv.get("MCOM"));
 			dramaService.updateDramaComment(mv);
-			System.out.println("수정완료");
 			map = dramaService.myComment(mv);
-			System.out.println(map.get("DC_CONTENT"));
 			
 			mv.put("myCom",map);
 		}
