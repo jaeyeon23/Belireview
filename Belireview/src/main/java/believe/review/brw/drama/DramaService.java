@@ -27,10 +27,16 @@ public interface DramaService {
 	
 	void updateGrade(Map<String,Object> map) throws Exception;
 	
-	public void writeDramaComment(Map<String, Object> map) throws Exception;
+	void writeDramaComment(Map<String, Object> map) throws Exception;
 	
-	public Map<String, Object> myComment(Map<String, Object> map) throws Exception;
+	Map<String, Object> myComment(Map<String, Object> map) throws Exception;
+	
+	void deleteComment(Map<String, Object> map) throws Exception;
 
+	void dramaCommentLike(Map<String, Object> map) throws Exception;
+	
+	void updateDramaComment(Map<String, Object> map) throws Exception;
+	
 	/*Map<String,Object> insertdramaComment(Map<String,Object> map) throws Exception;*/
 
 }

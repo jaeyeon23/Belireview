@@ -105,11 +105,16 @@ public class DramaController {
 			}else {
 				mv.addObject("initValue","r0");
 			}
+			tmp = dramaService.myComment(map);
+			if(tmp!=null) {
+				mv.addObject("myComment",tmp);
+			}
 		}
 		
 		/*Map<String,Object> insertcomment = dramaService.insertdramaComment(commandMap.getMap());*/
-		totalCount = (Integer)dramaService.totalDramaComment(map);
 		
+		totalCount = (Integer)dramaService.totalDramaComment(map);
+	
 		mv.addObject("map",map);
 		mv.addObject("comment",comment);
 		mv.addObject("actor",actor);
@@ -178,13 +183,29 @@ public class DramaController {
 			}else {
 				System.out.println("작성ㄴㄴ");
 			}
-			System.out.println(map.get("DC_CONTENT"));
 			mv.put("myCom",map);
-			System.out.println(mv.get("myCom"));
 		}
 		//댓
+		
+		//댓삭제
+		if(mv.get("DELCOM")!=null) {
+			dramaService.deleteComment(mv);
+		}
+		//댓삭제
+		
+		//댓수정
+		if(mv.get("MCOM")!=null) { 
+			System.out.println(mv.get("MCOM"));
+			dramaService.updateDramaComment(mv);
+			System.out.println("수정완료");
+			Map<String,Object> map = dramaService.myComment(mv);
+			System.out.println(map.get("DC_CONTENT"));
+			
+			mv.put("myCom",map);
+		}
+		//댓수정
+		
 		return mv;
-
 	}
 	
 
@@ -202,13 +223,81 @@ public class DramaController {
 		
 	}
 
-	@RequestMapping(value = "dramaComment.br")
+	@RequestMapping(value = "dramaComment.br",method = RequestMethod.GET)
 	public ModelAndView dramaComment(CommandMap commandMap, HttpServletRequest request) throws Exception {
-
-		ModelAndView mv = new ModelAndView("dramaComment");
+		HttpSession session = request.getSession();
 		
-
+		ModelAndView mv = new ModelAndView("dramaComment");
+		List<Map<String,Object>> dramacomment = dramaService.dramaCommentByLike(commandMap.getMap());
+ /*    Map<String,Object> map = dramaService.myComment();
+		*/
+		
+		System.out.println(dramacomment.get(0).get("DC_CONTENT"));
+		mv.addObject("dramacomment",dramacomment);
+		
+		if(session.getAttribute("ID")!=null)
+			mv.addObject("ID",request.getAttribute("ID"));
+			System.out.println("id"+session.getAttribute("ID"));
+		
+		for(int i=0; i<dramacomment.size(); i++) {
+			String[] str =dramacomment.get(i).get("DC_LIKE_ID").toString().split(",");
+			System.out.println("gg"+dramacomment.get(i).get("DC_LIKE_ID"));
+			
+			for(String s : str) {
+				System.out.println("nn"+s);
+				if(session.getAttribute("ID").equals(s)) {
+					mv.addObject("yes","a");
+				}
+			}
+		}
+		
+	
 		return mv;
-
 	}
+	
+	
+	
+	@RequestMapping(value="dramaComment.br",method = RequestMethod.POST)
+	@ResponseBody
+	public Map<String,Object> CommentLike(CommandMap commandMap) throws Exception {
+
+		Map<String,Object> mv = commandMap.getMap();
+		/*좋아요*/
+		
+		
+			Map<String,Object> map = dramaService.myComment(mv);
+
+			System.out.println(map.get("DC_LIKE_ID"));
+			if(map.get("DC_LIKE_ID")!=null) {
+				
+				String[] str = map.get("DC_LIKE_ID").toString().split(",");
+				boolean exist = false;
+				int likenum = Integer.parseInt(map.get("DC_LIKE").toString());
+				System.out.println(likenum);
+				String dc_like_id = "";
+				for(String s : str) {
+					System.out.println(s);
+					System.out.println(mv.get("ID"));
+					if(mv.get("ID").equals(s)) {
+						exist = true;
+					}else {
+						dc_like_id += s+",";
+					}
+				}
+				if(!exist) {
+					dc_like_id += mv.get("ID");
+					likenum +=1;
+					mv.put("add", "add");
+				}else {
+					likenum -=1;
+					mv.put("subtract", "subtract");
+				}
+				mv.put("DC_LIKE_ID", dc_like_id);
+				mv.put("DC_LIKE", likenum);
+				System.out.println(mv.get("DC_LIKE"));
+				dramaService.dramaCommentLike(mv);
+			}
+		return mv;
+		}
+	
 }
