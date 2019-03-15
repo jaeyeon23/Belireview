@@ -3,32 +3,122 @@
 <mapper namespace="main">
 
 	<!-- 연관검색어 -->
-	<select id="searchDramaRelation" resultType="hashmap" parameterType="string">
+	<select id="searchRelation" resultType="hashmap" parameterType="string">
 		SELECT
-			DRAMA_NAME
+			NAME, 
+			CNT 
 		FROM
-			DRAMA
+			(
+				SELECT
+					DRAMA_NAME AS NAME, 
+					DRAMA_READCOUNT AS CNT 
+				FROM
+					DRAMA
+				UNION 
+					ALL
+				SELECT
+					MOVIE_NAME, MOVIE_READCOUNT
+				FROM
+					MOVIE
+				UNION 
+					ALL 
+				SELECT
+					AD_NAME, 
+					AD_READCOUNT
+				FROM
+					AD
+			)
 		WHERE
-			DRAMA_NAME LIKE '%'||#{searchValue}||'%'
+			NAME LIKE '%'||#{searchValue}||'%' 
+		ORDER BY
+			CNT DESC
+	</select>
+	<!-- <select id="searchDramaRelation" resultType="hashmap" parameterType="string">
+		SELECT 
+			DRAMA_NAME, 
+			DRAMA_READCOUNT, 
+			r 
+		FROM	 
+			( 
+			SELECT 
+				DRAMA_NAME, 
+				DRAMA_READCOUNT, 
+				r 
+			FROM 
+				( 
+					SELECT 
+						DRAMA_NAME, 
+						DRAMA_READCOUNT, 
+						ROWNUM r 
+					FROM 
+						DRAMA 
+					ORDER BY 
+						DRAMA_READCOUNT 
+				) 
+			WHERE 
+				DRAMA_NAME LIKE '%'||#{searchValue}||'%' 
+			) 
+		WHERE 
+			r BETWEEN 1 AND 10 
 	</select>
 	
 	<select id="searchMovieRelation" resultType="hashmap" parameterType="string">
-		SELECT
-			MOVIE_NAME
-		FROM
-			MOVIE
-		WHERE
-			MOVIE_NAME LIKE '%'||#{searchValue}||'%'
+		SELECT 
+			MOVIE_NAME, 
+			MOVIE_READCOUNT, 
+			r 
+		FROM 
+			( 
+			SELECT 
+				MOVIE_NAME, 
+				MOVIE_READCOUNT, 
+				r 
+			FROM 
+				( 
+					SELECT 
+						MOVIE_NAME, 
+						MOVIE_READCOUNT, 
+						ROWNUM r 
+					FROM 
+						MOVIE 
+					ORDER BY 
+						MOVIE_READCOUNT 
+				) 
+			WHERE 
+				MOVIE_NAME LIKE '%'||#{searchValue}||'%' 
+			) 
+		WHERE 
+			r BETWEEN 1 and 10 
 	</select>
 	
 	<select id="searchAdRelation" resultType="hashmap" parameterType="string">
-		SELECT
-			AD_NAME
-		FROM
-			AD
-		WHERE
-			AD_NAME LIKE '%'||#{searchValue}||'%'
-	</select>
+		SELECT 
+			AD_NAME, 
+			AD_READCOUNT, 
+			r  
+		FROM 
+			( 
+			SELECT 
+				AD_NAME, 
+				AD_READCOUNT, 
+				r 
+			FROM 
+				( 
+					SELECT 
+						AD_NAME, 
+						AD_READCOUNT, 
+						ROWNUM r 
+					FROM 
+						AD 
+					ORDER BY  
+						AD_READCOUNT	 
+				)	 
+			WHERE 
+				AD_NAME LIKE '%'||#{searchValue}||'%' 
+			) 
+		WHERE 
+			r BETWEEN 1 AND 10 
+	</select> -->
 	
 	<select resultType="hashmap" id="dramaListTop8">
 		<![CDATA[ SELECT DRAMA_NO, DRAMA_NAME, DRAMA_DATE, DRAMA_CHANNEL, DRAMA_GENRE, DRAMA_DIRECTOR, DRAMA_CONTENT, DRAMA_READCOUNT, DRAMA_POSTER_IMAGE, DRAMA_MAIN_IMAGE, DRAMA_CONTENT_IMAGE, DRAMA_EPISODE, DRAMA_GRADE, r FROM (SELECT DRAMA_NO, DRAMA_NAME, DRAMA_DATE, DRAMA_CHANNEL, DRAMA_GENRE, DRAMA_DIRECTOR, DRAMA_CONTENT, DRAMA_READCOUNT, DRAMA_POSTER_IMAGE, DRAMA_MAIN_IMAGE, DRAMA_CONTENT_IMAGE, DRAMA_EPISODE, DRAMA_GRADE, ROWNUM r FROM DRAMA ORDER BY DRAMA_READCOUNT DESC ) WHERE r >= 1 AND r <= 8 ]]>

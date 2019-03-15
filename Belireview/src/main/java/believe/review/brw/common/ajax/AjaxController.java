@@ -24,7 +24,7 @@ import believe.review.brw.main.MainService;
 public class AjaxController {
 
 	@Autowired
-	BCryptPasswordEncoder passwordEncoder;
+	private BCryptPasswordEncoder passwordEncoder;
 	
 	@Resource(name="mainService")
 	private MainService mainService; 
@@ -32,28 +32,14 @@ public class AjaxController {
 	@RequestMapping(value="/auto.br", method=RequestMethod.GET)
 	public void auto(HttpServletRequest request, HttpServletResponse response) throws Exception{
 		String searchValue = request.getParameter("searchValue");
-		List<Map<String, Object>> dramalist = mainService.searchDramaRelation(searchValue);
-		List<Map<String, Object>> movielist = mainService.searchMovieRelation(searchValue);
-		List<Map<String, Object>> adlist = mainService.searchAdRelation(searchValue);
+		List<Map<String, Object>> list = mainService.searchRelation(searchValue);
 		
 		JSONArray array = new JSONArray();
 		JSONObject obj = null;
 		
-		for(Map<String, Object> map : dramalist) {
+		for(int i = 0 ; i < 10 ; i++) {
 			obj = new JSONObject();
-			obj.put("data", map.get("DRAMA_NAME"));
-			array.put(obj);
-		}
-		
-		for(Map<String, Object> map : movielist) {
-			obj = new JSONObject();
-			obj.put("data", map.get("MOVIE_NAME"));
-			array.put(obj);
-		}
-		
-		for(Map<String, Object> map : adlist) {
-			obj = new JSONObject();
-			obj.put("data", map.get("AD_NAME"));
+			obj.put("data", list.get(i).get("NAME"));
 			array.put(obj);
 		}
 		

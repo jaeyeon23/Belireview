@@ -47,10 +47,15 @@ public class MainServiceImpl implements MainService{
 
 	/*연관검색어*/
 	@Override
+	public List<Map<String, Object>> searchRelation(String searchValue) throws Exception {
+		return (List<Map<String, Object>>) mainDAO.searchRelation(searchValue);
+	}
+	
+	@Override
 	public List<Map<String, Object>> searchDramaRelation(String searchValue) throws Exception {
 		return (List<Map<String, Object>>) mainDAO.searchDramaRelation(searchValue);
 	}
-
+	
 	@Override
 	public List<Map<String, Object>> searchMovieRelation(String searchValue) throws Exception {
 		return (List<Map<String, Object>>) mainDAO.searchMovieRelation(searchValue);
