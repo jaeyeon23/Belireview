@@ -24,25 +24,9 @@
 	}		
 
 	  $(function(){
-		$(".abcd").css("display","none");
-		$(".abcd").click(function(){
-			alert("a");
-		});
-		$(".mm").hover(function(){
-			$(".abcd").css("display","");
-		},function(){
-			$(".abcd").css("display","none");
-		});
-		$(".efg").hover(function(){
-			$(".abcd").css("display","");
-		},function(){
-			$(".abcd").css("display","none");
-		}); 
-		$(".dd").hover(function(){
-			$(".abcd").css("display","");
-		},function(){
-			$(".abcd").css("display","none");
-		});
+		  $("#cat-nav").hide();
+		 
+		
 	})  
 </script>
 <body>
@@ -60,6 +44,7 @@
                   </div>
               </div> <!-- top end -->
               
+              <!-- 메뉴 카테고리 시작 -->
               <div id="believe-nav"> <!-- Nav -->
                   <div class="container">
                       <div class="min-marg">
@@ -73,7 +58,7 @@
                                           <span class="icon-bar"></span>
                                           <span class="icon-bar"></span>
                                       </button>
-                                      <a class="navbar-brand" href="http://localhost:8080/brw/main.br">
+                                      <a class="navbar-brand" href="/brw/main.br">
                                       <img src="/brw/resources/images/logos.jpg" width="150px" alt=""></a>
                                   </div>
 
@@ -81,8 +66,9 @@
                                   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                                       <ul class="nav navbar-nav">
                                           <li class="active"><a href="/brw/main.br">Home <span class="sr-only">(current)</span></a></li>
-                                          <li><a class="" href="/brw/drama/dramaList.br">Drama</a></li>
-                                          <li><a class="" href="/brw/movie/movieList.br">Movie</a></li>
+                                          <li><a href="/brw/drama/dramaList.br" class="mmenu" id="menu1" onmouseover="mopen(1);" onmouseout="mclosetime();">Drama</a>
+                                          </li>
+                                          <li><a class="movie_tab" href="/brw/movie/movieList.br" class="mmenu" id="menu2" onmouseover="mopen(2);" onmouseout="mclosetime();">Movie</a></li>
                                           <li><a class="" href="/brw/ad/adList.br">Advertisement</a></li>
                                           <c:if test="${sessionScope.ADMIN == 1 }">
                                           	<li><a href="" class="dropdown-toggle active" data-toggle="dropdown" role="button" aria-expanded="false">Admin <i class="fa fa-angle-down"></i></a>
@@ -132,9 +118,9 @@
                                      
                                   </div><!-- /.navbar-collapse -->
                               <!--</div> -->
-                              
                           </nav>
                       </div>
+                      
                       <div class="srch-form">
                           <form class="side-search">
                               <div class="input-group">
@@ -148,37 +134,44 @@
               </div> <!-- Nav -->
               
               
+              <!-- 검은색줄 시작 -->
               
               <div id="cat-nav">
               <div class="container">
                   <nav class="navbar navbar-default">
                       <div class="container-fluid">
-                      <!-- Brand and toggle get grouped for better mobile display -->
-                      <!-- <div class="navbar-header">
-                          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#cat-nav-mega">
-                              <span class="sr-only">Toggle navigation</span>
-                              <span class="icon-bar"></span>
-                              <span class="icon-bar"></span>
-                              <span class="icon-bar"></span>
-                          </button>
-                      </div> -->
-
-                      <!-- Collect the nav links, forms, and other content for toggling -->
                       <div class="collapse navbar-collapse" id="cat-nav-mega">
-                          <ul class="nav navbar-nav abcd efg">
-                              <li class="active"><a href="#">장르</a></li>
-                              
-                              <li><a href="">로맨스</a></li>
-                              <li><a href="">공포•호러</a></li>
-                              <li><a href="">판타지</a></li>
-                              <li><a href="">메디컬</a></li>
-                              <li><a href="">애니메이션</a></li>
-                              <li><a href="">예능</a></li>
-                              <li><a href="">코미디</a></li>
-                              <li><a href="">종교</a></li>
-                              <li><a href="">SF</a></li>
-                              <li><a href="">재난</a></li>
-                          </ul>
+                           <div class ="submenu" id="submenu1" onmouseover="mcancelclosetime()" onmouseout="mclosetime();" style="display :none;">
+                      	   	 <ul class="nav navbar-nav abcd efg">
+                           		  <li class="active"><a href="#">장르</a></li>
+                        	      <li><a href="">로맨스</a></li>
+	                              <li><a href="">공포•호러</a></li>
+    	                          <li><a href="">판타지</a></li>
+        	                      <li><a href="">메디컬</a></li>
+            	                  <li><a href="">애니메이션</a></li>
+                	              <li><a href="">예능</a></li>
+                    	          <li><a href="">코미디</a></li>
+                        	      <li><a href="">종교</a></li>
+                            	  <li><a href="">SF</a></li>
+                              	  <li><a href="">재난</a></li>
+                       		 </ul>
+                           </div>
+                           
+                            <div class ="submenu" id="submenu2" onmouseover="mcancelclosetime()" onmouseout="mclosetime();" style="display :none;">
+                      	   	 <ul class="nav navbar-nav abcd efg">
+                           		  <li class="active"><a href="#">장르</a></li>
+                        	      <li><a href="">로맨스</a></li>
+	                              <li><a href="">공포•호러</a></li>
+    	                          <li><a href="">판타지</a></li>
+        	                      <li><a href="">메디컬</a></li>
+            	                  <li><a href="">애니메이션</a></li>
+                	              <li><a href="">예능</a></li>
+                    	          <li><a href="">코미디</a></li>
+                        	      <li><a href="">종교</a></li>
+                            	  <li><a href="">SF</a></li>
+                              	  <li><a href="">재난</a></li>
+                       		 </ul>
+                           </div>
                            
                       </div><!-- /.navbar-collapse -->
                       </div>
