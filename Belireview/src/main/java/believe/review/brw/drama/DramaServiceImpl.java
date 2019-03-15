@@ -81,7 +81,10 @@ public class DramaServiceImpl  implements DramaService{
 	public void updateDramaComment(Map<String, Object> map) throws Exception {
 		dramaDAO.updateDramaComment(map);
 	}
-	
+	@Override
+	public List<Map<String,Object>> gradeRatio(Map<String, Object> map) throws Exception{
+		return dramaDAO.gradeRatio(map);
+	}
 
 	/*@Override
 	public Map<String, Object> insertdramaComment(Map<String, Object> map) throws Exception {

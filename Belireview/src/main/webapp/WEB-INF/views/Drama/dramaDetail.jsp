@@ -47,6 +47,37 @@
 		var ra = "" 
 		var initValue = "${initValue}";
 		var mcc = "${myComment}";
+		$(function(){
+			var ee = $('.ree0').html()+"px";
+			$('.re1').css("height",ee);
+			
+			ee = $('.ree1').html()+"px";
+			$('.re2').css("height",ee);
+			
+			ee = $('.ree2').html()+"px";
+			$('.re3').css("height",ee);
+			
+			ee = $('.ree3').html()+"px";
+			$('.re4').css("height",ee);
+			
+			ee = $('.ree4').html()+"px";
+			$('.re5').css("height",ee);
+			
+			ee = $('.ree5').html()+"px";
+			$('.re6').css("height",ee);
+			
+			ee = $('.ree6').html()+"px";
+			$('.re7').css("height",ee);
+			
+			ee = $('.ree7').html()+"px";
+			$('.re8').css("height",ee);
+			
+			ee = $('.ree8').html()+"px";
+			$('.re9').css("height",ee);
+			
+			ee = $('.ree9').html()+"px";
+			$('.re10').css("height",ee);
+		});
 		
 		 $(function(){
 			 if(wi!=""){//보고싶어요에있을때
@@ -409,6 +440,9 @@
 	<link rel="stylesheet" href="/brw/resources/css/global2.css">
 </head>
 <body> 
+	<c:forEach begin="0" end="9" step="1" items="${ratio}"  varStatus="status" var='i'>
+			<div class="ree${status.index}" style="display:none;" >${i}</div>
+		</c:forEach>
 	<div id="root">
 		<div class="App__Self-m1g4ja-0 iBpXSE">
 			<div class="NavTabManager__NavContainer-dbid0l-0 hhxQev">
@@ -866,38 +900,38 @@
 																<div class="Row-s1apwm9x-0 lowZpE">
 																	<div class="RatingStat__Self-luia1n-0 iwHouL">
 																		<div class="RatingStat__BarsContainer-luia1n-1 cTllXN">
-																			<div class="RatingStat__BarArea-luia1n-2 fkyWIw">
+																			<div class="RatingStat__BarArea-luia1n-2 fkyWIw re1">
 																				<span class="RatingStat__Bar-luia1n-3 krlvgk"></span>
 																			</div>
-																			<div class="RatingStat__BarArea-luia1n-2 fkyWIw">
+																			<div class="RatingStat__BarArea-luia1n-2 fkyWIw re2">
 																				<span class="RatingStat__Bar-luia1n-3 euhMRX"
 																					prefix="1"></span>
 																			</div>
-																			<div class="RatingStat__BarArea-luia1n-2 fkyWIw">
+																			<div class="RatingStat__BarArea-luia1n-2 fkyWIw re3">
 																				<span class="RatingStat__Bar-luia1n-3 bHydWh"></span>
 																			</div>
-																			<div class="RatingStat__BarArea-luia1n-2 fkyWIw">
+																			<div class="RatingStat__BarArea-luia1n-2 fkyWIw re4">
 																				<span class="RatingStat__Bar-luia1n-3 cbQtbT"
 																					prefix="2"></span>
 																			</div>
-																			<div class="RatingStat__BarArea-luia1n-2 fkyWIw">
+																			<div class="RatingStat__BarArea-luia1n-2 fkyWIw re5">
 																				<span class="RatingStat__Bar-luia1n-3 kGNaYb"></span>
 																			</div>
-																			<div class="RatingStat__BarArea-luia1n-2 fkyWIw">
+																			<div class="RatingStat__BarArea-luia1n-2 fkyWIw re6">
 																				<span class="RatingStat__Bar-luia1n-3 izBOSd"
 																					prefix="3"></span>
 																			</div>
-																			<div class="RatingStat__BarArea-luia1n-2 fkyWIw">
+																			<div class="RatingStat__BarArea-luia1n-2 fkyWIw re7">
 																				<span class="RatingStat__Bar-luia1n-3 isYbOS"></span>
 																			</div>
-																			<div class="RatingStat__BarArea-luia1n-2 fkyWIw">
+																			<div class="RatingStat__BarArea-luia1n-2 fkyWIw re8">
 																				<span class="RatingStat__Bar-luia1n-3 fQPWCL"
 																					prefix="4"></span>
 																			</div>
-																			<div class="RatingStat__BarArea-luia1n-2 fkyWIw">
+																			<div class="RatingStat__BarArea-luia1n-2 fkyWIw re9">
 																				<span class="RatingStat__Bar-luia1n-3 HjCEE"></span>
 																			</div>
-																			<div class="RatingStat__BarArea-luia1n-2 fkyWIw">
+																			<div class="RatingStat__BarArea-luia1n-2 fkyWIw re10">
 																				<span class="RatingStat__Bar-luia1n-3 gMiOPw"
 																					prefix="5"></span>
 																			</div>
@@ -1033,7 +1067,6 @@
 																<header
 																	class="SectionWithHeader__Header-s1eyxltb-1 cuiACK">
 																	<h2 class="SectionWithHeader__Title-s1eyxltb-2 kwjefp">갤러리</h2>
-																	<span class="TitleSuffixForNumber-l2d30g-0 ejtPKl">703</span>
 																	<div class="SectionWithHeader__TopRight-s1eyxltb-3 bZaEfL">
 																			
 																		</div>
@@ -1044,28 +1077,27 @@
 															
 	<div id="container"> 
 		<div id="example">
-			<!-- <img src="/brw/resources/images//new-ribbon.png" width="112" height="112" alt="New Ribbon" id="ribbon"> -->
 			<div id="slides">
 				<div class="slides_container">
-					<img src="/brw/resources/images/3-girls.jpg" width="570" height="270" alt="Slide 1">
-					<!-- <a href="http://www.flickr.com/photos/stephangeyer/3020487807/" title="Taxi | Flickr - Photo Sharing!" target="_blank"> -->
+					<c:forEach begin="0" step="1" items="${image}"  varStatus="status" var='img'>
+						<div class="ree" style="display:none;">${i}</div>
+						<img src="/brw/resources/images/drama/content/${img}" width="570" height="270" alt="Slide ${status.index+1}">
+					</c:forEach>
+					<%-- <c:forEach>
 					
-					<img src="/brw/resources/images/3-jacket.jpg" width="570" height="270" alt="Slide 2"></a>
 					
-					<!-- <a href="http://www.flickr.com/photos/childofwar/2984345060/" title="Happy Bokeh raining Day | Flickr - Photo Sharing!" target="_blank"> -->
-					<img src="/brw/resources/images/3-man.jpg" width="570" height="270" alt="Slide 3"></a>
+					<img src="/brw/resources/images/3-jacket.jpg" width="570" height="270" alt="Slide 2">
 					
-					<!-- <a href="http://www.flickr.com/photos/b-tal/117037943/" title="We Eat Light | Flickr - Photo Sharing!" target="_blank"> -->
-					<img src="/brw/resources/images//slide-4.jpg" width="570" height="270" alt="Slide 4"></a>
+					<img src="/brw/resources/images/3-man.jpg" width="570" height="270" alt="Slide 3">
 					
-					<!-- <a href="http://www.flickr.com/photos/bu7amd/3447416780/" title="“I must go down to the sea again, to the lonely sea and the sky; and all I ask is a tall ship and a star to steer her by.” | Flickr - Photo Sharing!" target="_blank"> -->
-					<img src="/brw/resources/images/slide-5.jpg" width="570" height="270" alt="Slide 5"></a>
+					<img src="/brw/resources/images//slide-4.jpg" width="570" height="270" alt="Slide 4">
 					
-					<!-- <a href="http://www.flickr.com/photos/streetpreacher/2078765853/" title="twelve.inch | Flickr - Photo Sharing!" target="_blank"> -->
-					<img src="/brw/resources/images//slide-6.jpg" width="570" height="270" alt="Slide 6"></a>
+					<img src="/brw/resources/images/slide-5.jpg" width="570" height="270" alt="Slide 5">
 					
-					<!-- <a href="http://www.flickr.com/photos/aftab/3152515428/" title="Save my love for loneliness | Flickr - Photo Sharing!" target="_blank"> -->
-					<img src="/brw/resources/images/slide-7.jpg" width="570" height="270" alt="Slide 7"></a>
+					<img src="/brw/resources/images//slide-6.jpg" width="570" height="270" alt="Slide 6">
+					
+					<img src="/brw/resources/images/slide-7.jpg" width="570" height="270" alt="Slide 7">
+					</c:forEach> --%>
 				</div>
 				
 				<a href="#" class="prev">
@@ -1086,7 +1118,7 @@
 																<header
 																	class="SectionWithHeader__Header-s1eyxltb-1 cuiACK">
 																	<h2 class="SectionWithHeader__Title-s1eyxltb-2 kwjefp">비슷한 장르</h2>
-																	<span class="TitleSuffixForNumber-l2d30g-0 ejtPKl">703</span>
+																	<span class="TitleSuffixForNumber-l2d30g-0 ejtPKl"><!-- 비슷한장르개수 --></span>
 																	<div class="SectionWithHeader__TopRight-s1eyxltb-3 bZaEfL">
 																			<div class="SectionWithViewMore__ViewMore-xtbl7q-0 bhbIbv">
 																				<a href="/brw/drama/mainSearch.br">더보기</a>
@@ -1111,7 +1143,7 @@
 			    </a>
 			  </div>
 		 </c:forEach>
-
+	
 														
 														
 														

@@ -1,5 +1,6 @@
 package believe.review.brw.drama;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -80,6 +81,18 @@ public class DramaController {
 		List<Map<String,Object>> comment = dramaService.dramaCommentByLike(map);//댓
 		List<Map<String,Object>> actor = dramaService.dramaActor(map); //출연배우
 		List<Map<String,Object>> detailgenre = dramaService.detailgenre(map);//비슷한장르
+		List<Map<String,Object>> gradeRatio = dramaService.gradeRatio(map);//별점비율
+		String[] image = map.get("DRAMA_CONTENT_IMAGE").toString().split(",");
+		for(String s :image) {
+			s += s.replace("\\p{Z}","");
+		}
+		int[] ratio = new int[11];
+		for(int i=0;i<gradeRatio.size();i++) {
+			ratio[i] = (int)(Double.parseDouble(gradeRatio.get(i).get("RATIO").toString())*2);
+			if(ratio[i]>100)
+				ratio[i] = 100;
+			System.out.println((int)(Double.parseDouble(gradeRatio.get(i).get("RATIO").toString())*2));
+		}
 		
 		if(session.getAttribute("ID")!=null) {//로그인했을때
 			map.put("ID", session.getAttribute("ID"));
@@ -119,6 +132,8 @@ public class DramaController {
 		mv.addObject("comment",comment);
 		mv.addObject("actor",actor);
 		mv.addObject("detailgenre",detailgenre);
+		mv.addObject("ratio",ratio);
+		mv.addObject("image",image);
 		mv.addObject("totalCount",totalCount);
 		
 	/*	mv.addObject("insertcomment",insertcomment);*/
@@ -131,10 +146,11 @@ public class DramaController {
 	public Map<String,Object> dramaDe(CommandMap commandMap) throws Exception {
 
 		Map<String,Object> mv = commandMap.getMap();
+		Map<String,Object> map = new HashMap<String,Object>();
 		/*보고싶어요*/
 		
 		if(mv.get("WISH")!=null) {
-			Map<String,Object> map = userService.userWishList(mv);
+			map = userService.userWishList(mv);
 			
 			if(map==null) {//위시리스트에 아무것도 없을때 
 				userService.insertWishList(mv);
@@ -164,7 +180,7 @@ public class DramaController {
 		
 		/*평점*/
 		if(mv.get("RATING")!=null) {
-			Map<String,Object> map = dramaService.existGrade(mv);
+			map = dramaService.existGrade(mv);
 			if(map==null) {//별점이 없을때
 				dramaService.addGrade(mv);
 			}else {//별점이 있을때
@@ -175,7 +191,7 @@ public class DramaController {
 		
 		//댓
 		if(mv.get("COM")!=null) { 
-			Map<String,Object> map = dramaService.myComment(mv);
+			map = dramaService.myComment(mv);
 			if(map==null) {
 				System.out.println("작성");
 				dramaService.writeDramaComment(mv);
@@ -198,7 +214,7 @@ public class DramaController {
 			System.out.println(mv.get("MCOM"));
 			dramaService.updateDramaComment(mv);
 			System.out.println("수정완료");
-			Map<String,Object> map = dramaService.myComment(mv);
+			map = dramaService.myComment(mv);
 			System.out.println(map.get("DC_CONTENT"));
 			
 			mv.put("myCom",map);

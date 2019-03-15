@@ -121,6 +121,7 @@ public class MainController {
 		public Map<String,Object> mainSearch2(CommandMap commandMap,HttpServletRequest request) throws Exception {
 			
 			String p = request.getParameter("currentPage");
+			System.out.println(p);
 			
 			if(p == null || p.trim().isEmpty() || p.equals("0")) {
 	            currentPage = 1;
