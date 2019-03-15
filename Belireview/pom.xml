@@ -15,7 +15,7 @@
 	</properties>
 	  
 	<dependencies> 
-		<!-- MyBatis -->
+		<!-- MyBatis --> 
 		<dependency>
 			<groupId>org.mybatis</groupId>
 			<artifactId>mybatis-spring</artifactId>

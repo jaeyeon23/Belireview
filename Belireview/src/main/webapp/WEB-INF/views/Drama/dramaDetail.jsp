@@ -9,8 +9,8 @@
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="">
+   	<link rel="stylesheet" href="/brw/resources/css/detail2.css">
    	<link rel="stylesheet" href="/brw/resources/css/detail3.css">
-   	
     <link rel="stylesheet" href="/brw/resources/css/detailgenre.css">
    	<%-- <script src="<c:url value='/resources/js/common.js'/>" charset="utf-8"></script>	 --%>
     <style>
@@ -46,9 +46,11 @@
 		var wi = "${wish}";
 		var ra = "" 
 		var initValue = "${initValue}";
+		var mcc = "${myComment}";
+		
 		 $(function(){
 			 if(wi!=""){//보고싶어요에있을때
-				$(".juRlmb").html("취소");
+				$(".juRlmb").html("보기싫어요");
 			 }
 			 if(grade != ""){//평가했을때
 			  	var rr = "r"+"${grade}";
@@ -60,7 +62,7 @@
 		 });  
 		 /* 로그인 유무 */
 		$(function(){ 
-			if(id==""||id==null){//비로그인
+			if(id==""){//비로그인
 				$(".gsSopE").click(function(){//보고싶어요
 					alert("로그인 해주세요.");
 					location.href="<c:url value='/member/loginForm.br' />"
@@ -70,30 +72,69 @@
 					location.href="<c:url value='/member/loginForm.br' />"
 				});
 			}else{//로그인
-				$(".IsPDs").css("display","block");
-				
+				if(mcc != ""){
+					$(".writeComment").css("display","none");
+					$(".existComment").css("display","block");
+				}else{
+					$(".writeComment").css("display","block");
+					$(".existComment").css("display","none");
+				}
 				$(".vv").click(function(){//보고싶어요
 					wish();
 					return;
 				});
 				$('.wc').click(function(){
-					alert('aa');
 					comment();
+				});
+				 $('.deleteComment').click(function(){
+					deleteComment();
+				}); 
+				 $('.mc').click(function(){
+					updateComment();
 				}); 
 			}
 		});
 		 /* 로그인 유무 */
 		
-		 
+		function deleteComment(){
+			 $.ajax({
+				 async:true,
+				 type:'POST',
+				 data:{ID:id,DELCOM:'DEL', DC_NO:"${myComment.DC_NO}",DRAMA_NO:<%=request.getParameter("DRAMA_NO")%>},
+				 url:"<c:url value='/drama/dramaDetail.br' />",
+				 success:function(result){
+					$(".writeComment").css("display","block");
+					$(".existComment").css("display","none");
+					
+				 }
+			 })
+			 
+		} 
+		function updateComment(){
+			$.ajax({
+				 async:true,
+				 type:'POST',
+				 data:{ID:id,MCOM:$('.com2').val(), DRAMA_NO:<%=request.getParameter("DRAMA_NO")%>},
+				 url:"<c:url value='/drama/dramaDetail.br' />",
+				 success:function(result){
+					$(".writeComment").css("display","none");
+					$(".existComment").css("display","block");
+					alert(result.myCom.DC_CONTENT);
+					$(".gLsCNn").html(result.myCom.DC_CONTENT);
+				 }
+			 })
+		} 
 		function comment(){
-			 alert('comment');
 			 $.ajax({
 				 async:true,
 				 type:'POST',
 				 data:{ID:id,COM:$('.com').val(), DRAMA_NO:<%=request.getParameter("DRAMA_NO")%>},
 				 url:"<c:url value='/drama/dramaDetail.br' />",
 				 success:function(result){
-					 alert('a');
+					$(".writeComment").css("display","none");
+					$(".existComment").css("display","block");
+					alert(result.myCom.DC_CONTENT);
+					$(".gLsCNn").html(result.myCom.DC_CONTENT);
 				 }
 			 })
 		}
@@ -127,13 +168,11 @@
 				data : {ID:id , RATING:rr , DRAMA_NO:<%=request.getParameter("DRAMA_NO")%>},
 				url:"<c:url value='/drama/dramaDetail.br' />",
 				success : function(result){
-					
 				}
 				/* $('.gZASBp > a.r1'); */
 			})
 		}
 		/* 별점 */
-		
 		
 		/* 이미지슬라이드 */
 		$(function(){
@@ -487,25 +526,28 @@
 										<div class="MaxWidthRow-s14yonsc-0 dCZZZZ">
 											<div class="MaxWidthCol-s1fpp771-0 fGpdkH">
 											<!-- 코멘트 작성 전 창 -->
-												<div class="ContentMyCommentSection__SectionBlock-mhuscg-0 IsPDs">
+												<div class="ContentMyCommentSection__SectionBlock-mhuscg-0 IsPDs writeComment">
 													<div class="RoundedCornerBlock-s17n38ib-0 gPZLbT">
-														<section class="ContentMyCommentSection__LeaveCommentSection-mhuscg-1 dxGvFB">
+														<section
+															class="ContentMyCommentSection__LeaveCommentSection-mhuscg-1 dxGvFB">
 															<div class="Grid-zydj2q-0 cspjno">
 																<div class="Row-s1apwm9x-0 lowZpE">
-																	<div class="ContentMyCommentSection__LeaveCommentBlock-mhuscg-2 bvmyee">
+																	<div
+																		class="ContentMyCommentSection__LeaveCommentBlock-mhuscg-2 bvmyee">
 																		<h3
-																			class="ContentMyCommentSection__Title-mhuscg-11 inwTWL">이 작품에 대한 ${map.ID} 님의 평가를 글로 남겨보세요.</h3>
-																		<div
-																			class="ContentMyCommentSection__ButtonBlock-mhuscg-12 kTSrnl">
-																			
-																			 <!-- modal 구동 버튼 (trigger) -->
-																			 <!-- 코멘트 작성창 -->
-																			<button type="button" class="ContentMyCommentSection__LeaveCommentButton-mhuscg-10 kYniqf MediumButton-lenhbs-0 kzufqJ Button-s48yp1i-0 guqtOb StylelessButton-phxvo7-0 gsSopE"
-																				data-toggle="modal"
-																				data-target="#myModal">코멘트 남기기</button>
-																		
+																			class="ContentMyCommentSection__Title-mhuscg-11 inwTWL">이
+																			작품에 대한 ${map.ID} 님의 평가를 글로 남겨보세요.</h3>
+																		<div class="ContentMyCommentSection__ButtonBlock-mhuscg-12 kTSrnl">
+																			<!-- modal 구동 버튼 (trigger) -->
+																			<!-- 코멘트 작성창 -->
+																			<button type="button"
+																				class="ContentMyCommentSection__LeaveCommentButton-mhuscg-10 kYniqf MediumButton-lenhbs-0 kzufqJ Button-s48yp1i-0 guqtOb StylelessButton-phxvo7-0 gsSopE"
+																				data-toggle="modal" data-target="#myModal1">코멘트
+																				남기기</button>
+
 																			<!-- Modal -->
-																			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+																			<div class="modal fade" id="myModal1" tabindex="-1"
+																				role="dialog" aria-labelledby="myModalLabel">
 																				<div class="modal-dialog" role="document">
 																					<div class="modal-content">
 																						<div class="modal-header">
@@ -513,83 +555,117 @@
 																								data-dismiss="modal" aria-label="Close">
 																								<span aria-hidden="true">&times;</span>
 																							</button>
-																							<h4 class="modal-title" id="myModalLabel" align="middle"><strong>${map.DRAMA_NAME}</strong></h4>
-																						
+																							<h4 class="modal-title" id="myModalLabel"
+																								align="middle">
+																								<strong>${map.DRAMA_NAME}</strong>
+																							</h4>
+
 																						</div>
 																						<div class="modal-body" align="center">
-																						<div class="row">
-																							<textarea style="resize: none;" class="com" name="comment" cols="70" rows="20" placeholder="이 작품에 대한 생각을 자유롭게 표현해주세요."></textarea></td>
-																							
-																						</div>
-																						</div>
-																						<div class="modal-footer">
-																						<button type="submit" class="btn btn-default wc" data-dismiss="modal">작성</button>
-																						
-																						</div>
-																				</div>
-																		</div>
-																	</div>
-																<%-- 	<!-- 코멘트 작성 완료시 뜨는 창 -->
-																				<div
-																					class="ContentMyCommentSection__SectionBlock-mhuscg-0 IsPDs">
-																					<div class="RoundedCornerBlock-s17n38ib-0 gPZLbT">
-																						<div class="Grid-zydj2q-0 cspjno">
-																							<div class="Row-s1apwm9x-0 lowZpE">
-																								<section
-																									class="ContentMyCommentSection__MyCommentSection-mhuscg-3 jAXTYm">
-																									<div
-																										class="ContentMyCommentSection__MyCommentBlock-mhuscg-6 fmWQqh">
-																										<div
-																											class="ContentMyCommentSection__MyProfilePhotoBlock-mhuscg-4 jKiAlO">
-																											<div
-																												class="ProfilePhoto__Self-s1v3isfu-1 fpMzxR RoundedImageBlock-k5m4n5-0 gUZYtN">
-																												<div
-																													class="ProfilePhoto__ProfilePhotoImage-s1v3isfu-0 jawsmT"></div>
-																												<div
-																													class="ProfilePhoto__DefaultImageContainer-s1v3isfu-2 kPGxuy">
-																													<img
-																														class="defaultImage__ProfileImg-s1kn91bx-1 iaxVtx"
-																														src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDQ4IDQ4Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgZmlsbD0iI0UwRTBFMCI+CiAgICAgICAgICAgIDxwYXRoIGQ9Ik0yNCAyMS4yNzhhOC41NyA4LjU3IDAgMCAxLTguNTcxLTguNTdBOC41NzEgOC41NzEgMCAxIDEgMjQgMjEuMjc3TTQzLjUxOSA0My44NjVjLjU2NCAwIDEuMDMzLS40NjggMS4wMDMtMS4wMzFDNDMuOTYzIDMyLjQyNCAzNC45ODkgMjQuMTUgMjQgMjQuMTVjLTEwLjk4OSAwLTE5Ljk2MyA4LjI3NC0yMC41MjIgMTguNjgzLS4wMy41NjMuNDM5IDEuMDMgMS4wMDMgMS4wM2gzOS4wMzh6Ii8+CiAgICAgICAgPC9nPgogICAgPC9nPgo8L3N2Zz4K"
-																														alt="김상협의 사진">
-																												</div>
-																											</div>
-																										</div>
-																										<div
-																											class="ContentMyCommentSection__MyComment-mhuscg-5 iBmFgp">
-																											<div
-																												class="TextTruncate__Self-wvv1uj-0 edeoAV">
-																												<div
-																													class="TextTruncate__Text-wvv1uj-1 gLsCNn"
-																													style="white-space: pre-line;">${ }</div>
-																											</div>
-																										</div>
-																										<ul
-																											class="ContentMyCommentSection__CommentUpdateButtons-mhuscg-7 UbRpK VisualUl-s1vzev56-0 hgAYVH">
-																											<li
-																												class="ContentMyCommentSection__CommentUpdateButtonListItem-mhuscg-8 rEOgj"><button
-																													class="ContentMyCommentSection__CommentUpdateButton-mhuscg-9 eSMTCV StylelessButton-phxvo7-0 gsSopE">
-																													<img
-																														src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOCIgaGVpZ2h0PSIxOCIgdmlld0JveD0iMCAwIDE4IDE4Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHBhdGggZmlsbD0iI0EwQTBBMCIgZD0iTTUuMjUgMTQuMjVoNy41di03LjVoMS41VjE1YS43NS43NSAwIDAgMS0uNzUuNzVoLTlhLjc1Ljc1IDAgMCAxLS43NS0uNzVWNi43NWgxLjV2Ny41ek0xMiA0LjVoMy43NVY2SDIuMjVWNC41SDZWM2EuNzUuNzUgMCAwIDEgLjc1LS43NWg0LjVBLjc1Ljc1IDAgMCAxIDEyIDN2MS41em0tMS41IDB2LS43NWgtM3YuNzVoM3pNNi43NSA2Ljc1aDEuNXY2Ljc1aC0xLjVWNi43NXptMyAwaDEuNXY2Ljc1aC0xLjVWNi43NXoiLz4KICAgIDwvZz4KPC9zdmc+Cg=="
-																														alt="delete comment">삭제
-																												</button></li>
-																											<li
-																												class="ContentMyCommentSection__CommentUpdateButtonListItem-mhuscg-8 rEOgj"><button
-																													class="ContentMyCommentSection__CommentUpdateButton-mhuscg-9 eSMTCV StylelessButton-phxvo7-0 gsSopE">
-																													<img
-																														src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOCIgaGVpZ2h0PSIxOCIgdmlld0JveD0iMCAwIDE4IDE4Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHBhdGggZmlsbD0iI0EwQTBBMCIgZD0iTTIuMTggMTUuMzlsLjcwMy0zLjk4IDMuNzEzIDMuNzEyLTMuOTgxLjcwMmEuMzc0LjM3NCAwIDAgMS0uNDM0LS40MzR6bTEuNDk4LTQuNzc2bDYuMzY0LTYuMzY0IDMuNzEzIDMuNzEyLTYuMzY0IDYuMzY0LTMuNzEzLTMuNzEyek0xNS42MDcgNS4wNGEuNzUuNzUgMCAwIDEgMCAxLjA2bC0xLjA2IDEuMDYxLTMuNzEzLTMuNzEyIDEuMDYtMS4wNmEuNzUuNzUgMCAwIDEgMS4wNiAwbDIuNjUzIDIuNjUxeiIvPgogICAgPC9nPgo8L3N2Zz4K"
-																														alt="edit comment">수정
-																												</button></li>
-																										</ul>
-																									</div>
-																								</section>
+																							<div class="row">
+																								<textarea style="resize: none;" class="com"
+																									name="comment" cols="70" rows="20"
+																									placeholder="이 작품에 대한 생각을 자유롭게 표현해주세요."></textarea>
 																							</div>
 																						</div>
+																						<div class="modal-footer">
+																							<button type="submit" class="btn btn-default wc"
+																								data-dismiss="modal">작성</button>
+
+																						</div>
 																					</div>
-																				</div> --%>
+																				</div>
+																			</div>
 																		</div>
+																	</div>
+																</div>
+															</div>
 														</section>
 													</div>
 												</div>
+												<!-- 코멘트 작성 완료시 뜨는 창 -->
+												<div class="ContentMyCommentSection__SectionBlock-mhuscg-0 IsPDs existComment">
+													<div class="RoundedCornerBlock-s17n38ib-0 gPZLbT">
+														<div class="Grid-zydj2q-0 cspjno">
+															<div class="Row-s1apwm9x-0 c1">
+																<section
+																	class="ContentMyCommentSection__MyCommentSection-mhuscg-3 jAXTYm">
+																	<div
+																		class="ContentMyCommentSection__MyCommentBlock-mhuscg-6 fmWQqh">
+																		<div
+																			class="ContentMyCommentSection__MyProfilePhotoBlock-mhuscg-4 jKiAlO">
+																			<div
+																				class="ProfilePhoto__Self-s1v3isfu-1 fpMzxR RoundedImageBlock-k5m4n5-0 gUZYtN">
+																				<div
+																					class="ProfilePhoto__ProfilePhotoImage-s1v3isfu-0 jawsmT"></div>
+																				<div
+																					class="ProfilePhoto__DefaultImageContainer-s1v3isfu-2 kPGxuy">
+																					<img
+																						class="defaultImage__ProfileImg-s1kn91bx-1 iaxVtx"
+																						src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDQ4IDQ4Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgZmlsbD0iI0UwRTBFMCI+CiAgICAgICAgICAgIDxwYXRoIGQ9Ik0yNCAyMS4yNzhhOC41NyA4LjU3IDAgMCAxLTguNTcxLTguNTdBOC41NzEgOC41NzEgMCAxIDEgMjQgMjEuMjc3TTQzLjUxOSA0My44NjVjLjU2NCAwIDEuMDMzLS40NjggMS4wMDMtMS4wMzFDNDMuOTYzIDMyLjQyNCAzNC45ODkgMjQuMTUgMjQgMjQuMTVjLTEwLjk4OSAwLTE5Ljk2MyA4LjI3NC0yMC41MjIgMTguNjgzLS4wMy41NjMuNDM5IDEuMDMgMS4wMDMgMS4wM2gzOS4wMzh6Ii8+CiAgICAgICAgPC9nPgogICAgPC9nPgo8L3N2Zz4K" >
+																				</div>
+																			</div>
+																		</div>
+																		<div
+																			class="ContentMyCommentSection__MyComment-mhuscg-5 iBmFgp">
+																			<div class="TextTruncate__Self-wvv1uj-0 edeoAV">
+																				<div class="TextTruncate__Text-wvv1uj-1 gLsCNn"
+																					style="white-space: pre-line;">${myComment.DC_CONTENT}</div><!-- 댓글내용 -->
+																			</div>
+																		</div>
+																		<ul
+																			class="ContentMyCommentSection__CommentUpdateButtons-mhuscg-7 UbRpK VisualUl-s1vzev56-0 hgAYVH">
+																			<li
+																				class="ContentMyCommentSection__CommentUpdateButtonListItem-mhuscg-8 rEOgj"><button
+																					class="ContentMyCommentSection__CommentUpdateButton-mhuscg-9 eSMTCV StylelessButton-phxvo7-0 gsSopE deleteComment">
+																					<img
+																						src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOCIgaGVpZ2h0PSIxOCIgdmlld0JveD0iMCAwIDE4IDE4Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHBhdGggZmlsbD0iI0EwQTBBMCIgZD0iTTUuMjUgMTQuMjVoNy41di03LjVoMS41VjE1YS43NS43NSAwIDAgMS0uNzUuNzVoLTlhLjc1Ljc1IDAgMCAxLS43NS0uNzVWNi43NWgxLjV2Ny41ek0xMiA0LjVoMy43NVY2SDIuMjVWNC41SDZWM2EuNzUuNzUgMCAwIDEgLjc1LS43NWg0LjVBLjc1Ljc1IDAgMCAxIDEyIDN2MS41em0tMS41IDB2LS43NWgtM3YuNzVoM3pNNi43NSA2Ljc1aDEuNXY2Ljc1aC0xLjVWNi43NXptMyAwaDEuNXY2Ljc1aC0xLjVWNi43NXoiLz4KICAgIDwvZz4KPC9zdmc+Cg=="
+																						alt="delete comment">삭제
+																				</button></li>
+																			<li
+																				class="ContentMyCommentSection__CommentUpdateButtonListItem-mhuscg-8 rEOgj"><button data-toggle="modal" data-target="#myModal2" 
+																					class="ContentMyCommentSection__CommentUpdateButton-mhuscg-9 eSMTCV StylelessButton-phxvo7-0 gsSopE">
+																					<img
+																						src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOCIgaGVpZ2h0PSIxOCIgdmlld0JveD0iMCAwIDE4IDE4Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHBhdGggZmlsbD0iI0EwQTBBMCIgZD0iTTIuMTggMTUuMzlsLjcwMy0zLjk4IDMuNzEzIDMuNzEyLTMuOTgxLjcwMmEuMzc0LjM3NCAwIDAgMS0uNDM0LS40MzR6bTEuNDk4LTQuNzc2bDYuMzY0LTYuMzY0IDMuNzEzIDMuNzEyLTYuMzY0IDYuMzY0LTMuNzEzLTMuNzEyek0xNS42MDcgNS4wNGEuNzUuNzUgMCAwIDEgMCAxLjA2bC0xLjA2IDEuMDYxLTMuNzEzLTMuNzEyIDEuMDYtMS4wNmEuNzUuNzUgMCAwIDEgMS4wNiAwbDIuNjUzIDIuNjUxeiIvPgogICAgPC9nPgo8L3N2Zz4K"
+																						alt="edit comment">수정
+																				</button></li>
+																		</ul>
+																			<!-- Modal -->
+																			<div class="modal fade" id="myModal2" tabindex="-1"
+																				role="dialog" aria-labelledby="myModalLabel">
+																				<div class="modal-dialog" role="document">
+																					<div class="modal-content">
+																						<div class="modal-header">
+																							<button type="button" class="close"
+																								data-dismiss="modal" aria-label="Close">
+																								<span aria-hidden="true">&times;</span>
+																							</button>
+																							<h4 class="modal-title" id="myModalLabel"
+																								align="middle">
+																								<strong>${map.DRAMA_NAME}</strong>
+																							</h4>
+
+																						</div>
+																						<div class="modal-body" align="center">
+																							<div class="row">
+																								<textarea style="resize: none;" class="com2" name="comment" cols="70" rows="20" ></textarea>
+																							</div>
+																						</div>
+																						<div class="modal-footer">
+																							<button type="submit" class="btn btn-default mc"
+																								data-dismiss="modal">작성</button>
+
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																	</div>
+																</section>
+															</div>
+														</div>
+													</div>
+												</div>
+												<!-- 코멘트가 있을때  -->
 												<div
 													class="ContentPage__ContentSectionsBlock-se3skp-7 cllZaN">
 													<div class="RoundedCornerBlock-s17n38ib-0 gpSJNR">
@@ -613,8 +689,7 @@
 																						class="ProfilePhoto__DefaultImageContainer-s1v3isfu-2 kPGxuy">
 																						<img
 																							class="defaultImage__ProfileImg-s1kn91bx-1 iaxVtx"
-																							src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDQ4IDQ4Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgZmlsbD0iI0UwRTBFMCI+CiAgICAgICAgICAgIDxwYXRoIGQ9Ik0yNCAyMS4yNzhhOC41NyA4LjU3IDAgMCAxLTguNTcxLTguNTdBOC41NzEgOC41NzEgMCAxIDEgMjQgMjEuMjc3TTQzLjUxOSA0My44NjVjLjU2NCAwIDEuMDMzLS40NjggMS4wMDMtMS4wMzFDNDMuOTYzIDMyLjQyNCAzNC45ODkgMjQuMTUgMjQgMjQuMTVjLTEwLjk4OSAwLTE5Ljk2MyA4LjI3NC0yMC41MjIgMTguNjgzLS4wMy41NjMuNDM5IDEuMDMgMS4wMDMgMS4wM2gzOS4wMzh6Ii8+CiAgICAgICAgPC9nPgogICAgPC9nPgo8L3N2Zz4K"
-																							alt="김상협의 사진">
+																							src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDQ4IDQ4Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgZmlsbD0iI0UwRTBFMCI+CiAgICAgICAgICAgIDxwYXRoIGQ9Ik0yNCAyMS4yNzhhOC41NyA4LjU3IDAgMCAxLTguNTcxLTguNTdBOC41NzEgOC41NzEgMCAxIDEgMjQgMjEuMjc3TTQzLjUxOSA0My44NjVjLjU2NCAwIDEuMDMzLS40NjggMS4wMDMtMS4wMzFDNDMuOTYzIDMyLjQyNCAzNC45ODkgMjQuMTUgMjQgMjQuMTVjLTEwLjk4OSAwLTE5Ljk2MyA4LjI3NC0yMC41MjIgMTguNjgzLS4wMy41NjMuNDM5IDEuMDMgMS4wMDMgMS4wM2gzOS4wMzh6Ii8+CiAgICAgICAgPC9nPgogICAgPC9nPgo8L3N2Zz4K">
 																					</div>
 																				</div>
 																			</div>
@@ -675,10 +750,6 @@
 																				· ${map.DRAMA_CHANNEL} · ${map.DRAMA_GENRE}</span><br>
 																			<span
 																				class="ContentOverviewSection__OverviewMeta-s1yclw10-2 bvwFIW">${map.DRAMA_EPISODE}</span>
-																		</div>
-																		<div class="TextTruncate__Self-wvv1uj-0 bzjOJW">
-																			<div class="TextTruncate__Text-wvv1uj-1 gLsCNn"
-																				style="white-space: pre-line;">${map.DRAMA_CONTENT}</div>
 																		</div>
 																	</article>
 																	<hr

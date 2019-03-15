@@ -48,7 +48,7 @@ public class DramaDAO extends AbstractDAO{
 		insert("drama.addGrade", map);
 	}
 	public void updateGrade(Map<String, Object> map) throws Exception{
-		delete("drama.updateGrade", map);
+		update("drama.updateGrade", map);
 	}
 	public void writeDramaComment(Map<String, Object> map) throws Exception{
 		insert("drama_comment.writeDramaComment", map);
@@ -57,8 +57,14 @@ public class DramaDAO extends AbstractDAO{
 	public Map<String, Object> myComment(Map<String, Object> map) throws Exception{
 		return(Map<String,Object>)selectOne("drama_comment.myComment",map);
 	}
+	public void deleteComment(Map<String, Object> map) throws Exception{
+		delete("drama_comment.deleteComment", map);
+	}
 	public void dramaCommentLike(Map<String, Object> map) throws Exception {
 		update("drama_comment.dramaCommentLike", map);
+	}
+	public void updateDramaComment(Map<String, Object> map) throws Exception {
+		update("drama_comment.updateDramaComment", map);
 	}
 	
 	/*@SuppressWarnings("unchecked")
