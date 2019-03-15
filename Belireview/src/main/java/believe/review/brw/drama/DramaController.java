@@ -71,7 +71,7 @@ public class DramaController {
 
 	}
 
-	@RequestMapping(value="dramaDetail.br", method = RequestMethod.GET)
+	@RequestMapping(value="dramaDetail.br")
 	public ModelAndView dramaDetail(CommandMap commandMap, HttpServletRequest request) throws Exception {
 
 		ModelAndView mv = new ModelAndView("dramaDetail");
