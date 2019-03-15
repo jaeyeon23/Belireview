@@ -51,7 +51,7 @@
 							'<div class="SearchResultsSection__TopResultContentType-s1qazrkm-3 eeOgLY">${result.DATE}</div>'+
 						'</div></a></li>'
 				})
-			$(".mm").html(str);		
+			$(".mm").innerHTML=str;		
 			}
 		})
 	}
