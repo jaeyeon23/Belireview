@@ -147,47 +147,6 @@ function commentlike(){
 		</div>
 	</div>
 
-	<script>
-        window.ga=function(){ga.q.push(arguments)};ga.q=[];ga.l=+new Date;
-        ga("create","UA-27006241-7","auto");
-      </script>
 
-
-	<script src="https://browser.sentry-cdn.com/4.6.4/bundle.min.js"
-		crossorigin="anonymous"></script>
-
-
-
-	<script
-		src="https://d2rlq84xifqisi.cloudfront.net/javascripts/web.9f7fa479dc526cbedf18.js"
-		crossorigin="anonymous"></script>
-
-
-	<script src="https://www.google-analytics.com/analytics.js" async=""
-		defer=""></script>
-
-
-	<script>
-        if ('serviceWorker' in navigator) {
-          window.addEventListener('load', function() {
-            navigator.serviceWorker.register('https://watcha.com/sw.js');
-          });
-        }
-      </script>
-
-	<div id="fb-root" class=" fb_reset">
-		<div
-			style="position: absolute; top: -10000px; width: 0px; height: 0px;">
-			<div></div>
-			<div>
-				<iframe name="fb_xdm_frame_https" frameborder="0"
-					allowtransparency="true" allowfullscreen="true" scrolling="no"
-					allow="encrypted-media" id="fb_xdm_frame_https" aria-hidden="true"
-					title="Facebook Cross Domain Communication Frame" tabindex="-1"
-					src="https://staticxx.facebook.com/connect/xd_arbiter/r/vy-MhgbfL4v.js?version=44#channel=f2994a59506ece4&amp;origin=https%3A%2F%2Fwatcha.com"
-					style="border: none;"></iframe>
-			</div>
-		</div>
-	</div>
 </body>
 </html>
