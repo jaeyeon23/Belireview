@@ -37,6 +37,8 @@ public interface DramaService {
 	
 	void updateDramaComment(Map<String, Object> map) throws Exception;
 	
+	public List<Map<String,Object>> gradeRatio(Map<String, Object> map) throws Exception;
+	
 	/*Map<String,Object> insertdramaComment(Map<String,Object> map) throws Exception;*/
 
 }

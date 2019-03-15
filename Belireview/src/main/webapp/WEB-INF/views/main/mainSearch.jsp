@@ -7,10 +7,11 @@
 <head>
 <meta charset="utf-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="/brw/resources/css/mainsearch3.css">
+<link rel="stylesheet" href="/brw/resources/css/mainsearch4.css">
 <script type="text/javascript">
 	var currentPage = 1;
 	var searchText = "${request}";
+	/* 메인검색 페이징 및 넘기기 */
 	$(function(){
 		$(".mainNext").click(function(){
 			currentPage += 1;
@@ -30,7 +31,7 @@
 			url:"<c:url value='/mainSearch2.br'/>",
 			
 			success:function(result){
-				$(".mm").html(result.searchMain);		
+				$(".mainSearch").html(result.searchMain);		
 			}
 		})
 	}
@@ -42,7 +43,118 @@
 			url:"<c:url value='/mainSearch2.br'/>",
 			
 			success:function(result){
-				$(".mm").html(result.searchMain);		
+				$(".mainSearch").html(result.searchMain);		
+			}
+		})
+	}
+	/* 검색영화 페이징 및 넘기기 */
+	
+	$(function(){
+		$(".movieNext").click(function(){
+			currentPage += 1;
+			movieNext(currentPage);
+		})
+		$(".moviePrev").click(function(){
+			currentPage = currentPage -1 < 1 ? 1:currentPage-1;
+			moviePrev(currentPage);
+		})	
+	})	
+	
+	function movieNext(currentPage){
+		$.ajax({
+			async:true,
+			type:'POST',
+			data:{currentPage:currentPage, searchText:searchText, type:1},
+			url:"<c:url value='/mdaSearch.br'/>",
+			
+			success:function(result){
+				$(".movieSearch").html(result.mdaSearch);		
+			}
+		})
+	}
+	function moviePrev(currentPage){
+		$.ajax({
+			async:true,
+			type:'POST',
+			data:{currentPage:currentPage, searchText:searchText, type:1},
+			url:"<c:url value='/mdaSearch.br'/>",
+			
+			success:function(result){
+				$(".movieSearch").html(result.mdaSearch);		
+			}
+		})
+	}
+	
+	/* 검색드라마 페이징 및 넘기기 */
+	$(function(){
+		$(".dramaNext").click(function(){
+			currentPage += 1;
+			dramaNext(currentPage);
+		})
+		$(".dramaPrev").click(function(){
+			currentPage = currentPage -1 < 1 ? 1:currentPage-1;
+			dramaPrev(currentPage);
+		})	
+	})	
+	
+	function dramaNext(currentPage){
+		$.ajax({
+			async:true,
+			type:'POST',
+			data:{currentPage:currentPage, searchText:searchText,type:2},
+			url:"<c:url value='/mdaSearch.br'/>",
+			
+			success:function(result){
+				$(".dramaSearch").html(result.mdaSearch);		
+			}
+		})
+	}
+	function dramaPrev(currentPage){
+		$.ajax({
+			async:true,
+			type:'POST',
+			data:{currentPage:currentPage, searchText:searchText,type:2},
+			url:"<c:url value='/mdaSearch.br'/>",
+			
+			success:function(result){
+				$(".dramaSearch").html(result.mdaSearch);		
+			}
+		})
+	}
+	
+	/* 검색광고 페이징 및 넘기기 */
+	$(function(){
+		$(".adNext").click(function(){
+			currentPage += 1;
+			adeNext(currentPage);
+		})
+		$(".adPrev").click(function(){
+			currentPage = currentPage -1 < 1 ? 1:currentPage-1;
+			adPrev(currentPage);
+		})	
+	})	
+	
+	function adNext(currentPage){
+		$.ajax({
+			async:true,
+			type:'POST',
+			data:{currentPage:currentPage, searchText:searchText,type:3},
+			url:"<c:url value='/mdaSearch.br'/>",
+			
+			success:function(result){
+				$(".adSearch").html(result.mdaSearch);		
+			}
+		})
+	}
+	function adPrev(currentPage){
+		$.ajax({
+			async:true,
+			type:'POST',
+			data:{currentPage:currentPage, searchText:searchText,type:3},
+			url:"<c:url value='/mdaSearch.br'/>",
+			
+			success:function(result){
+				$(".adSearch").html(result.mdaSearch);		
 			}
 		})
 	}
@@ -73,18 +185,18 @@
 										style="transform: translateX(0px);">
 										<div class="Grid-zydj2q-0 cspjno">
 											<div class="Row-s1apwm9x-0 lowZpE">
-												<ul class="HorizontalUlWithContentPosterList__StyledHorizontalUlWithContentPosterList-rp5ukn-0 kVCLyu HorizontalUl__StyledHorizontalUl-s1lfz4bc-0 fbzjBz VisualUl-s1vzev56-0 hgAYVH mm">
+												<ul class="HorizontalUlWithContentPosterList__StyledHorizontalUlWithContentPosterList-rp5ukn-0 kVCLyu HorizontalUl__StyledHorizontalUl-s1lfz4bc-0 fbzjBz VisualUl-s1vzev56-0 hgAYVH mainSearch">
 													<c:forEach items="${searchMain}" var="result">
 													<li class="ContentListItemWithPoster__Self-swai1z-0 hKRvvO">
 													<c:choose>
 														<c:when test="${result.TYPE=='영화'}">
-														<a lng="ko-KR" title="${request}" href="/brw/movie/movieDetail.br?MOVIE_NO=${result.NO}"></a>
+														<a lng="ko-KR" title="${request}" href="/brw/movie/movieDetail.br?MOVIE_NO=${result.NO}">
 														</c:when>
 														<c:when test="${result.TYPE=='TV'}">
-														<a lng="ko-KR" title="${request}" href="/brw/drama/dramaDetail.br?DRAMA_NO=${result.NO}"></a>
+														<a lng="ko-KR" title="${request}" href="/brw/drama/dramaDetail.br?DRAMA_NO=${result.NO}">
 														</c:when>
 														<c:otherwise>
-														<a lng="ko-KR" title="${request}" href="/brw/ad/adDetail.br?AD_NO=${result.NO}"></a>
+														<a lng="ko-KR" title="${request}" href="/brw/ad/adDetail.br?AD_NO=${result.NO}">
 														</c:otherwise>
 													</c:choose>
 														<div class="ContentListItemWithPoster__ContentPosterBlock-swai1z-1 kxDIaJ">
@@ -141,13 +253,12 @@
 										class="PrimitiveHorizontalScrollable__ScrollingInner-hy4esm-2 iGzmWK">
 										<div class="Grid-zydj2q-0 cspjno">
 											<div class="Row-s1apwm9x-0 lowZpE">
-												<ul	class="SearchResultsSection__ResultStackableUl-s1qazrkm-4 gdjZVu StackableUl__StyledStackableUl-gafxvv-1 LNYRd VisualUl-s1vzev56-0 hgAYVH">
+												<ul	class="SearchResultsSection__ResultStackableUl-s1qazrkm-4 gdjZVu StackableUl__StyledStackableUl-gafxvv-1 LNYRd VisualUl-s1vzev56-0 hgAYVH movieSearch">
 													<c:forEach items="${searchMovie}" var="movie">
 													<li class="StackableListItem-s18nuw36-0 cIJjio">
 													<a lng="ko-KR" class="InnerPartOfListWithImage__LinkSelf-s11a1hqv-1 gmbtJD" title="${request}" href="/brw/movie/movieDetail.br?MOVIE_NO=${movie.MOVIE_NO}">
 														<div class="InnerPartOfListWithImage__ImageBlock-s11a1hqv-3 kXgAWr">
 																<div class="LazyLoadingBackground-cgbyi4-0 cioRyq LazyLoadingBackgroundw__Self-s1stfhov-0 jXCeuY" alt="${request}">
-																	<!-- <span class="LazyLoadingBackground__BackgroundImage-cgbyi4-1 jhdCRo" data-background-image-id="27"> -->
 																	<span class="LazyLoadingBackgroundw__BackgroundImage-s1stfhov-1 mPWPS" data-background-image-id="38">
 																		<img class="LazyLoadingBackground__StylingMerged-cgbyi4-2 kDLFDU LazyLoadingBackground__Self-cgbyi4-0 dxPvni" src="/brw/resources/images/3-girls.jpg"></span>
 																</div>
@@ -158,7 +269,7 @@
 																	<div
 																		class="SearchResultItemForContent__ResultTitle-s1phcxqf-1 gGTmOM">${movie.MOVIE_NAME}</div>
 																	<div
-																		class="SearchResultItemForContent__ResultExtraInfo-s1phcxqf-0 crwUoZ">[${movie.MOVIE_DATE}]・ [${movie.MOVIE_GENRE}]</div>
+																		class="SearchResultItemForContent__ResultExtraInfo-s1phcxqf-0 crwUoZ">${movie.MOVIE_DATE}・ ${movie.MOVIE_GENRE}</div>
 																</div>
 																<div></div>
 															</div></a></li>
@@ -170,11 +281,11 @@
 									</div>
 								</div>
 								<div class="arrow_button PrimitiveHorizontalScrollable__ArrowButtonBlock-hy4esm-3 blMCgo" direction="left">
-									<div class="PrimitiveHorizontalScrollable__BackwardButton-hy4esm-5 bWflCD"></div>
+									<div class="PrimitiveHorizontalScrollable__BackwardButton-hy4esm-5 bWflCD moviePrev"></div>
 								</div>
 								
 								<div class="arrow_button PrimitiveHorizontalScrollable__ArrowButtonBlock-hy4esm-3 eweFwK" direction="right">
-									<div class="PrimitiveHorizontalScrollable__ForwardButton-hy4esm-4 cfipNh"></div>
+									<div class="PrimitiveHorizontalScrollable__ForwardButton-hy4esm-4 cfipNh movieNext"></div>
 								</div>
 							</div>
 							<hr	class="Divider__StylingMergedDivider-s11un6bw-1 kwWkAv Divider-s11un6bw-0 cVxSEp">
@@ -205,7 +316,7 @@
 										<div class="Grid-zydj2q-0 cspjno">
 											<div class="Row-s1apwm9x-0 lowZpE">
 												<ul
-													class="SearchResultsSection__ResultStackableUl-s1qazrkm-4 gdjZVu StackableUl__StyledStackableUl-gafxvv-1 LNYRd VisualUl-s1vzev56-0 hgAYVH">
+													class="SearchResultsSection__ResultStackableUl-s1qazrkm-4 gdjZVu StackableUl__StyledStackableUl-gafxvv-1 LNYRd VisualUl-s1vzev56-0 hgAYVH dramaSearch">
 													<c:forEach items="${searchDrama}" var="drama">
 													<li class="StackableListItem-s18nuw36-0 cIJjio"><a
 														lng="ko-KR"
@@ -239,11 +350,11 @@
 									</div>
 								</div>
 								<div class="arrow_button PrimitiveHorizontalScrollable__ArrowButtonBlock-hy4esm-3 blMCgo" direction="left">
-									<div class="PrimitiveHorizontalScrollable__BackwardButton-hy4esm-5 bWflCD"></div>
+									<div class="PrimitiveHorizontalScrollable__BackwardButton-hy4esm-5 bWflCD dramaPrev"></div>
 								</div>
 								
 								<div class="arrow_button PrimitiveHorizontalScrollable__ArrowButtonBlock-hy4esm-3 eweFwK" direction="right">
-									<div class="PrimitiveHorizontalScrollable__ForwardButton-hy4esm-4 cfipNh"></div>
+									<div class="PrimitiveHorizontalScrollable__ForwardButton-hy4esm-4 cfipNh dramaNext"></div>
 								</div>
 							</div>
 							<hr	class="Divider__StylingMergedDivider-s11un6bw-1 kwWkAv Divider-s11un6bw-0 cVxSEp">
@@ -273,7 +384,7 @@
 										<div class="Grid-zydj2q-0 cspjno">
 											<div class="Row-s1apwm9x-0 lowZpE">
 												<ul
-													class="SearchResultsSection__ResultStackableUl-s1qazrkm-4 gdjZVu StackableUl__StyledStackableUl-gafxvv-1 LNYRd VisualUl-s1vzev56-0 hgAYVH">
+													class="SearchResultsSection__ResultStackableUl-s1qazrkm-4 gdjZVu StackableUl__StyledStackableUl-gafxvv-1 LNYRd VisualUl-s1vzev56-0 hgAYVH adSearch">
 													<c:forEach items="${searchAd}" var="ad">
 													<li class="StackableListItem-s18nuw36-0 cIJjio"><a
 														lng="ko-KR"
@@ -307,11 +418,11 @@
 									</div>
 								</div>
 								<div class="arrow_button PrimitiveHorizontalScrollable__ArrowButtonBlock-hy4esm-3 blMCgo" direction="left">
-									<div class="PrimitiveHorizontalScrollable__BackwardButton-hy4esm-5 bWflCD"></div>
+									<div class="PrimitiveHorizontalScrollable__BackwardButton-hy4esm-5 bWflCD adPrev"></div>
 								</div>
 								
 								<div class="arrow_button PrimitiveHorizontalScrollable__ArrowButtonBlock-hy4esm-3 eweFwK" direction="right">
-									<div class="PrimitiveHorizontalScrollable__ForwardButton-hy4esm-4 cfipNh"></div>
+									<div class="PrimitiveHorizontalScrollable__ForwardButton-hy4esm-4 cfipNh adNext"></div>
 								</div>
 							</div>
 							<hr	class="Divider__StylingMergedDivider-s11un6bw-1 kwWkAv Divider-s11un6bw-0 cVxSEp">

@@ -144,5 +144,25 @@
 	<delete>
 		DELETE DRAMA WHERE DRAMA_NO=#{DRAMA_NO}
 	</delete> -->
+	
+	<select id="gradeRatio" parameterType="hashmap" resultType="hashmap">
+		  with t as(		
+		  		SELECT '0.5' GRADE, count(*) A FROM drama_like where DL_GRADE=0.5 and drama_like_no=#{DRAMA_NO} UNION ALL
+		        SELECT '1' GRADE, count(*) A FROM drama_like where DL_GRADE=1 and drama_like_no=#{DRAMA_NO} UNION ALL
+		        SELECT '1.5' GRADE, count(*) A FROM drama_like where DL_GRADE=1.5 and drama_like_no=#{DRAMA_NO} UNION ALL
+		        SELECT '2' GRADE, count(*) A FROM drama_like where DL_GRADE=2 and drama_like_no=#{DRAMA_NO} UNION ALL
+		        SELECT '2.5' GRADE, count(*) A FROM drama_like where DL_GRADE=2.5 and drama_like_no=#{DRAMA_NO} UNION ALL
+		        SELECT '3' GRADE, count(*) A FROM drama_like where DL_GRADE=3 and drama_like_no=#{DRAMA_NO} UNION ALL
+		        SELECT '3.5' GRADE, count(*) A FROM drama_like where DL_GRADE=3.5 and drama_like_no=#{DRAMA_NO} UNION ALL
+		        SELECT '4' GRADE, count(*) A FROM drama_like where DL_GRADE=4 and drama_like_no=#{DRAMA_NO} UNION ALL
+		        SELECT '4.5' GRADE, count(*) A FROM drama_like where DL_GRADE=4.5 and drama_like_no=#{DRAMA_NO} UNION ALL
+		        SELECT '5' GRADE, count(*) A FROM drama_like where DL_GRADE=5 and drama_like_no=#{DRAMA_NO}
+		  )
+		  select 
+		    decode(grouping(GRADE),1,'TOTAL',GRADE) as GRADE,
+		    TO_CHAR(SUM(A) / SUM(CASE WHEN GROUPING(GRADE) = 0 THEN SUM(A) ELSE 0 END) OVER() * 100, '990.00') AS RATIO
+		    FROM t
+		GROUP BY ROLLUP(GRADE)
+	</select>
 
 </mapper>

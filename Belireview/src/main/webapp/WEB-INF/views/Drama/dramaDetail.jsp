@@ -47,6 +47,37 @@
 		var ra = "" 
 		var initValue = "${initValue}";
 		var mcc = "${myComment}";
+		$(function(){
+			var ee = $('.ree0').html()+"px";
+			$('.re1').css("height",ee);
+			
+			ee = $('.ree1').html()+"px";
+			$('.re2').css("height",ee);
+			
+			ee = $('.ree2').html()+"px";
+			$('.re3').css("height",ee);
+			
+			ee = $('.ree3').html()+"px";
+			$('.re4').css("height",ee);
+			
+			ee = $('.ree4').html()+"px";
+			$('.re5').css("height",ee);
+			
+			ee = $('.ree5').html()+"px";
+			$('.re6').css("height",ee);
+			
+			ee = $('.ree6').html()+"px";
+			$('.re7').css("height",ee);
+			
+			ee = $('.ree7').html()+"px";
+			$('.re8').css("height",ee);
+			
+			ee = $('.ree8').html()+"px";
+			$('.re9').css("height",ee);
+			
+			ee = $('.ree9').html()+"px";
+			$('.re10').css("height",ee);
+		});
 		
 		 $(function(){
 			 if(wi!=""){//보고싶어요에있을때
@@ -409,6 +440,9 @@
 	<link rel="stylesheet" href="/brw/resources/css/global2.css">
 </head>
 <body> 
+	<c:forEach begin="0" end="9" step="1" items="${ratio}"  varStatus="status" var='i'>
+			<div class="ree${status.index}" style="display:none;" >${i}</div>
+		</c:forEach>
 	<div id="root">
 		<div class="App__Self-m1g4ja-0 iBpXSE">
 			<div class="NavTabManager__NavContainer-dbid0l-0 hhxQev">
@@ -423,7 +457,7 @@
 											<div class="ContentJumbotron__LeftBackground-yf8npk-6 cGzUVh"
 												color="#364052"></div>
 											<div class="ContentJumbotron__BlurPoster-yf8npk-4 WdAlN">
-												<img class="WdAlN" src="/brw/resources/images/3-girls.jpg"><!-- 이미지 -->
+												<img class="WdAlN" src="/brw/resources/images/drama/main/${map.DRAMA_MAIN_IMAGE}"><!-- 이미지 -->
 												<div class="ContentJumbotron__LeftGradient-yf8npk-8 aCymu"
 													color="#364052"></div>
 												<div class="ContentJumbotron__RightGradient-yf8npk-9 gShorF"
@@ -439,9 +473,7 @@
 													<div
 														class="ContentJumbotron__PosterWithRankingInfoBlock-yf8npk-10 cIaqHU">
 														<div class="LazyLoadingImg__Self-s1jb87ps-0 cjQTNJ">
-															<img class="LazyLoadingImg__Self-s1jb87ps-0 cjQTNJ"
-																alt="사바하의 포스터" data-image-id="100"
-																src="https://dhgywazgeek0d.cloudfront.net/watcha/image/upload/c_fill,h_400,q_80,w_280/v1547575268/nc6h9mynmwu5zi7n7jr0.jpg">
+															<img class="LazyLoadingImg__Self-s1jb87ps-0 cjQTNJ" src="/brw/resources/images/drama/poster/${map.DRAMA_POSTER_IMAGE}">
 														</div>
 													</div>
 												</div>
@@ -866,38 +898,38 @@
 																<div class="Row-s1apwm9x-0 lowZpE">
 																	<div class="RatingStat__Self-luia1n-0 iwHouL">
 																		<div class="RatingStat__BarsContainer-luia1n-1 cTllXN">
-																			<div class="RatingStat__BarArea-luia1n-2 fkyWIw">
+																			<div class="RatingStat__BarArea-luia1n-2 fkyWIw re1">
 																				<span class="RatingStat__Bar-luia1n-3 krlvgk"></span>
 																			</div>
-																			<div class="RatingStat__BarArea-luia1n-2 fkyWIw">
+																			<div class="RatingStat__BarArea-luia1n-2 fkyWIw re2">
 																				<span class="RatingStat__Bar-luia1n-3 euhMRX"
 																					prefix="1"></span>
 																			</div>
-																			<div class="RatingStat__BarArea-luia1n-2 fkyWIw">
+																			<div class="RatingStat__BarArea-luia1n-2 fkyWIw re3">
 																				<span class="RatingStat__Bar-luia1n-3 bHydWh"></span>
 																			</div>
-																			<div class="RatingStat__BarArea-luia1n-2 fkyWIw">
+																			<div class="RatingStat__BarArea-luia1n-2 fkyWIw re4">
 																				<span class="RatingStat__Bar-luia1n-3 cbQtbT"
 																					prefix="2"></span>
 																			</div>
-																			<div class="RatingStat__BarArea-luia1n-2 fkyWIw">
+																			<div class="RatingStat__BarArea-luia1n-2 fkyWIw re5">
 																				<span class="RatingStat__Bar-luia1n-3 kGNaYb"></span>
 																			</div>
-																			<div class="RatingStat__BarArea-luia1n-2 fkyWIw">
+																			<div class="RatingStat__BarArea-luia1n-2 fkyWIw re6">
 																				<span class="RatingStat__Bar-luia1n-3 izBOSd"
 																					prefix="3"></span>
 																			</div>
-																			<div class="RatingStat__BarArea-luia1n-2 fkyWIw">
+																			<div class="RatingStat__BarArea-luia1n-2 fkyWIw re7">
 																				<span class="RatingStat__Bar-luia1n-3 isYbOS"></span>
 																			</div>
-																			<div class="RatingStat__BarArea-luia1n-2 fkyWIw">
+																			<div class="RatingStat__BarArea-luia1n-2 fkyWIw re8">
 																				<span class="RatingStat__Bar-luia1n-3 fQPWCL"
 																					prefix="4"></span>
 																			</div>
-																			<div class="RatingStat__BarArea-luia1n-2 fkyWIw">
+																			<div class="RatingStat__BarArea-luia1n-2 fkyWIw re9">
 																				<span class="RatingStat__Bar-luia1n-3 HjCEE"></span>
 																			</div>
-																			<div class="RatingStat__BarArea-luia1n-2 fkyWIw">
+																			<div class="RatingStat__BarArea-luia1n-2 fkyWIw re10">
 																				<span class="RatingStat__Bar-luia1n-3 gMiOPw"
 																					prefix="5"></span>
 																			</div>
@@ -1033,7 +1065,6 @@
 																<header
 																	class="SectionWithHeader__Header-s1eyxltb-1 cuiACK">
 																	<h2 class="SectionWithHeader__Title-s1eyxltb-2 kwjefp">갤러리</h2>
-																	<span class="TitleSuffixForNumber-l2d30g-0 ejtPKl">703</span>
 																	<div class="SectionWithHeader__TopRight-s1eyxltb-3 bZaEfL">
 																			
 																		</div>
@@ -1044,28 +1075,11 @@
 															
 	<div id="container"> 
 		<div id="example">
-			<!-- <img src="/brw/resources/images//new-ribbon.png" width="112" height="112" alt="New Ribbon" id="ribbon"> -->
 			<div id="slides">
 				<div class="slides_container">
-					<img src="/brw/resources/images/3-girls.jpg" width="570" height="270" alt="Slide 1">
-					<!-- <a href="http://www.flickr.com/photos/stephangeyer/3020487807/" title="Taxi | Flickr - Photo Sharing!" target="_blank"> -->
-					
-					<img src="/brw/resources/images/3-jacket.jpg" width="570" height="270" alt="Slide 2"></a>
-					
-					<!-- <a href="http://www.flickr.com/photos/childofwar/2984345060/" title="Happy Bokeh raining Day | Flickr - Photo Sharing!" target="_blank"> -->
-					<img src="/brw/resources/images/3-man.jpg" width="570" height="270" alt="Slide 3"></a>
-					
-					<!-- <a href="http://www.flickr.com/photos/b-tal/117037943/" title="We Eat Light | Flickr - Photo Sharing!" target="_blank"> -->
-					<img src="/brw/resources/images//slide-4.jpg" width="570" height="270" alt="Slide 4"></a>
-					
-					<!-- <a href="http://www.flickr.com/photos/bu7amd/3447416780/" title="“I must go down to the sea again, to the lonely sea and the sky; and all I ask is a tall ship and a star to steer her by.” | Flickr - Photo Sharing!" target="_blank"> -->
-					<img src="/brw/resources/images/slide-5.jpg" width="570" height="270" alt="Slide 5"></a>
-					
-					<!-- <a href="http://www.flickr.com/photos/streetpreacher/2078765853/" title="twelve.inch | Flickr - Photo Sharing!" target="_blank"> -->
-					<img src="/brw/resources/images//slide-6.jpg" width="570" height="270" alt="Slide 6"></a>
-					
-					<!-- <a href="http://www.flickr.com/photos/aftab/3152515428/" title="Save my love for loneliness | Flickr - Photo Sharing!" target="_blank"> -->
-					<img src="/brw/resources/images/slide-7.jpg" width="570" height="270" alt="Slide 7"></a>
+					<c:forEach begin="0" step="1" items="${image}"  varStatus="status" var='img'>
+						<img src="/brw/resources/images/drama/content/${img}" width="570" height="270" alt="Slide ${status.index+1}">
+					</c:forEach>
 				</div>
 				
 				<a href="#" class="prev">
@@ -1086,7 +1100,7 @@
 																<header
 																	class="SectionWithHeader__Header-s1eyxltb-1 cuiACK">
 																	<h2 class="SectionWithHeader__Title-s1eyxltb-2 kwjefp">비슷한 장르</h2>
-																	<span class="TitleSuffixForNumber-l2d30g-0 ejtPKl">703</span>
+																	<span class="TitleSuffixForNumber-l2d30g-0 ejtPKl"><!-- 비슷한장르개수 --></span>
 																	<div class="SectionWithHeader__TopRight-s1eyxltb-3 bZaEfL">
 																			<div class="SectionWithViewMore__ViewMore-xtbl7q-0 bhbIbv">
 																				<a href="/brw/drama/mainSearch.br">더보기</a>
@@ -1101,7 +1115,7 @@
 			 <div class="col-sm-6 col-md-3">
 			 	<a href="/brw/drama/dramaDetail.br?DRAMA_NO=1&DRAMA_NAME=2">
 			    <div class="detailgenre">
-			      <img src="/brw/resources/images/3-girls.jpg">
+			      <img src="/brw/resources/images/drama/poster/${detailgenrelist.DRAMA_POSTER_IMAGE}">
 			      <%-- <input type='hidden' class='IDX' value="${dramaList.DRAMA_NO}"> --%>
 			      <div class="detailgenrefont">
 			        <h3>#${detailgenrelist.DRAMA_NAME}</h3>
@@ -1111,11 +1125,6 @@
 			    </a>
 			  </div>
 		 </c:forEach>
-
-														
-														
-														
-														
 													</section>
 													<div></div>
 												</div>
@@ -1132,35 +1141,6 @@
 			</div>
 		</div>
 	</div>
-
-
-	<script>
-        window.ga=function(){ga.q.push(arguments)};ga.q=[];ga.l=+new Date;
-        ga("create","UA-27006241-7","auto");
-      </script>
-
-
-	<script src="https://browser.sentry-cdn.com/4.6.4/bundle.min.js"
-		crossorigin="anonymous"></script>
-
-
-
-	<script
-		src="https://d2rlq84xifqisi.cloudfront.net/javascripts/web.252a3d891922d57180ff.js"
-		crossorigin="anonymous"></script>
-
-
-	<script src="https://www.google-analytics.com/analytics.js" async=""
-		defer=""></script>
-
-
-	<script>
-        if ('serviceWorker' in navigator) {
-          window.addEventListener('load', function() {
-            navigator.serviceWorker.register('https://watcha.com/sw.js');
-          });
-        }
-      </script>
 
 	<div id="fb-root" class=" fb_reset">
 		<div
