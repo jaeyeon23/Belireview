@@ -105,9 +105,7 @@ public class MainController {
 			lastCount = page.getEndCount() + 1;
 		
 		searchMain = searchMain.subList(page.getStartCount(), lastCount);
-					System.out.println(totalCount);
-					System.out.println(searchMain);
-					
+				
 			mv.addObject("request",request.getParameter("searchText"));
 			mv.addObject("searchMain",searchMain);
 			mv.addObject("searchMovie",searchMovie);
@@ -169,8 +167,11 @@ public class MainController {
 			
 			int lastCount = totalCount;
 			
-			if(page.getEndCount() < totalCount)
-				lastCount = page.getEndCount() + 1;
+			if(p == null || p.trim().isEmpty() || p.equals("0")) {
+	            currentPage = 1;
+	        } else {
+	            currentPage = Integer.parseInt(request.getParameter("currentPage"));
+	        }
 			
 			searchMain = searchMain.subList(page.getStartCount(), lastCount);
 			
@@ -178,12 +179,13 @@ public class MainController {
 			
 			for(Map m : searchMain) {
 				sb.append("<li class=\"ContentListItemWithPoster__Self-swai1z-0 hKRvvO\">");
+				
 				if(m.get("TYPE").toString().equals("영화")) {
-					sb.append("<a href=\"/brw/movie/movieDetail.br?MOVIE_NO=\"").append(m.get("NO")).append("\"></a>");
+					sb.append("<a href=\"/brw/movie/movieDetail.br?MOVIE_NO=").append(m.get("NO")).append("\">");
 				}else if(m.get("TYPE").toString().equals("TV")) {
-					sb.append("<a href=\"/brw/drama/dramaDetail.br?DRAMA_NO=\"").append(m.get("NO")).append("\"></a>");
+					sb.append("<a href=\"/brw/drama/dramaDetail.br?DRAMA_NO=").append(m.get("NO")).append("\">");
 				}else {
-					sb.append("<a href=\"/brw/ad/adDetail.br?AD_NO=\"").append(m.get("NO")).append("\"></a>");
+					sb.append("<a href=\"/brw/ad/adDetail.br?AD_NO=").append(m.get("NO")).append("\">");
 				}
 				sb.append("<div class=\"ContentListItemWithPoster__ContentPosterBlock-swai1z-1 kxDIaJ\">")
 				.append("<div class=\"LazyLoadingImg__Self-s1jb87ps-0 csJkbb\">")
@@ -197,13 +199,88 @@ public class MainController {
 					
 			mv.put("request",request.getParameter("searchText"));
 			mv.put("searchMain",sb.toString());
-			mv.put("searchMovie",searchMovie);
-			mv.put("searchDrama",searchDrama);
-			mv.put("searchAd",searchAd);
-			
-			
-					
 	
 			return mv;
 		}	
+		
+		/*메인 검색영화*/
+		
+		@RequestMapping(value = "mdaSearch.br")
+		@ResponseBody
+		public Map<String,Object>mdaSearch(CommandMap commandMap,HttpServletRequest request) throws Exception {
+			
+			String p = request.getParameter("currentPage");
+			
+			if(p == null || p.trim().isEmpty() || p.equals("0")) {
+				
+	            currentPage = 1;
+	        } else {
+	            currentPage = Integer.parseInt(request.getParameter("currentPage"));
+	        }
+
+			Map<String,Object> mv = new HashMap<String,Object>();
+			
+			List<Map<String,Object>> mdaSearch = new ArrayList();
+			String TYPE = commandMap.getMap().get("type").toString();
+			
+			if(TYPE.equals("1")){
+				 mdaSearch = mainService.movieSerach(commandMap.getMap());
+			}else if(TYPE.equals("2")) {
+				mdaSearch = mainService.dramaSerach(commandMap.getMap());
+			}else {
+				mdaSearch = mainService.adSerach(commandMap.getMap());
+			}
+			
+			totalCount = mdaSearch.size();
+			
+			page = new Paging(currentPage, totalCount, blockCount, blockPage, "/brw/main/mainSearch");
+			pagingHtml = page.getPagingHtml().toString();
+			
+			int lastCount = totalCount;
+			
+			if(page.getEndCount() < totalCount)
+				lastCount = page.getEndCount() + 1;
+			
+			mdaSearch = mdaSearch.subList(page.getStartCount(), lastCount);
+			
+			
+			StringBuffer sb = new StringBuffer();
+			
+			for(Map mda : mdaSearch) {
+				sb.append("<li class=\"StackableListItem-s18nuw36-0 cIJjio\">");
+				if(TYPE.equals("1")){
+					sb.append("<a lng=\"ko-KR\" class=\"InnerPartOfListWithImage__LinkSelf-s11a1hqv-1 gmbtJD\" title=\"${request}\" href=\"/brw/movie/movieDetail.br?MOVIE_NO=").append(mda.get("MOVIE_NO")).append("\">");
+				}else if(TYPE.equals("2")) {
+					sb.append("<a lng=\"ko-KR\" class=\"InnerPartOfListWithImage__LinkSelf-s11a1hqv-1 gmbtJD\" title=\"${request}\" href=\"/brw/drama/dramaDetail.br?MOVIE_NO=").append(mda.get("DRAMA_NO")).append("\">");
+				}else {
+					sb.append("<a lng=\"ko-KR\" class=\"InnerPartOfListWithImage__LinkSelf-s11a1hqv-1 gmbtJD\" title=\"${request}\" href=\"/brw/ad/adDetail.br?MOVIE_NO=").append(mda.get("AD_NO")).append("\">");
+				}
+				sb.append("<div class=\"InnerPartOfListWithImage__ImageBlock-s11a1hqv-3 kXgAWr\">");
+				sb.append("<div class=\"LazyLoadingBackground-cgbyi4-0 cioRyq LazyLoadingBackgroundw__Self-s1stfhov-0 jXCeuY\" alt=\"${request}\">");
+				sb.append("<span class=\"LazyLoadingBackgroundw__BackgroundImage-s1stfhov-1 mPWPS\" data-background-image-id=\"38\">");
+				sb.append("<img class=\"LazyLoadingBackground__StylingMerged-cgbyi4-2 kDLFDU LazyLoadingBackground__Self-cgbyi4-0 dxPvni\" src=\"/brw/resources/images/3-girls.jpg\"></span>");
+				sb.append("</div></div>");
+				sb.append("<div class=\"InnerPartOfListWithImage__Info-s11a1hqv-5 hufKbr\">");
+				sb.append("<div class=\"InnerPartOfListWithImage__Titles-s11a1hqv-4 jtpmaI\">");
+				
+				if(TYPE.equals("1")){
+					sb.append("<div class=\"SearchResultItemForContent__ResultTitle-s1phcxqf-1 gGTmOM\">").append(mda.get("MOVIE_NAME")).append("</div>");
+					sb.append("<div class=\"SearchResultItemForContent__ResultExtraInfo-s1phcxqf-0 crwUoZ\">").append(mda.get("MOVIE_DATE")).append(" ・ ").append(mda.get("MOVIE_GENRE")).append("</div>");
+				}else if(TYPE.equals("2")) {
+					sb.append("<div class=\"SearchResultItemForContent__ResultTitle-s1phcxqf-1 gGTmOM\">").append(mda.get("DRAMA_NAME")).append("</div>");
+					sb.append("<div class=\"SearchResultItemForContent__ResultExtraInfo-s1phcxqf-0 crwUoZ\">").append(mda.get("DRAMA_DATE")).append(" ・ ").append(mda.get("DRAMA_GENRE")).append("</div>");
+				}else {
+					sb.append("<div class=\"SearchResultItemForContent__ResultTitle-s1phcxqf-1 gGTmOM\">").append(mda.get("AD_NAME")).append("</div>");
+					sb.append("<div class=\"SearchResultItemForContent__ResultExtraInfo-s1phcxqf-0 crwUoZ\">").append(mda.get("AD_READCOUNT")).append(" ・ ").append(mda.get("AD_COMPANY")).append("</div>");
+				}
+				sb.append("</div></div></div>");
+				sb.append("</div></a></li>");
+			}		
+					
+			mv.put("request",request.getParameter("searchText"));
+			mv.put("mdaSearch",sb.toString());
+	
+			return mv;
+		}	
+		
 }
