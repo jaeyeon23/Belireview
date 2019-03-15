@@ -4,19 +4,19 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-	<link href="/brw/resources/Jcss/join.css" rel="stylesheet"> 
+	<link href="/brw/resources/Jcss/join.css" rel="stylesheet">
 </head>
 <body>
 	<div id="wrap">
 	 <div id="content">
-		<center><img src="/brw/resources/images/logos.jpg" width="150px" alt=""></center>
+		<center><img src="/brw/resources/images/img_join_process01.png" style="width:430px;" alt=""></center>
 		<br><br><br>
         <!-- tg-text=title -->
         <h2 class="blind">빌리뷰 회원가입</h2>
         <div class="join_content">
             <div class="join_form">
                 <form id="join_form" method="get" >
-                    
+                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
                     <!-- 약관동의 -->
                     <div class="terms_p">
                         <p class="terms_chk_all">

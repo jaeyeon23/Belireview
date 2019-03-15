@@ -128,6 +128,7 @@
 					</h4>
 				</div>
 				<form method="post" name="frm" enctype="multipart/form-data" class="probootstrap-form" action="userModify_Pro.br" onsubmit="return check();">
+				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 				<input type="hidden"  id="id" name="id" value="${ID}" >
 				<div class="modal-body" align="center">
 					<div class="row">

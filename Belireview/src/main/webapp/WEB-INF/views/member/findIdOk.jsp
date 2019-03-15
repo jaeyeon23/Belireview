@@ -8,7 +8,12 @@
 <link href="/brw/resources/Jcss/join.css" rel="stylesheet">
 <style type="text/css">
 #sc_big {
-	border: 1px solid #403e72;
+	border: 1px solid #d7d7d7;
+}
+.ctTit {
+    color: black;
+    font-size: 25px;
+
 }
 </style>
 <title>아이디 찾기 결과</title>
@@ -18,9 +23,7 @@
 		<!-- header -->
 		<div id="header">
 			<h1>
-				<center>
-					<img src="/brw/resources/images/logos.jpg" width="150px" alt="">
-				</center>
+			<center><h3 class="ctTit">아이디찾기 완료</h3></center>
 				<br>
 			</h1>
 		</div>
@@ -32,6 +35,7 @@
 					<p></p>
 				</div>
                 <form id="join_form" method="GET" action="/user2/V2Join.nhn?m=begin" >
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
                     <input type="hidden" id="token_sjoin" name="token_sjoin" value="uKgeb9OiD5AQjFM0">
                     <!-- 약관동의 -->
                     <div class="terms_p" id ="sc_big">

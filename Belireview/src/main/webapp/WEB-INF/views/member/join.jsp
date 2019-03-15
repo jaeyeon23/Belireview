@@ -11,14 +11,15 @@
 <body>
 <div id="wrap">
 	<form id="join_form" name="join_form" method="post" action="join.br" onsubmit="return checkSubmit()">
+	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 	<input type="hidden" id="email_marketing" name="email_marketing" value="${email_marketing}">
     <input type="hidden" id="sms_marketing" name="sms_marketing" value="${sms_marketing}">    
     
     <!-- container -->
     <div id="container" role="main">
         <div id="content">
-        	<center><img src="/brw/resources/images/logos.jpg" width="150px" alt=""></center>
-        	<br><br>
+        	<center><img src="/brw/resources/images/img_join_process02.png" style="width:430px;" alt=""></center>
+		<br><br>
             <!-- tg-text=title -->
             <h2 class="blind">빌리뷰 회원가입</h2>
             <div class="join_content">
@@ -128,7 +129,7 @@
             showErrorMsg(oMsg,"필수 정보입니다.");
             return false;
         }else{
-        	$.post("checkId.br", {id:id} ,function(data){
+        	$.post("checkId.br?${_csrf.parameterName}=${_csrf.token}", {id:id} ,function(data){
         		if (data==1){
         			showErrorMsg(oMsg,"이미 등록된 아이디입니다.");
                     return false;
@@ -261,7 +262,7 @@
 
 		$.ajax({
 			type : "POST",
-			url : "email_auth.br",
+			url : "email_auth.br?${_csrf.parameterName}=${_csrf.token}",
 			data : ({
 				mode : "email_code",
 				email : email
@@ -299,7 +300,7 @@
 		
 		$.ajax({
 			type : "POST",
-			url : "email_auth_success.br",
+			url : "email_auth_success.br?${_csrf.parameterName}=${_csrf.token}",
 			data : ({
 				email : email,
 				auth : auth

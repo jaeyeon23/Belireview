@@ -59,6 +59,7 @@ function fn_login() {
 					<legend class="blind">로그인</legend>
 						<div class="row_group">
 							<form id="loginForm" method="post" action="login.br" >
+							<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 							<div class="join_row">
 								<span class="ps_box int_id"> 
 									<input type="text" id="id" name="id" class="int"  maxlength="20" placeholder="아이디"> 
