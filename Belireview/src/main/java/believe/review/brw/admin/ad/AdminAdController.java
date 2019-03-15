@@ -1,4 +1,4 @@
-package believe.review.brw.admin.ad;
+/*package believe.review.brw.admin.ad;
 
 import java.util.HashMap;
 import java.util.List;
@@ -179,3 +179,4 @@ public class AdminAdController {
 		return "redirect:/admin/ad.br";
 	}
 }
+*/

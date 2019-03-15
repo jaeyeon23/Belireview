@@ -15,6 +15,39 @@
 	</properties>
 	  
 	<dependencies> 
+	
+	  <!-- ssl -->
+		 <dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+			<version>3.2.8.RELEASE</version>
+	     </dependency>
+	 
+     	<dependency>
+	       <groupId>org.springframework.security</groupId>
+	       <artifactId>spring-security-config</artifactId>
+	       <version>3.2.8.RELEASE</version>
+	   </dependency>
+     <!-- ssl -->
+     
+		<!-- bcrypt -->
+		<!-- <dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+			<version>4.0.3.RELEASE</version>
+		</dependency> -->
+	<!-- 	<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-core</artifactId>
+			<version>3.2.8.RELEASE</version>
+		</dependency> -->
+	<!-- 	<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+			<version>4.0.3.RELEASE</version>
+		</dependency> -->
+		
+		
 		<!-- MyBatis -->
 		<dependency>
 			<groupId>org.mybatis</groupId>
@@ -82,6 +115,20 @@
 			<artifactId>jackson-core-asl</artifactId>
 			<version>1.9.13</version>
 		</dependency>
+   
+   		<!-- JSON -->
+   		<dependency>
+   			<groupId>net.sf.json-lib</groupId>
+   			<artifactId>json-lib</artifactId>
+   			<version>2.4</version>
+   			<classifier>jdk15</classifier>
+   		</dependency>
+   		
+   		<dependency>
+   			<groupId>org.json</groupId>
+   			<artifactId>json</artifactId>
+   			<version>20151123</version>
+   		</dependency>
    
    		<!-- Ajax -->
 		<dependency>
@@ -255,27 +302,7 @@
      	<version>1.5.6</version>
      </dependency>  -->
      
-     <!-- sll -->
-	 <dependency>
- 
-            <groupId>org.springframework.security</groupId>
- 
-            <artifactId>spring-security-web</artifactId>
- 
-            <version>3.2.8.RELEASE</version>
- 
-        </dependency>
- 
-        <dependency>
- 
-            <groupId>org.springframework.security</groupId>
- 
-            <artifactId>spring-security-config</artifactId>
- 
-            <version>3.2.8.RELEASE</version>
- 
-        </dependency>
-     <!-- ssl -->
+   
             
    </dependencies>
     <build>
