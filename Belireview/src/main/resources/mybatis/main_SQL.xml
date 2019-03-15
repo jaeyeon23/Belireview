@@ -2,6 +2,33 @@
 <!DOCTYPE mapper PUBLIC " - //mybatis.org//DTD Config 3.0//EN" " http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="main">
 
+	<!-- 연관검색어 -->
+	<select id="searchDramaRelation" resultType="hashmap" parameterType="string">
+		SELECT
+			DRAMA_NAME
+		FROM
+			DRAMA
+		WHERE
+			DRAMA_NAME LIKE '%'||#{searchValue}||'%'
+	</select>
+	
+	<select id="searchMovieRelation" resultType="hashmap" parameterType="string">
+		SELECT
+			MOVIE_NAME
+		FROM
+			MOVIE
+		WHERE
+			MOVIE_NAME LIKE '%'||#{searchValue}||'%'
+	</select>
+	
+	<select id="searchAdRelation" resultType="hashmap" parameterType="string">
+		SELECT
+			AD_NAME
+		FROM
+			AD
+		WHERE
+			AD_NAME LIKE '%'||#{searchValue}||'%'
+	</select>
 	
 	<select resultType="hashmap" id="dramaListTop8">
 		<![CDATA[ SELECT DRAMA_NO, DRAMA_NAME, DRAMA_DATE, DRAMA_CHANNEL, DRAMA_GENRE, DRAMA_DIRECTOR, DRAMA_CONTENT, DRAMA_READCOUNT, DRAMA_POSTER_IMAGE, DRAMA_MAIN_IMAGE, DRAMA_CONTENT_IMAGE, DRAMA_EPISODE, DRAMA_GRADE, r FROM (SELECT DRAMA_NO, DRAMA_NAME, DRAMA_DATE, DRAMA_CHANNEL, DRAMA_GENRE, DRAMA_DIRECTOR, DRAMA_CONTENT, DRAMA_READCOUNT, DRAMA_POSTER_IMAGE, DRAMA_MAIN_IMAGE, DRAMA_CONTENT_IMAGE, DRAMA_EPISODE, DRAMA_GRADE, ROWNUM r FROM DRAMA ORDER BY DRAMA_READCOUNT DESC ) WHERE r >= 1 AND r <= 8 ]]>

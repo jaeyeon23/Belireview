@@ -4,10 +4,13 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -39,6 +42,9 @@ public class AdminUserController {
 	(result) Key set values are[password, sms_marketing, email_marketing, password_check, name, admin, tel, id, email]
 	
 	*/
+	
+	@Autowired
+	private BCryptPasswordEncoder passwordEncoder;
 	
 	@Resource(name="adminUserService")
 	private AdminUserService adminUserService;
@@ -95,12 +101,15 @@ public class AdminUserController {
 	@RequestMapping(value = "/delete.br", method=RequestMethod.POST)
 	public String userDelete(CommandMap commandMap, RedirectAttributes redirectAttributes) throws Exception{
 		String alert_value = null;
+		String encodedPassword;
+		
 		Map<String, Object> map = new HashMap<String, Object>();
 		
 		if(commandMap.containsKey("id") && commandMap.containsKey("password")) {
-			if(adminUserService.checkUser(commandMap.getMap()) > 0) {
-				map = adminUserService.selectUserOne((String)commandMap.get("id"));
-				
+			map = adminUserService.selectUserOne((String)commandMap.get("id"));
+			encodedPassword = (String) map.get("PASSWORD");
+			
+			if(passwordEncoder.matches((String)commandMap.get("password"), encodedPassword)) {
 				file = new File(filePath + map.get("PROFILE_IMAGE"));
 				file.delete();
 
@@ -132,7 +141,11 @@ public class AdminUserController {
 	
 	@RequestMapping(value="/modify.br", method=RequestMethod.POST)
 	public String userModify(CommandMap commandMap, HttpServletRequest request, Model model) throws Exception{
-		if(commandMap.containsKey("image_delete")) {
+		Set keyset = commandMap.keySet();
+		System.out.println("result : " + keyset);
+		
+
+		if(commandMap.get("image_check").toString().equals("default_image")) {
 			String file_name = adminUserService.selectUserOne_profile((String) commandMap.get("id"));
 			
 			file = new File(filePath + file_name);
@@ -140,29 +153,32 @@ public class AdminUserController {
 			
 			adminUserService.updateUserOne_profile(commandMap.getMap());
 			
-			return "redirect:/admin/users.br";
-		}
-		
-		MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
-		MultipartFile multipartFile = multipartRequest.getFile("profile_image");
-		
-		String fileName = multipartFile.getOriginalFilename();
-		
-		if(fileName != null) {
-			String IMAGEExtension = fileName.substring(fileName.lastIndexOf("."));
-			String fileName2 = (String)(commandMap.get("id")) + IMAGEExtension;
-			
-			commandMap.put("profile_image", fileName2);
-			
-			file = new File(filePath + fileName2);
-			multipartFile.transferTo(file);
-			
-			adminUserService.updateUserOne(commandMap.getMap());
-		}else {
 			commandMap.put("profile_image", null);
-			adminUserService.updateUserOne(commandMap.getMap());
+		}else if(commandMap.get("image_check").toString().equals("origin_image")) {
+			commandMap.put("profile_image", null);
+		}else {
+			MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
+			MultipartFile multipartFile = multipartRequest.getFile("profile_image");
+			String fileName = multipartFile.getOriginalFilename();
+			
+			if(fileName.isEmpty() || fileName.trim().length() == 0) {
+				commandMap.put("profile_image", null);
+			}else {
+				String IMAGEExtension = fileName.substring(fileName.lastIndexOf("."));
+				String fileName2 = (String)(commandMap.get("id")) + IMAGEExtension;
+				
+				commandMap.put("profile_image", fileName2);
+				
+				file = new File(filePath + fileName2);
+				multipartFile.transferTo(file);
+			}
 		}
-
+		
+		String encryptPassword = passwordEncoder.encode((String) commandMap.get("password"));
+		commandMap.put("password", encryptPassword);
+		
+		adminUserService.updateUserOne(commandMap.getMap());
+		
 		return "redirect:/admin/users.br";
 	}
 	

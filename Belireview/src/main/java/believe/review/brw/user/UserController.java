@@ -1,19 +1,18 @@
 package believe.review.brw.user;
 
-import java.util.List;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
-import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import believe.review.brw.common.common.CommandMap;
@@ -21,122 +20,125 @@ import believe.review.brw.common.common.CommandMap;
 @Controller
 @RequestMapping("/user")
 public class UserController {
+
+	@Autowired
+	BCryptPasswordEncoder passwordEncoder;
 	
-    @Resource(name="userService") private UserService userService;
-	 
-	@RequestMapping(value="/user.br")  //마이페이지
-	public ModelAndView user(){
+	@Resource(name = "userService")
+	private UserService userService;
+
+	@RequestMapping(value = "/user.br") // 마이페이지
+	public ModelAndView user() {
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("user");
-		return mv;
-	}
-	
-	@RequestMapping(value="/userModify_Pro", method=RequestMethod.POST)   //프로필사진변경
-	public ModelAndView userProfile(CommandMap commandMap, HttpServletRequest request) throws Exception{
-		ModelAndView mv = new ModelAndView();
-		Map<String, Object> Pmap=new HashMap<String, Object>();
-		Pmap = commandMap.getMap();
-		HttpSession session = request.getSession();
-		
-		userService.UserProfile(Pmap, request);
-		
-		//세션 이미지 변경 
-		Map<String, Object> usermem = userService.userGo(commandMap.getMap());
-		session.setAttribute("PROFILE_IMAGE", usermem.get("PROFILE_IMAGE"));
-		 
 		mv.setViewName("user");
 		return mv;
 	}
 
-	@RequestMapping(value="/userModifyPass")  // 수정폼으로 이동전 비밀번호 확인 
-	public ModelAndView userModifyPass(){
+	@RequestMapping(value = "/userModify_Pro", method = RequestMethod.POST) // 프로필사진변경
+	public ModelAndView userProfile(CommandMap commandMap, HttpServletRequest request) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		Map<String, Object> Pmap = new HashMap<String, Object>();
+		Pmap = commandMap.getMap();
+		HttpSession session = request.getSession();
+
+		userService.UserProfile(Pmap, request);
+
+		// 세션 이미지 변경
+		Map<String, Object> usermem = userService.userGo(commandMap.getMap());
+		session.setAttribute("PROFILE_IMAGE", usermem.get("PROFILE_IMAGE"));
+
+		mv.setViewName("user");
+		return mv;
+	}
+
+	@RequestMapping(value = "/userModifyPass") // 수정폼으로 이동전 비밀번호 확인
+	public ModelAndView userModifyPass() {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("pwdCheck");
 		return mv;
-	}	
-	
-	@RequestMapping(value="/userModify", method=RequestMethod.GET)   //정보수정폼
-	public ModelAndView userModify(){
+	}
+
+	@RequestMapping(value = "/userModify", method = RequestMethod.GET) // 정보수정폼
+	public ModelAndView userModify() {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("modify");
 		return mv;
 	}
 
-	@RequestMapping(value="/userModify", method=RequestMethod.POST)  //폼값 받아 회원정보수정
-	public ModelAndView userModify(CommandMap commandMap, HttpServletRequest request) throws Exception{
+	@RequestMapping(value = "/userModify", method = RequestMethod.POST) // 폼값 받아 회원정보수정
+	public ModelAndView userModify(CommandMap commandMap, HttpServletRequest request) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		HttpSession session = request.getSession();
-		
+
 		Map<String, Object> userMap = new HashMap<String, Object>();
 		userMap = commandMap.getMap();
-		
+
 		userMap.put("email_marketing", request.getParameter("termsEmail"));
 		userMap.put("sms_marketing", request.getParameter("termsLocation"));
+
+		String encodedPassword = passwordEncoder.encode((String)userMap.get("password"));
+		userMap.put("password", encodedPassword);
 		
 		userService.ModifyMember(userMap, request);
-	
-			
+
 		Map<String, Object> usermem = userService.userGo(commandMap.getMap());
-		
-		 //업데이트된 정보 세션에 다시저장
-		 session.setAttribute("NAME", usermem.get("NAME"));
-		 session.setAttribute("TEL", usermem.get("TEL"));
-		 session.setAttribute("EMAIL", usermem.get("EMAIL"));
-		 session.setAttribute("PASSWORD", usermem.get("PASSWORD"));
-		 session.setAttribute("EMAIL_MARKETING", usermem.get("EMAIL_MARKETING"));
-		 session.setAttribute("SMS_MARKETING", usermem.get("SMS_MARKETING"));
-		 
-		
-		mv.setViewName("user");		
+
+		// 업데이트된 정보 세션에 다시저장
+		session.setAttribute("NAME", usermem.get("NAME"));
+		session.setAttribute("TEL", usermem.get("TEL"));
+		session.setAttribute("EMAIL", usermem.get("EMAIL"));
+		session.setAttribute("PASSWORD", usermem.get("PASSWORD"));
+		session.setAttribute("EMAIL_MARKETING", usermem.get("EMAIL_MARKETING"));
+		session.setAttribute("SMS_MARKETING", usermem.get("SMS_MARKETING"));
+
+		mv.setViewName("user");
 		return mv;
 	}
-	
-	
-	
-	@RequestMapping(value="/userMovie")
+
+	@RequestMapping(value = "/userMovie")
 	public ModelAndView userMovie(CommandMap commandMap, HttpServletRequest request) throws Exception {
 		HttpSession session = request.getSession();
-		
+
 		ModelAndView mv = new ModelAndView("userMovie");
-		List<Map<String,Object>> userMovieAll = userService.UserMovieAll(commandMap.getMap());
-		List<Map<String,Object>> selectUserGrade = userService.selectUserGrade(commandMap.getMap());
+		List<Map<String, Object>> userMovieAll = userService.UserMovieAll(commandMap.getMap());
+		List<Map<String, Object>> selectUserGrade = userService.selectUserGrade(commandMap.getMap());
 		mv.addObject("userMovieAll", userMovieAll);
 		mv.addObject("selectUserGrade", selectUserGrade);
 		Map<String, Object> userWishList = userService.userWishList(commandMap.getMap());
-		
-		if(userWishList!=null) {
+
+		if (userWishList != null) {
 			String[] str = userWishList.get("MYPAGE_MOVIE").toString().split(",");
-		    commandMap.put("a", str); 
-		    
-		    List<Map<String,Object>> userDramaList = userService.userDramaList(commandMap.getMap());
-		    List<Map<String,Object>> userMovieList = userService.userMovieList(commandMap.getMap());
-			
-		    mv.addObject("userWishList",userWishList);
-			mv.addObject("userDramaList",userDramaList);
-			mv.addObject("userMovieList",userMovieList);
+			commandMap.put("a", str);
+
+			List<Map<String, Object>> userDramaList = userService.userDramaList(commandMap.getMap());
+			List<Map<String, Object>> userMovieList = userService.userMovieList(commandMap.getMap());
+
+			mv.addObject("userWishList", userWishList);
+			mv.addObject("userDramaList", userDramaList);
+			mv.addObject("userMovieList", userMovieList);
 		}
 
 		return mv;
 	}
-	
-	@RequestMapping(value="/userDeleteForm")
-	public ModelAndView userDeleteForm(){
+
+	@RequestMapping(value = "/userDeleteForm")
+	public ModelAndView userDeleteForm() {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("userDeleteForm");
 		return mv;
 	}
-	
-	@RequestMapping(value="/userDeletechk")
-	public ModelAndView userDeletechk(){
+
+	@RequestMapping(value = "/userDeletechk")
+	public ModelAndView userDeletechk() {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("userDeletechk");
 		return mv;
 	}
-	
-	@RequestMapping(value="/userDelete")
-	public ModelAndView userDelete(CommandMap commandMap, HttpServletRequest request)throws Exception{
-		
-		ModelAndView mv=new ModelAndView();
+
+	@RequestMapping(value = "/userDelete")
+	public ModelAndView userDelete(CommandMap commandMap, HttpServletRequest request) throws Exception {
+
+		ModelAndView mv = new ModelAndView();
 		HttpSession session = request.getSession();
 
 		System.out.println("id" + commandMap.get("id"));
@@ -145,7 +147,7 @@ public class UserController {
 
 		mv.setViewName("main");
 		return mv;
-			
+
 	}
-	
+
 }

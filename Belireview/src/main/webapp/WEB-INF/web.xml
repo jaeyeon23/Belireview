@@ -8,6 +8,7 @@
 		<param-name>contextConfigLocation</param-name>
 		<param-value>
 			/WEB-INF/spring/root-context.xml
+			 /WEB-INF/spring/spring-security.xml
 			classpath*:config/context-*.xml
 		</param-value>
 	</context-param>
@@ -47,5 +48,4 @@
     	<filter-name>encodingFilter</filter-name>
     	<url-pattern>/*</url-pattern>
  	</filter-mapping>
-
 </web-app>

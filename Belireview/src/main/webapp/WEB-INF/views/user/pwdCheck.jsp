@@ -11,11 +11,29 @@
 <script type="text/javascript">
 	function checkPw(){
 		var pw = $("#password").val();
-		var user_pw = "${PASSWORD}";
-		if ( user_pw != pw) {
-			alert('비밀번호가 일치하지 않습니다.');
+		var pw_encrypt = null;
+		
+		$.ajax({
+			url: "/brw/ajaxDelete.br",
+			type: "POST",
+			async : false,
+			data:{
+				password: pw
+			},
+			success: function(result){
+				pw_encrypt = result;
+			}
+		});
+		
+		if(document.loginForm.password.value == ""){
+			alert("비밀번호를 입력하세요.");
+			document.loginForm.password.focus();
+			return false;
+		}else if(pw_encrypt == false){
+			alert('비밀번호를 확인해주세요.');
 			return false;
 		}
+		return true;
 	} 
 </script>
 <title>유저패스워드 체킁!</title>
@@ -42,7 +60,7 @@
 				<div class="login_form">
 					<legend class="blind">로그인</legend>
 						<div class="row_group">
-							<form id="loginForm" method="GET" action="userModify.br" onsubmit="return checkPw();">
+							<form id="loginForm" name="loginForm" method="GET" action="userModify.br" onsubmit="return checkPw();">
 							<input type="hidden" id="id" name="id" value="${ID}">
 							<div class="join_row join_mobile">
                        			 <h3 class="join_title"><label for="id">아이디</label></h3>

@@ -14,4 +14,10 @@ public interface MainService {
 	public List<Map<String, Object>> movieListTop8() throws Exception;
 
 	public List<Map<String, Object>> adListTop8() throws Exception;
+	
+	public List<Map<String, Object>> searchDramaRelation(String searchValue) throws Exception;
+	
+	public List<Map<String, Object>> searchMovieRelation(String searchValue) throws Exception;
+	
+	public List<Map<String, Object>> searchAdRelation(String searchValue) throws Exception;
 }

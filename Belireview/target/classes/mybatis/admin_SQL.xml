@@ -282,7 +282,7 @@
 		FROM
 			DRAMA_LIKE
 		WHERE
-			DRAMA_NO=#{no}
+			DRAMA_LIKE_NO=#{no}
 	</delete>
 	
 
@@ -427,7 +427,7 @@
 		FROM
 			MOVIE_LIKE
 		WHERE
-			MOVIE_NO=#{no}
+			MOVIE_LIKE_NO=#{no}
 	</delete>
 	
 	<!-- Advertisement -->
@@ -491,7 +491,7 @@
 		)			
 	</insert>
 	
-	<select id="selectAdOne" parameterType="Integer" resultType="hashmap">
+	<select id="selectAdOne" parameterType="int" resultType="hashmap">
 		SELECT
 			*
 		FROM
@@ -547,7 +547,7 @@
 		FROM
 			AD_LIKE
 		WHERE
-			AD_NO=#{no}
+			AD_LIKE_NO=#{no}
 	</delete>
 	
 </mapper>
