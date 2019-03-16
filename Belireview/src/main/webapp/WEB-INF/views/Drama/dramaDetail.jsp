@@ -114,7 +114,8 @@
 				 success:function(result){
 					$(".writeComment").css("display","block");
 					$(".existComment").css("display","none");
-					
+					$(".comen").html(result.comList);
+					$(".comnum").html(result.comNum);
 				 }
 			 })
 		} 
@@ -128,6 +129,8 @@
 					$(".writeComment").css("display","none");
 					$(".existComment").css("display","block");
 					$(".cc").html(result.myCom.DC_CONTENT);
+					$(".comen").html(result.comList);
+					$(".comnum").html(result.comNum);
 				 }
 			 })
 		} 
@@ -141,6 +144,8 @@
 					$(".writeComment").css("display","none");
 					$(".existComment").css("display","block");
 					$(".cc").html(result.myCom.DC_CONTENT);
+					$(".comen").html(result.comList);
+					$(".comnum").html(result.comNum);
 				 }
 			 })
 		}
@@ -762,8 +767,6 @@
 																				<ul
 																					class="ContentPeopleSection__PeopleStackableUl-s1qdagi5-0 dCFwKD StackableUl__StyledStackableUl-gafxvv-1 dYcNoO VisualUl-s1vzev56-0 hgAYVH">
 																					<li class="ListItemWithProfilePhoto__Self-s1a35ruo-0 GRmjI">
-																						<!-- <a lng="ko-KR" class="InnerPartOfListWithImage__LinkSelf-s11a1hqv-1 gmbtJD"
-																							title="장재현" href="/ko-KR/people/167398"> -->
 																							<div class="InnerPartOfListWithImage__ImageBlock-s11a1hqv-3 kXgAWr">
 																								<div class="ProfilePhoto__Self-s1v3isfu-1 cKevdV RoundedImageBlock-k5m4n5-0 gUZYtN">
 																									<div class="ProfilePhoto__ProfilePhotoImage-s1v3isfu-0 ctlVML"></div>
@@ -807,17 +810,14 @@
 																<div
 																	class="arrow_button PrimitiveHorizontalScrollable__ArrowButtonBlock-hy4esm-3 kCjzvu"
 																	direction="left">
-																	<div
-																		class="PrimitiveHorizontalScrollable__BackwardButton-hy4esm-5 bWflCD"></div>
+																	<div class="PrimitiveHorizontalScrollable__BackwardButton-hy4esm-5 bWflCD"></div>
 																</div>
-																<div
-																	class="arrow_button PrimitiveHorizontalScrollable__ArrowButtonBlock-hy4esm-3 eweFwK"
+																<div class="arrow_button PrimitiveHorizontalScrollable__ArrowButtonBlock-hy4esm-3 eweFwK"
 																	direction="right"></div>
 															</div>
 															<div class="Grid-zydj2q-0 cspjno">
 																<div class="Row-s1apwm9x-0 lowZpE">
-																	<hr
-																		class="Divider__StylingMergedDivider-s11un6bw-1 kAeKXS Divider-s11un6bw-0 cVxSEp">
+																	<hr class="Divider__StylingMergedDivider-s11un6bw-1 kAeKXS Divider-s11un6bw-0 cVxSEp">
 																</div>
 															</div>
 														</section>
@@ -876,8 +876,7 @@
 																			</div>
 																		</div>
 																	</div>
-																	<hr
-																		class="Divider__StylingMergedDivider-s11un6bw-1 eRVukz Divider-s11un6bw-0 cVxSEp">
+																	<hr class="Divider__StylingMergedDivider-s11un6bw-1 eRVukz Divider-s11un6bw-0 cVxSEp">
 																</div>
 															</div>
 														</section>
@@ -887,7 +886,7 @@
 																	<header
 																		class="SectionWithHeader__Header-s1eyxltb-1 cuiACK">
 																		<h2 class="SectionWithHeader__Title-s1eyxltb-2 kwjefp">코멘트</h2>
-																		<span class="TitleSuffixForNumber-l2d30g-0 ejtPKl">${totalCount}</span>
+																		<span class="TitleSuffixForNumber-l2d30g-0 ejtPKl comnum">${totalCount}</span>
 																		<div
 																			class="SectionWithHeader__TopRight-s1eyxltb-3 bZaEfL">
 																			<div
@@ -906,7 +905,7 @@
 																		class="PrimitiveHorizontalScrollable__ScrollingInner-hy4esm-2 iGzmWK">
 																		<div class="Grid-zydj2q-0 cspjno">
 																			<div class="Row-s1apwm9x-0 lowZpE">
-																				<ul class="ContentCommentsSection__CommentHorizontalUl-s5mwulc-1 kBYzWA HorizontalUl__StyledHorizontalUl-s1lfz4bc-0 kJrumC VisualUl-s1vzev56-0 hgAYVH">
+																				<ul class="ContentCommentsSection__CommentHorizontalUl-s5mwulc-1 kBYzWA HorizontalUl__StyledHorizontalUl-s1lfz4bc-0 kJrumC VisualUl-s1vzev56-0 hgAYVH comen">
 																					<c:forEach items="${comment}" var="comment">
 																						<!-- 코멘트 -->
 																						<li class="HorizontalListItem-tt0z2b-0 hRbPKu">
@@ -926,39 +925,28 @@
 																													</c:if>
 																												</div>
 																											</div>
-																											<div
-																												class="UserNameWithBadges__Self-s1bd3hgj-0 brZhrQ">
-																												${comment.ID} <span
-																													class="UserNameWithBadges__SmallBadge-s1bd3hgj-1 bAndNa UIImg-s3jz6tx-0 eBREVF"
-																													src="/brw/resources/images/detail/detail_comment1.svg"></span><span
-																													class="UserNameWithBadges__SmallBadge-s1bd3hgj-1 bAndNa UIImg-s3jz6tx-0 kyuoIv"
-																													src="/brw/resources/images/detail/detail_comment2.svg"></span>
+																											<div class="UserNameWithBadges__Self-s1bd3hgj-0 brZhrQ">
+																												${comment.ID} 
+																											<span class="UserNameWithBadges__SmallBadge-s1bd3hgj-1 bAndNa UIImg-s3jz6tx-0 eBREVF" src="/brw/resources/images/detail/detail_comment1.svg"></span>
+																											<span class="UserNameWithBadges__SmallBadge-s1bd3hgj-1 bAndNa UIImg-s3jz6tx-0 kyuoIv" src="/brw/resources/images/detail/detail_comment2.svg"></span>
 																											</div></a>
 																									</div>
-																									<div
-																										class="BasicCommentItem__UserActionStatus-iqy0k7-4 cMGqAP">
-																										<img
-																											src="/brw/resources/images/detail/detail_comment_grade.svg"
+																									<div class="BasicCommentItem__UserActionStatus-iqy0k7-4 cMGqAP">
+																										<img src="/brw/resources/images/detail/detail_comment_grade.svg"
 																											width="16px" height="16px" alt="star"><span>${comment.DL_GRADE}</span>
 																									</div>
 																								</div>
 																								<div class="BasicCommentItem__TextBlock-iqy0k7-3 eQRymK">
 																									<div class="TextTruncate__Self-wvv1uj-0 jXBVmV">
-																										<div class="TextTruncate__Text-wvv1uj-1 gLsCNn"
-																												style="white-space: pre-line;">${comment.DC_CONTENT}</div>
+																										<div class="TextTruncate__Text-wvv1uj-1 gLsCNn" style="white-space: pre-line;">${comment.DC_CONTENT}</div>
 																									</div>
 																								</div>
-																								<div
-																									class="ContentlessCommentItem__LikeReplyBlock-s1n6rtl6-1 bSwpdd">
-																									<span
-																										class="ContentlessCommentItem__LikeImage-s1n6rtl6-2 jmhzoz UIImg-s3jz6tx-0 jSJJRD"
-																										src="/brw/resources/images/detail/detail_like.svg"
-																										width="18px" height="18px"></span><em>${comment.DC_LIKE}</em>
+																								<div class="ContentlessCommentItem__LikeReplyBlock-s1n6rtl6-1 bSwpdd">
+																									<span class="ContentlessCommentItem__LikeImage-s1n6rtl6-2 jmhzoz UIImg-s3jz6tx-0 jSJJRD" src="/brw/resources/images/detail/detail_like.svg" width="18px" height="18px"></span>
+																									<em>${comment.DC_LIKE}</em>
 																								</div>
-																								<div
-																									class="ContentlessCommentItem__UserActionBlock-s1n6rtl6-4 kJvkpH">
-																									<button
-																										class="ContentlessCommentItem__UserActionButton-s1n6rtl6-5 kRhZsb StylelessButton-phxvo7-0 gsSopE">좋아요</button>
+																								<div class="ContentlessCommentItem__UserActionBlock-s1n6rtl6-4 kJvkpH">
+																									<button class="ContentlessCommentItem__UserActionButton-s1n6rtl6-5 kRhZsb StylelessButton-phxvo7-0 gsSopE">좋아요</button>
 																								</div>
 																							</div>
 																						</li>
@@ -988,7 +976,7 @@
 													</div>
 												</div>
 
-	<div class="RoundedCornerBlock-s17n38ib-0 iyaHUY">
+												<div class="RoundedCornerBlock-s17n38ib-0 iyaHUY">
 													<section class="SectionWithHeader__Self-s1eyxltb-0 gAYeFO">
 														<div class="Grid-zydj2q-0 cspjno">
 															<div class="Row-s1apwm9x-0 lowZpE">
@@ -1003,25 +991,25 @@
 														</div>
 														
 															
-	<div id="container"> 
-		<div id="example">
-			<div id="slides">
-				<div class="slides_container">
-					<c:forEach begin="0" step="1" items="${image}"  varStatus="status" var='img'>
-						<img src="/brw/resources/images/drama/content/${img}" width="570" height="270" alt="Slide ${status.index+1}">
-					</c:forEach>
-				</div>
-				
-				<a href="#" class="prev">
-				<img src="/brw/resources/images/arrow-prev.png" width="24" height="43" alt="Arrow Prev"></a>
-				
-				<a href="#" class="next">
-				<img src="/brw/resources/images/arrow-next.png" width="24" height="43" alt="Arrow Next"></a>
-				
-			</div>
-			<img src="/brw/resources/images/example-frame.png" width="739" height="341" alt="Example Frame" id="frame">
-		</div>
-	</div>
+									<div id="container"> 
+										<div id="example">
+											<div id="slides">
+												<div class="slides_container">
+													<c:forEach begin="0" step="1" items="${image}"  varStatus="status" var='img'>
+														<img src="/brw/resources/images/drama/content/${img}" width="570" height="270" alt="Slide ${status.index+1}">
+													</c:forEach>
+												</div>
+												
+												<a href="#" class="prev">
+												<img src="/brw/resources/images/arrow-prev.png" width="24" height="43" alt="Arrow Prev"></a>
+												
+												<a href="#" class="next">
+												<img src="/brw/resources/images/arrow-next.png" width="24" height="43" alt="Arrow Next"></a>
+												
+											</div>
+											<img src="/brw/resources/images/example-frame.png" width="739" height="341" alt="Example Frame" id="frame">
+										</div>
+									</div>
 							 
 									<hr class="Divider__StylingMergedDivider-s11un6bw-1 jtXrQz Divider-s11un6bw-0 cVxSEp">
 									<section class="SectionWithHeader__Self-s1eyxltb-0 gAYeFO">
@@ -1033,35 +1021,34 @@
 																	<span class="TitleSuffixForNumber-l2d30g-0 ejtPKl"><!-- 비슷한장르개수 --></span>
 																	<div class="SectionWithHeader__TopRight-s1eyxltb-3 bZaEfL">
 																			<div class="SectionWithViewMore__ViewMore-xtbl7q-0 bhbIbv">
-																				<a href="/brw/drama/mainSearch.br">더보기</a>
+																				<a href="/brw/mainSearch.br">더보기</a>
 																			</div>
 																		</div>
 																</header>
 															</div>
 															
 														</div>
-
-		 <c:forEach items="${detailgenre}" var="detailgenrelist" >
-			 <div class="col-sm-6 col-md-3">
-			 	<a href="/brw/drama/dramaDetail.br?DRAMA_NO=1&DRAMA_NAME=2">
-			    <div class="detailgenre">
-			      <img src="/brw/resources/images/drama/poster/${detailgenrelist.DRAMA_POSTER_IMAGE}">
-			      <%-- <input type='hidden' class='IDX' value="${dramaList.DRAMA_NO}"> --%>
-			      <div class="detailgenrefont">
-			        <h3>#${detailgenrelist.DRAMA_NAME}</h3>
-			        <p>#${detailgenrelist.DRAMA_DATE}・#${detailgenrelist.DRAMA_CHANNEL}</p>
-			      </div>
-			    </div>
-			    </a>
-			  </div>
-		 </c:forEach>
+											
+													 <c:forEach items="${detailgenre}" var="detailgenrelist" >
+														 <div class="col-sm-6 col-md-3">
+														 	<a href="/brw/drama/dramaDetail.br?DRAMA_NO=${detailgenrelist.DRAMA_NO}">
+														    <div class="detailgenre">
+														      <img src="/brw/resources/images/drama/poster/${detailgenrelist.DRAMA_POSTER_IMAGE}">
+														      <%-- <input type='hidden' class='IDX' value="${dramaList.DRAMA_NO}"> --%>
+														      <div class="detailgenrefont">
+														        <h3>#${detailgenrelist.DRAMA_NAME}</h3>
+														        <p>#${detailgenrelist.DRAMA_DATE}・#${detailgenrelist.DRAMA_CHANNEL}</p>
+														      </div>
+														    </div>
+														    </a>
+														  </div>
+													 </c:forEach>
 													</section>
 													<div></div>
 												</div>
 											</div>
 										</div>
-										<div
-											class="ContentPage__HiddenBlockOnlyMdScreen-se3skp-10 jVScZl"></div>
+										<div class="ContentPage__HiddenBlockOnlyMdScreen-se3skp-10 jVScZl"></div>
 									</div>
 								</div>
 							</div>
@@ -1071,7 +1058,6 @@
 			</div>
 		</div>
 	</div>
-
 	<div id="fb-root" class=" fb_reset">
 		<div
 			style="position: absolute; top: -10000px; width: 0px; height: 0px;">

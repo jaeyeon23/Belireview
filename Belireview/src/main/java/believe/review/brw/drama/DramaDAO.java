@@ -29,6 +29,10 @@ public class DramaDAO extends AbstractDAO{
 	public List<Map<String,Object>> dramaCommentByLike(Map<String, Object> map) throws Exception{
 		return (List<Map<String,Object>>)selectList("drama_comment.dramaCommentByLike",map);
 	}
+	@SuppressWarnings("unchecked")
+	public List<Map<String,Object>> dramaCommentForDetail(Map<String, Object> map) throws Exception{
+		return (List<Map<String,Object>>)selectList("drama_comment.dramaCommentForDetail",map);
+	}
 	public int totalDramaCount(Map<String, Object> map) throws Exception{
 		return (Integer) selectOne("drama.totalDramaCount",map);
 	}
