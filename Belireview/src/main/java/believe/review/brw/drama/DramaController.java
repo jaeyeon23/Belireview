@@ -1,5 +1,6 @@
 package believe.review.brw.drama;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -71,7 +72,7 @@ public class DramaController {
 
 	}
 
-	@RequestMapping(value="dramaDetail.br")
+	@RequestMapping(value="dramaDetail.br" ,method = RequestMethod.GET)
 	public ModelAndView dramaDetail(CommandMap commandMap, HttpServletRequest request) throws Exception {
 
 		ModelAndView mv = new ModelAndView("dramaDetail");
@@ -209,6 +210,11 @@ public class DramaController {
 				System.out.println("작성ㄴㄴ");
 			}
 			mv.put("myCom",map);
+			map = dramaService.existGrade(mv);
+			if(map==null) {
+				mv.put("RATING", 0);
+				dramaService.addGrade(mv);
+			}
 		}
 		//댓
 		
@@ -257,23 +263,37 @@ public class DramaController {
 		System.out.println(dramacomment.get(0).get("DC_CONTENT"));
 		mv.addObject("dramacomment",dramacomment);
 		
-		if(session.getAttribute("ID")!=null)
+		List<String> likeList = new ArrayList<String>();
+		if(session.getAttribute("ID")!=null) {
 			mv.addObject("ID",request.getAttribute("ID"));
 			System.out.println("id"+session.getAttribute("ID"));
 		
-		for(int i=0; i<dramacomment.size(); i++) {
-			String[] str =dramacomment.get(i).get("DC_LIKE_ID").toString().split(",");
-			System.out.println("gg"+dramacomment.get(i).get("DC_LIKE_ID"));
-			
-			for(String s : str) {
-				System.out.println("nn"+s);
-				if(session.getAttribute("ID").equals(s)) {
-					mv.addObject("yes","a");
+			for(int i=0; i<dramacomment.size(); i++) {
+				if(dramacomment.get(i).get("DC_LIKE_ID")!=null) {
+					String[] str =dramacomment.get(i).get("DC_LIKE_ID").toString().split(",");
+					System.out.println("gg"+dramacomment.get(i).get("DC_LIKE_ID"));
+					
+					/*for(String s : str) {
+						System.out.println("nn"+s);
+						if(session.getAttribute("ID").equals(s)) {
+							mv.addObject("yes","a");
+						}
+					}*/
+					
+					for(int j=0;j<str.length;j++) {
+						if(session.getAttribute("ID").equals(str[j])) {
+							likeList.add("like"+i);
+						}else {
+							likeList.add("nonone");
+						}
+					}
 				}
 			}
 		}
-		
-	
+		if(likeList.size()!=0) {
+			mv.addObject("likeList",likeList);
+		}
+		System.out.println("listsize"+likeList.size());
 		return mv;
 	}
 	
@@ -287,11 +307,10 @@ public class DramaController {
 		/*좋아요*/
 		
 		
-			Map<String,Object> map = dramaService.myComment(mv);
+			Map<String,Object> map = dramaService.commentOne(mv);
 
 			System.out.println(map.get("DC_LIKE_ID"));
 			if(map.get("DC_LIKE_ID")!=null) {
-				
 				String[] str = map.get("DC_LIKE_ID").toString().split(",");
 				boolean exist = false;
 				int likenum = Integer.parseInt(map.get("DC_LIKE").toString());
@@ -317,6 +336,11 @@ public class DramaController {
 				mv.put("DC_LIKE_ID", dc_like_id);
 				mv.put("DC_LIKE", likenum);
 				System.out.println(mv.get("DC_LIKE"));
+				dramaService.dramaCommentLike(mv);
+			}else {
+				mv.put("DC_LIKE_ID", mv.get("ID"));
+				mv.put("add", "add");
+				mv.put("DC_LIKE", 1);
 				dramaService.dramaCommentLike(mv);
 			}
 		return mv;

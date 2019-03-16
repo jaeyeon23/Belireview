@@ -79,6 +79,11 @@ public class DramaDAO extends AbstractDAO{
 		}
 			return 0;
 	}
+	@SuppressWarnings("unchecked")
+	public Map<String, Object> commentOne(Map<String, Object> map) throws Exception{
+		return(Map<String,Object>)selectOne("drama_comment.commentOne",map);
+	}
+	
 	
 	
 	/*@SuppressWarnings("unchecked")

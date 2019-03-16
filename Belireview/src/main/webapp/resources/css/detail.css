@@ -117,7 +117,7 @@
 
 .eaIqOG{position:relative;z-index:1;background:url(https://d19zyxn02q3dj8.cloudfront.net/people/medium/902940471a3dc7cf0778.jpg?1536891605) no-repeat center;background-size:cover;width:100%;height:100%;}
 
-.ctlVML{position:relative;z-index:1;background:url(https://d19zyxn02q3dj8.cloudfront.net/people/medium/7962808dae02f9eee726.jpg?1531396530) no-repeat center;background-size:cover;width:100%;height:100%;}
+.ctlVML{position:relative;z-index:1;background-size:cover;width:100%;height:100%;}
 
 .igTQYh{position:relative;z-index:1;background:url(https://d19zyxn02q3dj8.cloudfront.net/people/medium/b8ec90b8ee86ca2c79ef.jpg?1550043246) no-repeat center;background-size:cover;width:100%;height:100%;}
 
@@ -131,7 +131,7 @@
 
 .kgJrze{position:relative;z-index:1;background:url(https://d19zyxn02q3dj8.cloudfront.net/user/18908/small/6b514882a8f8d7881f02ca393f815df2f20fb440.jpg) no-repeat center;background-size:cover;width:100%;height:100%;}
 
-.eKUOvr{position:relative;z-index:1;background:url(https://d19zyxn02q3dj8.cloudfront.net/user/768238/small/9681b5d769447364bd9cbe78d225acbdc38116dc.jpg) no-repeat center;background-size:cover;width:100%;height:100%;}
+.eKUOvr{position:relative;z-index:1;background:no-repeat center;background-size:cover;width:100%;height:100%;}
 
 .ceavpA{position:relative;z-index:1;background:url(https://d19zyxn02q3dj8.cloudfront.net/user/50308/small/7b14f4d9987671ba6dd2737a3163976e338a3459.jpg) no-repeat center;background-size:cover;width:100%;height:100%;}
 
@@ -587,7 +587,7 @@
 .cTllXN{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:flex-end;-webkit-box-align:flex-end;-ms-flex-align:flex-end;align-items:flex-end;text-align:center;margin:0 -1px;}
 /* sc-component-id: RatingStat__BarArea-luia1n-2 */
 
-.fkyWIw{-webkit-flex:1;-ms-flex:1;flex:1;box-sizing:border-box;padding:0 1px;}
+.fkyWIw{flex:1;padding:0 1px;}
 /* sc-component-id: RatingStat__Bar-luia1n-3 */
 
 .re1{display:block;position:relative;background:#ffdd63;color:#a0a0a0;vertical-align:bottom;font-size:12px;font-weight:400;-webkit-letter-spacing:-0.1px;-moz-letter-spacing:-0.1px;-ms-letter-spacing:-0.1px;letter-spacing:-0.1px;line-height:16px;text-align:left;margin:0 0 22px;}.re1:lang(ja),.re1:lang(ko){font-size:12px;font-weight:400;-webkit-letter-spacing:-0.2px;-moz-letter-spacing:-0.2px;-ms-letter-spacing:-0.2px;letter-spacing:-0.2px;line-height:16px;}
@@ -602,7 +602,7 @@
 
 .re6{display:block;position:relative;background:#ffdd63;color:#a0a0a0;vertical-align:bottom;font-size:12px;font-weight:400;-webkit-letter-spacing:-0.1px;-moz-letter-spacing:-0.1px;-ms-letter-spacing:-0.1px;letter-spacing:-0.1px;line-height:16px;text-align:left;margin:0 0 22px;}.re6::after{content:"3";display:block;position:absolute;right:0;bottom:-22px;left:0;text-align:center;}.re6:lang(ja),.re6:lang(ko){font-size:12px;font-weight:400;-webkit-letter-spacing:-0.2px;-moz-letter-spacing:-0.2px;-ms-letter-spacing:-0.2px;letter-spacing:-0.2px;line-height:16px;}
 
-.re7{display:block;position:relative;background:#ffa136;color:#a0a0a0;vertical-align:bottom;font-size:12px;font-weight:400;-webkit-letter-spacing:-0.1px;-moz-letter-spacing:-0.1px;-ms-letter-spacing:-0.1px;letter-spacing:-0.1px;line-height:16px;text-align:left;margin:0 0 22px;}.re7:lang(ja),.re7:lang(ko){font-size:12px;font-weight:400;-webkit-letter-spacing:-0.2px;-moz-letter-spacing:-0.2px;-ms-letter-spacing:-0.2px;letter-spacing:-0.2px;line-height:16px;}
+.re7{display:block;position:relative;background:#ffdd63;color:#a0a0a0;vertical-align:bottom;font-size:12px;font-weight:400;-webkit-letter-spacing:-0.1px;-moz-letter-spacing:-0.1px;-ms-letter-spacing:-0.1px;letter-spacing:-0.1px;line-height:16px;text-align:left;margin:0 0 22px;}.re7:lang(ja),.re7:lang(ko){font-size:12px;font-weight:400;-webkit-letter-spacing:-0.2px;-moz-letter-spacing:-0.2px;-ms-letter-spacing:-0.2px;letter-spacing:-0.2px;line-height:16px;}
 
 .re8{display:block;position:relative;background:#ffdd63;color:#a0a0a0;vertical-align:bottom;font-size:12px;font-weight:400;-webkit-letter-spacing:-0.1px;-moz-letter-spacing:-0.1px;-ms-letter-spacing:-0.1px;letter-spacing:-0.1px;line-height:16px;text-align:left;margin:0 0 22px;}.re8::after{content:"4";display:block;position:absolute;right:0;bottom:-22px;left:0;text-align:center;}.re8:lang(ja),.re8:lang(ko){font-size:12px;font-weight:400;-webkit-letter-spacing:-0.2px;-moz-letter-spacing:-0.2px;-ms-letter-spacing:-0.2px;letter-spacing:-0.2px;line-height:16px;}
 

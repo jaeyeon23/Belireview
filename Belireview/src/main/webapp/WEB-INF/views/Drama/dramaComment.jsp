@@ -8,59 +8,51 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="/brw/resources/css/comment.css">
 <script>
-	var yes="${yes}";
+	var like= "${likeList}".split(","); 
 	var id="${ID}";
 	$(function(){ 
-	if(id==""||id==null){//비로그인
-		$(".like").click(function(){//좋아요
-			alert("로그인 해주세요.");
-			location.href="<c:url value='/member/loginForm.br' />"
+		if(id==""||id==null){//비로그인
+			$(".like").click(function(){//좋아요
+				alert("로그인 해주세요.");
+				location.href="<c:url value='/member/loginForm.br' />"
+				});
+		
+		}else{//로그인
+			$(".like").click(function(){//좋아요
+				var cla = $(this).attr('class').split(" ")[5];
+				commentlike(cla);
+				return;
 			});
-		
-	}else{//로그인
-		$(".like").click(function(){//좋아요
-			commentlike();
-			return;
-		});
-	
-	}
-});
-
-$(function(){ 
-	if(yes==""||yes==null){
-		$(".like").html("좋아요")
-		
-	}else{
-		$(".like").html("좋아요취소")
-	
-	}
-});
-
-
-
-function commentlike(){
-	$.ajax({
-		async : true,  
-		type : 'POST',
-		data : {ID:id , COMMENTLIKE:"c" , DRAMA_NO:<%=request.getParameter("DRAMA_NO")%>, DC_NO:$(".dcno").val()},
-		url:"<c:url value='/drama/dramaComment.br' />",
-		success : function(result){
-				var r = result;
-				var clike = "좋아요취소";
-				var cnolike =  "좋아요";
-				if(r.add){
-					$(".like").html(clike);
-					
+			if(like==""||like==null){
+				$(".like").html("좋아요")
+			}else{
+				for(var i=0;i<like.length;i++){
+					var tmp = like[i].replace("[","").replace("]","").trim();
+					$("."+tmp).html("좋아요취소");
 				}
-				if(r.subtract){
-					$(".like").html(cnolike);
-					
-				}
-				$(".Llike").html(result.DC_LIKE);
-			
+			} 
 		}
-	})
-}
+	});
+	function commentlike(cla){
+		$.ajax({
+			async : true,  
+			type : 'POST',
+			data : {ID:id , COMMENTLIKE:"c" ,CLA:cla , DRAMA_NO:<%=request.getParameter("DRAMA_NO")%>, DC_NO:$(".00"+cla).val()},
+			url:"<c:url value='/drama/dramaComment.br' />",
+			success : function(result){
+					var r = result;
+					var clike = "좋아요취소";
+					var cnolike =  "좋아요";
+					if(r.add){
+						$('.'+r.CLA).html(clike);
+					}
+					if(r.subtract){
+						$('.'+r.CLA).html(cnolike);
+					}
+					$('.0'+r.CLA).html(result.DC_LIKE);
+			}
+		})
+	}
 
 
 </script>
@@ -90,7 +82,7 @@ function commentlike(){
 							<div class="Row-s1apwm9x-0 lowZpE">
 								<div class="ContentCommentsPage__CommentLists-s9miehw-0 bMVaMG">
 									<ul class="VisualUl-s1vzev56-0 hgAYVH">
-									<c:forEach items="${dramacomment}" var="dramacommentlist">
+									<c:forEach items="${dramacomment}" var="dramacommentlist" varStatus="stat"><!-- 시작 -->
 										<div class="BasicCommentItem__Comment-iqy0k7-0 iNWJNm">
 											<div class="BasicCommentItem__TitleContainer-iqy0k7-1 jWsgqF">
 												<div class="BasicCommentItem__ProfileBlock-iqy0k7-2 dFeRwI">
@@ -105,7 +97,7 @@ function commentlike(){
 														</div>
 														<div class="UserNameWithBadges__Self-s1bd3hgj-0 brZhrQ">
 															${dramacommentlist.ID}
-															<input type="hidden" value="${dramacommentlist.DC_NO}" class="dcno"/>
+															<input type="hidden" value="${dramacommentlist.DC_NO}" class="00like${stat.index}"/>
 															<span class="UserNameWithBadges__SmallBadge-s1bd3hgj-1 bAndNa UIImg-s3jz6tx-0 eBREVF"
 																src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iMTIiIGhlaWdodD0iMTIiIHZpZXdCb3g9IjAgMCAxMiAxMiI+CiAgICA8ZGVmcz4KICAgICAgICA8cGF0aCBpZD0iYSIgZD0iTTYgMTAuNjYxYy0uOTI3IDAtMS4xMzEgMS4wMjItMS44NTQuNzg3LS43MjMtLjIzNS0uMjg4LTEuMTgxLTEuMDM4LTEuNzI2LS43NS0uNTQ1LTEuNTE1LjE2MS0xLjk2Mi0uNDU0LS40NDctLjYxNS40NjEtMS4xMjUuMTc1LTIuMDA2QzEuMDM0IDYuMzggMCA2LjUwMiAwIDUuNzQyczEuMDM0LS42NCAxLjMyLTEuNTJjLjI4Ny0uODgzLS42Mi0xLjM5Mi0uMTc0LTIuMDA3LjQ0Ny0uNjE1IDEuMjEyLjA5MSAxLjk2Mi0uNDU0UzMuNDIzLjI3IDQuMTQ2LjAzNUM0Ljg2OS0uMiA1LjA3My44MjEgNiAuODIxUzcuMTMxLS4xOTkgNy44NTQuMDM1Yy43MjMuMjM1LjI4OCAxLjE4MSAxLjAzOCAxLjcyNi43NS41NDUgMS41MTUtLjE2MSAxLjk2Mi40NTQuNDQ3LjYxNS0uNDYxIDEuMTI0LS4xNzUgMi4wMDYuMjg3Ljg4MiAxLjMyMS43NiAxLjMyMSAxLjUycy0xLjAzNC42NC0xLjMyIDEuNTJjLS4yODcuODgyLjYyIDEuMzkyLjE3NCAyLjAwNy0uNDQ3LjYxNS0xLjIxMi0uMDkxLTEuOTYyLjQ1NHMtLjMxNSAxLjQ5LTEuMDM4IDEuNzI2Yy0uNzIzLjIzNS0uOTI3LS43ODctMS44NTQtLjc4N3oiLz4KICAgICAgICA8cGF0aCBpZD0iYyIgZD0iTTYgMTAuNjYxYy0uOTI3IDAtMS4xMzEgMS4wMjItMS44NTQuNzg3LS43MjMtLjIzNS0uMjg4LTEuMTgxLTEuMDM4LTEuNzI2LS43NS0uNTQ1LTEuNTE1LjE2MS0xLjk2Mi0uNDU0LS40NDctLjYxNS40NjEtMS4xMjUuMTc1LTIuMDA2QzEuMDM0IDYuMzggMCA2LjUwMiAwIDUuNzQyczEuMDM0LS42NCAxLjMyLTEuNTJjLjI4Ny0uODgzLS42Mi0xLjM5Mi0uMTc0LTIuMDA3LjQ0Ny0uNjE1IDEuMjEyLjA5MSAxLjk2Mi0uNDU0UzMuNDIzLjI3IDQuMTQ2LjAzNUM0Ljg2OS0uMiA1LjA3My44MjEgNiAuODIxUzcuMTMxLS4xOTkgNy44NTQuMDM1Yy43MjMuMjM1LjI4OCAxLjE4MSAxLjAzOCAxLjcyNi43NS41NDUgMS41MTUtLjE2MSAxLjk2Mi40NTQuNDQ3LjYxNS0uNDYxIDEuMTI0LS4xNzUgMi4wMDYuMjg3Ljg4MiAxLjMyMS43NiAxLjMyMSAxLjUycy0xLjAzNC42NC0xLjMyIDEuNTJjLS4yODcuODgyLjYyIDEuMzkyLjE3NCAyLjAwNy0uNDQ3LjYxNS0xLjIxMi0uMDkxLTEuOTYyLjQ1NHMtLjMxNSAxLjQ5LTEuMDM4IDEuNzI2Yy0uNzIzLjIzNS0uOTI3LS43ODctMS44NTQtLjc4N3oiLz4KICAgIDwvZGVmcz4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPG1hc2sgaWQ9ImIiIGZpbGw9IiNmZmYiPgogICAgICAgICAgICA8dXNlIHhsaW5rOmhyZWY9IiNhIi8+CiAgICAgICAgPC9tYXNrPgogICAgICAgIDx1c2UgZmlsbD0iIzNEM0QzRCIgeGxpbms6aHJlZj0iI2EiLz4KICAgICAgICA8cGF0aCBmaWxsPSIjRkZGIiBkPSJNMy40IDIuOGgxLjJ2OUgzLjR6TTUuOCA1LjJIN3Y3LjJINS44ek04LjIgNy42aDEuMnY0LjhIOC4yeiIgbWFzaz0idXJsKCNiKSIvPgogICAgICAgIDxwYXRoIGZpbGw9IiNGRkYiIGQ9Ik04LjIgNy42SDEzdjEuMkg4LjJ6TTUuOCA1LjJIMTN2MS4ySDUuOHpNMy40IDIuOGg5VjRoLTl6IiBtYXNrPSJ1cmwoI2IpIi8+CiAgICAgICAgPHBhdGggc3Ryb2tlPSIjM0QzRDNEIiBzdHJva2Utb3BhY2l0eT0iLjE1IiBzdHJva2Utd2lkdGg9Ii4yNSIgZD0iTTcuMDAzIDEwLjk3NmMtLjA0MS0uMDM2LjE2LjE0LjIwNi4xNzguMjMyLjE5Mi4zOS4yNDUuNjA2LjE3NS4yNDgtLjA4LjMyOC0uMjIyLjQyMy0uNjQ0LjA0MS0uMTguMDUtLjIyLjA3NS0uMzA0LjA5NS0uMzI5LjI0Mi0uNTY5LjUwNS0uNzYuMDM4LS4wMjguMDc2LS4wNTIuMTE1LS4wNzUuMzA0LS4xNzYuNTUzLS4xOTcgMS4wMzctLjE1Mi40NzUuMDQ0LjYyNi4wMTcuNzgzLS4yYS40OC40OCAwIDAgMCAuMTAxLS4zMTdjLS4wMDUtLjEyOS0uMDM0LS4yMS0uMTY4LS41MjMtLjE5OC0uNDYxLS4yNS0uNzQ5LS4xMjYtMS4xMy4xMTQtLjM1Mi4zMjEtLjU2Ny42NzctLjc4OC4wNDctLjAyOS4xMDQtLjA2My4yMDItLjEyLjMyNi0uMTk3LjQzNi0uMzI1LjQzNi0uNTc1IDAtLjI0OS0uMTEtLjM3Ny0uNDM2LS41NzNhMTQuMDAzIDE0LjAwMyAwIDAgMS0uMjAyLS4xMjFjLS4zNTYtLjIyMS0uNTYzLS40MzYtLjY3Ny0uNzg3LS4xMjQtLjM4My0uMDcyLS42Ny4xMjYtMS4xMzIuMTM0LS4zMTMuMTYzLS4zOTMuMTY4LS41MjJhLjQ4LjQ4IDAgMCAwLS4xMDEtLjMxOGMtLjE1Ny0uMjE2LS4zMDgtLjI0My0uNzgzLS4yLS40ODQuMDQ2LS43MzMuMDI1LTEuMDM3LS4xNTFhMS4zMjYgMS4zMjYgMCAwIDEtLjExNS0uMDc1Yy0uMjYzLS4xOTEtLjQxLS40MzEtLjUwNS0uNzZhNC4zOTIgNC4zOTIgMCAwIDEtLjA3NS0uMzA0QzguMTQzLjM3NiA4LjA2My4yMzQgNy44MTUuMTU0IDcuNi4wODQgNy40NDEuMTM3IDcuMjEuMzI5Yy0uMDQ2LjAzNy0uMjQ4LjIxNC0uMjA2LjE3OC0uMzUuMzAzLS42MTUuNDQtMS4wMDMuNDQtLjM4OCAwLS42NTMtLjEzNy0xLjAwMy0uNDQuMDQxLjAzNi0uMTYtLjE0LS4yMDYtLjE3OC0uMjMyLS4xOTItLjM5LS4yNDUtLjYwNi0uMTc1LS4yNDguMDgtLjMyOC4yMjItLjQyMy42NDQtLjA0MS4xOC0uMDUuMjItLjA3NS4zMDQtLjA5NS4zMjktLjI0Mi41NjktLjUwNS43NmExLjMyNiAxLjMyNiAwIDAgMS0uMTE1LjA3NWMtLjMwNC4xNzYtLjU1My4xOTctMS4wMzcuMTUyLS40NzUtLjA0NC0uNjI2LS4wMTctLjc4My4yYS40OC40OCAwIDAgMC0uMTAxLjMxN2MuMDA1LjEyOS4wMzQuMjEuMTY4LjUyMi4xOTguNDYyLjI1Ljc1LjEyNiAxLjEzMi0uMTE0LjM1LS4zMjEuNTY2LS42NzcuNzg3bC0uMjAyLjEyYy0uMzI2LjE5Ny0uNDM2LjMyNS0uNDM2LjU3NCAwIC4yNS4xMS4zNzguNDM2LjU3NGwuMjAyLjEyMWMuMzU2LjIyLjU2My40MzYuNjc3Ljc4Ny4xMjQuMzgyLjA3Mi42Ny0uMTI2IDEuMTMxLS4xMzQuMzE0LS4xNjMuMzk0LS4xNjguNTIzYS40OC40OCAwIDAgMCAuMTAxLjMxOGMuMTU3LjIxNi4zMDguMjQzLjc4My4yLjQ4NC0uMDQ2LjczMy0uMDI1IDEuMDM3LjE1MS4wMzkuMDIzLjA3Ny4wNDcuMTE1LjA3NS4yNjMuMTkxLjQxLjQzMS41MDUuNzYuMDI0LjA4NC4wMzQuMTIzLjA3NS4zMDQuMDk1LjQyMi4xNzUuNTY0LjQyMy42NDQuMjE2LjA3LjM3NC4wMTcuNjA2LS4xNzUuMDQ2LS4wMzguMjQ4LS4yMTQuMjA2LS4xNzguMzUtLjMwMy42MTUtLjQ0IDEuMDAzLS40NC4zODggMCAuNjUzLjEzNyAxLjAwMy40NHptLTEuODQyLjE4OHoiLz4KICAgIDwvZz4KPC9zdmc+Cg=="></span><span
 																class="UserNameWithBadges__SmallBadge-s1bd3hgj-1 bAndNa UIImg-s3jz6tx-0 kyuoIv"
@@ -122,21 +114,18 @@ function commentlike(){
 											<div class="BasicCommentItem__TextBlock-iqy0k7-3 gVqTAw">
 												<div class="ContentlessCommentItem__Text-s1n6rtl6-0 eMbWQD">${dramacommentlist.DC_CONTENT}</div>
 											</div>
-											<div
-												class="ContentlessCommentItem__LikeReplyBlock-s1n6rtl6-1 bSwpdd">
+											<div class="ContentlessCommentItem__LikeReplyBlock-s1n6rtl6-1 bSwpdd">
 												<span
 													class="ContentlessCommentItem__LikeImage-s1n6rtl6-2 jmhzoz UIImg-s3jz6tx-0 jSJJRD"
 													src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgZmlsbD0iIzc4Nzg3OCI+CiAgICAgICAgICAgIDxwYXRoIGQ9Ik02Ljc1IDkuNDg1aC0zYTEgMSAwIDAgMC0xIDF2MTBhMSAxIDAgMCAwIDEgMWgzYTEgMSAwIDAgMCAxLTF2LTEwYTEgMSAwIDAgMC0xLTFNMjAuNjU3IDguNTY2YTIuMzYzIDIuMzYzIDAgMCAwLTEuNzc5LS44MTNIMTYuNjJsLjE2NC0uNjI3Yy4xMzctLjUyOC4yMDEtMS4xMi4yMDEtMS44NjMgMC0xLjkxOS0xLjM3NS0yLjc3OC0yLjczOC0yLjc3OC0uNDQ0IDAtLjc2Ni4xMjMtLjk4Ni4zNzYtLjIuMjI3LS4yODIuNTMtLjI0My45MzVsLjAzIDEuMjMtMi45MDMgMi45NGMtLjU5My42LS44OTQgMS4yMy0uODk0IDEuODcydjkuNjQ3YS41LjUgMCAwIDAgLjUuNWg3LjY4N2EyLjM4OCAyLjM4OCAwIDAgMCAyLjM0OC0yLjA3bDEuNDQ1LTcuNDUyYTIuNDQgMi40NCAwIDAgMC0uNTc0LTEuODk3Ii8+CiAgICAgICAgPC9nPgogICAgPC9nPgo8L3N2Zz4K"
-													width="18px" height="18px"></span><em class="Llike">${dramacommentlist.DC_LIKE}</em>
+													width="18px" height="18px"></span><em class="0like${stat.index}">${dramacommentlist.DC_LIKE}</em>
 											</div>
-											<div
-												class="ContentlessCommentItem__UserActionBlock-s1n6rtl6-4 kJvkpH">
-												<button
-													class="ContentlessCommentItem__UserActionButton-s1n6rtl6-5 kRhZsb StylelessButton-phxvo7-0 gsSopE like">좋아요</button>
+											<div class="ContentlessCommentItem__UserActionBlock-s1n6rtl6-4 kJvkpH">
+												<button class="ContentlessCommentItem__UserActionButton-s1n6rtl6-5 kRhZsb StylelessButton-phxvo7-0 gsSopE like like${stat.index}">좋아요</button>
 											</div>
 										</div>
 										<div class="PrimitiveInfinityScroll__Self-abb99t-0 iMsRxa"></div>
-										</c:forEach>
+										</c:forEach><!-- 끝 -->
 									</ul>
 								</div>
 							</div>
@@ -146,34 +135,6 @@ function commentlike(){
 			</div>
 		</div>
 	</div>
-
-	<script>
-        window.ga=function(){ga.q.push(arguments)};ga.q=[];ga.l=+new Date;
-        ga("create","UA-27006241-7","auto");
-      </script>
-
-
-	<script src="https://browser.sentry-cdn.com/4.6.4/bundle.min.js"
-		crossorigin="anonymous"></script>
-
-
-
-	<script
-		src="https://d2rlq84xifqisi.cloudfront.net/javascripts/web.9f7fa479dc526cbedf18.js"
-		crossorigin="anonymous"></script>
-
-
-	<script src="https://www.google-analytics.com/analytics.js" async=""
-		defer=""></script>
-
-
-	<script>
-        if ('serviceWorker' in navigator) {
-          window.addEventListener('load', function() {
-            navigator.serviceWorker.register('https://watcha.com/sw.js');
-          });
-        }
-      </script>
 
 	<div id="fb-root" class=" fb_reset">
 		<div

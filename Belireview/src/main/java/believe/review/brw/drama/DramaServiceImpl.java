@@ -93,6 +93,11 @@ public class DramaServiceImpl  implements DramaService{
 	public double ratingPrediction(Map<String, Object> map) throws Exception{
 		return dramaDAO.ratingPrediction(map);
 	}
+	@Override
+	public Map<String, Object> commentOne(Map<String, Object> map) throws Exception{
+		return dramaDAO.commentOne(map);
+	}
+	
 	/*@Override
 	public Map<String, Object> insertdramaComment(Map<String, Object> map) throws Exception {
 		return dramaDAO.dramaComment(map);
