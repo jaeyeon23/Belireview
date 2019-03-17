@@ -47,6 +47,7 @@
 		var ra = "" 
 		var initValue = "${initValue}";
 		var mcc = "${myComment}";
+		var like= "${likeList}".split(",");
 		$(function(){
 			var ee ;
 			for(var i=0;i<10;i++){
@@ -100,10 +101,45 @@
 				}); 
 				 $('.mc').click(function(){
 					updateComment();
-				}); 
+				});
+				$(".like").live("click",function(){//좋아요
+						var cla = $(this).attr('class').split(" ")[5];
+						commentlike(cla);
+						return;
+				});
+				if(like==""||like==null){
+					$(".like").html("좋아요")
+				}else{
+					for(var i=0;i<like.length;i++){
+						var tmp = like[i].replace("[","").replace("]","").trim();
+						$("."+tmp).html("좋아요취소");
+					}
+				} 
 			}
 		});
 		 /* 로그인 유무 */
+		 
+		//좋아요
+		function commentlike(cla){
+		$.ajax({
+			async : true,  
+			type : 'POST',
+			data : {ID:id , COMMENTLIKE:"c" ,CLA:cla , DRAMA_NO:<%=request.getParameter("DRAMA_NO")%>, DC_NO:$(".00"+cla).val()},
+			url:"<c:url value='/drama/dramaDetail.br' />",
+			success : function(result){
+					var r = result;
+					var clike = "좋아요취소";
+					var cnolike =  "좋아요";
+					if(r.add){
+						$('.'+r.CLA).html(clike);
+					}
+					if(r.subtract){
+						$('.'+r.CLA).html(cnolike);
+					}
+					$('.0'+r.CLA).html(result.DC_LIKE);
+				}
+			})
+		}
 		
 		function deleteComment(){
 			 $.ajax({
@@ -202,10 +238,7 @@
 		/* 이미지 슬라이드 */
 		
 		/* 별점 */
-		
-	
 		$(function(){
-			
 			if(id==""||id==null){}
 			else{
 				/* initValue = $('.gZASBp > div').attr("class").split(" ")[1]; */
@@ -906,7 +939,7 @@
 																		<div class="Grid-zydj2q-0 cspjno">
 																			<div class="Row-s1apwm9x-0 lowZpE">
 																				<ul class="ContentCommentsSection__CommentHorizontalUl-s5mwulc-1 kBYzWA HorizontalUl__StyledHorizontalUl-s1lfz4bc-0 kJrumC VisualUl-s1vzev56-0 hgAYVH comen">
-																					<c:forEach items="${comment}" var="comment">
+																					<c:forEach items="${comment}" var="comment" varStatus="stat">
 																						<!-- 코멘트 -->
 																						<li class="HorizontalListItem-tt0z2b-0 hRbPKu">
 																							<div class="BasicCommentItem__Comment-iqy0k7-0 UuRdd">
@@ -927,9 +960,10 @@
 																											</div>
 																											<div class="UserNameWithBadges__Self-s1bd3hgj-0 brZhrQ">
 																												${comment.ID} 
-																											<span class="UserNameWithBadges__SmallBadge-s1bd3hgj-1 bAndNa UIImg-s3jz6tx-0 eBREVF" src="/brw/resources/images/detail/detail_comment1.svg"></span>
-																											<span class="UserNameWithBadges__SmallBadge-s1bd3hgj-1 bAndNa UIImg-s3jz6tx-0 kyuoIv" src="/brw/resources/images/detail/detail_comment2.svg"></span>
-																											</div></a>
+																												<input type="hidden" value="${comment.DC_NO}" class="00like${stat.index}"/>
+																												<span class="UserNameWithBadges__SmallBadge-s1bd3hgj-1 bAndNa UIImg-s3jz6tx-0 eBREVF" src="/brw/resources/images/detail/detail_comment1.svg"></span>
+																												<span class="UserNameWithBadges__SmallBadge-s1bd3hgj-1 bAndNa UIImg-s3jz6tx-0 kyuoIv" src="/brw/resources/images/detail/detail_comment2.svg"></span>
+																											</div>
 																									</div>
 																									<div class="BasicCommentItem__UserActionStatus-iqy0k7-4 cMGqAP">
 																										<img src="/brw/resources/images/detail/detail_comment_grade.svg"
@@ -943,10 +977,10 @@
 																								</div>
 																								<div class="ContentlessCommentItem__LikeReplyBlock-s1n6rtl6-1 bSwpdd">
 																									<span class="ContentlessCommentItem__LikeImage-s1n6rtl6-2 jmhzoz UIImg-s3jz6tx-0 jSJJRD" src="/brw/resources/images/detail/detail_like.svg" width="18px" height="18px"></span>
-																									<em>${comment.DC_LIKE}</em>
+																									<em class="0like${stat.index}">${comment.DC_LIKE}</em>
 																								</div>
 																								<div class="ContentlessCommentItem__UserActionBlock-s1n6rtl6-4 kJvkpH">
-																									<button class="ContentlessCommentItem__UserActionButton-s1n6rtl6-5 kRhZsb StylelessButton-phxvo7-0 gsSopE">좋아요</button>
+																									<button class="ContentlessCommentItem__UserActionButton-s1n6rtl6-5 kRhZsb StylelessButton-phxvo7-0 gsSopE like like${stat.index}">좋아요</button>
 																								</div>
 																							</div>
 																						</li>

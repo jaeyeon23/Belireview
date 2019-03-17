@@ -20,10 +20,9 @@ import believe.review.brw.common.util.Paging;
 import believe.review.brw.user.UserService;
 
 
-@Controller
 
 @RequestMapping("/drama")
-public class DramaController {
+public class DramaController2 {
 	private int currentPage = 1;	 
 	private int totalCount;
 	private int blockCount = 1;	 
@@ -98,7 +97,6 @@ public class DramaController {
 			image[i] = image[i].trim();
 		}
 		double ratingPrediction = 0;
-		List<String> likeList = new ArrayList<String>();
 		if(session.getAttribute("ID")!=null) {//로그인했을때
 			map.put("ID", session.getAttribute("ID"));
 			Map<String,Object> tmp = userService.userWishList(map);
@@ -112,21 +110,6 @@ public class DramaController {
 					}
 				}
 			}
-			for(int i=0;i<comment.size();i++) {
-				if(comment.get(i).get("DC_LIKE_ID")!=null) {
-					String[] str = comment.get(i).get("DC_LIKE_ID").toString().split(",");
-					for(int j=0;j<str.length;j++) {
-						if(session.getAttribute("ID").equals(str[j])) {
-							likeList.add("like"+i);
-						}else
-							likeList.add("nonone");
-					}
-				}
-			}
-			if(likeList.size()!=0) {
-				mv.addObject("likeList",likeList);
-			}
-			
 			tmp = dramaService.existGrade(map);
 		
 			if(tmp!=null) {//별점
@@ -170,45 +153,8 @@ public class DramaController {
 		Map<String,Object> mv = commandMap.getMap();
 		Map<String,Object> map = new HashMap<String,Object>();
 		StringBuffer sb = new StringBuffer();
-		
-		//좋아요
-		if(mv.get("COMMENTLIKE")!=null) {
-			map = dramaService.commentOne(mv);
-			if(map.get("DC_LIKE_ID")!=null) {
-				String[] str = map.get("DC_LIKE_ID").toString().split(",");
-				boolean exist = false;
-				int likenum = Integer.parseInt(map.get("DC_LIKE").toString());
-				String dc_like_id = "";
-				for(String s : str) {
-					System.out.println(s);
-					System.out.println(mv.get("ID"));
-					if(mv.get("ID").equals(s)) {
-						exist = true;
-					}else {
-						dc_like_id += s+",";
-					}
-				}
-				if(!exist) {
-					dc_like_id += mv.get("ID");
-					likenum +=1;
-					mv.put("add", "add");
-				}else {
-					likenum -=1;
-					mv.put("subtract", "subtract");
-				}
-				mv.put("DC_LIKE_ID", dc_like_id);
-				mv.put("DC_LIKE", likenum);
-				System.out.println(mv.get("DC_LIKE"));
-				dramaService.dramaCommentLike(mv);
-			}else {
-				mv.put("DC_LIKE_ID", mv.get("ID"));
-				mv.put("add", "add");
-				mv.put("DC_LIKE", 1);
-				dramaService.dramaCommentLike(mv);
-			}
-		}
-		
 		/*보고싶어요*/
+		
 		if(mv.get("WISH")!=null) {
 			map = userService.userWishList(mv);
 			
@@ -329,7 +275,6 @@ public class DramaController {
 
 	@RequestMapping(value = "dramaInfo.br")
 	public ModelAndView dramaInfo(CommandMap commandMap) throws Exception {
-
 
 		ModelAndView mv = new ModelAndView("dramaInfo");
 		Map<String,Object> map = dramaService.dramaDetail(commandMap.getMap());
