@@ -49,19 +49,4 @@ public class MainDAO extends AbstractDAO {
 		return (List<Map<String, Object>>) selectList("main.searchRelation", searchValue);
 	}
 	
-	@SuppressWarnings("unchecked")
-	public List<Map<String, Object>> searchDramaRelation(String searchValue){
-		return (List<Map<String, Object>>) selectList("main.searchDramaRelation", searchValue);
-	}
-	
-	@SuppressWarnings("unchecked")
-	public List<Map<String, Object>> searchMovieRelation(String searchValue){
-		return (List<Map<String, Object>>) selectList("main.searchMovieRelation", searchValue);
-	}
-	
-	@SuppressWarnings("unchecked")
-	public List<Map<String, Object>> searchAdRelation(String searchValue){
-		return (List<Map<String, Object>>) selectList("main.searchAdRelation", searchValue);
-	}
-	
 }

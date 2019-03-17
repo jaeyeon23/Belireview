@@ -17,7 +17,7 @@
 	<dependencies> 
 	
 	  <!-- ssl -->
-		 <dependency>
+		<!--  <dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-web</artifactId>
 			<version>3.2.8.RELEASE</version>
@@ -27,25 +27,25 @@
 	       <groupId>org.springframework.security</groupId>
 	       <artifactId>spring-security-config</artifactId>
 	       <version>3.2.8.RELEASE</version>
-	   </dependency>
+	   </dependency> -->
      <!-- ssl -->
      
 		<!-- bcrypt -->
-		<!-- <dependency>
+		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-web</artifactId>
 			<version>4.0.3.RELEASE</version>
-		</dependency> -->
-	<!-- 	<dependency>
+		</dependency>
+		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-core</artifactId>
 			<version>3.2.8.RELEASE</version>
-		</dependency> -->
-	<!-- 	<dependency>
+		</dependency>
+		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-config</artifactId>
 			<version>4.0.3.RELEASE</version>
-		</dependency> -->
+		</dependency>
 		
 		
 		<!-- MyBatis -->

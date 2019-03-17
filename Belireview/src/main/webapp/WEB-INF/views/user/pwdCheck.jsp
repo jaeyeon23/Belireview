@@ -24,7 +24,6 @@
 				pw_encrypt = result;
 			}
 		});
-		
 		if(document.loginForm.password.value == ""){
 			alert("비밀번호를 입력하세요.");
 			document.loginForm.password.focus();

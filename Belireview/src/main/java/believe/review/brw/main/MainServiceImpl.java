@@ -51,18 +51,4 @@ public class MainServiceImpl implements MainService{
 		return (List<Map<String, Object>>) mainDAO.searchRelation(searchValue);
 	}
 	
-	@Override
-	public List<Map<String, Object>> searchDramaRelation(String searchValue) throws Exception {
-		return (List<Map<String, Object>>) mainDAO.searchDramaRelation(searchValue);
-	}
-	
-	@Override
-	public List<Map<String, Object>> searchMovieRelation(String searchValue) throws Exception {
-		return (List<Map<String, Object>>) mainDAO.searchMovieRelation(searchValue);
-	}
-
-	@Override
-	public List<Map<String, Object>> searchAdRelation(String searchValue) throws Exception {
-		return (List<Map<String, Object>>) mainDAO.searchAdRelation(searchValue);
-	}
 }

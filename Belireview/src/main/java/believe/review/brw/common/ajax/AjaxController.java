@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import believe.review.brw.admin.user.AdminUserService;
 import believe.review.brw.main.MainService;
 
 @Controller
@@ -25,6 +26,9 @@ public class AjaxController {
 
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
+	
+	@Resource(name="adminUserService")
+	private AdminUserService adminUserService;
 	
 	@Resource(name="mainService")
 	private MainService mainService; 
@@ -55,8 +59,11 @@ public class AjaxController {
 	public Boolean ajaxDelete(HttpServletRequest request, HttpServletResponse response) throws Exception{
 		HttpSession session = request.getSession();
 		String password = request.getParameter("password");
-		String user_pw = (String) session.getAttribute("PASSWORD");
+		Map<String, Object> member = adminUserService.selectUserOne((String)session.getAttribute("ID"));
+		String user_pw = (String)member.get("PASSWORD");
 		Boolean check_pw = false;
+		
+		System.out.println("password : " + password + "\tuser_pw : " + user_pw);
 		
 		if(passwordEncoder.matches(password, user_pw)) {
 			check_pw = true;
