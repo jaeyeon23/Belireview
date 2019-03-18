@@ -37,14 +37,16 @@ public class AjaxController {
 	public void auto(HttpServletRequest request, HttpServletResponse response) throws Exception{
 		String searchValue = request.getParameter("searchValue");
 		List<Map<String, Object>> list = mainService.searchRelation(searchValue);
+		int i = 0;
 		
 		JSONArray array = new JSONArray();
 		JSONObject obj = null;
 		
-		for(int i = 0 ; i < 10 ; i++) {
+		while(i < 10 && i < list.size()) {
 			obj = new JSONObject();
 			obj.put("data", list.get(i).get("NAME"));
 			array.put(obj);
+			i++;
 		}
 		
 		response.setContentType("text/html; charset=UTF-8");

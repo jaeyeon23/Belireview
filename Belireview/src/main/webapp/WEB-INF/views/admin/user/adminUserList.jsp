@@ -7,6 +7,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link href="/brw/resources/Jcss/admin.css" rel="stylesheet" type="text/css">
+<script src="/brw/resources/js/admin/admin.js"></script>
 <script type="text/javascript">
 	function orderby(url) {
 		var orderby = document.getElementById("orderby").value;
@@ -85,7 +87,29 @@
 			</select>
 		</div>
 		
-		<div class="tablesaw-overflow">
+		<div class="Rtable Rtable--4cols Rtable--collapse js-RtableAccordions">
+		
+		 <button class="Accordion" role="tab" aria-selected="true">Ned</button>
+		  <div class="Rtable-cell  Rtable-cell--head"><h3>Eddard Stark</h3></div>
+		  <div class="Rtable-cell">Has a sword named Ice</div>
+		  <div class="Rtable-cell">No direwolf</div>
+		  <div class="Rtable-cell  Rtable-cell--foot"><strong>Lord of Winterfell</strong></div>
+		  
+		  <button class="Accordion" role="tab" aria-selected="false">Jon</button>
+		  <div class="Rtable-cell  Rtable-cell--head"><h3>Jon Snow</h3></div>
+		  <div class="Rtable-cell">Has a sword named Longclaw</div>
+		  <div class="Rtable-cell">Direwolf: Ghost</div>
+		  <div class="Rtable-cell  Rtable-cell--foot"><strong>Knows nothing</strong></div>
+		  
+		  <button class="Accordion" role="tab" aria-selected="false">Arya</button>
+		  <div class="Rtable-cell  Rtable-cell--head"><h3>Arya Stark</h3></div>
+		  <div class="Rtable-cell">Has a sword named Needle</div>
+		  <div class="Rtable-cell">Direwolf: Nymeria</div>
+		  <div class="Rtable-cell  Rtable-cell--foot"><strong>No one</strong></div>
+		
+		</div>
+		
+		
 		<table class="table table-hover" align="center">
 			<thead>
 				<tr>
