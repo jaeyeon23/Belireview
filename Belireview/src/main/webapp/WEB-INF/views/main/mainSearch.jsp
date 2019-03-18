@@ -238,7 +238,7 @@
 										<h2 class="SectionWithHeader__Title-s1eyxltb-2 kwjefp">영화</h2>
 										<div class="SectionWithHeader__TopRight-s1eyxltb-3 bZaEfL">
 											<div class="SectionWithViewMore__ViewMore-xtbl7q-0 bhbIbv">
-												<a lng="ko-KR" href="/ko-KR/searches/tv_seasons/%EB%8F%84%EA%B9%A8%EB%B9%84">더보기</a>
+												<!-- <a lng="ko-KR" href="/ko-KR/searches/tv_seasons/%EB%8F%84%EA%B9%A8%EB%B9%84">더보기</a> -->
 											</div>
 										</div>
 									</header>
@@ -298,8 +298,8 @@
 										<h2 class="SectionWithHeader__Title-s1eyxltb-2 kwjefp">TV</h2>
 										<div class="SectionWithHeader__TopRight-s1eyxltb-3 bZaEfL">
 											<div class="SectionWithViewMore__ViewMore-xtbl7q-0 bhbIbv">
-												<a lng="ko-KR"
-													href="/ko-KR/searches/tv_seasons/%EB%8F%84%EA%B9%A8%EB%B9%84">더보기</a>
+												<!-- <a lng="ko-KR"
+													href="/ko-KR/searches/tv_seasons/%EB%8F%84%EA%B9%A8%EB%B9%84">더보기</a> -->
 											</div>
 										</div>
 									</header>
@@ -367,8 +367,8 @@
 										<h2 class="SectionWithHeader__Title-s1eyxltb-2 kwjefp">광고</h2>
 										<div class="SectionWithHeader__TopRight-s1eyxltb-3 bZaEfL">
 											<div class="SectionWithViewMore__ViewMore-xtbl7q-0 bhbIbv">
-												<a lng="ko-KR"
-													href="/ko-KR/searches/tv_seasons/%EB%8F%84%EA%B9%A8%EB%B9%84">더보기</a>
+												<!-- <a lng="ko-KR"
+													href="/ko-KR/searches/tv_seasons/%EB%8F%84%EA%B9%A8%EB%B9%84">더보기</a> -->
 											</div>
 										</div>
 									</header>
