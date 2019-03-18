@@ -84,6 +84,8 @@
 				<option value="3">이름순</option>
 			</select>
 		</div>
+		
+		<div class="tablesaw-overflow">
 		<table class="table table-hover" align="center">
 			<thead>
 				<tr>
@@ -184,6 +186,8 @@
 				</c:choose>
 			</tbody>
 		</table>
+		</div>
+		
 		
 		<nav>
 			<div class='pag-center'>
