@@ -213,6 +213,8 @@ public class MainController {
 			mainPage = new Paging(currentPage, mainTotal, blockCount, blockPage, "/brw/main/mainSearch");
 			
 			int lastCount = mainTotal;
+			if(mainPage.getEndCount() < mainTotal)
+				lastCount = mainPage.getEndCount() + 1;
 			
 			searchMain = searchMain.subList(mainPage.getStartCount(), lastCount);
 			
