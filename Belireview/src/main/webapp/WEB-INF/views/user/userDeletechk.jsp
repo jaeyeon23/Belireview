@@ -8,6 +8,7 @@
 </head>
 <body>
 	<form name="memberDelete" action="userDelete.br" onsubmit="return memberDeleteChk()">
+	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 		<input type="hidden" name="id" value="${ID }">
 		<div class="tbl_type_01">
 			<center>

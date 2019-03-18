@@ -43,6 +43,7 @@
 					<legend class="blind">로그인</legend>
 						<div class="row_group">
 							<form id="loginForm" method="GET" action="userModify.br" onsubmit="return checkPw();">
+							<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 							<input type="hidden" id="id" name="id" value="${ID}">
 							<div class="join_row join_mobile">
                        			 <h3 class="join_title"><label for="id">아이디</label></h3>
