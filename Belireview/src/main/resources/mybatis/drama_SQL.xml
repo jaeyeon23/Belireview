@@ -59,7 +59,7 @@
 			DRAMA_CONTENT_IMAGE,
 			DRAMA_EPISODE,
 			(SELECT ROUND(AVG(DL_GRADE),1)
-			FROM DRAMA_LIKE WHERE DRAMA_LIKE_NO = #{DRAMA_NO}) 
+			FROM DRAMA_LIKE WHERE DRAMA_LIKE_NO = #{DRAMA_NO} AND DL_GRADE != 0) 
 			AS DRAMA_GRADE 
 		FROM DRAMA WHERE DRAMA_NO = #{DRAMA_NO}
    </select>
@@ -145,8 +145,16 @@
 		DELETE DRAMA WHERE DRAMA_NO=#{DRAMA_NO}
 	</delete> -->
 	
+	<select id="grade" parameterType="hashmap" resultType="int">
+   		select count(*) from drama_like where drama_like_no=#{DRAMA_NO}
+	</select>
+	
+	<select id="ratingPrediction" parameterType="hashmap" resultType="double">
+		select round(avg(DL_GRADE),1) from drama_like where drama_like_no in (select drama_no from drama where drama_genre=#{DRAMA_GENRE}) and id=#{ID}
+	</select>
+	
 	<select id="gradeRatio" parameterType="hashmap" resultType="hashmap">
-		  with t as(		
+		  with t as(
 		  		SELECT '0.5' GRADE, count(*) A FROM drama_like where DL_GRADE=0.5 and drama_like_no=#{DRAMA_NO} UNION ALL
 		        SELECT '1' GRADE, count(*) A FROM drama_like where DL_GRADE=1 and drama_like_no=#{DRAMA_NO} UNION ALL
 		        SELECT '1.5' GRADE, count(*) A FROM drama_like where DL_GRADE=1.5 and drama_like_no=#{DRAMA_NO} UNION ALL
@@ -161,7 +169,7 @@
 		  select 
 		    decode(grouping(GRADE),1,'TOTAL',GRADE) as GRADE,
 		    TO_CHAR(SUM(A) / SUM(CASE WHEN GROUPING(GRADE) = 0 THEN SUM(A) ELSE 0 END) OVER() * 100, '990.00') AS RATIO
-		    FROM t
+		    FROM t 
 		GROUP BY ROLLUP(GRADE)
 	</select>
 

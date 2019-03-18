@@ -15,7 +15,7 @@
 			 	<!-- <a href="#this" class="detail"> -->
 			 	<a href="/brw/drama/dramaDetail.br?DRAMA_NO=${dramaList.DRAMA_NO}">
 			    <div class="thumbnail">
-			      <img src="/brw/resources/images/3-girls.jpg">
+			      <img src="/brw/resources/images/drama/poster/${dramaList.DRAMA_POSTER_IMAGE}">
 			      <%-- <input type='hidden' class='IDX' value="${dramaList.DRAMA_NO}"> --%>
 			      <div class="caption">
 			        <h3>${dramaList.DRAMA_NAME}</h3>

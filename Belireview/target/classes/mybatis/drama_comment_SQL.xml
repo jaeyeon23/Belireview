@@ -10,8 +10,7 @@
 		  ID,
 		  DC_REG_DATE,
 		  DC_CONTENT,
-		  DC_LIKE,
-		  DC_LIKE_ID
+		  DC_LIKE
 		)
 		VALUES
 		(
@@ -20,66 +19,99 @@
 		  #{ID},
 		  sysdate,
 		  #{COM},
-		  0,
-		  '0'
+		  0
 		)
 	</insert>
 	
 	<select id="myComment" parameterType="hashmap" resultType="hashmap">
 		select * from drama_comment where id=#{ID} AND DRAMA_NO=#{DRAMA_NO}
 	</select>
+	
+	<select id="commentOne" parameterType="hashmap" resultType="hashmap">
+		select * from drama_comment where DC_NO=#{DC_NO} AND DRAMA_NO=#{DRAMA_NO}
+	</select>
 
 	<!-- 댓글 최신순 -->
 	<select id="dramaCommentByRecent" parameterType="hashmap" resultType="hashmap">
-		SELECT
-			  DRAMA_NO,
-			  DC_NO,
-			  ID,
-			  DC_REG_DATE,
-			  DC_CONTENT,
-			  DC_LIKE,
-			  DC_LIKE_ID,
-			  DL_GRADE,
-			  RNUM FROM 
-			  (SELECT
-			     DRAMA_NO,
-			     DC_NO,
-			     ID,
-			     DC_REG_DATE,
-			     DC_CONTENT,
-			     DC_LIKE,
-			     DC_LIKE_ID,
-			     TO_CHAR(DL_GRADE,'0.0') AS DL_GRADE,
-			     ROWNUM RNUM FROM 
-			    (SELECT DC.DRAMA_NO, DC.DC_NO,DC.ID,DC.DC_REG_DATE,DC.DC_CONTENT,DC.DC_LIKE,DC.DC_LIKE_ID,DL.DL_GRADE FROM DRAMA_LIKE DL, DRAMA_COMMENT DC
-			      WHERE DL.DRAMA_LIKE_NO=DC.DRAMA_NO AND DL.ID=DC.ID ORDER BY DC_REG_DATE DESC) ORDER BY RNUM ASC) WHERE RNUM BETWEEN 1 AND 3
+		<!-- SELECT
+				  DRAMA_NO,
+				  DC_NO,
+				  ID,
+				  DC_REG_DATE,
+				  DC_CONTENT,
+				  DC_LIKE,
+				  DC_LIKE_ID,
+				  DL_GRADE,
+		      PROFILE_IMAGE,
+				  RNUM FROM 
+				  ( -->SELECT
+				     DRAMA_NO,
+				     DC_NO,
+				     ID,
+				     DC_REG_DATE,
+				     DC_CONTENT,
+				     DC_LIKE,
+				     DC_LIKE_ID,
+				    	TO_CHAR(DL_GRADE,'0.0') AS DL_GRADE,
+		         PROFILE_IMAGE,
+				     ROWNUM RNUM FROM 
+				    (SELECT DC.DRAMA_NO, DC.DC_NO,DC.ID,DC.DC_REG_DATE,DC.DC_CONTENT,DC.DC_LIKE,DC.DC_LIKE_ID,DL.DL_GRADE,PROFILE_IMAGE FROM DRAMA_LIKE DL, DRAMA_COMMENT DC ,MEMBER M
+				      WHERE DL.DRAMA_LIKE_NO=DC.DRAMA_NO AND DL.ID=DC.ID and DL.ID=M.ID AND DC.DRAMA_NO=#{DRAMA_NO} ORDER BY DC_REG_DATE DESC)ORDER BY RNUM ASC<!-- ) WHERE RNUM BETWEEN 1 AND 5 -->
 	</select>
 	
 	
 	<!-- 댓글 좋아요 순 -->
 	<select id="dramaCommentByLike" parameterType="hashmap" resultType="hashmap">
+		<!-- SELECT
+				  DRAMA_NO,
+				  DC_NO,
+				  ID,
+				  DC_REG_DATE,
+				  DC_CONTENT,
+				  DC_LIKE,
+				  DC_LIKE_ID,
+				  DL_GRADE,
+		      PROFILE_IMAGE,
+				  RNUM FROM 
+				  ( -->SELECT
+				     DRAMA_NO,
+				     DC_NO,
+				     ID,
+				     DC_REG_DATE,
+				     DC_CONTENT,
+				     DC_LIKE,
+				     DC_LIKE_ID,
+				    	TO_CHAR(DL_GRADE,'0.0') AS DL_GRADE,
+		         PROFILE_IMAGE,
+				     ROWNUM RNUM FROM 
+				    (SELECT DC.DRAMA_NO, DC.DC_NO,DC.ID,DC.DC_REG_DATE,DC.DC_CONTENT,DC.DC_LIKE,DC.DC_LIKE_ID,DL.DL_GRADE,PROFILE_IMAGE FROM DRAMA_LIKE DL, DRAMA_COMMENT DC ,MEMBER M
+				      WHERE DL.DRAMA_LIKE_NO=DC.DRAMA_NO AND DL.ID=DC.ID and DL.ID=M.ID AND DC.DRAMA_NO=#{DRAMA_NO} ORDER BY DC_LIKE DESC)ORDER BY RNUM ASC<!-- ) WHERE RNUM BETWEEN 1 AND 5 -->
+	</select>
+	<select id="dramaCommentForDetail" parameterType="hashmap" resultType="hashmap">
 		SELECT
-		  DRAMA_NO,
-		  DC_NO,
-		  ID,
-		  DC_REG_DATE,
-		  DC_CONTENT,
-		  DC_LIKE,
-		  DC_LIKE_ID,
-		  DL_GRADE,
-		  RNUM FROM 
-		  (SELECT
-		     DRAMA_NO,
-		     DC_NO,
-		     ID,
-		     DC_REG_DATE,
-		     DC_CONTENT,
-		     DC_LIKE,
-		     DC_LIKE_ID,
-		    	TO_CHAR(DL_GRADE,'0.0') AS DL_GRADE,
-		     ROWNUM RNUM FROM 
-		    (SELECT DC.DRAMA_NO, DC.DC_NO,DC.ID,DC.DC_REG_DATE,DC.DC_CONTENT,DC.DC_LIKE,DC.DC_LIKE_ID,DL.DL_GRADE FROM DRAMA_LIKE DL, DRAMA_COMMENT DC
-		      WHERE DL.DRAMA_LIKE_NO=DC.DRAMA_NO AND DL.ID=DC.ID and DC.DRAMA_NO=#{DRAMA_NO} ORDER BY DC_LIKE DESC) ORDER BY RNUM ASC) WHERE RNUM BETWEEN 1 AND 5
+				  DRAMA_NO,
+				  DC_NO,
+				  ID,
+				  DC_REG_DATE,
+				  DC_CONTENT,
+				  DC_LIKE,
+				  DC_LIKE_ID,
+				  DL_GRADE,
+		      PROFILE_IMAGE,
+				  RNUM FROM 
+				  (SELECT
+				     DRAMA_NO,
+				     DC_NO,
+				     ID,
+				     DC_REG_DATE,
+				     DC_CONTENT,
+				     DC_LIKE,
+				     DC_LIKE_ID,
+				    	TO_CHAR(DL_GRADE,'0.0') AS DL_GRADE,
+		         PROFILE_IMAGE,
+				     ROWNUM RNUM FROM 
+				    (SELECT DC.DRAMA_NO, DC.DC_NO,DC.ID,DC.DC_REG_DATE,DC.DC_CONTENT,DC.DC_LIKE,DC.DC_LIKE_ID,DL.DL_GRADE,PROFILE_IMAGE FROM DRAMA_LIKE DL, DRAMA_COMMENT DC ,MEMBER M
+				      WHERE DL.DRAMA_LIKE_NO=DC.DRAMA_NO AND DL.ID=DC.ID and DL.ID=M.ID AND DC.DRAMA_NO=#{DRAMA_NO} ORDER BY DC_LIKE DESC)ORDER BY RNUM ASC) WHERE RNUM BETWEEN 1 AND 3
 	</select>
 	
 	<select id="totalDramaComment" parameterType="hashmap" resultType="int">
