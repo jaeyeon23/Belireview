@@ -49,7 +49,7 @@
 	
 	<select id="selectMovieSerach" parameterType="hashmap" resultType="hashmap">
 		
-<![CDATA[ select
+		<!--  select
 			MOVIE_NO,
 			MOVIE_NAME,
 			MOVIE_DATE,
@@ -64,8 +64,9 @@
 			MOVIE_MAIN_IMAGE,
 			MOVIE_GALLERY_IMAGE,
 			MOVIE_GRADE,
-			RNUM from 
-		  (select
+			RNUM from  
+		  (-->
+		  	select
 				MOVIE_NO,
 				MOVIE_NAME,
 				to_char(MOVIE_DATE,'yyyy') as MOVIE_DATE,
@@ -82,13 +83,11 @@
 				MOVIE_GRADE,
 				ROWNUM RNUM from 
 				(SELECT *
-					FROM MOVIE WHERE MOVIE_NAME LIKE '%'||#{searchText}||'%' ORDER BY MOVIE_DATE DESC) ORDER BY RNUM ASC)WHERE RNUM BETWEEN 1 AND 10
-		]]>
-
+					FROM MOVIE WHERE MOVIE_NAME LIKE '%'||#{searchText}||'%' ORDER BY MOVIE_DATE DESC) ORDER BY RNUM ASC <!--) WHERE RNUM BETWEEN 1 AND 14 -->
 	</select>
 
 	<select id="selectDramaSerach" parameterType="hashmap" resultType="hashmap">
- <![CDATA[ SELECT
+ 		<!-- SELECT
  			DRAMA_NO,
 			DRAMA_NAME,
 			DRAMA_DATE,
@@ -102,9 +101,9 @@
 			DRAMA_CONTENT_IMAGE,
 			DRAMA_EPISODE,
 			DRAMA_GRADE,
-			RNUM FROM 
-			(
-		SELECT
+			RNUM FROM  
+			(-->
+			SELECT
 				DRAMA_NO,
 				DRAMA_NAME,
 				to_char(DRAMA_DATE,'yyyy') as DRAMA_DATE,
@@ -120,14 +119,12 @@
 				DRAMA_GRADE,
 				ROWNUM RNUM FROM 
 				(SELECT *
-					FROM DRAMA WHERE DRAMA_NAME LIKE '%'||#{searchText}||'%' ORDER BY DRAMA_DATE DESC) ORDER BY RNUM ASC)WHERE RNUM BETWEEN 1 AND 10
-		]]>
-
+					FROM DRAMA WHERE DRAMA_NAME LIKE '%'||#{searchText}||'%' ORDER BY DRAMA_DATE DESC) ORDER BY RNUM ASC <!--) WHERE RNUM BETWEEN 1 AND 10 -->
+		
 	</select>
 
 	<select id="selectAdSerach" parameterType="hashmap" resultType="hashmap">
-		 <![CDATA[
-		SELECT
+		<!-- SELECT
 			AD_NO,
 			AD_NAME,
 			AD_LINK,
@@ -139,7 +136,7 @@
 			AD_CONTENT_IMAGE,
 			AD_GRADE,
 			RNUM FROM
-			(
+			( -->
 			SELECT
 				AD_NO,
 				AD_NAME,
@@ -153,7 +150,6 @@
 				AD_GRADE,
 				ROWNUM RNUM FROM 
 				(SELECT *
-				FROM AD WHERE AD_NAME LIKE '%'||#{searchText}||'%' ORDER BY AD_READCOUNT DESC) ORDER BY RNUM ASC)WHERE RNUM BETWEEN 1 AND 10
-		]]>
+				FROM AD WHERE AD_NAME LIKE '%'||#{searchText}||'%' ORDER BY AD_READCOUNT DESC) ORDER BY RNUM ASC<!-- )WHERE RNUM BETWEEN 1 AND 10 -->
 	</select>
 </mapper>

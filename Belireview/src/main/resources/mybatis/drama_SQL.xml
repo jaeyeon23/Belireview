@@ -58,8 +58,8 @@
 			DRAMA_MAIN_IMAGE,
 			DRAMA_CONTENT_IMAGE,
 			DRAMA_EPISODE,
-			(SELECT AVG(DL_GRADE)
-			FROM DRAMA_LIKE WHERE DRAMA_LIKE_NO = #{DRAMA_NO}) 
+			(SELECT ROUND(AVG(DL_GRADE),1)
+			FROM DRAMA_LIKE WHERE DRAMA_LIKE_NO = #{DRAMA_NO} AND DL_GRADE != 0) 
 			AS DRAMA_GRADE 
 		FROM DRAMA WHERE DRAMA_NO = #{DRAMA_NO}
    </select>
@@ -116,7 +116,7 @@
 	</insert>
 	
 	<delete id="updateGrade" parameterType="hashmap">
-		update drama_like set dl_grade=#{RATING} where drama_like_no=#{DRAMA_NO} and id=#{ID}		
+		update drama_like set dl_grade  =#{RATING} where drama_like_no=#{DRAMA_NO} and id=#{ID}		
 	</delete>
 	
 
@@ -144,5 +144,33 @@
 	<delete>
 		DELETE DRAMA WHERE DRAMA_NO=#{DRAMA_NO}
 	</delete> -->
+	
+	<select id="grade" parameterType="hashmap" resultType="int">
+   		select count(*) from drama_like where drama_like_no=#{DRAMA_NO}
+	</select>
+	
+	<select id="ratingPrediction" parameterType="hashmap" resultType="double">
+		select round(avg(DL_GRADE),1) from drama_like where drama_like_no in (select drama_no from drama where drama_genre=#{DRAMA_GENRE}) and id=#{ID}
+	</select>
+	
+	<select id="gradeRatio" parameterType="hashmap" resultType="hashmap">
+		  with t as(		
+		  		SELECT '0.5' GRADE, count(*) A FROM drama_like where DL_GRADE=0.5 and drama_like_no=#{DRAMA_NO} UNION ALL
+		        SELECT '1' GRADE, count(*) A FROM drama_like where DL_GRADE=1 and drama_like_no=#{DRAMA_NO} UNION ALL
+		        SELECT '1.5' GRADE, count(*) A FROM drama_like where DL_GRADE=1.5 and drama_like_no=#{DRAMA_NO} UNION ALL
+		        SELECT '2' GRADE, count(*) A FROM drama_like where DL_GRADE=2 and drama_like_no=#{DRAMA_NO} UNION ALL
+		        SELECT '2.5' GRADE, count(*) A FROM drama_like where DL_GRADE=2.5 and drama_like_no=#{DRAMA_NO} UNION ALL
+		        SELECT '3' GRADE, count(*) A FROM drama_like where DL_GRADE=3 and drama_like_no=#{DRAMA_NO} UNION ALL
+		        SELECT '3.5' GRADE, count(*) A FROM drama_like where DL_GRADE=3.5 and drama_like_no=#{DRAMA_NO} UNION ALL
+		        SELECT '4' GRADE, count(*) A FROM drama_like where DL_GRADE=4 and drama_like_no=#{DRAMA_NO} UNION ALL
+		        SELECT '4.5' GRADE, count(*) A FROM drama_like where DL_GRADE=4.5 and drama_like_no=#{DRAMA_NO} UNION ALL
+		        SELECT '5' GRADE, count(*) A FROM drama_like where DL_GRADE=5 and drama_like_no=#{DRAMA_NO}
+		  )
+		  select 
+		    decode(grouping(GRADE),1,'TOTAL',GRADE) as GRADE,
+		    TO_CHAR(SUM(A) / SUM(CASE WHEN GROUPING(GRADE) = 0 THEN SUM(A) ELSE 0 END) OVER() * 100, '990.00') AS RATIO
+		    FROM t
+		GROUP BY ROLLUP(GRADE)
+	</select>
 
 </mapper>

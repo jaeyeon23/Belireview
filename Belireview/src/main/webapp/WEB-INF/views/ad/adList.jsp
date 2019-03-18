@@ -11,13 +11,13 @@
 	<div class="row a">
 		<c:forEach items="${list}" var="adList" >
 			 <div class="col-sm-6 col-md-3">
-			 	<a href="/brw/movie/adDetail.br">
+			 	<a href="/brw/ad/adDetail.br?AD_NO=${adList.AD_NO}"/>
 			    <div class="thumbnail">
 			      <img src="/brw/resources/images/3-girls.jpg">
 			      <div class="caption">
 			         <h3>${adList.AD_NAME}</h3>
 			        <p>${adList.AD_COMPANY}・${adList.AD_READCOUNT}</p>
-			      </div>
+			      </div>   
 			    </div>
 			    </a>
 			  </div>

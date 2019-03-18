@@ -58,7 +58,7 @@ SELECT
     (SELECT * FROM AD ORDER BY AD_NO DESC) ORDER BY RNUM ASC) WHERE RNUM BETWEEN 1 AND 5
 </select>
 
-<select id="adDetail" resultType="hashmap">
+<select id="adDetail" parameterType="hashmap" resultType="hashmap">
 SELECT
 	AD_NO,
 	AD_NAME,
@@ -69,7 +69,9 @@ SELECT
 	AD_POSTER_IMAGE,
 	AD_MAIN_IMAGE,
 	AD_CONTENT_IMAGE,
-	AD_GRADE FROM AD WHERE AD_NO = #{AD_NO}
+	AD_GRADE 
+FROM 
+	AD WHERE AD_NO = #{AD_NO}
 </select>
 
 </mapper>
