@@ -84,14 +84,18 @@ public class DramaController {
 		List<Map<String,Object>> detailgenre = dramaService.detailgenre(map);//비슷한장르
 		int totalGrade = dramaService.grade(map);
 		if(totalGrade!=0){
-			List<Map<String,Object>> gradeRatio = dramaService.gradeRatio(map);//별점비율
-			int[] ratio = new int[11];
-			for(int i=0;i<gradeRatio.size();i++) {
-				ratio[i] = (int)(Double.parseDouble(gradeRatio.get(i).get("RATIO").toString())*2);
-				if(ratio[i]>100)
-					ratio[i] = 100;
+			try {
+				List<Map<String,Object>> gradeRatio = dramaService.gradeRatio(map);//별점비율
+				int[] ratio = new int[11];
+				for(int i=0;i<gradeRatio.size();i++) {
+					ratio[i] = (int)(Double.parseDouble(gradeRatio.get(i).get("RATIO").toString())*2);
+					if(ratio[i]>100)
+						ratio[i] = 100;
+				}
+				mv.addObject("ratio",ratio);
+			}catch(Exception e) {
+				System.out.println("별점없음");
 			}
-			mv.addObject("ratio",ratio);
 		}
 		String[] image = map.get("DRAMA_CONTENT_IMAGE").toString().split(",");
 		for(int i=0;i<image.length;i++) {
