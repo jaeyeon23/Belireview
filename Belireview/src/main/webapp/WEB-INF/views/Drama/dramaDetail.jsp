@@ -54,7 +54,7 @@
 				ee = $('.ree'+i).html()+"px";
 				$('.re'+(i+1)).css("height",ee);
 			}
-		});
+		});//막대그래프 높이 조정
 		
 		 $(function(){
 			 if(wi!=""){//보고싶어요에있을때
@@ -70,6 +70,7 @@
 				$('.ccOSgS').html("평가하기");
 			 }
 		 });  
+		
 		 /* 로그인 유무 */
 		$(function(){ 
 			if(id==""){//비로그인
@@ -82,13 +83,14 @@
 					location.href="<c:url value='/member/loginForm.br' />"
 				});
 			}else{//로그인
-				if(mcc != ""){
+				if(mcc != ""){ // 마이코멘트 숨기기 보여주기
 					$(".writeComment").css("display","none");
 					$(".existComment").css("display","block");
 				}else{
 					$(".writeComment").css("display","block");
 					$(".existComment").css("display","none");
 				}
+					//작동 버튼 시작 post
 				$(".vv").click(function(){//보고싶어요
 					wish();
 					return;
@@ -102,7 +104,7 @@
 				 $('.mc').click(function(){
 					updateComment();
 				});
-				$(".like").live("click",function(){//좋아요
+				$(".like").live("click",function(){//좋아요 버튼
 						var cla = $(this).attr('class').split(" ")[5];
 						commentlike(cla);
 						return;
@@ -116,7 +118,7 @@
 					}
 				} 
 			}
-		});
+		});  //작동 버튼 끝
 		 /* 로그인 유무 */
 		 
 		//좋아요
@@ -128,8 +130,8 @@
 			url:"<c:url value='/drama/dramaDetail.br' />",
 			success : function(result){
 					var r = result;
-					var clike = "좋아요취소";
-					var cnolike =  "좋아요";
+					var clike ="좋아요취소";
+					var cnolike ="좋아요";
 					if(r.add){
 						$('.'+r.CLA).html(clike);
 					}
@@ -150,8 +152,8 @@
 				 success:function(result){
 					$(".writeComment").css("display","block");
 					$(".existComment").css("display","none");
-					$(".comen").html(result.comList);
-					$(".comnum").html(result.comNum);
+					$(".comen").html(result.comList); //코멘트 리스트
+					$(".comnum").html(result.comNum); // 코멘트 숫자
 				 }
 			 })
 		} 
