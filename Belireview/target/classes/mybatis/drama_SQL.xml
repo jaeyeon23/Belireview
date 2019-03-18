@@ -154,7 +154,7 @@
 	</select>
 	
 	<select id="gradeRatio" parameterType="hashmap" resultType="hashmap">
-		  with t as(		
+		  with t as(
 		  		SELECT '0.5' GRADE, count(*) A FROM drama_like where DL_GRADE=0.5 and drama_like_no=#{DRAMA_NO} UNION ALL
 		        SELECT '1' GRADE, count(*) A FROM drama_like where DL_GRADE=1 and drama_like_no=#{DRAMA_NO} UNION ALL
 		        SELECT '1.5' GRADE, count(*) A FROM drama_like where DL_GRADE=1.5 and drama_like_no=#{DRAMA_NO} UNION ALL
@@ -169,7 +169,7 @@
 		  select 
 		    decode(grouping(GRADE),1,'TOTAL',GRADE) as GRADE,
 		    TO_CHAR(SUM(A) / SUM(CASE WHEN GROUPING(GRADE) = 0 THEN SUM(A) ELSE 0 END) OVER() * 100, '990.00') AS RATIO
-		    FROM t
+		    FROM t 
 		GROUP BY ROLLUP(GRADE)
 	</select>
 
