@@ -26,7 +26,7 @@ import believe.review.brw.user.UserService;
 public class DramaController {
 	private int currentPage = 1;	 
 	private int totalCount;
-	private int blockCount = 1;	 
+	private int blockCount = 5;	 
 	private int blockPage = 5; 	 
 	private String pagingHtml; 
 	private Paging page;
@@ -208,36 +208,6 @@ public class DramaController {
 			}
 		}
 		
-		/*보고싶어요*/
-		if(mv.get("WISH")!=null) {
-			map = userService.userWishList(mv);
-			
-			if(map==null) {//위시리스트에 아무것도 없을때 
-				userService.insertWishList(mv);
-			}
-			else {//위시리스트에 값이 있을때
-				String[] str = map.get("MYPAGE_DRAMA").toString().split(",");
-				boolean exist = false;
-				String drama_no = "";
-				for(String s : str) {
-					if(mv.get("DRAMA_NO").equals(s)) {
-						exist = true;
-					}else {
-						drama_no += s+",";
-					}
-				}
-				if(!exist) {
-					drama_no += mv.get("DRAMA_NO");
-					mv.put("add", "add");
-				}else {
-					mv.put("subtract", "subtract");
-				}
-				mv.put("DRAMA_NO", drama_no);
-				userService.updateWishList(mv);
-			}
-		}
-		/*보고싶어요*/
-		
 		/*평점*/
 		if(mv.get("RATING")!=null) {
 			map = dramaService.existGrade(mv);
@@ -280,7 +250,6 @@ public class DramaController {
 			mv.put("myCom",map);
 		}
 		//댓수정
-		
 		List<Map<String,Object>> comment = dramaService.dramaCommentForDetail(mv);//댓
 		int index = 0;
 		if(comment != null) {
@@ -324,6 +293,36 @@ public class DramaController {
 		}
 		mv.put("comNum", comment.size());
 		mv.put("comList", sb.toString());
+		
+		/*보고싶어요*/
+		if(mv.get("WISH")!=null) {
+			map = userService.userWishList(mv);
+			
+			if(map==null) {//위시리스트에 아무것도 없을때 
+				userService.insertWishList(mv);
+			}
+			else {//위시리스트에 값이 있을때
+				String[] str = map.get("MYPAGE_DRAMA").toString().split(",");
+				boolean exist = false;
+				String drama_no = "";
+				for(String s : str) {
+					if(mv.get("DRAMA_NO").equals(s)) {
+						exist = true;
+					}else {
+						drama_no += s+",";
+					}
+				}
+				if(!exist) {
+					drama_no += mv.get("DRAMA_NO");
+					mv.put("add", "add");
+				}else {
+					mv.put("subtract", "subtract");
+				}
+				mv.put("DRAMA_NO", drama_no);
+				System.out.println(mv.get("DRAMA_NO"));
+				userService.updateWishList(mv);
+			}
+		}
 		return mv;
 	}
 
