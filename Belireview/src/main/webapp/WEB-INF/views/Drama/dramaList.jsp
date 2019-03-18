@@ -9,49 +9,38 @@
    <script src="<c:url value='/resources/js/common.js'/>" charset="utf-8"></script>
    <script>
   		$(function(){
-  			$('.v').css('display','none');
-  			$('.v').slice(0,8).show();
+  			$('.list').css('display','none');
+  			$('.list').slice(0,8).show();
   			$("#loadMore").on('click', function (e) {
   	        	e.preventDefault();
-  		        $(".v:hidden").slice(0, 8).slideDown();
-  		        if ($(".v:hidden").length == 0) {
-  		            $("#load").fadeOut('slow');
+  		        $(".list:hidden").slice(0, 8).slideDown();
+  		        if ($(".list:hidden").length == 0) {
+  		           return;
   		        }
   		        $('html,body').animate({
   		            scrollTop: $(this).offset().top
-  		        }, 1500);
+  		        }, 1000);
   		    });
 
-
-  			$('a[href=#top]').click(function () {
+  			$('.btt').click(function () {
   			    $('body,html').animate({
   			        scrollTop: 0
-  			    }, 600);
+  			    }, 300);
   			    return false;
   			});
-
-  			$(window).scroll(function () {
-  			    if ($(this).scrollTop() > 50) {
-  			        $('.totop a').fadeIn();
-  			    } else {
-  			        $('.totop a').fadeOut();
-  			    }
-  			});
-  			
-  			$(window).scroll(function () {
-  			    if ($(this).scrollTop() > 50) {
-  			        $('.totop a').fadeIn();
-  			    } else {
-  			        $('.totop a').fadeOut();
-  			    }
-  			});
+  			$('.reload').click(function(){
+  				$('body,html').animate({
+  			        scrollTop: 0
+  			    }, 1);
+  				location.reload();
+  			})
   		})
    </script>
 </head>
 <body>
 	<div class="row a" >
 		<c:forEach items="${list}" var="dramaList" >
-			 <div class="col-sm-6 col-md-3 v">
+			 <div class="col-sm-6 col-md-3 list">
 			 	<!-- <a href="#this" class="detail"> -->
 			 	<a href="/brw/drama/dramaDetail.br?DRAMA_NO=${dramaList.DRAMA_NO}">
 			    <div class="thumbnail">
@@ -89,8 +78,10 @@
 	 }
 	</script> -->
 	<a href="#" id="loadMore">Load More</a>
-		<p class="totop"> 
-    <a href="#top">Back to top</a> 
-</p>
+	
+	<p class="totop"> 
+		<button type="button" class="btn btn-primary btn-lg btn-block reload">Reload</button>
+		<button type="button" class="btn btn-default btn-lg btn-block btt">Back to top</button>
+	</p>
 </body>
 </html>

@@ -1,4 +1,4 @@
-package believe.review.brw.movie;
+/*package believe.review.brw.movie;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -218,7 +218,7 @@ public class MovieController {
 			}
 		}
 		
-		/*평점*/
+		평점
 		if(mv.get("RATING")!=null) {
 			map = movieService.existGrade(mv);
 			if(map==null) {//별점이 없을때
@@ -227,7 +227,7 @@ public class MovieController {
 				movieService.updateGrade(mv);
 			}
 		}
-		/*평점*/
+		평점
 		
 		//댓
 		if(mv.get("COM")!=null) { 
@@ -304,7 +304,7 @@ public class MovieController {
 		mv.put("comNum", comment.size());
 		mv.put("comList", sb.toString());
 		
-		/*보고싶어요*/
+		보고싶어요
 		if(mv.get("WISH")!=null) {
 			map = userService.userWishList(mv);
 			
@@ -355,4 +355,4 @@ public class MovieController {
    
 
 
-}
+}*/

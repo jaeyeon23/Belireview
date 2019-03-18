@@ -35,7 +35,6 @@
 			width: 800px;
 		}
     </style>
-
    
     <script src="/brw/resources/js/jquery-1.4.4.min.js"></script>
     

@@ -18,7 +18,7 @@
 				});
 		
 		}else{//로그인
-			$(".like").click(function(){//좋아요
+			$(document).on("click",'.like',function(){//좋아요
 				var cla = $(this).attr('class').split(" ")[5];
 				commentlike(cla);
 				return;
@@ -53,6 +53,22 @@
 			}
 		})
 	}
+	function orderby(url) {
+		$.ajax({
+			type : 'POST',
+			data : {ID:id,DRAMA_NO:<%=request.getParameter("DRAMA_NO")%>,orderby:$('#orderby').val()},
+			url:url,
+			success : function(result){
+				$('.comen').html(result.commentList);
+				var likeList = result.likeList;
+				if(likeList.length != 0){
+					for(var i=0;i<likeList.length;i++){
+						$("."+likeList[i]).html("좋아요취소");
+					}					
+				}
+			}
+		})	
+	}
 
 
 </script>
@@ -75,13 +91,20 @@
 							</div>
 							<div class="ShrinkHeaderBar__LargeTitleBlock-kl2m8-2 VaXBb">
 								<div class="ShrinkHeaderBar__LargeTitle-kl2m8-3 hwiyxo">코멘트</div>
+								<div style="float: right; width: 20%;" onchange="orderby('/brw/drama/dramaComment.br')">
+									<select id="orderby" name="orderby" class="form-control">
+										<option value="">----</option>
+										<option value="1">좋아요순</option>
+										<option value="2">최신순</option>
+									</select>
+								</div>
 							</div>
 							<div class="ShrinkHeaderBar__SmallTitle-kl2m8-4 dCruGS">코멘트</div>
 						</header>
 						<div class="Grid-zydj2q-0 cspjno">
 							<div class="Row-s1apwm9x-0 lowZpE">
 								<div class="ContentCommentsPage__CommentLists-s9miehw-0 bMVaMG">
-									<ul class="VisualUl-s1vzev56-0 hgAYVH">
+									<ul class="VisualUl-s1vzev56-0 hgAYVH comen">
 									<c:forEach items="${dramacomment}" var="dramacommentlist" varStatus="stat"><!-- 시작 -->
 										<div class="BasicCommentItem__Comment-iqy0k7-0 iNWJNm">
 											<div class="BasicCommentItem__TitleContainer-iqy0k7-1 jWsgqF">

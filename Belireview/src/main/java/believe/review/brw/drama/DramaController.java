@@ -366,8 +366,6 @@ public class DramaController {
 					for(int j=0;j<str.length;j++) {
 						if(session.getAttribute("ID").equals(str[j])) {
 							likeList.add("like"+i);
-						}else {
-							likeList.add("nonone");
 						}
 					}
 				}
@@ -387,11 +385,11 @@ public class DramaController {
 
 		Map<String,Object> mv = commandMap.getMap();
 		/*좋아요*/
+		Map<String,Object> map = new HashMap<String,Object>();
 		
-		
-			Map<String,Object> map = dramaService.commentOne(mv);
-
-			System.out.println(map.get("DC_LIKE_ID"));
+		if(mv.get("COMMENTLIKE")!=null) {
+			map = dramaService.commentOne(mv);
+	
 			if(map.get("DC_LIKE_ID")!=null) {
 				String[] str = map.get("DC_LIKE_ID").toString().split(",");
 				boolean exist = false;
@@ -425,7 +423,67 @@ public class DramaController {
 				mv.put("DC_LIKE", 1);
 				dramaService.dramaCommentLike(mv);
 			}
-		return mv;
 		}
+		if(mv.get("orderby")!=null) {
+			List<Map<String,Object>> dramacomment = dramaService.dramaCommentByLike(mv);
+			System.out.println("d");
+			StringBuffer sb = new StringBuffer();
+			int index = 0;
+			List<String> likeList = new ArrayList<String>();
+			
+			for(int i=0; i<dramacomment.size(); i++) {
+				if(dramacomment.get(i).get("DC_LIKE_ID")!=null) {
+					String[] str =dramacomment.get(i).get("DC_LIKE_ID").toString().split(",");
+					if(str !=null) {
+						for(int j=0;j<str.length;j++) {
+							if(mv.get("ID").equals(str[j])) {
+								likeList.add("like"+i);
+							}
+						}
+					}
+				}
+			}
+			for(Map m : dramacomment) {
+				sb.append("<div class=\"BasicCommentItem__Comment-iqy0k7-0 iNWJNm\">")
+				.append("<div class=\"BasicCommentItem__TitleContainer-iqy0k7-1 jWsgqF\">")
+				.append("<div class=\"BasicCommentItem__ProfileBlock-iqy0k7-2 dFeRwI\">")
+				.append("<div class=\"ProfilePhoto__Self-s1v3isfu-1 lniNjX RoundedImageBlock-k5m4n5-0 gUZYtN\">")
+				.append("<div class=\"ProfilePhoto__ProfilePhotoImage-s1v3isfu-0 kgJrze\"></div>")
+				.append("<div class=\"ProfilePhoto__DefaultImageContainer-s1v3isfu-2 kPGxuy\">");
+				if(m.get("PROFILE_IMAGE")!=null) {
+					sb.append("<img class=\"defaultImage__ProfileImg-s1kn91bx-1 iaxVtx\" src=\"/brw/resources/images/user_profile/").append(m.get("PROFILE_IMAGE")).append("\">");
+				}else {
+					sb.append("<img class=\"defaultImage__ProfileImg-s1kn91bx-1 iaxVtx\" src=\"/brw/resources/images/Temporary_img.JPG\">");
+				}
+				sb.append("</div></div>")
+				.append("<div class=\"UserNameWithBadges__Self-s1bd3hgj-0 brZhrQ\">")
+				.append(m.get("ID"))
+				.append("<input type=\"hidden\" value=\"").append(m.get("DC_NO")).append("\" class=\"00like").append(index).append("\"/>")
+				.append("<span class=\"UserNameWithBadges__SmallBadge-s1bd3hgj-1 bAndNa UIImg-s3jz6tx-0 eBREVF\" src=\"/brw/resources/images/detail/detail_comment1.svg\"></span>")
+				.append("<span class=\"UserNameWithBadges__SmallBadge-s1bd3hgj-1 bAndNa UIImg-s3jz6tx-0 kyuoIv\" src=\"/brw/resources/images/detail/detail_comment2.svg\"></span>")
+				.append("</div></div>")
+				.append("<div class=\"BasicCommentItem__UserActionStatus-iqy0k7-4 cMGqAP\">")
+				.append("<img src=\"/brw/resources/images/detail/detail_comment_grade.svg\" width=\"16px\" height=\"16px\" alt=\"star\">")
+				.append("<span>").append(m.get("DL_GRADE")).append("</span>")
+				.append("</div></div>")
+				.append("<div class=\"BasicCommentItem__TextBlock-iqy0k7-3 gVqTAw\">")
+				.append("<div class=\"ContentlessCommentItem__Text-s1n6rtl6-0 eMbWQD\">")
+				.append(m.get("DC_CONTENT"))
+				.append("</div></div>")
+				.append("<div class=\"ContentlessCommentItem__LikeReplyBlock-s1n6rtl6-1 bSwpdd\">")
+				.append("<span class=\"ContentlessCommentItem__LikeImage-s1n6rtl6-2 jmhzoz UIImg-s3jz6tx-0 jSJJRD\" src=\"/brw/resources/images/detail/detail_like.svg\" width=\"18px\" height=\"18px\"></span>")
+				.append("<em class=\"0like").append(index).append("\">").append(m.get("DC_LIKE")).append("</em></div>")
+				.append("<div class=\"ContentlessCommentItem__UserActionBlock-s1n6rtl6-4 kJvkpH\">")
+				.append("<button class=\"ContentlessCommentItem__UserActionButton-s1n6rtl6-5 kRhZsb StylelessButton-phxvo7-0 gsSopE like like").append(index).append("\">좋아요</button>")
+				.append("</div></div>")
+				.append("<div class=\"PrimitiveInfinityScroll__Self-abb99t-0 iMsRxa\"></div>");
+				
+				index +=1;
+			}
+			mv.put("likeList",likeList);
+			mv.put("commentList", sb.toString());
+		}
+	return mv;
+	}
 	
 }
