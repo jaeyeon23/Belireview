@@ -8,8 +8,8 @@
 <meta charset="utf-8">
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content=""><!-- 
-   	<link rel="stylesheet" href="/brw/resources/css/detail2.css"> -->
+    <meta name="description" content="">
+   	<link rel="stylesheet" href="/brw/resources/css/detail2.css"> 
    	<link rel="stylesheet" href="/brw/resources/css/detail.css">
     <link rel="stylesheet" href="/brw/resources/css/detailgenre.css">
    	<%-- <script src="<c:url value='/resources/js/common.js'/>" charset="utf-8"></script>	 --%>
@@ -137,7 +137,7 @@
 					CLA : cla,
 					DRAMA_NO :
 	<%=request.getParameter("DRAMA_NO")%>, DC_NO:$(".00"+cla).val()},
-			url:"<c:url value='/drama/dramaDetail.br' />",
+			url:"<c:url value='/drama/dramaDetail.br?${_csrf.parameterName}=${_csrf.token}' />",
 			success : function(result){
 					var r = result;
 					var clike ="좋아요취소";
@@ -158,7 +158,7 @@
 				 async:true,
 				 type:'POST',
 				 data:{ID:id,DELCOM:'DEL', DC_NO:"${myComment.DC_NO}",DRAMA_NO:<%=request.getParameter("DRAMA_NO")%>},
-				 url:"<c:url value='/drama/dramaDetail.br' />",
+				 url:"<c:url value='/drama/dramaDetail.br?${_csrf.parameterName}=${_csrf.token}' />",
 				 success:function(result){
 					$(".writeComment").css("display","block");
 					$(".existComment").css("display","none");
@@ -172,7 +172,7 @@
 				 async:true,
 				 type:'POST',
 				 data:{ID:id,MCOM:$('.com2').val(), DRAMA_NO:<%=request.getParameter("DRAMA_NO")%>},
-				 url:"<c:url value='/drama/dramaDetail.br' />",
+				 url:"<c:url value='/drama/dramaDetail.br?${_csrf.parameterName}=${_csrf.token}' />",
 				 success:function(result){
 					$(".writeComment").css("display","none");
 					$(".existComment").css("display","block");
@@ -187,7 +187,7 @@
 				 async:true,
 				 type:'POST',
 				 data:{ID:id,COM:$('.com').val(), DRAMA_NO:<%=request.getParameter("DRAMA_NO")%>},
-				 url:"<c:url value='/drama/dramaDetail.br' />",
+				 url:"<c:url value='/drama/dramaDetail.br?${_csrf.parameterName}=${_csrf.token}' />",
 				 success:function(result){
 					$(".writeComment").css("display","none");
 					$(".existComment").css("display","block");
@@ -203,7 +203,7 @@
 				async : true,  
 				type : 'POST',
 				data : {ID:id , WISH:"w" , DRAMA_NO:<%=request.getParameter("DRAMA_NO")%>},
-				url:"<c:url value='/drama/dramaDetail.br' />",
+				url:"<c:url value='/drama/dramaDetail.br?${_csrf.parameterName}=${_csrf.token}' />",
 				success : function(result){
 					var w = result;
 					var a = "보기싫어요";
@@ -229,7 +229,7 @@
 				async : true,  
 				type : 'POST',
 				data : {ID:id , RATING:rr , DRAMA_NO:<%=request.getParameter("DRAMA_NO")%>},
-				url:"<c:url value='/drama/dramaDetail.br' />",
+				url:"<c:url value='/drama/dramaDetail.br?${_csrf.parameterName}=${_csrf.token}' />",
 				success : function(result){
 				}
 				/* $('.gZASBp > a.r1'); */

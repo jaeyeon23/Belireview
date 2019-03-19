@@ -107,19 +107,45 @@ public class UserController {
 		Map<String, Object> userWishList = userService.userWishList(commandMap.getMap());
 
 		if (userWishList != null) {
-			String[] str = userWishList.get("MYPAGE_MOVIE").toString().split(",");
-			commandMap.put("a", str);
-
-			List<Map<String, Object>> userDramaList = userService.userDramaList(commandMap.getMap());
-			List<Map<String, Object>> userMovieList = userService.userMovieList(commandMap.getMap());
-
-			mv.addObject("userWishList", userWishList);
-			mv.addObject("userDramaList", userDramaList);
-			mv.addObject("userMovieList", userMovieList);
+			if(userWishList.get("MYPAGE_MOVIE")!=null) {
+				String[] str = userWishList.get("MYPAGE_MOVIE").toString().split(",");
+				commandMap.put("a", str);
+	
+				List<Map<String, Object>> userMovieList = userService.userMovieList(commandMap.getMap());
+	
+				mv.addObject("userWishList", userWishList);
+				mv.addObject("userMovieList", userMovieList);
+			}
 		}
 
 		return mv;
 	}
+	
+	/*@RequestMapping(value = "/userDrama")
+	public ModelAndView userdrama(CommandMap commandMap, HttpServletRequest request) throws Exception {
+		HttpSession session = request.getSession();
+
+		ModelAndView mv = new ModelAndView("userdrama");
+		List<Map<String, Object>> userdramaAll = userService.UserDramaAll(commandMap.getMap());
+		List<Map<String, Object>> selectUserGrade = userService.selectUserGrade(commandMap.getMap());
+		mv.addObject("userdramaAll", userdramaAll);
+		mv.addObject("selectUserGrade", selectUserGrade);
+		Map<String, Object> userWishList = userService.userWishList(commandMap.getMap());
+
+		if (userWishList != null) {
+			if(userWishList.get("MYPAGE_drama")!=null) {
+				String[] str = userWishList.get("MYPAGE_drama").toString().split(",");
+				commandMap.put("a", str);
+	
+				List<Map<String, Object>> userDramaList = userService.userDramaList(commandMap.getMap());
+	
+				mv.addObject("userWishList", userWishList);
+				mv.addObject("userDramaList", userDramaList);
+			}
+		}
+
+		return mv;
+	}*/
 
 	@RequestMapping(value = "/userDeleteForm")
 	public ModelAndView userDeleteForm() {

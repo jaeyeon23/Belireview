@@ -20,7 +20,7 @@
 							<div class="col-md-6">
 								<div class="slide-offers-left">
 									<div class="slide-offers-title">
-										<span>도깨비</span>
+										<span>드라마</span>
 									</div>
 									<p>
 										<font color="black">도깨비<br />arraival in believe store</font>
