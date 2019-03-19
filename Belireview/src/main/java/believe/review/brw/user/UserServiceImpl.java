@@ -41,8 +41,6 @@ public class UserServiceImpl implements UserService{
 	//프로필사진수정
 	@Override
 	public void UserProfile(Map<String, Object> map, HttpServletRequest request) throws Exception {
-		userDAO.UserProfile(map);
-		
 		Map<String,Object> list = fileUtils.parseInsertFileInfo(map, request);
 			userDAO.UserProfile(list);
 	}

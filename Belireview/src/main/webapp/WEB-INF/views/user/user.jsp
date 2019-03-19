@@ -13,12 +13,64 @@
 <meta charset="UTF-8">
  	<link href="/brw/resources/Jcss/user.css" rel="stylesheet">    
  	
-    <script src="/brw/resources/js/jquery-1.4.4.min.js"></script>
-    <style type="text/css">
-    	#pro_mus:hover{
-    		cursor: pointer;
-    	}
-    </style>
+  <!--   <script src="/brw/resources/js/jquery-1.4.4.min.js"></script>
+   -->  
+  <style type="text/css">
+#pro_mus:hover {
+	cursor: pointer;
+}
+
+
+/* 파일 업로드 css */
+.filebox label {
+	display: inline-block;
+	padding: .5em .75em;
+	color: #fff;
+	font-size: inherit;
+	line-height: normal;
+	vertical-align: middle;
+	background-color: #3b8686;  /* 버튼색 */
+	cursor: pointer;
+	border: 1px solid #3b8686;
+	border-radius: .25em;
+	-webkit-transition: background-color 0.2s;
+	transition: background-color 0.2s;
+}
+
+.filebox label:hover {
+	background-color: #2f6363;
+}
+
+.filebox label:active {
+	background-color: #367c36;
+}
+
+.filebox input[type="file"] {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	border: 0;
+}
+
+#btns input[type="button"] {
+	display: inline-block;
+	padding: .5em .75em;
+	color: #fff;
+	font-size: inherit;
+	line-height: normal;
+	vertical-align: middle;
+	background-color: #BDBDBD;  /* 버튼색 */
+	cursor: pointer;
+	border: 1px solid #BDBDBD;
+	border-radius: .25em;
+	-webkit-transition: background-color 0.2s;
+	transition: background-color 0.2s;
+}
+</style>
 </head>
 <body>
 		<div class="UserPage__Container-s1uda3mb-1 MccqW">
@@ -36,7 +88,7 @@
 								<header class="UserPage__ProfileHeader-s1uda3mb-4 hLoozo">
 									<div class="ProfilePhoto__Self-s1v3isfu-1 khVLwR RoundedImageBlock-k5m4n5-0 gUZYtN" data-toggle="modal" data-target="#myModal" id="pro_mus">
 									<c:if test="${sessionScope.PROFILE_IMAGE == null }">
-                                          <img src="/brw/resources/images/Temporary_img.JPG" alt="bag" width="130%" height="130%" >
+                                          <img src="/brw/resources/images/ican/no_pro.png" alt="bag" width="130%" height="130%" >
                                     </c:if>
                                     <c:if test="${sessionScope.PROFILE_IMAGE != null }">
                                           <img src="/brw/resources/images/user_profile/${sessionScope.PROFILE_IMAGE}" alt="bag" width="100%" height="100%" >
@@ -51,7 +103,7 @@
 									<div class="UserPage__AboutMe-s1uda3mb-8 jxRxZJ">
 										<div class="TextTruncate__Self-wvv1uj-0 laNFWG">
 											<div class="TextTruncate__Text-wvv1uj-1 gLsCNn"
-												style="white-space: pre-line;">빌리뷰 시작일 : 겸사겸사 채워넣기</div>
+												style="white-space: pre-line;">보유포인트</div>
 										</div>
 									</div>
 								</header>
@@ -107,7 +159,7 @@
 					</section>					
 				</div>
 				<br>
-					<a href="/brw/user/userDeleteForm.br" class="del_link">계정삭제하기</a>
+					<a href="/brw/user/userDeleteForm.br" class="del_link">회원탈퇴</a>
 				<br>	
 				</div>
 		</div>
@@ -124,21 +176,29 @@
 						<span aria-hidden="true">&times;</span>
 					</button>
 					<h4 class="modal-title" id="myModalLabel" align="middle">
-						<strong>프로필사진변경</strong>
+						<strong>프로필사진</strong>
 					</h4>
 				</div>
-				<form method="post" name="frm" enctype="multipart/form-data" class="probootstrap-form" action="userModify_Pro.br" onsubmit="return check();">
+				<form method="post" name="frm" enctype="multipart/form-data" class="probootstrap-form" action="userModify_Pro.br?${_csrf.parameterName}=${_csrf.token}" onsubmit="return check();">
 				<input type="hidden"  id="id" name="id" value="${ID}" >
 				<div class="modal-body" align="center">
 					<div class="row">
 							<c:if test="${PROFILE_IMAGE == null }">
-								<img src="/brw/resources/images/Temporary_img.JPG" alt="profile_img" height="100px" width="90px"  id="proimg">
+								<img src="/brw/resources/images/ican/no_pro.png" alt="profile_img" height="100px" width="90px"  id="proimg">
 							</c:if>
 							<c:if test="${PROFILE_IMAGE != null }">
 								<img src="/brw/resources/images/user_profile/${sessionScope.PROFILE_IMAGE}" alt="profile_img" height="100px" width="90px"  id="proimg">
 							</c:if>
-						<br>
-						<input type="file" id="profile_image" name="profile_image" accept="image/gif,image/jpeg,image/png, image/jpg" onchange="chk_file_type(this)" />
+						<br><br>
+						<div id ="btns">
+							<div class="filebox" id="filebox" style="float: left">
+ 								 <label for="profile_image">사진선택</label>
+ 								 <input type="file" id="profile_image" name="profile_image" accept="image/gif,image/jpeg,image/png, image/jpg" onchange="chk_file_type(this)" >
+							</div>	 
+							<div style="float: left; margin-left:2%;">
+								<input type="button" onclick="removes(this.form)" value="삭제" >
+							</div>
+						</div>
 					</div>
 				</div>
 				<div class="modal-footer">
@@ -152,10 +212,25 @@
 		
 		
 		<script type="text/JavaScript">
+			var file_ok = null;
+			
 			function check() {
-				alert("프로필변경이 완료되었습니다");				
+				if(file_ok !=null || $("#profile_image").val() != ""){
+					alert("프로필변경이 완료되었습니다");
+					return true;
+				}else{
+					alert("변경할 사진을 선택해주세요.");
+					return false;
+				}
+				
 			}	
-		
+
+			function removes(obj){
+				$('#proimg').attr('src', "/brw/resources/images/ican/no_pro.png");
+				$("#profile_image").val("");
+				file_ok = "ok";
+			}
+						
 			/* 프로필시진 변경 관련 스크립뜨 */
 			function chk_file_type(obj) { /*이미지 파일만 올릴수 있게 설정 */
 				var file_kind = obj.value.lastIndexOf('.');
@@ -168,12 +243,12 @@
 
 				if (check_file_type.indexOf(file_type) == -1) {
 					alert('이미지 파일만 선택할 수 있습니다.');
-					var parent_Obj = obj.parentNode
-					var node = parent_Obj
-							.replaceChild(obj.cloneNode(true), obj);
+					$('#proimg').attr('src', "/brw/resources/images/ican/no_pro.png");
+					$("#profile_image").val("");
 					return false;
 				}
 			}
+			
 
 			$(document).ready(function() {
 				/*  이미지 미리보기  */
@@ -190,7 +265,6 @@
 						//File내용을 읽어 dataURL형식의 문자열로 저장
 					}
 				}//readURL()--
-
 				//file 양식으로 이미지를 선택(값이 변경) 되었을때 처리하는 코드
 				$("#profile_image").change(function() {
 					//alert(this.value); //선택한 이미지 경로 표시

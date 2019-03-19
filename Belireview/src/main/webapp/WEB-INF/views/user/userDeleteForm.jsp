@@ -50,6 +50,7 @@
 				<br>
 					<form name="fm" id="fm" method="post"
 						action="/brw/user/userDeletechk.br">
+						<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 						<div class="btn_area_w">
 							<p class="btn_area">
 								<button type="submit" class="btn_type btn_primary" >

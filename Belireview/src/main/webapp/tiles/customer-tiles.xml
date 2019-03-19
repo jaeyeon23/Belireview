@@ -23,124 +23,152 @@
 
     <!-- contents -->
     <definition name="adList" extends=".home">
+    	<put-attribute name="header" value="/WEB-INF/views/layout/header_A.jsp" />
     	<put-attribute name="body" value="/WEB-INF/views/ad/adList.jsp"/>
     </definition>
     
     <definition name="adDetail" extends=".home">
+    	<put-attribute name="header" value="/WEB-INF/views/layout/header_A.jsp" />
     	<put-attribute name="body" value="/WEB-INF/views/ad/adDetail.jsp"/>
     </definition>
     
     <definition name="adInfo" extends=".home">
+    	<put-attribute name="header" value="/WEB-INF/views/layout/header_A.jsp" />
     	<put-attribute name="body" value="/WEB-INF/views/ad/adInfo.jsp"/>
     </definition>
     
     <definition name="adComment" extends=".home">
+    	<put-attribute name="header" value="/WEB-INF/views/layout/header_A.jsp" />
     	<put-attribute name="body" value="/WEB-INF/views/ad/adComment.jsp"/>
     </definition>
     
     <definition name="dramaList" extends=".home">
+    	<put-attribute name="header" value="/WEB-INF/views/layout/header_D.jsp" />
     	<put-attribute name="body" value="/WEB-INF/views/drama/dramaList.jsp"/>
     </definition>
     
     <definition name="dramaDetail" extends=".home">
+   		<put-attribute name="header" value="/WEB-INF/views/layout/header_D.jsp" />
     	<put-attribute name="body" value="/WEB-INF/views/drama/dramaDetail.jsp"/>
     </definition>
     
     <definition name="dramaInfo" extends=".home">
+    	<put-attribute name="header" value="/WEB-INF/views/layout/header_D.jsp" />
     	<put-attribute name="body" value="/WEB-INF/views/drama/dramaInfo.jsp"/>
     </definition>
     
     <definition name="dramaComment" extends=".home">
+    	<put-attribute name="header" value="/WEB-INF/views/layout/header_D.jsp" />
     	<put-attribute name="body" value="/WEB-INF/views/drama/dramaComment.jsp"/>
     </definition>
     
     <definition name="movieList" extends=".home">
+    	<put-attribute name="header" value="/WEB-INF/views/layout/header_M.jsp" />
     	<put-attribute name="body" value="/WEB-INF/views/movie/movieList.jsp"/>
     </definition>
     
     <definition name="movieDetail" extends=".home">
+    	<put-attribute name="header" value="/WEB-INF/views/layout/header_M.jsp" />
     	<put-attribute name="body" value="/WEB-INF/views/movie/movieDetail.jsp"/>
     </definition>
     
     <definition name="movieInfo" extends=".home">
+    	<put-attribute name="header" value="/WEB-INF/views/layout/header_M.jsp" />
     	<put-attribute name="body" value="/WEB-INF/views/movie/movieInfo.jsp"/>
     </definition>
     
     <definition name="movieComment" extends=".home">
+    	<put-attribute name="header" value="/WEB-INF/views/layout/header_M.jsp" />
     	<put-attribute name="body" value="/WEB-INF/views/movie/movieComment.jsp"/>
     </definition>
     <!-- /contents -->
     
     <!-- user -->
     <definition name="userMovie" extends=".home">
+    	<put-attribute name="header" value="/WEB-INF/views/layout/header_My.jsp" />
     	<put-attribute name="body" value="/WEB-INF/views/user/userMovie.jsp"/>
     </definition>
     
     <definition name="user" extends=".home">
+    	<put-attribute name="header" value="/WEB-INF/views/layout/header_My.jsp" />
     	<put-attribute name="body" value="/WEB-INF/views/user/user.jsp"/>
     </definition>
     
     <definition name="modify" extends=".home">
+    	<put-attribute name="header" value="/WEB-INF/views/layout/header_My.jsp" />
     	<put-attribute name="body" value="/WEB-INF/views/user/modify.jsp"/>
     </definition>
     
     <definition name="pwdCheck" extends=".home">
+    	<put-attribute name="header" value="/WEB-INF/views/layout/header_My.jsp" />
     	<put-attribute name="body" value="/WEB-INF/views/user/pwdCheck.jsp"/>
     </definition>
     
     <definition name="userDeleteForm" extends=".home">
+    	<put-attribute name="header" value="/WEB-INF/views/layout/header_My.jsp" />
     	<put-attribute name="body" value="/WEB-INF/views/user/userDeleteForm.jsp"/>
     </definition>
     
     <definition name="userDeletechk" extends=".home">
+    	<put-attribute name="header" value="/WEB-INF/views/layout/header_My.jsp" />
     	<put-attribute name="body" value="/WEB-INF/views/user/userDeletechk.jsp"/>
     </definition>
    
     
     <!-- 검색 -->
-        <definition name="mainSearch" extends=".home">
+    <definition name="mainSearch" extends=".home">
     	<put-attribute name="body" value="/WEB-INF/views/main/mainSearch.jsp"/>
     </definition>
     
     <!-- /user -->
    <!--  로그인 -->
     <definition name="loginForm" extends=".home">
+    	<put-attribute name="header" value="/WEB-INF/views/layout/header_My.jsp" />
     	<put-attribute name="body" value="/WEB-INF/views/member/login.jsp"/>
     </definition>
     
     <definition name="findIdForm" extends=".home">
+    	<put-attribute name="header" value="/WEB-INF/views/layout/header_My.jsp" />
     	<put-attribute name="body" value="/WEB-INF/views/member/findId.jsp"/>
     </definition>
     
     <definition name="findIdError" extends=".home">
+    	<put-attribute name="header" value="/WEB-INF/views/layout/header_My.jsp" />
     	<put-attribute name="body" value="/WEB-INF/views/member/findIdError.jsp"/>
     </definition>
     
     <definition name="findIdOk" extends=".home">
+    	<put-attribute name="header" value="/WEB-INF/views/layout/header_My.jsp" />
     	<put-attribute name="body" value="/WEB-INF/views/member/findIdOk.jsp"/>
     </definition>
     
     <definition name="findPwForm" extends=".home">
+    	<put-attribute name="header" value="/WEB-INF/views/layout/header_My.jsp" />
     	<put-attribute name="body" value="/WEB-INF/views/member/findPw.jsp"/>
     </definition>
     
     <definition name="findPwOk" extends=".home">
+    	<put-attribute name="header" value="/WEB-INF/views/layout/header_My.jsp" />
     	<put-attribute name="body" value="/WEB-INF/views/member/findPwOk.jsp"/>
     </definition>
     
     <definition name="findPwError" extends=".home">
+    	<put-attribute name="header" value="/WEB-INF/views/layout/header_My.jsp" />
     	<put-attribute name="body" value="/WEB-INF/views/member/findPwError.jsp"/>
     </definition>
 
     
     <!-- 회원가입 -->
     <definition name="joinTerms" extends=".home">
+    	<put-attribute name="header" value="/WEB-INF/views/layout/header_My.jsp" />
     	<put-attribute name="body" value="/WEB-INF/views/member/joinTerms.jsp"/>
     </definition>
     <definition name="join" extends=".home">
+    	<put-attribute name="header" value="/WEB-INF/views/layout/header_My.jsp" />
     	<put-attribute name="body" value="/WEB-INF/views/member/join.jsp"/>
     </definition>
     <definition name="joinComplete" extends=".home">
+    	<put-attribute name="header" value="/WEB-INF/views/layout/header_My.jsp" />
     	<put-attribute name="body" value="/WEB-INF/views/member/joinComplete.jsp"/>
     </definition>
     
@@ -148,6 +176,7 @@
 	<!-- 관리자 -->
 	
     <definition name="/admin/*/*" extends=".home">
+    	<put-attribute name="header" value="/WEB-INF/views/layout/header_Admin.jsp" />
     	<put-attribute name="body" value="/WEB-INF/views/admin/{1}/{2}.jsp"/>
     </definition>
     
