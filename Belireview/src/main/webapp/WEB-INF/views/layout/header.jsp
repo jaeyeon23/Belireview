@@ -122,6 +122,7 @@
 														<li><a href="/brw/admin/drama.br">Drama</a></li>
 														<li><a href="/brw/admin/movie.br">Movie</a></li>
 														<li><a href="/brw/admin/ad.br">Advertisement</a></li>
+														<li><a href="/brw/admin/actor.br">Actor</a></li>
 													</ul>
 												</div>
 											</li>

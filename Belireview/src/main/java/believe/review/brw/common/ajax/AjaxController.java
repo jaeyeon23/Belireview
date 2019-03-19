@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import believe.review.brw.admin.actor.AdminActorService;
 import believe.review.brw.admin.user.AdminUserService;
 import believe.review.brw.main.MainService;
 
@@ -29,6 +30,9 @@ public class AjaxController {
 	
 	@Resource(name="adminUserService")
 	private AdminUserService adminUserService;
+	
+	@Resource(name="adminActorService")
+	private AdminActorService adminActorService;
 	
 	@Resource(name="mainService")
 	private MainService mainService; 
@@ -74,5 +78,53 @@ public class AjaxController {
 		}
 		
 		return check_pw;
+	}
+	
+	@RequestMapping(value="/ajaxActorWriteDrama.br", method=RequestMethod.GET)
+	public void ajaxActorWriteDrama(HttpServletRequest request, HttpServletResponse response) throws Exception{
+		String searchValue = request.getParameter("searchValue");
+		List<Map<String, Object>> list = adminActorService.selectActorDrama(searchValue);
+		int i = 0;
+		
+		JSONArray array = new JSONArray();
+		JSONObject obj = null;
+		
+		while(i < 10 && i < list.size()) {
+			obj = new JSONObject();
+			obj.put("name", list.get(i).get("NAME"));
+			obj.put("no", list.get(i).get("NO"));
+			array.put(obj);
+			i++;
+		}
+		
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter pw = response.getWriter();
+		pw.print(array);
+		pw.flush();
+		pw.close();
+	}
+	
+	@RequestMapping(value="/ajaxActorWriteMovie.br", method=RequestMethod.GET)
+	public void ajaxActorWriteMovie(HttpServletRequest request, HttpServletResponse response) throws Exception{
+		String searchValue = request.getParameter("searchValue");
+		List<Map<String, Object>> list = adminActorService.selectActorMovie(searchValue);
+		int i = 0;
+		
+		JSONArray array = new JSONArray();
+		JSONObject obj = null;
+		
+		while(i < 10 && i < list.size()) {
+			obj = new JSONObject();
+			obj.put("name", list.get(i).get("NAME"));
+			obj.put("no", list.get(i).get("NO"));
+			array.put(obj);
+			i++;
+		}
+		
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter pw = response.getWriter();
+		pw.print(array);
+		pw.flush();
+		pw.close();
 	}
 }
