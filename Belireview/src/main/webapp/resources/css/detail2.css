@@ -110,7 +110,7 @@
 .iaxVtx{vertical-align:top;width:24px;height:24px;}
 /* sc-component-id: ProfilePhoto__ProfilePhotoImage-s1v3isfu-0 */
 
-.jawsmT{position:relative;z-index:1;background:url(https://d3sz5r0rl9fxuc.cloudfront.net/assets/default/user/photo_file_name_small-bc8b334acec6a4e386249dedf9e763b5e6aff523fa85cc29211f22e6bed540df.jpg) no-repeat center;background-size:cover;width:100%;height:100%;}
+.jawsmT{position:relative;z-index:1;background-size:cover;width:100%;height:100%;}
 
 .EXbzg{position:relative;z-index:1;background:url(https://d19zyxn02q3dj8.cloudfront.net/people/medium/e3f1f9650f0c8bd2e981.jpg?1551934954) no-repeat center;background-size:cover;width:100%;height:100%;}
 

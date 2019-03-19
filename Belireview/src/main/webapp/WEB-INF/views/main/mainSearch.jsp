@@ -7,19 +7,26 @@
 <head>
 <meta charset="utf-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="/brw/resources/css/mainsearch3.css">
+<link rel="stylesheet" href="/brw/resources/css/mainsearch4.css">
 <script type="text/javascript">
-	var currentPage = 1;
+	var mainPage = moviePage = dramaPage = adPage = 1;
+	var block = 10;
+	var maintotal = ${mainTotal};
+	var movietotal = ${movieTotal};
+	var dramatotal = ${dramaTotal};
+	var adtotal = ${adTotal};
 	var searchText = "${request}";
 	/* 메인검색 페이징 및 넘기기 */
 	$(function(){
 		$(".mainNext").click(function(){
-			currentPage += 1;
-			mainNext(currentPage);
+			if(maintotal>mainPage*block){
+				mainPage += 1;
+			}
+			mainNext(mainPage);
 		})
 		$(".mainPrev").click(function(){
-			currentPage = currentPage -1 < 1 ? 1:currentPage-1;
-			mainPrev(currentPage);
+			mainPage = mainPage -1 < 1 ? 1:mainPage-1;
+			mainPrev(mainPage);
 		})	
 	})
 
@@ -31,7 +38,7 @@
 			url:"<c:url value='/mainSearch2.br'/>",
 			
 			success:function(result){
-				$(".mainSearch").html(result.searchMain);		
+				$(".mainSearch").html(result.searchMain);
 			}
 		})
 	}
@@ -51,12 +58,14 @@
 	
 	$(function(){
 		$(".movieNext").click(function(){
-			currentPage += 1;
-			movieNext(currentPage);
+			if(movietotal>moviePage*block){
+				moviePage += 1;
+			}
+			movieNext(moviePage);
 		})
 		$(".moviePrev").click(function(){
-			currentPage = currentPage -1 < 1 ? 1:currentPage-1;
-			moviePrev(currentPage);
+			moviePage = moviePage -1 < 1 ? 1:moviePage-1;
+			moviePrev(moviePage);
 		})	
 	})	
 	
@@ -88,12 +97,14 @@
 	/* 검색드라마 페이징 및 넘기기 */
 	$(function(){
 		$(".dramaNext").click(function(){
-			currentPage += 1;
-			dramaNext(currentPage);
+			if(dramatotal>dramaPage*block){
+				dramaPage += 1;
+			}
+			dramaNext(dramaPage);
 		})
 		$(".dramaPrev").click(function(){
-			currentPage = currentPage -1 < 1 ? 1:currentPage-1;
-			dramaPrev(currentPage);
+			dramaPage = dramaPage -1 < 1 ? 1:dramaPage-1;
+			dramaPrev(dramaPage);
 		})	
 	})	
 	
@@ -125,12 +136,14 @@
 	/* 검색광고 페이징 및 넘기기 */
 	$(function(){
 		$(".adNext").click(function(){
-			currentPage += 1;
-			adeNext(currentPage);
+			if(adtotal>adPage*block){
+				adPage += 1;
+			}
+			adNext(adPage);
 		})
 		$(".adPrev").click(function(){
-			currentPage = currentPage -1 < 1 ? 1:currentPage-1;
-			adPrev(currentPage);
+			adPage = adPage -1 < 1 ? 1:adPage-1;
+			adPrev(adPage);
 		})	
 	})	
 	
@@ -176,13 +189,9 @@
 								</div>
 							</div>
 							
-							<div
-								class="PrimitiveHorizontalScrollable__ScrollBarContainer-hy4esm-0 hUyjJn">
-								<div
-									class="PrimitiveHorizontalScrollable__ScrollBar-hy4esm-1 epjsYP">
-									<div
-										class="PrimitiveHorizontalScrollable__ScrollingInner-hy4esm-2 iGzmWK"
-										style="transform: translateX(0px);">
+							<div class="PrimitiveHorizontalScrollable__ScrollBarContainer-hy4esm-0 hUyjJn">
+								<div class="PrimitiveHorizontalScrollable__ScrollBar-hy4esm-1 epjsYP">
+									<div class="PrimitiveHorizontalScrollable__ScrollingInner-hy4esm-2 iGzmWK" style="transform: translateX(0px);">
 										<div class="Grid-zydj2q-0 cspjno">
 											<div class="Row-s1apwm9x-0 lowZpE">
 												<ul class="HorizontalUlWithContentPosterList__StyledHorizontalUlWithContentPosterList-rp5ukn-0 kVCLyu HorizontalUl__StyledHorizontalUl-s1lfz4bc-0 fbzjBz VisualUl-s1vzev56-0 hgAYVH mainSearch">
@@ -190,24 +199,23 @@
 													<li class="ContentListItemWithPoster__Self-swai1z-0 hKRvvO">
 													<c:choose>
 														<c:when test="${result.TYPE=='영화'}">
-														<a lng="ko-KR" title="${request}" href="/brw/movie/movieDetail.br?MOVIE_NO=${result.NO}">
+														<a href="/brw/movie/movieDetail.br?MOVIE_NO=${result.NO}">
 														</c:when>
 														<c:when test="${result.TYPE=='TV'}">
-														<a lng="ko-KR" title="${request}" href="/brw/drama/dramaDetail.br?DRAMA_NO=${result.NO}">
+														<a href="/brw/drama/dramaDetail.br?DRAMA_NO=${result.NO}">
 														</c:when>
 														<c:otherwise>
-														<a lng="ko-KR" title="${request}" href="/brw/ad/adDetail.br?AD_NO=${result.NO}">
+														<a href="/brw/ad/adDetail.br?AD_NO=${result.NO}">
 														</c:otherwise>
 													</c:choose>
 														<div class="ContentListItemWithPoster__ContentPosterBlock-swai1z-1 kxDIaJ">
 															<div class="LazyLoadingImg__Self-s1jb87ps-0 csJkbb">
-																<img class="LazyLoadingImg__Self-s1jb87ps-0 csJkbb"
-																		data-image-id="20" src="/brw/resources/images/3-girls.jpg"">
-																</div>
+																<img class="LazyLoadingImg__Self-s1jb87ps-0 csJkbb" data-image-id="20" src="/brw/resources/images/${result.IMAGE}">
+															</div>
 														</div>
 														<div class="ContentListItemWithPoster__ContentInfo-swai1z-2 kVeCGy">
 															<div class="SearchResultsSection__TopResultItemTitle-s1qazrkm-1 kBOijn">${result.NAME}</div>
-															<div class="SearchResultsSection__TopResultItemExtraInfo-s1qazrkm-2 dGUMNT">${result.DATE} ・ ${result.GENRE}</div>
+															<div class="SearchResultsSection__TopResultItemExtraInfo-s1qazrkm-2 dGUMNT">${result.DATE} ・  ${result.GENRE}</div>
 															<div class="SearchResultsSection__TopResultContentType-s1qazrkm-3 eeOgLY">${result.TYPE} </div>
 														</div></a></li>
 													</c:forEach>
@@ -225,22 +233,17 @@
 								<div class="arrow_button PrimitiveHorizontalScrollable__ArrowButtonBlock-hy4esm-3 eweFwK" direction="right">
 									<div class="PrimitiveHorizontalScrollable__ForwardButton-hy4esm-4 cfipNh mainNext "></div>
 								</div>
-								
 							</div>
 							<hr	class="Divider__StylingMergedDivider-s11un6bw-1 kwWkAv Divider-s11un6bw-0 cVxSEp">
 						</section>
 						
-						
+						<!-- 영화 -->
+						<c:if test="${searchMovie.size() != 0}">
 						<section class="SectionWithHeader__Self-s1eyxltb-0 cVpbhx">
 							<div class="Grid-zydj2q-0 cspjno">
 								<div class="Row-s1apwm9x-0 lowZpE">
 									<header class="SectionWithHeader__Header-s1eyxltb-1 cuiACK">
 										<h2 class="SectionWithHeader__Title-s1eyxltb-2 kwjefp">영화</h2>
-										<div class="SectionWithHeader__TopRight-s1eyxltb-3 bZaEfL">
-											<div class="SectionWithViewMore__ViewMore-xtbl7q-0 bhbIbv">
-												<a lng="ko-KR" href="/ko-KR/searches/tv_seasons/%EB%8F%84%EA%B9%A8%EB%B9%84">더보기</a>
-											</div>
-										</div>
 									</header>
 								</div>
 							</div>
@@ -260,7 +263,7 @@
 														<div class="InnerPartOfListWithImage__ImageBlock-s11a1hqv-3 kXgAWr">
 																<div class="LazyLoadingBackground-cgbyi4-0 cioRyq LazyLoadingBackgroundw__Self-s1stfhov-0 jXCeuY" alt="${request}">
 																	<span class="LazyLoadingBackgroundw__BackgroundImage-s1stfhov-1 mPWPS" data-background-image-id="38">
-																		<img class="LazyLoadingBackground__StylingMerged-cgbyi4-2 kDLFDU LazyLoadingBackground__Self-cgbyi4-0 dxPvni" src="/brw/resources/images/3-girls.jpg"></span>
+																		<img class="LazyLoadingBackground__StylingMerged-cgbyi4-2 kDLFDU LazyLoadingBackground__Self-cgbyi4-0 dxPvni" src="/brw/resources/images/movie/poster/${movie.MOVIE_POSTER_IMAGE}"></span>
 																</div>
 															</div>
 															<div class="InnerPartOfListWithImage__Info-s11a1hqv-5 hufKbr">
@@ -290,18 +293,16 @@
 							</div>
 							<hr	class="Divider__StylingMergedDivider-s11un6bw-1 kwWkAv Divider-s11un6bw-0 cVxSEp">
 						</section>
+						</c:if>
+						<!-- 영화 -->
 						
+						<!-- TV -->
+						<c:if test="${searchDrama.size() != 0}">
 						<section class="SectionWithHeader__Self-s1eyxltb-0 cVpbhx">
 							<div class="Grid-zydj2q-0 cspjno">
 								<div class="Row-s1apwm9x-0 lowZpE">
 									<header class="SectionWithHeader__Header-s1eyxltb-1 cuiACK">
 										<h2 class="SectionWithHeader__Title-s1eyxltb-2 kwjefp">TV</h2>
-										<div class="SectionWithHeader__TopRight-s1eyxltb-3 bZaEfL">
-											<div class="SectionWithViewMore__ViewMore-xtbl7q-0 bhbIbv">
-												<a lng="ko-KR"
-													href="/ko-KR/searches/tv_seasons/%EB%8F%84%EA%B9%A8%EB%B9%84">더보기</a>
-											</div>
-										</div>
 									</header>
 								</div>
 							</div>
@@ -327,7 +328,7 @@
 																	class="LazyLoadingBackground__StylingMerged-cgbyi4-2 kDLFDU LazyLoadingBackground__Self-cgbyi4-0 dxPvni">
 																	<span class="LazyLoadingBackground__BackgroundImage-cgbyi4-1 jhdCRo"
 																		data-background-image-id="38">
-																		<img class="LazyLoadingBackground__StylingMerged-cgbyi4-2 kDLFDU LazyLoadingBackground__Self-cgbyi4-0 dxPvni" src="/brw/resources/images/3-girls.jpg">
+																		<img class="LazyLoadingBackground__StylingMerged-cgbyi4-2 kDLFDU LazyLoadingBackground__Self-cgbyi4-0 dxPvni" src="/brw/resources/images/drama/poster/${drama.DRAMA_POSTER_IMAGE}">
 																	</span>
 																</div>
 															</div>
@@ -338,7 +339,7 @@
 																	<div
 																		class="SearchResultItemForContent__ResultTitle-s1phcxqf-1 gGTmOM">${drama.DRAMA_NAME}</div>
 																	<div
-																		class="SearchResultItemForContent__ResultExtraInfo-s1phcxqf-0 crwUoZ">[${drama.DRAMA_DATE}]・[${drama.DRAMA_CHANNEL}]</div>
+																		class="SearchResultItemForContent__ResultExtraInfo-s1phcxqf-0 crwUoZ">${drama.DRAMA_DATE} ・${drama.DRAMA_GENRE}</div>
 																</div>
 																<div></div>
 															</div></a></li>
@@ -359,18 +360,17 @@
 							</div>
 							<hr	class="Divider__StylingMergedDivider-s11un6bw-1 kwWkAv Divider-s11un6bw-0 cVxSEp">
 						</section>
+						</c:if>
+						<!-- TV -->
 						
+						
+						<!-- AD -->
+						<c:if test="${searchAd.size() != 0}">
 						<section class="SectionWithHeader__Self-s1eyxltb-0 cVpbhx">
 							<div class="Grid-zydj2q-0 cspjno">
 								<div class="Row-s1apwm9x-0 lowZpE">
 									<header class="SectionWithHeader__Header-s1eyxltb-1 cuiACK">
 										<h2 class="SectionWithHeader__Title-s1eyxltb-2 kwjefp">광고</h2>
-										<div class="SectionWithHeader__TopRight-s1eyxltb-3 bZaEfL">
-											<div class="SectionWithViewMore__ViewMore-xtbl7q-0 bhbIbv">
-												<a lng="ko-KR"
-													href="/ko-KR/searches/tv_seasons/%EB%8F%84%EA%B9%A8%EB%B9%84">더보기</a>
-											</div>
-										</div>
 									</header>
 								</div>
 							</div>
@@ -396,7 +396,7 @@
 																	<span
 																		class="LazyLoadingBackground__BackgroundImage-cgbyi4-1 jhdCRo"
 																		data-background-image-id="27">
-																		<img class="LazyLoadingBackground__StylingMerged-cgbyi4-2 kDLFDU LazyLoadingBackground__Self-cgbyi4-0 dxPvni" src="/brw/resources/images/3-girls.jpg"></span>
+																		<img class="LazyLoadingBackground__StylingMerged-cgbyi4-2 kDLFDU LazyLoadingBackground__Self-cgbyi4-0 dxPvni" src="/brw/resources/images/ad/poster${ad.AD_POSTER_IMAGE}"></span>
 																</div>
 															</div>
 															<div
@@ -406,7 +406,7 @@
 																	<div
 																		class="SearchResultItemForContent__ResultTitle-s1phcxqf-1 gGTmOM">${ad.AD_NAME}</div>
 																	<div
-																		class="SearchResultItemForContent__ResultExtraInfo-s1phcxqf-0 crwUoZ">[${ad.AD_COMPANY}]・ [${ad.AD_GRADE}]</div>
+																		class="SearchResultItemForContent__ResultExtraInfo-s1phcxqf-0 crwUoZ">${ad.AD_READCOUNT} ・ ${ad.AD_COMPANY}</div>
 																</div>
 																<div></div>
 															</div></a></li>
@@ -427,38 +427,14 @@
 							</div>
 							<hr	class="Divider__StylingMergedDivider-s11un6bw-1 kwWkAv Divider-s11un6bw-0 cVxSEp">
 						</section>
+						</c:if>
+						<!-- AD -->
 						
 					</section>
 				</section>
 			</div>
 		</div>
 	</div>
-	<script>
-        window.ga=function(){ga.q.push(arguments)};ga.q=[];ga.l=+new Date;
-        ga("create","UA-27006241-7","auto");
-      </script>
-
-
-	<script src="https://browser.sentry-cdn.com/4.6.4/bundle.min.js"
-		crossorigin="anonymous"></script>
-
-
-
-	<script
-		src="https://d2rlq84xifqisi.cloudfront.net/javascripts/web.53717eacf562ba0874bf.js"
-		crossorigin="anonymous"></script>
-
-
-	<script src="https://www.google-analytics.com/analytics.js" async=""
-		defer=""></script>
-
-
-	<script>
-        if ('serviceWorker' in navigator) {
-          window.addEventListener('load', function() {
-            navigator.serviceWorker.register('https://watcha.com/sw.js');
-          });
-        }
-      </script>
+	
 </body>
 </html>

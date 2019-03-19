@@ -23,11 +23,16 @@ import believe.review.brw.common.util.Paging;
 @Controller
 public class MainController {
 	private int currentPage = 1;	 
-	private int totalCount;
+	private int mainTotal;
+	private int movieTotal;
+	private int dramaTotal;
+	private int adTotal;
 	private int blockCount = 10;	 
 	private int blockPage = 5; 	 
-	private String pagingHtml; 
-	private Paging page;
+	private Paging mainPage;
+	private Paging moviePage;
+	private Paging dramaPage;
+	private Paging adPage;
 	
 	private static final Logger logger = LoggerFactory.getLogger(MainController.class);
 
@@ -72,6 +77,7 @@ public class MainController {
 			tmp.put("NAME", searchMovie.get(i).get("MOVIE_NAME"));
 			tmp.put("DATE", searchMovie.get(i).get("MOVIE_DATE"));
 			tmp.put("GENRE", searchMovie.get(i).get("MOVIE_GENRE"));
+			tmp.put("IMAGE", "movie/poster/"+searchMovie.get(i).get("MOVIE_POSTER_IMAGE"));
 			tmp.put("TYPE", "영화");
 			searchMain.add(i,tmp);
 		}
@@ -81,6 +87,7 @@ public class MainController {
 			tmp.put("NAME", searchDrama.get(j).get("DRAMA_NAME"));
 			tmp.put("DATE", searchDrama.get(j).get("DRAMA_DATE"));
 			tmp.put("GENRE", searchDrama.get(j).get("DRAMA_GENRE"));
+			tmp.put("IMAGE", "drama/poster/"+searchDrama.get(j).get("DRAMA_POSTER_IMAGE"));
 			tmp.put("TYPE", "TV");
 			searchMain.add(i,tmp);
 		}
@@ -90,29 +97,67 @@ public class MainController {
 			tmp.put("NAME", searchAd.get(j).get("AD_NAME"));
 			tmp.put("DATE", searchAd.get(j).get("AD_READCOUNT"));
 			tmp.put("GENRE", searchAd.get(j).get("AD_COMPANY"));
+			tmp.put("IMAGE", "ad/poster/"+searchAd.get(j).get("AD_POSTER_IMAGE"));
 			tmp.put("TYPE", "광고");
 			searchMain.add(i,tmp);
 		}
+		/*메인페이징*/
+		mainTotal = searchMain.size();
+		mv.addObject("mainTotal",mainTotal);
 		
-		totalCount = searchMain.size();
+		mainPage = new Paging(currentPage, mainTotal, blockCount, blockPage, "/brw/main/mainSearch");
 		
-		page = new Paging(currentPage, totalCount, blockCount, blockPage, "/brw/main/mainSearch");
-		pagingHtml = page.getPagingHtml().toString();
+		int lastCount = mainTotal;
 		
-		int lastCount = totalCount;
+		if(mainPage.getEndCount() < mainTotal)
+			lastCount = mainPage.getEndCount() + 1;
 		
-		if(page.getEndCount() < totalCount)
-			lastCount = page.getEndCount() + 1;
+		searchMain = searchMain.subList(mainPage.getStartCount(), lastCount);
+		/*무비페이징*/
+		movieTotal = searchMovie.size();
+		mv.addObject("movieTotal",movieTotal);
 		
-		searchMain = searchMain.subList(page.getStartCount(), lastCount);
-				
-			mv.addObject("request",request.getParameter("searchText"));
-			mv.addObject("searchMain",searchMain);
-			mv.addObject("searchMovie",searchMovie);
-			mv.addObject("searchDrama",searchDrama);
-			mv.addObject("searchAd",searchAd);
+		moviePage = new Paging(currentPage, movieTotal, blockCount, blockPage, "/brw/movie/movieSearch");
+		
+		lastCount = movieTotal;
+		
+		if(moviePage.getEndCount() < movieTotal)
+			lastCount = moviePage.getEndCount() + 1;
+		
+		searchMovie = searchMovie.subList(moviePage.getStartCount(), lastCount);
+		/*드라마페이징*/
+		dramaTotal = searchDrama.size();
+		mv.addObject("dramaTotal",dramaTotal);
+		
+		dramaPage = new Paging(currentPage, dramaTotal, blockCount, blockPage, "/brw/drama/dramaSearch");
+		
+		lastCount = dramaTotal;
+		
+		if(dramaPage.getEndCount() < dramaTotal)
+			lastCount = dramaPage.getEndCount() + 1;
+		
+		searchDrama = searchDrama.subList(dramaPage.getStartCount(), lastCount);
+		/*광고페이징*/
+		adTotal = searchAd.size();
+		mv.addObject("adTotal",adTotal);
+		
+		adPage = new Paging(currentPage, adTotal, blockCount, blockPage, "/brw/ad/adSearch");
+		
+		lastCount = adTotal;
+		
+		if(adPage.getEndCount() < adTotal)
+			lastCount = adPage.getEndCount() + 1;
+		
+		searchAd = searchAd.subList(adPage.getStartCount(), lastCount);
+	
+		mv.addObject("currentPage",currentPage);
+		mv.addObject("request",request.getParameter("searchText"));
+		mv.addObject("searchMain",searchMain);
+		mv.addObject("searchMovie",searchMovie);
+		mv.addObject("searchDrama",searchDrama);
+		mv.addObject("searchAd",searchAd);
 
-			return mv;
+		return mv;
 		}	
 		@RequestMapping(value = "mainSearch2.br")
 		@ResponseBody
@@ -139,6 +184,7 @@ public class MainController {
 				tmp.put("NAME", searchMovie.get(i).get("MOVIE_NAME"));
 				tmp.put("DATE", searchMovie.get(i).get("MOVIE_DATE"));
 				tmp.put("GENRE", searchMovie.get(i).get("MOVIE_GENRE"));
+				tmp.put("IMAGE", "movie/poster/"+searchMovie.get(i).get("MOVIE_POSTER_IMAGE"));
 				tmp.put("TYPE", "영화");
 				searchMain.add(i,tmp);
 			}
@@ -148,6 +194,7 @@ public class MainController {
 				tmp.put("NAME", searchDrama.get(j).get("DRAMA_NAME"));
 				tmp.put("DATE", searchDrama.get(j).get("DRAMA_DATE"));
 				tmp.put("GENRE", searchDrama.get(j).get("DRAMA_GENRE"));
+				tmp.put("IMAGE", "drama/poster/"+searchDrama.get(j).get("DRAMA_POSTER_IMAGE"));
 				tmp.put("TYPE", "TV");
 				searchMain.add(i,tmp);
 			}
@@ -157,23 +204,19 @@ public class MainController {
 				tmp.put("NAME", searchAd.get(j).get("AD_NAME"));
 				tmp.put("DATE", searchAd.get(j).get("AD_READCOUNT"));
 				tmp.put("GENRE", searchAd.get(j).get("AD_COMPANY"));
+				tmp.put("IMAGE", "ad/poster/"+searchAd.get(j).get("AD_POSTER_IMAGE"));
 				tmp.put("TYPE", "광고");
 				searchMain.add(i,tmp);
 			}
-			totalCount = searchMain.size();
+			mainTotal = searchMain.size();
 			
-			page = new Paging(currentPage, totalCount, blockCount, blockPage, "/brw/main/mainSearch");
-			pagingHtml = page.getPagingHtml().toString();
+			mainPage = new Paging(currentPage, mainTotal, blockCount, blockPage, "/brw/main/mainSearch");
 			
-			int lastCount = totalCount;
+			int lastCount = mainTotal;
+			if(mainPage.getEndCount() < mainTotal)
+				lastCount = mainPage.getEndCount() + 1;
 			
-			if(p == null || p.trim().isEmpty() || p.equals("0")) {
-	            currentPage = 1;
-	        } else {
-	            currentPage = Integer.parseInt(request.getParameter("currentPage"));
-	        }
-			
-			searchMain = searchMain.subList(page.getStartCount(), lastCount);
+			searchMain = searchMain.subList(mainPage.getStartCount(), lastCount);
 			
 			StringBuffer sb = new StringBuffer();
 			
@@ -189,14 +232,13 @@ public class MainController {
 				}
 				sb.append("<div class=\"ContentListItemWithPoster__ContentPosterBlock-swai1z-1 kxDIaJ\">")
 				.append("<div class=\"LazyLoadingImg__Self-s1jb87ps-0 csJkbb\">")
-				.append("<img class=\"LazyLoadingImg__Self-s1jb87ps-0 csJkbb\" data-image-id=\"20\" src=\"/brw/resources/images/3-girls.jpg\"></div></div>")
+				.append("<img class=\"LazyLoadingImg__Self-s1jb87ps-0 csJkbb\" data-image-id=\"20\" src=\"/brw/resources/images/").append(m.get("IMAGE")).append("\"></div></div>")
 				.append("<div class=\"ContentListItemWithPoster__ContentInfo-swai1z-2 kVeCGy\">")
 				.append("<div class=\"SearchResultsSection__TopResultItemTitle-s1qazrkm-1 kBOijn\">").append(m.get("NAME")).append("</div>")
 				.append("<div class=\"SearchResultsSection__TopResultItemExtraInfo-s1qazrkm-2 dGUMNT\">").append(m.get("DATE")).append(" ・ ").append(m.get("GENRE")).append("</div>")
 				.append("<div class=\"SearchResultsSection__TopResultContentType-s1qazrkm-3 eeOgLY\">").append(m.get("TYPE")).append("</div>")
 				.append("</div></a></li>");
 			}		
-					
 			mv.put("request",request.getParameter("searchText"));
 			mv.put("searchMain",sb.toString());
 	
@@ -204,7 +246,6 @@ public class MainController {
 		}	
 		
 		/*메인 검색영화*/
-		
 		@RequestMapping(value = "mdaSearch.br")
 		@ResponseBody
 		public Map<String,Object>mdaSearch(CommandMap commandMap,HttpServletRequest request) throws Exception {
@@ -231,48 +272,51 @@ public class MainController {
 				mdaSearch = mainService.adSerach(commandMap.getMap());
 			}
 			
-			totalCount = mdaSearch.size();
+			mainTotal = mdaSearch.size();
 			
-			page = new Paging(currentPage, totalCount, blockCount, blockPage, "/brw/main/mainSearch");
-			pagingHtml = page.getPagingHtml().toString();
+			mainPage = new Paging(currentPage, mainTotal, blockCount, blockPage, "/brw/main/mainSearch");
 			
-			int lastCount = totalCount;
+			int lastCount = mainTotal;
 			
-			if(page.getEndCount() < totalCount)
-				lastCount = page.getEndCount() + 1;
+			if(mainPage.getEndCount() < mainTotal)
+				lastCount = mainPage.getEndCount() + 1;
 			
-			mdaSearch = mdaSearch.subList(page.getStartCount(), lastCount);
-			
+			mdaSearch = mdaSearch.subList(mainPage.getStartCount(), lastCount);
 			
 			StringBuffer sb = new StringBuffer();
 			
 			for(Map mda : mdaSearch) {
+				String name,date,genre,image;
+				
 				sb.append("<li class=\"StackableListItem-s18nuw36-0 cIJjio\">");
 				if(TYPE.equals("1")){
 					sb.append("<a lng=\"ko-KR\" class=\"InnerPartOfListWithImage__LinkSelf-s11a1hqv-1 gmbtJD\" title=\"${request}\" href=\"/brw/movie/movieDetail.br?MOVIE_NO=").append(mda.get("MOVIE_NO")).append("\">");
+					image = "drama/poster/"+mda.get("MOVIE_POSTER_IMAGE").toString();
+					name = mda.get("MOVIE_NAME").toString();
+					date = mda.get("MOVIE_DATE").toString();
+					genre = mda.get("MOVIE_GENRE").toString();
 				}else if(TYPE.equals("2")) {
-					sb.append("<a lng=\"ko-KR\" class=\"InnerPartOfListWithImage__LinkSelf-s11a1hqv-1 gmbtJD\" title=\"${request}\" href=\"/brw/drama/dramaDetail.br?MOVIE_NO=").append(mda.get("DRAMA_NO")).append("\">");
+					sb.append("<a lng=\"ko-KR\" class=\"InnerPartOfListWithImage__LinkSelf-s11a1hqv-1 gmbtJD\" title=\"${request}\" href=\"/brw/drama/dramaDetail.br?DRAMA_NO=").append(mda.get("DRAMA_NO")).append("\">");
+					image = "drama/poster/"+mda.get("DRAMA_POSTER_IMAGE").toString();
+					name = mda.get("DRAMA_NAME").toString();
+					date = mda.get("DRAMA_DATE").toString();
+					genre = mda.get("DRAMA_GENRE").toString();
 				}else {
-					sb.append("<a lng=\"ko-KR\" class=\"InnerPartOfListWithImage__LinkSelf-s11a1hqv-1 gmbtJD\" title=\"${request}\" href=\"/brw/ad/adDetail.br?MOVIE_NO=").append(mda.get("AD_NO")).append("\">");
+					sb.append("<a lng=\"ko-KR\" class=\"InnerPartOfListWithImage__LinkSelf-s11a1hqv-1 gmbtJD\" title=\"${request}\" href=\"/brw/ad/adDetail.br?AD_NO=").append(mda.get("AD_NO")).append("\">");
+					image = "drama/poster/"+mda.get("AD_POSTER_IMAGE").toString();
+					name = mda.get("AD_NAME").toString();
+					date = mda.get("AD_READCOUNT").toString();
+					genre = mda.get("AD_COMPANY").toString();
 				}
 				sb.append("<div class=\"InnerPartOfListWithImage__ImageBlock-s11a1hqv-3 kXgAWr\">");
 				sb.append("<div class=\"LazyLoadingBackground-cgbyi4-0 cioRyq LazyLoadingBackgroundw__Self-s1stfhov-0 jXCeuY\" alt=\"${request}\">");
 				sb.append("<span class=\"LazyLoadingBackgroundw__BackgroundImage-s1stfhov-1 mPWPS\" data-background-image-id=\"38\">");
-				sb.append("<img class=\"LazyLoadingBackground__StylingMerged-cgbyi4-2 kDLFDU LazyLoadingBackground__Self-cgbyi4-0 dxPvni\" src=\"/brw/resources/images/3-girls.jpg\"></span>");
+				sb.append("<img class=\"LazyLoadingBackground__StylingMerged-cgbyi4-2 kDLFDU LazyLoadingBackground__Self-cgbyi4-0 dxPvni\" src=\"/brw/resources/images/").append(image).append("\"></span>");
 				sb.append("</div></div>");
 				sb.append("<div class=\"InnerPartOfListWithImage__Info-s11a1hqv-5 hufKbr\">");
 				sb.append("<div class=\"InnerPartOfListWithImage__Titles-s11a1hqv-4 jtpmaI\">");
-				
-				if(TYPE.equals("1")){
-					sb.append("<div class=\"SearchResultItemForContent__ResultTitle-s1phcxqf-1 gGTmOM\">").append(mda.get("MOVIE_NAME")).append("</div>");
-					sb.append("<div class=\"SearchResultItemForContent__ResultExtraInfo-s1phcxqf-0 crwUoZ\">").append(mda.get("MOVIE_DATE")).append(" ・ ").append(mda.get("MOVIE_GENRE")).append("</div>");
-				}else if(TYPE.equals("2")) {
-					sb.append("<div class=\"SearchResultItemForContent__ResultTitle-s1phcxqf-1 gGTmOM\">").append(mda.get("DRAMA_NAME")).append("</div>");
-					sb.append("<div class=\"SearchResultItemForContent__ResultExtraInfo-s1phcxqf-0 crwUoZ\">").append(mda.get("DRAMA_DATE")).append(" ・ ").append(mda.get("DRAMA_GENRE")).append("</div>");
-				}else {
-					sb.append("<div class=\"SearchResultItemForContent__ResultTitle-s1phcxqf-1 gGTmOM\">").append(mda.get("AD_NAME")).append("</div>");
-					sb.append("<div class=\"SearchResultItemForContent__ResultExtraInfo-s1phcxqf-0 crwUoZ\">").append(mda.get("AD_READCOUNT")).append(" ・ ").append(mda.get("AD_COMPANY")).append("</div>");
-				}
+				sb.append("<div class=\"SearchResultItemForContent__ResultTitle-s1phcxqf-1 gGTmOM\">").append(name).append("</div>");
+				sb.append("<div class=\"SearchResultItemForContent__ResultExtraInfo-s1phcxqf-0 crwUoZ\">").append(date).append(" ・ ").append(genre).append("</div>");
 				sb.append("</div></div></div>");
 				sb.append("</div></a></li>");
 			}		
@@ -284,3 +328,4 @@ public class MainController {
 		}	
 		
 }
+
