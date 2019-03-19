@@ -65,6 +65,17 @@
 	function cancel(){
 		location.href = "/brw/admin/users.br";
 	}
+	
+	function checkbox(){
+		var chk = $('input:radio[name=image_check]:checked').val();
+		
+		if(chk == 'new_image'){
+			$(".subb").slideUp("fast");
+			$(".subb").slideToggle("fast"); 
+		}else{
+			$(".subb").hide();
+		}
+	}
 </script>
 <link href="/brw/WEB-INF/views/user/adminusermodify.css" type="text/css" rel="stylesheet">
 </head>
@@ -114,9 +125,14 @@
 				PROFILE IMAGE
 			</h3>
 			<div>
-				<input type="file" class="btn btn-primary btn-send-message" name="profile_image"><br>
-				<input type="checkbox" name="image_delete">기존 파일 삭제(선택 시 Default 이미지로 반영됩니다)
+				<input type="radio" name="image_check" value="default_image" onclick="checkbox()">프로필 없음&nbsp;
+				<input type="radio" name="image_check" value="origin_image" onclick="checkbox()">기존 프로필 사용&nbsp;
+				<input type="radio" name="image_check" value="new_image" onclick="checkbox()" checked="checked">새로운 이미지 사용&nbsp;
 			</div>
+			<div class="subb">
+				<input type="file" class="btn btn-primary btn-send-message" name="profile_image"><br>
+			</div>
+			
 			<h3 class="blog-post-title">
 				ADMIN
 			</h3>

@@ -27,7 +27,32 @@
 		  $("#cat-nav").hide();
 		 
 		
-	})  
+	})
+	
+	$(function() {
+		$("#autocompleteText").autocomplete({
+			source: function(request, response){
+				$.ajax({
+					url: "/brw/auto.br",
+					dataType: "json",
+					data:{
+						searchValue: request.term
+					},
+					success: function(args){
+						response(
+							$.map(args, function(item) {
+								return{
+									label:item.data,
+									value:item.data
+								}
+							})
+						);
+					}
+				});
+			},
+			minLength:1,
+		});
+	});
 </script>
 <body>
 	 <div id="header"> <!-- header -->
@@ -59,19 +84,19 @@
                                           <span class="icon-bar"></span>
                                       </button>
                                       <a class="navbar-brand" href="/brw/main.br">
-                                      <img src="/brw/resources/images/logos.jpg" width="150px" alt=""></a>
+                                      <img src="/brw/resources/images/logo3.png" style="margin-top: -8px;" width="150px" alt=""></a>
                                   </div>
 
                                   <!-- Collect the nav links, forms, and other content for toggling -->
                                   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                                       <ul class="nav navbar-nav">
                                           <li ><a href="/brw/main.br">Home <span class="sr-only">(current)</span></a></li>
-                                          <li><a href="/brw/drama/dramaList.br" class="mmenu" id="menu1" onmouseover="mopen(1);" onmouseout="mclosetime();">Drama</a>
+                                          <li ><a href="/brw/drama/dramaList.br" class="mmenu" id="menu1" onmouseover="mopen(1);" onmouseout="mclosetime();">Drama</a>
                                           </li>
                                           <li class="active"><a class="movie_tab" href="/brw/movie/movieList.br" class="mmenu" id="menu2" onmouseover="mopen(2);" onmouseout="mclosetime();">Movie</a></li>
                                           <li><a class="" href="/brw/ad/adList.br">Advertisement</a></li>
                                           <c:if test="${sessionScope.ADMIN == 1 }">
-                                          	<li><a href="" class="dropdown-toggle active" data-toggle="dropdown" role="button" aria-expanded="false">Admin <i class="fa fa-angle-down"></i></a>
+                                          	<li ><a href="" class="dropdown-toggle active" data-toggle="dropdown" role="button" aria-expanded="false">Admin <i class="fa fa-angle-down"></i></a>
 				                                <ul class="dropdown-menu megamenu" role="menu">
 		                                		    <li>
 			                                            <div class="mega-sub">
@@ -80,6 +105,7 @@
 							    								<li><a href="/brw/admin/drama.br">Drama</a></li>
 					                                            <li><a href="/brw/admin/movie.br">Movie</a></li>
 							                 					<li><a href="/brw/admin/ad.br">Advertisement</a></li>
+							                 					<li><a href="/brw/admin/actor.br">Actor</a></li>
 						                                    </ul>
 					                                    </div>
 		                                         	</li>
