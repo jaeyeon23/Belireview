@@ -14,4 +14,7 @@ public interface MainService {
 	public List<Map<String, Object>> movieListTop8() throws Exception;
 
 	public List<Map<String, Object>> adListTop8() throws Exception;
+	
+	public List<Map<String, Object>> searchRelation(String searchValue) throws Exception;
+	
 }

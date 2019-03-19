@@ -42,4 +42,11 @@ public class MainDAO extends AbstractDAO {
 	public List<Map<String, Object>> adListTop8(){
 		return selectList("main.adListTop8");
 	}
+	
+	/*연관검색어*/
+	@SuppressWarnings("unchecked")
+	public List<Map<String, Object>> searchRelation(String searchValue){
+		return (List<Map<String, Object>>) selectList("main.searchRelation", searchValue);
+	}
+	
 }

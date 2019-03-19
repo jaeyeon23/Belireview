@@ -10,7 +10,7 @@
 <title>회원탈퇴</title>
 </head>
 <body>
-	<div id="content">
+	<div id="content" style="">
 		<div class="c_header">
 			<center><h2>탈퇴 안내</h2></center>
 			<br>

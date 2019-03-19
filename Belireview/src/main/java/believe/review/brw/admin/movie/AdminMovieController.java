@@ -8,6 +8,8 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import believe.review.brw.admin.user.AdminUserService;
 import believe.review.brw.common.common.CommandMap;
 import believe.review.brw.common.util.FileUtils;
 import believe.review.brw.common.util.Paging;
@@ -33,6 +36,12 @@ public class AdminMovieController {
 	private String filePath = "C:\\Users\\박재연\\Desktop\\Belireview\\Belireview\\src\\main\\webapp\\resources\\images\\movie\\";
 	private HttpSession session = null;
 
+	@Autowired
+	private BCryptPasswordEncoder passwordEncoder;
+	
+	@Resource(name="adminUserService")
+	private AdminUserService adminUserService;
+	
 	@Resource(name="adminMovieService")
 	private AdminMovieService adminMovieService;
 	
@@ -154,20 +163,17 @@ public class AdminMovieController {
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 		
-		map.put("id", session.getAttribute("ID"));
-		map.put("password", commandMap.get("password"));
+		map = adminUserService.selectUserOne((String)session.getAttribute("ID"));
 		
-		if(commandMap.containsKey("no") && commandMap.containsKey("password")) {
-			if(adminMovieService.checkMovie(commandMap.getMap()) == 1 && memberService.checkAdminSessionPw(map) == 1) {
-				map = adminMovieService.selectMovieOne(Integer.parseInt((String) commandMap.get("no")));
-				fileUtils.fileDelete(map, filePath, "movie");
-				
-				adminMovieService.deleteMovieOne(commandMap.getMap());
-				
-				alert_value = "삭제 성공!";
-			}else {
-				alert_value = "삭제 실패 : 비밀번호를 확인하세요!";
-			}
+		if(passwordEncoder.matches((String)commandMap.get("password"), (String)map.get("PASSWORD"))) {
+			map = adminMovieService.selectMovieOne(Integer.parseInt((String) commandMap.get("no")));
+			fileUtils.fileDelete(map, filePath, "movie");
+			
+			adminMovieService.deleteMovieOne(commandMap.getMap());
+			
+			alert_value = "삭제 성공!";
+		}else {
+			alert_value = "삭제 실패 : 비밀번호를 확인하세요!";
 		}
 		
 		redirectAttributes.addAttribute("alert_value", alert_value);

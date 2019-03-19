@@ -7,16 +7,49 @@
 	<name>Belireview</name>
 	<packaging>war</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
-	<properties>  
-		<java-version>1.8</java-version> 
+	<properties>
+		<java-version>1.8</java-version>
 		<org.springframework-version>4.0.4.RELEASE</org.springframework-version>
 		<org.aspectj-version>1.6.10</org.aspectj-version>
 		<org.slf4j-version>1.6.6</org.slf4j-version>
 	</properties>
 	  
-	<dependencies>  
-		<!-- MyBatis -->  
-		<dependency> 
+	<dependencies> 
+	
+	  <!-- ssl -->
+		<!--  <dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+			<version>3.2.8.RELEASE</version>
+	     </dependency>
+	 
+     	<dependency>
+	       <groupId>org.springframework.security</groupId>
+	       <artifactId>spring-security-config</artifactId>
+	       <version>3.2.8.RELEASE</version>
+	   </dependency> -->
+     <!-- ssl -->
+     
+		<!-- bcrypt -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+			<version>4.0.3.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-core</artifactId>
+			<version>3.2.8.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+			<version>4.0.3.RELEASE</version>
+		</dependency>
+		
+		
+		<!-- MyBatis -->
+		<dependency>
 			<groupId>org.mybatis</groupId>
 			<artifactId>mybatis-spring</artifactId>
 			<version>1.2.2</version>
@@ -82,6 +115,20 @@
 			<artifactId>jackson-core-asl</artifactId>
 			<version>1.9.13</version>
 		</dependency>
+   
+   		<!-- JSON -->
+   		<dependency>
+   			<groupId>net.sf.json-lib</groupId>
+   			<artifactId>json-lib</artifactId>
+   			<version>2.4</version>
+   			<classifier>jdk15</classifier>
+   		</dependency>
+   		
+   		<dependency>
+   			<groupId>org.json</groupId>
+   			<artifactId>json</artifactId>
+   			<version>20151123</version>
+   		</dependency>
    
    		<!-- Ajax -->
 		<dependency>
@@ -255,27 +302,7 @@
      	<version>1.5.6</version>
      </dependency>  -->
      
-     <!-- sll -->
-	 <dependency>
- 
-            <groupId>org.springframework.security</groupId>
- 
-            <artifactId>spring-security-web</artifactId>
- 
-            <version>3.2.8.RELEASE</version>
- 
-        </dependency>
- 
-        <dependency>
- 
-            <groupId>org.springframework.security</groupId>
- 
-            <artifactId>spring-security-config</artifactId>
- 
-            <version>3.2.8.RELEASE</version>
- 
-        </dependency>
-     <!-- ssl -->
+   
             
    </dependencies>
     <build>
