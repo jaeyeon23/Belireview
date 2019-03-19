@@ -27,7 +27,32 @@
 		  $("#cat-nav").hide();
 		 
 		
-	})  
+	})
+	
+	$(function() {
+		$("#autocompleteText").autocomplete({
+			source: function(request, response){
+				$.ajax({
+					url: "/brw/auto.br",
+					dataType: "json",
+					data:{
+						searchValue: request.term
+					},
+					success: function(args){
+						response(
+							$.map(args, function(item) {
+								return{
+									label:item.data,
+									value:item.data
+								}
+							})
+						);
+					}
+				});
+			},
+			minLength:1,
+		});
+	});
 </script>
 <body>
 	 <div id="header"> <!-- header -->
@@ -71,7 +96,7 @@
                                           <li><a class="movie_tab" href="/brw/movie/movieList.br" class="mmenu" id="menu2" onmouseover="mopen(2);" onmouseout="mclosetime();">Movie</a></li>
                                           <li><a class="" href="/brw/ad/adList.br">Advertisement</a></li>
                                           <c:if test="${sessionScope.ADMIN == 1 }">
-                                          	<li><a href="" class="dropdown-toggle active" data-toggle="dropdown" role="button" aria-expanded="false">Admin <i class="fa fa-angle-down"></i></a>
+                                          	<li ><a href="" class="dropdown-toggle active" data-toggle="dropdown" role="button" aria-expanded="false">Admin <i class="fa fa-angle-down"></i></a>
 				                                <ul class="dropdown-menu megamenu" role="menu">
 		                                		    <li>
 			                                            <div class="mega-sub">
@@ -80,6 +105,7 @@
 							    								<li><a href="/brw/admin/drama.br">Drama</a></li>
 					                                            <li><a href="/brw/admin/movie.br">Movie</a></li>
 							                 					<li><a href="/brw/admin/ad.br">Advertisement</a></li>
+							                 					<li><a href="/brw/admin/actor.br">Actor</a></li>
 						                                    </ul>
 					                                    </div>
 		                                         	</li>

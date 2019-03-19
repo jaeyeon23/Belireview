@@ -15,7 +15,7 @@
     <!-- container -->
     <div id="container" role="main">
         <div id="content">
-        	<center><img src="/brw/resources/images/logos.jpg" width="150px" alt=""></center>
+        	<center><img src="/brw/resources/images/logo3.png" width="150px" alt=""></center>
         	<br><br>
             <div class="join_content">
                 <!-- 아이디, 비밀번호 입력 -->
