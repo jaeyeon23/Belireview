@@ -63,7 +63,7 @@
 	}
 	
 	function cancel(){
-		location.href = "/brw/admin/users.br";
+		location.href = "/brw/admin/users.br?${_csrf.parameterName}=${_csrf.token}";
 	}
 	
 	function checkbox(){
@@ -83,6 +83,7 @@
 <div class="container">
 	<div class="col-md-8">
 		<form name="admin_update_form" method="post" enctype="multipart/form-data">
+			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 			<h3 class="blog-post-title">
 				ID
 			</h3>

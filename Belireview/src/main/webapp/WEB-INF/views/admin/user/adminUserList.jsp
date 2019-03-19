@@ -49,7 +49,7 @@
 		if (check == true) {
 			var inputString = prompt('사용자 비밀번호를 입력하시오');
 			if (inputString != null) {
-				post_to_url("/brw/admin/delete.br", {
+				post_to_url("/brw/admin/delete.br?${_csrf.parameterName}=${_csrf.token}", {
 					'id' : id,
 					'password' : inputString
 				}, "POST");
@@ -58,7 +58,7 @@
 	}
 
 	function update_user(id) {
-		location.href = "/brw/admin/modify.br?id=" + id;
+		location.href = "/brw/admin/modify.br?${_csrf.parameterName}=${_csrf.token}&id=" + id;
 	}
 
 	$(document).ready(function() {
@@ -81,7 +81,7 @@
 		<div style="float:left; margin:20pt auto; background: skyblue;">
 			회원관리
 		</div>
-		<div style="margin:20pt auto; float: right; width: 20%;" onchange="orderby('/brw/admin/users.br')">
+		<div style="margin:20pt auto; float: right; width: 20%;" onchange="orderby('/brw/admin/users.br?${_csrf.parameterName}=${_csrf.token}')">
 			<select id="orderby" name="orderby" class="form-control">
 				<option value="">----</option>
 				<option value="1">번호순</option>
@@ -213,8 +213,8 @@
 				<option value="name">이름</option>
 			</select>
 			<div class="input-group">
-            	<input type="text" class="form-control search-wid" id="searchBox" placeholder="Search Here" value="${searchBox }" onkeypress="if (event.keyCode==13){searchNum_Box('/brw/admin/users.br');}">
-	            <a href="javascript:void(0);" onclick="searchNum_Box('/brw/admin/users.br');" class="input-group-addon btn-side-serach" id="basic-addon1"><i class="fa fa-search"></i></a>
+            	<input type="text" class="form-control search-wid" id="searchBox" placeholder="Search Here" value="${searchBox }" onkeypress="if (event.keyCode==13){searchNum_Box('/brw/admin/users.br?${_csrf.parameterName}=${_csrf.token}');}">
+	            <a href="javascript:void(0);" onclick="searchNum_Box('/brw/admin/users.br?${_csrf.parameterName}=${_csrf.token}');" class="input-group-addon btn-side-serach" id="basic-addon1"><i class="fa fa-search"></i></a>
 	        </div>			
 		</div>
 	</div>

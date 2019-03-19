@@ -91,7 +91,7 @@
 		FROM
 			member
 		WHERE
-			id=#{id} and password=#{password}
+			id=#{id}
 	</delete>
 	
 	<delete id="deleteMyPage" parameterType="hashmap">
