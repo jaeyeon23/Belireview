@@ -29,6 +29,10 @@ public class DramaDAO extends AbstractDAO{
 	public List<Map<String,Object>> dramaCommentByLike(Map<String, Object> map) throws Exception{
 		return (List<Map<String,Object>>)selectList("drama_comment.dramaCommentByLike",map);
 	}
+	@SuppressWarnings("unchecked")
+	public List<Map<String,Object>> dramaCommentForDetail(Map<String, Object> map) throws Exception{
+		return (List<Map<String,Object>>)selectList("drama_comment.dramaCommentForDetail",map);
+	}
 	public int totalDramaCount(Map<String, Object> map) throws Exception{
 		return (Integer) selectOne("drama.totalDramaCount",map);
 	}
@@ -48,7 +52,7 @@ public class DramaDAO extends AbstractDAO{
 		insert("drama.addGrade", map);
 	}
 	public void updateGrade(Map<String, Object> map) throws Exception{
-		delete("drama.updateGrade", map);
+		update("drama.updateGrade", map);
 	}
 	public void writeDramaComment(Map<String, Object> map) throws Exception{
 		insert("drama_comment.writeDramaComment", map);
@@ -57,10 +61,30 @@ public class DramaDAO extends AbstractDAO{
 	public Map<String, Object> myComment(Map<String, Object> map) throws Exception{
 		return(Map<String,Object>)selectOne("drama_comment.myComment",map);
 	}
-	
-	/*@SuppressWarnings("unchecked")
-	public Map<String, Object> dramaComment(Map<String, Object> map) throws Exception{
-		return(Map<String,Object>)selectOne("drama.insertdramaComment",map);
+	public void deleteComment(Map<String, Object> map) throws Exception{
+		delete("drama_comment.deleteComment", map);
 	}
-	*/
+	public void dramaCommentLike(Map<String, Object> map) throws Exception {
+		update("drama_comment.dramaCommentLike", map);
+	}
+	public void updateDramaComment(Map<String, Object> map) throws Exception {
+		update("drama_comment.updateDramaComment", map);
+	}
+	@SuppressWarnings("unchecked")
+	public List<Map<String,Object>> gradeRatio(Map<String, Object> map) throws Exception{
+		return (List<Map<String,Object>>)selectList("drama.gradeRatio",map);
+	}
+	public int grade(Map<String, Object> map) throws Exception{
+		return (Integer) selectOne("drama.grade",map);
+	}
+	public double ratingPrediction(Map<String, Object> map) throws Exception{
+		if(selectOne("drama.ratingPrediction",map)!=null) {
+			return (Double) selectOne("drama.ratingPrediction",map);
+		}
+			return 0;
+	}
+	@SuppressWarnings("unchecked")
+	public Map<String, Object> commentOne(Map<String, Object> map) throws Exception{
+		return(Map<String,Object>)selectOne("drama_comment.commentOne",map);
+	}
 }

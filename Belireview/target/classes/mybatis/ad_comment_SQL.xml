@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC " - //mybatis.org//DTD Config 3.0//EN" " http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="ad_comment">
 
-<insert>
+<insert id="writeAdComment" parameterType="hashmap">
 INSERT INTO AD_COMMENT 
 (
   AD_NO,
@@ -25,8 +26,12 @@ VALUES
 );
 </insert>
 
+<select id="myComment" parameterType="hashmap" resultType="hashmap">
+		select * from ad_comment where id=#{ID} AND AD_NO=#{AD_NO}
+	</select>
+
 <!-- 댓글 최신순 -->
-<select>
+<select id="adCommentByRecent" parameterType="hashmap" resultType="hashmap">
 SELECT
   AD_NO,
   ADC_NO,
@@ -51,27 +56,39 @@ SELECT
 </select>
 
 <!-- 댓글 좋아요 순 -->
-<select>
+<select  id="adCommentByLike" parameterType="hashmap" resultType="hashmap">
 SELECT
-  AD_NO,
-  ADC_NO,
-  ID,
-  AD_REG_DATE,
-  AD_CONTENT,
-  AD_LIKE,
-  AD_LIKE_ID,
-  RNUM FROM 
-  (SELECT
-     AD_NO,
-     ADC_NO,
-     ID,
-     AD_REG_DATE,
-     AD_CONTENT,
-     AD_LIKE,
-     AD_LIKE_ID,
-     ROWNUM RNUM FROM 
-    (SELECT 
-      *
-      FROM AD_COMMENT ORDER BY AD_LIKE DESC) ORDER BY RNUM ASC) WHERE RNUM BETWEEN #{START} AND #{END}
+		 AD_NO,
+		 ADC_NO,
+		  ID,
+		  AD_REG_DATE,
+		  AD_CONTENT,
+		  AD_LIKE,
+		  AD_LIKE_ID,
+		  AL_GRADE,
+		  RNUM FROM 
+		  (SELECT
+		      AD_NO,
+			  ADC_NO,
+			  ID,
+			  AD_REG_DATE,
+			  AD_CONTENT,
+			  AD_LIKE,
+			  AD_LIKE_ID,
+		    TO_CHAR(AL_GRADE,'0.0') AS AL_GRADE,
+		     ROWNUM RNUM FROM 
+		  (SELECT AC.AD_NO, AC.ADC_NO, AC.ID, AC.AD_REG_DATE, AC.AD_CONTENT, AC.AD_LIKE, AC.AD_LIKE_ID, AL.AL_GRADE FROM AD_LIKE AL, AD_COMMENT AC
+		      WHERE AL.AD_LIKE_NO=AC.AD_NO AND AL.ID=AC.ID AND AC.AD_NO = #{AD_NO} ORDER BY AD_LIKE DESC) ORDER BY RNUM ASC) WHERE RNUM BETWEEN 1 AND 5
 </select>
+
+<select id="totalAdComment" parameterType="hashmap" resultType="int">
+		select count(*) as count from AD_COMMENT where AD_NO = ${AD_NO}
+</select>
+	
+	<!-- 코멘트 좋아요-->
+	<update id="adCommentLike" parameterType="hashmap">
+		update AD_COMMENT
+			set AD_LIKE = #{AD_LIKE}, AD_LIKE_ID=#{AD_LIKE_ID}
+		where AD_NO=#{AD_NO} AND ADC_NO=#{ADC_NO}
+	</update>
 </mapper>
