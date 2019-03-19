@@ -11,7 +11,7 @@
                           <div class="col-md-3">
                               <div class="text-widget">
                                   <div class="wid-title">Welcome to</div>
-                                  <img src="/brw/resources/images/logos.jpg" width="150px" alt="ft-logo">
+                                  <img src="/brw/resources/images/logo3_white.png" width="150px" alt="ft-logo">
                                   <p>
                                       	영화, TV, 도서를 검색하고 4억개의 평점과 리뷰를 만나보세요.
                                   </p>

@@ -23,14 +23,9 @@
        comSubmit.submit();
 	}		
 
-	  $(function(){
+    $(function(){
 		  $("#cat-nav").hide();
-		 
-		
 	})  
-	
-	
-	
 </script>
 <body>
 	 <div id="header"> <!-- header -->
@@ -62,17 +57,17 @@
                                           <span class="icon-bar"></span>
                                       </button>
                                       <a class="navbar-brand" href="/brw/main.br">
-                                      <img src="/brw/resources/images/logo3.png" style="margin-top:-8px;" width="150px" alt=""></a>
+                                      <img src="/brw/resources/images/logos.jpg" width="150px" alt=""></a>
                                   </div>
 
                                   <!-- Collect the nav links, forms, and other content for toggling -->
                                   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                                       <ul class="nav navbar-nav">
-                                          <li class="active" id="hh"><a href="/brw/main.br">Home <span class="sr-only">(current)</span></a></li>
-                                          <li class="" id="dd"><a href="/brw/drama/dramaList.br" class="mmenu" id="menu1" onmouseover="mopen(1);" onmouseout="mclosetime();">Drama</a>
+                                          <li><a href="/brw/main.br">Home <span class="sr-only">(current)</span></a></li>
+                                          <li><a href="/brw/drama/dramaList.br" class="mmenu" id="menu1" onmouseover="mopen(1);" onmouseout="mclosetime();">Drama</a>
                                           </li>
-                                          <li class="" id="mm"><a class="movie_tab" href="/brw/movie/movieList.br" class="mmenu" id="menu2" onmouseover="mopen(2);" onmouseout="mclosetime();">Movie</a></li>
-                                          <li class="" id="aa"><a class="" href="/brw/ad/adList.br">Advertisement</a></li>
+                                          <li><a class="movie_tab" href="/brw/movie/movieList.br" class="mmenu" id="menu2" onmouseover="mopen(2);" onmouseout="mclosetime();">Movie</a></li>
+                                          <li><a class="" href="/brw/ad/adList.br">Advertisement</a></li>
                                           <c:if test="${sessionScope.ADMIN == 1 }">
                                           	<li><a href="" class="dropdown-toggle active" data-toggle="dropdown" role="button" aria-expanded="false">Admin <i class="fa fa-angle-down"></i></a>
 				                                <ul class="dropdown-menu megamenu" role="menu">

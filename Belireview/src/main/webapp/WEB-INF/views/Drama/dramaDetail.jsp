@@ -366,7 +366,7 @@
 		});
 		/* 별점 */
 	</script>
-	
+	<!-- 슬라이드 css -->
 	<link rel="stylesheet" href="/brw/resources/css/global2.css">
 </head>
 <body> 

@@ -76,6 +76,9 @@
 </head>
 <body>
 	<div class="container">
+		<div style="float:left; margin:20pt auto; background: skyblue;">
+			회원관리
+		</div>
 		<div style="margin:20pt auto; float: right; width: 20%;" onchange="orderby('/brw/admin/users.br')">
 			<select id="orderby" name="orderby" class="form-control">
 				<option value="">----</option>
@@ -136,7 +139,7 @@
 																<img src="https://static.nid.naver.com/images/web/user/default.png" class="img-responsive">
 															</c:otherwise>
 														</c:choose>
-														<br>
+														<br><br>
 														<table class="table table-striped">
 															<tr>
 																<th>
