@@ -121,11 +121,11 @@ public class UserController {
 		return mv;
 	}
 	
-	/*@RequestMapping(value = "/userDrama")
+	@RequestMapping(value = "/userDrama")
 	public ModelAndView userdrama(CommandMap commandMap, HttpServletRequest request) throws Exception {
 		HttpSession session = request.getSession();
 
-		ModelAndView mv = new ModelAndView("userdrama");
+		ModelAndView mv = new ModelAndView("userDrama");
 		List<Map<String, Object>> userdramaAll = userService.UserDramaAll(commandMap.getMap());
 		List<Map<String, Object>> selectUserGrade = userService.selectUserGrade(commandMap.getMap());
 		mv.addObject("userdramaAll", userdramaAll);
@@ -145,7 +145,7 @@ public class UserController {
 		}
 
 		return mv;
-	}*/
+	}
 
 	@RequestMapping(value = "/userDeleteForm")
 	public ModelAndView userDeleteForm() {
