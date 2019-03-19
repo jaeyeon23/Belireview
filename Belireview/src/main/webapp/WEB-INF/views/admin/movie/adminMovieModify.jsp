@@ -143,6 +143,60 @@
         obj.parent().remove();
     }
     
+    $(function() {
+		
+		$("#autocompleteTextMovie").autocomplete({
+			source: function(request, response){
+				$.ajax({
+					url: "/brw/ajaxActorWrite.br",
+					dataType: "json",
+					data:{
+						searchValue: request.term
+					},
+					success: function(args){
+						response(
+							$.map(args, function(item) {
+								return{
+									label:item.name,
+									value:item.no
+								}
+							})
+						);
+					}
+				});
+			},
+			minLength:1,
+		});
+	});
+    
+    function movie_textarea_write() {
+		var txt = document.getElementById('movie_textarea');
+		var area_split = txt.value.split(", ");
+		var tmp = 0;
+	
+		for(var i in area_split){
+			if(area_split[i] == $('#autocompleteTextMovie').val()){
+				tmp = 1;
+			}
+		}
+		
+		if(tmp != 1){
+			if(txt.value != ""){
+				txt.value += ", " + $('#autocompleteTextMovie').val();	
+			}else{
+				txt.value = $('#autocompleteTextMovie').val();
+			}
+		}
+		
+		$("#autocompleteTextMovie").val("");
+	}
+    
+    function reset_movie_area() {
+		var txt = document.getElementById('movie_textarea');
+		
+		txt.value = "";
+	}
+    
 </script>
 </head>
 <body>

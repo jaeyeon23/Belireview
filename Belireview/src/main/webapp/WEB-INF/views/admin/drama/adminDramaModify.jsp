@@ -129,6 +129,60 @@
         obj.parent().remove();
     }
     
+    
+    $(function() {
+		
+		$("#autocompleteTextDrama").autocomplete({
+			source: function(request, response){
+				$.ajax({
+					url: "/brw/ajaxActorWrite.br",
+					dataType: "json",
+					data:{
+						searchValue: request.term
+					},
+					success: function(args){
+						response(
+							$.map(args, function(item) {
+								return{
+									label:item.name,
+									value:item.no
+								}
+							})
+						);
+					}
+				});
+			},
+			minLength:1,
+		});
+	});
+    
+    function drama_textarea_write() {
+		var txt = document.getElementById('drama_textarea');
+		var area_split = txt.value.split(", ");
+		var tmp = 0;
+	
+		for(var i in area_split){
+			if(area_split[i] == $('#autocompleteTextDrama').val()){
+				tmp = 1;
+			}
+		}
+		
+		if(tmp != 1){
+			if(txt.value != ""){
+				txt.value += ", " + $('#autocompleteTextDrama').val();	
+			}else{
+				txt.value = $('#autocompleteTextDrama').val();
+			}
+		}
+		
+		$("#autocompleteTextDrama").val("");
+	}
+    
+    function reset_drama_area() {
+		var txt = document.getElementById('drama_textarea');
+		
+		txt.value = "";
+	}
 </script>
 </head>
 <body>
@@ -190,6 +244,16 @@
 				</h3>
 				<div>
 					<input type="text" class="form-control search-wid" name="episode" value="${admin.DRAMA_EPISODE }">
+				</div>
+				<h3 class="blog-post-title">
+					ACTOR
+				</h3>
+				<div>
+					<input type="text" class="form-control search-wid" id="autocompleteTextDrama" name="actor" onkeypress="if (event.keyCode==13){drama_textarea_write();}">
+					<button type="button" class="btn btn-default" onclick="reset_drama_area()">드라마 배우 리셋</button>
+				</div>
+				<div style="margin-top: 5%;">
+					<textarea rows="8" cols="80" id="drama_textarea" name="drama_textarea" class="form-control" readonly>${str }</textarea>
 				</div>
 				<h3 class="blog-post-title">
 					GRADE

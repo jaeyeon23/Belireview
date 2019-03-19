@@ -16,4 +16,12 @@ public interface AdminActorService {
 	public void insertActor(Map<String, Object> map) throws Exception;
 	
 	public void updateActorOne(Map<String, Object> map) throws Exception;
+	
+	public void deleteActorOne(String no) throws Exception;
+	
+	public List<Map<String, Object>> selectActorAjax(String searchValue) throws Exception;
+	
+	public List<Map<String, Object>> selectActorDramaModify(String no) throws Exception;
+	
+	public List<Map<String, Object>> selectActorMovieModify(String no) throws Exception;
 }
