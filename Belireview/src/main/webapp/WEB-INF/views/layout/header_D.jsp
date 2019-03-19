@@ -23,10 +23,8 @@
        comSubmit.submit();
 	}		
 
-	  $(function(){
-		  $("#cat-nav").hide();
-		 
-		
+	$(function(){
+		  $("#cat-nav").hide();		
 	})
 	
 	$(function() {
