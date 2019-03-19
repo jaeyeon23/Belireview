@@ -282,7 +282,7 @@
 		FROM
 			DRAMA_LIKE
 		WHERE
-			DRAMA_NO=#{no}
+			DRAMA_LIKE_NO=#{no}
 	</delete>
 	
 
@@ -427,7 +427,7 @@
 		FROM
 			MOVIE_LIKE
 		WHERE
-			MOVIE_NO=#{no}
+			MOVIE_LIKE_NO=#{no}
 	</delete>
 	
 	<!-- Advertisement -->
@@ -491,7 +491,7 @@
 		)			
 	</insert>
 	
-	<select id="selectAdOne" parameterType="Integer" resultType="hashmap">
+	<select id="selectAdOne" parameterType="int" resultType="hashmap">
 		SELECT
 			*
 		FROM
@@ -547,7 +547,105 @@
 		FROM
 			AD_LIKE
 		WHERE
-			AD_NO=#{no}
+			AD_LIKE_NO=#{no}
 	</delete>
 	
+	<!-- Actor -->
+	<select id="selectActorList" resultType="hashmap" parameterType="hashmap">
+		SELECT
+			*
+		FROM
+			ACTOR
+		<if test='searchNum != null'>
+			<choose>
+				<when test='searchNum == "name"'>
+					WHERE ACTOR_NAME like '%'||#{searchBox}||'%'
+				</when>
+			</choose>
+		</if>
+		<if test='orderby != null'>
+			<choose>
+				<when test='orderby == 1'>
+					order by ACTOR_NAME 
+				</when>
+				<when test='orderby == 2'>
+					order by ACTOR_NAME DESC
+				</when>
+			</choose>
+		</if>
+	</select>
+	
+	<select id="selectActorOne" resultType="hashmap" parameterType="string">
+		SELECT
+			*
+		FROM
+			ACTOR
+		WHERE
+			ACTOR_NO=#{no}
+	</select>
+	
+	<select id="selectActorDrama" resultType="hashmap" parameterType="string">
+		SELECT
+			DRAMA_NO AS NO,
+			DRAMA_NAME AS NAME
+		FROM
+			DRAMA
+		WHERE
+			DRAMA_NAME LIKE '%'||#{searchValue}||'%' 
+		ORDER BY 
+			DRAMA_READCOUNT
+	</select>
+	
+	<select id="selectActorMovie" resultType="hashmap" parameterType="string">
+		SELECT
+			MOVIE_NO AS NO,
+			MOVIE_NAME AS NAME
+		FROM
+			MOVIE
+		WHERE
+			MOVIE_NAME LIKE '%'||#{searchValue}||'%'
+		ORDER BY
+			MOVIE_READCOUNT
+	</select>
+	
+	<insert id="insertActor" parameterType="hashmap">
+		INSERT
+		INTO
+			ACTOR
+			(
+				ACTOR_NO,
+				ACTOR_NAME,
+				ACTOR_IMAGE,
+				ACTOR_MOVIE,
+				ACTOR_DRAMA
+			)
+		VALUES
+			(
+				SEQ_ACTOR_NO.NEXTVAL,
+				#{name},
+				#{image},
+				#{movie_textarea},
+				#{drama_textarea}
+			)
+	</insert>
+	
+	<update id="updateActorOne" parameterType="hashmap">
+		UPDATE
+			ACTOR
+		SET
+			<choose>
+				<when test='actor_movie != null'>
+					ACTOR_MOVIE=#{actor_movie},
+				</when>
+				<when test='actor_drama != null'>
+					ACTOR_DRAMA=#{actor_drama},
+				</when>
+				<when test='image != null'>
+					ACTOR_IMAGE=#{image},
+				</when>
+			</choose>
+			ACTOR_NAME=#{name}
+		WHERE
+			ACTOR_NO=#{no}
+	</update>
 </mapper>

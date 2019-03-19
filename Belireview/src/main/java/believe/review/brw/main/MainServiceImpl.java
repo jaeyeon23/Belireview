@@ -44,4 +44,11 @@ public class MainServiceImpl implements MainService{
 	public List<Map<String, Object>> adListTop8() throws Exception {
 		return mainDAO.adListTop8();
 	}
+
+	/*연관검색어*/
+	@Override
+	public List<Map<String, Object>> searchRelation(String searchValue) throws Exception {
+		return (List<Map<String, Object>>) mainDAO.searchRelation(searchValue);
+	}
+	
 }

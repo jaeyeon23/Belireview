@@ -2,7 +2,6 @@ package believe.review.brw.member;
 
 import java.io.PrintWriter;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
@@ -19,13 +18,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
- 
+
 import believe.review.brw.common.common.CommandMap;
 
 @Controller
@@ -34,6 +34,9 @@ public class MemberController {
 	String Email = "";
 	String authNUm = "";
 	
+	@Autowired
+	BCryptPasswordEncoder passwordEncoder;
+
 	@Resource(name="memberService")
 	private MemberService memberService;
 	
@@ -65,6 +68,12 @@ public class MemberController {
 		Map<String, Object> memberMap = new HashMap<String, Object>();
 		
 		memberMap = commandMap.getMap();
+
+		//test
+		String encryptPassword = passwordEncoder.encode((String)memberMap.get("password"));
+		System.out.println("test ============================== " + encryptPassword);
+		memberMap.put("password", encryptPassword);
+		//test
 		
 		memberService.insertMember(memberMap, request);
 		

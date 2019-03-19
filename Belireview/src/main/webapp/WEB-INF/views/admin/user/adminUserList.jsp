@@ -10,10 +10,10 @@
 <script type="text/javascript">
 	function orderby(url) {
 		var orderby = document.getElementById("orderby").value;
-	
+
 		var searchNum = '<c:out value="${searchNum}"/>';
 		var searchBox = '<c:out value="${searchBox}"/>';
-	
+
 		if (searchNum != null || searchNum != "") {
 			post_to_url(url, {
 				'orderby' : orderby,
@@ -26,12 +26,12 @@
 			}, "GET");
 		}
 	}
-	
+
 	function searchNum_Box(url) {
 		var searchNum = document.getElementById("searchNum").value;
 		var searchBox = document.getElementById("searchBox").value;
 		var orderby = "";
-	
+
 		if (searchNum == null || searchNum == "") {
 			location.href = url;
 		} else {
@@ -42,36 +42,38 @@
 			}, "GET");
 		}
 	}
-	
+
 	function delete_user(id) {
 		var check = confirm("정말로 삭제하시겠습니까?");
-		
-		if(check == true){
+
+		if (check == true) {
 			var inputString = prompt('사용자 비밀번호를 입력하시오');
-			if(inputString != null){
-				post_to_url("/brw/admin/delete.br", {'id':id, 'password':inputString}, "POST");
+			if (inputString != null) {
+				post_to_url("/brw/admin/delete.br", {
+					'id' : id,
+					'password' : inputString
+				}, "POST");
 			}
 		}
 	}
-	
-	function update_user(id){
-		location.href = "/brw/admin/modify.br?id="+id;
+
+	function update_user(id) {
+		location.href = "/brw/admin/modify.br?id=" + id;
 	}
 
 	$(document).ready(function() {
 		var orderby = '<c:out value="${orderby}"/>';
 		var searchNum = '<c:out value="${searchNum}"/>';
-		
+
 		$("#orderby").val(orderby);
 		$("#searchNum").val(searchNum);
-		
+
 		var alert_value = '<c:out value="${alert_value}"/>';
-		
-		if(alert_value != null && alert_value != ""){
+
+		if (alert_value != null && alert_value != "") {
 			alert(alert_value);
 		}
 	});
-		
 </script>
 </head>
 <body>
@@ -87,14 +89,22 @@
 				<option value="3">이름순</option>
 			</select>
 		</div>
-		<table class="table table-hover" align="center">
+		
+		<table class="table table-hover">
+			<colgroup>
+				<col width="10%">
+				<col width="20%">
+				<col width="20%">
+				<col width="20%">
+				<col width="30%">
+			</colgroup>
 			<thead>
 				<tr>
-					<th>NO</th>
-					<th>ID</th>
-					<th>NAME</th>
-					<th>ADMIN</th>
-					<th>CHOOSE</th>
+					<th scope="row">NO</th>
+					<th scope="row">ID</th>
+					<th scope="row">NAME</th>
+					<th scope="row">ADMIN</th>
+					<th scope="row">CHOOSE</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -121,7 +131,7 @@
 										<button class="btn btn-danger" type="button" onclick="delete_user('${list.ID}')">삭제</button>
 
 										<!-- modal 구동 버튼 (trigger) --> 
-										<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal${list.ID}">프로필 미리보기</button>
+										<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal${list.ID}">프로필</button>
 										<!-- Modal -->
 										<div class="modal fade" id="myModal${list.ID }" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 											<div class="modal-dialog" role="document">
