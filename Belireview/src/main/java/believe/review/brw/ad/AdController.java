@@ -18,6 +18,7 @@ import believe.review.brw.common.common.CommandMap;
 @Controller
 @RequestMapping("/ad")
 public class AdController {
+	private int totalCount;
 	
 	@Resource(name="adService")
 	private AdService adService;
@@ -37,11 +38,11 @@ public class AdController {
       Map<String,Object> map = adService.adDetail(commandMap.getMap());
       List<Map<String,Object>> comment = adService.adCommentByLike(map);
 
-    /*  totalAdCount = (Integer)adService.totalAdComment(map);*/
+     totalCount = (Integer)adService.totalAdComment(map);
       
       mv.addObject("map",map);
       mv.addObject("comment",comment);
-    /*  mv.addObject("totalCount",totalCount);*/
+      mv.addObject("totalCount",totalCount);
       return mv;
    }
  
@@ -53,14 +54,14 @@ public class AdController {
 	/*    Map<String,Object> map = adService.myComment();
 		*/
 		
-		System.out.println(adcomment.get(0).get("AD_CONTENT"));
+
 		mv.addObject("adcomment",adcomment);
 		
 		if(session.getAttribute("ID")!=null)
 			mv.addObject("ID",request.getAttribute("ID"));
 			System.out.println("id"+session.getAttribute("ID"));
 		
-		for(int i=0; i<adcomment.size(); i++) {
+	/*	for(int i=0; i<adcomment.size(); i++) {
 			String[] str =adcomment.get(i).get("AD_LIKE_ID").toString().split(",");
 			System.out.println("gg"+adcomment.get(i).get("AD_LIKE_ID"));
 			
@@ -70,7 +71,7 @@ public class AdController {
 					mv.addObject("yes","a");
 				}
 			}
-		}
+		}*/
 
 	   
       return mv;

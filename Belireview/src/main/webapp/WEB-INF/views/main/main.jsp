@@ -170,8 +170,8 @@
 											<div class="product-fade">
 												<div class="product-fade-wrap">
 													<div id="product-image${status.index + 1 }" class="owl-carousel owl-theme">
-		                                        	<c:forTokens items="${list.DRAMA_CONTENT_IMAGE }" var="image" delims=", ">
-			                                            <div class="item"><img src="/brw/resources/images/drama/content/${image }" alt="" class="img-responsive"></div>
+		                                        	<c:forTokens items="${list.DRAMA_POSTER_IMAGE }" var="image" delims=", ">
+			                                            <div class="item"><img src="/brw/resources/images/drama/poster/${image }" alt="" class="img-responsive"></div>
 			                                        </c:forTokens>
 			                                        </div>
 													<div class="product-fade-ct">
