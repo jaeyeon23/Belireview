@@ -94,7 +94,7 @@
 	}
 
 	function cancel(){
-		location.href = "/brw/admin/movie.br";
+		location.href = "/brw/admin/movie.br?${_csrf.parameterName}=${_csrf.token}";
 	}
 	
 	$(document).ready(function() {
@@ -149,6 +149,7 @@
 	<div class="container">
 		<div class="col-md-8">
 			<form name="admin_update_form_movie" method="post" enctype="multipart/form-data">
+			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 				<h3 class="blog-post-title">
 					NAME
 				</h3>
