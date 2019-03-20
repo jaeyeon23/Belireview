@@ -14,7 +14,7 @@
 		var pw_encrypt = null;
 		
 		$.ajax({
-			url: "/brw/ajaxDelete.br",
+			url: "/brw/ajaxDelete.br?${_csrf.parameterName}=${_csrf.token}",
 			type: "POST",
 			async : false,
 			data:{
