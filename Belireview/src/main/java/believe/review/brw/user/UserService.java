@@ -17,6 +17,8 @@ public interface UserService {
 	List<Map<String,Object>> UserMovieAll(Map<String, Object>  map) throws Exception;
 	
     List<Map<String, Object>> UserDramaAll(Map<String, Object>  map) throws Exception;
+    
+    List<Map<String, Object>> UserAdAll(Map<String, Object>  map) throws Exception;
 	
 	/*보고싶어요*/
 	Map<String, Object> userWishList(Map<String, Object> map) throws Exception;
