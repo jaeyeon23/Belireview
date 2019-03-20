@@ -74,17 +74,6 @@ public class UserServiceImpl implements UserService{
 	/*보고싶어요*/
 
 	@Override
-	public List<Map<String, Object>> selectUserGrade(Map<String, Object> map) throws Exception {
-		return userDAO.selectUserGrade(map);
-	}
-	
-	@Override
-	public List<Map<String, Object>> selectDUserGrade(Map<String, Object> map) throws Exception {
-		return userDAO.selectDUserGrade(map);
-	}
-
-
-	@Override
 	public List<Map<String, Object>> userDramaList(Map<String, Object> map) throws Exception {
 		return userDAO.userDramaList(map);
 	}

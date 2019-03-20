@@ -43,17 +43,6 @@ public class UserDAO extends AbstractDAO {
 		update("user.updateWishList", map);
 	}
 	/*보고싶어요*/
-	
-	@SuppressWarnings("unchecked")
-	public List<Map<String, Object>> selectUserGrade(Map<String, Object>  map) throws Exception{
-		return (List<Map<String, Object>>) selectList("user.selectUserGrade",map);
-	}
-	
-	@SuppressWarnings("unchecked")
-	public List<Map<String, Object>> selectDUserGrade(Map<String, Object>  map) throws Exception{
-		return (List<Map<String, Object>>) selectList("user.selectDUserGrade",map);
-	}
-	
 	@SuppressWarnings("unchecked")
 	public List<Map<String, Object>> userDramaList(Map<String, Object>  map) throws Exception{
 		return (List<Map<String, Object>>) selectList("user.userDramaList",map);
