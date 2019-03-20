@@ -9,7 +9,7 @@ import believe.review.brw.common.common.AbstractDAO;
 
 @Repository("adminUserDAO")
 public class AdminUserDAO extends AbstractDAO{
-
+	
 	@SuppressWarnings("unchecked")
 	public List<Map<String, Object>> selectUserList(Map<String, Object> map){
 		return (List<Map<String, Object>>) selectList("admin.selectUserList", map);

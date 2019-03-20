@@ -17,6 +17,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -30,6 +32,9 @@ public class LoginController {
 
 	String authNUm = "";
 	String Email = "";
+	
+	@Autowired
+	BCryptPasswordEncoder passwordEncoder;
 	
 	@Resource(name="loginService")
 	private LoginService loginService;
@@ -62,7 +67,7 @@ public class LoginController {
 
 			if (admin == 1) {// 관리자
 
-				if (chk.get("PASSWORD").equals(commandMap.get("password"))) {
+				if (passwordEncoder.matches((String)commandMap.get("password"), (String)chk.get("PASSWORD"))) {
 					session.setAttribute("ID", commandMap.get("id"));
 					session.setAttribute("NAME", chk.get("NAME"));
 					session.setAttribute("ADMIN", chk.get("ADMIN"));
@@ -75,9 +80,8 @@ public class LoginController {
 					return mv;
 				}
 			}else {// 회원이 로그인을 시도하였을 때
-				System.out.println("비밀번호1:" + chk.get("PASSWORD") + "\t비밀번호2:" + commandMap.get("password"));
 
-				if (chk.get("PASSWORD").equals(commandMap.get("password"))) {
+				if (passwordEncoder.matches((String)commandMap.get("password"), (String)chk.get("PASSWORD"))) {
 					session.setAttribute("ID", commandMap.get("id"));
 					mv.addObject("MEMBER", chk);
 					mv.setViewName("redirect:/main.br");
@@ -183,16 +187,17 @@ public class LoginController {
 		map.getMap().put("EMAIL", pwemail);
 		map.getMap().put("MEMBER_ID_FIND", pwid);
 		map.getMap().put("MEMBER_NAME", pwname);
-		System.out.println("test+++++++");
 		String findEmail = loginService.findEmail(map.getMap());
 		System.out.println("findEmail=" + findEmail);
 
 		if (findEmail != null) {
 			System.out.println("pwe메일 : " + pwemail + "find메일 : " + findEmail);
 			if (pwemail.equals(findEmail)) {
-				System.out.println("test++++++");
 				authNUm = RandomNum();// 랜덤숫자 String으로 넣고
-				map.getMap().put("PASSWORD_CHANGE", authNUm);
+				
+				String encryptPassword = passwordEncoder.encode(authNUm);
+				
+				map.getMap().put("PASSWORD_CHANGE", encryptPassword);
 				loginService.changePw(map.getMap()); // 랜덤숫자로 비밀번호 변경하고
 				sendEmail(findEmail, authNUm); // 메일발송
 				System.out.println("메일발송성공 변경된숫자 : " + authNUm);
@@ -290,9 +295,6 @@ public class LoginController {
 		}
 		return buffer.toString();
 	}
-		
-	
-
 }
 
 

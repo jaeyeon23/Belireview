@@ -40,21 +40,33 @@
 	
 <script type="text/javascript">
 	function memberDeleteChk(){
-		var pw = $("#password").val();
+		var pw = $("#password").val();		//1234
+		var pw_encrypt = null;
 		
-		var user_pw = "${PASSWORD}";
+		$.ajax({
+			url: "/brw/ajaxDelete.br",
+			type: "POST",
+			async : false,
+			data:{
+				password: pw
+			},
+			success: function(result){
+				pw_encrypt = result;
+			}
+		});
 		
 		if(document.memberDelete.password.value == ""){
 			alert("비밀번호를 입력하세요.");
 			document.memberDelete.password.focus();
 			return false;
-		}else if(pw!=user_pw){
+		}else if(pw_encrypt == false){
 			alert('비밀번호를 확인해주세요.');
 			return false;
 		}
 		alert('탈퇴가 완료되었습니다.');
 		return true;
 	}
+
 </script>
 </body>
 </html>
