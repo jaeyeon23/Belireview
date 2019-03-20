@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC " - //mybatis.org//DTD Config 3.0//EN" " http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="rank">
+	<select id="selectMovieTotal" resultType="hashmap" parameterType="hashmap">
+		SELECT
+			MOVIE_NAME,
+			MOVIE_NO, 
+			R
+		FROM
+			(
+			SELECT
+				MOVIE_NAME,
+				MOVIE_NO, 
+				ROWNUM R
+			FROM
+				MOVIE
+			<if test='value != null'>
+				<choose>
+					<when test='value.equals("total")'>
+						ORDER BY MOVIE_TOTAL_COUNT DESC
+					</when> 
+					<when test='value.equals("read")'>
+						ORDER BY MOVIE_READCOUNT DESC
+					</when>
+					<when test='value.equals("grade")'>
+						ORDER BY MOVIE_GRADE DESC
+					</when>
+				</choose>
+			</if>
+			)
+		WHERE
+			R BETWEEN 1 AND 50
+	</select>
+		
+</mapper>
