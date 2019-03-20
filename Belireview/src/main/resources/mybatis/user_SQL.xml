@@ -100,18 +100,19 @@
 	
 	<!-- 회원정보수정 -->
 	<update id="changeUser" parameterType="hashmap">
-		<![CDATA[
 		UPDATE MEMBER
         SET 
+            <if test = "password != ''">
+          		PASSWORD = #{password},
+			</if>
             NAME = #{name},
-            PASSWORD = #{password},
             TEL = #{tel},
             EMAIL = #{email},
             EMAIL_MARKETING = #{email_marketing},
             SMS_MARKETING = #{sms_marketing}                      
     	WHERE ID = #{id}
-		]]>
 	</update>
+	
 	
 	<select id="selectUserGrade" parameterType="hashmap" resultType="hashmap">	
 	SELECT 

@@ -75,10 +75,13 @@ public class UserController {
 
 		userMap.put("email_marketing", request.getParameter("termsEmail"));
 		userMap.put("sms_marketing", request.getParameter("termsLocation"));
-
+		
+		if(userMap.get("password") != ""){
 		String encodedPassword = passwordEncoder.encode((String)userMap.get("password"));
 		userMap.put("password", encodedPassword);
+		}
 		
+		System.out.println(userMap.get("password"));
 		userService.ModifyMember(userMap, request);
 
 		Map<String, Object> usermem = userService.userGo(commandMap.getMap());
