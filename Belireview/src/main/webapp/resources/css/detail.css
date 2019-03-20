@@ -1047,4 +1047,9 @@ em{font-style:normal;}input[type="email"]:focus,input[type="tel"]:focus,input[ty
     height: 40px;
     overflow: hidden;
 }    
-
+.genrename{
+	overflow: hidden; 
+	text-overflow: ellipsis;
+  	white-space: nowrap; 
+  	width: 200px;
+}
