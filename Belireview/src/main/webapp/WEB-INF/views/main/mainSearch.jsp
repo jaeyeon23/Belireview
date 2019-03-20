@@ -16,6 +16,7 @@
 	var dramatotal = ${dramaTotal};
 	var adtotal = ${adTotal};
 	var searchText = "${request}";
+	
 	/* 메인검색 페이징 및 넘기기 */
 	$(function(){
 		$(".mainNext").click(function(){

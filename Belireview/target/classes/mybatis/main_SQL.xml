@@ -85,7 +85,7 @@
 				(SELECT *
 					FROM MOVIE WHERE 
 				<choose>
-				<when test='serachText!=null'>
+				<when test="searchText !=null">
 				 MOVIE_NAME LIKE '%'||#{searchText}||'%' 
 				</when>
 				
@@ -132,7 +132,7 @@
 				(SELECT *
 					FROM DRAMA WHERE 
 				<choose>
-				<when test='serachText!=null'>
+				<when test='searchText!=null'>
 				 DRAMA_NAME LIKE '%'||#{searchText}||'%' 
 				</when>
 				
@@ -176,7 +176,7 @@
 				(SELECT *
 					FROM AD WHERE 
 				<choose>
-				<when test='serachText!=null'>
+				<when test='searchText!=null'>
 				 AD_NAME LIKE '%'||#{searchText}||'%' 
 				</when>
 				

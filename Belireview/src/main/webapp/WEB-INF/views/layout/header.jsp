@@ -18,7 +18,7 @@
   });
   function openSearch(){
 		var comSubmit = new ComSubmit();
-       comSubmit.setUrl("<c:url value='/mainSearch.br' />");
+       comSubmit.setUrl("<c:url value='/mainSearch.br?${_csrf.parameterName}=${_csrf.token}' />");
        comSubmit.addParam("searchText",$("input[name='searchText']").val());
        comSubmit.submit();
 	}		
