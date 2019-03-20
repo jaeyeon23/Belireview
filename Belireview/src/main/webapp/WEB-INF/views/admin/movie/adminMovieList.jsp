@@ -48,7 +48,7 @@
 	}
 	
 	function update_movie(no){
-		location.href = "/brw/admin/movie/modify.br??${_csrf.parameterName}=${_csrf.token}&no="+no;
+		location.href = "/brw/admin/movie/modify.br?${_csrf.parameterName}=${_csrf.token}&no="+no;
 	}
 	
 	function delete_movie(no){

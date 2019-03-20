@@ -4,7 +4,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Insert title hersse</title>
 <meta charset="utf-8">
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -44,6 +43,10 @@
 	
 		$(function() {
 			$("#cat-nav").hide();
+			var genrename = $(".genrename").html();
+			if(genrename.length)
+			alert(a);
+			
 		})
 		var id = "${ID}";
 		var grade = "${grade}";
@@ -1081,7 +1084,7 @@
 														      <img src="/brw/resources/images/drama/poster/${detailgenrelist.DRAMA_POSTER_IMAGE}">
 														      <%-- <input type='hidden' class='IDX' value="${dramaList.DRAMA_NO}"> --%>
 														      <div class="detailgenrefont">
-														        <h3>#${detailgenrelist.DRAMA_NAME}</h3>
+														        <h3 class="genrename">#${detailgenrelist.DRAMA_NAME}</h3>
 														        <p>#${detailgenrelist.DRAMA_DATE}・#${detailgenrelist.DRAMA_CHANNEL}</p>
 														      </div>
 														    </div>

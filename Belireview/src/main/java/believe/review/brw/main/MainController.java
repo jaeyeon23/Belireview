@@ -66,7 +66,10 @@ public class MainController {
             currentPage = Integer.parseInt(request.getParameter("currentPage"));
         }
 		ModelAndView mv = new ModelAndView("mainSearch");
-
+		
+		Set keyset = commandMap.keySet();
+		System.out.println("testsetetste===================== " + keyset);
+		
 		List<Map<String,Object>> searchMain = new ArrayList<Map<String,Object>>();
 		List<Map<String,Object>> searchMovie = mainService.movieSerach(commandMap.getMap());
 		List<Map<String,Object>> searchDrama = mainService.dramaSerach(commandMap.getMap());
@@ -151,11 +154,13 @@ public class MainController {
 		
 		searchAd = searchAd.subList(adPage.getStartCount(), lastCount);
 	
-		if(request.getParameter("searchText") != null)
-		mv.addObject("request",request.getParameter("searchText"));
-		else
-		mv.addObject("request",request.getParameter("GENRE"));
-			
+		if(request.getParameter("searchText") != null) {
+			mv.addObject("request",request.getParameter("searchText"));
+		}
+		else {
+			mv.addObject("request",request.getParameter("GENRE"));
+			mv.addObject("genre","genre");
+		}
 		mv.addObject("currentPage",currentPage);
 		mv.addObject("searchMain",searchMain);
 		mv.addObject("searchMovie",searchMovie);
@@ -244,12 +249,8 @@ public class MainController {
 				.append("<div class=\"SearchResultsSection__TopResultContentType-s1qazrkm-3 eeOgLY\">").append(m.get("TYPE")).append("</div>")
 				.append("</div></a></li>");
 			}		
-			if(request.getParameter("searchText") != null)
-				mv.put("request",request.getParameter("searchText"));
-				else
-				mv.put("request",request.getParameter("GENRE"));
-			
-				mv.put("searchMain",sb.toString());
+			mv.put("request",request.getParameter("searchText"));
+			mv.put("searchMain",sb.toString());
 	
 			return mv;
 		}	
@@ -329,10 +330,8 @@ public class MainController {
 				sb.append("</div></div></div>");
 				sb.append("</div></a></li>");
 			}		
-			if(request.getParameter("searchText") != null)
-				mv.put("request",request.getParameter("searchText"));
-				else
-				mv.put("request",request.getParameter("GENRE"));
+					
+			mv.put("request",request.getParameter("searchText"));
 			mv.put("mdaSearch",sb.toString());
 	
 			return mv;
