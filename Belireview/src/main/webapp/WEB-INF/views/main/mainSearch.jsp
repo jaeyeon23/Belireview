@@ -31,16 +31,12 @@
 			mainPrev(mainPage);
 		})	
 	})
-
 	function mainNext(currentPage){
 		$.ajax({
 			async:true,
 			type:'POST',
-			if(genre == ""){
-				data:{currentPage:currentPage, searchText:searchText},
-			}else{
-				data:{currentPage:currentPage, GENRE:searchText},
-			}
+			data:(genre="")?{currentPage:currentPage,searchText:searchText}:{currentPage:currentPage, GENRE:searchText},
+
 			url:"<c:url value='/mainSearch2.br?${_csrf.parameterName}=${_csrf.token}'/>",
 			
 			success:function(result){
@@ -52,11 +48,7 @@
 		$.ajax({
 			async:true,
 			type:'POST',
-			if(genre == ""){
-				data:{currentPage:currentPage, searchText:searchText},
-			}else{
-				data:{currentPage:currentPage, GENRE:searchText},
-			}
+			data:(genre="")?{currentPage:currentPage,searchText:searchText}:{currentPage:currentPage, GENRE:searchText},
 			url:"<c:url value='/mainSearch2.br?${_csrf.parameterName}=${_csrf.token}'/>",
 			
 			success:function(result){
