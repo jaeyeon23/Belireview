@@ -35,7 +35,7 @@
 			async:true,
 			type:'POST',
 			data:{currentPage:currentPage, searchText:searchText},
-			url:"<c:url value='/mainSearch2.br'/>",
+			url:"<c:url value='/mainSearch2.br?${_csrf.parameterName}=${_csrf.token}'/>",
 			
 			success:function(result){
 				$(".mainSearch").html(result.searchMain);
@@ -47,7 +47,7 @@
 			async:true,
 			type:'POST',
 			data:{currentPage:currentPage, searchText:searchText},
-			url:"<c:url value='/mainSearch2.br'/>",
+			url:"<c:url value='/mainSearch2.br?${_csrf.parameterName}=${_csrf.token}'/>",
 			
 			success:function(result){
 				$(".mainSearch").html(result.searchMain);		
@@ -74,7 +74,7 @@
 			async:true,
 			type:'POST',
 			data:{currentPage:currentPage, searchText:searchText, type:1},
-			url:"<c:url value='/mdaSearch.br'/>",
+			url:"<c:url value='/mdaSearch.br?${_csrf.parameterName}=${_csrf.token}'/>",
 			
 			success:function(result){
 				$(".movieSearch").html(result.mdaSearch);		
@@ -86,7 +86,7 @@
 			async:true,
 			type:'POST',
 			data:{currentPage:currentPage, searchText:searchText, type:1},
-			url:"<c:url value='/mdaSearch.br'/>",
+			url:"<c:url value='/mdaSearch.br?${_csrf.parameterName}=${_csrf.token}'/>",
 			
 			success:function(result){
 				$(".movieSearch").html(result.mdaSearch);		
@@ -113,7 +113,7 @@
 			async:true,
 			type:'POST',
 			data:{currentPage:currentPage, searchText:searchText,type:2},
-			url:"<c:url value='/mdaSearch.br'/>",
+			url:"<c:url value='/mdaSearch.br?${_csrf.parameterName}=${_csrf.token}'/>",
 			
 			success:function(result){
 				$(".dramaSearch").html(result.mdaSearch);		
@@ -125,7 +125,7 @@
 			async:true,
 			type:'POST',
 			data:{currentPage:currentPage, searchText:searchText,type:2},
-			url:"<c:url value='/mdaSearch.br'/>",
+			url:"<c:url value='/mdaSearch.br?${_csrf.parameterName}=${_csrf.token}'/>",
 			
 			success:function(result){
 				$(".dramaSearch").html(result.mdaSearch);		
@@ -152,7 +152,7 @@
 			async:true,
 			type:'POST',
 			data:{currentPage:currentPage, searchText:searchText,type:3},
-			url:"<c:url value='/mdaSearch.br'/>",
+			url:"<c:url value='/mdaSearch.br?${_csrf.parameterName}=${_csrf.token}'/>",
 			
 			success:function(result){
 				$(".adSearch").html(result.mdaSearch);		
@@ -164,7 +164,7 @@
 			async:true,
 			type:'POST',
 			data:{currentPage:currentPage, searchText:searchText,type:3},
-			url:"<c:url value='/mdaSearch.br'/>",
+			url:"<c:url value='/mdaSearch.br?${_csrf.parameterName}=${_csrf.token}'/>",
 			
 			success:function(result){
 				$(".adSearch").html(result.mdaSearch);		
@@ -184,7 +184,7 @@
 							<div class="Grid-zydj2q-0 cspjno">
 								<div class="Row-s1apwm9x-0 lowZpE">
 									<header class="SectionWithHeader__Header-s1eyxltb-1 cuiACK">
-										<h2 class="SectionWithHeader__Title-s1eyxltb-2 kwjefp">"${request}"	검색 결과</h2>
+										<h2 class="SectionWithHeader__Title-s1eyxltb-2 kwjefp">${request} 검색 결과</h2>
 									</header>
 								</div>
 							</div>

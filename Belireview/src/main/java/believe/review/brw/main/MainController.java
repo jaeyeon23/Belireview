@@ -151,12 +151,15 @@ public class MainController {
 		searchAd = searchAd.subList(adPage.getStartCount(), lastCount);
 	
 		mv.addObject("currentPage",currentPage);
-		mv.addObject("request",request.getParameter("searchText"));
 		mv.addObject("searchMain",searchMain);
 		mv.addObject("searchMovie",searchMovie);
 		mv.addObject("searchDrama",searchDrama);
 		mv.addObject("searchAd",searchAd);
-
+		if(request.getParameter("searchText") != null)
+		mv.addObject("request",request.getParameter("searchText"));
+		else
+		mv.addObject("request","\""+ request.getParameter("GENRE")+"\" 장르");
+		
 		return mv;
 		}	
 		@RequestMapping(value = "mainSearch2.br")
@@ -245,7 +248,7 @@ public class MainController {
 			return mv;
 		}	
 		
-		/*메인 검색영화*/
+		/*메인 검색영화,드라마,광고*/
 		@RequestMapping(value = "mdaSearch.br")
 		@ResponseBody
 		public Map<String,Object>mdaSearch(CommandMap commandMap,HttpServletRequest request) throws Exception {
