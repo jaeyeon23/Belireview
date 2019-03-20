@@ -18,7 +18,7 @@
   });
   function openSearch(){
 		var comSubmit = new ComSubmit();
-       comSubmit.setUrl("<c:url value='/mainSearch.br' />");
+       comSubmit.setUrl("<c:url value='/mainSearch.br?${_csrf.parameterName}=${_csrf.token}' />");
        comSubmit.addParam("searchText",$("input[name='searchText']").val());
        comSubmit.submit();
 	}		
@@ -33,7 +33,7 @@
 		$("#autocompleteText").autocomplete({
 			source: function(request, response){
 				$.ajax({
-					url: "/brw/auto.br",
+					url: "/brw/auto.br?${_csrf.parameterName}=${_csrf.token}",
 					dataType: "json",
 					data:{
 						searchValue: request.term
