@@ -10,7 +10,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="">
    	<link rel="stylesheet" href="/brw/resources/css/detail2.css">
-   	<link rel="stylesheet" href="/brw/resources/css/detail3.css">
+   	<link rel="stylesheet" href="/brw/resources/css/detail.css">
 	<%@ include file="/WEB-INF/views/include/include-body.jspf" %>
    	<%-- <script src="<c:url value='/resources/js/common.js'/>" charset="utf-8"></script>	 --%>
     <style>
