@@ -185,7 +185,10 @@
 															<div
 																class="ContentListItemWithPoster__ContentTitle-swai1z-3 dXMJZW">${userdramaAll.DRAMA_NAME}</div>
 															<div
-																class="ContentListItemWithPoster__ContentRating-swai1z-4 jYxobl">★${userdramaAll.DRAMA_GRADE}</div>
+																class="ContentListItemWithPoster__ContentRating-swai1z-4 jYxobl">★${userdramaAll.DRAMA_AVG_GRADE}</div>
+															<div
+																class="ContentListItemWithPoster__ContentRating-swai1z-4 jYxobl GRADE">★${userdramaAll.DL_GRADE}</div>
+																
 														</div>
 												</li>
 											</c:forEach>
@@ -220,19 +223,19 @@
 													<div class="Grid-zydj2q-0 cspjno">
 														<div class="Row-s1apwm9x-0 lowZpE">
 															<ul class="ContentGrid__ContentGridUsedInArchive-x2fbsz-1 gScTqD ContentGrid-x2fbsz-0 cwhjMF VisualUl-s1vzev56-0 hgAYVH vv rr${i}">
-																<c:forEach items="${selectDUserGrade}" var="UserGrade">
-																	 <c:if test="${UserGrade.DL_GRADE == rating}">  
+																<c:forEach items="${userdramaAll}" var="userdramaAll">
+																	 <c:if test="${userdramaAll.DL_GRADE == rating}">  
 																<li class="ContentListItemWithPoster__Self-swai1z-0 hKRvvO">
 																	
 																		<div class="ContentListItemWithPoster__ContentPosterBlock-swai1z-1 kxDIaJ">
 																			<div class="LazyLoadingImg__Self-s1jb87ps-0 csJkbb">
 																				<img class="LazyLoadingImg__Image-s1jb87ps-1 csJkbb"
-																					src="/brw/resources/images/drama/poster/${UserGrade.IMAGE}">
+																					src="/brw/resources/images/drama/poster/${userdramaAll.DRAMA_POSTER_IMAGE}">
 																			</div>
 																		</div>
 																		<div class="ContentListItemWithPoster__ContentInfo-swai1z-2 kVeCGy">
-																			<div class="ContentListItemWithPoster__ContentTitle-swai1z-3 dXMJZW">${UserGrade.DRAMA_NAME}</div>
-																			<%-- <div class="ContentListItemWithPoster__ContentRating-swai1z-4 jYxobl">★${UserGrade.DRAMA_GRADE}</div> --%>
+																			<div class="ContentListItemWithPoster__ContentTitle-swai1z-3 dXMJZW">${userdramaAll.DRAMA_NAME}</div>
+																			<div class="ContentListItemWithPoster__ContentRating-swai1z-4 jYxobl">★${userdramaAll.DRAMA_AVG_GRADE}</div>
 																		</div> 
 															
 																</li>
@@ -271,20 +274,18 @@
 																		<div class="Grid-zydj2q-0 cspjno">
 																			<div class="Row-s1apwm9x-0 lowZpE">
 																				<ul class="ContentGrid__ContentGridUsedInArchive-x2fbsz-1 gScTqD ContentGrid-x2fbsz-0 cwhjMF VisualUl-s1vzev56-0 hgAYVH">
-																					<c:forEach items="${userdramaAll}" var="userdramaAll">
+																					<c:forEach items="${userDramaList}" var="userDramaList">
 																						<li class="ContentListItemWithPoster__Self-swai1z-0 hKRvvO">
 																								<div class="ContentListItemWithPoster__ContentPosterBlock-swai1z-1 kxDIaJ">
 																									<div class="LazyLoadingImg__Self-s1jb87ps-0 csJkbb">
 																										<img class="LazyLoadingImg__Image-s1jb87ps-1 csJkbb"
 																											data-image-id="1"
-																											src="https://dhgywazgeek0d.cloudfront.net/watcha/image/upload/c_fill,h_700,q_80,w_490/v1466152598/nzclx33kbkeecgvtl7ms.jpg">
+																											src="/brw/resources/images/drama/poster/${userDramaList.DRAMA_POSTER_IMAGE}">
 																									</div>
 																								</div>
 																								<div class="ContentListItemWithPoster__ContentInfo-swai1z-2 kVeCGy">
 																									<div
-																										class="ContentListItemWithPoster__ContentTitle-swai1z-3 dXMJZW">${userdramaAll.DRAMA_NAME}</div>
-																									<div
-																										class="ContentListItemWithPoster__ContentRating-swai1z-4 jYxobl">★${userdramaAll.DRAMA_GRADE}</div>
+																										class="ContentListItemWithPoster__ContentTitle-swai1z-3 dXMJZW">${userDramaList.DRAMA_NAME}</div>
 																								</div>
 																						</li>
 																					</c:forEach>
