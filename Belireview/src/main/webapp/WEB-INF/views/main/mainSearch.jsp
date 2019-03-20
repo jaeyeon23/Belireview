@@ -232,7 +232,7 @@
 								</div>
 								
 								<div class="arrow_button PrimitiveHorizontalScrollable__ArrowButtonBlock-hy4esm-3 eweFwK" direction="right">
-									<div class="PrimitiveHorizontalScrollable__ForwardButton-hy4esm-4 cfipNh mainNext "></div>
+									<div class="PrimitiveHorizontalScrollable__ForwardButton-hy4esm-4 cfipNh mainNext"></div>
 								</div>
 							</div>
 							<hr	class="Divider__StylingMergedDivider-s11un6bw-1 kwWkAv Divider-s11un6bw-0 cVxSEp">
