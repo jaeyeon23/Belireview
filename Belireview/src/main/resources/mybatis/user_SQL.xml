@@ -27,6 +27,30 @@
 			WHERE ID=#{ID}) ORDER BY MOVIE_DATE)
 	</select>
 	
+	<select id="UserDramaAll" parameterType="hashmap" resultType="hashmap">
+		SELECT
+			DRAMA_NO,
+			DRAMA_NAME,
+			DRAMA_DATE,
+			DRAMA_POSTER_IMAGE,
+			TO_CHAR(DRAMA_GRADE,'0.0') AS DRAMA_GRADE,
+			RNUM
+		FROM
+		(
+		SELECT 
+			DRAMA_NO,
+			DRAMA_NAME,
+			DRAMA_DATE,
+			DRAMA_POSTER_IMAGE,
+			DRAMA_GRADE,
+			ROWNUM RNUM
+		FROM DRAMA 
+		WHERE DRAMA_NO IN 
+			(SELECT DRAMA_LIKE_NO
+			FROM DRAMA_LIKE
+			WHERE ID=#{ID}) ORDER BY DRAMA_DATE)
+	</select>
+	
 	<select id="userWishList" parameterType="hashmap" resultType="hashmap"><!-- 보고싶어요 -->
 		select * from mypage where mypage_id=#{ID}
 	</select>

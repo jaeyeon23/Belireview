@@ -14,8 +14,9 @@ public interface UserService {
 	// 프로필사진수정
 	void UserProfile(Map<String, Object> memberMap, HttpServletRequest request)throws Exception;
 	
-	
 	List<Map<String,Object>> UserMovieAll(Map<String, Object>  map) throws Exception;
+	
+	public List<Map<String, Object>> UserDramaAll(Map<String, Object>  map) throws Exception;
 	
 	/*보고싶어요*/
 	Map<String, Object> userWishList(Map<String, Object> map) throws Exception;

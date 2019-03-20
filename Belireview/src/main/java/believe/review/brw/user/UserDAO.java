@@ -27,6 +27,10 @@ public class UserDAO extends AbstractDAO {
 	public List<Map<String, Object>> UserMovieAll(Map<String, Object>  map) throws Exception{
 		return (List<Map<String, Object>>) selectList("user.UserMovieAll",map);
 	}
+	@SuppressWarnings("unchecked")
+	public List<Map<String, Object>> UserDramaAll(Map<String, Object>  map) throws Exception{
+		return (List<Map<String, Object>>) selectList("user.UserDramaAll",map);
+	}
 	/*보고싶어요*/
 	@SuppressWarnings("unchecked")
 	public Map<String, Object> userWishList(Map<String, Object> map) throws Exception {
