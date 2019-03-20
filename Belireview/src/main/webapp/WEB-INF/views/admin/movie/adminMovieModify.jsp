@@ -148,7 +148,7 @@
 		$("#autocompleteTextMovie").autocomplete({
 			source: function(request, response){
 				$.ajax({
-					url: "/brw/ajaxActorWrite.br",
+					url: "/brw/ajaxActorWrite.br?${_csrf.parameterName}=${_csrf.token}",
 					dataType: "json",
 					data:{
 						searchValue: request.term
@@ -271,6 +271,16 @@
 				</h3>
 				<div>
 					<input type="text" class="form-control search-wid" name="grade" value="${admin.MOVIE_GRADE }" readonly>
+				</div>
+				<h3 class="blog-post-title">
+					ACTOR
+				</h3>
+				<div>
+					<input type="text" class="form-control search-wid" id="autocompleteTextMovie" name="actor" onkeypress="if (event.keyCode==13){movie_textarea_write();}">
+					<button type="button" class="btn btn-default" onclick="reset_movie_area()">드라마 배우 리셋</button>
+				</div>
+				<div style="margin-top: 5%;">
+					<textarea rows="8" cols="80" id="movie_textarea" name="movie_textarea" class="form-control" readonly>${str }</textarea>
 				</div>
 				<div>
 					<br><br><strong>새로운 이미지 사용시 check</strong>

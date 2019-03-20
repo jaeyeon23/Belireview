@@ -125,7 +125,7 @@
     		$("#autocompleteTextMovie").autocomplete({
     			source: function(request, response){
     				$.ajax({
-    					url: "/brw/ajaxActorWrite.br",
+    					url: "/brw/ajaxActorWrite.br?${_csrf.parameterName}=${_csrf.token}",
     					dataType: "json",
     					data:{
     						searchValue: request.term
