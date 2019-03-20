@@ -4,7 +4,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Insert title hersse</title>
 <meta charset="utf-8">
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -44,7 +43,9 @@
 	
 		$(function() {
 			$("#cat-nav").hide();
-			var a = $(".genrename").html();
+			var genrename = $(".genrename").html();
+			if(genrename.length)
+			alert(a);
 			
 		})
 		var id = "${ID}";
@@ -1068,7 +1069,7 @@
 																	<span class="TitleSuffixForNumber-l2d30g-0 ejtPKl"><!-- 비슷한장르개수 --></span>
 																	<div class="SectionWithHeader__TopRight-s1eyxltb-3 bZaEfL">
 																			<div class="SectionWithViewMore__ViewMore-xtbl7q-0 bhbIbv">
-																				<a href="/brw/mainSearch.br?GENRE=${map.DRAMA_GENRE}}">더보기</a>
+																				<a href="/brw/mainSearch.br?GENRE=${map.DRAMA_GENRE}">더보기</a>
 																			</div>
 																		</div>
 																</header>

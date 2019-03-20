@@ -15,7 +15,8 @@
 	var movietotal = ${movieTotal};
 	var dramatotal = ${dramaTotal};
 	var adtotal = ${adTotal};
-	var searchText = "${request}";
+	var searchText = '${request}';
+	var genre = '${genre}';
 	
 	/* 메인검색 페이징 및 넘기기 */
 	$(function(){
@@ -35,7 +36,11 @@
 		$.ajax({
 			async:true,
 			type:'POST',
-			data:{currentPage:currentPage, searchText:searchText},
+			if(genre == ""){
+				data:{currentPage:currentPage, searchText:searchText},
+			}else{
+				data:{currentPage:currentPage, GENRE:searchText},
+			}
 			url:"<c:url value='/mainSearch2.br?${_csrf.parameterName}=${_csrf.token}'/>",
 			
 			success:function(result){
@@ -47,7 +52,11 @@
 		$.ajax({
 			async:true,
 			type:'POST',
-			data:{currentPage:currentPage, searchText:searchText},
+			if(genre == ""){
+				data:{currentPage:currentPage, searchText:searchText},
+			}else{
+				data:{currentPage:currentPage, GENRE:searchText},
+			}
 			url:"<c:url value='/mainSearch2.br?${_csrf.parameterName}=${_csrf.token}'/>",
 			
 			success:function(result){

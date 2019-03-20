@@ -154,11 +154,13 @@ public class MainController {
 		
 		searchAd = searchAd.subList(adPage.getStartCount(), lastCount);
 	
-		if(request.getParameter("searchText") != null)
-		mv.addObject("request",request.getParameter("searchText"));
-		else
-		mv.addObject("request","\""+ request.getParameter("GENRE")+"\" 장르");
-			
+		if(request.getParameter("searchText") != null) {
+			mv.addObject("request",request.getParameter("searchText"));
+		}
+		else {
+			mv.addObject("request",request.getParameter("GENRE"));
+			mv.addObject("genre","genre");
+		}
 		mv.addObject("currentPage",currentPage);
 		mv.addObject("searchMain",searchMain);
 		mv.addObject("searchMovie",searchMovie);
