@@ -142,6 +142,18 @@ public class UserController {
 
 		return mv;
 	}
+	
+	@RequestMapping(value = "/userAD")
+	public ModelAndView userad(CommandMap commandMap, HttpServletRequest request) throws Exception {
+		HttpSession session = request.getSession();
+
+		ModelAndView mv = new ModelAndView("userAD");
+		List<Map<String, Object>> useradAll = userService.UserAdAll(commandMap.getMap());
+		mv.addObject("useradAll", useradAll);
+	
+
+		return mv;
+	}
 
 	@RequestMapping(value = "/userDeleteForm")
 	public ModelAndView userDeleteForm() {
