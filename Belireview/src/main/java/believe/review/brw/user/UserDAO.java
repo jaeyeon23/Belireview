@@ -50,6 +50,11 @@ public class UserDAO extends AbstractDAO {
 	}
 	
 	@SuppressWarnings("unchecked")
+	public List<Map<String, Object>> selectDUserGrade(Map<String, Object>  map) throws Exception{
+		return (List<Map<String, Object>>) selectList("user.selectDUserGrade",map);
+	}
+	
+	@SuppressWarnings("unchecked")
 	public List<Map<String, Object>> userDramaList(Map<String, Object>  map) throws Exception{
 		return (List<Map<String, Object>>) selectList("user.userDramaList",map);
 	}

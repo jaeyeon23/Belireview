@@ -127,9 +127,9 @@ public class UserController {
 
 		ModelAndView mv = new ModelAndView("userDrama");
 		List<Map<String, Object>> userdramaAll = userService.UserDramaAll(commandMap.getMap());
-		List<Map<String, Object>> selectUserGrade = userService.selectUserGrade(commandMap.getMap());
+		List<Map<String, Object>> selectDUserGrade = userService.selectDUserGrade(commandMap.getMap());
 		mv.addObject("userdramaAll", userdramaAll);
-		mv.addObject("selectUserGrade", selectUserGrade);
+		mv.addObject("selectDUserGrade", selectDUserGrade);
 		Map<String, Object> userWishList = userService.userWishList(commandMap.getMap());
 
 		if (userWishList != null) {

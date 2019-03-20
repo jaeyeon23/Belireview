@@ -140,6 +140,33 @@
 	WHERE RNUM BETWEEN 1 AND 10
 	</select>
 	
+	<select id="selectDUserGrade" parameterType="hashmap" resultType="hashmap">	
+	SELECT 
+		(SELECT
+		 DRAMA_NAME
+	FROM DRAMA 
+	WHERE
+		DRAMA_NO = DRAMA_LIKE_NO)
+		DRAMA_NAME,
+(SELECT
+		 DRAMA_POSTER_IMAGE
+	FROM DRAMA 
+	WHERE
+		DRAMA_NO = DRAMA_LIKE_NO) IMAGE,
+		ID,
+		TO_CHAR(DL_GRADE,'0.0') AS DL_GRADE,
+		RNUM
+	FROM(
+	SELECT 
+		DRAMA_LIKE_NO,
+		ID,
+		DL_GRADE,
+		ROWNUM RNUM
+	FROM DRAMA_LIKE
+	WHERE ID=#{ID}) 
+	WHERE RNUM BETWEEN 1 AND 10
+	</select>
+	
 	<select id="userDramaList" parameterType="hashmap" resultType="hashmap">
 		SELECT
 				DRAMA_NO,
