@@ -11,11 +11,11 @@
 <body>
 <div id="wrap">
 	<form id="join_form" name="join_form" method="post" action="userModify.br" onsubmit="return checkSubmit()">
-    
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
     <!-- container -->
     <div id="container" role="main">
         <div id="content">
-        	<center><img src="/brw/resources/images/logos.jpg" width="150px" alt=""></center>
+        	<center><img src="/brw/resources/images/logo3.png" width="150px" alt=""></center>
         	<br><br>
             <div class="join_content">
                 <!-- 아이디, 비밀번호 입력 -->
@@ -277,7 +277,7 @@
 		
 		$.ajax({
 			type : "POST",
-			url : "/brw/member/email_auth.br",
+			url : "/brw/member/email_auth.br?${_csrf.parameterName}=${_csrf.token}",
 			data : ({
 				mode : "email_code",
 				email : email
@@ -315,7 +315,7 @@
 		
 		$.ajax({
 			type : "POST",
-			url : "/brw/member/email_auth_success.br",
+			url : "/brw/member/email_auth_success.br?${_csrf.parameterName}=${_csrf.token}",
 			data : ({
 				email : email,
 				auth : auth

@@ -8,7 +8,9 @@
 	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	    <meta name="viewport" content="width=device-width, initial-scale=1">
 	    <title>BeliReview</title>
-	
+	    <!-- 파비콘 -->
+		<link rel="shortcut icon" href="/brw/resources/images/title_logo.png">
+		
 	    <!-- fonts -->
 	    <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,500,600,700' rel='stylesheet' type='text/css'>
 	    <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,700,300' rel='stylesheet' type='text/css'>

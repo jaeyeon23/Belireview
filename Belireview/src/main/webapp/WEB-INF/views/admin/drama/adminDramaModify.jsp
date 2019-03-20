@@ -80,7 +80,7 @@
 	}
 
 	function cancel(){
-		location.href = "/brw/admin/drama.br";
+		location.href = "/brw/admin/drama.br?${_csrf.parameterName}=${_csrf.token}";
 	}
 	
 	$(document).ready(function() {
@@ -189,6 +189,7 @@
 	<div class="container">
 		<div class="col-md-8">
 			<form name="admin_update_form_drama" method="post" enctype="multipart/form-data">
+			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 				<h3 class="blog-post-title">
 					NAME
 				</h3>
@@ -292,7 +293,7 @@
 				</div>
 				
 				<div style="padding-top: 20pt; padding-bottom: 20pt">
-					<button type="button" class="btn btn-primary" onclick="check_value()">수정</button>
+					<button type="button" class="btn btn-primary" onclick="check_value()">수 정</button>
 					<button type="reset" class="btn btn-default">리셋</button>
 					<button type="button" class="btn btn-default" onclick="cancel()">취소</button>
 				</div>

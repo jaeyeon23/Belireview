@@ -2,78 +2,120 @@
 <!DOCTYPE mapper PUBLIC " - //mybatis.org//DTD Config 3.0//EN" " http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="movie_comment">
 
-<!-- <insert>
-INSERT INTO MOVIE_COMMENT 
-(
-  MOVIE_NO,
-  MC_NO,
-  ID,
-  MC_REG_DATE,
-  MC_CONTENT,
-  MC_LIKE,
-  MC_LIKE_ID
-)
-VALUES
-(
-  SEQ_MOVIE_COMMENT_NO.NEXTVAL,
-  #{MOVIE_NO},
-  #{MC_NO},
-  #{ID},
-  #{MC_REG_DATE},
-  #{MC_CONTENT},
-  #{MC_LIKE},
-  #{MC_LIKE_ID}
-);
-</insert> -->
+	<insert id="writeMovieComment" parameterType="hashmap">
+		INSERT INTO MOVIE_COMMENT 
+		(
+		  MOVIE_NO,
+		  MC_NO,
+		  ID,
+		  MC_REG_DATE,
+		  MC_CONTENT,
+		  MC_LIKE
+		)
+		VALUES
+		(
+		  #{MOVIE_NO},
+		  SEQ_MOVIE_COMMENT.NEXTVAL,
+		  #{ID},
+		  sysdate,
+		  #{COM},
+		  0
+		)
+	</insert>
+	
+	<select id="myComment" parameterType="hashmap" resultType="hashmap">
+		select * from movie_comment where id=#{ID} AND MOVIE_NO=#{MOVIE_NO}
+	</select>
+	
+	<select id="commentOne" parameterType="hashmap" resultType="hashmap">
+		select * from movie_comment where MC_NO=#{MC_NO} AND MOVIE_NO=#{MOVIE_NO}
+	</select>
 
-<!-- 댓글 최신순 -->
-<select id="movieCommentByRecent" parameterType="hashmap" resultType="hashmap">
-SELECT
-  MOVIE_NO,
-  MC_NO,
-  ID,
-  MC_REG_DATE,
-  MC_CONTENT,
-  MC_LIKE,
-  MC_LIKE_ID,
-  RNUM FROM 
-  (SELECT
-     MOVIE_NO,
-     MC_NO,
-     ID,
-     MC_REG_DATE,
-     MC_CONTENT,
-     MC_LIKE,
-     MC_LIKE_ID,
-     ROWNUM RNUM FROM 
-    (SELECT 
-      *
-      FROM MOVIE_COMMENT ORDER BY MC_REG_DATE DESC) ORDER BY RNUM ASC) WHERE RNUM BETWEEN 1 AND 5
-</select>
+	<select id="movieCommentByLike" parameterType="hashmap" resultType="hashmap">
+		SELECT
+			MOVIE_NO,
+			MC_NO,
+			ID,
+			MC_REG_DATE,
+			MC_CONTENT,
+			MC_LIKE,
+			MC_LIKE_ID,
+			TO_CHAR(ML_GRADE,'0.0') AS ML_GRADE,
+			PROFILE_IMAGE,
+			ROWNUM RNUM
+		FROM(
+			SELECT 
+				MC.MOVIE_NO,
+				MC.MC_NO,
+				MC.ID,
+				MC.MC_REG_DATE,
+				MC.MC_CONTENT,
+				MC.MC_LIKE,
+				MC.MC_LIKE_ID,
+				ML.ML_GRADE,
+				PROFILE_IMAGE
+			FROM 
+				MOVIE_LIKE ML, MOVIE_COMMENT MC ,MEMBER M
+					WHERE 
+						ML.MOVIE_LIKE_NO=MC.MOVIE_NO AND 
+						ML.ID=MC.ID and ML.ID=M.ID AND 
+						MC.MOVIE_NO=#{MOVIE_NO}
+						<choose>
+							<when test='orderby == 2'>
+								ORDER BY MC_REG_DATE DESC
+							</when>
+							<otherwise>
+								ORDER BY MC_LIKE DESC
+							</otherwise>
+						</choose>
+		)ORDER BY RNUM ASC
+	</select>
+	<select id="movieCommentForDetail" parameterType="hashmap" resultType="hashmap">
+		SELECT
+				  MOVIE_NO,
+				  MC_NO,
+				  ID,
+				  MC_REG_DATE,
+				  MC_CONTENT,
+				  MC_LIKE,
+				  MC_LIKE_ID,
+				  ML_GRADE,
+		 		  PROFILE_IMAGE,
+				  RNUM FROM 
+				  (SELECT
+				     MOVIE_NO,
+				     MC_NO,
+				     ID,
+				     MC_REG_DATE,
+				     MC_CONTENT,
+				     MC_LIKE,
+				     MC_LIKE_ID,
+				    	TO_CHAR(ML_GRADE,'0.0') AS ML_GRADE,
+		         PROFILE_IMAGE,
+				     ROWNUM RNUM FROM 
+				    (SELECT MC.MOVIE_NO, MC.MC_NO,MC.ID,MC.MC_REG_DATE,MC.MC_CONTENT,MC.MC_LIKE,MC.MC_LIKE_ID,ML.ML_GRADE,PROFILE_IMAGE FROM MOVIE_LIKE ML, MOVIE_COMMENT MC ,MEMBER M
+				      WHERE ML.MOVIE_LIKE_NO=MC.MOVIE_NO AND ML.ID=MC.ID and ML.ID=M.ID AND MC.MOVIE_NO=#{MOVIE_NO} ORDER BY MC_LIKE DESC)ORDER BY RNUM ASC) WHERE RNUM BETWEEN 1 AND 3
+	</select>
+	
+	<select id="totalMovieComment" parameterType="hashmap" resultType="int">
+		select count(*) as count from MOVIE_COMMENT where MOVIE_NO = ${MOVIE_NO}
+	</select>
+	
+	<delete id="deleteComment" parameterType="hashmap">
+		delete movie_comment where movie_no=#{MOVIE_NO} and ID=#{ID}
+	</delete>
+	
+	<!-- 코멘트 좋아요-->
+	<update id="movieCommentLike" parameterType="hashmap">
+		update MOVIE_COMMENT
+			set MC_LIKE = #{MC_LIKE}, MC_LIKE_ID=#{MC_LIKE_ID}
+		where MOVIE_NO=#{MOVIE_NO} AND MC_NO=#{MC_NO}
+	</update>
+	
+	<update id="updateMovieComment" parameterType="hashmap">
+		update movie_comment set mc_content=#{MCOM} where id=#{ID} and movie_no=${MOVIE_NO}
+	</update>
+	
 
-<!-- 댓글 좋아요 순 -->
-<select id="movieCommentByLike" parameterType="hashmap" resultType="hashmap">
-SELECT
-  MOVIE_NO,
-  MC_NO,
-  ID,
-  MC_REG_DATE,
-  MC_CONTENT,
-  MC_LIKE,
-  MC_LIKE_ID,
-  RNUM FROM 
-  (SELECT
-     MOVIE_NO,
-     MC_NO,
-     ID,
-     MC_REG_DATE,
-     MC_CONTENT,
-     MC_LIKE,
-     MC_LIKE_ID,
-     ROWNUM RNUM FROM 
-    (SELECT 
-      *
-      FROM MOVIE_COMMENT ORDER BY MC_LIKE DESC) ORDER BY RNUM ASC) WHERE RNUM BETWEEN 1 AND 5
-</select>
 
 </mapper>

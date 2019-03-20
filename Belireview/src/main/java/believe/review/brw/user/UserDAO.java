@@ -20,15 +20,16 @@ public class UserDAO extends AbstractDAO {
 	}
 	// 프로필사진수정
 	public void UserProfile(Map<String, Object> map) throws Exception {
-	
-		System.out.println(map.get("PROFILE_IMAGE"));
-		
 		update("user.UserProfile", map);
 	}
 	
 	@SuppressWarnings("unchecked")
 	public List<Map<String, Object>> UserMovieAll(Map<String, Object>  map) throws Exception{
 		return (List<Map<String, Object>>) selectList("user.UserMovieAll",map);
+	}
+	@SuppressWarnings("unchecked")
+	public List<Map<String, Object>> UserDramaAll(Map<String, Object>  map) throws Exception{
+		return (List<Map<String, Object>>) selectList("user.UserDramaAll",map);
 	}
 	/*보고싶어요*/
 	@SuppressWarnings("unchecked")

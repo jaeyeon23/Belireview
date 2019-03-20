@@ -100,8 +100,8 @@
 			 $.ajax({
 				 async:true,
 				 type:'POST',
-				 data:{ID:id,DELCOM:'DEL', DC_NO:"${myComment.DC_NO}",DRAMA_NO:<%=request.getParameter("DRAMA_NO")%>},
-				 url:"<c:url value='/drama/dramaDetail.br' />",
+				 data:{ID:id,DELCOM:'DEL', DC_NO:"${myComment.ADC_NO}",AD_NO:<%=request.getParameter("AD_NO")%>},
+				 url:"<c:url value='/AD/ADDetail.br' />",
 				 success:function(result){
 					$(".writeComment").css("display","block");
 					$(".existComment").css("display","none");
@@ -114,13 +114,13 @@
 			$.ajax({
 				 async:true,
 				 type:'POST',
-				 data:{ID:id,MCOM:$('.com2').val(), DRAMA_NO:<%=request.getParameter("DRAMA_NO")%>},
-				 url:"<c:url value='/drama/dramaDetail.br' />",
+				 data:{ID:id,MCOM:$('.com2').val(), AD_NO:<%=request.getParameter("AD_NO")%>},
+				 url:"<c:url value='/ad/adDetail.br' />",
 				 success:function(result){
 					$(".writeComment").css("display","none");
 					$(".existComment").css("display","block");
 					alert(result.myCom.DC_CONTENT);
-					$(".gLsCNn").html(result.myCom.DC_CONTENT);
+					$(".gLsCNn").html(result.myCom.ADC_CONTENT);
 				 }
 			 })
 		} 
@@ -128,13 +128,13 @@
 			 $.ajax({
 				 async:true,
 				 type:'POST',
-				 data:{ID:id,COM:$('.com').val(), DRAMA_NO:<%=request.getParameter("DRAMA_NO")%>},
-				 url:"<c:url value='/drama/dramaDetail.br' />",
+				 data:{ID:id,COM:$('.com').val(), AD_NO:<%=request.getParameter("AD_NO")%>},
+				 url:"<c:url value='/AD/ADDetail.br' />",
 				 success:function(result){
 					$(".writeComment").css("display","none");
 					$(".existComment").css("display","block");
 					alert(result.myCom.DC_CONTENT);
-					$(".gLsCNn").html(result.myCom.DC_CONTENT);
+					$(".gLsCNn").html(result.myCom.ADC_CONTENT);
 				 }
 			 })
 		}
@@ -143,8 +143,8 @@
 			$.ajax({
 				async : true,  
 				type : 'POST',
-				data : {ID:id , WISH:"w" , DRAMA_NO:<%=request.getParameter("DRAMA_NO")%>},
-				url:"<c:url value='/drama/dramaDetail.br' />",
+				data : {ID:id , WISH:"w" , AD_NO:<%=request.getParameter("AD_NO")%>},
+				url:"<c:url value='/ad/adDetail.br' />",
 				success : function(result){
 					var w = result;
 					var a = "보기싫어요";
@@ -165,8 +165,8 @@
 			$.ajax({
 				async : true,  
 				type : 'POST',
-				data : {ID:id , RATING:rr , DRAMA_NO:<%=request.getParameter("DRAMA_NO")%>},
-				url:"<c:url value='/drama/dramaDetail.br' />",
+				data : {ID:id , RATING:rr , AD_NO:<%=request.getParameter("AD_NO")%>},
+				url:"<c:url value='/ad/adDetail.br' />",
 				success : function(result){
 				}
 				/* $('.gZASBp > a.r1'); */
@@ -771,7 +771,7 @@
 																			class="SectionWithHeader__TopRight-s1eyxltb-3 bZaEfL">
 																			<div
 																				class="SectionWithViewMore__ViewMore-xtbl7q-0 bhbIbv">
-																				<a href="/brw/ad/adComment.br?ADC_NO=${map.ADC_NO}">더보기</a>
+																				<a href="/brw/ad/adComment.br?AD_NO=${map.AD_NO}">더보기</a>
 																			</div>
 																		</div>
 																	</header>

@@ -36,7 +36,7 @@
 				DRAMA_GRADE,
 				ROWNUM RNUM FROM 
 				(SELECT *
-					FROM DRAMA ORDER BY DRAMA_DATE DESC) ORDER BY RNUM ASC<!-- ) WHERE RNUM BETWEEN #{START} AND #{END} -->
+					FROM DRAMA ORDER BY DBMS_RANDOM.RANDOM) ORDER BY RNUM ASC<!-- ) WHERE RNUM BETWEEN #{START} AND #{END} -->
 		
    </select>
    
@@ -66,7 +66,7 @@
  
    
    <select id="dramaActor" parameterType="hashmap" resultType="hashmap">
-   		SELECT ACTOR_NAME,ACTOR_IMAGE FROM ACTOR WHERE ACTOR_DRAMA LIKE '%'||#{DRAMA_NAME}||'%'
+   		SELECT ACTOR_NAME,ACTOR_IMAGE FROM ACTOR WHERE ACTOR_DRAMA LIKE '%'||#{DRAMA_NO}||'%'
    </select>
    
    <select id="detailgenre" parameterType="hashmap" resultType="hashmap" >

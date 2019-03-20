@@ -5,8 +5,6 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-import java.text.SimpleDateFormat;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -108,11 +106,6 @@ public class FileUtils {
 		
 		HttpSession session = request.getSession();
 		MultipartHttpServletRequest multipartHttpServletRequest = (MultipartHttpServletRequest) request;
-		Iterator<String> iterator = multipartHttpServletRequest.getFileNames();
-
-		MultipartFile multipartFile = null;
-		String originalFileName = null;
-		String newFileName = null;
 
 		Map<String, Object> listMap = new HashMap<String, Object>();
 
@@ -123,24 +116,29 @@ public class FileUtils {
 			file.mkdirs();
 		}
 		
-
+	    //기존파일제거
 		file = new File(filePath_P + session.getAttribute("PROFILE_IMAGE"));
 		file.delete();
 		
-		while (iterator.hasNext()) {
-			multipartFile = multipartHttpServletRequest.getFile(iterator.next());
-			if (multipartFile.isEmpty() == false) {
-				originalFileName = multipartFile.getOriginalFilename();
-				SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd-HHmmss-");
-				newFileName = formatter.format(System.currentTimeMillis()) + originalFileName;
-				
-				file = new File(filePath_P + newFileName);
-				multipartFile.transferTo(file);
 
-				listMap.put("ID", MEMBER_ID);
-				listMap.put("PROFILE_IMAGE",newFileName);
-			}
+		MultipartFile multipartFile = multipartHttpServletRequest.getFile("profile_image");
+				
+		String originalFileName = multipartFile.getOriginalFilename();
+		
+		listMap.put("ID", MEMBER_ID);
+		
+		if(originalFileName != "") {
+			String newFileName = MEMBER_ID+ "-" + originalFileName;
+		
+			file = new File(filePath_P + newFileName);
+			multipartFile.transferTo(file);
+			listMap.put("PROFILE_IMAGE",newFileName);
+			
+		}else {
+			listMap.put("PROFILE_IMAGE", null);
 		}
+		
+		
 		return listMap;
 	}
 	

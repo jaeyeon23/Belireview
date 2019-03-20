@@ -102,6 +102,7 @@ function checkEmail() {
 				<div class="login_form">
 						<div class="row_group">
 							<form id="findPwForm" method="post" action="/brw/member/findPw.br">
+							<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 							<div class="join_row">
 								<h3 class="join_title">
 									<label for="name">아이디</label>

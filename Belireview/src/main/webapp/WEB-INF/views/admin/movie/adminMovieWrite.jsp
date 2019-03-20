@@ -34,7 +34,7 @@
         }
         
         function cancel() {
-			location.href="/brw/admin/movie.br";
+			location.href="/brw/admin/movie.br?${_csrf.parameterName}=${_csrf.token}";
 		}
         
         function check_value() {
@@ -180,6 +180,7 @@
 	<div class="container">
 		<div class="col-md-8">
 			<form name="admin_write_form_movie" method="post" enctype="multipart/form-data">
+			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 				<h3 class="blog-post-title">
 					NAME
 				</h3>
