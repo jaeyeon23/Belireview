@@ -13,7 +13,7 @@
 		$("#autocompleteTextDrama").autocomplete({
 			source: function(request, response){
 				$.ajax({
-					url: "/brw/ajaxActorWriteDrama.br",
+					url: "/brw/ajaxActorWriteDrama.br?${_csrf.parameterName}=${_csrf.token}",
 					dataType: "json",
 					data:{
 						searchValue: request.term
@@ -36,7 +36,7 @@
 		$("#autocompleteTextMovie").autocomplete({
 			source: function(request, response){
 				$.ajax({
-					url: "/brw/ajaxActorWriteMovie.br",
+					url: "/brw/ajaxActorWriteMovie.br?${_csrf.parameterName}=${_csrf.token}",
 					dataType: "json",
 					data:{
 						searchValue: request.term
@@ -133,7 +133,7 @@
 	}
 	
 	function cancel() {
-		location.href = "/brw/admin/actor.br"
+		location.href = "/brw/admin/actor.br?${_csrf.parameterName}=${_csrf.token}"
 	}
 </script>
 </head>
@@ -141,6 +141,7 @@
 	<div class="container">
 		<div class="col-md-8">
 			<form name="admin_write_form_actor" method="post" enctype="multipart/form-data">
+			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 				<h3 class="blog-post-title">
 					NAME
 				</h3>
