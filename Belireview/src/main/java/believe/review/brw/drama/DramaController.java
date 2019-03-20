@@ -80,7 +80,9 @@ public class DramaController {
 		
 		Map<String,Object> map = dramaService.dramaDetail(commandMap.getMap());//상세보기
 		List<Map<String,Object>> comment = dramaService.dramaCommentForDetail(map);//댓
+		
 		List<Map<String,Object>> actor = dramaService.dramaActor(map); //출연배우
+		
 		List<Map<String,Object>> detailgenre = dramaService.detailgenre(map);//비슷한장르
 		int totalGrade = dramaService.grade(map);
 		try {

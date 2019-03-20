@@ -125,7 +125,7 @@
 												</li>
 												<li class="UserPage__CategoryArchivesListItem-s1uda3mb-12 haIrVX HorizontalListItem-tt0z2b-0 hRbPKu">
 													<a lng="ko-KR" class="UserPage__CategoryArchivesLink-s1uda3mb-13 grPhHT" background="[object Object]"
-														href="/ko-KR/users/ZBm5Rj7y645d4/contents/tv_seasons">
+														href="/brw/user/userDrama.br?ID=${sessionScope.ID}">
 												 	<ul class="UserPage__CategoryArchives-s1uda3mb-14 bEvUuy VisualUl-s1vzev56-0 hgAYVH">
 															<li class="UserPage__CategoryArchivesName-s1uda3mb-15 bcgVAG">드라마</li>
 															<li class="UserPage__CategoryArchivesRatedCount-s1uda3mb-16 hgxhwm">★<!-- -->0</li>

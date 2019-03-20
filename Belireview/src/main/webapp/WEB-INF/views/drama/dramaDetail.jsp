@@ -4,12 +4,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Insert title here</title>
+<title>Insert title hersse</title>
 <meta charset="utf-8">
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="">
-   	<link rel="stylesheet" href="/brw/resources/css/detail2.css">
+   	<link rel="stylesheet" href="/brw/resources/css/detail2.css"> 
    	<link rel="stylesheet" href="/brw/resources/css/detail.css">
     <link rel="stylesheet" href="/brw/resources/css/detailgenre.css">
    	<%-- <script src="<c:url value='/resources/js/common.js'/>" charset="utf-8"></script>	 --%>
@@ -39,94 +39,105 @@
     <script src="/brw/resources/js/jquery-1.4.4.min.js"></script>
     
 	<script src="/brw/resources/js/slides.jquery.js"></script>
+	
 	<script>
+	
+		$(function() {
+			$("#cat-nav").hide();
+		})
 		var id = "${ID}";
 		var grade = "${grade}";
 		var wi = "${wish}";
-		var ra = "" 
+		var ra = ""
 		var initValue = "${initValue}";
 		var mcc = "${myComment}";
-		var like= "${likeList}".split(",");
-		$(function(){
-			var ee ;
-			for(var i=0;i<10;i++){
-				ee = $('.ree'+i).html()+"px";
-				$('.re'+(i+1)).css("height",ee);
+		var like = "${likeList}".split(",");
+		$(function() {
+			var ee;
+			for (var i = 0; i < 10; i++) {
+				ee = $('.ree' + i).html() + "px";
+				$('.re' + (i + 1)).css("height", ee);
 			}
 		});//막대그래프 높이 조정
-		
-		 $(function(){
-			 if(wi!=""){//보고싶어요에있을때
+
+		$(function() {
+			if (wi != "") {//보고싶어요에있을때
 				$(".juRlmb").html("보기싫어요");
-				$(".esugeU").css("background","#f6f6f6");
-				$(".vv").css('color','#ff2f6e');
-			 }
-			 if(grade != ""){//평가했을때
-			  	var rr = "r"+"${grade}";
-			  	$('.r0').removeClass('r0').addClass(rr);
-			  	$('.ccOSgS').html("${ra}");
-			 }else{
+				$(".esugeU").css("background", "#f6f6f6");
+				$(".vv").css('color', '#ff2f6e');
+			}
+			if (grade != "") {//평가했을때
+				var rr = "r" + "${grade}";
+				$('.r0').removeClass('r0').addClass(rr);
+				$('.ccOSgS').html("${ra}");
+			} else {
 				$('.ccOSgS').html("평가하기");
-			 }
-		 });  
-		
-		 /* 로그인 유무 */
-		$(function(){ 
-			if(id==""){//비로그인
-				$(".gsSopE").click(function(){//보고싶어요
+			}
+		});
+
+		/* 로그인 유무 */
+		$(function() {
+			if (id == "") {//비로그인
+				$(".gsSopE").click(function() {//보고싶어요
 					alert("로그인 해주세요.");
-					location.href="<c:url value='/member/loginForm.br' />"
-					});
-				$(".gZASBp").click(function(){//별점
-					alert("로그인 해주세요.");
-					location.href="<c:url value='/member/loginForm.br' />"
+					location.href = "<c:url value='/member/loginForm.br' />"
 				});
-			}else{//로그인
-				if(mcc != ""){ // 마이코멘트 숨기기 보여주기
-					$(".writeComment").css("display","none");
-					$(".existComment").css("display","block");
-				}else{
-					$(".writeComment").css("display","block");
-					$(".existComment").css("display","none");
+				$(".gZASBp").click(function() {//별점
+					alert("로그인 해주세요.");
+					location.href = "<c:url value='/member/loginForm.br' />"
+				});
+			} else {//로그인
+				if (mcc != "") { // 마이코멘트 숨기기 보여주기
+					$(".writeComment").css("display", "none");
+					$(".existComment").css("display", "block");
+				} else {
+					$(".writeComment").css("display", "block");
+					$(".existComment").css("display", "none");
 				}
-					//작동 버튼 시작 post
-				$(".vv").click(function(){//보고싶어요
+				//작동 버튼 시작 post
+				$(".vv").click(function() {//보고싶어요
 					wish();
 					return;
 				});
-				$('.wc').click(function(){
+				$('.wc').click(function() {
 					comment();
 				});
-				 $('.deleteComment').click(function(){
+				$('.deleteComment').click(function() {
 					deleteComment();
-				}); 
-				 $('.mc').click(function(){
+				});
+				$('.mc').click(function() {
 					updateComment();
 				});
-				$(".like").live("click",function(){//좋아요 버튼
-						var cla = $(this).attr('class').split(" ")[5];
-						commentlike(cla);
-						return;
+				$(".like").live("click", function() {//좋아요 버튼
+					var cla = $(this).attr('class').split(" ")[5];
+					commentlike(cla);
+					return;
 				});
-				if(like==""||like==null){
+				if (like == "" || like == null) {
 					$(".like").html("좋아요")
-				}else{
-					for(var i=0;i<like.length;i++){
-						var tmp = like[i].replace("[","").replace("]","").trim();
-						$("."+tmp).html("좋아요취소");
+				} else {
+					for (var i = 0; i < like.length; i++) {
+						var tmp = like[i].replace("[", "").replace("]", "")
+								.trim();
+						$("." + tmp).html("좋아요취소");
 					}
-				} 
+				}
 			}
-		});  //작동 버튼 끝
-		 /* 로그인 유무 */
-		 
+		}); //작동 버튼 끝
+		/* 로그인 유무 */
+
 		//좋아요
-		function commentlike(cla){
-		$.ajax({
-			async : true,  
-			type : 'POST',
-			data : {ID:id , COMMENTLIKE:"c" ,CLA:cla , DRAMA_NO:<%=request.getParameter("DRAMA_NO")%>, DC_NO:$(".00"+cla).val()},
-			url:"<c:url value='/drama/dramaDetail.br' />",
+		function commentlike(cla) {
+			$.ajax({
+				async : true,
+				type : 'POST',
+				data : {
+					ID : id,
+					COMMENTLIKE : "c",
+					CLA : cla,
+					DRAMA_NO :
+	<%=request.getParameter("DRAMA_NO")%>, DC_NO:$(".00"+cla).val()},
+			url:"<c:url value='/drama/dramaDetail.br?${_csrf.parameterName}=${_csrf.token}' />",
 			success : function(result){
 					var r = result;
 					var clike ="좋아요취소";
@@ -147,7 +158,7 @@
 				 async:true,
 				 type:'POST',
 				 data:{ID:id,DELCOM:'DEL', DC_NO:"${myComment.DC_NO}",DRAMA_NO:<%=request.getParameter("DRAMA_NO")%>},
-				 url:"<c:url value='/drama/dramaDetail.br' />",
+				 url:"<c:url value='/drama/dramaDetail.br?${_csrf.parameterName}=${_csrf.token}' />",
 				 success:function(result){
 					$(".writeComment").css("display","block");
 					$(".existComment").css("display","none");
@@ -161,7 +172,7 @@
 				 async:true,
 				 type:'POST',
 				 data:{ID:id,MCOM:$('.com2').val(), DRAMA_NO:<%=request.getParameter("DRAMA_NO")%>},
-				 url:"<c:url value='/drama/dramaDetail.br' />",
+				 url:"<c:url value='/drama/dramaDetail.br?${_csrf.parameterName}=${_csrf.token}' />",
 				 success:function(result){
 					$(".writeComment").css("display","none");
 					$(".existComment").css("display","block");
@@ -176,7 +187,7 @@
 				 async:true,
 				 type:'POST',
 				 data:{ID:id,COM:$('.com').val(), DRAMA_NO:<%=request.getParameter("DRAMA_NO")%>},
-				 url:"<c:url value='/drama/dramaDetail.br' />",
+				 url:"<c:url value='/drama/dramaDetail.br?${_csrf.parameterName}=${_csrf.token}' />",
 				 success:function(result){
 					$(".writeComment").css("display","none");
 					$(".existComment").css("display","block");
@@ -192,7 +203,7 @@
 				async : true,  
 				type : 'POST',
 				data : {ID:id , WISH:"w" , DRAMA_NO:<%=request.getParameter("DRAMA_NO")%>},
-				url:"<c:url value='/drama/dramaDetail.br' />",
+				url:"<c:url value='/drama/dramaDetail.br?${_csrf.parameterName}=${_csrf.token}' />",
 				success : function(result){
 					var w = result;
 					var a = "보기싫어요";
@@ -218,7 +229,7 @@
 				async : true,  
 				type : 'POST',
 				data : {ID:id , RATING:rr , DRAMA_NO:<%=request.getParameter("DRAMA_NO")%>},
-				url:"<c:url value='/drama/dramaDetail.br' />",
+				url:"<c:url value='/drama/dramaDetail.br?${_csrf.parameterName}=${_csrf.token}' />",
 				success : function(result){
 				}
 				/* $('.gZASBp > a.r1'); */
@@ -488,8 +499,7 @@
 										<div class="MaxWidthGrid-s193eej0-0 gXAICT">
 											<div class="MaxWidthRow-s14yonsc-0 dCZZZZ">
 												<div class="MaxWidthCol-s1fpp771-0 bLPhwL">
-													<div
-														class="ContentJumbotron__PosterWithRankingInfoBlock-yf8npk-10 cIaqHU">
+													<div class="ContentJumbotron__PosterWithRankingInfoBlock-yf8npk-10 cIaqHU">
 														<div class="LazyLoadingImg__Self-s1jb87ps-0 cjQTNJ">
 															<img class="LazyLoadingImg__Self-s1jb87ps-0 cjQTNJ" src="/brw/resources/images/drama/poster/${map.DRAMA_POSTER_IMAGE}">
 														</div>

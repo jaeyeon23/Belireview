@@ -17,4 +17,5 @@ public interface AdService {
 	Map<String, Object> myComment(Map<String, Object> map) throws Exception;
 	
 	Map<String, Object> adCommentLike(Map<String, Object> map)throws Exception;
+	
 }

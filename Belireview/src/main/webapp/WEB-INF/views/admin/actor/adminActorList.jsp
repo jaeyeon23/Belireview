@@ -58,7 +58,7 @@
 	});
 	
 	function write_actor() {
-		location.href='/brw/admin/actor/write.br';
+		location.href='/brw/admin/actor/write.br?${_csrf.parameterName}=${_csrf.token}';
 	}
 </script>
 </head>
@@ -67,7 +67,7 @@
 		<div style="float:left; margin:20pt auto;">
 			<button class="btn btn-default" type="button" onclick="write_actor()">생성</button>
 		</div>
-		<div style="margin:20pt auto; float: right; width: 20%;" onchange="orderby('/brw/admin/actor.br')">
+		<div style="margin:20pt auto; float: right; width: 20%;" onchange="orderby('/brw/admin/actor.br?${_csrf.parameterName}=${_csrf.token}')">
 			<select id="orderby" name="orderby" class="form-control">
 				<option value="">----</option>
 				<option value="1">이름순</option>
@@ -95,13 +95,13 @@
 									<div class="product-fade-ct">
                                    		<div class="product-fade-control">
                                         	<div class="clearfix"></div>
-                                           		<a href="/brw/admin/actor/modify.br?no=${list.ACTOR_NO }" class="btn btn-to-cart"><span>자세히 보기</span><div class="clearfix"></div></a>
+                                           		<a href="/brw/admin/actor/modify.br?${_csrf.parameterName}=${_csrf.token}&no=${list.ACTOR_NO }" class="btn btn-to-cart"><span>자세히 보기</span><div class="clearfix"></div></a>
                                         </div>
 									</div>
 									
 								</div>
 								<div class="product-name">
-									<a href="/brw/admin/actor/modify.br?no=${list.ACTOR_NO }">${list.ACTOR_NAME }</a>
+									<a href="/brw/admin/actor/modify.br?${_csrf.parameterName}=${_csrf.token}&no=${list.ACTOR_NO }">${list.ACTOR_NAME }</a>
 								</div>
 							</div>
 						</div>
@@ -123,8 +123,8 @@
 				<option value="name">이름</option>
 			</select>
 			<div class="input-group">
-            	<input type="text" class="form-control search-wid" id="searchBox" placeholder="Search Here" value="${searchBox }" onkeypress="if (event.keyCode==13){searchNum_Box('/brw/admin/actor.br');}">
-	            <a href="javascript:void(0);" onclick="searchNum_Box('/brw/admin/actor.br');" class="input-group-addon btn-side-serach" id="basic-addon1"><i class="fa fa-search"></i></a>
+            	<input type="text" class="form-control search-wid" id="searchBox" placeholder="Search Here" value="${searchBox }" onkeypress="if (event.keyCode==13){searchNum_Box('/brw/admin/actor.br?${_csrf.parameterName}=${_csrf.token}');}">
+	            <a href="javascript:void(0);" onclick="searchNum_Box('/brw/admin/actor.br?${_csrf.parameterName}=${_csrf.token}');" class="input-group-addon btn-side-serach" id="basic-addon1"><i class="fa fa-search"></i></a>
 	        </div>			
 		</div>
 	</div>

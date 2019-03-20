@@ -91,7 +91,11 @@
 		FROM
 			MEMBER
 		WHERE
+<<<<<<< HEAD
 			ID=#{id} and PASSWORD=#{password}
+=======
+			id=#{id}
+>>>>>>> e8aa45e2476cfeabfb91af966bf57e0713ea4761
 	</delete>
 	
 	<delete id="deleteMyPage" parameterType="hashmap">
