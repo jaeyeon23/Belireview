@@ -165,13 +165,13 @@
 							<!-- drama start -->
 							<div role="tabpanel" class="tab-pane fade in active" id="1"	aria-labelledby="cat-1">
 								<div class="row clearfix">
-									<c:forEach items="${drama_list }" var="list" varStatus="status">
+									<c:forEach items="${drama_list}" var="list" varStatus="status">
 										<div class="col-md-3 prdct-grid">
 											<div class="product-fade">
 												<div class="product-fade-wrap">
 													<div id="product-image${status.index + 1 }" class="owl-carousel owl-theme">
-		                                        	<c:forTokens items="${list.DRAMA_POSTER_IMAGE }" var="image" delims=", ">
-			                                            <div class="item"><img src="/brw/resources/images/drama/poster/${image }" alt="" class="img-responsive"></div>
+		                                        	<c:forTokens items="${list.DRAMA_POSTER_IMAGE}" var="image" delims=", ">
+			                                            <div class="item"><img src="/brw/resources/images/drama/poster/${image}" alt="" class="img-responsive"></div>
 			                                        </c:forTokens>
 			                                        </div>
 													<div class="product-fade-ct">
@@ -181,7 +181,7 @@
 				                                                <a href=""><i class="fa fa-search"></i></a>
 				                                            </div>
 			                                                <div class="to-right">
-																<div id="product-control${status.index + 1 }" class="owl-carousel owl-theme">
+																<div id="product-control${status.index + 1}" class="owl-carousel owl-theme">
 		                                                    	<c:forTokens items="${list.DRAMA_CONTENT_IMAGE }" var="image" delims=", ">
 		                                                        	<div class="item"><div class="bullets"></div></div>
 		                                                        </c:forTokens>
@@ -202,7 +202,7 @@
 							</div>
 							<!-- drama end -->
 							
-							<!-- movie start -->
+							<%-- <!-- movie start -->
 							<div role="tabpanel" class="tab-pane fade in active" id="2"	aria-labelledby="cat-2">
 								<div class="row clearfix">
 									<c:forEach items="${movie_list }" var="list" varStatus="status">
@@ -211,7 +211,7 @@
 												<div class="product-fade-wrap">
 													<div id="product-image${status.index + 1 }" class="owl-carousel owl-theme">
 		                                        	<c:forTokens items="${list.MOVIE_GALLERY_IMAGE }" var="image" delims=", ">
-			                                            <div class="item"><img src="/brw/resources/images/drama/content/${image }" alt="" class="img-responsive"></div>
+			                                            <div class="item"><img src="/brw/resources/images/movie/poster/${image }" alt="" class="img-responsive"></div>
 			                                        </c:forTokens>
 			                                        </div>
 													<div class="product-fade-ct">
@@ -251,7 +251,7 @@
 												<div class="product-fade-wrap">
 													<div id="product-image${status.index + 1 }" class="owl-carousel owl-theme">
 		                                        	<c:forTokens items="${list.AD_CONTENT_IMAGE }" var="image" delims=", ">
-			                                            <div class="item"><img src="/brw/resources/images/drama/content/${image }" alt="" class="img-responsive"></div>
+			                                            <div class="item"><img src="/brw/resources/images/ad/poster/${image }" alt="" class="img-responsive"></div>
 			                                        </c:forTokens>
 			                                        </div>
 													<div class="product-fade-ct">
@@ -280,7 +280,7 @@
 									</c:forEach>
 								</div>
 							</div>
-							<!-- ad end -->
+							<!-- ad end --> --%>
 						</div>
 		           </div>
               </div>
