@@ -94,6 +94,11 @@
     	<put-attribute name="body" value="/WEB-INF/views/user/userDrama.jsp"/>
     </definition>
     
+    <definition name="userAD" extends=".home">
+    	<put-attribute name="header" value="/WEB-INF/views/layout/header_My.jsp" />
+    	<put-attribute name="body" value="/WEB-INF/views/user/userAD.jsp"/>
+    </definition>
+    
     <definition name="user" extends=".home">
     	<put-attribute name="header" value="/WEB-INF/views/layout/header_My.jsp" />
     	<put-attribute name="body" value="/WEB-INF/views/user/user.jsp"/>

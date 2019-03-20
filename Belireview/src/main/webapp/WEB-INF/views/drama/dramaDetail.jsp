@@ -44,6 +44,8 @@
 	
 		$(function() {
 			$("#cat-nav").hide();
+			var a = $(".genrename").html();
+			
 		})
 		var id = "${ID}";
 		var grade = "${grade}";
@@ -80,11 +82,11 @@
 			if (id == "") {//비로그인
 				$(".gsSopE").click(function() {//보고싶어요
 					alert("로그인 해주세요.");
-					location.href = "<c:url value='/member/loginForm.br' />"
+					location.href = "<c:url value='/member/loginForm.br?${_csrf.parameterName}=${_csrf.token}' />"
 				});
 				$(".gZASBp").click(function() {//별점
 					alert("로그인 해주세요.");
-					location.href = "<c:url value='/member/loginForm.br' />"
+					location.href = "<c:url value='/member/loginForm.br?${_csrf.parameterName}=${_csrf.token}' />"
 				});
 			} else {//로그인
 				if (mcc != "") { // 마이코멘트 숨기기 보여주기
@@ -1066,7 +1068,7 @@
 																	<span class="TitleSuffixForNumber-l2d30g-0 ejtPKl"><!-- 비슷한장르개수 --></span>
 																	<div class="SectionWithHeader__TopRight-s1eyxltb-3 bZaEfL">
 																			<div class="SectionWithViewMore__ViewMore-xtbl7q-0 bhbIbv">
-																				<a href="/brw/mainSearch.br">더보기</a>
+																				<a href="/brw/mainSearch.br?GENRE=${map.DRAMA_GENRE}}">더보기</a>
 																			</div>
 																		</div>
 																</header>
@@ -1081,7 +1083,7 @@
 														      <img src="/brw/resources/images/drama/poster/${detailgenrelist.DRAMA_POSTER_IMAGE}">
 														      <%-- <input type='hidden' class='IDX' value="${dramaList.DRAMA_NO}"> --%>
 														      <div class="detailgenrefont">
-														        <h3>#${detailgenrelist.DRAMA_NAME}</h3>
+														        <h3 class="genrename">#${detailgenrelist.DRAMA_NAME}</h3>
 														        <p>#${detailgenrelist.DRAMA_DATE}・#${detailgenrelist.DRAMA_CHANNEL}</p>
 														      </div>
 														    </div>

@@ -16,7 +16,9 @@ public interface UserService {
 	
 	List<Map<String,Object>> UserMovieAll(Map<String, Object>  map) throws Exception;
 	
-	public List<Map<String, Object>> UserDramaAll(Map<String, Object>  map) throws Exception;
+    List<Map<String, Object>> UserDramaAll(Map<String, Object>  map) throws Exception;
+    
+    List<Map<String, Object>> UserAdAll(Map<String, Object>  map) throws Exception;
 	
 	/*보고싶어요*/
 	Map<String, Object> userWishList(Map<String, Object> map) throws Exception;
@@ -25,9 +27,6 @@ public interface UserService {
 	
 	void updateWishList(Map<String, Object> map) throws Exception;
 	/*보고싶어요*/
-	
-	List<Map<String,Object>> selectUserGrade(Map<String, Object>  map) throws Exception;
-	
 	List<Map<String,Object>> userDramaList(Map<String, Object>  map) throws Exception;
 	
 	List<Map<String,Object>> userMovieList(Map<String, Object>  map) throws Exception;

@@ -41,7 +41,7 @@
 		FROM
 			member
 		WHERE
-			id=#{id} and password=#{password}
+			id=#{id}
 	</select>
 	
 	<!-- 사용자 modify -->
@@ -89,9 +89,9 @@
 	<delete id="deleteUserOne" parameterType="hashmap">
 		DELETE
 		FROM
-			member
+			MEMBER
 		WHERE
-			id=#{id}
+		id=#{id}
 	</delete>
 	
 	<delete id="deleteMyPage" parameterType="hashmap">
