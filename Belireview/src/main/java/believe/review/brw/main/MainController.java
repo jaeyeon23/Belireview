@@ -20,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import believe.review.brw.common.common.CommandMap;
 import believe.review.brw.common.util.Paging;
+import believe.review.brw.rank.RankService;
 
 @Controller
 public class MainController {
@@ -37,6 +38,10 @@ public class MainController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(MainController.class);
 
+	
+	@Resource(name="rankService")
+	private RankService rankService;
+	
 	@Resource(name="mainService")
 	private MainService mainService;
 	
@@ -56,6 +61,27 @@ public class MainController {
 	
 	@RequestMapping(value = "mainSearch.br")
 	public ModelAndView mainSearch(CommandMap commandMap,HttpServletRequest request) throws Exception {
+		String table = null;
+		
+		if(rankService.selectCountSearchText(commandMap.getMap()) > 0) {
+			rankService.updateSearchText(commandMap.getMap());
+		}else {
+			if(rankService.selectDramaSearch(commandMap.getMap()) > 0) {
+				table = "drama";
+			}else if(rankService.selectMovieSearch(commandMap.getMap()) > 0) {
+				table = "movie";
+			}else if(rankService.selectActorSearch(commandMap.getMap()) > 0) {
+				table = "actor";
+			}
+			
+			commandMap.put("table_value", table);
+			
+			Set keyset = commandMap.keySet();
+			System.out.println("test : ============== " + keyset);
+			System.out.println("result : =========== " + commandMap.get("table"));
+			
+			rankService.insertSearchText(commandMap.getMap());
+		}
 		
 		String p = request.getParameter("currentPage");
 		System.out.println(p);
@@ -66,9 +92,6 @@ public class MainController {
             currentPage = Integer.parseInt(request.getParameter("currentPage"));
         }
 		ModelAndView mv = new ModelAndView("mainSearch");
-		
-		Set keyset = commandMap.keySet();
-		System.out.println("testsetetste===================== " + keyset);
 		
 		List<Map<String,Object>> searchMain = new ArrayList<Map<String,Object>>();
 		List<Map<String,Object>> searchMovie = mainService.movieSerach(commandMap.getMap());
