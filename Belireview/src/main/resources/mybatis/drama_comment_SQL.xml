@@ -24,7 +24,7 @@
 	</insert>
 	
 	<select id="myComment" parameterType="hashmap" resultType="hashmap">
-		SELECT DRAMA_NO,DC_NO,DC.ID,DC_REG_DATE,DC_CONTENT,DC_LIKE,DC_LIKE_ID,MEMBER_NO,NAME FROM DRAMA_COMMENT DC,MEMBER M WHERE DC.ID=M.ID AND DC.ID=#{ID} AND DRAMA_NO=#{DRAMA_NO}
+		SELECT DC_CONTENT FROM DRAMA_COMMENT WHERE ID=#{ID} AND DRAMA_NO=#{DRAMA_NO}
 	</select>
 	
 	<select id="commentOne" parameterType="hashmap" resultType="hashmap">
