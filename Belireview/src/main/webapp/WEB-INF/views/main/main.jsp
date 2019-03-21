@@ -6,6 +6,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+	<script type="text/javascript">
+	
+	
+	</script>
 </head>
 <body>
 	<!-- Slider start -->
@@ -151,13 +155,15 @@
 				<div class="newest-content">
 					<div class="newest-tab">
 						<ul id="myTab" class="nav nav-tabs newest" role="tablist">
-							<li role="presentation" class="active"><a href="#1"
-								id="cat-1" role="tab" data-toggle="tab" aria-controls="1"
-								aria-expanded="true">Drama</a></li>
-							<li role="presentation"><a href="#2" role="tab" id="cat-2"
-								data-toggle="tab" aria-controls="2">Movie</a></li>
-							<li role="presentation"><a href="#3" role="tab" id="cat-3"
-								data-toggle="tab" aria-controls="3">Advertisement</a></li>
+							<li role="presentation" class="active">
+								<a href="#1" id="cat-1" role="tab" data-toggle="tab" aria-controls="1" aria-expanded="true">Drama</a>
+							</li>
+							<li role="presentation">
+								<a href="#2" role="tab" id="cat-2" data-toggle="tab" aria-controls="2">Movie</a>
+							</li>
+							<li role="presentation">
+								<a href="#3" role="tab" id="cat-3" data-toggle="tab" aria-controls="3">Advertisement</a>
+							</li>
 						</ul>
 
 
@@ -169,11 +175,9 @@
 										<div class="col-md-3 prdct-grid">
 											<div class="product-fade">
 												<div class="product-fade-wrap">
-													<div id="product-image${status.index + 1 }" class="owl-carousel owl-theme">
 		                                        	<c:forTokens items="${list.DRAMA_POSTER_IMAGE}" var="image" delims=", ">
 			                                            <div class="item"><img src="/brw/resources/images/drama/poster/${image}" alt="" class="img-responsive"></div>
 			                                        </c:forTokens>
-			                                        </div>
 													<div class="product-fade-ct">
 			                                        	<div class="product-fade-control">
 				                                            <div class="to-left">
@@ -200,17 +204,15 @@
 							<!-- drama end -->
 							
 							<!-- movie start -->
-							<div role="tabpanel" class="tab-pane fade in active" id="2"	aria-labelledby="cat-2">
+							<div role="tabpanel" class="tab-pane fade" id="2"	aria-labelledby="cat-2">
 								<div class="row">
 									<c:forEach items="${movie_list}" var="list" varStatus="status">
 										<div class="col-md-3 prdct-grid">
 											<div class="product-fade">
 												<div class="product-fade-wrap">
-													<div id="product-image${status.index + 1}" class="owl-carousel owl-theme">
 		                                        	<c:forTokens items="${list.MOVIE_POSTER_IMAGE}" var="image" delims=", ">
 			                                            <div class="item"><img src="/brw/resources/images/movie/poster/${image}" alt="" class="img-responsive"></div>
 			                                        </c:forTokens>
-			                                        </div>
 													<div class="product-fade-ct">
 			                                        	<div class="product-fade-control">
 				                                            <div class="to-left">
@@ -237,17 +239,15 @@
 							<!-- movie end -->
 							
 							<!-- ad start -->
-							<div role="tabpanel" class="tab-pane fade in active" id="3"	aria-labelledby="cat-3">
+							<div role="tabpanel" class="tab-pane fade" id="3"	aria-labelledby="cat-3">
 								<div class="row">
 									<c:forEach items="${ad_list }" var="list" varStatus="status">
 										<div class="col-md-3 prdct-grid">
 											<div class="product-fade">
 												<div class="product-fade-wrap">
-													<div id="product-image${status.index + 1 }" class="owl-carousel owl-theme">
-		                                        	<c:forTokens items="${list.AD_POSTER_IMAGE }" var="image" delims=", ">
-			                                            <div class="item"><img src="/brw/resources/images/ad/poster/${image }" alt="" class="img-responsive"></div>
+		                                        	<c:forTokens items="${list.AD_MAIN_IMAGE }" var="image" delims=", ">
+			                                            <div class="item"><img src="/brw/resources/images/ad/main/${image}" alt="" class="img-responsive"></div>
 			                                        </c:forTokens>
-			                                        </div>
 													<div class="product-fade-ct">
 			                                        	<div class="product-fade-control">
 				                                            <div class="to-left">
