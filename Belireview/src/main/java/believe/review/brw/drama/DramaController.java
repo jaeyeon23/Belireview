@@ -84,6 +84,21 @@ public class DramaController {
 		List<Map<String,Object>> actor = dramaService.dramaActor(map); //출연배우
 		
 		List<Map<String,Object>> detailgenre = dramaService.detailgenre(map);//비슷한장르
+		
+		for(Map m:actor) {
+			if(m.get("ACTOR_DRAMA")!= null) {
+			String actorList[] = m.get("ACTOR_DRAMA").toString().split(",");
+					System.out.println(actorList);
+			for(int i=0; i<= actorList.length; i++){
+					if(actorList[i].equals(map.get("DRAMA_NO"))) {
+						System.out.println(actorList);
+					}
+					
+				}
+			
+			}
+		}
+		
 		int totalGrade = dramaService.grade(map);
 		try {
 			List<Map<String,Object>> gradeRatio = dramaService.gradeRatio(map);//별점비율
@@ -102,7 +117,10 @@ public class DramaController {
 			image[i] = image[i].trim();
 		}
 		double ratingPrediction = 0;
+		
 		List<String> likeList = new ArrayList<String>();
+	
+		
 		if(session.getAttribute("ID")!=null) {//로그인했을때
 			map.put("ID", session.getAttribute("ID"));
 			map.put("NAME", session.getAttribute("NAME"));
