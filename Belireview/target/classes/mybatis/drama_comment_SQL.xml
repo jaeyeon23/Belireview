@@ -17,22 +17,23 @@
 		  #{DRAMA_NO},
 		  SEQ_DRAMA_COMMENT.NEXTVAL,
 		  #{ID},
-		  sysdate,
+		  SYSDATE,
 		  #{COM},
 		  0
 		)
 	</insert>
 	
 	<select id="myComment" parameterType="hashmap" resultType="hashmap">
-		select * from drama_comment where id=#{ID} AND DRAMA_NO=#{DRAMA_NO}
+		SELECT DRAMA_NO,DC_NO,DC.ID,DC_REG_DATE,DC_CONTENT,DC_LIKE,DC_LIKE_ID,MEMBER_NO,NAME FROM DRAMA_COMMENT DC,MEMBER M WHERE DC.ID=M.ID AND DC.ID=#{ID} AND DRAMA_NO=#{DRAMA_NO}
 	</select>
 	
 	<select id="commentOne" parameterType="hashmap" resultType="hashmap">
-		select * from drama_comment where DC_NO=#{DC_NO} AND DRAMA_NO=#{DRAMA_NO}
+		SELECT DRAMA_NO,DC_NO,DC.ID,DC_REG_DATE,DC_CONTENT,DC_LIKE,DC_LIKE_ID,MEMBER_NO,NAME FROM DRAMA_COMMENT DC,MEMBER M WHERE DC.ID=M.ID AND DC.DC_NO=#{DC_NO} AND DRAMA_NO=#{DRAMA_NO}
 	</select>
 
 	<select id="dramaCommentByLike" parameterType="hashmap" resultType="hashmap">
 		SELECT
+			NAME,
 			DRAMA_NO,
 			DC_NO,
 			ID,
@@ -45,6 +46,7 @@
 			ROWNUM RNUM
 		FROM(
 			SELECT 
+				M.NAME,
 				DC.DRAMA_NO,
 				DC.DC_NO,
 				DC.ID,
@@ -72,6 +74,7 @@
 	</select>
 	<select id="dramaCommentForDetail" parameterType="hashmap" resultType="hashmap">
 		SELECT
+				  NAME,
 				  DRAMA_NO,
 				  DC_NO,
 				  ID,
@@ -83,6 +86,7 @@
 		      PROFILE_IMAGE,
 				  RNUM FROM 
 				  (SELECT
+				  	 NAME,
 				     DRAMA_NO,
 				     DC_NO,
 				     ID,
@@ -93,7 +97,7 @@
 				    	TO_CHAR(DL_GRADE,'0.0') AS DL_GRADE,
 		         PROFILE_IMAGE,
 				     ROWNUM RNUM FROM 
-				    (SELECT DC.DRAMA_NO, DC.DC_NO,DC.ID,DC.DC_REG_DATE,DC.DC_CONTENT,DC.DC_LIKE,DC.DC_LIKE_ID,DL.DL_GRADE,PROFILE_IMAGE FROM DRAMA_LIKE DL, DRAMA_COMMENT DC ,MEMBER M
+				    (SELECT M.NAME,DC.DRAMA_NO, DC.DC_NO,DC.ID,DC.DC_REG_DATE,DC.DC_CONTENT,DC.DC_LIKE,DC.DC_LIKE_ID,DL.DL_GRADE,PROFILE_IMAGE FROM DRAMA_LIKE DL, DRAMA_COMMENT DC ,MEMBER M
 				      WHERE DL.DRAMA_LIKE_NO=DC.DRAMA_NO AND DL.ID=DC.ID and DL.ID=M.ID AND DC.DRAMA_NO=#{DRAMA_NO} ORDER BY DC_LIKE DESC)ORDER BY RNUM ASC) WHERE RNUM BETWEEN 1 AND 3
 	</select>
 	

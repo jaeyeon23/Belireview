@@ -580,7 +580,7 @@
 																		class="ContentMyCommentSection__LeaveCommentBlock-mhuscg-2 bvmyee">
 																		<h3
 																			class="ContentMyCommentSection__Title-mhuscg-11 inwTWL">이
-																			작품에 대한 ${map.ID} 님의 평가를 글로 남겨보세요.</h3>
+																			작품에 대한 ${map.NAME} 님의 평가를 글로 남겨보세요.</h3>
 																		<div class="ContentMyCommentSection__ButtonBlock-mhuscg-12 kTSrnl">
 																			<!-- modal 구동 버튼 (trigger) -->
 																			<!-- 코멘트 작성창 -->
@@ -960,7 +960,7 @@
 																												</div>
 																											</div>
 																											<div class="UserNameWithBadges__Self-s1bd3hgj-0 brZhrQ">
-																												${comment.ID} 
+																												${comment.NAME} 
 																												<input type="hidden" value="${comment.MC_NO}" class="00like${stat.index}"/>
 																												<span class="UserNameWithBadges__SmallBadge-s1bd3hgj-1 bAndNa UIImg-s3jz6tx-0 eBREVF" src="/brw/resources/images/detail/detail_comment1.svg"></span>
 																												<span class="UserNameWithBadges__SmallBadge-s1bd3hgj-1 bAndNa UIImg-s3jz6tx-0 kyuoIv" src="/brw/resources/images/detail/detail_comment2.svg"></span>
