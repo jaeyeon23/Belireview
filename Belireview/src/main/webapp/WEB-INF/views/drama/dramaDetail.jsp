@@ -49,7 +49,6 @@
 	var like = "${likeList}".split(",");
 		$(function() {
 			$("#cat-nav").hide();
-			
 		})
 		
 		$(function() {
@@ -232,7 +231,6 @@
 				url:"<c:url value='/drama/dramaDetail.br?${_csrf.parameterName}=${_csrf.token}' />",
 				success : function(result){
 				}
-				/* $('.gZASBp > a.r1'); */
 			})
 		}
 		/* 별점 */
@@ -253,8 +251,6 @@
 		$(function(){
 			if(id==""||id==null){}
 			else{
-				/* initValue = $('.gZASBp > div').attr("class").split(" ")[1]; */
-
 				var f = $('.gZASBp > a.r1');
 				f.hover(function() {
 					$('.gZASBp > div' ).removeClass(initValue).addClass('r1');

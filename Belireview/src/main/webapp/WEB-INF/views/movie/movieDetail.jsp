@@ -1071,7 +1071,7 @@
 														      <img src="/brw/resources/images/movie/poster/${detailgenrelist.MOVIE_POSTER_IMAGE}">
 														      <%-- <input type='hidden' class='IDX' value="${dramaList.DRAMA_NO}"> --%>
 														      <div class="detailgenrefont">
-														        <h3>#${detailgenrelist.MOVIE_NAME}</h3>
+														        <h3 class="genrename">#${detailgenrelist.MOVIE_NAME}</h3>
 														        <p>#${detailgenrelist.MOVIE_DATE}・#${detailgenrelist.MOVIE_COUNTRY}</p>
 														      </div>
 														    </div>

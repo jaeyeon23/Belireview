@@ -36,7 +36,6 @@ public class DramaController {
 	
 	@Resource(name="userService")
 	private UserService userService;
-	
 
 	@RequestMapping(value = "dramaList.br")
 	public ModelAndView dramaList(CommandMap commandMap,HttpServletRequest request) throws Exception {
@@ -81,9 +80,21 @@ public class DramaController {
 		Map<String,Object> map = dramaService.dramaDetail(commandMap.getMap());//상세보기
 		List<Map<String,Object>> comment = dramaService.dramaCommentForDetail(map);//댓
 		
-		List<Map<String,Object>> actor = dramaService.dramaActor(map); //출연배우
+		List<Map<String,Object>> actortmp = dramaService.dramaActor(map); //출연배우
+		List<String> actor = new ArrayList<String>();
 		
 		List<Map<String,Object>> detailgenre = dramaService.detailgenre(map);//비슷한장르
+		
+		for(Map m:actortmp) {
+			String tmp[] = m.get("ACTOR_DRAMA").toString().split(",");
+			for(int i=0;i<tmp.length;i++) {
+				if(tmp[i].equals(map.get("DRAMA_NO").toString()))
+					System.out.println("작동함?"+m.get("ACTOR_NAME"));
+			}
+		}
+		
+		
+		
 		int totalGrade = dramaService.grade(map);
 		try {
 			List<Map<String,Object>> gradeRatio = dramaService.gradeRatio(map);//별점비율
