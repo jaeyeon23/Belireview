@@ -37,4 +37,23 @@ public class AdminActorDAO extends AbstractDAO{
 	public void updateActorOne(Map<String, Object> map) {
 		update("admin.updateActorOne", map);
 	}
+	
+	public void deleteActorOne(String no) {
+		delete("admin.deleteActorOne", no);
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Map<String, Object>> selectActorAjax(String searchValue){
+		return (List<Map<String, Object>>) selectList("admin.selectActorAjax", searchValue);
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Map<String, Object>> selectActorDramaModify(String no){
+		return (List<Map<String, Object>>) selectList("admin.selectActorDramaModify", no);
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Map<String, Object>> selectActorMovieModify(String no){
+		return (List<Map<String, Object>>) selectList("admin.selectActorMovieModify", no);
+	}
 }

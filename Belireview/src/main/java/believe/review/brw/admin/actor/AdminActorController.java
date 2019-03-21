@@ -1,13 +1,16 @@
 package believe.review.brw.admin.actor;
 
 import java.io.File;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,7 +18,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import believe.review.brw.admin.user.AdminUserService;
 import believe.review.brw.common.common.CommandMap;
 import believe.review.brw.common.util.Paging;
 
@@ -29,12 +34,20 @@ public class AdminActorController {
 	private int blockPage = 5; 	 
 	private String pagingHtml;  
 	private Paging page;
-	//private String filePath = "C:\\Users\\박재연\\Desktop\\Belireview\\Belireview\\src\\main\\webapp\\resources\\images\\actor\\";
-	private String filePath = "C:\\인영\\sts\\Belireview\\Belireview\\src\\main\\webapp\\resources\\images\\actor\\";
+	private String filePath = "C:\\Users\\박재연\\Desktop\\Belireview\\Belireview\\src\\main\\webapp\\resources\\images\\actor\\";
+	//private String filePath = "C:\\인영\\sts\\Belireview\\Belireview\\src\\main\\webapp\\resources\\images\\actor\\";
 	private File file;
+	private HttpSession session;
+	
+	@Autowired
+	private BCryptPasswordEncoder passwordEncoder;
 	
 	@Resource(name="adminActorService")
 	private AdminActorService adminActorService;
+	
+	@Resource(name="adminUserService")
+	private AdminUserService adminUserService;
+	
 	
 	@RequestMapping(value="/actor.br")
 	public String actorPage(@RequestParam(value="alert_value", defaultValue="default") String alert_value, HttpServletRequest request, CommandMap commandMap, Model model) throws Exception{
@@ -122,11 +135,15 @@ public class AdminActorController {
 	}
 	
 	@RequestMapping(value="/actor/modify.br", method=RequestMethod.POST)
-	public String actionModify(HttpServletRequest request, CommandMap commandMap, Model model) throws Exception{
-		Set keyset = commandMap.keySet();
-		System.out.println("test : " + keyset);
+	public String actorModify(HttpServletRequest request, CommandMap commandMap, Model model) throws Exception{
+		Map<String, Object> map = null;
 		
 		if(commandMap.get("show_file") != null) {
+			map = adminActorService.selectActorOne((String)commandMap.get("no"));
+			
+			file = new File(filePath + map.get("ACTOR_IMAGE"));
+			file.delete();
+			
 			MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
 			MultipartFile multipartFile = multipartRequest.getFile("image");
 			String fileName = multipartFile.getOriginalFilename();
@@ -139,12 +156,35 @@ public class AdminActorController {
 			file = new File(filePath + fileName2);
 			multipartFile.transferTo(file);
 		}
-		Set rrkeyset = commandMap.keySet();
-		System.out.println("rrtest : " + rrkeyset);
-		System.out.println("result : " + commandMap.get("image"));
-		System.out.println("no : " + commandMap.get("no"));
 		
 		adminActorService.updateActorOne(commandMap.getMap());
+		
+		return "redirect:/admin/actor.br";
+	}
+	
+	@RequestMapping(value="/actor/delete.br", method=RequestMethod.POST)
+	public String actorDelete(HttpServletRequest request, CommandMap commandMap, RedirectAttributes redirectAttributes) throws Exception{
+		String alert_value = null;
+		session = request.getSession();
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		map = adminUserService.selectUserOne((String)session.getAttribute("ID"));
+		
+		if(passwordEncoder.matches((String)commandMap.get("password"), (String)map.get("PASSWORD"))) {
+			map = adminActorService.selectActorOne((String)commandMap.get("no"));
+			
+			file = new File(filePath + map.get("ACTOR_IMAGE"));
+			file.delete();
+
+			adminActorService.deleteActorOne((String)commandMap.get("no"));
+			
+			alert_value = "삭제 성공!";
+		}else {
+			alert_value = "삭제 실패 : 비밀번호를 확인하세요!";
+		}
+		
+		redirectAttributes.addAttribute("alert_value", alert_value);
 		
 		return "redirect:/admin/actor.br";
 	}

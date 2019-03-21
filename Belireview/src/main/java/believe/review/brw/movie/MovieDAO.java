@@ -87,4 +87,10 @@ public class MovieDAO extends AbstractDAO{
 	public Map<String, Object> commentOne(Map<String, Object> map) throws Exception{
 		return(Map<String,Object>)selectOne("movie_comment.commentOne",map);
 	}
+	public void updateReadCount(Map<String, Object> map) throws Exception{
+		update("movie.updateReadCount",map);
+	}
+	public void updateGrade2(Map<String, Object> map) throws Exception{
+		update("movie.updateGrade2",map);
+	}
 }

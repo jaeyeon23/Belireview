@@ -2,49 +2,30 @@
 <!DOCTYPE mapper PUBLIC " - //mybatis.org//DTD Config 3.0//EN" " http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="ad">
 
-<insert id="insertAd"  parameterType="hashmap">
-insert into AD(	
-	AD_NO,
-	AD_NAME,
-	AD_LINK,
-	AD_CONTENT,
-	AD_COMPANY,
-	AD_READCOUNT,
-	AD_POSTER_IMAGE,
-	AD_MAIN_IMAGE,
-	AD_CONTENT_IMAGE,
-	AD_GRADE,
-)
-values (
-	SEQ_AD_NO.NEXTVAL,
-	#{AD_NAME},
-	#{AD_LINK},
-	#{AD_CONTENT},
-	#{AD_COMPANY},
-	#{AD_READCOUNT},
-	#{AD_POSTER_IMAGE},
-	#{AD_MAIN_IMAGE},
-	#{AD_CONTENT_IMAGE},
-	#{AD_GRADE},
-)
-</insert>
-
-<select id="selectBoardList" resultType="hashmap">
-SELECT
-	AD_NO,
-	AD_NAME,
-	AD_LINK,
-	AD_CONTENT,
-	AD_COMPANY,
-	AD_READCOUNT,
-	AD_POSTER_IMAGE,
-	AD_MAIN_IMAGE,
-	AD_CONTENT_IMAGE,
-	AD_GRADE,
-	RNUM FROM
-	(
-	SELECT
-			AD_NO,
+  <select id="selectBoardList" parameterType="hashmap" resultType="hashmap" >
+		SELECT
+				AD_NO,
+				AD_NAME,
+				AD_LINK,
+				AD_CONTENT,
+				AD_COMPANY,
+				AD_READCOUNT,
+				AD_POSTER_IMAGE,
+				AD_MAIN_IMAGE,
+				AD_CONTENT_IMAGE,
+				AD_GRADE,
+				ROWNUM RNUM FROM 
+				(SELECT *
+					FROM AD ORDER BY DBMS_RANDOM.RANDOM) ORDER BY RNUM ASC
+   </select>
+   
+   <select id="totalAdCount" parameterType="hashmap" resultType="int">
+   		SELECT COUNT(*) AS COUNT FROM AD
+   </select>
+   
+   <select id="adDetail" parameterType="hashmap" resultType="hashmap">
+	   	SELECT
+	   		AD_NO,
 			AD_NAME,
 			AD_LINK,
 			AD_CONTENT,
@@ -54,24 +35,82 @@ SELECT
 			AD_MAIN_IMAGE,
 			AD_CONTENT_IMAGE,
 			AD_GRADE,
-			ROWNUM RNUM FROM 
-    (SELECT * FROM AD ORDER BY AD_NO DESC) ORDER BY RNUM ASC) WHERE RNUM BETWEEN 1 AND 5
-</select>
-
-<select id="adDetail" parameterType="hashmap" resultType="hashmap">
-SELECT
-	AD_NO,
-	AD_NAME,
-	AD_LINK,
-	AD_CONTENT,
-	AD_COMPANY,
-	AD_READCOUNT,
-	AD_POSTER_IMAGE,
-	AD_MAIN_IMAGE,
-	AD_CONTENT_IMAGE,
-	AD_GRADE 
-FROM 
-	AD WHERE AD_NO = #{AD_NO}
-</select>
+			(SELECT ROUND(AVG(AL_GRADE),1)
+			FROM AD_LIKE WHERE AD_LIKE_NO = #{AD_NO} AND AL_GRADE != 0) 
+			AS AD_GRADE 
+		FROM AD WHERE AD_NO = #{AD_NO}
+   </select>
+ 
+   <!-- <select id="detailgenre" parameterType="hashmap" resultType="hashmap" >
+  <![CDATA[
+	SELECT
+ 			AD_NO,
+			AD_NAME,
+			AD_LINK,
+			AD_CONTENT,
+			AD_COMPANY,
+			AD_READCOUNT,
+			AD_POSTER_IMAGE,
+			AD_MAIN_IMAGE,
+			AD_CONTENT_IMAGE,
+			AD_GRADE,
+			RNUM FROM 
+			(
+		SELECT
+				AD_NO,
+				AD_NAME,
+				AD_LINK,
+				AD_CONTENT,
+				AD_COMPANY,
+				AD_READCOUNT,
+				AD_POSTER_IMAGE,
+				AD_MAIN_IMAGE,
+				AD_CONTENT_IMAGE,
+				AD_GRADE,
+				ROWNUM RNUM FROM 
+				(SELECT *
+					FROM AD WHERE AD_NO != #{AD_NO} and AD_COMPANY = #{AD_COMPANY} ORDER BY AD_DATE DESC) ORDER BY RNUM ASC)WHERE RNUM BETWEEN 1 AND 4
+		]]>
+   </select> -->
+   
+   	<select id="existGrade" parameterType="hashmap" resultType="hashmap">
+   		select * from AD_like where AD_like_no=#{AD_NO} and id=#{ID}
+	</select>
+	
+	<insert id="addGrade" parameterType="hashmap">
+		insert into AD_like values(#{AD_NO},#{ID},#{RATING})
+	</insert>
+	
+	<delete id="updateGrade" parameterType="hashmap">
+		update AD_like set AL_grade  =#{RATING} where AD_like_no=#{AD_NO} and id=#{ID}		
+	</delete>
+	
+	<select id="grade" parameterType="hashmap" resultType="int">
+   		select count(*) from AD_like where AD_like_no=#{AD_NO}
+	</select>
+	
+	<select id="ratingPrediction" parameterType="hashmap" resultType="double">
+		select round(avg(AL_GRADE),1) from AD_like where AD_like_no in (select AD_no from AD where AD_genre=#{AD_GENRE}) and id=#{ID}
+	</select>
+	
+	<select id="gradeRatio" parameterType="hashmap" resultType="hashmap">
+		  with t as(
+		  		SELECT '0.5' GRADE, count(*) A FROM AD_like where AL_GRADE=0.5 and AD_like_no=#{AD_NO} UNION ALL
+		        SELECT '1' GRADE, count(*) A FROM AD_like where AL_GRADE=1 and AD_like_no=#{AD_NO} UNION ALL
+		        SELECT '1.5' GRADE, count(*) A FROM AD_like where AL_GRADE=1.5 and AD_like_no=#{AD_NO} UNION ALL
+		        SELECT '2' GRADE, count(*) A FROM AD_like where AL_GRADE=2 and AD_like_no=#{AD_NO} UNION ALL
+		        SELECT '2.5' GRADE, count(*) A FROM AD_like where AL_GRADE=2.5 and AD_like_no=#{AD_NO} UNION ALL
+		        SELECT '3' GRADE, count(*) A FROM AD_like where AL_GRADE=3 and AD_like_no=#{AD_NO} UNION ALL
+		        SELECT '3.5' GRADE, count(*) A FROM AD_like where AL_GRADE=3.5 and AD_like_no=#{AD_NO} UNION ALL
+		        SELECT '4' GRADE, count(*) A FROM AD_like where AL_GRADE=4 and AD_like_no=#{AD_NO} UNION ALL
+		        SELECT '4.5' GRADE, count(*) A FROM AD_like where AL_GRADE=4.5 and AD_like_no=#{AD_NO} UNION ALL
+		        SELECT '5' GRADE, count(*) A FROM AD_like where AL_GRADE=5 and AD_like_no=#{AD_NO}
+		  )
+		  select 
+		    decode(grouping(GRADE),1,'TOTAL',GRADE) as GRADE,
+		    TO_CHAR(SUM(A) / SUM(CASE WHEN GROUPING(GRADE) = 0 THEN SUM(A) ELSE 0 END) OVER() * 100, '990.00') AS RATIO
+		    FROM t 
+		GROUP BY ROLLUP(GRADE)
+	</select>
 
 </mapper>

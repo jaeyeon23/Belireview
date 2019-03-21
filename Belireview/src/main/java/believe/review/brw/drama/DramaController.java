@@ -36,7 +36,6 @@ public class DramaController {
 	
 	@Resource(name="userService")
 	private UserService userService;
-	
 
 	@RequestMapping(value = "dramaList.br")
 	public ModelAndView dramaList(CommandMap commandMap,HttpServletRequest request) throws Exception {
@@ -81,9 +80,27 @@ public class DramaController {
 		Map<String,Object> map = dramaService.dramaDetail(commandMap.getMap());//상세보기
 		List<Map<String,Object>> comment = dramaService.dramaCommentForDetail(map);//댓
 		
-		List<Map<String,Object>> actor = dramaService.dramaActor(map); //출연배우
+		List<Map<String,Object>> actortmp = dramaService.dramaActor(map); //출연배우
+		List<Map<String,Object>> actor = new ArrayList<Map<String,Object>>(); 
 		
 		List<Map<String,Object>> detailgenre = dramaService.detailgenre(map);//비슷한장르
+		for(Map m:actortmp) {
+			Map mp = new HashMap();
+			if(m.get("ACTOR_DRAMA") != null) {
+				String tmp[] = m.get("ACTOR_DRAMA").toString().split(",");
+				for(int i=0;i<tmp.length;i++) {
+					if(tmp[i].equals(map.get("DRAMA_NO").toString())) {
+						System.out.println("작동함?"+m.get("ACTOR_NAME"));
+						mp.put("ACTOR_NAME", m.get("ACTOR_NAME"));
+						mp.put("ACTOR_IMAGE", m.get("ACTOR_IMAGE"));
+						actor.add(mp);
+					}
+				}
+			}
+		}
+		
+		
+		
 		int totalGrade = dramaService.grade(map);
 		try {
 			List<Map<String,Object>> gradeRatio = dramaService.gradeRatio(map);//별점비율
@@ -105,6 +122,7 @@ public class DramaController {
 		List<String> likeList = new ArrayList<String>();
 		if(session.getAttribute("ID")!=null) {//로그인했을때
 			map.put("ID", session.getAttribute("ID"));
+			map.put("NAME", session.getAttribute("NAME"));
 			Map<String,Object> tmp = userService.userWishList(map);
 			if(tmp!=null) {
 				if(tmp.get("MYPAGE_DRAMA")!=null) {//보고싶어요
@@ -150,7 +168,7 @@ public class DramaController {
 		}
 		
 		totalCount = (Integer)dramaService.totalDramaComment(map);
-	
+		System.out.println("사이즈"+actor.size());
 		mv.addObject("map",map);
 		mv.addObject("comment",comment);
 		mv.addObject("actor",actor);

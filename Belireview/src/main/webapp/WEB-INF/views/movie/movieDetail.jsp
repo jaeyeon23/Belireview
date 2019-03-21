@@ -75,11 +75,11 @@
 			if(id==""){//비로그인
 				$(".gsSopE").click(function(){//보고싶어요
 					alert("로그인 해주세요.");
-					location.href="<c:url value='/member/loginForm.br' />"
+					location.href="<c:url value='/member/loginForm.br?${_csrf.parameterName}=${_csrf.token}' />"
 					});
 				$(".gZASBp").click(function(){//별점
 					alert("로그인 해주세요.");
-					location.href="<c:url value='/member/loginForm.br' />"
+					location.href="<c:url value='/member/loginForm.br?${_csrf.parameterName}=${_csrf.token}' />"
 				});
 			}else{//로그인
 				if(mcc != ""){ // 마이코멘트 숨기기 보여주기
@@ -126,7 +126,7 @@
 			async : true,  
 			type : 'POST',
 			data : {ID:id , COMMENTLIKE:"c" ,CLA:cla , MVOIE_NO:<%=request.getParameter("MOVIE_NO")%>, MC_NO:$(".00"+cla).val()},
-			url:"<c:url value='/movie/movieDetail.br' />",
+			url:"<c:url value='/movie/movieDetail.br?${_csrf.parameterName}=${_csrf.token}' />",
 			success : function(result){
 					var r = result;
 					var clike ="좋아요취소";
@@ -147,7 +147,7 @@
 				 async:true,
 				 type:'POST',
 				 data:{ID:id,DELCOM:'DEL', MC_NO:"${myComment.MC_NO}",MOVIE_NO:<%=request.getParameter("MOVIE_NO")%>},
-				 url:"<c:url value='/movie/movieDetail.br' />",
+				 url:"<c:url value='/movie/movieDetail.br?${_csrf.parameterName}=${_csrf.token}' />",
 				 success:function(result){
 					$(".writeComment").css("display","block");
 					$(".existComment").css("display","none");
@@ -161,7 +161,7 @@
 				 async:true,
 				 type:'POST',
 				 data:{ID:id,MCOM:$('.com2').val(), MOVIE_NO:<%=request.getParameter("MOVIE_NO")%>},
-				 url:"<c:url value='/movie/movieDetail.br' />",
+				 url:"<c:url value='/movie/movieDetail.br?${_csrf.parameterName}=${_csrf.token}' />",
 				 success:function(result){
 					$(".writeComment").css("display","none");
 					$(".existComment").css("display","block");
@@ -176,7 +176,7 @@
 				 async:true,
 				 type:'POST',
 				 data:{ID:id,COM:$('.com').val(), MOVIE_NO:<%=request.getParameter("MOVIE_NO")%>},
-				 url:"<c:url value='/movie/movieDetail.br' />",
+				 url:"<c:url value='/movie/movieDetail.br?${_csrf.parameterName}=${_csrf.token}' />",
 				 success:function(result){
 					$(".writeComment").css("display","none");
 					$(".existComment").css("display","block");
@@ -192,7 +192,7 @@
 				async : true,  
 				type : 'POST',
 				data : {ID:id , WISH:"w" , MOVIE_NO:<%=request.getParameter("MOVIE_NO")%>},
-				url:"<c:url value='/movie/movieDetail.br' />",
+				url:"<c:url value='/movie/movieDetail.br?${_csrf.parameterName}=${_csrf.token}' />",
 				success : function(result){
 					var w = result;
 					var a = "보기싫어요";
@@ -218,7 +218,7 @@
 				async : true,  
 				type : 'POST',
 				data : {ID:id , RATING:rr , MOVIE_NO:<%=request.getParameter("MOVIE_NO")%>},
-				url:"<c:url value='/movie/movieDetail.br' />",
+				url:"<c:url value='/movie/movieDetail.br?${_csrf.parameterName}=${_csrf.token}' />",
 				success : function(result){
 				}
 				/* $('.gZASBp > a.r1'); */
@@ -580,7 +580,7 @@
 																		class="ContentMyCommentSection__LeaveCommentBlock-mhuscg-2 bvmyee">
 																		<h3
 																			class="ContentMyCommentSection__Title-mhuscg-11 inwTWL">이
-																			작품에 대한 ${map.ID} 님의 평가를 글로 남겨보세요.</h3>
+																			작품에 대한 ${map.NAME} 님의 평가를 글로 남겨보세요.</h3>
 																		<div class="ContentMyCommentSection__ButtonBlock-mhuscg-12 kTSrnl">
 																			<!-- modal 구동 버튼 (trigger) -->
 																			<!-- 코멘트 작성창 -->
@@ -960,7 +960,7 @@
 																												</div>
 																											</div>
 																											<div class="UserNameWithBadges__Self-s1bd3hgj-0 brZhrQ">
-																												${comment.ID} 
+																												${comment.NAME} 
 																												<input type="hidden" value="${comment.MC_NO}" class="00like${stat.index}"/>
 																												<span class="UserNameWithBadges__SmallBadge-s1bd3hgj-1 bAndNa UIImg-s3jz6tx-0 eBREVF" src="/brw/resources/images/detail/detail_comment1.svg"></span>
 																												<span class="UserNameWithBadges__SmallBadge-s1bd3hgj-1 bAndNa UIImg-s3jz6tx-0 kyuoIv" src="/brw/resources/images/detail/detail_comment2.svg"></span>
@@ -1056,7 +1056,7 @@
 																	<span class="TitleSuffixForNumber-l2d30g-0 ejtPKl"><!-- 비슷한장르개수 --></span>
 																	<div class="SectionWithHeader__TopRight-s1eyxltb-3 bZaEfL">
 																			<div class="SectionWithViewMore__ViewMore-xtbl7q-0 bhbIbv">
-																				<a href="/brw/mainSearch.br">더보기</a>
+																				<a href="/brw/mainSearch.br?GENRE=${map.MOVIE_GENRE}">더보기</a>
 																			</div>
 																		</div>
 																</header>
@@ -1071,7 +1071,7 @@
 														      <img src="/brw/resources/images/movie/poster/${detailgenrelist.MOVIE_POSTER_IMAGE}">
 														      <%-- <input type='hidden' class='IDX' value="${dramaList.DRAMA_NO}"> --%>
 														      <div class="detailgenrefont">
-														        <h3>#${detailgenrelist.MOVIE_NAME}</h3>
+														        <h3 class="genrename">#${detailgenrelist.MOVIE_NAME}</h3>
 														        <p>#${detailgenrelist.MOVIE_DATE}・#${detailgenrelist.MOVIE_COUNTRY}</p>
 														      </div>
 														    </div>

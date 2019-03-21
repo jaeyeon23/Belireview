@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import believe.review.brw.admin.actor.AdminActorService;
 import believe.review.brw.admin.user.AdminUserService;
 import believe.review.brw.common.common.CommandMap;
 import believe.review.brw.common.util.FileUtils;
@@ -33,12 +34,15 @@ public class AdminDramaController {
 	private int blockPage = 5; 	 
 	private String pagingHtml;  
 	private Paging page;
-//	private String filePath = "C:\\Users\\박재연\\Desktop\\Belireview\\Belireview\\src\\main\\webapp\\resources\\images\\drama\\";
-	private String filePath = "C:\\인영\\sts\\Belireview\\Belireview\\src\\main\\webapp\\resources\\images\\drama\\";
+	private String filePath = "C:\\Users\\박재연\\Desktop\\Belireview\\Belireview\\src\\main\\webapp\\resources\\images\\drama\\";
+	//private String filePath = "C:\\인영\\sts\\Belireview\\Belireview\\src\\main\\webapp\\resources\\images\\drama\\";
 	private HttpSession session = null;
 	
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
+	
+	@Resource(name="adminActorService")
+	private AdminActorService adminActorService;
 	
 	@Resource(name="adminUserService")
 	private AdminUserService adminUserService;
@@ -119,6 +123,30 @@ public class AdminDramaController {
 		commandMap.put("content_image", listMap.get("content_image"));
 		
 		adminDramaService.writeDrama(commandMap.getMap());
+
+		String textarea = (String)commandMap.get("drama_textarea");
+		String[] actor_list = textarea.split(", ");
+		
+		for(String actor : actor_list) {
+			Map<String, Object> actor_map = adminActorService.selectActorOne(actor);
+			
+			String drama_textarea = (String)actor_map.get("ACTOR_DRAMA");
+			String[] drama_list = drama_textarea.split(", ");
+			int count = 0;
+			
+			for(String drama : drama_list) {
+				if(drama.equals((String)commandMap.get("no"))) {
+					count = 1;
+					
+					break;
+				}
+			}
+			
+			if(count == 0) {
+				actor_map.put("drama_textarea", actor_map.get("ACTOR_DRAMA") + ", " + commandMap.get("no"));
+				adminActorService.updateActorOne(actor_map);
+			}
+		}
 		
 		return "redirect:/admin/drama.br";
 	}
@@ -127,10 +155,29 @@ public class AdminDramaController {
 	public String dramaModifyPage(HttpServletRequest request, Model model) throws Exception{
 		
 		int no = Integer.parseInt(request.getParameter("no"));
-
+		
+		List<Map<String, Object>> actor_list = adminActorService.selectActorDramaModify(request.getParameter("no"));
+		String str = "";
+		
+		for(Map<String, Object> map : actor_list) {
+			String drama_list = (String) map.get("ACTOR_DRAMA");
+			String[] drama_arr = drama_list.split(", ");
+			
+			for(String drama : drama_arr) {
+				if(drama.equals(request.getParameter("no"))) {
+					if(str.equals("")) {
+						str = map.get("ACTOR_NO").toString();
+					}else {
+						str += ", " + (String)map.get("ACTOR_NO");
+					}
+				}
+			}
+		}
+		
 		Map<String, Object> update_drama_one = adminDramaService.selectDramaOne(no);
 		
 		model.addAttribute("admin", update_drama_one);
+		model.addAttribute("str", str);
 		
 		return "/admin/drama/adminDramaModify";
 	}
@@ -153,6 +200,30 @@ public class AdminDramaController {
 		}	
 		
 		adminDramaService.updateDramaOne(commandMap.getMap());
+		
+		String textarea = (String)commandMap.get("drama_textarea");
+		String[] actor_list = textarea.split(", ");
+		
+		for(String actor : actor_list) {
+			Map<String, Object> actor_map = adminActorService.selectActorOne(actor);
+			
+			String drama_textarea = (String)actor_map.get("ACTOR_DRAMA");
+			String[] drama_list = drama_textarea.split(", ");
+			int count = 0;
+			
+			for(String drama : drama_list) {
+				if(drama.equals((String)commandMap.get("no"))) {
+					count = 1;
+					
+					break;
+				}
+			}
+			
+			if(count == 0) {
+				actor_map.put("drama_textarea", actor_map.get("ACTOR_DRAMA") + ", " + commandMap.get("no"));
+				adminActorService.updateActorOne(actor_map);
+			}
+		}
 		
 		return "redirect:/admin/drama.br";
 	}

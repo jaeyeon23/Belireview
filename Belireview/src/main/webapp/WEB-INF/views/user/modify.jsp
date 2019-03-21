@@ -387,7 +387,7 @@
 			return false;
 		} else { 
 			if (password_ok == "") {
-				join_form.password.value= "${PASSWORD}";
+				join_form.password.value= "";
 			} 
 			
 			if(!$("#termsEmail").prop("checked")){ // 이메일수신 체크된게 아니면 (disabled=true면 value값 넘어가지않음)

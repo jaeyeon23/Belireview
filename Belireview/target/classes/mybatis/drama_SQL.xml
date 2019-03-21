@@ -3,23 +3,6 @@
 <mapper namespace="drama">
 
   <select id="selectBoardList" parameterType="hashmap" resultType="hashmap" >
-  <!-- 
- 		SELECT
- 			DRAMA_NO,
-			DRAMA_NAME,
-			DRAMA_DATE,
-			DRAMA_CHANNEL,
-			DRAMA_GENRE,
-			DRAMA_DIRECTOR,
-			DRAMA_CONTENT,
-			DRAMA_READCOUNT,
-			DRAMA_POSTER_IMAGE,
-			DRAMA_MAIN_IMAGE,
-			DRAMA_CONTENT_IMAGE,
-			DRAMA_EPISODE,
-			DRAMA_GRADE,
-			RNUM FROM 
-			( -->
 		SELECT
 				DRAMA_NO,
 				DRAMA_NAME,
@@ -36,8 +19,7 @@
 				DRAMA_GRADE,
 				ROWNUM RNUM FROM 
 				(SELECT *
-					FROM DRAMA ORDER BY DBMS_RANDOM.RANDOM) ORDER BY RNUM ASC<!-- ) WHERE RNUM BETWEEN #{START} AND #{END} -->
-		
+					FROM DRAMA ORDER BY DBMS_RANDOM.RANDOM) ORDER BY RNUM ASC
    </select>
    
    <select id="totalDramaCount" parameterType="hashmap" resultType="int">
@@ -66,7 +48,7 @@
  
    
    <select id="dramaActor" parameterType="hashmap" resultType="hashmap">
-   		SELECT ACTOR_NAME,ACTOR_IMAGE FROM ACTOR WHERE ACTOR_DRAMA LIKE '%'||#{DRAMA_NO}||'%'
+   		SELECT ACTOR_NAME,ACTOR_IMAGE,ACTOR_DRAMA FROM ACTOR WHERE ACTOR_DRAMA LIKE '%'||#{DRAMA_NO}||'%'
    </select>
    
    <select id="detailgenre" parameterType="hashmap" resultType="hashmap" >
@@ -118,32 +100,6 @@
 	<delete id="updateGrade" parameterType="hashmap">
 		update drama_like set dl_grade  =#{RATING} where drama_like_no=#{DRAMA_NO} and id=#{ID}		
 	</delete>
-	
-
-	<!-- <select>
-		SELECT * FROM DRAMA WHERE DRAMA_NO=#{DRAMA_NO}
-	</select>
-	
-수정	
-	<update>
-	UPDATE DRAMA SET 
-		DRAMA_NAME=#{DRAMA_NAME},
-		DRAMA_DATE=#{DRAMA_DATE},
-		DRAMA_CHANNEL=#{DRAMA_CHANNEL},
-		DRAMA_GENRE=#{DRAMA_GENRE},
-		DRAMA_DIRECTOR=#{DRAMA_DIRECTOR},
-		DRAMA_CONTENT=#{DRAMA_CONTENT},
-		DRAMA_POSTER_IMAGE=#{DRAMA_POSTER_IMAGE},
-		DRAMA_MAIN_IMAGE=#{DRAMA_MAIN_IMAGE},
-		DRAMA_CONTENT_IMAGE=#{CONTENT_IMAGE},
-		DRAMA_EPISODE=#{EPISODE}
-	WHERE DRAMA_NO=#{DRAMA_NO}	
-	</update>
-
-삭제
-	<delete>
-		DELETE DRAMA WHERE DRAMA_NO=#{DRAMA_NO}
-	</delete> -->
 	
 	<select id="grade" parameterType="hashmap" resultType="int">
    		select count(*) from drama_like where drama_like_no=#{DRAMA_NO}
