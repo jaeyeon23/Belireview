@@ -17,7 +17,7 @@
 	<dependencies> 
 	
 	  <!-- ssl -->
-		<!--  <dependency>
+	 	<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-web</artifactId>
 			<version>3.2.8.RELEASE</version>
@@ -27,10 +27,10 @@
 	       <groupId>org.springframework.security</groupId>
 	       <artifactId>spring-security-config</artifactId>
 	       <version>3.2.8.RELEASE</version>
-	   </dependency> -->
+	   </dependency> 
      <!-- ssl -->
      
-		<!-- bcrypt -->
+		<!-- bcrypt --> 
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-web</artifactId>
