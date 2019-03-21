@@ -105,6 +105,7 @@ public class DramaController {
 		List<String> likeList = new ArrayList<String>();
 		if(session.getAttribute("ID")!=null) {//로그인했을때
 			map.put("ID", session.getAttribute("ID"));
+			map.put("NAME", session.getAttribute("NAME"));
 			Map<String,Object> tmp = userService.userWishList(map);
 			if(tmp!=null) {
 				if(tmp.get("MYPAGE_DRAMA")!=null) {//보고싶어요

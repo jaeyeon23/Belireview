@@ -5,15 +5,16 @@
 <html>
 <head>
 <meta charset="utf-8">
-   <link rel="stylesheet" href="/brw/resources/css/list.css">
+   <link rel="stylesheet" href="/brw/resources/css/list2.css">
+
 </head>
 <body>
 	<div class="row a">
 		<c:forEach items="${list}" var="adList" >
 			 <div class="col-sm-6 col-md-3">
-			 	<a href="/brw/ad/adDetail.br?AD_NO=${adList.AD_NO}"/>
+			 	<a href="/brw/ad/adDetail.br?AD_NO=${adList.AD_NO}">
 			    <div class="thumbnail">
-			      <img src="/brw/resources/images/3-girls.jpg">
+			       <img src="${adList.AD_POSTER_IMAGE}">
 			      <div class="caption">
 			         <h3>${adList.AD_NAME}</h3>
 			        <p>${adList.AD_COMPANY}・${adList.AD_READCOUNT}</p>

@@ -4,12 +4,13 @@
 <mapper namespace="user">
 
 	<select id="UserMovieAll" parameterType="hashmap" resultType="hashmap">
-		SELECT
+      SELECT
 			MOVIE_NO,
 			MOVIE_NAME,
 			MOVIE_DATE,
 			MOVIE_POSTER_IMAGE,
-			TO_CHAR(MOVIE_GRADE,'0.0') AS MOVIE_GRADE,
+   	   		TO_CHAR((SELECT ML_GRADE FROM MOVIE_LIKE WHERE ID=#{ID} AND MOVIE_LIKE_NO=A.MOVIE_NO),'0.0') ML_GRADE,
+      		TO_CHAR((SELECT AVG(ML_GRADE) FROM MOVIE_LIKE WHERE MOVIE_LIKE_NO=A.MOVIE_NO),'0.0') AS MOVIE_AVG_GRADE,
 			RNUM
 		FROM
 		(
@@ -18,22 +19,22 @@
 			MOVIE_NAME,
 			MOVIE_DATE,
 			MOVIE_POSTER_IMAGE,
-			MOVIE_GRADE,
 			ROWNUM RNUM
 		FROM MOVIE 
 		WHERE MOVIE_NO IN 
 			(SELECT MOVIE_LIKE_NO
 			FROM MOVIE_LIKE
-			WHERE ID=#{ID}) ORDER BY MOVIE_DATE)
+			WHERE ID=#{ID}) ORDER BY MOVIE_DATE) A
 	</select>
 	
 	<select id="UserDramaAll" parameterType="hashmap" resultType="hashmap">
-		SELECT
+		 SELECT
 			DRAMA_NO,
 			DRAMA_NAME,
 			DRAMA_DATE,
 			DRAMA_POSTER_IMAGE,
-			TO_CHAR(DRAMA_GRADE,'0.0') AS DRAMA_GRADE,
+   	   		TO_CHAR((SELECT DL_GRADE FROM DRAMA_LIKE WHERE ID=#{ID} AND DRAMA_LIKE_NO=A.DRAMA_NO),'0.0') DL_GRADE,
+      		TO_CHAR((SELECT AVG(DL_GRADE) FROM DRAMA_LIKE WHERE DRAMA_LIKE_NO=A.DRAMA_NO),'0.0') AS DRAMA_AVG_GRADE,
 			RNUM
 		FROM
 		(
@@ -42,13 +43,34 @@
 			DRAMA_NAME,
 			DRAMA_DATE,
 			DRAMA_POSTER_IMAGE,
-			DRAMA_GRADE,
 			ROWNUM RNUM
 		FROM DRAMA 
 		WHERE DRAMA_NO IN 
 			(SELECT DRAMA_LIKE_NO
 			FROM DRAMA_LIKE
-			WHERE ID=#{ID}) ORDER BY DRAMA_DATE)
+			WHERE ID=#{ID}) ORDER BY DRAMA_DATE) A
+	</select>
+	
+	<select id="UserAdAll" parameterType="hashmap" resultType="hashmap">
+		 SELECT
+			AD_NO,
+			AD_NAME,
+			AD_POSTER_IMAGE,
+   	   		TO_CHAR((SELECT AL_GRADE FROM AD_LIKE WHERE ID=#{ID} AND AD_LIKE_NO=A.AD_NO),'0.0') AL_GRADE,
+      		TO_CHAR((SELECT AVG(AL_GRADE) FROM AD_LIKE WHERE AD_LIKE_NO=A.AD_NO),'0.0') AS AD_AVG_GRADE,
+			RNUM
+		FROM
+		(
+		SELECT 
+			AD_NO,
+			AD_NAME,
+			AD_POSTER_IMAGE,
+			ROWNUM RNUM
+		FROM AD 
+		WHERE AD_NO IN 
+			(SELECT AD_LIKE_NO
+			FROM AD_LIKE
+			WHERE ID=#{ID}) ) A
 	</select>
 	
 	<select id="userWishList" parameterType="hashmap" resultType="hashmap"><!-- 보고싶어요 -->
@@ -58,7 +80,7 @@
 	<insert id="insertWishList" parameterType="hashmap"> <!-- 보고싶어요 저장-->
 		insert into mypage
 		<choose>
-		    <when  test='movie_no != null'>
+		    <when  test='MOVIE_NO != null'>
 		      	(mypage_id,mypage_movie) values(#{ID},#{MOVIE_NO})
 		    </when>
 		    <otherwise>
@@ -70,7 +92,7 @@
 	<update id="updateWishList" parameterType="hashmap"><!-- 보고싶어요 수정-->
 		update mypage set 
 		<choose>
-			<when  test='movie_no != null'>
+			<when  test='MOVIE_NO != null'>
 		      	mypage_movie=#{MOVIE_NO}
 		    </when>
 		    <otherwise>
@@ -100,72 +122,18 @@
 	
 	<!-- 회원정보수정 -->
 	<update id="changeUser" parameterType="hashmap">
-		<![CDATA[
 		UPDATE MEMBER
         SET 
+            <if test = "password != ''">
+          		PASSWORD = #{password},
+			</if>
             NAME = #{name},
-            PASSWORD = #{password},
             TEL = #{tel},
             EMAIL = #{email},
             EMAIL_MARKETING = #{email_marketing},
             SMS_MARKETING = #{sms_marketing}                      
     	WHERE ID = #{id}
-		]]>
 	</update>
-	
-	<select id="selectUserGrade" parameterType="hashmap" resultType="hashmap">	
-	SELECT 
-		(SELECT
-		 MOVIE_NAME
-	FROM MOVIE 
-	WHERE
-		MOVIE_NO = MOVIE_LIKE_NO)
-		MOVIE_NAME,
-(SELECT
-		 MOVIE_POSTER_IMAGE
-	FROM MOVIE 
-	WHERE
-		MOVIE_NO = MOVIE_LIKE_NO) IMAGE,
-		ID,
-		TO_CHAR(ML_GRADE,'0.0') AS ML_GRADE,
-		RNUM
-	FROM(
-	SELECT 
-		MOVIE_LIKE_NO,
-		ID,
-		ML_GRADE,
-		ROWNUM RNUM
-	FROM MOVIE_LIKE
-	WHERE ID=#{ID}) 
-	WHERE RNUM BETWEEN 1 AND 10
-	</select>
-	
-	<select id="selectDUserGrade" parameterType="hashmap" resultType="hashmap">	
-	SELECT 
-		(SELECT
-		 DRAMA_NAME
-	FROM DRAMA 
-	WHERE
-		DRAMA_NO = DRAMA_LIKE_NO)
-		DRAMA_NAME,
-(SELECT
-		 DRAMA_POSTER_IMAGE
-	FROM DRAMA 
-	WHERE
-		DRAMA_NO = DRAMA_LIKE_NO) IMAGE,
-		ID,
-		TO_CHAR(DL_GRADE,'0.0') AS DL_GRADE,
-		RNUM
-	FROM(
-	SELECT 
-		DRAMA_LIKE_NO,
-		ID,
-		DL_GRADE,
-		ROWNUM RNUM
-	FROM DRAMA_LIKE
-	WHERE ID=#{ID}) 
-	WHERE RNUM BETWEEN 1 AND 10
-	</select>
 	
 	<select id="userDramaList" parameterType="hashmap" resultType="hashmap">
 		SELECT

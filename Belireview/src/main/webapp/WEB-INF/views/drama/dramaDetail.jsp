@@ -4,7 +4,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Insert title hersse</title>
 <meta charset="utf-8">
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -41,17 +40,18 @@
 	<script src="/brw/resources/js/slides.jquery.js"></script>
 	
 	<script>
-	
+	var id = "${ID}";
+	var grade = "${grade}";
+	var wi = "${wish}";
+	var ra = ""
+	var initValue = "${initValue}";
+	var mcc = "${myComment}";
+	var like = "${likeList}".split(",");
 		$(function() {
 			$("#cat-nav").hide();
+			
 		})
-		var id = "${ID}";
-		var grade = "${grade}";
-		var wi = "${wish}";
-		var ra = ""
-		var initValue = "${initValue}";
-		var mcc = "${myComment}";
-		var like = "${likeList}".split(",");
+		
 		$(function() {
 			var ee;
 			for (var i = 0; i < 10; i++) {
@@ -80,11 +80,11 @@
 			if (id == "") {//비로그인
 				$(".gsSopE").click(function() {//보고싶어요
 					alert("로그인 해주세요.");
-					location.href = "<c:url value='/member/loginForm.br' />"
+					location.href = "<c:url value='/member/loginForm.br?${_csrf.parameterName}=${_csrf.token}' />"
 				});
 				$(".gZASBp").click(function() {//별점
 					alert("로그인 해주세요.");
-					location.href = "<c:url value='/member/loginForm.br' />"
+					location.href = "<c:url value='/member/loginForm.br?${_csrf.parameterName}=${_csrf.token}' />"
 				});
 			} else {//로그인
 				if (mcc != "") { // 마이코멘트 숨기기 보여주기
@@ -590,7 +590,7 @@
 																		class="ContentMyCommentSection__LeaveCommentBlock-mhuscg-2 bvmyee">
 																		<h3
 																			class="ContentMyCommentSection__Title-mhuscg-11 inwTWL">이
-																			작품에 대한 ${map.ID} 님의 평가를 글로 남겨보세요.</h3>
+																			작품에 대한 ${map.NAME} 님의 평가를 글로 남겨보세요.</h3>
 																		<div class="ContentMyCommentSection__ButtonBlock-mhuscg-12 kTSrnl">
 																			<!-- modal 구동 버튼 (trigger) -->
 																			<!-- 코멘트 작성창 -->
@@ -970,7 +970,7 @@
 																												</div>
 																											</div>
 																											<div class="UserNameWithBadges__Self-s1bd3hgj-0 brZhrQ">
-																												${comment.ID} 
+																												${comment.NAME} 
 																												<input type="hidden" value="${comment.DC_NO}" class="00like${stat.index}"/>
 																												<span class="UserNameWithBadges__SmallBadge-s1bd3hgj-1 bAndNa UIImg-s3jz6tx-0 eBREVF" src="/brw/resources/images/detail/detail_comment1.svg"></span>
 																												<span class="UserNameWithBadges__SmallBadge-s1bd3hgj-1 bAndNa UIImg-s3jz6tx-0 kyuoIv" src="/brw/resources/images/detail/detail_comment2.svg"></span>
@@ -1066,7 +1066,7 @@
 																	<span class="TitleSuffixForNumber-l2d30g-0 ejtPKl"><!-- 비슷한장르개수 --></span>
 																	<div class="SectionWithHeader__TopRight-s1eyxltb-3 bZaEfL">
 																			<div class="SectionWithViewMore__ViewMore-xtbl7q-0 bhbIbv">
-																				<a href="/brw/mainSearch.br">더보기</a>
+																				<a href="/brw/mainSearch.br?GENRE=${map.DRAMA_GENRE}">더보기</a>
 																			</div>
 																		</div>
 																</header>
@@ -1081,7 +1081,7 @@
 														      <img src="/brw/resources/images/drama/poster/${detailgenrelist.DRAMA_POSTER_IMAGE}">
 														      <%-- <input type='hidden' class='IDX' value="${dramaList.DRAMA_NO}"> --%>
 														      <div class="detailgenrefont">
-														        <h3>#${detailgenrelist.DRAMA_NAME}</h3>
+														        <h3 class="genrename">#${detailgenrelist.DRAMA_NAME}</h3>
 														        <p>#${detailgenrelist.DRAMA_DATE}・#${detailgenrelist.DRAMA_CHANNEL}</p>
 														      </div>
 														    </div>
