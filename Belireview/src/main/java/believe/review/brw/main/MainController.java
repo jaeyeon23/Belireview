@@ -150,6 +150,7 @@ public class MainController {
 		
 		searchAd = searchAd.subList(adPage.getStartCount(), lastCount);
 	
+		
 		mv.addObject("currentPage",currentPage);
 		mv.addObject("request",request.getParameter("searchText"));
 		mv.addObject("searchMain",searchMain);
@@ -158,7 +159,9 @@ public class MainController {
 		mv.addObject("searchAd",searchAd);
 
 		return mv;
-		}	
+		}
+	
+	
 		@RequestMapping(value = "mainSearch2.br")
 		@ResponseBody
 		public Map<String,Object> mainSearch2(CommandMap commandMap,HttpServletRequest request) throws Exception {
