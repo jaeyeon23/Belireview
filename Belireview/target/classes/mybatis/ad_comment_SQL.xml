@@ -6,7 +6,7 @@
 		INSERT INTO AD_COMMENT 
 		(
 		  AD_NO,
-		  AD_NO,
+		  ADC_NO,
 		  ID,
 		  AD_REG_DATE,
 		  AD_CONTENT,
@@ -15,7 +15,7 @@
 		VALUES
 		(
 		  #{AD_NO},
-		  SEQ_AD_COMMENT.NEXTVAL,
+		  SEQ_AD_COMMENT_NO.NEXTVAL,
 		  #{ID},
 		  SYSDATE,
 		  #{COM},

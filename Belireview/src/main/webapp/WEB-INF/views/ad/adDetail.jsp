@@ -48,6 +48,7 @@
 		var ra = "" 
 		var initValue = "${initValue}";
 		var mcc = "${myComment}";
+		var like = "${likeList}".split(",");
 		
 		 $(function(){
 			 if(wi!=""){//보고싶어요에있을때
@@ -60,7 +61,14 @@
 			 }else{
 				$('.ccOSgS').html("평가하기");
 			 }
-		 });  
+		 });
+		 $(function() {
+				var ee;
+				for (var i = 0; i < 10; i++) {
+					ee = $('.ree' + i).html() + "px";
+					$('.re' + (i + 1)).css("height", ee);
+				}
+			});//막대그래프 높이 조정
 		 /* 로그인 유무 */
 		$(function(){ 
 			if(id==""){//비로그인
@@ -92,20 +100,60 @@
 				}); 
 				 $('.mc').click(function(){
 					updateComment();
-				}); 
+				});
+				$(".like").live("click", function() {//좋아요 버튼
+					var cla = $(this).attr('class').split(" ")[5];
+					commentlike(cla);
+					return;
+				});
+				if (like.length > 0) {
+					for (var i = 0; i < like.length; i++) {
+						var tmp = like[i].replace("[", "").replace("]", "").trim();
+						$("." + tmp).html("좋아요취소");
+					}
+				}
 			}
 		});
 		 /* 로그인 유무 */
+		 
+		 //좋아요
+		function commentlike(cla) {
+			$.ajax({
+				async : true,
+				type : 'POST',
+				data : {
+					ID : id,
+					COMMENTLIKE : "c",
+					CLA : cla,
+					AD_NO :
+					<%=request.getParameter("AD_NO")%>, ADC_NO:$(".00"+cla).val()},
+					url:"<c:url value='/ad/adDetail.br?${_csrf.parameterName}=${_csrf.token}' />",
+					success : function(result){
+					var r = result;
+					var clike ="좋아요취소";
+					var cnolike ="좋아요";
+					if(r.add){
+						$('.'+r.CLA).html(clike);
+					}
+					if(r.subtract){
+						$('.'+r.CLA).html(cnolike);
+					}
+					$('.0'+r.CLA).html(result.AD_LIKE);
+				}
+			})
+		}
 		
 		function deleteComment(){
 			 $.ajax({
 				 async:true,
 				 type:'POST',
 				 data:{ID:id,DELCOM:'DEL', DC_NO:"${myComment.ADC_NO}",AD_NO:<%=request.getParameter("AD_NO")%>},
-				 url:"<c:url value='/AD/ADDetail.br' />",
+				 url:"<c:url value='/ad/adDetail.br?${_csrf.parameterName}=${_csrf.token}' />",
 				 success:function(result){
 					$(".writeComment").css("display","block");
 					$(".existComment").css("display","none");
+					$(".comen").html(result.comList);
+					$(".comnum").html(result.comNum);
 					
 				 }
 			 })
@@ -116,12 +164,13 @@
 				 async:true,
 				 type:'POST',
 				 data:{ID:id,MCOM:$('.com2').val(), AD_NO:<%=request.getParameter("AD_NO")%>},
-				 url:"<c:url value='/ad/adDetail.br' />",
+				 url:"<c:url value='/ad/adDetail.br?${_csrf.parameterName}=${_csrf.token}' />",
 				 success:function(result){
 					$(".writeComment").css("display","none");
 					$(".existComment").css("display","block");
-					alert(result.myCom.DC_CONTENT);
-					$(".gLsCNn").html(result.myCom.ADC_CONTENT);
+					$(".cc").html(result.myCom.AD_CONTENT);
+					$(".comen").html(result.comList);
+					$(".comnum").html(result.comNum);
 				 }
 			 })
 		} 
@@ -130,12 +179,13 @@
 				 async:true,
 				 type:'POST',
 				 data:{ID:id,COM:$('.com').val(), AD_NO:<%=request.getParameter("AD_NO")%>},
-				 url:"<c:url value='/AD/ADDetail.br' />",
+				 url:"<c:url value='/ad/adDetail.br?${_csrf.parameterName}=${_csrf.token}' />",
 				 success:function(result){
 					$(".writeComment").css("display","none");
 					$(".existComment").css("display","block");
-					alert(result.myCom.DC_CONTENT);
-					$(".gLsCNn").html(result.myCom.ADC_CONTENT);
+					$(".cc").html(result.myCom.AD_CONTENT);
+					$(".comen").html(result.comList);
+					$(".comnum").html(result.comNum);
 				 }
 			 })
 		}
@@ -145,7 +195,7 @@
 				async : true,  
 				type : 'POST',
 				data : {ID:id , WISH:"w" , AD_NO:<%=request.getParameter("AD_NO")%>},
-				url:"<c:url value='/ad/adDetail.br' />",
+				url:"<c:url value='/ad/adDetail.br?${_csrf.parameterName}=${_csrf.token}' />",
 				success : function(result){
 					var w = result;
 					var a = "보기싫어요";
@@ -167,235 +217,16 @@
 				async : true,  
 				type : 'POST',
 				data : {ID:id , RATING:rr , AD_NO:<%=request.getParameter("AD_NO")%>},
-				url:"<c:url value='/ad/adDetail.br' />",
+				url:"<c:url value='/ad/adDetail.br?${_csrf.parameterName}=${_csrf.token}' />",
 				success : function(result){
 				}
 				/* $('.gZASBp > a.r1'); */
 			})
 		}
 		/* 별점 */
-		
 	
-		/* 별점 */
-		
-	
-		$(function(){
-			
-			if(id==""||id==null){}
-			else{
-				/* initValue = $('.gZASBp > div').attr("class").split(" ")[1]; */
-
-				var f = $('.gZASBp > a.r1');
-				f.hover(function() {
-					$('.gZASBp > div' ).removeClass(initValue).addClass('r1');
-				}, function() {
-					$('.gZASBp > div' ).removeClass('r1').addClass(initValue);
-				});
-				f.click(function(){
-					if(initValue == 'r1'){
-						initValue = 'r0';
-						r=0;
-						$('.ccOSgS').html("평가하기");
-						rating(r);
-					}else{
-						initValue = 'r1';
-						r=0.5;
-						$('.ccOSgS').html("최악이에요");
-						rating(r);
-					}
-				});
-				
-				f = $('.gZASBp > a.r2');
-				f.hover(function() {
-					$('.gZASBp > div' ).removeClass(initValue).addClass('r2');
-				}, function() {
-					$('.gZASBp > div' ).removeClass('r2').addClass(initValue);
-				});
-				f.click(function(){
-					if(initValue == 'r2'){
-						initValue = 'r0';
-						r=0;
-						$('.ccOSgS').html("평가하기");
-						rating(r);
-					}else{
-						initValue = 'r2';
-						r=1;
-						$('.ccOSgS').html("싫어요");
-						rating(r);
-					}
-				});
-				
-				f = $('.gZASBp > a.r3');
-				f.hover(function() {
-					$('.gZASBp > div' ).removeClass(initValue).addClass('r3');
-				}, function() {
-					$('.gZASBp > div' ).removeClass('r3').addClass(initValue);
-				});
-				f.click(function(){
-					if(initValue == 'r3'){
-						initValue = 'r0';
-						r=0;
-						$('.ccOSgS').html("평가하기");
-						rating(r);
-					}else{
-						initValue = 'r3';
-						r=1.5;
-						$('.ccOSgS').html("재미없어요");
-						rating(r);
-					}
-				});
-				
-				f = $('.gZASBp > a.r4');
-				f.hover(function() {
-					$('.gZASBp > div' ).removeClass(initValue).addClass('r4');
-				}, function() {
-					$('.gZASBp > div' ).removeClass('r4').addClass(initValue);
-				});
-				f.click(function(){
-					if(initValue == 'r4'){
-						initValue = 'r0';
-						r=0;
-						$('.ccOSgS').html("평가하기");
-						rating(r);
-					}
-					else{
-						initValue = 'r4';
-						r=2;
-						$('.ccOSgS').html("별로에요");
-						rating(r);
-					}
-				});
-				
-				f = $('.gZASBp > a.r5');
-				f.hover(function() {
-					$('.gZASBp > div' ).removeClass(initValue).addClass('r5');
-				}, function() {
-					$('.gZASBp > div' ).removeClass('r5').addClass(initValue);
-				});
-				f.click(function(){
-					if(initValue == 'r5'){
-						initValue = 'r0';
-						r=0;
-						$('.ccOSgS').html("평가하기");
-						rating(r);
-					}
-					else{
-						initValue = 'r5';
-						r=2.5;
-						$('.ccOSgS').html("부족해요");
-						rating(r);
-					}
-				});
-				
-				f = $('.gZASBp > a.r6');
-				f.hover(function() {
-					$('.gZASBp > div' ).removeClass(initValue).addClass('r6');
-				}, function() {
-					$('.gZASBp > div' ).removeClass('r6').addClass(initValue);
-				});
-				f.click(function(){
-					if(initValue == 'r6'){
-						initValue = 'r0';
-						r=0;
-						$('.ccOSgS').html("평가하기");
-						rating(r);
-					}
-					else{
-						initValue = 'r6';
-						r=3;
-						$('.ccOSgS').html("보통이에요");
-						rating(r);
-					}
-				});
-				
-				f = $('.gZASBp > a.r7');
-				f.hover(function() {
-					$('.gZASBp > div' ).removeClass(initValue).addClass('r7');
-				}, function() {
-					$('.gZASBp > div' ).removeClass('r7').addClass(initValue);
-				});
-				f.click(function(){
-					if(initValue == 'r7'){
-						initValue = 'r0';
-						r=0;
-						$('.ccOSgS').html("평가하기");
-						rating(r);
-					}
-					else{
-						initValue = 'r7';
-						r=3.5;
-						$('.ccOSgS').html("볼만해요");
-						rating(r);
-					}
-				});
-				
-				f = $('.gZASBp > a.r8');
-				f.hover(function() {
-					$('.gZASBp > div' ).removeClass(initValue).addClass('r8');
-				}, function() {
-					$('.gZASBp > div' ).removeClass('r8').addClass(initValue);
-				});
-				f.click(function(){
-					if(initValue == 'r8'){
-						initValue = 'r0';
-						r=0;
-						$('.ccOSgS').html("평가하기");
-						rating(r);
-					}
-					else{
-						initValue = 'r8';
-						r=4;
-						$('.ccOSgS').html("재미있어요");
-						rating(r);
-					}
-				});
-				
-				f = $('.gZASBp > a.r9');
-				f.hover(function() {
-					$('.gZASBp > div' ).removeClass(initValue).addClass('r9');
-				}, function() {
-					$('.gZASBp > div' ).removeClass('r9').addClass(initValue);
-				});
-				f.click(function(){
-					if(initValue == 'r9'){
-						initValue = 'r0';
-						r=0;
-						$('.ccOSgS').html("평가하기");
-						rating(r);
-					}
-					else{
-						initValue = 'r9';
-						r=4.5;
-						$('.ccOSgS').html("훌륭해요!");
-						rating(r);
-					}
-				});
-				
-				f = $('.gZASBp > a.r10');
-				f.hover(function() {
-					$('.gZASBp > div' ).removeClass(initValue).addClass('r10');
-				}, function() {
-					$('.gZASBp > div' ).removeClass('r10').addClass(initValue);
-				});
-				f.click(function(){
-					if(initValue == 'r10'){
-						initValue = 'r0';
-						r=0;
-						$('.ccOSgS').html("평가하기");
-						rating(r);
-					}
-					else{
-						initValue = 'r10';
-						r=5;
-						$('.ccOSgS').html("최고에요!");
-						rating(r);
-					}
-				});
-			}
-		});
-		/* 별점 */
 	</script>
-	
+	<script src="/brw/resources/js/rating.js"></script>
 	<link rel="stylesheet" href="/brw/resources/css/global2.css">
 </head>
 <body> 
@@ -444,7 +275,7 @@
 													<div class="ContentJumbotron__PaneInner-yf8npk-13 eJceNg">
 														<h1 class="ContentJumbotron__Title-yf8npk-14 jCFeyL">${map.AD_NAME}</h1><!-- 제목 -->
 														<div class="ContentJumbotron__Detail-yf8npk-15 bJHRjP">${map.AD_COMPANY}</div><!--  -->
-														<div class="ContentJumbotron__ContentRatings-yf8npk-16 epsYAr">평점 ★${map.AD_GRADE}&nbsp;&nbsp;・&nbsp;&nbsp;<!-- 평점 -->
+														<div class="ContentJumbotron__ContentRatings-yf8npk-16 epsYAr">평점 ★${map.AD_GRADE}&nbsp;&nbsp;<!-- ・ -->&nbsp;&nbsp;<!-- 평점 -->
 														</div>
 													
 														<div
@@ -457,27 +288,27 @@
 																<div class="RatingControl__UnratedStars-s2c1yoc-1 gZASBp">
 																	<span
 																		class="RatingControl__StarImg-s2c1yoc-9 irzhJG UIImg-s3jz6tx-0 kBCBic"
-																		src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0NCIgaGVpZ2h0PSI0NCIgdmlld0JveD0iMCAwIDQ0IDQ0Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHBhdGggZmlsbD0iI0VFRSIgZD0iTTIyIDMzLjQ0NEw5LjgzIDQyLjMyN2MtLjc4NC41NzItMS44NDItLjE5Ni0xLjUzOS0xLjExOGw0LjY4Ny0xNC4zMkwuNzY5IDE4LjA2Yy0uNzg3LS41NjktLjM4My0xLjgxMi41ODgtMS44MWwxNS4wNjcuMDMzIDQuNjI0LTE0LjM0Yy4yOTgtLjkyNCAxLjYwNi0uOTI0IDEuOTA0IDBsNC42MjQgMTQuMzQgMTUuMDY3LS4wMzNjLjk3MS0uMDAyIDEuMzc1IDEuMjQxLjU4OCAxLjgxbC0xMi4yMDkgOC44MjkgNC42ODggMTQuMzJjLjMwMi45MjItLjc1NiAxLjY5LTEuNTQgMS4xMThMMjIgMzMuNDQ0eiIvPgogICAgPC9nPgo8L3N2Zz4K"></span><span
+																		src="/brw/resources/images/detail/detail_grade"></span><span
 																		class="RatingControl__StarImg-s2c1yoc-9 irzhJG UIImg-s3jz6tx-0 kBCBic"
-																		src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0NCIgaGVpZ2h0PSI0NCIgdmlld0JveD0iMCAwIDQ0IDQ0Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHBhdGggZmlsbD0iI0VFRSIgZD0iTTIyIDMzLjQ0NEw5LjgzIDQyLjMyN2MtLjc4NC41NzItMS44NDItLjE5Ni0xLjUzOS0xLjExOGw0LjY4Ny0xNC4zMkwuNzY5IDE4LjA2Yy0uNzg3LS41NjktLjM4My0xLjgxMi41ODgtMS44MWwxNS4wNjcuMDMzIDQuNjI0LTE0LjM0Yy4yOTgtLjkyNCAxLjYwNi0uOTI0IDEuOTA0IDBsNC42MjQgMTQuMzQgMTUuMDY3LS4wMzNjLjk3MS0uMDAyIDEuMzc1IDEuMjQxLjU4OCAxLjgxbC0xMi4yMDkgOC44MjkgNC42ODggMTQuMzJjLjMwMi45MjItLjc1NiAxLjY5LTEuNTQgMS4xMThMMjIgMzMuNDQ0eiIvPgogICAgPC9nPgo8L3N2Zz4K"></span><span
+																		src="/brw/resources/images/detail/detail_grade"></span><span
 																		class="RatingControl__StarImg-s2c1yoc-9 irzhJG UIImg-s3jz6tx-0 kBCBic"
-																		src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0NCIgaGVpZ2h0PSI0NCIgdmlld0JveD0iMCAwIDQ0IDQ0Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHBhdGggZmlsbD0iI0VFRSIgZD0iTTIyIDMzLjQ0NEw5LjgzIDQyLjMyN2MtLjc4NC41NzItMS44NDItLjE5Ni0xLjUzOS0xLjExOGw0LjY4Ny0xNC4zMkwuNzY5IDE4LjA2Yy0uNzg3LS41NjktLjM4My0xLjgxMi41ODgtMS44MWwxNS4wNjcuMDMzIDQuNjI0LTE0LjM0Yy4yOTgtLjkyNCAxLjYwNi0uOTI0IDEuOTA0IDBsNC42MjQgMTQuMzQgMTUuMDY3LS4wMzNjLjk3MS0uMDAyIDEuMzc1IDEuMjQxLjU4OCAxLjgxbC0xMi4yMDkgOC44MjkgNC42ODggMTQuMzJjLjMwMi45MjItLjc1NiAxLjY5LTEuNTQgMS4xMThMMjIgMzMuNDQ0eiIvPgogICAgPC9nPgo8L3N2Zz4K"></span><span
+																		src="/brw/resources/images/detail/detail_grade"></span><span
 																		class="RatingControl__StarImg-s2c1yoc-9 irzhJG UIImg-s3jz6tx-0 kBCBic"
-																		src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0NCIgaGVpZ2h0PSI0NCIgdmlld0JveD0iMCAwIDQ0IDQ0Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHBhdGggZmlsbD0iI0VFRSIgZD0iTTIyIDMzLjQ0NEw5LjgzIDQyLjMyN2MtLjc4NC41NzItMS44NDItLjE5Ni0xLjUzOS0xLjExOGw0LjY4Ny0xNC4zMkwuNzY5IDE4LjA2Yy0uNzg3LS41NjktLjM4My0xLjgxMi41ODgtMS44MWwxNS4wNjcuMDMzIDQuNjI0LTE0LjM0Yy4yOTgtLjkyNCAxLjYwNi0uOTI0IDEuOTA0IDBsNC42MjQgMTQuMzQgMTUuMDY3LS4wMzNjLjk3MS0uMDAyIDEuMzc1IDEuMjQxLjU4OCAxLjgxbC0xMi4yMDkgOC44MjkgNC42ODggMTQuMzJjLjMwMi45MjItLjc1NiAxLjY5LTEuNTQgMS4xMThMMjIgMzMuNDQ0eiIvPgogICAgPC9nPgo8L3N2Zz4K"></span><span
+																		src="/brw/resources/images/detail/detail_grade"></span><span
 																		class="RatingControl__StarImg-s2c1yoc-9 irzhJG UIImg-s3jz6tx-0 kBCBic"
-																		src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0NCIgaGVpZ2h0PSI0NCIgdmlld0JveD0iMCAwIDQ0IDQ0Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHBhdGggZmlsbD0iI0VFRSIgZD0iTTIyIDMzLjQ0NEw5LjgzIDQyLjMyN2MtLjc4NC41NzItMS44NDItLjE5Ni0xLjUzOS0xLjExOGw0LjY4Ny0xNC4zMkwuNzY5IDE4LjA2Yy0uNzg3LS41NjktLjM4My0xLjgxMi41ODgtMS44MWwxNS4wNjcuMDMzIDQuNjI0LTE0LjM0Yy4yOTgtLjkyNCAxLjYwNi0uOTI0IDEuOTA0IDBsNC42MjQgMTQuMzQgMTUuMDY3LS4wMzNjLjk3MS0uMDAyIDEuMzc1IDEuMjQxLjU4OCAxLjgxbC0xMi4yMDkgOC44MjkgNC42ODggMTQuMzJjLjMwMi45MjItLjc1NiAxLjY5LTEuNTQgMS4xMThMMjIgMzMuNDQ0eiIvPgogICAgPC9nPgo8L3N2Zz4K"></span>
+																		src="/brw/resources/images/detail/detail_grade"></span>
 																	<div class="RatingControl__RatedStars-s2c1yoc-2 r0">
 																		<span
 																			class="RatingControl__StarImg-s2c1yoc-9 irzhJG UIImg-s3jz6tx-0 gBImux"
-																			src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0NCIgaGVpZ2h0PSI0NCIgdmlld0JveD0iMCAwIDQ0IDQ0Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHBhdGggZmlsbD0iI0ZGREQ2MyIgZD0iTTIyIDMzLjQ0NEw5LjgzIDQyLjMyN2MtLjc4NC41NzItMS44NDItLjE5Ni0xLjUzOS0xLjExOGw0LjY4Ny0xNC4zMkwuNzY5IDE4LjA2Yy0uNzg3LS41NjktLjM4My0xLjgxMi41ODgtMS44MWwxNS4wNjcuMDMzIDQuNjI0LTE0LjM0Yy4yOTgtLjkyNCAxLjYwNi0uOTI0IDEuOTA0IDBsNC42MjQgMTQuMzQgMTUuMDY3LS4wMzNjLjk3MS0uMDAyIDEuMzc1IDEuMjQxLjU4OCAxLjgxbC0xMi4yMDkgOC44MjkgNC42ODggMTQuMzJjLjMwMi45MjItLjc1NiAxLjY5LTEuNTQgMS4xMThMMjIgMzMuNDQ0eiIvPgogICAgPC9nPgo8L3N2Zz4K"></span><span
+																			src="/brw/resources/images/detail/detail_graded"></span><span
 																			class="RatingControl__StarImg-s2c1yoc-9 irzhJG UIImg-s3jz6tx-0 gBImux"
-																			src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0NCIgaGVpZ2h0PSI0NCIgdmlld0JveD0iMCAwIDQ0IDQ0Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHBhdGggZmlsbD0iI0ZGREQ2MyIgZD0iTTIyIDMzLjQ0NEw5LjgzIDQyLjMyN2MtLjc4NC41NzItMS44NDItLjE5Ni0xLjUzOS0xLjExOGw0LjY4Ny0xNC4zMkwuNzY5IDE4LjA2Yy0uNzg3LS41NjktLjM4My0xLjgxMi41ODgtMS44MWwxNS4wNjcuMDMzIDQuNjI0LTE0LjM0Yy4yOTgtLjkyNCAxLjYwNi0uOTI0IDEuOTA0IDBsNC42MjQgMTQuMzQgMTUuMDY3LS4wMzNjLjk3MS0uMDAyIDEuMzc1IDEuMjQxLjU4OCAxLjgxbC0xMi4yMDkgOC44MjkgNC42ODggMTQuMzJjLjMwMi45MjItLjc1NiAxLjY5LTEuNTQgMS4xMThMMjIgMzMuNDQ0eiIvPgogICAgPC9nPgo8L3N2Zz4K"></span><span
+																			src="/brw/resources/images/detail/detail_graded"></span><span
 																			class="RatingControl__StarImg-s2c1yoc-9 irzhJG UIImg-s3jz6tx-0 gBImux"
-																			src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0NCIgaGVpZ2h0PSI0NCIgdmlld0JveD0iMCAwIDQ0IDQ0Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHBhdGggZmlsbD0iI0ZGREQ2MyIgZD0iTTIyIDMzLjQ0NEw5LjgzIDQyLjMyN2MtLjc4NC41NzItMS44NDItLjE5Ni0xLjUzOS0xLjExOGw0LjY4Ny0xNC4zMkwuNzY5IDE4LjA2Yy0uNzg3LS41NjktLjM4My0xLjgxMi41ODgtMS44MWwxNS4wNjcuMDMzIDQuNjI0LTE0LjM0Yy4yOTgtLjkyNCAxLjYwNi0uOTI0IDEuOTA0IDBsNC42MjQgMTQuMzQgMTUuMDY3LS4wMzNjLjk3MS0uMDAyIDEuMzc1IDEuMjQxLjU4OCAxLjgxbC0xMi4yMDkgOC44MjkgNC42ODggMTQuMzJjLjMwMi45MjItLjc1NiAxLjY5LTEuNTQgMS4xMThMMjIgMzMuNDQ0eiIvPgogICAgPC9nPgo8L3N2Zz4K"></span><span
+																			src="/brw/resources/images/detail/detail_graded"></span><span
 																			class="RatingControl__StarImg-s2c1yoc-9 irzhJG UIImg-s3jz6tx-0 gBImux"
-																			src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0NCIgaGVpZ2h0PSI0NCIgdmlld0JveD0iMCAwIDQ0IDQ0Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHBhdGggZmlsbD0iI0ZGREQ2MyIgZD0iTTIyIDMzLjQ0NEw5LjgzIDQyLjMyN2MtLjc4NC41NzItMS44NDItLjE5Ni0xLjUzOS0xLjExOGw0LjY4Ny0xNC4zMkwuNzY5IDE4LjA2Yy0uNzg3LS41NjktLjM4My0xLjgxMi41ODgtMS44MWwxNS4wNjcuMDMzIDQuNjI0LTE0LjM0Yy4yOTgtLjkyNCAxLjYwNi0uOTI0IDEuOTA0IDBsNC42MjQgMTQuMzQgMTUuMDY3LS4wMzNjLjk3MS0uMDAyIDEuMzc1IDEuMjQxLjU4OCAxLjgxbC0xMi4yMDkgOC44MjkgNC42ODggMTQuMzJjLjMwMi45MjItLjc1NiAxLjY5LTEuNTQgMS4xMThMMjIgMzMuNDQ0eiIvPgogICAgPC9nPgo8L3N2Zz4K"></span><span
+																			src="/brw/resources/images/detail/detail_graded"></span><span
 																			class="RatingControl__StarImg-s2c1yoc-9 irzhJG UIImg-s3jz6tx-0 gBImux"
-																			src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0NCIgaGVpZ2h0PSI0NCIgdmlld0JveD0iMCAwIDQ0IDQ0Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHBhdGggZmlsbD0iI0ZGREQ2MyIgZD0iTTIyIDMzLjQ0NEw5LjgzIDQyLjMyN2MtLjc4NC41NzItMS44NDItLjE5Ni0xLjUzOS0xLjExOGw0LjY4Ny0xNC4zMkwuNzY5IDE4LjA2Yy0uNzg3LS41NjktLjM4My0xLjgxMi41ODgtMS44MWwxNS4wNjcuMDMzIDQuNjI0LTE0LjM0Yy4yOTgtLjkyNCAxLjYwNi0uOTI0IDEuOTA0IDBsNC42MjQgMTQuMzQgMTUuMDY3LS4wMzNjLjk3MS0uMDAyIDEuMzc1IDEuMjQxLjU4OCAxLjgxbC0xMi4yMDkgOC44MjkgNC42ODggMTQuMzJjLjMwMi45MjItLjc1NiAxLjY5LTEuNTQgMS4xMThMMjIgMzMuNDQ0eiIvPgogICAgPC9nPgo8L3N2Zz4K"></span>
+																			src="/brw/resources/images/detail/detail_graded"></span>
 																	</div>
 																	<a class="r10" ></a>
 																	<a class="r9" ></a>
@@ -513,7 +344,7 @@
 																		class="ContentMyCommentSection__LeaveCommentBlock-mhuscg-2 bvmyee">
 																		<h3
 																			class="ContentMyCommentSection__Title-mhuscg-11 inwTWL">이
-																			작품에 대한 ${map.ID} 님의 평가를 글로 남겨보세요.</h3>
+																			작품에 대한 ${map.NAME} 님의 평가를 글로 남겨보세요.</h3>
 																		<div class="ContentMyCommentSection__ButtonBlock-mhuscg-12 kTSrnl">
 																			<!-- modal 구동 버튼 (trigger) -->
 																			<!-- 코멘트 작성창 -->
@@ -585,8 +416,8 @@
 																		<div
 																			class="ContentMyCommentSection__MyComment-mhuscg-5 iBmFgp">
 																			<div class="TextTruncate__Self-wvv1uj-0 edeoAV">
-																				<div class="TextTruncate__Text-wvv1uj-1 gLsCNn"
-																					style="white-space: pre-line;">${myComment.ADC_CONTENT}</div><!-- 댓글내용 -->
+																				<div class="TextTruncate__Text-wvv1uj-1 gLsCNn cc"
+																					style="white-space: pre-line;">${myComment.AD_CONTENT}</div><!-- 댓글내용 -->
 																			</div>
 																		</div>
 																		<ul
@@ -767,7 +598,7 @@
 																	<header
 																		class="SectionWithHeader__Header-s1eyxltb-1 cuiACK">
 																		<h2 class="SectionWithHeader__Title-s1eyxltb-2 kwjefp">코멘트</h2>
-																		<span class="TitleSuffixForNumber-l2d30g-0 ejtPKl">${totalCount}</span>
+																		<span class="TitleSuffixForNumber-l2d30g-0 ejtPKl comnum">${totalCount}</span>
 																		<div
 																			class="SectionWithHeader__TopRight-s1eyxltb-3 bZaEfL">
 																			<div
@@ -787,66 +618,49 @@
 																		<div class="Grid-zydj2q-0 cspjno">
 																			<div class="Row-s1apwm9x-0 lowZpE">
 																				<ul
-																					class="ContentCommentsSection__CommentHorizontalUl-s5mwulc-1 kBYzWA HorizontalUl__StyledHorizontalUl-s1lfz4bc-0 kJrumC VisualUl-s1vzev56-0 hgAYVH">
-																					<c:forEach items="${comment}" var="comment">
+																					class="ContentCommentsSection__CommentHorizontalUl-s5mwulc-1 kBYzWA HorizontalUl__StyledHorizontalUl-s1lfz4bc-0 kJrumC VisualUl-s1vzev56-0 hgAYVH comen">
+																					<c:forEach items="${comment}" var="comment" varStatus="stat">
 																						<!-- 코멘트 -->
 																						<li class="HorizontalListItem-tt0z2b-0 hRbPKu">
-																							<div
-																								class="BasicCommentItem__Comment-iqy0k7-0 UuRdd">
-																								<div
-																									class="BasicCommentItem__TitleContainer-iqy0k7-1 jWsgqF">
-																									<div
-																										class="BasicCommentItem__ProfileBlock-iqy0k7-2 dFeRwI">
-																										<a lng="ko-KR"
-																											class="StylelessLocalLink-s1aqpmgk-1 gdyQIs"
-																											title="이동진 평론가"
-																											href="/ko-KR/users/DgwxAeQYNxrMj"><div
-																												class="ProfilePhoto__Self-s1v3isfu-1 lniNjX RoundedImageBlock-k5m4n5-0 gUZYtN">
-																												<div
-																													class="ProfilePhoto__ProfilePhotoImage-s1v3isfu-0 eKUOvr"></div>
-																												<div
-																													class="ProfilePhoto__DefaultImageContainer-s1v3isfu-2 kPGxuy">
-																													<img
-																														class="defaultImage__ProfileImg-s1kn91bx-1 iaxVtx"
-																														src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDQ4IDQ4Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgZmlsbD0iI0UwRTBFMCI+CiAgICAgICAgICAgIDxwYXRoIGQ9Ik0yNCAyMS4yNzhhOC41NyA4LjU3IDAgMCAxLTguNTcxLTguNTdBOC41NzEgOC41NzEgMCAxIDEgMjQgMjEuMjc3TTQzLjUxOSA0My44NjVjLjU2NCAwIDEuMDMzLS40NjggMS4wMDMtMS4wMzFDNDMuOTYzIDMyLjQyNCAzNC45ODkgMjQuMTUgMjQgMjQuMTVjLTEwLjk4OSAwLTE5Ljk2MyA4LjI3NC0yMC41MjIgMTguNjgzLS4wMy41NjMuNDM5IDEuMDMgMS4wMDMgMS4wM2gzOS4wMzh6Ii8+CiAgICAgICAgPC9nPgogICAgPC9nPgo8L3N2Zz4K"
-																														alt="이동진 평론가의 사진">
+																							<div class="BasicCommentItem__Comment-iqy0k7-0 UuRdd">
+																								<div class="BasicCommentItem__TitleContainer-iqy0k7-1 jWsgqF">
+																									<div class="BasicCommentItem__ProfileBlock-iqy0k7-2 dFeRwI">
+																										<div class="ProfilePhoto__Self-s1v3isfu-1 lniNjX RoundedImageBlock-k5m4n5-0 gUZYtN">
+																											<div class="ProfilePhoto__ProfilePhotoImage-s1v3isfu-0 eKUOvr"></div>
+																												<div class="ProfilePhoto__DefaultImageContainer-s1v3isfu-2 kPGxuy">
+																													<c:if test="${comment.PROFILE_IMAGE!=null}">
+																														<img class="defaultImage__ProfileImg-s1kn91bx-1 iaxVtx" 
+																															src="/brw/resources/images/user_profile/${comment.PROFILE_IMAGE}">
+																													</c:if>
+																													<c:if test="${comment.PROFILE_IMAGE==null}">
+																													<img class="defaultImage__ProfileImg-s1kn91bx-1 iaxVtx" 
+																														src="/brw/resources/images/Temporary_img.JPG">
+																													</c:if>
 																												</div>
 																											</div>
-																											<div
-																												class="UserNameWithBadges__Self-s1bd3hgj-0 brZhrQ">
-																												${comment.ID} <span
-																													class="UserNameWithBadges__SmallBadge-s1bd3hgj-1 bAndNa UIImg-s3jz6tx-0 eBREVF"
-																													src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iMTIiIGhlaWdodD0iMTIiIHZpZXdCb3g9IjAgMCAxMiAxMiI+CiAgICA8ZGVmcz4KICAgICAgICA8cGF0aCBpZD0iYSIgZD0iTTYgMTAuNjYxYy0uOTI3IDAtMS4xMzEgMS4wMjItMS44NTQuNzg3LS43MjMtLjIzNS0uMjg4LTEuMTgxLTEuMDM4LTEuNzI2LS43NS0uNTQ1LTEuNTE1LjE2MS0xLjk2Mi0uNDU0LS40NDctLjYxNS40NjEtMS4xMjUuMTc1LTIuMDA2QzEuMDM0IDYuMzggMCA2LjUwMiAwIDUuNzQyczEuMDM0LS42NCAxLjMyLTEuNTJjLjI4Ny0uODgzLS42Mi0xLjM5Mi0uMTc0LTIuMDA3LjQ0Ny0uNjE1IDEuMjEyLjA5MSAxLjk2Mi0uNDU0UzMuNDIzLjI3IDQuMTQ2LjAzNUM0Ljg2OS0uMiA1LjA3My44MjEgNiAuODIxUzcuMTMxLS4xOTkgNy44NTQuMDM1Yy43MjMuMjM1LjI4OCAxLjE4MSAxLjAzOCAxLjcyNi43NS41NDUgMS41MTUtLjE2MSAxLjk2Mi40NTQuNDQ3LjYxNS0uNDYxIDEuMTI0LS4xNzUgMi4wMDYuMjg3Ljg4MiAxLjMyMS43NiAxLjMyMSAxLjUycy0xLjAzNC42NC0xLjMyIDEuNTJjLS4yODcuODgyLjYyIDEuMzkyLjE3NCAyLjAwNy0uNDQ3LjYxNS0xLjIxMi0uMDkxLTEuOTYyLjQ1NHMtLjMxNSAxLjQ5LTEuMDM4IDEuNzI2Yy0uNzIzLjIzNS0uOTI3LS43ODctMS44NTQtLjc4N3oiLz4KICAgICAgICA8cGF0aCBpZD0iYyIgZD0iTTYgMTAuNjYxYy0uOTI3IDAtMS4xMzEgMS4wMjItMS44NTQuNzg3LS43MjMtLjIzNS0uMjg4LTEuMTgxLTEuMDM4LTEuNzI2LS43NS0uNTQ1LTEuNTE1LjE2MS0xLjk2Mi0uNDU0LS40NDctLjYxNS40NjEtMS4xMjUuMTc1LTIuMDA2QzEuMDM0IDYuMzggMCA2LjUwMiAwIDUuNzQyczEuMDM0LS42NCAxLjMyLTEuNTJjLjI4Ny0uODgzLS42Mi0xLjM5Mi0uMTc0LTIuMDA3LjQ0Ny0uNjE1IDEuMjEyLjA5MSAxLjk2Mi0uNDU0UzMuNDIzLjI3IDQuMTQ2LjAzNUM0Ljg2OS0uMiA1LjA3My44MjEgNiAuODIxUzcuMTMxLS4xOTkgNy44NTQuMDM1Yy43MjMuMjM1LjI4OCAxLjE4MSAxLjAzOCAxLjcyNi43NS41NDUgMS41MTUtLjE2MSAxLjk2Mi40NTQuNDQ3LjYxNS0uNDYxIDEuMTI0LS4xNzUgMi4wMDYuMjg3Ljg4MiAxLjMyMS43NiAxLjMyMSAxLjUycy0xLjAzNC42NC0xLjMyIDEuNTJjLS4yODcuODgyLjYyIDEuMzkyLjE3NCAyLjAwNy0uNDQ3LjYxNS0xLjIxMi0uMDkxLTEuOTYyLjQ1NHMtLjMxNSAxLjQ5LTEuMDM4IDEuNzI2Yy0uNzIzLjIzNS0uOTI3LS43ODctMS44NTQtLjc4N3oiLz4KICAgIDwvZGVmcz4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPG1hc2sgaWQ9ImIiIGZpbGw9IiNmZmYiPgogICAgICAgICAgICA8dXNlIHhsaW5rOmhyZWY9IiNhIi8+CiAgICAgICAgPC9tYXNrPgogICAgICAgIDx1c2UgZmlsbD0iIzNEM0QzRCIgeGxpbms6aHJlZj0iI2EiLz4KICAgICAgICA8cGF0aCBmaWxsPSIjRkZGIiBkPSJNMy40IDIuOGgxLjJ2OUgzLjR6TTUuOCA1LjJIN3Y3LjJINS44ek04LjIgNy42aDEuMnY0LjhIOC4yeiIgbWFzaz0idXJsKCNiKSIvPgogICAgICAgIDxwYXRoIGZpbGw9IiNGRkYiIGQ9Ik04LjIgNy42SDEzdjEuMkg4LjJ6TTUuOCA1LjJIMTN2MS4ySDUuOHpNMy40IDIuOGg5VjRoLTl6IiBtYXNrPSJ1cmwoI2IpIi8+CiAgICAgICAgPHBhdGggc3Ryb2tlPSIjM0QzRDNEIiBzdHJva2Utb3BhY2l0eT0iLjE1IiBzdHJva2Utd2lkdGg9Ii4yNSIgZD0iTTcuMDAzIDEwLjk3NmMtLjA0MS0uMDM2LjE2LjE0LjIwNi4xNzguMjMyLjE5Mi4zOS4yNDUuNjA2LjE3NS4yNDgtLjA4LjMyOC0uMjIyLjQyMy0uNjQ0LjA0MS0uMTguMDUtLjIyLjA3NS0uMzA0LjA5NS0uMzI5LjI0Mi0uNTY5LjUwNS0uNzYuMDM4LS4wMjguMDc2LS4wNTIuMTE1LS4wNzUuMzA0LS4xNzYuNTUzLS4xOTcgMS4wMzctLjE1Mi40NzUuMDQ0LjYyNi4wMTcuNzgzLS4yYS40OC40OCAwIDAgMCAuMTAxLS4zMTdjLS4wMDUtLjEyOS0uMDM0LS4yMS0uMTY4LS41MjMtLjE5OC0uNDYxLS4yNS0uNzQ5LS4xMjYtMS4xMy4xMTQtLjM1Mi4zMjEtLjU2Ny42NzctLjc4OC4wNDctLjAyOS4xMDQtLjA2My4yMDItLjEyLjMyNi0uMTk3LjQzNi0uMzI1LjQzNi0uNTc1IDAtLjI0OS0uMTEtLjM3Ny0uNDM2LS41NzNhMTQuMDAzIDE0LjAwMyAwIDAgMS0uMjAyLS4xMjFjLS4zNTYtLjIyMS0uNTYzLS40MzYtLjY3Ny0uNzg3LS4xMjQtLjM4My0uMDcyLS42Ny4xMjYtMS4xMzIuMTM0LS4zMTMuMTYzLS4zOTMuMTY4LS41MjJhLjQ4LjQ4IDAgMCAwLS4xMDEtLjMxOGMtLjE1Ny0uMjE2LS4zMDgtLjI0My0uNzgzLS4yLS40ODQuMDQ2LS43MzMuMDI1LTEuMDM3LS4xNTFhMS4zMjYgMS4zMjYgMCAwIDEtLjExNS0uMDc1Yy0uMjYzLS4xOTEtLjQxLS40MzEtLjUwNS0uNzZhNC4zOTIgNC4zOTIgMCAwIDEtLjA3NS0uMzA0QzguMTQzLjM3NiA4LjA2My4yMzQgNy44MTUuMTU0IDcuNi4wODQgNy40NDEuMTM3IDcuMjEuMzI5Yy0uMDQ2LjAzNy0uMjQ4LjIxNC0uMjA2LjE3OC0uMzUuMzAzLS42MTUuNDQtMS4wMDMuNDQtLjM4OCAwLS42NTMtLjEzNy0xLjAwMy0uNDQuMDQxLjAzNi0uMTYtLjE0LS4yMDYtLjE3OC0uMjMyLS4xOTItLjM5LS4yNDUtLjYwNi0uMTc1LS4yNDguMDgtLjMyOC4yMjItLjQyMy42NDQtLjA0MS4xOC0uMDUuMjItLjA3NS4zMDQtLjA5NS4zMjktLjI0Mi41NjktLjUwNS43NmExLjMyNiAxLjMyNiAwIDAgMS0uMTE1LjA3NWMtLjMwNC4xNzYtLjU1My4xOTctMS4wMzcuMTUyLS40NzUtLjA0NC0uNjI2LS4wMTctLjc4My4yYS40OC40OCAwIDAgMC0uMTAxLjMxN2MuMDA1LjEyOS4wMzQuMjEuMTY4LjUyMi4xOTguNDYyLjI1Ljc1LjEyNiAxLjEzMi0uMTE0LjM1LS4zMjEuNTY2LS42NzcuNzg3bC0uMjAyLjEyYy0uMzI2LjE5Ny0uNDM2LjMyNS0uNDM2LjU3NCAwIC4yNS4xMS4zNzguNDM2LjU3NGwuMjAyLjEyMWMuMzU2LjIyLjU2My40MzYuNjc3Ljc4Ny4xMjQuMzgyLjA3Mi42Ny0uMTI2IDEuMTMxLS4xMzQuMzE0LS4xNjMuMzk0LS4xNjguNTIzYS40OC40OCAwIDAgMCAuMTAxLjMxOGMuMTU3LjIxNi4zMDguMjQzLjc4My4yLjQ4NC0uMDQ2LjczMy0uMDI1IDEuMDM3LjE1MS4wMzkuMDIzLjA3Ny4wNDcuMTE1LjA3NS4yNjMuMTkxLjQxLjQzMS41MDUuNzYuMDI0LjA4NC4wMzQuMTIzLjA3NS4zMDQuMDk1LjQyMi4xNzUuNTY0LjQyMy42NDQuMjE2LjA3LjM3NC4wMTcuNjA2LS4xNzUuMDQ2LS4wMzguMjQ4LS4yMTQuMjA2LS4xNzguMzUtLjMwMy42MTUtLjQ0IDEuMDAzLS40NC4zODggMCAuNjUzLjEzNyAxLjAwMy40NHptLTEuODQyLjE4OHoiLz4KICAgIDwvZz4KPC9zdmc+Cg=="></span><span
-																													class="UserNameWithBadges__SmallBadge-s1bd3hgj-1 bAndNa UIImg-s3jz6tx-0 kyuoIv"
-																													src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iMTIiIGhlaWdodD0iMTIiIHZpZXdCb3g9IjAgMCAxMiAxMiI+CiAgICA8ZGVmcz4KICAgICAgICA8cGF0aCBpZD0iYSIgZD0iTTYgMTAuNjYxYy0uOTI3IDAtMS4xMzEgMS4wMjItMS44NTQuNzg3LS43MjMtLjIzNS0uMjg4LTEuMTgxLTEuMDM4LTEuNzI2LS43NS0uNTQ1LTEuNTE1LjE2MS0xLjk2Mi0uNDU0LS40NDctLjYxNS40NjEtMS4xMjUuMTc1LTIuMDA2QzEuMDM0IDYuMzggMCA2LjUwMiAwIDUuNzQyczEuMDM0LS42NCAxLjMyLTEuNTJjLjI4Ny0uODgzLS42Mi0xLjM5Mi0uMTc0LTIuMDA3LjQ0Ny0uNjE1IDEuMjEyLjA5MSAxLjk2Mi0uNDU0UzMuNDIzLjI3IDQuMTQ2LjAzNUM0Ljg2OS0uMiA1LjA3My44MjEgNiAuODIxUzcuMTMxLS4xOTkgNy44NTQuMDM1Yy43MjMuMjM1LjI4OCAxLjE4MSAxLjAzOCAxLjcyNi43NS41NDUgMS41MTUtLjE2MSAxLjk2Mi40NTQuNDQ3LjYxNS0uNDYxIDEuMTI0LS4xNzUgMi4wMDYuMjg3Ljg4MiAxLjMyMS43NiAxLjMyMSAxLjUycy0xLjAzNC42NC0xLjMyIDEuNTJjLS4yODcuODgyLjYyIDEuMzkyLjE3NCAyLjAwNy0uNDQ3LjYxNS0xLjIxMi0uMDkxLTEuOTYyLjQ1NHMtLjMxNSAxLjQ5LTEuMDM4IDEuNzI2Yy0uNzIzLjIzNS0uOTI3LS43ODctMS44NTQtLjc4N3oiLz4KICAgIDwvZGVmcz4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPG1hc2sgaWQ9ImIiIGZpbGw9IiNmZmYiPgogICAgICAgICAgICA8dXNlIHhsaW5rOmhyZWY9IiNhIi8+CiAgICAgICAgPC9tYXNrPgogICAgICAgIDx1c2UgZmlsbD0iI0ZGMkY2RSIgeGxpbms6aHJlZj0iI2EiLz4KICAgICAgICA8cGF0aCBmaWxsPSIjRkZGIiBkPSJNNi43NTQgNi43NTR2LTQuOGgxLjJ2NmgtMy42di0xLjJoMi40eiIgbWFzaz0idXJsKCNiKSIgdHJhbnNmb3JtPSJyb3RhdGUoNDUgNi4xNTQgNC45NTQpIi8+CiAgICA8L2c+Cjwvc3ZnPgo="></span>
-																											</div></a>
+																											<div class="UserNameWithBadges__Self-s1bd3hgj-0 brZhrQ">
+																												${comment.NAME} 
+																												<input type="hidden" value="${comment.ADC_NO}" class="00like${stat.index}"/>
+																												<span class="UserNameWithBadges__SmallBadge-s1bd3hgj-1 bAndNa UIImg-s3jz6tx-0 eBREVF" src="/brw/resources/images/detail/detail_comment1.svg"></span>
+																												<span class="UserNameWithBadges__SmallBadge-s1bd3hgj-1 bAndNa UIImg-s3jz6tx-0 kyuoIv" src="/brw/resources/images/detail/detail_comment2.svg"></span>
+																											</div>
 																									</div>
-																									<div
-																										class="BasicCommentItem__UserActionStatus-iqy0k7-4 cMGqAP">
-																										<img
-																											src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4KICAgIDxwYXRoIGZpbGw9IiM0QTRBNEEiIGZpbGwtcnVsZT0iZXZlbm9kZCIgZD0iTTEyIDE3Ljk4bC02LjAxNSA0LjM5MmMtLjUwOC4zNzItMS4xOTQtLjEyNi0uOTk4LS43MjVsMi4zMTctNy4wODEtNi4wMzUtNC4zNjdjLS41MS0uMzY5LS4yNDctMS4xNzUuMzgyLTEuMTc0bDcuNDQ3LjAxNiAyLjI4Ni03LjA5MWMuMTkyLS42IDEuMDQtLjYgMS4yMzMgMGwyLjI4NiA3LjA5IDcuNDQ3LS4wMTVjLjYyOS0uMDAxLjg5LjgwNS4zOCAxLjE3NGwtNi4wMzMgNC4zNjcgMi4zMTYgNy4wOGMuMTk2LjYtLjQ5IDEuMDk4LS45OTkuNzI2TDEyIDE3Ljk4eiIvPgo8L3N2Zz4K"
+																									<div class="BasicCommentItem__UserActionStatus-iqy0k7-4 cMGqAP">
+																										<img src="/brw/resources/images/detail/detail_comment_grade.svg"
 																											width="16px" height="16px" alt="star"><span>${comment.AL_GRADE}</span>
 																									</div>
 																								</div>
-																								<div
-																									class="BasicCommentItem__TextBlock-iqy0k7-3 eQRymK">
-																									<a lng="ko-KR" class="StylelessLocalLink-s1aqpmgk-1 gdyQIs" href="/ko-KR/comments/69oMvny6VLMal">
+																								<div class="BasicCommentItem__TextBlock-iqy0k7-3 eQRymK">
 																									<div class="TextTruncate__Self-wvv1uj-0 jXBVmV">
-																											<div class="TextTruncate__Text-wvv1uj-1 gLsCNn"
-																												style="white-space: pre-line;">${comment.AD_CONTENT}</div>
-																										</div></a>
+																										<div class="TextTruncate__Text-wvv1uj-1 gLsCNn" style="white-space: pre-line;">${comment.AD_CONTENT}</div>
+																									</div>
 																								</div>
-																								<div
-																									class="ContentlessCommentItem__LikeReplyBlock-s1n6rtl6-1 bSwpdd">
-																									<span
-																										class="ContentlessCommentItem__LikeImage-s1n6rtl6-2 jmhzoz UIImg-s3jz6tx-0 jSJJRD"
-																										src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgZmlsbD0iIzc4Nzg3OCI+CiAgICAgICAgICAgIDxwYXRoIGQ9Ik02Ljc1IDkuNDg1aC0zYTEgMSAwIDAgMC0xIDF2MTBhMSAxIDAgMCAwIDEgMWgzYTEgMSAwIDAgMCAxLTF2LTEwYTEgMSAwIDAgMC0xLTFNMjAuNjU3IDguNTY2YTIuMzYzIDIuMzYzIDAgMCAwLTEuNzc5LS44MTNIMTYuNjJsLjE2NC0uNjI3Yy4xMzctLjUyOC4yMDEtMS4xMi4yMDEtMS44NjMgMC0xLjkxOS0xLjM3NS0yLjc3OC0yLjczOC0yLjc3OC0uNDQ0IDAtLjc2Ni4xMjMtLjk4Ni4zNzYtLjIuMjI3LS4yODIuNTMtLjI0My45MzVsLjAzIDEuMjMtMi45MDMgMi45NGMtLjU5My42LS44OTQgMS4yMy0uODk0IDEuODcydjkuNjQ3YS41LjUgMCAwIDAgLjUuNWg3LjY4N2EyLjM4OCAyLjM4OCAwIDAgMCAyLjM0OC0yLjA3bDEuNDQ1LTcuNDUyYTIuNDQgMi40NCAwIDAgMC0uNTc0LTEuODk3Ii8+CiAgICAgICAgPC9nPgogICAgPC9nPgo8L3N2Zz4K"
-																										width="18px" height="18px"></span><em>${comment.AD_LIKE}</em>
+																								<div class="ContentlessCommentItem__LikeReplyBlock-s1n6rtl6-1 bSwpdd">
+																									<span class="ContentlessCommentItem__LikeImage-s1n6rtl6-2 jmhzoz UIImg-s3jz6tx-0 jSJJRD" src="/brw/resources/images/detail/detail_like.svg" width="18px" height="18px"></span>
+																									<em class="0like${stat.index}">${comment.AD_LIKE}</em>
 																								</div>
-																								<div
-																									class="ContentlessCommentItem__UserActionBlock-s1n6rtl6-4 kJvkpH">
-																									<button
-																										class="ContentlessCommentItem__UserActionButton-s1n6rtl6-5 kRhZsb StylelessButton-phxvo7-0 gsSopE">좋아요</button>
+																								<div class="ContentlessCommentItem__UserActionBlock-s1n6rtl6-4 kJvkpH">
+																									<button class="ContentlessCommentItem__UserActionButton-s1n6rtl6-5 kRhZsb StylelessButton-phxvo7-0 gsSopE like like${stat.index}">좋아요</button>
 																								</div>
 																							</div>
 																						</li>
