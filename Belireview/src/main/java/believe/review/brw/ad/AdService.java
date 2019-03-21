@@ -8,15 +8,13 @@ List<Map<String,Object>> selectBoardList(Map<String, Object>  map) throws Except
 	
 	Map<String,Object> adDetail(Map<String,Object> map) throws Exception;
 	
-	List<Map<String,Object>> adActor(Map<String,Object> map) throws Exception;
-	
 	List<Map<String,Object>> adCommentByRecent(Map<String, Object> map) throws Exception;
 	
 	List<Map<String,Object>> adCommentByLike(Map<String, Object> map) throws Exception;
 	
 	List<Map<String,Object>> adCommentForDetail(Map<String, Object> map) throws Exception;
 	
-	List<Map<String,Object>> detailgenre(Map<String, Object> map) throws Exception;
+	/*List<Map<String,Object>> detailgenre(Map<String, Object> map) throws Exception;*/
 	
 	int totalAdCount(Map<String,Object> map) throws Exception;
 	

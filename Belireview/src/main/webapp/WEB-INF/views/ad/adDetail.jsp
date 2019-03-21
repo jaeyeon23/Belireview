@@ -120,9 +120,9 @@
 					COMMENTLIKE : "c",
 					CLA : cla,
 					AD_NO :
-			<%=request.getParameter("AD_NO")%>, AC_NO:$(".00"+cla).val()},
-			url:"<c:url value='/ad/AdDetail.br?${_csrf.parameterName}=${_csrf.token}' />",
-			success : function(result){
+					<%=request.getParameter("AD_NO")%>, AC_NO:$(".00"+cla).val()},
+					url:"<c:url value='/ad/AdDetail.br?${_csrf.parameterName}=${_csrf.token}' />",
+					success : function(result){
 					var r = result;
 					var clike ="좋아요취소";
 					var cnolike ="좋아요";
@@ -197,8 +197,6 @@
 		
 	
 		/* 별점 */
-		
-	
 		$(function(){
 			if(id==""||id==null){}
 			else{

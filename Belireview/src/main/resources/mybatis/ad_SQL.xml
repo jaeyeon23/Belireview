@@ -90,7 +90,7 @@
 	</select>
 	
 	<select id="ratingPrediction" parameterType="hashmap" resultType="double">
-		select round(avg(AL_GRADE),1) from AD_like where AD_like_no in (select AD_no from AD where AD_genre=#{AD_GENRE}) and id=#{ID}
+		select round(avg(AL_GRADE),1) from AD_like where AD_like_no in (select AD_no from AD where AD_COMPANY=#{AD_COMPANY}) and id=#{ID}
 	</select>
 	
 	<select id="gradeRatio" parameterType="hashmap" resultType="hashmap">

@@ -45,10 +45,8 @@ public class AdController {
 		Map<String,Object> map = adService.adDetail(commandMap.getMap());//상세보기
 		List<Map<String,Object>> comment = adService.adCommentForDetail(map);//댓
 		
-		List<Map<String,Object>> actor = adService.adActor(map); //출연배우
-		
-		List<Map<String,Object>> detailgenre = adService.detailgenre(map);//비슷한장르
-		int totalGrade = adService.grade(map);
+		/*List<Map<String,Object>> detailgenre = adService.detailgenre(map);//비슷한장르
+*/		int totalGrade = adService.grade(map);
 		try {
 			List<Map<String,Object>> gradeRatio = adService.gradeRatio(map);//별점비율
 			int[] ratio = new int[11];
@@ -61,10 +59,10 @@ public class AdController {
 		}catch(Exception e) {
 			System.out.println("별점없음");
 		}
-		String[] image = map.get("ad_CONTENT_IMAGE").toString().split(",");
+		/*String[] image = map.get("ad_CONTENT_IMAGE").toString().split(",");
 		for(int i=0;i<image.length;i++) {
 			image[i] = image[i].trim();
-		}
+		}*/
 		double ratingPrediction = 0;
 		List<String> likeList = new ArrayList<String>();
 		if(session.getAttribute("ID")!=null) {//로그인했을때
@@ -118,9 +116,8 @@ public class AdController {
 	
 		mv.addObject("map",map);
 		mv.addObject("comment",comment);
-		mv.addObject("actor",actor);
-		mv.addObject("detailgenre",detailgenre);
-		mv.addObject("image",image);
+		/*mv.addObject("detailgenre",detailgenre);*/
+		/*mv.addObject("image",image);*/
 		mv.addObject("totalCount",totalCount);
 		mv.addObject("totalGrade",totalGrade);
 		mv.addObject("ratingPrediction",ratingPrediction);
@@ -159,13 +156,10 @@ public class AdController {
 				}
 			}
 		}*/
-
-	   
       return mv;
    }
-   
    @RequestMapping(value="adComment.br",method = RequestMethod.POST)
-	@ResponseBody
+   @ResponseBody
 	public Map<String,Object> CommentLike(CommandMap commandMap) throws Exception {
 
 		Map<String,Object> mv = commandMap.getMap();
