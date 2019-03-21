@@ -49,7 +49,6 @@
 	var like = "${likeList}".split(",");
 		$(function() {
 			$("#cat-nav").hide();
-			
 		})
 		
 		$(function() {
@@ -232,7 +231,6 @@
 				url:"<c:url value='/drama/dramaDetail.br?${_csrf.parameterName}=${_csrf.token}' />",
 				success : function(result){
 				}
-				/* $('.gZASBp > a.r1'); */
 			})
 		}
 		/* 별점 */
@@ -253,8 +251,6 @@
 		$(function(){
 			if(id==""||id==null){}
 			else{
-				/* initValue = $('.gZASBp > div').attr("class").split(" ")[1]; */
-
 				var f = $('.gZASBp > a.r1');
 				f.hover(function() {
 					$('.gZASBp > div' ).removeClass(initValue).addClass('r1');
@@ -825,10 +821,32 @@
 																									<div class="ListItemWithProfilePhoto__Subtitle-s1a35ruo-2 cbqRVo">감독</div>
 																								</div>
 																								<div></div>
+																								
 																							</div><!-- </a> --></li>
-																							<!-- 배우 --><c:forEach items="${actor}" var="act">
+																							
+																							<c:forEach items="${actor}" var="act">
+																							<li class="ListItemWithProfilePhoto__Self-s1a35ruo-0 GRmjI">
+																							<div class="InnerPartOfListWithImage__ImageBlock-s11a1hqv-3 kXgAWr">
+																								<div class="ProfilePhoto__Self-s1v3isfu-1 cKevdV RoundedImageBlock-k5m4n5-0 gUZYtN">
+																									<div class="ProfilePhoto__ProfilePhotoImage-s1v3isfu-0 ctlVML"></div>
+																									<div class="ProfilePhoto__DefaultImageContainer-s1v3isfu-2 kPGxuy">
+																										<img class="defaultImage__ProfileImg-s1kn91bx-1 iaxVtx" src="/brw/resources/images/actor/${act.ACTOR_IMAGE}">
+																									</div>
+																								</div>
+																							</div>
+																							<div class="InnerPartOfListWithImage__Info-s11a1hqv-5 hufKbr">
+																								<div class="InnerPartOfListWithImage__Titles-s11a1hqv-4 jtpmaI">
+																									<div class="ListItemWithProfilePhoto__Title-s1a35ruo-1 cSGZfW">${act.ACTOR_NAME}</div>
+																								</div>
+																								<div></div>
+																								
+																							</div><!-- </a> --></li></c:forEach>
+																							
+																							
+																							
+																						<%-- 	<!-- 배우 --><c:forEach items="${actor}" var="act">
 																						<li class="ListItemWithProfilePhoto__Self-s1a35ruo-0 GRmjI">
-																							<a lng="ko-KR" class="InnerPartOfListWithImage__LinkSelf-s11a1hqv-1 gmbtJD" title="이다윗" href="/ko-KR/people/193392">
+																							<!-- <a lng="ko-KR" class="InnerPartOfListWithImage__LinkSelf-s11a1hqv-1 gmbtJD" title="이다윗" href="/ko-KR/people/193392"> -->
 																							<div class="InnerPartOfListWithImage__ImageBlock-s11a1hqv-3 kXgAWr">
 																								<div class="ProfilePhoto__Self-s1v3isfu-1 cKevdV RoundedImageBlock-k5m4n5-0 gUZYtN">
 																									<div class="ProfilePhoto__ProfilePhotoImage-s1v3isfu-0 iEEsou"></div>
@@ -843,8 +861,8 @@
 																									<div class="ListItemWithProfilePhoto__Title-s1a35ruo-1 cSGZfW">${act.ACTOR_NAME}</div><!-- 배우 -->
 																								</div>
 																								<div></div>
-																							</div></a></li>
-																							<!-- // 배우 --></c:forEach>
+																							</div><!-- </a> --></li>
+																							<!-- // 배우 --></c:forEach> --%>
 																					<div class="StackableUl__SpinnerContainer-gafxvv-0 gddnxb"></div>
 																				</ul>
 																			</div>

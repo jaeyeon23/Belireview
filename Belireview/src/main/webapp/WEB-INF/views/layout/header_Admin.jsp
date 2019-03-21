@@ -21,6 +21,7 @@
 		var comSubmit = new ComSubmit();
        comSubmit.setUrl("<c:url value='/mainSearch.br' />");
        comSubmit.addParam("searchText",$("input[name='searchText']").val());
+       comSubmit.setMethod("GET");
        comSubmit.submit();
 	}		
 

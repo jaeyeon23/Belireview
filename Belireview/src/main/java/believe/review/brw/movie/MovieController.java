@@ -74,7 +74,7 @@ public class MovieController {
 
 	@RequestMapping(value="movieDetail.br" ,method = RequestMethod.GET)
 	public ModelAndView movieDetail(CommandMap commandMap, HttpServletRequest request) throws Exception {
-
+		
 		ModelAndView mv = new ModelAndView("movieDetail");
 		HttpSession session = request.getSession();
 		
@@ -82,6 +82,9 @@ public class MovieController {
 		List<Map<String,Object>> comment = movieService.movieCommentForDetail(map);//댓
 		List<Map<String,Object>> actor = movieService.movieActor(map); //출연배우
 		List<Map<String,Object>> detailgenre = movieService.detailgenre(map);//비슷한장르
+		
+		movieService.updateReadCount(map);
+		
 		int totalGrade = movieService.grade(map);
 		try {
 			List<Map<String,Object>> gradeRatio = movieService.gradeRatio(map);//별점비율
@@ -219,6 +222,7 @@ public class MovieController {
 			}else {//별점이 있을때
 				movieService.updateGrade(mv);
 			}
+			movieService.updateGrade2(mv);
 		}
 		/*평점*/
 		
