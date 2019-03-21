@@ -77,6 +77,20 @@
 	display: block;
 	position: relative;
 	box-sizing: border-box;
+	width: 320px;
+	height: 164px;
+	border: solid 1px #fff;
+	border-radius: 3px;
+	margin: 0 auto;
+}
+
+.cjQTNJAD {
+	position: relative;
+	background: #f8f8f8;
+	overflow: hidden;
+	display: block;
+	position: relative;
+	box-sizing: border-box;
 	width: 114px;
 	height: 164px;
 	border: solid 1px #fff;
