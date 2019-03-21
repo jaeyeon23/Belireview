@@ -143,6 +143,60 @@
         obj.parent().remove();
     }
     
+    $(function() {
+		
+		$("#autocompleteTextMovie").autocomplete({
+			source: function(request, response){
+				$.ajax({
+					url: "/brw/ajaxActorWrite.br?${_csrf.parameterName}=${_csrf.token}",
+					dataType: "json",
+					data:{
+						searchValue: request.term
+					},
+					success: function(args){
+						response(
+							$.map(args, function(item) {
+								return{
+									label:item.name,
+									value:item.no
+								}
+							})
+						);
+					}
+				});
+			},
+			minLength:1,
+		});
+	});
+    
+    function movie_textarea_write() {
+		var txt = document.getElementById('movie_textarea');
+		var area_split = txt.value.split(", ");
+		var tmp = 0;
+	
+		for(var i in area_split){
+			if(area_split[i] == $('#autocompleteTextMovie').val()){
+				tmp = 1;
+			}
+		}
+		
+		if(tmp != 1){
+			if(txt.value != ""){
+				txt.value += ", " + $('#autocompleteTextMovie').val();	
+			}else{
+				txt.value = $('#autocompleteTextMovie').val();
+			}
+		}
+		
+		$("#autocompleteTextMovie").val("");
+	}
+    
+    function reset_movie_area() {
+		var txt = document.getElementById('movie_textarea');
+		
+		txt.value = "";
+	}
+    
 </script>
 </head>
 <body>
@@ -217,6 +271,16 @@
 				</h3>
 				<div>
 					<input type="text" class="form-control search-wid" name="grade" value="${admin.MOVIE_GRADE }" readonly>
+				</div>
+				<h3 class="blog-post-title">
+					ACTOR
+				</h3>
+				<div>
+					<input type="text" class="form-control search-wid" id="autocompleteTextMovie" name="actor" onkeypress="if (event.keyCode==13){movie_textarea_write();}">
+					<button type="button" class="btn btn-default" onclick="reset_movie_area()">드라마 배우 리셋</button>
+				</div>
+				<div style="margin-top: 5%;">
+					<textarea rows="8" cols="80" id="movie_textarea" name="movie_textarea" class="form-control" readonly>${str }</textarea>
 				</div>
 				<div>
 					<br><br><strong>새로운 이미지 사용시 check</strong>

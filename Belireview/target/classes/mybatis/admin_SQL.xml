@@ -633,19 +633,55 @@
 		UPDATE
 			ACTOR
 		SET
-			<choose>
-				<when test='actor_movie != null'>
-					ACTOR_MOVIE=#{actor_movie},
-				</when>
-				<when test='actor_drama != null'>
-					ACTOR_DRAMA=#{actor_drama},
-				</when>
-				<when test='image != null'>
-					ACTOR_IMAGE=#{image},
-				</when>
-			</choose>
+			<if test='movie_textarea != null'>
+				ACTOR_MOVIE=#{movie_textarea},
+			</if>
+			<if test='drama_textarea != null'>
+				ACTOR_DRAMA=#{drama_textarea},
+			</if>
+			<if test='image != null'>
+				ACTOR_IMAGE=#{image},	
+			</if>
 			ACTOR_NAME=#{name}
 		WHERE
 			ACTOR_NO=#{no}
 	</update>
+	
+	<delete id="deleteActorOne" parameterType="string">
+		DELETE
+		FROM
+			ACTOR
+		WHERE
+			ACTOR_NO=#{no}
+	</delete>
+	
+	<select id="selectActorAjax" parameterType="string" resultType="hashmap">
+		SELECT
+			ACTOR_NO,
+			ACTOR_NAME
+		FROM
+			ACTOR
+		WHERE
+			ACTOR_NAME LIKE '%'||#{searchValue}||'%'
+	</select>
+	
+	<select id="selectActorDramaModify" resultType="hashmap" parameterType="string">
+		SELECT
+			ACTOR_NO, 
+			ACTOR_DRAMA
+		FROM
+			ACTOR
+		WHERE
+			ACTOR_DRAMA LIKE '%'||#{no}||'%'
+	</select>
+	
+	<select id="selectActorMovieModify" resultType="hashmap" parameterType="string">
+		SELECT
+			ACTOR_NO, 
+			ACTOR_MOVIE
+		FROM
+			ACTOR
+		WHERE
+			ACTOR_MOVIE LIKE '%'||#{no}||'%'
+	</select>
 </mapper>

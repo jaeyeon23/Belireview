@@ -33,6 +33,7 @@
 		<mapper resource="mybatis/main_SQL.xml" />
 		 <mapper resource="mybatis/member_SQL.xml" />
 		 <mapper resource="mybatis/user_SQL.xml" />
+		 <mapper resource="mybatis/rank_SQL.xml" />
 	</mappers>
 </configuration>
 

@@ -150,7 +150,7 @@
                       <div class="srch-form">
                           <form class="side-search">
                               <div class="input-group">
-                                  <input type="text" name="searchText" class="form-control search-wid" placeholder="Search Here" aria-describedby="basic-addon2">
+                                  <input type="text" id="autocompleteText" name="searchText" class="form-control search-wid" placeholder="Search Here" aria-describedby="basic-addon2">
                                   <a href="" name="search" class="input-group-addon btn-side-serach" id="basic-addon2">
                                   <i class="fa fa-search"></i></a>
                               </div>
