@@ -93,10 +93,10 @@ public class DramaController {
 						System.out.println("작동함?"+m.get("ACTOR_NAME"));
 						mp.put("ACTOR_NAME", m.get("ACTOR_NAME"));
 						mp.put("ACTOR_IMAGE", m.get("ACTOR_IMAGE"));
+						actor.add(mp);
 					}
 				}
 			}
-			actor.add(mp);
 		}
 		
 		
