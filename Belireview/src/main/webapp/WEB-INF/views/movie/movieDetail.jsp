@@ -75,11 +75,11 @@
 			if(id==""){//비로그인
 				$(".gsSopE").click(function(){//보고싶어요
 					alert("로그인 해주세요.");
-					location.href="<c:url value='/member/loginForm.br' />"
+					location.href="<c:url value='/member/loginForm.br?${_csrf.parameterName}=${_csrf.token}' />"
 					});
 				$(".gZASBp").click(function(){//별점
 					alert("로그인 해주세요.");
-					location.href="<c:url value='/member/loginForm.br' />"
+					location.href="<c:url value='/member/loginForm.br?${_csrf.parameterName}=${_csrf.token}' />"
 				});
 			}else{//로그인
 				if(mcc != ""){ // 마이코멘트 숨기기 보여주기
@@ -126,7 +126,7 @@
 			async : true,  
 			type : 'POST',
 			data : {ID:id , COMMENTLIKE:"c" ,CLA:cla , MVOIE_NO:<%=request.getParameter("MOVIE_NO")%>, MC_NO:$(".00"+cla).val()},
-			url:"<c:url value='/movie/movieDetail.br' />",
+			url:"<c:url value='/movie/movieDetail.br?${_csrf.parameterName}=${_csrf.token}' />",
 			success : function(result){
 					var r = result;
 					var clike ="좋아요취소";
@@ -147,7 +147,7 @@
 				 async:true,
 				 type:'POST',
 				 data:{ID:id,DELCOM:'DEL', MC_NO:"${myComment.MC_NO}",MOVIE_NO:<%=request.getParameter("MOVIE_NO")%>},
-				 url:"<c:url value='/movie/movieDetail.br' />",
+				 url:"<c:url value='/movie/movieDetail.br?${_csrf.parameterName}=${_csrf.token}' />",
 				 success:function(result){
 					$(".writeComment").css("display","block");
 					$(".existComment").css("display","none");
@@ -161,7 +161,7 @@
 				 async:true,
 				 type:'POST',
 				 data:{ID:id,MCOM:$('.com2').val(), MOVIE_NO:<%=request.getParameter("MOVIE_NO")%>},
-				 url:"<c:url value='/movie/movieDetail.br' />",
+				 url:"<c:url value='/movie/movieDetail.br?${_csrf.parameterName}=${_csrf.token}' />",
 				 success:function(result){
 					$(".writeComment").css("display","none");
 					$(".existComment").css("display","block");
@@ -176,7 +176,7 @@
 				 async:true,
 				 type:'POST',
 				 data:{ID:id,COM:$('.com').val(), MOVIE_NO:<%=request.getParameter("MOVIE_NO")%>},
-				 url:"<c:url value='/movie/movieDetail.br' />",
+				 url:"<c:url value='/movie/movieDetail.br?${_csrf.parameterName}=${_csrf.token}' />",
 				 success:function(result){
 					$(".writeComment").css("display","none");
 					$(".existComment").css("display","block");
@@ -192,7 +192,7 @@
 				async : true,  
 				type : 'POST',
 				data : {ID:id , WISH:"w" , MOVIE_NO:<%=request.getParameter("MOVIE_NO")%>},
-				url:"<c:url value='/movie/movieDetail.br' />",
+				url:"<c:url value='/movie/movieDetail.br?${_csrf.parameterName}=${_csrf.token}' />",
 				success : function(result){
 					var w = result;
 					var a = "보기싫어요";
@@ -218,7 +218,7 @@
 				async : true,  
 				type : 'POST',
 				data : {ID:id , RATING:rr , MOVIE_NO:<%=request.getParameter("MOVIE_NO")%>},
-				url:"<c:url value='/movie/movieDetail.br' />",
+				url:"<c:url value='/movie/movieDetail.br?${_csrf.parameterName}=${_csrf.token}' />",
 				success : function(result){
 				}
 				/* $('.gZASBp > a.r1'); */
