@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -65,6 +66,9 @@ public class MainController {
             currentPage = Integer.parseInt(request.getParameter("currentPage"));
         }
 		ModelAndView mv = new ModelAndView("mainSearch");
+		
+		Set keyset = commandMap.keySet();
+		System.out.println("testsetetste===================== " + keyset);
 		
 		List<Map<String,Object>> searchMain = new ArrayList<Map<String,Object>>();
 		List<Map<String,Object>> searchMovie = mainService.movieSerach(commandMap.getMap());
@@ -150,13 +154,19 @@ public class MainController {
 		
 		searchAd = searchAd.subList(adPage.getStartCount(), lastCount);
 	
+		if(request.getParameter("searchText") != null) {
+			mv.addObject("request",request.getParameter("searchText"));
+		}
+		else {
+			mv.addObject("request",request.getParameter("GENRE"));
+			mv.addObject("genre","genre");
+		}
 		mv.addObject("currentPage",currentPage);
-		mv.addObject("request",request.getParameter("searchText"));
 		mv.addObject("searchMain",searchMain);
 		mv.addObject("searchMovie",searchMovie);
 		mv.addObject("searchDrama",searchDrama);
 		mv.addObject("searchAd",searchAd);
-
+		
 		return mv;
 		}	
 		@RequestMapping(value = "mainSearch2.br")
@@ -245,7 +255,7 @@ public class MainController {
 			return mv;
 		}	
 		
-		/*메인 검색영화*/
+		/*메인 검색영화,드라마,광고*/
 		@RequestMapping(value = "mdaSearch.br")
 		@ResponseBody
 		public Map<String,Object>mdaSearch(CommandMap commandMap,HttpServletRequest request) throws Exception {

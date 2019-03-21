@@ -104,9 +104,7 @@ public class UserController {
 
 		ModelAndView mv = new ModelAndView("userMovie");
 		List<Map<String, Object>> userMovieAll = userService.UserMovieAll(commandMap.getMap());
-		List<Map<String, Object>> selectUserGrade = userService.selectUserGrade(commandMap.getMap());
 		mv.addObject("userMovieAll", userMovieAll);
-		mv.addObject("selectUserGrade", selectUserGrade);
 		Map<String, Object> userWishList = userService.userWishList(commandMap.getMap());
 
 		if (userWishList != null) {
@@ -130,14 +128,12 @@ public class UserController {
 
 		ModelAndView mv = new ModelAndView("userDrama");
 		List<Map<String, Object>> userdramaAll = userService.UserDramaAll(commandMap.getMap());
-		List<Map<String, Object>> selectDUserGrade = userService.selectDUserGrade(commandMap.getMap());
 		mv.addObject("userdramaAll", userdramaAll);
-		mv.addObject("selectDUserGrade", selectDUserGrade);
 		Map<String, Object> userWishList = userService.userWishList(commandMap.getMap());
 
 		if (userWishList != null) {
-			if(userWishList.get("MYPAGE_drama")!=null) {
-				String[] str = userWishList.get("MYPAGE_drama").toString().split(",");
+			if(userWishList.get("MYPAGE_DRAMA")!=null) {
+				String[] str = userWishList.get("MYPAGE_DRAMA").toString().split(",");
 				commandMap.put("a", str);
 	
 				List<Map<String, Object>> userDramaList = userService.userDramaList(commandMap.getMap());
@@ -146,6 +142,18 @@ public class UserController {
 				mv.addObject("userDramaList", userDramaList);
 			}
 		}
+
+		return mv;
+	}
+	
+	@RequestMapping(value = "/userAD")
+	public ModelAndView userad(CommandMap commandMap, HttpServletRequest request) throws Exception {
+		HttpSession session = request.getSession();
+
+		ModelAndView mv = new ModelAndView("userAD");
+		List<Map<String, Object>> useradAll = userService.UserAdAll(commandMap.getMap());
+		mv.addObject("useradAll", useradAll);
+	
 
 		return mv;
 	}
