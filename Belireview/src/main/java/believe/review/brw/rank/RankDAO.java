@@ -15,4 +15,32 @@ public class RankDAO extends AbstractDAO{
 		return (List<Map<String, Object>>) selectList("rank.selectMovieTotal", map);
 	}
 	
+	@SuppressWarnings("unchecked")
+	public List<Map<String, Object>> selectRank5(Map<String, Object> map){
+		return (List<Map<String, Object>>) selectList("rank.selectRank5", map);
+	}
+	
+	public int selectCountSearchText(Map<String, Object> map) {
+		return (Integer) selectOne("rank.selectCountSearchText", map);
+	}
+	
+	public void insertSearchText(Map<String, Object> map) {
+		insert("rank.insertSearchText", map);
+	}
+	
+	public void updateSearchText(Map<String, Object> map) {
+		update("rank.updateSearchText", map);
+	}
+	
+	public int selectDramaSearch(Map<String, Object> map) {
+		return (Integer) selectOne("rank.selectDramaSearch", map);
+	}
+	
+	public int selectMovieSearch(Map<String, Object> map) {
+		return (Integer) selectOne("rank.selectMovieSearch", map);
+	}
+	
+	public int selectActorSearch(Map<String, Object> map) {
+		return (Integer) selectOne("rank.selectActorSearch", map);
+	}
 }

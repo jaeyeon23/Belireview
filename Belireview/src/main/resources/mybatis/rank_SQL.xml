@@ -29,7 +29,130 @@
 			</if>
 			)
 		WHERE
-			R BETWEEN 1 AND 50
+			R BETWEEN 1 AND 20
 	</select>
+	
+	<select id="selectRank5" resultType="hashmap" parameterType="hashmap">
+		SELECT
+			SEARCH_TEXT,
+			<if test="table_value != null">
+				NO,
+			</if>
+			ROWNUM
+		FROM
+			(
+				SELECT DISTINCT
+					SEARCH_TEXT, 
+					COUNT
+					<if test="table_value != null">
+						<choose>
+							<when test="table_value.equals('drama')">
+								,DRAMA.DRAMA_NO AS NO, 
+								DRAMA.DRAMA_NAME	
+							</when>
+							<when test="table_value.equals('movie')">
+								,MOVIE.MOVIE_NO AS NO,
+								MOVIE.MOVIE_NAME
+							</when>
+							<otherwise>
+								,ACTOR.ACTOR_NO AS NO,
+								ACTOR.ACTOR_NAME
+							</otherwise>
+						</choose>
+					</if> 
+				FROM
+					RANK
+					<if test="table_value != null">
+						, ${table_value}
+					</if>
+				WHERE
+					SEARCH_DATE BETWEEN SYSDATE-7 AND SYSDATE 
+					<if test="table_value != null">
+						AND SEARCH_TABLE=#{table_value}
+						<choose>
+							<when test="table_value.equals('drama')">
+								AND	SEARCH_TEXT=DRAMA_NAME		
+							</when>
+							<when test="table_value.equals('movie')">
+								AND	SEARCH_TEXT=MOVIE_NAME
+							</when>
+							<otherwise>
+								AND	SEARCH_TEXT=ACTOR_NAME
+							</otherwise>
+						</choose>
+					</if>
+				ORDER BY
+					COUNT DESC
+			)
+		WHERE 
+			ROWNUM BETWEEN 1 AND 5
+	</select>
+	
+	<!-- 테이블 검사 -->
+	<select id="selectDramaSearch" parameterType="hashmap" resultType="int">
+		SELECT
+			COUNT(*)
+		FROM
+			DRAMA
+		WHERE
+			DRAMA_NAME = #{searchText}
+	</select>
+	<select id="selectMovieSearch" parameterType="hashmap" resultType="int">
+		SELECT
+			COUNT(*)
+		FROM
+			MOVIE
+		WHERE
+			MOVIE_NAME = #{searchText}
+	</select>
+	<select id="selectActorSearch" parameterType="hashmap" resultType="int">
+		SELECT
+			COUNT(*)
+		FROM
+			ACTOR
+		WHERE
+			ACTOR_NAME = #{searchText}
+	</select>
+	
+	<!-- 검색어 삽입 -->
+	<insert id="insertSearchText" parameterType="hashmap">
+		INSERT INTO 
+		RANK
+			(
+				SEARCH_TEXT,
+				COUNT,
+				SEARCH_DATE
+				<if test="table_value != null">
+					, SEARCH_TABLE 
+				</if>
+			)
+		VALUES
+			(
+				#{searchText},
+				1,
+				SYSDATE 
+				<if test="table_value != null">
+					, #{table_value, jdbcType=VARCHAR}
+				</if>
+			)
 		
+	</insert>
+	
+	<select id="selectCountSearchText" parameterType="hashmap" resultType="int">
+		SELECT 
+			COUNT(*) 
+		FROM 
+			RANK 
+		WHERE 
+			TO_CHAR(SEARCH_DATE, 'YYYYMMDD') = TO_CHAR(SYSDATE, 'YYYYMMDD') and SEARCH_TEXT = #{searchText} 
+	</select>
+	
+	<update id="updateSearchText" parameterType="hashmap">
+		UPDATE
+			RANK
+		SET
+			COUNT=COUNT+1
+		WHERE
+			TO_CHAR(SEARCH_DATE, 'YYYYMMDD') = TO_CHAR(SYSDATE, 'YYYYMMDD') and SEARCH_TEXT = #{searchText}
+	</update>
 </mapper>
