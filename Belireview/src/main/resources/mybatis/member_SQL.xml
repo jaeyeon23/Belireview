@@ -18,13 +18,6 @@
 		]]>
 	</select>
 	
-	<update id="updateReadCount" parameterType="hashmap">
-		UPDATE MOVIE SET MOVIE_READCOUNT = MOVIE_READCOUNT+1 WHERE MOVIE_NO=#{MOVIE_NO}
-	</update>
-	
-	<update id="updateGrade" parameterType="hashmap">
-		UPDATE MOVIE SET MOVIE_GRADE = (SELECT AVG(ML_GRADE) FROM MOVIE_LIKE WHERE MOVIE_LIKE_NO=#{MOVIE_NO}) WHERE MOVIE_NO=#{MOVIE_NO}
-	</update>
 		
 	<!-- 비밀번호찾기 -->
 	<select id="findEmail" parameterType="hashmap" resultType="string">
