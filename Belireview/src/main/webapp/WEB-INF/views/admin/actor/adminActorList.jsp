@@ -60,6 +60,17 @@
 	function write_actor() {
 		location.href='/brw/admin/actor/write.br?${_csrf.parameterName}=${_csrf.token}';
 	}
+	
+	function delete_actor(no){
+		var check = confirm("정말로 삭제하시겠습니까?");
+		
+		if(check == true){
+			var inputString = prompt('관리자 비밀번호를 입력하시오');
+			if(inputString != null){
+				post_to_url("/brw/admin/actor/delete.br?${_csrf.parameterName}=${_csrf.token}", {'no':no, 'password':inputString}, "POST");
+			}
+		}
+	}
 </script>
 </head>
 <body>
@@ -95,7 +106,7 @@
 									<div class="product-fade-ct">
                                    		<div class="product-fade-control">
                                         	<div class="clearfix"></div>
-                                           		<a href="/brw/admin/actor/modify.br?${_csrf.parameterName}=${_csrf.token}&no=${list.ACTOR_NO }" class="btn btn-to-cart"><span>자세히 보기</span><div class="clearfix"></div></a>
+                                           		<a href="javascript:void(0);" onclick="delete_actor(${list.ACTOR_NO})" class="btn btn-to-cart"><span>삭제</span><div class="clearfix"></div></a>
                                         </div>
 									</div>
 									

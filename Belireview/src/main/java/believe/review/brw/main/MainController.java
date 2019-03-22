@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -20,6 +19,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import believe.review.brw.common.common.CommandMap;
 import believe.review.brw.common.util.Paging;
+import believe.review.brw.rank.RankService;
+import believe.review.brw.realTime.RealTimeService;
 
 @Controller
 public class MainController {
@@ -37,12 +38,21 @@ public class MainController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(MainController.class);
 
+	
+	@Resource(name="realTimeService")
+	private RealTimeService realTimeService;
+	
+	@Resource(name="rankService")
+	private RankService rankService;
+	
 	@Resource(name="mainService")
 	private MainService mainService;
 	
 	@RequestMapping(value = "/main.br", method = RequestMethod.GET)
 	public String home(Model model) throws Exception{
-
+		List<Map<String, Object>> realtime = realTimeService.selectRealTime();
+		model.addAttribute("realtime", realtime);
+		
 		List<Map<String, Object>> drama_list = mainService.dramaListTop8();
 		List<Map<String, Object>> movie_list = mainService.movieListTop8();
 		List<Map<String, Object>> ad_list = mainService.adListTop8();
@@ -56,6 +66,31 @@ public class MainController {
 	
 	@RequestMapping(value = "mainSearch.br")
 	public ModelAndView mainSearch(CommandMap commandMap,HttpServletRequest request) throws Exception {
+		String table = null;
+		
+		if(rankService.selectCountSearchText(commandMap.getMap()) > 0) {
+			rankService.updateSearchText(commandMap.getMap());
+		}else {
+			if(rankService.selectDramaSearch(commandMap.getMap()) > 0) {
+				table = "drama";
+			}else if(rankService.selectMovieSearch(commandMap.getMap()) > 0) {
+				table = "movie";
+			}else if(rankService.selectActorSearch(commandMap.getMap()) > 0) {
+				table = "actor";
+			}
+			
+			commandMap.put("table_value", table);
+			
+			rankService.insertSearchText(commandMap.getMap());
+		}
+		
+		if(realTimeService.selectAllName(commandMap.getMap()) > 0) {
+			if(realTimeService.selectRealTimeCount(commandMap.getMap()) > 0) {
+				realTimeService.updateRealTime(commandMap.getMap());
+			}else {
+				realTimeService.insertRealTime(commandMap.getMap());
+			}
+		}
 		
 		String p = request.getParameter("currentPage");
 		System.out.println(p);
@@ -66,9 +101,6 @@ public class MainController {
             currentPage = Integer.parseInt(request.getParameter("currentPage"));
         }
 		ModelAndView mv = new ModelAndView("mainSearch");
-		
-		Set keyset = commandMap.keySet();
-		System.out.println("testsetetste===================== " + keyset);
 		
 		List<Map<String,Object>> searchMain = new ArrayList<Map<String,Object>>();
 		List<Map<String,Object>> searchMovie = mainService.movieSerach(commandMap.getMap());

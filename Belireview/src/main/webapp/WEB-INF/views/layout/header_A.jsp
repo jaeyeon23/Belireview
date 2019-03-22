@@ -6,7 +6,7 @@
 <html>
 
 <script src="<c:url value='/resources/js/common.js'/>" charset="utf-8"></script>
-
+<link href="/brw/resources/Jcss/rank.css" rel="stylesheet">
 <script>
   $(function(){
 		$("a[name='search']").on("click", function(e){ 
@@ -54,21 +54,43 @@
 			minLength:1,
 		});
 	});
+
+	$(function() {
+		var count = $('#rank-list li').length;
+		var height = $('#rank-list li').height();
+
+		function step(index) {
+			$('#rank-list ol').delay(2000).animate({
+				top : -height * index,
+			}, 500, function() {
+				step((index + 1) % count);
+			});
+		}
+
+		step(1);
+	});
 </script>
 <body>
-	 <div id="header"> <!-- header -->
-              <div class="top"> <!-- top -->
-                  <div class="container">
-                      <div class="top-control">
-                      	  <c:if test="${sessionScope.ID == null }">
-                          <a href="/brw/member/loginForm.br">로그인</a><span>•</span><a href="/brw/member/joinTerms.br">회원가입</a>
-                  		  </c:if>
-                  		   <c:if test="${sessionScope.ID != null }">
-                          <a href="/brw/member/logout.br">로그아웃</a><span>•</span><a href="/brw/user/user.br">마이페이지</a>
-                  		  </c:if>
-                      </div>
-                  </div>
-              </div> <!-- top end -->
+	 <div id="header"> 
+	 	<!-- header -->
+		<div class="top">
+			<!-- top -->
+			<div class="container">
+				<div class="top-control">
+					<c:if test="${sessionScope.ID == null }">
+						<a href="/brw/member/loginForm.br">로그인</a>
+						<span>•</span>
+						<a href="/brw/member/joinTerms.br">회원가입</a>
+					</c:if>
+					<c:if test="${sessionScope.ID != null }">
+						<a href="/brw/member/logout.br">로그아웃</a>
+						<span>•</span>
+						<a href="/brw/user/user.br">마이페이지</a>
+					</c:if>
+				</div>
+			</div>
+		</div>
+		<!-- top end -->
               
               <!-- 메뉴 카테고리 시작 -->
               <div id="believe-nav"> <!-- Nav -->
@@ -114,36 +136,50 @@
                                      	  	</li>
                                           </c:if>
                                       </ul>
-                                     
-                                      <ul class="nav navbar-nav navbar-right">
-                                          <li class="menu-search-form">
-                                              <a href="#" id="open-srch-form"><img src="/brw/resources/images/srch.png" alt="srch"></a>
-                                          </li>
-                                          <li>
-                                            <c:if test="${sessionScope.ID != null }">
-                                          	<a href="#">
-                                          	    <c:if test="${sessionScope.PROFILE_IMAGE == null }">
-                                          		<img src="/brw/resources/images/ican/no_pro.png" alt="bag" width="60" height="45" style="border-radius:150px; margin-top:-10px; ">
-                                          		</c:if>
-                                          		<c:if test="${sessionScope.PROFILE_IMAGE != null }">
-                                          		<img src="/brw/resources/images/user_profile/${sessionScope.PROFILE_IMAGE}" alt="bag" width="60" height="45" style="border-radius:150px; margin-top:-10px; ">
-                                          		</c:if>
-                                          	</a>
-                                          	</c:if>
-                                          </li>
-                                          <li id="open-srch-form-mod">
-                                              <div>
-                                                  <form class="side-search">
-                                                      <div class="input-group">
-                                                          <input type="text" class="form-control search-wid" placeholder="Search Here" aria-describedby="basic-addon1">
-                                                          <a href="" class="input-group-addon btn-side-serach" id="basic-addon1"><i class="fa fa-search"></i></a>
-                                                      </div>
-                                                  </form>
-                                              </div>
-                                          </li>
-                                      </ul>
-                                     
-                                  </div><!-- /.navbar-collapse -->
+								<ul class="nav navbar-nav navbar-right">
+									<div id="content1">
+										<dl id="rank-list">
+											<dt>실시간 급상승 검색어</dt>
+											<dd>
+												<ol>
+													<c:forEach items="${realtime }" var="list" varStatus="stat">
+														<li><font id="index">${stat.index + 1}</font>
+															${list.SEARCH_TEXT }</li>
+													</c:forEach>
+												</ol>
+											</dd>
+										</dl>
+									</div>
+									<li class="menu-search-form"><a href="#"
+										id="open-srch-form"><img
+											src="/brw/resources/images/srch.png" alt="srch"></a></li>
+									<li><c:if test="${sessionScope.ID != null }">
+											<a href="#"> <c:if
+													test="${sessionScope.PROFILE_IMAGE == null }">
+													<img src="/brw/resources/images/ican/no_pro.png" alt="bag"
+														width="60" height="45"
+														style="border-radius: 150px; margin-top: -10px;">
+												</c:if> <c:if test="${sessionScope.PROFILE_IMAGE != null }">
+													<img
+														src="/brw/resources/images/user_profile/${sessionScope.PROFILE_IMAGE}"
+														alt="bag" width="60" height="45"
+														style="border-radius: 150px; margin-top: -10px;">
+												</c:if>
+											</a>
+										</c:if></li>
+									<li id="open-srch-form-mod">
+										<div>
+											<form class="side-search">
+												<div class="input-group">
+													<input type="text" class="form-control search-wid"
+														placeholder="Search Here" aria-describedby="basic-addon1">
+													<a href="" class="input-group-addon btn-side-serach"
+														id="basic-addon1"><i class="fa fa-search"></i></a>
+												</div>
+											</form>
+										</div>
+									</li>
+								</ul></div><!-- /.navbar-collapse -->
                               <!--</div> -->
                           </nav>
                       </div>
