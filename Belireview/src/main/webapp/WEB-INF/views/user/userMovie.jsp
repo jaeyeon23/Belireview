@@ -182,7 +182,7 @@
 														<div class="ContentListItemWithPoster__ContentPosterBlock-swai1z-1 kxDIaJ">
 															<div class="LazyLoadingImg__Self-s1jb87ps-0 csJkbb">
 																	<img class="LazyLoadingImg__Image-s1jb87ps-1 csJkbb"
-																	src="/brw/resources/images/MOVIE/poster/${userMovieAll.MOVIE_POSTER_IMAGE}">
+																	src="/brw/resources/images/movie/poster/${userMovieAll.MOVIE_POSTER_IMAGE}">
 															</div>
 														</div>
 														<div class="ContentListItemWithPoster__ContentInfo-swai1z-2 kVeCGy">
@@ -234,7 +234,7 @@
 																		<div class="ContentListItemWithPoster__ContentPosterBlock-swai1z-1 kxDIaJ">
 																			<div class="LazyLoadingImg__Self-s1jb87ps-0 csJkbb">
 																				<img class="LazyLoadingImg__Image-s1jb87ps-1 csJkbb"
-																					src="/brw/resources/images/MOVIE/poster/${userMovieAlll.MOVIE_POSTER_IMAGE}">
+																					src="/brw/resources/images/movie/poster/${userMovieAlll.MOVIE_POSTER_IMAGE}">
 																			</div>
 																		</div>
 																		<div class="ContentListItemWithPoster__ContentInfo-swai1z-2 kVeCGy">
@@ -284,7 +284,7 @@
 																									<div class="LazyLoadingImg__Self-s1jb87ps-0 csJkbb">
 																										<img class="LazyLoadingImg__Image-s1jb87ps-1 csJkbb"
 																											data-image-id="1"
-																											src="/brw/resources/images/MOVIE/poster/${userMovieList.MOVIE_POSTER_IMAGE}">
+																											src="/brw/resources/images/movie/poster/${userMovieList.MOVIE_POSTER_IMAGE}">
 																									</div>
 																								</div>
 																								<div class="ContentListItemWithPoster__ContentInfo-swai1z-2 kVeCGy">

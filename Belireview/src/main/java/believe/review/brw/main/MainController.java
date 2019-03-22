@@ -104,7 +104,7 @@ public class MainController {
 			tmp.put("NAME", searchMovie.get(i).get("MOVIE_NAME"));
 			tmp.put("DATE", searchMovie.get(i).get("MOVIE_DATE"));
 			tmp.put("GENRE", searchMovie.get(i).get("MOVIE_GENRE"));
-			tmp.put("IMAGE", "movie/poster/"+searchMovie.get(i).get("MOVIE_POSTER_IMAGE"));
+			tmp.put("IMAGE", "/brw/resources/images/movie/poster/"+searchMovie.get(i).get("MOVIE_POSTER_IMAGE"));
 			tmp.put("TYPE", "영화");
 			searchMain.add(i,tmp);
 		}
@@ -114,7 +114,7 @@ public class MainController {
 			tmp.put("NAME", searchDrama.get(j).get("DRAMA_NAME"));
 			tmp.put("DATE", searchDrama.get(j).get("DRAMA_DATE"));
 			tmp.put("GENRE", searchDrama.get(j).get("DRAMA_GENRE"));
-			tmp.put("IMAGE", "drama/poster/"+searchDrama.get(j).get("DRAMA_POSTER_IMAGE"));
+			tmp.put("IMAGE", "/brw/resources/images/drama/poster/"+searchDrama.get(j).get("DRAMA_POSTER_IMAGE"));
 			tmp.put("TYPE", "TV");
 			searchMain.add(i,tmp);
 		}
@@ -124,7 +124,7 @@ public class MainController {
 			tmp.put("NAME", searchAd.get(j).get("AD_NAME"));
 			tmp.put("DATE", searchAd.get(j).get("AD_READCOUNT"));
 			tmp.put("GENRE", searchAd.get(j).get("AD_COMPANY"));
-			tmp.put("IMAGE", "ad/poster/"+searchAd.get(j).get("AD_POSTER_IMAGE"));
+			tmp.put("IMAGE", searchAd.get(j).get("AD_POSTER_IMAGE"));
 			tmp.put("TYPE", "광고");
 			searchMain.add(i,tmp);
 		}
@@ -237,7 +237,7 @@ public class MainController {
 				tmp.put("NAME", searchAd.get(j).get("AD_NAME"));
 				tmp.put("DATE", searchAd.get(j).get("AD_READCOUNT"));
 				tmp.put("GENRE", searchAd.get(j).get("AD_COMPANY"));
-				tmp.put("IMAGE", "ad/poster/"+searchAd.get(j).get("AD_POSTER_IMAGE"));
+				tmp.put("IMAGE", searchAd.get(j).get("AD_POSTER_IMAGE"));
 				tmp.put("TYPE", "광고");
 				searchMain.add(i,tmp);
 			}
@@ -324,7 +324,7 @@ public class MainController {
 				sb.append("<li class=\"StackableListItem-s18nuw36-0 cIJjio\">");
 				if(TYPE.equals("1")){
 					sb.append("<a lng=\"ko-KR\" class=\"InnerPartOfListWithImage__LinkSelf-s11a1hqv-1 gmbtJD\" title=\"${request}\" href=\"/brw/movie/movieDetail.br?MOVIE_NO=").append(mda.get("MOVIE_NO")).append("\">");
-					image = "drama/poster/"+mda.get("MOVIE_POSTER_IMAGE").toString();
+					image = "movie/poster/"+mda.get("MOVIE_POSTER_IMAGE").toString();
 					name = mda.get("MOVIE_NAME").toString();
 					date = mda.get("MOVIE_DATE").toString();
 					genre = mda.get("MOVIE_GENRE").toString();
@@ -336,7 +336,7 @@ public class MainController {
 					genre = mda.get("DRAMA_GENRE").toString();
 				}else {
 					sb.append("<a lng=\"ko-KR\" class=\"InnerPartOfListWithImage__LinkSelf-s11a1hqv-1 gmbtJD\" title=\"${request}\" href=\"/brw/ad/adDetail.br?AD_NO=").append(mda.get("AD_NO")).append("\">");
-					image = "drama/poster/"+mda.get("AD_POSTER_IMAGE").toString();
+					image = mda.get("AD_POSTER_IMAGE").toString();
 					name = mda.get("AD_NAME").toString();
 					date = mda.get("AD_READCOUNT").toString();
 					genre = mda.get("AD_COMPANY").toString();
