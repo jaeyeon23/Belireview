@@ -6,7 +6,35 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<!-- <meta http-equiv="refresh" content="3">  -->
+<script type="text/javascript">
+	/* function realtime() {
+		var list = null;
+		
+		alert("ggg");
+		
+		$.ajax({
+			url : "/brw/realtimeAjax.br?${_csrf.parameterName}=${_csrf.token}",
+			dataType: "json",
+			async : false,
+			success: function(data){
+				var result = data.json;
+				
+				$.each(result, function(idx, val) {
+					alert(val.SEARCH_TEXT);
+				});
+			}
+		});
+		
+		alert("test");
+		
+		setTimeout("realtime()", 10000);
+	}
+	
+	window.onload = function() {
+		realtime();
+	} */
+	
+</script>
 </head>
 <body>
 	<!-- Slider start -->
@@ -351,5 +379,11 @@
 	</div>
 	</div>
 	<!-- Content -->
+	
+	<div>
+		<c:forEach items="${realtime }" var="list">
+			<div>${list.SEARCH_TEXT }</div>
+		</c:forEach>
+	</div>
 </body>
 </html>
