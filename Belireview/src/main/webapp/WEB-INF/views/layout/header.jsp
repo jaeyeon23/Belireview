@@ -13,9 +13,10 @@
             e.preventDefault();
             openSearch();
 		});
-		
-		
   });
+  function enter(){
+	  $("a[name='search']").trigger('click');
+  }
   function openSearch(){
 		var comSubmit = new ComSubmit();
        comSubmit.setUrl("<c:url value='/mainSearch.br?${_csrf.parameterName}=${_csrf.token}' />");
@@ -132,12 +133,12 @@
                                           </li>
                                           <li id="open-srch-form-mod">
                                               <div>
-                                                  <form class="side-search">
+                                                  <!-- <form class="side-search"> -->
                                                       <div class="input-group">
                                                           <input type="text" class="form-control search-wid" placeholder="Search Here" aria-describedby="basic-addon1">
                                                           <a href="" class="input-group-addon btn-side-serach" id="basic-addon1"><i class="fa fa-search"></i></a>
                                                       </div>
-                                                  </form>
+                                                  <!-- </form> -->
                                               </div>
                                           </li>
                                       </ul>
@@ -147,14 +148,13 @@
                           </nav>
                       </div>
                       
-                      <div class="srch-form">
-                          <form class="side-search">
-                              <div class="input-group">
-                                  <input type="text" name="searchText" class="form-control search-wid" placeholder="Search Here" aria-describedby="basic-addon2">
-                                  <a href="" name="search" class="input-group-addon btn-side-serach" id="basic-addon2">
-                                  <i class="fa fa-search"></i></a>
-                              </div>
-                          </form>
+						<div class="srch-form">
+                          <div class="input-group">
+	                           <input type="text" name="searchText"  id="autocompleteText"  onkeypress="if (event.keyCode==13){enter();}"  class="form-control search-wid" placeholder="Search Here" aria-describedby="basic-addon2">
+	                           <a href="" name="search" class="input-group-addon btn-side-serach" id="basic-addon2">
+	                           <i class="fa fa-search"></i></a>
+	                       </div>
+                      </div>
                       </div>
                   </div>
               </div> <!-- Nav -->

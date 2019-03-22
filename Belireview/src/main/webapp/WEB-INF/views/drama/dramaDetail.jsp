@@ -4,7 +4,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Insert title hersse</title>
 <meta charset="utf-8">
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -41,17 +40,17 @@
 	<script src="/brw/resources/js/slides.jquery.js"></script>
 	
 	<script>
-	
+	var id = "${ID}";
+	var grade = "${grade}";
+	var wi = "${wish}";
+	var ra = ""
+	var initValue = "${initValue}";
+	var mcc = "${myComment}";
+	var like = "${likeList}".split(",");
 		$(function() {
 			$("#cat-nav").hide();
 		})
-		var id = "${ID}";
-		var grade = "${grade}";
-		var wi = "${wish}";
-		var ra = ""
-		var initValue = "${initValue}";
-		var mcc = "${myComment}";
-		var like = "${likeList}".split(",");
+		
 		$(function() {
 			var ee;
 			for (var i = 0; i < 10; i++) {
@@ -80,11 +79,11 @@
 			if (id == "") {//비로그인
 				$(".gsSopE").click(function() {//보고싶어요
 					alert("로그인 해주세요.");
-					location.href = "<c:url value='/member/loginForm.br' />"
+					location.href = "<c:url value='/member/loginForm.br?${_csrf.parameterName}=${_csrf.token}' />"
 				});
 				$(".gZASBp").click(function() {//별점
 					alert("로그인 해주세요.");
-					location.href = "<c:url value='/member/loginForm.br' />"
+					location.href = "<c:url value='/member/loginForm.br?${_csrf.parameterName}=${_csrf.token}' />"
 				});
 			} else {//로그인
 				if (mcc != "") { // 마이코멘트 숨기기 보여주기
@@ -113,9 +112,7 @@
 					commentlike(cla);
 					return;
 				});
-				if (like == "" || like == null) {
-					$(".like").html("좋아요")
-				} else {
+				if (like.length > 0) {
 					for (var i = 0; i < like.length; i++) {
 						var tmp = like[i].replace("[", "").replace("]", "")
 								.trim();
@@ -136,9 +133,9 @@
 					COMMENTLIKE : "c",
 					CLA : cla,
 					DRAMA_NO :
-	<%=request.getParameter("DRAMA_NO")%>, DC_NO:$(".00"+cla).val()},
-			url:"<c:url value='/drama/dramaDetail.br?${_csrf.parameterName}=${_csrf.token}' />",
-			success : function(result){
+					<%=request.getParameter("DRAMA_NO")%>, DC_NO:$(".00"+cla).val()},
+					url:"<c:url value='/drama/dramaDetail.br?${_csrf.parameterName}=${_csrf.token}' />",
+					success : function(result){
 					var r = result;
 					var clike ="좋아요취소";
 					var cnolike ="좋아요";
@@ -232,7 +229,6 @@
 				url:"<c:url value='/drama/dramaDetail.br?${_csrf.parameterName}=${_csrf.token}' />",
 				success : function(result){
 				}
-				/* $('.gZASBp > a.r1'); */
 			})
 		}
 		/* 별점 */
@@ -248,224 +244,10 @@
 			});
 		});
 		/* 이미지 슬라이드 */
-		
-		/* 별점 */
-		$(function(){
-			if(id==""||id==null){}
-			else{
-				/* initValue = $('.gZASBp > div').attr("class").split(" ")[1]; */
 
-				var f = $('.gZASBp > a.r1');
-				f.hover(function() {
-					$('.gZASBp > div' ).removeClass(initValue).addClass('r1');
-				}, function() {
-					$('.gZASBp > div' ).removeClass('r1').addClass(initValue);
-				});
-				f.click(function(){
-					if(initValue == 'r1'){
-						initValue = 'r0';
-						r=0;
-						$('.ccOSgS').html("평가하기");
-						rating(r);
-					}else{
-						initValue = 'r1';
-						r=0.5;
-						$('.ccOSgS').html("최악이에요");
-						rating(r);
-					}
-				});
-				
-				f = $('.gZASBp > a.r2');
-				f.hover(function() {
-					$('.gZASBp > div' ).removeClass(initValue).addClass('r2');
-				}, function() {
-					$('.gZASBp > div' ).removeClass('r2').addClass(initValue);
-				});
-				f.click(function(){
-					if(initValue == 'r2'){
-						initValue = 'r0';
-						r=0;
-						$('.ccOSgS').html("평가하기");
-						rating(r);
-					}else{
-						initValue = 'r2';
-						r=1;
-						$('.ccOSgS').html("싫어요");
-						rating(r);
-					}
-				});
-				
-				f = $('.gZASBp > a.r3');
-				f.hover(function() {
-					$('.gZASBp > div' ).removeClass(initValue).addClass('r3');
-				}, function() {
-					$('.gZASBp > div' ).removeClass('r3').addClass(initValue);
-				});
-				f.click(function(){
-					if(initValue == 'r3'){
-						initValue = 'r0';
-						r=0;
-						$('.ccOSgS').html("평가하기");
-						rating(r);
-					}else{
-						initValue = 'r3';
-						r=1.5;
-						$('.ccOSgS').html("재미없어요");
-						rating(r);
-					}
-				});
-				
-				f = $('.gZASBp > a.r4');
-				f.hover(function() {
-					$('.gZASBp > div' ).removeClass(initValue).addClass('r4');
-				}, function() {
-					$('.gZASBp > div' ).removeClass('r4').addClass(initValue);
-				});
-				f.click(function(){
-					if(initValue == 'r4'){
-						initValue = 'r0';
-						r=0;
-						$('.ccOSgS').html("평가하기");
-						rating(r);
-					}
-					else{
-						initValue = 'r4';
-						r=2;
-						$('.ccOSgS').html("별로에요");
-						rating(r);
-					}
-				});
-				
-				f = $('.gZASBp > a.r5');
-				f.hover(function() {
-					$('.gZASBp > div' ).removeClass(initValue).addClass('r5');
-				}, function() {
-					$('.gZASBp > div' ).removeClass('r5').addClass(initValue);
-				});
-				f.click(function(){
-					if(initValue == 'r5'){
-						initValue = 'r0';
-						r=0;
-						$('.ccOSgS').html("평가하기");
-						rating(r);
-					}
-					else{
-						initValue = 'r5';
-						r=2.5;
-						$('.ccOSgS').html("부족해요");
-						rating(r);
-					}
-				});
-				
-				f = $('.gZASBp > a.r6');
-				f.hover(function() {
-					$('.gZASBp > div' ).removeClass(initValue).addClass('r6');
-				}, function() {
-					$('.gZASBp > div' ).removeClass('r6').addClass(initValue);
-				});
-				f.click(function(){
-					if(initValue == 'r6'){
-						initValue = 'r0';
-						r=0;
-						$('.ccOSgS').html("평가하기");
-						rating(r);
-					}
-					else{
-						initValue = 'r6';
-						r=3;
-						$('.ccOSgS').html("보통이에요");
-						rating(r);
-					}
-				});
-				
-				f = $('.gZASBp > a.r7');
-				f.hover(function() {
-					$('.gZASBp > div' ).removeClass(initValue).addClass('r7');
-				}, function() {
-					$('.gZASBp > div' ).removeClass('r7').addClass(initValue);
-				});
-				f.click(function(){
-					if(initValue == 'r7'){
-						initValue = 'r0';
-						r=0;
-						$('.ccOSgS').html("평가하기");
-						rating(r);
-					}
-					else{
-						initValue = 'r7';
-						r=3.5;
-						$('.ccOSgS').html("볼만해요");
-						rating(r);
-					}
-				});
-				
-				f = $('.gZASBp > a.r8');
-				f.hover(function() {
-					$('.gZASBp > div' ).removeClass(initValue).addClass('r8');
-				}, function() {
-					$('.gZASBp > div' ).removeClass('r8').addClass(initValue);
-				});
-				f.click(function(){
-					if(initValue == 'r8'){
-						initValue = 'r0';
-						r=0;
-						$('.ccOSgS').html("평가하기");
-						rating(r);
-					}
-					else{
-						initValue = 'r8';
-						r=4;
-						$('.ccOSgS').html("재미있어요");
-						rating(r);
-					}
-				});
-				
-				f = $('.gZASBp > a.r9');
-				f.hover(function() {
-					$('.gZASBp > div' ).removeClass(initValue).addClass('r9');
-				}, function() {
-					$('.gZASBp > div' ).removeClass('r9').addClass(initValue);
-				});
-				f.click(function(){
-					if(initValue == 'r9'){
-						initValue = 'r0';
-						r=0;
-						$('.ccOSgS').html("평가하기");
-						rating(r);
-					}
-					else{
-						initValue = 'r9';
-						r=4.5;
-						$('.ccOSgS').html("훌륭해요!");
-						rating(r);
-					}
-				});
-				
-				f = $('.gZASBp > a.r10');
-				f.hover(function() {
-					$('.gZASBp > div' ).removeClass(initValue).addClass('r10');
-				}, function() {
-					$('.gZASBp > div' ).removeClass('r10').addClass(initValue);
-				});
-				f.click(function(){
-					if(initValue == 'r10'){
-						initValue = 'r0';
-						r=0;
-						$('.ccOSgS').html("평가하기");
-						rating(r);
-					}
-					else{
-						initValue = 'r10';
-						r=5;
-						$('.ccOSgS').html("최고에요!");
-						rating(r);
-					}
-				});
-			}
-		});
-		/* 별점 */
 	</script>
 	<!-- 슬라이드 css -->
+	<script src="/brw/resources/js/rating.js"></script>
 	<link rel="stylesheet" href="/brw/resources/css/global2.css">
 </head>
 <body> 
@@ -590,7 +372,7 @@
 																		class="ContentMyCommentSection__LeaveCommentBlock-mhuscg-2 bvmyee">
 																		<h3
 																			class="ContentMyCommentSection__Title-mhuscg-11 inwTWL">이
-																			작품에 대한 ${map.ID} 님의 평가를 글로 남겨보세요.</h3>
+																			작품에 대한 ${map.NAME} 님의 평가를 글로 남겨보세요.</h3>
 																		<div class="ContentMyCommentSection__ButtonBlock-mhuscg-12 kTSrnl">
 																			<!-- modal 구동 버튼 (trigger) -->
 																			<!-- 코멘트 작성창 -->
@@ -811,57 +593,59 @@
 																				<ul
 																					class="ContentPeopleSection__PeopleStackableUl-s1qdagi5-0 dCFwKD StackableUl__StyledStackableUl-gafxvv-1 dYcNoO VisualUl-s1vzev56-0 hgAYVH">
 																					<li class="ListItemWithProfilePhoto__Self-s1a35ruo-0 GRmjI">
-																							<div class="InnerPartOfListWithImage__ImageBlock-s11a1hqv-3 kXgAWr">
+																					<a lng="ko-KR"
+																						class="InnerPartOfListWithImage__LinkSelf-s11a1hqv-1 gmbtJD"
+																						title="제임스 카메론" href="/ko-KR/people/178274">
+																						<div class="InnerPartOfListWithImage__ImageBlock-s11a1hqv-3 kXgAWr">
 																								<div class="ProfilePhoto__Self-s1v3isfu-1 cKevdV RoundedImageBlock-k5m4n5-0 gUZYtN">
-																									<div class="ProfilePhoto__ProfilePhotoImage-s1v3isfu-0 ctlVML"></div>
+																									<div class="ProfilePhoto__ProfilePhotoImage-s1v3isfu-0 khTHxj"></div>
 																									<div class="ProfilePhoto__DefaultImageContainer-s1v3isfu-2 kPGxuy">
-																										<img class="defaultImage__ProfileImg-s1kn91bx-1 iaxVtx" src="/brw/resources/images/actor/${map.DRAMA_DIRECTOR}.jpg">
+																										<img class="defaultImage__ProfileImg-s1kn91bx-1 iaxVtx kPGxuy"
+																											src="/brw/resources/images/actor/${map.DRAMA_DIRECTOR}.jpg" >
 																									</div>
 																								</div>
 																							</div>
 																							<div class="InnerPartOfListWithImage__Info-s11a1hqv-5 hufKbr">
 																								<div class="InnerPartOfListWithImage__Titles-s11a1hqv-4 jtpmaI">
 																									<div class="ListItemWithProfilePhoto__Title-s1a35ruo-1 cSGZfW">${map.DRAMA_DIRECTOR}</div>
-																									<div class="ListItemWithProfilePhoto__Subtitle-s1a35ruo-2 cbqRVo">감독</div>
+																									<div
+																										class="ListItemWithProfilePhoto__Subtitle-s1a35ruo-2 cbqRVo">감독</div>
 																								</div>
 																								<div></div>
-																							</div><!-- </a> --></li>
-																							<!-- 배우 --><c:forEach items="${actor}" var="act">
-																						<li class="ListItemWithProfilePhoto__Self-s1a35ruo-0 GRmjI">
-																							<a lng="ko-KR" class="InnerPartOfListWithImage__LinkSelf-s11a1hqv-1 gmbtJD" title="이다윗" href="/ko-KR/people/193392">
-																							<div class="InnerPartOfListWithImage__ImageBlock-s11a1hqv-3 kXgAWr">
+																							</div></a></li>
+																							
+																					<c:forEach items="${actor}" var="act">
+																					<li class="ListItemWithProfilePhoto__Self-s1a35ruo-0 GRmjI">
+																					<a lng="ko-KR" class="InnerPartOfListWithImage__LinkSelf-s11a1hqv-1 gmbtJD"
+																						title="샘 워싱턴" href="/ko-KR/people/114764"><div class="InnerPartOfListWithImage__ImageBlock-s11a1hqv-3 kXgAWr">
 																								<div class="ProfilePhoto__Self-s1v3isfu-1 cKevdV RoundedImageBlock-k5m4n5-0 gUZYtN">
-																									<div class="ProfilePhoto__ProfilePhotoImage-s1v3isfu-0 iEEsou"></div>
+																									<div class="ProfilePhoto__ProfilePhotoImage-s1v3isfu-0 fsVfFi"></div>
 																									<div class="ProfilePhoto__DefaultImageContainer-s1v3isfu-2 kPGxuy">
-																										<img class="defaultImage__ProfileImg-s1kn91bx-1 iaxVtx"
+																										<img class="defaultImage__ProfileImg-s1kn91bx-1 iaxVtx  kPGxuy"
 																											src="/brw/resources/images/actor/${act.ACTOR_IMAGE}">
 																									</div>
 																								</div>
 																							</div>
 																							<div class="InnerPartOfListWithImage__Info-s11a1hqv-5 hufKbr">
 																								<div class="InnerPartOfListWithImage__Titles-s11a1hqv-4 jtpmaI">
-																									<div class="ListItemWithProfilePhoto__Title-s1a35ruo-1 cSGZfW">${act.ACTOR_NAME}</div><!-- 배우 -->
+																									<div class="ListItemWithProfilePhoto__Title-s1a35ruo-1 cSGZfW">${act.ACTOR_NAME}</div>
+																									<div class="ListItemWithProfilePhoto__Subtitle-s1a35ruo-2 cbqRVo">배우</div>
 																								</div>
 																								<div></div>
 																							</div></a></li>
-																							<!-- // 배우 --></c:forEach>
+																					</c:forEach>
+																							
 																					<div class="StackableUl__SpinnerContainer-gafxvv-0 gddnxb"></div>
 																				</ul>
 																			</div>
 																		</div>
 																	</div>
 																</div>
-																<div
-																	class="arrow_button PrimitiveHorizontalScrollable__ArrowButtonBlock-hy4esm-3 kCjzvu"
-																	direction="left">
-																	<div class="PrimitiveHorizontalScrollable__BackwardButton-hy4esm-5 bWflCD"></div>
-																</div>
-																<div class="arrow_button PrimitiveHorizontalScrollable__ArrowButtonBlock-hy4esm-3 eweFwK"
-																	direction="right"></div>
 															</div>
 															<div class="Grid-zydj2q-0 cspjno">
 																<div class="Row-s1apwm9x-0 lowZpE">
-																	<hr class="Divider__StylingMergedDivider-s11un6bw-1 kAeKXS Divider-s11un6bw-0 cVxSEp">
+																	<hr
+																		class="Divider__StylingMergedDivider-s11un6bw-1 kAeKXS Divider-s11un6bw-0 cVxSEp">
 																</div>
 															</div>
 														</section>
@@ -970,7 +754,7 @@
 																												</div>
 																											</div>
 																											<div class="UserNameWithBadges__Self-s1bd3hgj-0 brZhrQ">
-																												${comment.ID} 
+																												${comment.NAME} 
 																												<input type="hidden" value="${comment.DC_NO}" class="00like${stat.index}"/>
 																												<span class="UserNameWithBadges__SmallBadge-s1bd3hgj-1 bAndNa UIImg-s3jz6tx-0 eBREVF" src="/brw/resources/images/detail/detail_comment1.svg"></span>
 																												<span class="UserNameWithBadges__SmallBadge-s1bd3hgj-1 bAndNa UIImg-s3jz6tx-0 kyuoIv" src="/brw/resources/images/detail/detail_comment2.svg"></span>
@@ -1066,7 +850,7 @@
 																	<span class="TitleSuffixForNumber-l2d30g-0 ejtPKl"><!-- 비슷한장르개수 --></span>
 																	<div class="SectionWithHeader__TopRight-s1eyxltb-3 bZaEfL">
 																			<div class="SectionWithViewMore__ViewMore-xtbl7q-0 bhbIbv">
-																				<a href="/brw/mainSearch.br">더보기</a>
+																				<a href="/brw/mainSearch.br?GENRE=${map.DRAMA_GENRE}">더보기</a>
 																			</div>
 																		</div>
 																</header>
@@ -1081,7 +865,7 @@
 														      <img src="/brw/resources/images/drama/poster/${detailgenrelist.DRAMA_POSTER_IMAGE}">
 														      <%-- <input type='hidden' class='IDX' value="${dramaList.DRAMA_NO}"> --%>
 														      <div class="detailgenrefont">
-														        <h3>#${detailgenrelist.DRAMA_NAME}</h3>
+														        <h3 class="genrename">#${detailgenrelist.DRAMA_NAME}</h3>
 														        <p>#${detailgenrelist.DRAMA_DATE}・#${detailgenrelist.DRAMA_CHANNEL}</p>
 														      </div>
 														    </div>

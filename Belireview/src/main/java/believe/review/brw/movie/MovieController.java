@@ -74,7 +74,7 @@ public class MovieController {
 
 	@RequestMapping(value="movieDetail.br" ,method = RequestMethod.GET)
 	public ModelAndView movieDetail(CommandMap commandMap, HttpServletRequest request) throws Exception {
-
+		
 		ModelAndView mv = new ModelAndView("movieDetail");
 		HttpSession session = request.getSession();
 		
@@ -82,6 +82,9 @@ public class MovieController {
 		List<Map<String,Object>> comment = movieService.movieCommentForDetail(map);//댓
 		List<Map<String,Object>> actor = movieService.movieActor(map); //출연배우
 		List<Map<String,Object>> detailgenre = movieService.detailgenre(map);//비슷한장르
+		
+		movieService.updateReadCount(map);
+		
 		int totalGrade = movieService.grade(map);
 		try {
 			List<Map<String,Object>> gradeRatio = movieService.gradeRatio(map);//별점비율
@@ -103,6 +106,7 @@ public class MovieController {
 		List<String> likeList = new ArrayList<String>();
 		if(session.getAttribute("ID")!=null) {//로그인했을때
 			map.put("ID", session.getAttribute("ID"));
+			map.put("NAME", session.getAttribute("NAME"));
 			Map<String,Object> tmp = userService.userWishList(map);
 			if(tmp!=null) {
 				if(tmp.get("MYPAGE_MOVIE")!=null) {//보고싶어요
@@ -218,6 +222,7 @@ public class MovieController {
 			}else {//별점이 있을때
 				movieService.updateGrade(mv);
 			}
+			movieService.updateGrade2(mv);
 		}
 		/*평점*/
 		
@@ -271,7 +276,7 @@ public class MovieController {
 					sb.append("<img class=\"defaultImage__ProfileImg-s1kn91bx-1 iaxVtx\" src=\"/brw/resources/images/Temporary_img.JPG\">");
 				}
 				sb.append("</div></div><div class=\"UserNameWithBadges__Self-s1bd3hgj-0 brZhrQ\">")
-				.append(m.get("ID"))
+				.append(m.get("NAME"))
 				.append("<input type=\"hidden\" value=\"").append(m.get("MC_NO")).append("\" class=\"00like").append(index).append("\"/>")
 				.append("<span class=\"UserNameWithBadges__SmallBadge-s1bd3hgj-1 bAndNa UIImg-s3jz6tx-0 eBREVF\" src=\"/brw/resources/images/detail/detail_comment1.svg\"></span>")
 				.append("<span class=\"UserNameWithBadges__SmallBadge-s1bd3hgj-1 bAndNa UIImg-s3jz6tx-0 kyuoIv\" src=\"/brw/resources/images/detail/detail_comment2.svg\"></span>")

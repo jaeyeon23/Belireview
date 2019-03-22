@@ -83,7 +83,18 @@
 				MOVIE_GRADE,
 				ROWNUM RNUM from 
 				(SELECT *
-					FROM MOVIE WHERE MOVIE_NAME LIKE '%'||#{searchText}||'%' ORDER BY MOVIE_DATE DESC) ORDER BY RNUM ASC <!--) WHERE RNUM BETWEEN 1 AND 14 -->
+					FROM MOVIE WHERE 
+				<choose>
+				<when test="searchText !=null">
+				 MOVIE_NAME LIKE '%'||#{searchText}||'%' 
+				</when>
+				
+				<otherwise>
+				MOVIE_GENRE =#{GENRE}
+				</otherwise>
+				</choose>
+				
+				ORDER BY MOVIE_DATE DESC) ORDER BY RNUM ASC <!--) WHERE RNUM BETWEEN 1 AND 14 -->
 	</select>
 
 	<select id="selectDramaSerach" parameterType="hashmap" resultType="hashmap">
@@ -119,8 +130,20 @@
 				DRAMA_GRADE,
 				ROWNUM RNUM FROM 
 				(SELECT *
-					FROM DRAMA WHERE DRAMA_NAME LIKE '%'||#{searchText}||'%' ORDER BY DRAMA_DATE DESC) ORDER BY RNUM ASC <!--) WHERE RNUM BETWEEN 1 AND 10 -->
-		
+					FROM DRAMA WHERE 
+				<choose>
+				<when test='searchText!=null'>
+				 DRAMA_NAME LIKE '%'||#{searchText}||'%' 
+				</when>
+				
+				<otherwise>
+				DRAMA_GENRE =#{GENRE}
+				</otherwise>
+				</choose>
+				
+				ORDER BY DRAMA_DATE DESC) ORDER BY RNUM ASC <!--) WHERE RNUM BETWEEN 1 AND 14 -->
+				
+				
 	</select>
 
 	<select id="selectAdSerach" parameterType="hashmap" resultType="hashmap">
@@ -149,7 +172,20 @@
 				AD_CONTENT_IMAGE,
 				AD_GRADE,
 				ROWNUM RNUM FROM 
+				
 				(SELECT *
-				FROM AD WHERE AD_NAME LIKE '%'||#{searchText}||'%' ORDER BY AD_READCOUNT DESC) ORDER BY RNUM ASC<!-- )WHERE RNUM BETWEEN 1 AND 10 -->
+					FROM AD WHERE 
+				<choose>
+				<when test='searchText!=null'>
+				 AD_NAME LIKE '%'||#{searchText}||'%' 
+				</when>
+				
+				<otherwise>
+				AD_COMPANY =#{GENRE}
+				</otherwise>
+				</choose>
+				
+				ORDER BY AD_READCOUNT DESC) ORDER BY RNUM ASC <!--) WHERE RNUM BETWEEN 1 AND 14 -->
+				
 	</select>
 </mapper>

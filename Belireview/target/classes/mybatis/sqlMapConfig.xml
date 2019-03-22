@@ -15,12 +15,6 @@
         <setting name="jdbcTypeForNull" 		  value="NULL" />
 	</settings>
 	
-	<!-- typeAliases를 넣어야 할 경우 -->
-	  <!--  <typeAliases>
-	   		<typeAlias alias="LendplaceModel" type="yogi.lendplace.LendplaceModel"/>
-	   		<typeAlias alias="MembersModel" type="yogi.members.MembersModel"/>
-	   		<typeAlias alias="groupModel" type="yogi.group.GroupModel" />
-	   </typeAliases> -->
 	<!-- SQL 정의한 xml문서 Mapping -->
 	<mappers>
 		<mapper resource="mybatis/admin_SQL.xml" />
@@ -33,6 +27,7 @@
 		<mapper resource="mybatis/main_SQL.xml" />
 		 <mapper resource="mybatis/member_SQL.xml" />
 		 <mapper resource="mybatis/user_SQL.xml" />
+		 <mapper resource="mybatis/rank_SQL.xml" />
 	</mappers>
 </configuration>
 

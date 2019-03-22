@@ -127,4 +127,28 @@ public class AjaxController {
 		pw.flush();
 		pw.close();
 	}
+	
+	@RequestMapping(value="/ajaxActorWrite.br", method=RequestMethod.GET)
+	public void ajaxActorWrite(HttpServletRequest request, HttpServletResponse response) throws Exception{
+		String searchValue = request.getParameter("searchValue");
+		List<Map<String, Object>> list = adminActorService.selectActorAjax(searchValue);
+		int i = 0;
+		
+		JSONArray array = new JSONArray();
+		JSONObject obj = null;
+		
+		while(i < 10 && i < list.size()) {
+			obj = new JSONObject();
+			obj.put("name", list.get(i).get("ACTOR_NAME"));
+			obj.put("no", list.get(i).get("ACTOR_NO"));
+			array.put(obj);
+			i++;
+		}
+		
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter pw = response.getWriter();
+		pw.print(array);
+		pw.flush();
+		pw.close();
+	}
 }

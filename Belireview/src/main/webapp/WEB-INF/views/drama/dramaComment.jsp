@@ -123,7 +123,7 @@
 															</div>
 														</div>
 														<div class="UserNameWithBadges__Self-s1bd3hgj-0 brZhrQ">
-															${dramacommentlist.ID}
+															${dramacommentlist.NAME}
 															<input type="hidden" value="${dramacommentlist.DC_NO}" class="00like${stat.index}"/>
 															<span class="UserNameWithBadges__SmallBadge-s1bd3hgj-1 bAndNa UIImg-s3jz6tx-0 eBREVF"
 																src="/brw/resources/images/detail/detail_comment1.svg"></span><span
