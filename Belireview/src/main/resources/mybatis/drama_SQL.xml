@@ -89,6 +89,14 @@
 		]]>
    </select>
    
+   <update id="updateGrade2" parameterType="hashmap">
+		UPDATE DRAMA SET DRAMA_GRADE = (SELECT AVG(DL_GRADE) FROM DRAMA_LIKE WHERE DRAMA_LIKE_NO=#{DRAMA_NO}) WHERE DRAMA_NO=#{DRAMA_NO}
+	</update>
+	
+   <update id="updateReadCount" parameterType="hashmap">
+		UPDATE DRAMA SET DRAMA_READCOUNT = DRAMA_READCOUNT+1 WHERE DRAMA_NO=#{DRAMA_NO}
+	</update>
+	
    	<select id="existGrade" parameterType="hashmap" resultType="hashmap">
    		select * from drama_like where drama_like_no=#{DRAMA_NO} and id=#{ID}
 	</select>

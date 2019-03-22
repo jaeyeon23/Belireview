@@ -97,6 +97,7 @@ public class DramaController {
 				}
 			}
 		}
+		dramaService.updateReadCount(map);
 		
 		
 		
@@ -236,7 +237,9 @@ public class DramaController {
 			}else {//별점이 있을때
 				dramaService.updateGrade(mv);
 			}
+			dramaService.updateGrade2(mv);
 		}
+		
 		/*평점*/
 		
 		//댓
