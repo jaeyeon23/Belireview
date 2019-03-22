@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import believe.review.brw.admin.actor.AdminActorService;
 import believe.review.brw.admin.user.AdminUserService;
 import believe.review.brw.common.common.CommandMap;
 import believe.review.brw.common.util.FileUtils;
@@ -34,15 +33,13 @@ public class AdminMovieController {
 	private int blockPage = 5; 	 
 	private String pagingHtml;  
 	private Paging page;
-	private String filePath = "C:\\Users\\박재연\\Desktop\\Belireview\\Belireview\\src\\main\\webapp\\resources\\images\\movie\\";
+	//private String filePath = "C:\\Users\\박재연\\Desktop\\Belireview\\Belireview\\src\\main\\webapp\\resources\\images\\movie\\";
 	//private String filePath = "C:\\인영\\sts\\Belireview\\Belireview\\src\\main\\webapp\\resources\\images\\movie\\";
+	private String filePath = "C:\\java\\App\\Belireview\\Belireview\\src\\main\\webapp\\resources\\images\\movie\\";
 	private HttpSession session = null;
 
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
-	
-	@Resource(name="adminActorService")
-	private AdminActorService adminActorService;
 	
 	@Resource(name="adminUserService")
 	private AdminUserService adminUserService;
@@ -124,30 +121,6 @@ public class AdminMovieController {
 				
 		adminMovieService.writeMovie(commandMap.getMap());
 		
-		String textarea = (String)commandMap.get("movie_textarea");
-		String[] actor_list = textarea.split(", ");
-		
-		for(String actor : actor_list) {
-			Map<String, Object> actor_map = adminActorService.selectActorOne(actor);
-			
-			String movie_textarea = (String)actor_map.get("ACTOR_MOVIE");
-			String[] movie_list = movie_textarea.split(", ");
-			int count = 0;
-			
-			for(String movie : movie_list) {
-				if(movie.equals((String)commandMap.get("no"))) {
-					count = 1;
-					
-					break;
-				}
-			}
-			
-			if(count == 0) {
-				actor_map.put("movie_textarea", actor_map.get("ACTOR_MOVIE") + ", " + commandMap.get("no"));
-				adminActorService.updateActorOne(actor_map);
-			}
-		}
-		
 		return "redirect:/admin/movie.br";
 	}
 	
@@ -156,28 +129,9 @@ public class AdminMovieController {
 		
 		int no = Integer.parseInt(request.getParameter("no"));
 		
-		List<Map<String, Object>> actor_list = adminActorService.selectActorMovieModify(request.getParameter("no"));
-		String str = "";
-		
-		for(Map<String, Object> map : actor_list) {
-			String movie_list = (String) map.get("ACTOR_MOVIE");
-			String[] movie_arr = movie_list.split(", ");
-			
-			for(String movie : movie_arr) {
-				if(movie.equals(request.getParameter("no"))) {
-					if(str.equals("")) {
-						str = map.get("ACTOR_NO").toString();
-					}else {
-						str += ", " + (String)map.get("ACTOR_NO");
-					}
-				}
-			}
-		}
-		
 		Map<String, Object> update_movie_one = adminMovieService.selectMovieOne(no);
 		
 		model.addAttribute("admin", update_movie_one);
-		model.addAttribute("str", str);
 		
 		return "/admin/movie/adminMovieModify";
 	}
@@ -200,30 +154,6 @@ public class AdminMovieController {
 		}
 		
 		adminMovieService.updateMovieOne(commandMap.getMap());
-		
-		String textarea = (String)commandMap.get("movie_textarea");
-		String[] actor_list = textarea.split(", ");
-		
-		for(String actor : actor_list) {
-			Map<String, Object> actor_map = adminActorService.selectActorOne(actor);
-			
-			String movie_textarea = (String)actor_map.get("ACTOR_MOVIE");
-			String[] movie_list = movie_textarea.split(", ");
-			int count = 0;
-			
-			for(String movie : movie_list) {
-				if(movie.equals((String)commandMap.get("no"))) {
-					count = 1;
-					
-					break;
-				}
-			}
-			
-			if(count == 0) {
-				actor_map.put("movie_textarea", actor_map.get("ACTOR_MOVIE") + ", " + commandMap.get("no"));
-				adminActorService.updateActorOne(actor_map);
-			}
-		}
 		
 		return "redirect:/admin/movie.br";
 	}

@@ -3,92 +3,121 @@
 <mapper namespace="ad_comment">
 
 <insert id="writeAdComment" parameterType="hashmap">
-INSERT INTO AD_COMMENT 
-(
-  AD_NO,
-  ADC_NO,
-  ID,
-  AD_REG_DATE,
-  AD_CONTENT,
-  AD_LIKE,
-  AD_LIKE_ID
-)
-VALUES
-(
-  SEQ_AD_COMMENT_NO.NEXTVAL,
-  #{AD_NO},
-  #{ADC_NO},
-  #{ID},
-  #{AD_REG_DATE},
-  #{AD_CONTENT},
-  #{AD_LIKE},
-  #{AD_LIKE_ID}
-);
-</insert>
-
-<select id="myComment" parameterType="hashmap" resultType="hashmap">
-		select * from ad_comment where id=#{ID} AND AD_NO=#{AD_NO}
-	</select>
-
-<!-- 댓글 최신순 -->
-<select id="adCommentByRecent" parameterType="hashmap" resultType="hashmap">
-SELECT
-  AD_NO,
-  ADC_NO,
-  ID,
-  AD_REG_DATE,
-  AD_CONTENT,
-  AD_LIKE,
-  AD_LIKE_ID,
-  RNUM FROM 
-  (SELECT
-     AD_NO,
-     ADC_NO,
-     ID,
-     AD_REG_DATE,
-     AD_CONTENT,
-     AD_LIKE,
-     AD_LIKE_ID,
-     ROWNUM RNUM FROM 
-    (SELECT 
-      *
-      FROM AD_COMMENT ORDER BY AD_REG_DATE DESC) ORDER BY RNUM ASC) WHERE RNUM BETWEEN #{START} AND #{END}
-</select>
-
-<!-- 댓글 좋아요 순 -->
-<select  id="adCommentByLike" parameterType="hashmap" resultType="hashmap">
-SELECT
-		 AD_NO,
-		 ADC_NO,
+		INSERT INTO AD_COMMENT 
+		(
+		  AD_NO,
+		  ADC_NO,
 		  ID,
 		  AD_REG_DATE,
 		  AD_CONTENT,
-		  AD_LIKE,
-		  AD_LIKE_ID,
-		  AL_GRADE,
-		  RNUM FROM 
-		  (SELECT
-		      AD_NO,
-			  ADC_NO,
-			  ID,
-			  AD_REG_DATE,
-			  AD_CONTENT,
-			  AD_LIKE,
-			  AD_LIKE_ID,
-		    TO_CHAR(AL_GRADE,'0.0') AS AL_GRADE,
-		     ROWNUM RNUM FROM 
-		  (SELECT AC.AD_NO, AC.ADC_NO, AC.ID, AC.AD_REG_DATE, AC.AD_CONTENT, AC.AD_LIKE, AC.AD_LIKE_ID, AL.AL_GRADE FROM AD_LIKE AL, AD_COMMENT AC
-		      WHERE AL.AD_LIKE_NO=AC.AD_NO AND AL.ID=AC.ID AND AC.AD_NO = #{AD_NO} ORDER BY AD_LIKE DESC) ORDER BY RNUM ASC) WHERE RNUM BETWEEN 1 AND 5
-</select>
+		  AD_LIKE
+		)
+		VALUES
+		(
+		  #{AD_NO},
+		  SEQ_AD_COMMENT_NO.NEXTVAL,
+		  #{ID},
+		  SYSDATE,
+		  #{COM},
+		  0
+		)
+	</insert>
+	
+	<select id="myComment" parameterType="hashmap" resultType="hashmap">
+		SELECT AD_CONTENT FROM AD_COMMENT WHERE ID=#{ID} AND AD_NO=#{AD_NO}
+	</select>
+	
+	<select id="commentOne" parameterType="hashmap" resultType="hashmap">
+		SELECT AD_NO,AD_NO,AC.ID,AD_REG_DATE,AD_CONTENT,AD_LIKE,AD_LIKE_ID,MEMBER_NO,NAME FROM AD_COMMENT AC,MEMBER M WHERE AC.ID=M.ID AND AC.ADC_NO=#{ADC_NO} AND AD_NO=#{AD_NO}
+	</select>
 
-<select id="totalAdComment" parameterType="hashmap" resultType="int">
+	<select id="adCommentByLike" parameterType="hashmap" resultType="hashmap">
+		SELECT
+			NAME,
+			AD_NO,
+			AD_NO,
+			ID,
+			AD_REG_DATE,
+			AD_CONTENT,
+			AD_LIKE,
+			AD_LIKE_ID,
+			TO_CHAR(AL_GRADE,'0.0') AS AL_GRADE,
+			PROFILE_IMAGE,
+			ROWNUM RNUM
+		FROM(
+			SELECT 
+				M.NAME,
+				AC.AD_NO,
+				AC.AD_NO,
+				AC.ID,
+				AC.AD_REG_DATE,
+				AC.AD_CONTENT,
+				AC.AD_LIKE,
+				AC.AD_LIKE_ID,
+				AL.AL_GRADE,
+				PROFILE_IMAGE
+			FROM 
+				AD_LIKE DL, AD_COMMENT DC ,MEMBER M
+					WHERE 
+						AL.AD_LIKE_NO=AC.AD_NO AND 
+						AL.ID=AC.ID and AL.ID=M.ID AND 
+						AC.AD_NO=#{AD_NO}
+						<choose>
+							<when test='orderby == 2'>
+								ORDER BY AD_REG_DATE DESC
+							</when>
+							<otherwise>
+								ORDER BY AD_LIKE DESC
+							</otherwise>
+						</choose>
+		)ORDER BY RNUM ASC
+	</select>
+	<select id="adCommentForDetail" parameterType="hashmap" resultType="hashmap">
+		SELECT
+				  NAME,
+				  AD_NO,
+				  ADC_NO,
+				  ID,
+				  AD_REG_DATE,
+				  AD_CONTENT,
+				  AD_LIKE,
+				  AD_LIKE_ID,
+				  AL_GRADE,
+		      PROFILE_IMAGE,
+				  RNUM FROM 
+				  (SELECT
+				  	 NAME,
+				     AD_NO,
+				     ADC_NO,
+				     ID,
+				     AD_REG_DATE,
+				     AD_CONTENT,
+				     AD_LIKE,
+				     AD_LIKE_ID,
+				    	TO_CHAR(AL_GRADE,'0.0') AS AL_GRADE,
+		         PROFILE_IMAGE,
+				     ROWNUM RNUM FROM 
+				    (SELECT M.NAME,AC.AD_NO, AC.ADC_NO,AC.ID,AC.AD_REG_DATE,AC.AD_CONTENT,AC.AD_LIKE,AC.AD_LIKE_ID,AL.AL_GRADE,PROFILE_IMAGE FROM AD_LIKE AL, AD_COMMENT AC ,MEMBER M
+				      WHERE AL.AD_LIKE_NO=AC.AD_NO AND AL.ID=AC.ID and AL.ID=M.ID AND AC.AD_NO=#{AD_NO} ORDER BY AD_LIKE DESC)ORDER BY RNUM ASC) WHERE RNUM BETWEEN 1 AND 3
+	</select>
+	
+	<select id="totalAdComment" parameterType="hashmap" resultType="int">
 		select count(*) as count from AD_COMMENT where AD_NO = ${AD_NO}
-</select>
+	</select>
+	
+	<delete id="deleteComment" parameterType="hashmap">
+		delete AD_comment where AD_no=#{AD_NO} and ID=#{ID}
+	</delete>
 	
 	<!-- 코멘트 좋아요-->
 	<update id="adCommentLike" parameterType="hashmap">
 		update AD_COMMENT
 			set AD_LIKE = #{AD_LIKE}, AD_LIKE_ID=#{AD_LIKE_ID}
-		where AD_NO=#{AD_NO} AND ADC_NO=#{ADC_NO}
+		where AD_NO=#{AD_NO} AND AD_NO=#{AD_NO}
 	</update>
+	
+	<update id="updateAdComment" parameterType="hashmap">
+		update AD_comment set AD_content=#{MCOM} where id=#{ID} and AD_no=${AD_NO}
+	</update>
+	
 </mapper>
