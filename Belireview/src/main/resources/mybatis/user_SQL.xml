@@ -24,7 +24,7 @@
 		WHERE MOVIE_NO IN 
 			(SELECT MOVIE_LIKE_NO
 			FROM MOVIE_LIKE
-			WHERE ID=#{ID}) ORDER BY MOVIE_DATE) A
+			WHERE ID=#{ID} AND  ML_GRADE != 0) ORDER BY MOVIE_DATE) A
 	</select>
 	
 	<select id="UserDramaAll" parameterType="hashmap" resultType="hashmap">
@@ -48,7 +48,7 @@
 		WHERE DRAMA_NO IN 
 			(SELECT DRAMA_LIKE_NO
 			FROM DRAMA_LIKE
-			WHERE ID=#{ID}) ORDER BY DRAMA_DATE) A
+			WHERE ID=#{ID}  AND  DL_GRADE != 0 ) ORDER BY DRAMA_DATE) A
 	</select>
 	
 	<select id="UserAdAll" parameterType="hashmap" resultType="hashmap">
@@ -56,8 +56,8 @@
 			AD_NO,
 			AD_NAME,
 			AD_POSTER_IMAGE,
-   	   		TO_CHAR((SELECT AL_GRADE FROM AD_LIKE WHERE ID=#{ID} AND AD_LIKE_NO=A.AD_NO),'0.0') AL_GRADE,
-      		TO_CHAR((SELECT AVG(AL_GRADE) FROM AD_LIKE WHERE AD_LIKE_NO=A.AD_NO),'0.0') AS AD_AVG_GRADE,
+   	   		TO_CHAR((SELECT AL_GRADE FROM AD_LIKE WHERE AL_GRADE != 0 AND ID=#{ID} AND AD_LIKE_NO=A.AD_NO),'0.0') AL_GRADE,
+      		TO_CHAR((SELECT AVG(AL_GRADE) FROM AD_LIKE WHERE AL_GRADE != 0 AND AD_LIKE_NO=A.AD_NO),'0.0') AS AD_AVG_GRADE,
 			RNUM
 		FROM
 		(
@@ -70,7 +70,7 @@
 		WHERE AD_NO IN 
 			(SELECT AD_LIKE_NO
 			FROM AD_LIKE
-			WHERE ID=#{ID}) ) A
+			WHERE ID=#{ID}  AND  AL_GRADE != 0 ) ) A
 	</select>
 	
 	<select id="userWishList" parameterType="hashmap" resultType="hashmap"><!-- 보고싶어요 -->
