@@ -17,9 +17,20 @@
 				DRAMA_CONTENT_IMAGE,
 				DRAMA_EPISODE,
 				DRAMA_GRADE,
-				ROWNUM RNUM FROM 
+				ROWNUM RNUM FROM
 				(SELECT *
-					FROM DRAMA ORDER BY DBMS_RANDOM.RANDOM) ORDER BY RNUM ASC
+					FROM DRAMA	
+				<choose>
+				<when test="DRAMA_GENRE !=null">
+				 WHERE DRAMA_GENRE LIKE '%'||#{DRAMA_GENRE}||'%' ORDER BY DBMS_RANDOM.RANDOM)
+				</when>
+				
+				<otherwise>
+				  ORDER BY DBMS_RANDOM.RANDOM)
+				</otherwise>
+				</choose>
+					 ORDER BY RNUM ASC
+					
    </select>
    
    <select id="totalDramaCount" parameterType="hashmap" resultType="int">
@@ -43,7 +54,7 @@
 			(SELECT ROUND(AVG(DL_GRADE),1)
 			FROM DRAMA_LIKE WHERE DRAMA_LIKE_NO = #{DRAMA_NO} AND DL_GRADE != 0) 
 			AS DRAMA_GRADE 
-		FROM DRAMA WHERE DRAMA_NO = #{DRAMA_NO}
+			FROM DRAMA WHERE DRAMA_NO = #{DRAMA_NO}
    </select>
  
    

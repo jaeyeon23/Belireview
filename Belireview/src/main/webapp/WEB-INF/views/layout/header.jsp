@@ -96,6 +96,7 @@
                                           </li>
                                           <li><a class="movie_tab" href="/brw/movie/movieList.br" class="mmenu" id="menu2" onmouseover="mopen(2);" onmouseout="mclosetime();">Movie</a></li>
                                           <li><a class="" href="/brw/ad/adList.br">Advertisement</a></li>
+                                          
                                           <c:if test="${sessionScope.ADMIN == 1 }">
                                           	<li><a href="" class="dropdown-toggle active" data-toggle="dropdown" role="button" aria-expanded="false">Admin <i class="fa fa-angle-down"></i></a>
 				                                <ul class="dropdown-menu megamenu" role="menu">
@@ -170,32 +171,32 @@
                            <div class ="submenu" id="submenu1" onmouseover="mcancelclosetime()" onmouseout="mclosetime();" style="display :none;">
                       	   	 <ul class="nav navbar-nav abcd efg">
                            		  <li class="active"><a href="#">장르</a></li>
-                        	      <li><a href="">로맨스</a></li>
-	                              <li><a href="">공포•호러</a></li>
-    	                          <li><a href="">판타지</a></li>
-        	                      <li><a href="">메디컬</a></li>
-            	                  <li><a href="">애니메이션</a></li>
-                	              <li><a href="">예능</a></li>
-                    	          <li><a href="">코미디</a></li>
-                        	      <li><a href="">종교</a></li>
-                            	  <li><a href="">SF</a></li>
-                              	  <li><a href="">재난</a></li>
+                        	      <li><a href="/brw/drama/dramaList.br?DRAMA_GENRE=로맨스&${_csrf.parameterName}=${_csrf.token}">로맨스</a></li>
+	                              <li><a href="/brw/drama/dramaList.br?DRAMA_GENRE=공포&${_csrf.parameterName}=${_csrf.token}">공포•호러</a></li>
+    	                          <li><a href="/brw/drama/dramaList.br?DRAMA_GENRE=판타지&${_csrf.parameterName}=${_csrf.token}">판타지</a></li>
+        	                      <li><a href="/brw/drama/dramaList.br?DRAMA_GENRE=메디컬&${_csrf.parameterName}=${_csrf.token}">메디컬</a></li>
+            	                  <li><a href="/brw/drama/dramaList.br?DRAMA_GENRE=애니메이션&${_csrf.parameterName}=${_csrf.token}">애니메이션</a></li>
+                	              <li><a href="/brw/drama/dramaList.br?DRAMA_GENRE=예능&${_csrf.parameterName}=${_csrf.token}">예능</a></li>
+                    	          <li><a href="/brw/drama/dramaList.br?DRAMA_GENRE=코미디&${_csrf.parameterName}=${_csrf.token}">코미디</a></li>
+                        	      <li><a href="/brw/drama/dramaList.br?DRAMA_GENRE=종교&${_csrf.parameterName}=${_csrf.token}">종교</a></li>
+                            	  <li><a href="/brw/drama/dramaList.br?DRAMA_GENRE=SF&${_csrf.parameterName}=${_csrf.token}">SF</a></li>
+                              	  <li><a href="/brw/drama/dramaList.br?DRAMA_GENRE=재난&${_csrf.parameterName}=${_csrf.token}">재난</a></li>
                        		 </ul>
                            </div>
                            
                             <div class ="submenu" id="submenu2" onmouseover="mcancelclosetime()" onmouseout="mclosetime();" style="display :none;">
                       	   	 <ul class="nav navbar-nav abcd efg">
                            		  <li class="active"><a href="#">장르</a></li>
-                        	      <li><a href="">로맨스</a></li>
-	                              <li><a href="">공포•호러</a></li>
-    	                          <li><a href="">판타지</a></li>
-        	                      <li><a href="">메디컬</a></li>
-            	                  <li><a href="">애니메이션</a></li>
-                	              <li><a href="">예능</a></li>
-                    	          <li><a href="">코미디</a></li>
-                        	      <li><a href="">종교</a></li>
-                            	  <li><a href="">SF</a></li>
-                              	  <li><a href="">재난</a></li>
+                        	      <li><a href="/brw/movie/movieList.br?MOVIE_GENRE=로맨스&${_csrf.parameterName}=${_csrf.token}">로맨스</a></li>
+	                              <li><a href="/brw/movie/movieList.br?MOVIE_GENRE=공포&${_csrf.parameterName}=${_csrf.token}">공포•호러</a></li>
+    	                          <li><a href="/brw/movie/movieList.br?MOVIE_GENRE=판타지&${_csrf.parameterName}=${_csrf.token}">판타지</a></li>
+        	                      <li><a href="/brw/movie/movieList.br?MOVIE_GENRE=메디컬&${_csrf.parameterName}=${_csrf.token}">메디컬</a></li>
+            	                  <li><a href="/brw/movie/movieList.br?MOVIE_GENRE=애니메이션&${_csrf.parameterName}=${_csrf.token}">애니메이션</a></li>
+                	              <li><a href="/brw/movie/movieList.br?MOVIE_GENRE=예능&${_csrf.parameterName}=${_csrf.token}">예능</a></li>
+                    	          <li><a href="/brw/movie/movieList.br?MOVIE_GENRE=코미디&${_csrf.parameterName}=${_csrf.token}">코미디</a></li>
+                        	      <li><a href="/brw/movie/movieList.br?MOVIE_GENRE=종교&${_csrf.parameterName}=${_csrf.token}">종교</a></li>
+                            	  <li><a href="/brw/movie/movieList.br?MOVIE_GENRE=SF&${_csrf.parameterName}=${_csrf.token}">SF</a></li>
+                              	  <li><a href="/brw/movie/movieList.br?MOVIE_GENRE=재난&${_csrf.parameterName}=${_csrf.token}">재난</a></li>
                        		 </ul>
                            </div>
                            
