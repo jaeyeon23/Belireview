@@ -90,7 +90,6 @@ public class DramaController {
 				String tmp[] = m.get("ACTOR_DRAMA").toString().split(",");
 				for(int i=0;i<tmp.length;i++) {
 					if(tmp[i].equals(map.get("DRAMA_NO").toString())) {
-						System.out.println("작동함?"+m.get("ACTOR_NAME"));
 						mp.put("ACTOR_NAME", m.get("ACTOR_NAME"));
 						mp.put("ACTOR_IMAGE", m.get("ACTOR_IMAGE"));
 						actor.add(mp);
