@@ -6,60 +6,137 @@
 <html>
 
 <script src="<c:url value='/resources/js/common.js'/>" charset="utf-8"></script>
-
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js" type="text/javascript"></script>
 <script>
-  $(function(){
-		$("a[name='search']").on("click", function(e){ 
-            e.preventDefault();
-            openSearch();
+	$(function() {
+		$("a[name='search']").on("click", function(e) {
+			e.preventDefault();
+			openSearch();
 		});
-  });
-  function enter(){
-	  $("a[name='search']").trigger('click');
-  }
-  function openSearch(){
+	});
+	function enter() {
+		$("a[name='search']").trigger('click');
+	}
+	function openSearch() {
 		var comSubmit = new ComSubmit();
-       comSubmit.setUrl("<c:url value='/mainSearch.br?${_csrf.parameterName}=${_csrf.token}' />");
-       comSubmit.addParam("searchText",$("input[name='searchText']").val());
-       comSubmit.submit();
-	}		
+		comSubmit
+				.setUrl("<c:url value='/mainSearch.br?${_csrf.parameterName}=${_csrf.token}' />");
+		comSubmit.addParam("searchText", $("input[name='searchText']").val());
+		comSubmit.submit();
+	}
 
-	  $(function(){
-		  $("#cat-nav").hide();
-		 
-		
+	$(function() {
+		$("#cat-nav").hide();
+
 	})
-	
+
 	$(function() {
 		$("#autocompleteText").autocomplete({
-			source: function(request, response){
+			source : function(request, response) {
 				$.ajax({
-					url: "/brw/auto.br?${_csrf.parameterName}=${_csrf.token}",
-					dataType: "json",
-					data:{
-						searchValue: request.term
+					url : "/brw/auto.br?${_csrf.parameterName}=${_csrf.token}",
+					dataType : "json",
+					data : {
+						searchValue : request.term
 					},
-					success: function(args){
-						response(
-							$.map(args, function(item) {
-								return{
-									label:item.data,
-									value:item.data
-								}
-							})
-						);
+					success : function(args) {
+						response($.map(args, function(item) {
+							return {
+								label : item.data,
+								value : item.data
+							}
+						}));
 					}
 				});
 			},
-			minLength:1,
+			minLength : 1,
 		});
 	});
+	
+	$(function() {
+	    var count = $('#rank-list li').length;
+	    var height = $('#rank-list li').height();
+
+	    function step(index) {
+	        $('#rank-list ol').delay(2000).animate({
+	            top: -height * index,
+	        }, 500, function() {
+	            step((index + 1) % count);
+	        });
+	    }
+
+	    step(1);
+	});	
 </script>
+<style>
+body {
+    font-size: 12px;
+    background: #FFF;
+    color: #333;
+    margin: 0;
+}
+
+#content1 {
+    margin: 10px;
+    padding:10px;
+    float:left;
+}
+
+#rank-list {
+    color: #FFF;
+    text-decoration: none;
+}
+#rank-list {
+    overflow: hidden;
+    width: 250px;
+    height: 20px;
+    margin: 0;
+}
+
+#rank-list dt {
+    display: none;
+}
+
+#rank-list dd {
+    position: relative;
+    margin: 0;
+}
+
+#rank-list ol {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+#rank-list li {
+    height: 20px;
+    line-height: 20px;
+}
+</style>
 <body>
 	 <div id="header"> <!-- header -->
               <div class="top"> <!-- top -->
-                  <div class="container">
-                      <div class="top-control">
+               <div class="container">
+				<div id="content1">
+					<dl id="rank-list">
+						<dt>실시간 급상승 검색어</dt>
+						<dd>
+							<ol>
+								<li>1 순위</li>
+								<li>2 순위</li>
+								<li>3 순위</li>
+								<li>4 순위</li>
+								<li>5순위</li>
+
+							</ol>
+						</dd>
+					</dl>
+				</div>
+				<div class="top-control">
                       	  <c:if test="${sessionScope.ID == null }">
                           <a href="/brw/member/loginForm.br">로그인</a><span>•</span><a href="/brw/member/joinTerms.br">회원가입</a>
                   		  </c:if>
