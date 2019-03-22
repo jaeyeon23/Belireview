@@ -9,8 +9,9 @@
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="">
-   	<link rel="stylesheet" href="/brw/resources/css/detail2.css">
+   	<link rel="stylesheet" href="/brw/resources/css/detail2.css"> 
    	<link rel="stylesheet" href="/brw/resources/css/detail.css">
+   
 	<%@ include file="/WEB-INF/views/include/include-body.jspf" %>
    	<%-- <script src="<c:url value='/resources/js/common.js'/>" charset="utf-8"></script>	 --%>
     <style>
@@ -412,7 +413,7 @@
 											<div class="ContentJumbotron__LeftBackground-yf8npk-6 cGzUVh"
 												color="#364052"></div>
 											<div class="ContentJumbotron__BlurPoster-yf8npk-4 WdAlN">
-												<img class="WdAlN" src="/brw/resources/images/3-girls.jpg"><!-- 이미지 -->
+												<img class="WdAlN" src="/brw/resources/images/ad/main/${map.AD_MAIN_IMAGE}"><!-- 이미지 -->
 												<div class="ContentJumbotron__LeftGradient-yf8npk-8 aCymu"
 													color="#364052"></div>
 												<div class="ContentJumbotron__RightGradient-yf8npk-9 gShorF"
@@ -429,8 +430,7 @@
 														class="ContentJumbotron__PosterWithRankingInfoBlock-yf8npk-10 cIaqHU">
 														<div class="LazyLoadingImg__Self-s1jb87ps-0 cjQTNJ">
 															<img class="LazyLoadingImg__Self-s1jb87ps-0 cjQTNJ"
-																alt="사바하의 포스터" data-image-id="100"
-																src="https://dhgywazgeek0d.cloudfront.net/watcha/image/upload/c_fill,h_400,q_80,w_280/v1547575268/nc6h9mynmwu5zi7n7jr0.jpg">
+															src="${map.AD_POSTER_IMAGE}"">
 														</div>
 													</div>
 												</div>
@@ -660,7 +660,8 @@
 																<div class="Row-s1apwm9x-0 lowZpE">
 															<!-- <img src="/brw/resources/images//new-ribbon.png" width="112" height="112" alt="New Ribbon" id="ribbon"> -->
 													        	<div align="center" >
-																		<iframe width="650" height="350" src="https://www.youtube.com/embed/cYC6kQFHz2A?amp;autoplay=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+													        	
+																		<iframe width="650" height="350" src="${map.AD_LINK}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 																
 																</div>
 																	<hr class="Divider__StylingMergedDivider-s11un6bw-1 jtXrQz Divider-s11un6bw-0 cVxSEp">		

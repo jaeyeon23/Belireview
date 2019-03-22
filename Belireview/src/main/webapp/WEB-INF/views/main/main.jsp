@@ -36,6 +36,7 @@
 	
 </script>
 </head>
+
 <body>
 	<!-- Slider start -->
 	<div id="main-slider">
@@ -188,21 +189,20 @@
 							<li role="presentation"><a href="#3" role="tab" id="cat-3"
 								data-toggle="tab" aria-controls="3">Advertisement</a></li>
 						</ul>
-
-
+			
 						<div id="myTabContent" class="tab-content">
 							<!-- drama start -->
 							<div role="tabpanel" class="tab-pane fade in active" id="1"	aria-labelledby="cat-1">
 								<div class="row clearfix">
-									<c:forEach items="${drama_list}" var="list" varStatus="status">
+									<c:forEach items="${drama_list }" var="list" varStatus="status">
 										<div class="col-md-3 prdct-grid">
 											<div class="product-fade">
 												<div class="product-fade-wrap">
-													<div id="product-image${status.index + 1 }" class="owl-carousel owl-theme">
-		                                        	<c:forTokens items="${list.DRAMA_POSTER_IMAGE}" var="image" delims=", ">
-			                                            <div class="item"><img src="/brw/resources/images/drama/poster/${image}" alt="" class="img-responsive"></div>
+													<%-- <div id="product-image${status.index + 1 }" class="owl-carousel owl-theme"> --%>
+		                                        	<c:forTokens items="${list.DRAMA_POSTER_IMAGE }" var="image" delims=", ">
+			                                            <div class="item"><img src="/brw/resources/images/drama/poster/${image }" alt="" class="img-responsive"></div>
 			                                        </c:forTokens>
-			                                        </div>
+			                                        <!-- </div> -->
 													<div class="product-fade-ct">
 			                                        	<div class="product-fade-control">
 				                                            <div class="to-left">
@@ -210,7 +210,10 @@
 				                                                <a href=""><i class="fa fa-search"></i></a>
 				                                            </div>
 			                                                <div class="to-right">
-																<div id="product-control${status.index + 1}" class="owl-carousel owl-theme">
+																<div id="product-control${status.index + 1 }" class="owl-carousel owl-theme">
+		                                                    	<c:forTokens items="${list.DRAMA_CONTENT_IMAGE }" var="image" delims=", ">
+		                                                        	<div class="item"><div class="bullets"></div></div>
+		                                                        </c:forTokens>
 			                                                    </div>
 			                                                </div>
 			                                                <div class="clearfix"></div>
@@ -229,17 +232,17 @@
 							<!-- drama end -->
 							
 							<!-- movie start -->
-							<div role="tabpanel" class="tab-pane fade" id="2" aria-labelledby="cat-2">
+							<div role="tabpanel" class="tab-pane fade" id="2"	aria-labelledby="cat-2">
 								<div class="row clearfix">
-									<c:forEach items="${movie_list}" var="list" varStatus="status">
+									<c:forEach items="${movie_list }" var="list" varStatus="status">
 										<div class="col-md-3 prdct-grid">
 											<div class="product-fade">
 												<div class="product-fade-wrap">
-													<div id="product-image${status.index + 1 }" class="owl-carousel owl-theme">
-		                                        	<c:forTokens items="${list.MOVIE_POSTER_IMAGE}" var="image" delims=", ">
-			                                            <div class="item"><img src="/brw/resources/images/movie/poster/${image}" alt="" class="img-responsive"></div>
+													<%-- <div id="product-image${status.index + 1 }" class="owl-carousel owl-theme"> --%>
+		                                        	<c:forTokens items="${list.MOVIE_POSTER_IMAGE }" var="image" delims=", ">
+			                                            <div class="item"><img src="/brw/resources/images/movie/poster/${image }" alt="" class="img-responsive"></div>
 			                                        </c:forTokens>
-			                                        </div>
+			                                        <!-- </div> -->
 													<div class="product-fade-ct">
 			                                        	<div class="product-fade-control">
 				                                            <div class="to-left">
@@ -247,7 +250,10 @@
 				                                                <a href=""><i class="fa fa-search"></i></a>
 				                                            </div>
 			                                                <div class="to-right">
-																<div id="product-control${status.index + 1}" class="owl-carousel owl-theme">
+																<div id="product-control${status.index + 1 }" class="owl-carousel owl-theme">
+		                                                    	<c:forTokens items="${list.MOVIE_CONTENT_IMAGE }" var="image" delims=", ">
+		                                                        	<div class="item"><div class="bullets"></div></div>
+		                                                        </c:forTokens>
 			                                                    </div>
 			                                                </div>
 			                                                <div class="clearfix"></div>
@@ -257,7 +263,7 @@
 												</div>
 			                                </div>
 			                                <div class="product-name">
-												<a href="">${list.MOVIE_NAME}</a>
+												<a href="">${list.MOVIE_NAME }</a>
 											</div>
 			                            </div>
 									</c:forEach>
@@ -266,17 +272,17 @@
 							<!-- movie end -->
 							
 							<!-- ad start -->
-							<div role="tabpanel" class="tab-pane fade" id="3" aria-labelledby="cat-3">
+							<div role="tabpanel" class="tab-pane fade" id="3"	aria-labelledby="cat-3">
 								<div class="row clearfix">
 									<c:forEach items="${ad_list }" var="list" varStatus="status">
 										<div class="col-md-3 prdct-grid">
 											<div class="product-fade">
 												<div class="product-fade-wrap">
-													<div id="product-image${status.index + 1 }" class="owl-carousel owl-theme">
-		                                        	<c:forTokens items="${list.AD_POSTER_IMAGE }" var="image" delims=", ">
-			                                            <div class="item"><img src="/brw/resources/images/ad/poster/${image }" alt="" class="img-responsive"></div>
+													<%-- <div id="product-image${status.index + 1 }" class="owl-carousel owl-theme"> --%>
+		                                        	<c:forTokens items="${list.AD_MAIN_IMAGE }" var="image" delims=", ">
+			                                            <div class="item"><img src="/brw/resources/images/ad/main/${image }" alt="" class="img-responsive"></div>
 			                                        </c:forTokens>
-			                                        </div>
+			                                        <!-- </div> -->
 													<div class="product-fade-ct">
 			                                        	<div class="product-fade-control">
 				                                            <div class="to-left">
@@ -285,6 +291,9 @@
 				                                            </div>
 			                                                <div class="to-right">
 																<div id="product-control${status.index + 1 }" class="owl-carousel owl-theme">
+		                                                    	<c:forTokens items="${list.AD_CONTENT_IMAGE }" var="image" delims=", ">
+		                                                        	<div class="item"><div class="bullets"></div></div>
+		                                                        </c:forTokens>
 			                                                    </div>
 			                                                </div>
 			                                                <div class="clearfix"></div>
@@ -379,11 +388,6 @@
 	</div>
 	</div>
 	<!-- Content -->
-	
-	<div>
-		<c:forEach items="${realtime }" var="list">
-			<div>${list.SEARCH_TEXT }</div>
-		</c:forEach>
-	</div>
+
 </body>
 </html>

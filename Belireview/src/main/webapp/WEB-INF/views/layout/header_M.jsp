@@ -6,6 +6,7 @@
 <html>
 
 <script src="<c:url value='/resources/js/common.js'/>" charset="utf-8"></script>
+<link href="/brw/resources/Jcss/rank.css" rel="stylesheet">
 
 <script>
   $(function(){
@@ -52,6 +53,21 @@
 			},
 			minLength:1,
 		});
+	});
+	  
+	$(function() {
+		var count = $('#rank-list li').length;
+		var height = $('#rank-list li').height();
+
+		function step(index) {
+			$('#rank-list ol').delay(2000).animate({
+				top : -height * index,
+			}, 500, function() {
+				step((index + 1) % count);
+			});
+		}
+
+		step(1);
 	});
 </script>
 <body>
@@ -113,36 +129,52 @@
                                      	  	</li>
                                           </c:if>
                                       </ul>
-                                     
-                                      <ul class="nav navbar-nav navbar-right">
-                                          <li class="menu-search-form">
-                                              <a href="#" id="open-srch-form"><img src="/brw/resources/images/srch.png" alt="srch"></a>
-                                          </li>
-                                          <li>
-                                            <c:if test="${sessionScope.ID != null }">
-                                          	<a href="#">
-                                          	    <c:if test="${sessionScope.PROFILE_IMAGE == null }">
-                                          		<img src="/brw/resources/images/ican/no_pro.png" alt="bag" width="60" height="45" style="border-radius:150px; margin-top:-10px; ">
-                                          		</c:if>
-                                          		<c:if test="${sessionScope.PROFILE_IMAGE != null }">
-                                          		<img src="/brw/resources/images/user_profile/${sessionScope.PROFILE_IMAGE}" alt="bag" width="60" height="45" style="border-radius:150px; margin-top:-10px; ">
-                                          		</c:if>
-                                          	</a>
-                                          	</c:if>
-                                          </li>
-                                          <li id="open-srch-form-mod">
-                                              <div>
-                                                  <form class="side-search">
-                                                      <div class="input-group">
-                                                          <input type="text" class="form-control search-wid" placeholder="Search Here" aria-describedby="basic-addon1">
-                                                          <a href="" class="input-group-addon btn-side-serach" id="basic-addon1"><i class="fa fa-search"></i></a>
-                                                      </div>
-                                                  </form>
-                                              </div>
-                                          </li>
-                                      </ul>
-                                     
-                                  </div><!-- /.navbar-collapse -->
+
+							<ul class="nav navbar-nav navbar-right">
+									<div id="content1">
+										<dl id="rank-list">
+											<dt>실시간 급상승 검색어</dt>
+											<dd>
+												<ol>
+													<c:forEach items="${realtime }" var="list" varStatus="stat">
+														<li><font id="index">${stat.index + 1}</font>
+															${list.SEARCH_TEXT }</li>
+													</c:forEach>
+												</ol>
+											</dd>
+										</dl>
+									</div>
+									<li class="menu-search-form"><a href="#"
+										id="open-srch-form"><img
+											src="/brw/resources/images/srch.png" alt="srch"></a></li>
+									<li><c:if test="${sessionScope.ID != null }">
+											<a href="#"> <c:if
+													test="${sessionScope.PROFILE_IMAGE == null }">
+													<img src="/brw/resources/images/ican/no_pro.png" alt="bag"
+														width="60" height="45"
+														style="border-radius: 150px; margin-top: -10px;">
+												</c:if> <c:if test="${sessionScope.PROFILE_IMAGE != null }">
+													<img
+														src="/brw/resources/images/user_profile/${sessionScope.PROFILE_IMAGE}"
+														alt="bag" width="60" height="45"
+														style="border-radius: 150px; margin-top: -10px;">
+												</c:if>
+											</a>
+										</c:if></li>
+									<li id="open-srch-form-mod">
+										<div>
+											<form class="side-search">
+												<div class="input-group">
+													<input type="text" class="form-control search-wid"
+														placeholder="Search Here" aria-describedby="basic-addon1">
+													<a href="" class="input-group-addon btn-side-serach"
+														id="basic-addon1"><i class="fa fa-search"></i></a>
+												</div>
+											</form>
+										</div>
+									</li>
+								</ul>
+						</div><!-- /.navbar-collapse -->
                               <!--</div> -->
                           </nav>
                       </div>

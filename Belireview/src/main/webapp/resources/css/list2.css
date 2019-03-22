@@ -3,14 +3,42 @@
    margin: 80px 300px 90px 150px;
 }}
 
+#loading {
+	width: 100%;
+	float: left;
+	text-align: center;
+}
+
+#loading img {
+	float: none;
+	width: 40px;
+}
+
 .totop {
     position: fixed;
-    top:50%;
-    right: 140px;
+    top:80%;
+    right: 5%;
+    z-index: 1;
+    display: block;
+    
 }
-/* .totop a {
-    display: none;
-} */
+
+#gogotop {
+	display: block;
+	border-radius: 10%;
+	align-items: center;
+	justify-content: center;
+	background: white;
+	color: #040063;
+	width: 50px;
+	height: 50px;
+	border: solid 1px #040063;
+}
+
+#gogotop:hover {
+	color: red;
+	border: solid 1px red;
+}
 
 #loadMore {
     padding: 10px;
