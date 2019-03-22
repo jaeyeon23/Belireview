@@ -1,6 +1,7 @@
 package believe.review.brw.ad;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -39,16 +40,14 @@ public class AdController {
    @RequestMapping(value="/adDetail.br" , method=RequestMethod.GET)
    public ModelAndView adDetail(CommandMap commandMap, HttpServletRequest request) throws Exception {
 
-		ModelAndView mv = new ModelAndView("dramaDetail");
+		ModelAndView mv = new ModelAndView("adDetail");
 		HttpSession session = request.getSession(); 
 		
 		Map<String,Object> map = adService.adDetail(commandMap.getMap());//상세보기
 		List<Map<String,Object>> comment = adService.adCommentForDetail(map);//댓
 		
-		List<Map<String,Object>> actor = adService.adActor(map); //출연배우
-		
-		List<Map<String,Object>> detailgenre = adService.detailgenre(map);//비슷한장르
-		int totalGrade = adService.grade(map);
+		/*List<Map<String,Object>> detailgenre = adService.detailgenre(map);//비슷한장르
+*/		int totalGrade = adService.grade(map);
 		try {
 			List<Map<String,Object>> gradeRatio = adService.gradeRatio(map);//별점비율
 			int[] ratio = new int[11];
@@ -61,34 +60,33 @@ public class AdController {
 		}catch(Exception e) {
 			System.out.println("별점없음");
 		}
-		String[] image = map.get("ad_CONTENT_IMAGE").toString().split(",");
+		/*String[] image = map.get("ad_CONTENT_IMAGE").toString().split(",");
 		for(int i=0;i<image.length;i++) {
 			image[i] = image[i].trim();
-		}
+		}*/
 		double ratingPrediction = 0;
 		List<String> likeList = new ArrayList<String>();
 		if(session.getAttribute("ID")!=null) {//로그인했을때
 			map.put("ID", session.getAttribute("ID"));
 			map.put("NAME", session.getAttribute("NAME"));
 			Map<String,Object> tmp = userService.userWishList(map);
-			if(tmp!=null) {
+			/*if(tmp!=null) {
 				if(tmp.get("MYPAGE_ad")!=null) {//보고싶어요
 					String str[] = tmp.get("MYPAGE_ad").toString().split(",");
 					for(String s : str) {
-						if(map.get("ad_NO").toString().equals(s)) {
+						if(map.get("AD_NO").toString().equals(s)) {
 							mv.addObject("wish","wish");
 						}
 					}
 				}
-			}
+			}*/
 			for(int i=0;i<comment.size();i++) {
-				if(comment.get(i).get("DC_LIKE_ID")!=null) {
-					String[] str = comment.get(i).get("DC_LIKE_ID").toString().split(",");
+				if(comment.get(i).get("AD_LIKE_ID")!=null) {
+					String[] str = comment.get(i).get("AD_LIKE_ID").toString().split(",");
 					for(int j=0;j<str.length;j++) {
 						if(session.getAttribute("ID").equals(str[j])) {
 							likeList.add("like"+i);
-						}else
-							likeList.add("nonone");
+						}
 					}
 				}
 			}
@@ -100,7 +98,7 @@ public class AdController {
 		
 			if(tmp!=null) {//별점
 				String[] ra = {"평가하기","최악이에요","싫어요","재미없어요","별로에요","부족해요","보통이에요","볼만해요","재미있어요","훌륭해요!","최고에요!"};
-				int g = (int)(Double.parseDouble(tmp.get("DL_GRADE").toString())*2);
+				int g = (int)(Double.parseDouble(tmp.get("AL_GRADE").toString())*2);
 				mv.addObject("grade",g);
 				mv.addObject("ra",ra[g]);
 				mv.addObject("initValue","r"+g);
@@ -118,9 +116,8 @@ public class AdController {
 	
 		mv.addObject("map",map);
 		mv.addObject("comment",comment);
-		mv.addObject("actor",actor);
-		mv.addObject("detailgenre",detailgenre);
-		mv.addObject("image",image);
+		/*mv.addObject("detailgenre",detailgenre);*/
+		/*mv.addObject("image",image);*/
 		mv.addObject("totalCount",totalCount);
 		mv.addObject("totalGrade",totalGrade);
 		mv.addObject("ratingPrediction",ratingPrediction);
@@ -131,6 +128,174 @@ public class AdController {
 		
 		return mv;
 
+	}
+   	@RequestMapping(value="adDetail.br",method = RequestMethod.POST)
+	@ResponseBody
+	public Map<String,Object> adDe(CommandMap commandMap) throws Exception {
+
+		Map<String,Object> mv = commandMap.getMap();
+		Map<String,Object> map = new HashMap<String,Object>();
+		StringBuffer sb = new StringBuffer();
+		
+		//좋아요
+		if(mv.get("COMMENTLIKE")!=null) {
+			map = adService.commentOne(mv);
+			if(map.get("AD_LIKE_ID")!=null) {
+				String[] str = map.get("AD_LIKE_ID").toString().split(",");
+				boolean exist = false;
+				int likenum = Integer.parseInt(map.get("AD_LIKE").toString());
+				String ad_like_id = "";
+				for(String s : str) {
+					System.out.println(s);
+					System.out.println(mv.get("ID"));
+					if(mv.get("ID").equals(s)) {
+						exist = true;
+					}else {
+						ad_like_id += s+",";
+					}
+				}
+				if(!exist) {
+					ad_like_id += mv.get("ID");
+					likenum +=1;
+					mv.put("add", "add");
+				}else {
+					likenum -=1;
+					mv.put("subtract", "subtract");
+				}
+				mv.put("AD_LIKE_ID", ad_like_id);
+				mv.put("AD_LIKE", likenum);
+				System.out.println(mv.get("AD_LIKE"));
+				adService.adCommentLike(mv);
+			}else {
+				mv.put("AD_LIKE_ID", mv.get("ID"));
+				mv.put("add", "add");
+				mv.put("AD_LIKE", 1);
+				adService.adCommentLike(mv);
+			}
+		}
+		
+		/*평점*/
+		if(mv.get("RATING")!=null) {
+			map = adService.existGrade(mv);
+			if(map==null) {//별점이 없을때
+				adService.addGrade(mv);
+			}else {//별점이 있을때
+				adService.updateGrade(mv);
+			}
+		}
+		/*평점*/
+		
+		//댓
+		if(mv.get("COM")!=null) { 
+			map = adService.myComment(mv);
+			if(map==null) {
+				adService.writeAdComment(mv);
+				map = adService.myComment(mv);
+			}else {
+				System.out.println("작성ㄴㄴ");
+			}
+			mv.put("myCom",map);
+			map = adService.existGrade(mv);
+			if(map==null) {
+				mv.put("RATING", 0);
+				adService.addGrade(mv);
+			}
+		}
+		//댓
+		
+		//댓삭제
+		if(mv.get("DELCOM")!=null) {
+			adService.deleteComment(mv);
+		}
+		//댓삭제
+		
+		//댓수정
+		if(mv.get("MCOM")!=null) { 
+			adService.updateAdComment(mv);
+			map = adService.myComment(mv);
+			mv.put("myCom",map);
+		}
+		//댓수정
+		
+		List<Map<String,Object>> comment = adService.adCommentForDetail(mv);//댓
+		int index = 0;
+		if(comment != null) {
+			for(Map m :comment) {
+				sb.append("<li class=\"HorizontalListItem-tt0z2b-0 hRbPKu\">")
+				.append("<div class=\"BasicCommentItem__Comment-iqy0k7-0 UuRdd\">")
+				.append("<div class=\"BasicCommentItem__TitleContainer-iqy0k7-1 jWsgqF\">")
+				.append("<div class=\"BasicCommentItem__ProfileBlock-iqy0k7-2 dFeRwI\">")
+				.append("<div class=\"ProfilePhoto__Self-s1v3isfu-1 lniNjX RoundedImageBlock-k5m4n5-0 gUZYtN\">")
+				.append("<div class=\"ProfilePhoto__ProfilePhotoImage-s1v3isfu-0 eKUOvr\"></div>")
+				.append("<div class=\"ProfilePhoto__DefaultImageContainer-s1v3isfu-2 kPGxuy\">");
+				if(m.get("PROFILE_IMAGE")!=null) {
+					sb.append("<img class=\"defaultImage__ProfileImg-s1kn91bx-1 iaxVtx\" src=\"/brw/resources/images/user_profile/")
+					.append(m.get("PROFILE_IMAGE")).append("\">");
+				}else {
+					sb.append("<img class=\"defaultImage__ProfileImg-s1kn91bx-1 iaxVtx\" src=\"/brw/resources/images/Temporary_img.JPG\">");
+				}
+				sb.append("</div></div><div class=\"UserNameWithBadges__Self-s1bd3hgj-0 brZhrQ\">")
+				.append(m.get("NAME"))
+				.append("<input type=\"hidden\" value=\"").append(m.get("ADC_NO")).append("\" class=\"00like").append(index).append("\"/>")
+				.append("<span class=\"UserNameWithBadges__SmallBadge-s1bd3hgj-1 bAndNa UIImg-s3jz6tx-0 eBREVF\" src=\"/brw/resources/images/detail/detail_comment1.svg\"></span>")
+				.append("<span class=\"UserNameWithBadges__SmallBadge-s1bd3hgj-1 bAndNa UIImg-s3jz6tx-0 kyuoIv\" src=\"/brw/resources/images/detail/detail_comment2.svg\"></span>")
+				.append("</div></div>")
+				.append("<div class=\"BasicCommentItem__UserActionStatus-iqy0k7-4 cMGqAP\">")
+				.append("<img src=\"/brw/resources/images/detail/detail_comment_grade.svg\" width=\"16px\" height=\"16px\" alt=\"star\"><span>").append(m.get("AL_GRADE")).append("</span>")
+				.append("</div></div>")
+				.append("<div class=\"BasicCommentItem__TextBlock-iqy0k7-3 eQRymK\">")
+				.append("<div class=\"TextTruncate__Self-wvv1uj-0 jXBVmV\">")
+				.append("<div class=\"TextTruncate__Text-wvv1uj-1 gLsCNn\" style=\"white-space: pre-line;\">")
+				.append(m.get("AD_CONTENT"))
+				.append("</div></div></div>")
+				.append("<div class=\"ContentlessCommentItem__LikeReplyBlock-s1n6rtl6-1 bSwpdd\">")
+				.append("<span class=\"ContentlessCommentItem__LikeImage-s1n6rtl6-2 jmhzoz UIImg-s3jz6tx-0 jSJJRD\" src=\"/brw/resources/images/detail/detail_like.svg\" width=\"18px\" height=\"18px\"></span>")
+				.append("<em class=\"0like").append(index).append("\">").append(m.get("AD_LIKE")).append("</em></div>")
+				.append("<div class=\"ContentlessCommentItem__UserActionBlock-s1n6rtl6-4 kJvkpH\">")
+				.append("<button class=\"ContentlessCommentItem__UserActionButton-s1n6rtl6-5 kRhZsb StylelessButton-phxvo7-0 gsSopE like like").append(index).append("\">좋아요</button>")
+				.append("</div></div></li>");
+				
+				index +=1;
+			}
+		}
+		mv.put("comNum", comment.size());
+		mv.put("comList", sb.toString());
+		
+		/*보고싶어요*/
+		/*if(mv.get("WISH")!=null) {
+			map = userService.userWishList(mv);
+			
+			if(map==null) {//위시리스트에 아무것도 없을때 
+				userService.insertWishList(mv);
+			}
+			else {//위시리스트에 값이 있을때
+				if(map.get("MYPAGE_ad")==null) {
+					userService.updateWishList(mv);	
+					mv.put("add", "add");
+				}else {
+					String[] str = map.get("MYPAGE_ad").toString().split(",");
+					boolean exist = false;
+					String ad_no = "";
+					for(String s : str) {
+						if(mv.get("AD_NO").equals(s)) {
+							exist = true;
+						}else {
+							ad_no += s+",";
+						}
+					}
+					if(!exist) {
+						ad_no += mv.get("AD_NO");
+						mv.put("add", "add");
+					}else {
+						mv.put("subtract", "subtract");
+					}
+					mv.put("AD_NO", ad_no);
+					System.out.println(mv.get("AD_NO"));
+					userService.updateWishList(mv);
+				}
+			}
+		}*/
+		return mv;
 	}
  
    @RequestMapping(value="/adComment.br",method = RequestMethod.GET)
@@ -159,13 +324,10 @@ public class AdController {
 				}
 			}
 		}*/
-
-	   
       return mv;
    }
-   
    @RequestMapping(value="adComment.br",method = RequestMethod.POST)
-	@ResponseBody
+   @ResponseBody
 	public Map<String,Object> CommentLike(CommandMap commandMap) throws Exception {
 
 		Map<String,Object> mv = commandMap.getMap();

@@ -35,7 +35,7 @@
 		$.ajax({
 			async:true,
 			type:'POST',
-			data:(genre="")?{currentPage:currentPage,searchText:searchText}:{currentPage:currentPage, GENRE:searchText},
+			data:(genre=="")?{currentPage:currentPage,searchText:searchText}:{currentPage:currentPage, GENRE:searchText},
 
 			url:"<c:url value='/mainSearch2.br?${_csrf.parameterName}=${_csrf.token}'/>",
 			
@@ -48,7 +48,7 @@
 		$.ajax({
 			async:true,
 			type:'POST',
-			data:(genre="")?{currentPage:currentPage,searchText:searchText}:{currentPage:currentPage, GENRE:searchText},
+			data:(genre=="")?{currentPage:currentPage,searchText:searchText}:{currentPage:currentPage, GENRE:searchText},
 			url:"<c:url value='/mainSearch2.br?${_csrf.parameterName}=${_csrf.token}'/>",
 			
 			success:function(result){
@@ -75,7 +75,7 @@
 		$.ajax({
 			async:true,
 			type:'POST',
-			data:(genre="")?{currentPage:currentPage, searchText:searchText, type:1}:{currentPage:currentPage, GENRE:searchText, type:1},
+			data:(genre=="")?{currentPage:currentPage, searchText:searchText, type:1}:{currentPage:currentPage, GENRE:searchText, type:1},
 			url:"<c:url value='/mdaSearch.br?${_csrf.parameterName}=${_csrf.token}'/>",
 			
 			success:function(result){
@@ -87,7 +87,7 @@
 		$.ajax({
 			async:true,
 			type:'POST',
-			data:(genre="")?{currentPage:currentPage, searchText:searchText, type:1}:{currentPage:currentPage, GENRE:searchText, type:1},
+			data:(genre=="")?{currentPage:currentPage, searchText:searchText, type:1}:{currentPage:currentPage, GENRE:searchText, type:1},
 			url:"<c:url value='/mdaSearch.br?${_csrf.parameterName}=${_csrf.token}'/>",
 			
 			success:function(result){
@@ -114,7 +114,7 @@
 		$.ajax({
 			async:true,
 			type:'POST',
-			data:(genre="")?{currentPage:currentPage, searchText:searchText,type:2}:{currentPage:currentPage, GENRE:searchText, type:2},
+			data:(genre=="")?{currentPage:currentPage, searchText:searchText, type:2}:{currentPage:currentPage, GENRE:searchText, type:2},
 			url:"<c:url value='/mdaSearch.br?${_csrf.parameterName}=${_csrf.token}'/>",
 			
 			success:function(result){
@@ -126,7 +126,7 @@
 		$.ajax({
 			async:true,
 			type:'POST',
-			data:(genre="")?{currentPage:currentPage, searchText:searchText,type:2}:{currentPage:currentPage, GENRE:searchText, type:2},
+			data:(genre=="")?{currentPage:currentPage, searchText:searchText, type:2}:{currentPage:currentPage, GENRE:searchText, type:2},
 			url:"<c:url value='/mdaSearch.br?${_csrf.parameterName}=${_csrf.token}'/>",
 			
 			success:function(result){
@@ -153,7 +153,7 @@
 		$.ajax({
 			async:true,
 			type:'POST',
-			data:(genre="")?{currentPage:currentPage, searchText:searchText,type:3}:{currentPage:currentPage, GENRE:searchText, type:3},
+			data:(genre=="")?{currentPage:currentPage, searchText:searchText, type:3}:{currentPage:currentPage, GENRE:searchText, type:3},
 			url:"<c:url value='/mdaSearch.br?${_csrf.parameterName}=${_csrf.token}'/>",
 			
 			success:function(result){
@@ -165,7 +165,7 @@
 		$.ajax({
 			async:true,
 			type:'POST',
-			data:(genre="")?{currentPage:currentPage, searchText:searchText,type:3}:{currentPage:currentPage, GENRE:searchText, type:3},
+			data:(genre=="")?{currentPage:currentPage, searchText:searchText, type:3}:{currentPage:currentPage, GENRE:searchText, type:3},
 			url:"<c:url value='/mdaSearch.br?${_csrf.parameterName}=${_csrf.token}'/>",
 			
 			success:function(result){
@@ -233,7 +233,7 @@
 								</div>
 								
 								<div class="arrow_button PrimitiveHorizontalScrollable__ArrowButtonBlock-hy4esm-3 eweFwK" direction="right">
-									<div class="PrimitiveHorizontalScrollable__ForwardButton-hy4esm-4 cfipNh mainNext"></div>
+									<div class="PrimitiveHorizontalScrollable__ForwardButton-hy4esm-4 cfipNh mainNext "></div>
 								</div>
 							</div>
 							<hr	class="Divider__StylingMergedDivider-s11un6bw-1 kwWkAv Divider-s11un6bw-0 cVxSEp">

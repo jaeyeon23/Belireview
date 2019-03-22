@@ -42,4 +42,24 @@ public class AdminActorServiceImpl implements AdminActorService{
 	public void updateActorOne(Map<String, Object> map) throws Exception {
 		adminActorDAO.updateActorOne(map);
 	}
+
+	@Override
+	public void deleteActorOne(String no) throws Exception {
+		adminActorDAO.deleteActorOne(no);
+	}
+
+	@Override
+	public List<Map<String, Object>> selectActorAjax(String searchValue) throws Exception {
+		return adminActorDAO.selectActorAjax(searchValue);
+	}
+
+	@Override
+	public List<Map<String, Object>> selectActorDramaModify(String no) throws Exception {
+		return adminActorDAO.selectActorDramaModify(no);
+	}
+
+	@Override
+	public List<Map<String, Object>> selectActorMovieModify(String no) throws Exception {
+		return adminActorDAO.selectActorMovieModify(no);
+	}
 }

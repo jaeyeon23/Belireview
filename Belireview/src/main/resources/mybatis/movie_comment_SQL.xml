@@ -17,23 +17,22 @@
 		  #{MOVIE_NO},
 		  SEQ_MOVIE_COMMENT.NEXTVAL,
 		  #{ID},
-		  SYSDATE,
+		  sysdate,
 		  #{COM},
 		  0
 		)
 	</insert>
 	
 	<select id="myComment" parameterType="hashmap" resultType="hashmap">
-		SELECT MC_CONTENT FROM MOVIE_COMMENT WHERE ID=#{ID} AND MOVIE_NO=#{MOVIE_NO}
+		select * from movie_comment where id=#{ID} AND MOVIE_NO=#{MOVIE_NO}
 	</select>
 	
 	<select id="commentOne" parameterType="hashmap" resultType="hashmap">
-		SELECT MOVIE_NO,MC_NO,MC.ID,MC_REG_DATE,MC_CONTENT,MC_LIKE,MC_LIKE_ID,MEMBER_NO,NAME FROM MOVIE_COMMENT MC,MEMBER M WHERE MC.ID=M.ID AND MC.MC_NO=#{MC_NO} AND MOVIE_NO=#{MOVIE_NO}
+		select * from movie_comment where MC_NO=#{MC_NO} AND MOVIE_NO=#{MOVIE_NO}
 	</select>
 
 	<select id="movieCommentByLike" parameterType="hashmap" resultType="hashmap">
 		SELECT
-			NAME,
 			MOVIE_NO,
 			MC_NO,
 			ID,
@@ -46,7 +45,6 @@
 			ROWNUM RNUM
 		FROM(
 			SELECT 
-				M.NAME,
 				MC.MOVIE_NO,
 				MC.MC_NO,
 				MC.ID,
@@ -74,7 +72,6 @@
 	</select>
 	<select id="movieCommentForDetail" parameterType="hashmap" resultType="hashmap">
 		SELECT
-				  NAME,
 				  MOVIE_NO,
 				  MC_NO,
 				  ID,
@@ -86,7 +83,6 @@
 		 		  PROFILE_IMAGE,
 				  RNUM FROM 
 				  (SELECT
-				  	 NAME,
 				     MOVIE_NO,
 				     MC_NO,
 				     ID,
@@ -97,7 +93,7 @@
 				    	TO_CHAR(ML_GRADE,'0.0') AS ML_GRADE,
 		         PROFILE_IMAGE,
 				     ROWNUM RNUM FROM 
-				    (SELECT M.NAME,MC.MOVIE_NO, MC.MC_NO,MC.ID,MC.MC_REG_DATE,MC.MC_CONTENT,MC.MC_LIKE,MC.MC_LIKE_ID,ML.ML_GRADE,PROFILE_IMAGE FROM MOVIE_LIKE ML, MOVIE_COMMENT MC ,MEMBER M
+				    (SELECT MC.MOVIE_NO, MC.MC_NO,MC.ID,MC.MC_REG_DATE,MC.MC_CONTENT,MC.MC_LIKE,MC.MC_LIKE_ID,ML.ML_GRADE,PROFILE_IMAGE FROM MOVIE_LIKE ML, MOVIE_COMMENT MC ,MEMBER M
 				      WHERE ML.MOVIE_LIKE_NO=MC.MOVIE_NO AND ML.ID=MC.ID and ML.ID=M.ID AND MC.MOVIE_NO=#{MOVIE_NO} ORDER BY MC_LIKE DESC)ORDER BY RNUM ASC) WHERE RNUM BETWEEN 1 AND 3
 	</select>
 	

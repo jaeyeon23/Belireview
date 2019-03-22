@@ -34,7 +34,8 @@ public class AdminMovieController {
 	private String pagingHtml;  
 	private Paging page;
 	//private String filePath = "C:\\Users\\박재연\\Desktop\\Belireview\\Belireview\\src\\main\\webapp\\resources\\images\\movie\\";
-	private String filePath = "C:\\인영\\sts\\Belireview\\Belireview\\src\\main\\webapp\\resources\\images\\movie\\";
+	//private String filePath = "C:\\인영\\sts\\Belireview\\Belireview\\src\\main\\webapp\\resources\\images\\movie\\";
+	private String filePath = "C:\\java\\App\\Belireview\\Belireview\\src\\main\\webapp\\resources\\images\\movie\\";
 	private HttpSession session = null;
 
 	@Autowired

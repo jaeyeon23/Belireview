@@ -19,7 +19,7 @@
   }
   function openSearch(){
 		var comSubmit = new ComSubmit();
-       comSubmit.setUrl("<c:url value='/mainSearch.br' />");
+       comSubmit.setUrl("<c:url value='/mainSearch.br?${_csrf.parameterName}=${_csrf.token}' />");
        comSubmit.addParam("searchText",$("input[name='searchText']").val());
        comSubmit.submit();
 	}		
@@ -32,7 +32,7 @@
 		$("#autocompleteText").autocomplete({
 			source: function(request, response){
 				$.ajax({
-					url: "/brw/auto.br",
+					url: "/brw/auto.br?${_csrf.parameterName}=${_csrf.token}",
 					dataType: "json",
 					data:{
 						searchValue: request.term
@@ -146,12 +146,13 @@
                           </nav>
                       </div>
                       
-                      <div class="srch-form">
+					<div class="srch-form">
                           <div class="input-group">
-	                           <input type="text" name="searchText" onkeypress="if (event.keyCode==13){enter();}"  class="form-control search-wid" placeholder="Search Here" aria-describedby="basic-addon2">
+	                           <input type="text" name="searchText"  id="autocompleteText"  onkeypress="if (event.keyCode==13){enter();}"  class="form-control search-wid" placeholder="Search Here" aria-describedby="basic-addon2">
 	                           <a href="" name="search" class="input-group-addon btn-side-serach" id="basic-addon2">
 	                           <i class="fa fa-search"></i></a>
 	                       </div>
+                      </div>
                       </div>
                   </div>
               </div> <!-- Nav -->

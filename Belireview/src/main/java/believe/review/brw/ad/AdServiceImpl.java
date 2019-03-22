@@ -22,10 +22,6 @@ public class AdServiceImpl implements AdService{
 		return adDAO.adDetail(map);
 	}
 	@Override
-	public List<Map<String,Object>> adActor(Map<String, Object> map) throws Exception {
-		return adDAO.adActor(map);
-	}
-	@Override
 	public List<Map<String, Object>> adCommentByRecent(Map<String, Object> map) throws Exception {
 		return adDAO.adCommentByRecent(map);
 	}
@@ -42,10 +38,10 @@ public class AdServiceImpl implements AdService{
 		return adDAO.totalAdCount(map);
 	}
 	
-	@Override
+/*	@Override
 	public List<Map<String, Object>> detailgenre(Map<String, Object> map) throws Exception {
 		return adDAO.detailgenre(map);
-	}
+	}*/
 	@Override
 	public int totalAdComment(Map<String, Object> map) throws Exception {
 		return adDAO.totalAdComment(map);
