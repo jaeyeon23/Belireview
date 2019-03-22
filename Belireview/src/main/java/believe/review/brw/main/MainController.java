@@ -55,7 +55,6 @@ public class MainController {
 	
 	@RequestMapping(value = "/main.br", method = RequestMethod.GET)
 	public String home(Model model,HttpSession session) throws Exception{
-		
 		List<Map<String, Object>> realtime = realTimeService.selectRealTime();
 		model.addAttribute("realtime", realtime);
 		model.addAttribute("ID",session.getAttribute("ID"));
@@ -159,9 +158,7 @@ public class MainController {
 			
 			commandMap.put("table_value", table);
 			
-			if(table != null) {
-				rankService.insertSearchText(commandMap.getMap());
-			}
+			rankService.insertSearchText(commandMap.getMap());
 		}
 		
 		if(realTimeService.selectAllName(commandMap.getMap()) > 0) {

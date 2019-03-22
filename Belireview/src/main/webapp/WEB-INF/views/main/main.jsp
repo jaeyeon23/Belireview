@@ -397,10 +397,11 @@
 	</div>
 	<!-- Content -->
 	
-	<div>
+	<%-- <div>
 		<c:forEach items="${realtime }" var="list">
 			<div>${list.SEARCH_TEXT }</div>
 		</c:forEach>
-	</div>
+	</div> --%>
+
 </body>
 </html>
