@@ -244,13 +244,10 @@
 			});
 		});
 		/* 이미지 슬라이드 */
-		
+		/* 별점 */
 		$(function(){
-	
 			if(id==""||id==null){}
 			else{
-				/* initValue = $('.gZASBp > div').attr("class").split(" ")[1]; */
-		
 				var f = $('.gZASBp > a.r1');
 				f.hover(function() {
 					$('.gZASBp > div' ).removeClass(initValue).addClass('r1');
@@ -459,7 +456,7 @@
 				});
 			}
 		});
-
+		/* 별점 */
 	</script>
 	<!-- 슬라이드 css -->
 	<link rel="stylesheet" href="/brw/resources/css/global2.css">
