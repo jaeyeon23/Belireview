@@ -80,9 +80,23 @@ public class MovieController {
 		
 		Map<String,Object> map = movieService.movieDetail(commandMap.getMap());//상세보기
 		List<Map<String,Object>> comment = movieService.movieCommentForDetail(map);//댓
-		List<Map<String,Object>> actor = movieService.movieActor(map); //출연배우
+		List<Map<String,Object>> actortmp = movieService.movieActor(map); //출연배우
+		List<Map<String,Object>> actor = new ArrayList<Map<String,Object>>(); 
 		List<Map<String,Object>> detailgenre = movieService.detailgenre(map);//비슷한장르
 		
+		for(Map m:actortmp) {
+			Map mp = new HashMap();
+			if(m.get("ACTOR_MOVIE") != null) {
+				String tmp[] = m.get("ACTOR_MOVIE").toString().split(",");
+				for(int i=0;i<tmp.length;i++) {
+					if(tmp[i].equals(map.get("MOVIE_NO").toString())) {
+						mp.put("ACTOR_NAME", m.get("ACTOR_NAME"));
+						mp.put("ACTOR_IMAGE", m.get("ACTOR_IMAGE"));
+						actor.add(mp);
+					}
+				}
+			}
+		}
 		movieService.updateReadCount(map);
 		
 		int totalGrade = movieService.grade(map);
