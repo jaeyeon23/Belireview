@@ -81,7 +81,9 @@ public class MainController {
 			
 			commandMap.put("table_value", table);
 			
-			rankService.insertSearchText(commandMap.getMap());
+			if(table != null) {
+				rankService.insertSearchText(commandMap.getMap());
+			}
 		}
 		
 		if(realTimeService.selectAllName(commandMap.getMap()) > 0) {

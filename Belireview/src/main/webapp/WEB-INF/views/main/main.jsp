@@ -229,7 +229,7 @@
 							<!-- drama end -->
 							
 							<!-- movie start -->
-							<div role="tabpanel" class="tab-pane fade in active" id="2"	aria-labelledby="cat-2">
+							<div role="tabpanel" class="tab-pane fade" id="2" aria-labelledby="cat-2">
 								<div class="row clearfix">
 									<c:forEach items="${movie_list}" var="list" varStatus="status">
 										<div class="col-md-3 prdct-grid">
@@ -266,7 +266,7 @@
 							<!-- movie end -->
 							
 							<!-- ad start -->
-							<div role="tabpanel" class="tab-pane fade in active" id="3"	aria-labelledby="cat-3">
+							<div role="tabpanel" class="tab-pane fade" id="3" aria-labelledby="cat-3">
 								<div class="row clearfix">
 									<c:forEach items="${ad_list }" var="list" varStatus="status">
 										<div class="col-md-3 prdct-grid">
