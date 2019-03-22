@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>believe.review</groupId>
 	<artifactId>brw</artifactId>
-	<name>Belireview</name>
+	<name>Belireview</name> 
 	<packaging>war</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
 	<properties>  
@@ -15,7 +15,7 @@
 	</properties>
 	  
 	<dependencies> 
-
+    
 	  <!-- ssl --> 
 	 	<dependency>
 			<groupId>org.springframework.security</groupId>
