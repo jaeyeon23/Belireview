@@ -17,7 +17,8 @@
 				UNION 
 					ALL
 				SELECT
-					MOVIE_NAME, MOVIE_READCOUNT
+					MOVIE_NAME, 
+					MOVIE_READCOUNT
 				FROM
 					MOVIE
 				UNION 
@@ -27,6 +28,13 @@
 					AD_READCOUNT
 				FROM
 					AD
+				UNION
+					ALL
+				SELECT
+					ACTOR_NAME,
+					ROWNUM
+				FROM
+					ACTOR
 			)
 		WHERE
 			NAME LIKE '%'||#{searchValue}||'%' 
