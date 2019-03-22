@@ -6,6 +6,35 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<script type="text/javascript">
+	/* function realtime() {
+		var list = null;
+		
+		alert("ggg");
+		
+		$.ajax({
+			url : "/brw/realtimeAjax.br?${_csrf.parameterName}=${_csrf.token}",
+			dataType: "json",
+			async : false,
+			success: function(data){
+				var result = data.json;
+				
+				$.each(result, function(idx, val) {
+					alert(val.SEARCH_TEXT);
+				});
+			}
+		});
+		
+		alert("test");
+		
+		setTimeout("realtime()", 10000);
+	}
+	
+	window.onload = function() {
+		realtime();
+	} */
+	
+</script>
 </head>
 
 <body>
@@ -203,7 +232,7 @@
 							<!-- drama end -->
 							
 							<!-- movie start -->
-							<div role="tabpanel" class="tab-pane fade" id="2"	aria-labelledby="cat-2">
+							<div role="tabpanel" class="tab-pane fade" id="2" aria-labelledby="cat-2">
 								<div class="row clearfix">
 									<c:forEach items="${movie_list }" var="list" varStatus="status">
 										<div class="col-md-3 prdct-grid">
@@ -243,7 +272,7 @@
 							<!-- movie end -->
 							
 							<!-- ad start -->
-							<div role="tabpanel" class="tab-pane fade" id="3"	aria-labelledby="cat-3">
+							<div role="tabpanel" class="tab-pane fade" id="3" aria-labelledby="cat-3">
 								<div class="row clearfix">
 									<c:forEach items="${ad_list }" var="list" varStatus="status">
 										<div class="col-md-3 prdct-grid">
@@ -359,5 +388,11 @@
 	</div>
 	</div>
 	<!-- Content -->
+	
+	<div>
+		<c:forEach items="${realtime }" var="list">
+			<div>${list.SEARCH_TEXT }</div>
+		</c:forEach>
+	</div>
 </body>
 </html>
