@@ -35,4 +35,14 @@ public interface UserService {
 
 	void deleteUserOne(Map<String, Object> map) throws Exception;
 	
+	int totalMyMovie(Map<String,Object> map) throws Exception;
+	
+	int totalMyDrama(Map<String,Object> map) throws Exception;
+	
+	int totalMyAd(Map<String,Object> map) throws Exception;
+	
+	String totalMyMovieLike(Map<String,Object> map) throws Exception;
+	
+	String totalMyDramaLike(Map<String,Object> map) throws Exception;
+	
 }

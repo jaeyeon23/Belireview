@@ -118,8 +118,8 @@
 														href="/brw/user/userMovie.br?ID=${sessionScope.ID}">
 														<ul	class="UserPage__CategoryArchives-s1uda3mb-14 euCuQb VisualUl-s1vzev56-0 hgAYVH">
 															<li class="UserPage__CategoryArchivesName-s1uda3mb-15 bcgVAG">영화</li>
-															<li class="UserPage__CategoryArchivesRatedCount-s1uda3mb-16 hgxhwm">★<!-- -->0</li>
-															<li class="UserPage__CategoryArchivesWishedCount-s1uda3mb-17 ejKSYx">좋아요<strong>0</strong></li>
+															<li class="UserPage__CategoryArchivesRatedCount-s1uda3mb-16 hgxhwm">★${totalCountM}</li>
+															<li class="UserPage__CategoryArchivesWishedCount-s1uda3mb-17 ejKSYx">보고싶어요<strong>&nbsp;${totalMyMovieLike}</strong></li>
 														</ul>
 													</a>
 												</li>
@@ -128,8 +128,8 @@
 														href="/brw/user/userDrama.br?ID=${sessionScope.ID}">
 												 	<ul class="UserPage__CategoryArchives-s1uda3mb-14 bEvUuy VisualUl-s1vzev56-0 hgAYVH">
 															<li class="UserPage__CategoryArchivesName-s1uda3mb-15 bcgVAG">드라마</li>
-															<li class="UserPage__CategoryArchivesRatedCount-s1uda3mb-16 hgxhwm">★<!-- -->0</li>
-															<li class="UserPage__CategoryArchivesWishedCount-s1uda3mb-17 ejKSYx">좋아요<strong>0</strong></li>
+															<li class="UserPage__CategoryArchivesRatedCount-s1uda3mb-16 hgxhwm">★${totalCountD}</li>
+															<li class="UserPage__CategoryArchivesWishedCount-s1uda3mb-17 ejKSYx">보고싶어요<strong>&nbsp;${totalMyDramaLike}</strong></li>
 													</ul>
 													</a>
 												</li>
@@ -138,8 +138,8 @@
 													background="[object Object]" href="/brw/user/userAD.br?ID=${sessionScope.ID}">
 													 <ul class="UserPage__CategoryArchives-s1uda3mb-14 iqxyWB VisualUl-s1vzev56-0 hgAYVH">
 															<li	class="UserPage__CategoryArchivesName-s1uda3mb-15 bcgVAG">광고</li>
-															<li	class="UserPage__CategoryArchivesRatedCount-s1uda3mb-16 hgxhwm">★<!-- -->0</li>
-															<li	class="UserPage__CategoryArchivesWishedCount-s1uda3mb-17 ejKSYx">좋아요<strong>0</strong></li>
+															<li	class="UserPage__CategoryArchivesRatedCount-s1uda3mb-16 hgxhwm">★${totalCountA}</li>
+													
 													 </ul>
 													 </a>
 												</li>

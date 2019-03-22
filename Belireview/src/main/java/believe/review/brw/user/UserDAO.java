@@ -99,4 +99,24 @@ public class UserDAO extends AbstractDAO {
 	public void deleteMovieComment(Map<String, Object> map) {
 		delete("user.deleteMovieComment", map);
 	}
+	
+	public int totalMyMovie(Map<String, Object> map) throws Exception{
+		return (Integer) selectOne("user.totalMyMovie",map);
+	}
+	
+	public int totalMyDrama(Map<String, Object> map) throws Exception{
+		return (Integer) selectOne("user.totalMyDrama",map);
+	}
+	
+	public int totalMyAd(Map<String, Object> map) throws Exception{
+		return (Integer) selectOne("user.totalMyAd",map);
+	}
+	
+	public String totalMyDramaLike(Map<String, Object> map) throws Exception{
+		return  (String) selectOne("user.totalMyDramaLike",map);
+	}
+	
+	public String totalMyMovieLike(Map<String, Object> map) throws Exception{
+		return  (String) selectOne("user.totalMyMovieLike",map);
+	}
 }
