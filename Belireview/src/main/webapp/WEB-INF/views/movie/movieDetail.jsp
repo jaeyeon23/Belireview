@@ -237,8 +237,10 @@
 		});
 		/* 이미지 슬라이드 */
 	
+		$(function(){
 		if(id==""||id==null){}
-	else{
+	
+		else{
 		/* initValue = $('.gZASBp > div').attr("class").split(" ")[1]; */
 
 		var f = $('.gZASBp > a.r1');
