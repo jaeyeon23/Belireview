@@ -158,7 +158,10 @@ public class MainController {
 			
 			commandMap.put("table_value", table);
 			
-			rankService.insertSearchText(commandMap.getMap());
+			/*rankService.insertSearchText(commandMap.getMap());*/
+			if(table != null) {
+				rankService.insertSearchText(commandMap.getMap());
+			}
 		}
 		
 		if(realTimeService.selectAllName(commandMap.getMap()) > 0) {
@@ -263,13 +266,11 @@ public class MainController {
 		
 		searchAd = searchAd.subList(adPage.getStartCount(), lastCount);
 	
-		if(request.getParameter("searchText") != null) {
-			mv.addObject("request",request.getParameter("searchText"));
-		}
-		else {
-			mv.addObject("request",request.getParameter("GENRE"));
-			mv.addObject("genre","genre");
-		}
+		if(request.getParameter("searchText") != null)
+		mv.addObject("request",request.getParameter("searchText"));
+		else
+		mv.addObject("request","\""+ request.getParameter("GENRE")+"\" 장르");
+			
 		mv.addObject("currentPage",currentPage);
 		mv.addObject("searchMain",searchMain);
 		mv.addObject("searchMovie",searchMovie);

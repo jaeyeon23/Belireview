@@ -34,7 +34,7 @@
 		$("#autocompleteText").autocomplete({
 			source: function(request, response){
 				$.ajax({
-					url: "/brw/auto.br?${_csrf.parameterName}=${_csrf.token}",
+					url: "/brw/auto.br",
 					dataType: "json",
 					data:{
 						searchValue: request.term
