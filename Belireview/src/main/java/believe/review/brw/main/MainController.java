@@ -21,6 +21,7 @@ import believe.review.brw.common.common.CommandMap;
 import believe.review.brw.common.util.Paging;
 import believe.review.brw.rank.RankService;
 import believe.review.brw.realTime.RealTimeService;
+import believe.review.brw.user.UserService;
 
 @Controller
 public class MainController {
@@ -45,7 +46,11 @@ public class MainController {
 	@Resource(name="rankService")
 	private RankService rankService;
 	
+	@Resource(name="userService")
+	private UserService userService;
+	
 	@Resource(name="mainService")
+
 	private MainService mainService;
 	
 	@RequestMapping(value = "/main.br", method = RequestMethod.GET)
