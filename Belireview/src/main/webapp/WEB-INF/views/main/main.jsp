@@ -39,10 +39,10 @@
 							<div class="col-md-6">
 								<div class="slide-offers-left">
 									<div class="slide-offers-title">
-										<span>드라마</span>
+										<span>드라마</span><br />도깨비
 									</div>
 									<p>
-										<font color="black">도깨비<br />arraival in believe store</font>
+										<font color="black">arraival in believe store</font>
 									</p>
 									<a href="/brw/drama/dramaList.br" class="btn btn-blue">리뷰보러가기</a>
 								</div>
