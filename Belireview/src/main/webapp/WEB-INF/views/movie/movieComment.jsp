@@ -91,7 +91,7 @@
 							</div>
 							<div class="ShrinkHeaderBar__LargeTitleBlock-kl2m8-2 VaXBb">
 								<div class="ShrinkHeaderBar__LargeTitle-kl2m8-3 hwiyxo">코멘트</div>
-								<div style="float: right; width: 20%;" onchange="orderby('/brw/movie/movieComment.br')">
+								<div style="float: right; width: 20%;" onchange="orderby('/brw/movie/movieComment.br?${_csrf.parameterName}=${_csrf.token}')">
 									<select id="orderby" name="orderby" class="form-control">
 										<option value="">----</option>
 										<option value="1">좋아요순</option>
