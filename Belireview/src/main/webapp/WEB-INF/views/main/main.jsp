@@ -6,6 +6,65 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<script type="text/javascript">
+	/* function realtime() {
+		var list = null;
+		
+		alert("ggg");
+		
+		$.ajax({
+			url : "/brw/realtimeAjax.br?${_csrf.parameterName}=${_csrf.token}",
+			dataType: "json",
+			async : false,
+			success: function(data){
+				var result = data.json;
+				
+				$.each(result, function(idx, val) {
+					alert(val.SEARCH_TEXT);
+				});
+			}
+		});
+		
+		alert("test");
+		
+		setTimeout("realtime()", 10000);
+	}
+	
+	window.onload = function() {
+		realtime();
+	} */
+	
+	 $(function() {
+			if ("${ID}" == "") {//비로그인
+				$(".vv").click(function(e) {//보고싶어요
+					e.preventDefault();
+					alert("로그인 해주세요.");
+					location.href = "<c:url value='/member/loginForm.br?${_csrf.parameterName}=${_csrf.token}' />"
+				});
+			
+			} else {//로그인
+				//작동 버튼 시작 post
+				$(".vv").click(function(e) {//보고싶어요
+					e.preventDefault();
+					var no = $(this).attr('value');
+					var type = $(this).attr('value2');
+					like(no,type);
+				});
+			}
+		}); //작동 버튼 끝 
+		
+		
+		function like(no,type) {
+			var id = "${ID}";
+			$.ajax({
+				type : 'POST',
+				data : (type=="d") ? {DRAMA_NO:no,ID:id}:{MOVIE_NO:no ,ID:id},
+				url:"<c:url value='/like.br?${_csrf.parameterName}=${_csrf.token}'/>",
+				success : function(result){
+				}
+			})
+		}
+</script>
 </head>
 
 <body>
@@ -177,18 +236,11 @@
 													<div class="product-fade-ct">
 			                                        	<div class="product-fade-control">
 				                                            <div class="to-left">
-				                                                <a href=""><i class="fa fa-heart"></i></a>
-				                                                <a href=""><i class="fa fa-search"></i></a>
+				                                                <a href="" class="vv" value="${list.DRAMA_NO}" value2="d"><i class="fa fa-heart"></i></a>
+				                                                <a href="/brw/mainSearch.br?searchText=${list.DRAMA_NAME}" ><i class="fa fa-search"></i></a>
 				                                            </div>
-			                                                <div class="to-right">
-																<div id="product-control${status.index + 1 }" class="owl-carousel owl-theme">
-		                                                    	<c:forTokens items="${list.DRAMA_CONTENT_IMAGE }" var="image" delims=", ">
-		                                                        	<div class="item"><div class="bullets"></div></div>
-		                                                        </c:forTokens>
-			                                                    </div>
-			                                                </div>
 			                                                <div class="clearfix"></div>
-			                                               	<a href="" class="btn btn-to-cart"><span>자세히 보기</span><div class="clearfix"></div></a>
+			                                               	<a href="/brw/drama/dramaDetail.br?DRAMA_NO=${list.DRAMA_NO}" class="btn btn-to-cart"><span>자세히 보기</span><div class="clearfix"></div></a>
 			                                            </div>
 													</div>
 												</div>
@@ -203,7 +255,7 @@
 							<!-- drama end -->
 							
 							<!-- movie start -->
-							<div role="tabpanel" class="tab-pane fade" id="2"	aria-labelledby="cat-2">
+							<div role="tabpanel" class="tab-pane fade" id="2" aria-labelledby="cat-2">
 								<div class="row clearfix">
 									<c:forEach items="${movie_list }" var="list" varStatus="status">
 										<div class="col-md-3 prdct-grid">
@@ -217,18 +269,11 @@
 													<div class="product-fade-ct">
 			                                        	<div class="product-fade-control">
 				                                            <div class="to-left">
-				                                                <a href=""><i class="fa fa-heart"></i></a>
-				                                                <a href=""><i class="fa fa-search"></i></a>
+				                                                <a href="" class="vv" value="${list.MOVIE_NO}" value2="m"><i class="fa fa-heart"></i></a>
+				                                                <a href="/brw/mainSearch.br?searchText=${list.MOVIE_NAME}" ><i class="fa fa-search"></i></a>
 				                                            </div>
-			                                                <div class="to-right">
-																<div id="product-control${status.index + 1 }" class="owl-carousel owl-theme">
-		                                                    	<c:forTokens items="${list.MOVIE_CONTENT_IMAGE }" var="image" delims=", ">
-		                                                        	<div class="item"><div class="bullets"></div></div>
-		                                                        </c:forTokens>
-			                                                    </div>
-			                                                </div>
 			                                                <div class="clearfix"></div>
-			                                               	<a href="" class="btn btn-to-cart"><span>자세히 보기</span><div class="clearfix"></div></a>
+			                                               	<a href="/brw/movie/movieDetail.br?MOVIE_NO=${list.MOVIE_NO}" class="btn btn-to-cart"><span>자세히 보기</span><div class="clearfix"></div></a>
 			                                            </div>
 													</div>
 												</div>
@@ -243,32 +288,24 @@
 							<!-- movie end -->
 							
 							<!-- ad start -->
-							<div role="tabpanel" class="tab-pane fade" id="3"	aria-labelledby="cat-3">
+							<div role="tabpanel" class="tab-pane fade" id="3" aria-labelledby="cat-3">
 								<div class="row clearfix">
 									<c:forEach items="${ad_list }" var="list" varStatus="status">
 										<div class="col-md-3 prdct-grid">
 											<div class="product-fade">
 												<div class="product-fade-wrap">
 													<%-- <div id="product-image${status.index + 1 }" class="owl-carousel owl-theme"> --%>
-		                                        	<c:forTokens items="${list.AD_MAIN_IMAGE }" var="image" delims=", ">
-			                                            <div class="item"><img src="/brw/resources/images/ad/main/${image }" alt="" class="img-responsive"></div>
+		                                        	<c:forTokens items="${list.AD_POSTER_IMAGE }" var="image" delims=", ">
+			                                            <div class="item"><img src="${list.AD_POSTER_IMAGE}" alt="" class="img-responsive"></div>
 			                                        </c:forTokens>
 			                                        <!-- </div> -->
 													<div class="product-fade-ct">
 			                                        	<div class="product-fade-control">
 				                                            <div class="to-left">
-				                                                <a href=""><i class="fa fa-heart"></i></a>
-				                                                <a href=""><i class="fa fa-search"></i></a>
+				                                                <a href="/brw/mainSearch.br?searchText=${list.AD_NAME}" ><i class="fa fa-search"></i></a>
 				                                            </div>
-			                                                <div class="to-right">
-																<div id="product-control${status.index + 1 }" class="owl-carousel owl-theme">
-		                                                    	<c:forTokens items="${list.AD_CONTENT_IMAGE }" var="image" delims=", ">
-		                                                        	<div class="item"><div class="bullets"></div></div>
-		                                                        </c:forTokens>
-			                                                    </div>
-			                                                </div>
 			                                                <div class="clearfix"></div>
-			                                               	<a href="" class="btn btn-to-cart"><span>자세히 보기</span><div class="clearfix"></div></a>
+			                                               	<a href="/brw/ad/adDetail.br?AD_NO=${list.AD_NO}" class="btn btn-to-cart"><span>자세히 보기</span><div class="clearfix"></div></a>
 			                                            </div>
 													</div>
 												</div>
@@ -359,5 +396,12 @@
 	</div>
 	</div>
 	<!-- Content -->
+	
+	<%-- <div>
+		<c:forEach items="${realtime }" var="list">
+			<div>${list.SEARCH_TEXT }</div>
+		</c:forEach>
+	</div> --%>
+
 </body>
 </html>

@@ -131,7 +131,7 @@
 								<div class="ShrinkHeaderBar__Buttons-kl2m8-1 gvGpvr">
 									<div class="ShrinkHeaderBar__LeftButtons-kl2m8-5 dPdGEs">
 										<button
-											class="HeaderBackButton__TopLeftButton-s1sky4x3-0 lfxcSv HeaderCloseButton__TopLeftButton-odlno1-0 cLcmdI StylelessButton-phxvo7-0 gsSopE"></button>
+											class="HeaderBackButton__TopLeftButton-s1sky4x3-0 lfxcSv HeaderCloseButton__TopLeftButton-odlno1-0 cLcmdI StylelessButton-phxvo7-0 gsSopE" onclick="history.go(-1)"></button>
 									</div>
 									<div class="ShrinkHeaderBar__RightButtons-kl2m8-6 kuosGj"></div>
 								</div>
@@ -163,7 +163,7 @@
 														<div class="ContentListItemWithPoster__ContentPosterBlock-swai1z-1 kxDIaJ">
 															<div class="LazyLoadingImg__Self-s1jb87ps-0 csJkbb">
 																	<img class="LazyLoadingImg__Image-s1jb87ps-1 csJkbb"
-																	src="/brw/resources/images/drama/poster/${useradAll.AD_POSTER_IMAGE}">
+																	src="${useradAll.AD_POSTER_IMAGE}">
 															</div>
 														</div>
 														<div class="ContentListItemWithPoster__ContentInfo-swai1z-2 kVeCGy">
@@ -215,7 +215,7 @@
 																		<div class="ContentListItemWithPoster__ContentPosterBlock-swai1z-1 kxDIaJ">
 																			<div class="LazyLoadingImg__Self-s1jb87ps-0 csJkbb">
 																				<img class="LazyLoadingImg__Image-s1jb87ps-1 csJkbb"
-																					src="/brw/resources/images/drama/poster/${useradAll.AD_POSTER_IMAGE}">
+																					src="${useradAll.AD_POSTER_IMAGE}">
 																			</div>
 																		</div>
 																		<div class="ContentListItemWithPoster__ContentInfo-swai1z-2 kVeCGy">
