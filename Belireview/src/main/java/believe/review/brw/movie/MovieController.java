@@ -476,7 +476,7 @@ public class MovieController {
 				}
 				sb.append("</div></div>")
 				.append("<div class=\"UserNameWithBadges__Self-s1bd3hgj-0 brZhrQ\">")
-				.append(m.get("ID"))
+				.append(m.get("NAME"))
 				.append("<input type=\"hidden\" value=\"").append(m.get("MC_NO")).append("\" class=\"00like").append(index).append("\"/>")
 				.append("<span class=\"UserNameWithBadges__SmallBadge-s1bd3hgj-1 bAndNa UIImg-s3jz6tx-0 eBREVF\" src=\"/brw/resources/images/detail/detail_comment1.svg\"></span>")
 				.append("<span class=\"UserNameWithBadges__SmallBadge-s1bd3hgj-1 bAndNa UIImg-s3jz6tx-0 kyuoIv\" src=\"/brw/resources/images/detail/detail_comment2.svg\"></span>")
