@@ -12,7 +12,9 @@
             e.preventDefault();
             openSearch();
 		});
-		
+		function enter(){
+		    $("a[name='search']").trigger('click');
+		 }
 		
   });
   function openSearch(){
@@ -53,9 +55,7 @@
 		});
 	});
 	
-	function enter(){
-	    $("a[name='search']").trigger('click');
-	 }
+	
 	$(function() {
 		var count = $('#rank-list li').length;
 		var height = $('#rank-list li').height();
