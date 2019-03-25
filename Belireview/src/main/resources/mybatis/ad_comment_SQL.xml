@@ -28,16 +28,15 @@
 	</select>
 	
 	<select id="commentOne" parameterType="hashmap" resultType="hashmap">
-		SELECT AD_NO,AD_NO,AC.ID,AD_REG_DATE,AD_CONTENT,AD_LIKE,AD_LIKE_ID,MEMBER_NO,NAME FROM AD_COMMENT AC,MEMBER M WHERE AC.ID=M.ID AND AC.ADC_NO=#{ADC_NO} AND AD_NO=#{AD_NO}
+		SELECT AD_NO,ADC_NO,AC.ID,AD_CONTENT,AD_LIKE,AD_LIKE_ID,MEMBER_NO,NAME FROM AD_COMMENT AC,MEMBER M WHERE AC.ID=M.ID AND AC.ADC_NO=#{ADC_NO} AND AD_NO=#{AD_NO}
 	</select>
 
 	<select id="adCommentByLike" parameterType="hashmap" resultType="hashmap">
 		SELECT
 			NAME,
 			AD_NO,
-			AD_NO,
+			ADC_NO,
 			ID,
-			AD_REG_DATE,
 			AD_CONTENT,
 			AD_LIKE,
 			AD_LIKE_ID,
@@ -48,19 +47,18 @@
 			SELECT 
 				M.NAME,
 				AC.AD_NO,
-				AC.AD_NO,
+				AC.ADC_NO,
 				AC.ID,
-				AC.AD_REG_DATE,
 				AC.AD_CONTENT,
 				AC.AD_LIKE,
 				AC.AD_LIKE_ID,
 				AL.AL_GRADE,
 				PROFILE_IMAGE
 			FROM 
-				AD_LIKE DL, AD_COMMENT DC ,MEMBER M
+				AD_LIKE AL, AD_COMMENT AC ,MEMBER M
 					WHERE 
 						AL.AD_LIKE_NO=AC.AD_NO AND 
-						AL.ID=AC.ID and AL.ID=M.ID AND 
+						AL.ID=AC.ID AND AL.ID=M.ID AND 
 						AC.AD_NO=#{AD_NO}
 						<choose>
 							<when test='orderby == 2'>
@@ -78,7 +76,6 @@
 				  AD_NO,
 				  ADC_NO,
 				  ID,
-				  AD_REG_DATE,
 				  AD_CONTENT,
 				  AD_LIKE,
 				  AD_LIKE_ID,
@@ -90,14 +87,13 @@
 				     AD_NO,
 				     ADC_NO,
 				     ID,
-				     AD_REG_DATE,
 				     AD_CONTENT,
 				     AD_LIKE,
 				     AD_LIKE_ID,
 				    	TO_CHAR(AL_GRADE,'0.0') AS AL_GRADE,
 		         PROFILE_IMAGE,
 				     ROWNUM RNUM FROM 
-				    (SELECT M.NAME,AC.AD_NO, AC.ADC_NO,AC.ID,AC.AD_REG_DATE,AC.AD_CONTENT,AC.AD_LIKE,AC.AD_LIKE_ID,AL.AL_GRADE,PROFILE_IMAGE FROM AD_LIKE AL, AD_COMMENT AC ,MEMBER M
+				    (SELECT M.NAME,AC.AD_NO, AC.ADC_NO,AC.ID,AC.AD_CONTENT,AC.AD_LIKE,AC.AD_LIKE_ID,AL.AL_GRADE,PROFILE_IMAGE FROM AD_LIKE AL, AD_COMMENT AC ,MEMBER M
 				      WHERE AL.AD_LIKE_NO=AC.AD_NO AND AL.ID=AC.ID and AL.ID=M.ID AND AC.AD_NO=#{AD_NO} ORDER BY AD_LIKE DESC)ORDER BY RNUM ASC) WHERE RNUM BETWEEN 1 AND 3
 	</select>
 	
@@ -113,7 +109,7 @@
 	<update id="adCommentLike" parameterType="hashmap">
 		update AD_COMMENT
 			set AD_LIKE = #{AD_LIKE}, AD_LIKE_ID=#{AD_LIKE_ID}
-		where AD_NO=#{AD_NO} AND AD_NO=#{AD_NO}
+		where AD_NO=#{AD_NO} AND ADC_NO=#{ADC_NO}
 	</update>
 	
 	<update id="updateAdComment" parameterType="hashmap">

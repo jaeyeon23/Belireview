@@ -85,7 +85,7 @@
 							<div class="ShrinkHeaderBar__Buttons-kl2m8-1 gvGpvr">
 								<div class="ShrinkHeaderBar__LeftButtons-kl2m8-5 dPdGEs">
 									<button
-										class="HeaderBackButton__TopLeftButton-s1sky4x3-0 lfxcSv HeaderCloseButton__TopLeftButton-odlno1-0 cLcmdI StylelessButton-phxvo7-0 gsSopE"></button>
+										class="HeaderBackButton__TopLeftButton-s1sky4x3-0 lfxcSv HeaderCloseButton__TopLeftButton-odlno1-0 cLcmdI StylelessButton-phxvo7-0 gsSopE" onclick="history.go(-1)"></button>
 								</div>
 								<div class="ShrinkHeaderBar__RightButtons-kl2m8-6 kuosGj"></div>
 							</div>
