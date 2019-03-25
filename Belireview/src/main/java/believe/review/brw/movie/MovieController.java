@@ -80,9 +80,23 @@ public class MovieController {
 		
 		Map<String,Object> map = movieService.movieDetail(commandMap.getMap());//상세보기
 		List<Map<String,Object>> comment = movieService.movieCommentForDetail(map);//댓
-		List<Map<String,Object>> actor = movieService.movieActor(map); //출연배우
+		List<Map<String,Object>> actortmp = movieService.movieActor(map); //출연배우
+		List<Map<String,Object>> actor = new ArrayList<Map<String,Object>>(); 
 		List<Map<String,Object>> detailgenre = movieService.detailgenre(map);//비슷한장르
 		
+		for(Map m:actortmp) {
+			Map mp = new HashMap();
+			if(m.get("ACTOR_MOVIE") != null) {
+				String tmp[] = m.get("ACTOR_MOVIE").toString().split(",");
+				for(int i=0;i<tmp.length;i++) {
+					if(tmp[i].equals(map.get("MOVIE_NO").toString())) {
+						mp.put("ACTOR_NAME", m.get("ACTOR_NAME"));
+						mp.put("ACTOR_IMAGE", m.get("ACTOR_IMAGE"));
+						actor.add(mp);
+					}
+				}
+			}
+		}
 		movieService.updateReadCount(map);
 		
 		int totalGrade = movieService.grade(map);
@@ -462,7 +476,7 @@ public class MovieController {
 				}
 				sb.append("</div></div>")
 				.append("<div class=\"UserNameWithBadges__Self-s1bd3hgj-0 brZhrQ\">")
-				.append(m.get("ID"))
+				.append(m.get("NAME"))
 				.append("<input type=\"hidden\" value=\"").append(m.get("MC_NO")).append("\" class=\"00like").append(index).append("\"/>")
 				.append("<span class=\"UserNameWithBadges__SmallBadge-s1bd3hgj-1 bAndNa UIImg-s3jz6tx-0 eBREVF\" src=\"/brw/resources/images/detail/detail_comment1.svg\"></span>")
 				.append("<span class=\"UserNameWithBadges__SmallBadge-s1bd3hgj-1 bAndNa UIImg-s3jz6tx-0 kyuoIv\" src=\"/brw/resources/images/detail/detail_comment2.svg\"></span>")

@@ -47,6 +47,11 @@ public interface DramaService {
 	
 	Map<String, Object> commentOne(Map<String, Object> map) throws Exception;
 	
+	void updateReadCount(Map<String, Object> map) throws Exception;
+	
+	void updateGrade2(Map<String, Object> map) throws Exception;
+	
+	
 	
 	/*Map<String,Object> insertdramaComment(Map<String,Object> map) throws Exception;*/
 

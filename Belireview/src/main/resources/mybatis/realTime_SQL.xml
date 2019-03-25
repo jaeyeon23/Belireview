@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC " - //mybatis.org//DTD Config 3.0//EN" " http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="realTime">
+
+<!-- 트리거는 insert -->
+	<select id="selectAllName" resultType="int" parameterType="hashmap">
+		SELECT
+			COUNT(*)
+		FROM
+			(
+			SELECT
+				DRAMA_NAME AS NAME 
+			FROM
+				DRAMA
+			UNION ALL
+			SELECT
+				MOVIE_NAME
+			FROM
+				MOVIE
+			UNION ALL
+			SELECT
+				AD_NAME
+			FROM
+				AD
+			)
+		WHERE
+			NAME=#{searchText}
+	</select>
+
+	<select id="selectRealTime" resultType="hashmap">
+		SELECT
+			SEARCH_TEXT,
+			S
+		FROM
+			(
+			SELECT
+				SEARCH_TEXT,
+				SUM(COUNT) AS S
+			FROM
+				(
+				SELECT
+					SEARCH_TEXT,
+					COUNT,
+					SEARCH_DATE
+				FROM
+					REALTIME
+					<!--  -->
+				)
+			GROUP BY
+				ROLLUP(SEARCH_TEXT)
+			)
+		WHERE
+			NOT SEARCH_TEXT='NULL'
+		ORDER BY
+			S DESC
+			
+		<!-- SELECT
+			SEARCH_TEXT
+		FROM 
+			REALTIME
+		WHERE
+			SEARCH_DATE BETWEEN TRUNC(SYSDATE - 5/24/60, 'MI') AND TRUNC(SYSDATE, 'MI')
+		ORDER BY 
+			COUNT DESC -->
+	</select>
+	
+	<select id="selectRealTimeCount" resultType="int" parameterType="hashmap">
+		SELECT
+			COUNT(*)
+		FROM
+			REALTIME
+		WHERE
+			SEARCH_TEXT=#{searchText} 
+			AND
+			SEARCH_DATE BETWEEN TRUNC(SYSDATE-1/24/60, 'MI') AND TRUNC(SYSDATE, 'MI')
+	</select>
+	
+	<insert id="insertRealTime" parameterType="hashmap">
+		INSERT
+		INTO
+			REALTIME
+		VALUES
+			(
+				#{searchText},
+				1,
+				TRUNC(SYSDATE,'MI')					
+			)
+	</insert>
+	
+	<update id="updateRealTime" parameterType="hashmap">
+		UPDATE
+			REALTIME
+		SET
+			COUNT = COUNT + 1
+		WHERE
+			SEARCH_TEXT=#{searchText}
+			AND
+			SEARCH_DATE = TRUNC(SYSDATE, 'MI')
+	</update>
+</mapper>

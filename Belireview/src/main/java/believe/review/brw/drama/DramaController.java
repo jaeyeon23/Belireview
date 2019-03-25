@@ -90,7 +90,6 @@ public class DramaController {
 				String tmp[] = m.get("ACTOR_DRAMA").toString().split(",");
 				for(int i=0;i<tmp.length;i++) {
 					if(tmp[i].equals(map.get("DRAMA_NO").toString())) {
-						System.out.println("작동함?"+m.get("ACTOR_NAME"));
 						mp.put("ACTOR_NAME", m.get("ACTOR_NAME"));
 						mp.put("ACTOR_IMAGE", m.get("ACTOR_IMAGE"));
 						actor.add(mp);
@@ -98,6 +97,7 @@ public class DramaController {
 				}
 			}
 		}
+		dramaService.updateReadCount(map);
 		
 		
 		
@@ -237,7 +237,9 @@ public class DramaController {
 			}else {//별점이 있을때
 				dramaService.updateGrade(mv);
 			}
+			dramaService.updateGrade2(mv);
 		}
+		
 		/*평점*/
 		
 		//댓
@@ -476,7 +478,7 @@ public class DramaController {
 				}
 				sb.append("</div></div>")
 				.append("<div class=\"UserNameWithBadges__Self-s1bd3hgj-0 brZhrQ\">")
-				.append(m.get("ID"))
+				.append(m.get("NAME"))
 				.append("<input type=\"hidden\" value=\"").append(m.get("DC_NO")).append("\" class=\"00like").append(index).append("\"/>")
 				.append("<span class=\"UserNameWithBadges__SmallBadge-s1bd3hgj-1 bAndNa UIImg-s3jz6tx-0 eBREVF\" src=\"/brw/resources/images/detail/detail_comment1.svg\"></span>")
 				.append("<span class=\"UserNameWithBadges__SmallBadge-s1bd3hgj-1 bAndNa UIImg-s3jz6tx-0 kyuoIv\" src=\"/brw/resources/images/detail/detail_comment2.svg\"></span>")

@@ -24,8 +24,24 @@
 		WHERE MOVIE_NO IN 
 			(SELECT MOVIE_LIKE_NO
 			FROM MOVIE_LIKE
-			WHERE ID=#{ID}) ORDER BY MOVIE_DATE) A
+			WHERE ID=#{ID} AND  ML_GRADE != 0) ORDER BY MOVIE_DATE) A
 	</select>
+	
+	<select id="totalMyMovie" parameterType="hashmap" resultType="int">
+   		SELECT COUNT(*) AS COUNT 
+   		FROM (
+   			SELECT ID
+			FROM MOVIE_LIKE
+			WHERE ML_GRADE != 0 AND ID=#{ID}
+   		)
+   </select>
+   
+   <select id="totalMyMovieLike" parameterType="hashmap" resultType="string">
+   			SELECT MYPAGE_MOVIE
+			FROM MYPAGE
+			WHERE MYPAGE_ID=#{ID}
+   </select>
+   
 	
 	<select id="UserDramaAll" parameterType="hashmap" resultType="hashmap">
 		 SELECT
@@ -48,16 +64,32 @@
 		WHERE DRAMA_NO IN 
 			(SELECT DRAMA_LIKE_NO
 			FROM DRAMA_LIKE
-			WHERE ID=#{ID}) ORDER BY DRAMA_DATE) A
+			WHERE ID=#{ID}  AND  DL_GRADE != 0 ) ORDER BY DRAMA_DATE) A
 	</select>
+	
+	<select id="totalMyDrama" parameterType="hashmap" resultType="int">
+   		SELECT COUNT(*) AS COUNT 
+   		FROM (
+   			SELECT ID
+			FROM DRAMA_LIKE
+			WHERE ID=#{ID} AND DL_GRADE != 0
+   		)
+   </select>
+   
+      <select id="totalMyDramaLike" parameterType="hashmap" resultType="string">
+   			SELECT MYPAGE_DRAMA
+			FROM MYPAGE
+			WHERE MYPAGE_ID=#{ID}
+   </select>
+   
 	
 	<select id="UserAdAll" parameterType="hashmap" resultType="hashmap">
 		 SELECT
 			AD_NO,
 			AD_NAME,
 			AD_POSTER_IMAGE,
-   	   		TO_CHAR((SELECT AL_GRADE FROM AD_LIKE WHERE ID=#{ID} AND AD_LIKE_NO=A.AD_NO),'0.0') AL_GRADE,
-      		TO_CHAR((SELECT AVG(AL_GRADE) FROM AD_LIKE WHERE AD_LIKE_NO=A.AD_NO),'0.0') AS AD_AVG_GRADE,
+   	   		TO_CHAR((SELECT AL_GRADE FROM AD_LIKE WHERE AL_GRADE != 0 AND ID=#{ID} AND AD_LIKE_NO=A.AD_NO),'0.0') AL_GRADE,
+      		TO_CHAR((SELECT AVG(AL_GRADE) FROM AD_LIKE WHERE AL_GRADE != 0 AND AD_LIKE_NO=A.AD_NO),'0.0') AS AD_AVG_GRADE,
 			RNUM
 		FROM
 		(
@@ -70,8 +102,17 @@
 		WHERE AD_NO IN 
 			(SELECT AD_LIKE_NO
 			FROM AD_LIKE
-			WHERE ID=#{ID}) ) A
+			WHERE ID=#{ID}  AND  AL_GRADE != 0 ) ) A
 	</select>
+	
+	<select id="totalMyAd" parameterType="hashmap" resultType="int">
+   		SELECT COUNT(*) AS COUNT 
+   		FROM (
+   			SELECT ID
+			FROM AD_LIKE
+			WHERE ID=#{ID} AND AL_GRADE != 0
+   		)
+   </select>
 	
 	<select id="userWishList" parameterType="hashmap" resultType="hashmap"><!-- 보고싶어요 -->
 		select * from mypage where mypage_id=#{ID}

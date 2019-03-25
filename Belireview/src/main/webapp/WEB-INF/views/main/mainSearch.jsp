@@ -96,6 +96,7 @@
 		})
 	}
 	
+
 	/* 검색드라마 페이징 및 넘기기 */
 	$(function(){
 		$(".dramaNext").click(function(){
@@ -212,7 +213,7 @@
 													</c:choose>
 														<div class="ContentListItemWithPoster__ContentPosterBlock-swai1z-1 kxDIaJ">
 															<div class="LazyLoadingImg__Self-s1jb87ps-0 csJkbb">
-																<img class="LazyLoadingImg__Self-s1jb87ps-0 csJkbb" data-image-id="20" src="/brw/resources/images/${result.IMAGE}">
+																<img class="LazyLoadingImg__Self-s1jb87ps-0 csJkbb" data-image-id="20" src="${result.IMAGE}">
 															</div>
 														</div>
 														<div class="ContentListItemWithPoster__ContentInfo-swai1z-2 kVeCGy">
@@ -398,7 +399,7 @@
 																	<span
 																		class="LazyLoadingBackground__BackgroundImage-cgbyi4-1 jhdCRo"
 																		data-background-image-id="27">
-																		<img class="LazyLoadingBackground__StylingMerged-cgbyi4-2 kDLFDU LazyLoadingBackground__Self-cgbyi4-0 dxPvni" src="/brw/resources/images/ad/poster${ad.AD_POSTER_IMAGE}"></span>
+																		<img class="LazyLoadingBackground__StylingMerged-cgbyi4-2 kDLFDU LazyLoadingBackground__Self-cgbyi4-0 dxPvni" src="${ad.AD_POSTER_IMAGE}"></span>
 																</div>
 															</div>
 															<div

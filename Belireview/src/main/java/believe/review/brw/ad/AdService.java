@@ -14,7 +14,7 @@ List<Map<String,Object>> selectBoardList(Map<String, Object>  map) throws Except
 	
 	List<Map<String,Object>> adCommentForDetail(Map<String, Object> map) throws Exception;
 	
-	/*List<Map<String,Object>> detailgenre(Map<String, Object> map) throws Exception;*/
+	List<Map<String,Object>> detailgenre(Map<String, Object> map) throws Exception;
 	
 	int totalAdCount(Map<String,Object> map) throws Exception;
 	
@@ -43,4 +43,6 @@ List<Map<String,Object>> selectBoardList(Map<String, Object>  map) throws Except
 	double ratingPrediction(Map<String, Object> map) throws Exception;
 	
 	Map<String, Object> commentOne(Map<String, Object> map) throws Exception;
+	
+	public void updateReadCount(Map<String, Object> map) throws Exception;
 }

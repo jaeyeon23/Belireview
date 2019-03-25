@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.mail.Session;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -20,6 +21,9 @@ import believe.review.brw.common.common.CommandMap;
 @Controller
 @RequestMapping("/user")
 public class UserController {
+	
+	private int totalCountM,totalCountD,totalCountA;
+	private String totalMyMovieLike, totalMyDramaLike;
 
 	@Autowired
 	BCryptPasswordEncoder passwordEncoder;
@@ -28,9 +32,28 @@ public class UserController {
 	private UserService userService;
 
 	@RequestMapping(value = "/user.br") // 마이페이지
-	public ModelAndView user() {
+	public ModelAndView user(CommandMap commandMap,HttpServletRequest request)throws Exception {
+		HttpSession session = request.getSession();
+		commandMap.put("ID", session.getAttribute("ID"));
 		ModelAndView mv = new ModelAndView();
+		totalCountM = userService.totalMyMovie(commandMap.getMap());
+		totalCountD = userService.totalMyDrama(commandMap.getMap());
+		totalCountA = userService.totalMyAd(commandMap.getMap());
+		totalMyMovieLike = userService.totalMyMovieLike(commandMap.getMap());
+		totalMyDramaLike = userService.totalMyDramaLike(commandMap.getMap());
 		mv.setViewName("user");
+		mv.addObject("totalCountM",totalCountM);
+		mv.addObject("totalCountD",totalCountD);
+		mv.addObject("totalCountA",totalCountA);
+		
+		if (totalMyMovieLike != null) {
+				String[] str = totalMyMovieLike.toString().split(",");
+		mv.addObject("totalMyMovieLike",str.length);
+		}
+		if (totalMyDramaLike != null) {
+			String[] str = totalMyDramaLike.toString().split(",");
+			mv.addObject("totalMyDramaLike",str.length);
+	}
 		return mv;
 	}
 

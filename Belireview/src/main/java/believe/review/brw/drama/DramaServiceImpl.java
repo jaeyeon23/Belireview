@@ -100,6 +100,14 @@ public class DramaServiceImpl  implements DramaService{
 	public Map<String, Object> commentOne(Map<String, Object> map) throws Exception{
 		return dramaDAO.commentOne(map);
 	}
+	@Override
+	public void updateReadCount(Map<String, Object> map) throws Exception{
+		dramaDAO.updateReadCount(map);
+	}
+	@Override
+	public void updateGrade2(Map<String, Object> map) throws Exception{
+		dramaDAO.updateGrade2(map);
+	}
 	
 	/*@Override
 	public Map<String, Object> insertdramaComment(Map<String, Object> map) throws Exception {
