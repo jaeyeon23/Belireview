@@ -45,7 +45,7 @@
 		var wi = "${wish}";
 		var ra = "" 
 		var initValue = "${initValue}";
-		var mcc = "${myComment.MC_CONTENT}";
+		var mcc = ${myComment.MC_CONTENT != null};
 		var like= "${likeList}".split(",");
 		$(function(){
 			var ee ;
@@ -82,7 +82,7 @@
 					location.href="<c:url value='/member/loginForm.br?${_csrf.parameterName}=${_csrf.token}' />"
 				});
 			}else{//로그인
-				if(mcc != ""){ // 마이코멘트 숨기기 보여주기
+				if(mcc){ // 마이코멘트 숨기기 보여주기
 					$(".writeComment").css("display","none");
 					$(".existComment").css("display","block");
 				}else{
