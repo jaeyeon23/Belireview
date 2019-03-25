@@ -62,7 +62,7 @@
 						AC.AD_NO=#{AD_NO}
 						<choose>
 							<when test='orderby == 2'>
-								ORDER BY AD_REG_DATE DESC
+								ORDER BY ADC_NO DESC
 							</when>
 							<otherwise>
 								ORDER BY AD_LIKE DESC

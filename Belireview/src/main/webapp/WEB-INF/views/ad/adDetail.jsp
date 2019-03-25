@@ -74,7 +74,7 @@
 			if(id==""){//비로그인
 				$(".gZASBp").click(function(){//별점
 					alert("로그인 해주세요.");
-					location.href="<c:url value='/member/loginForm.br' />"
+					location.href="<c:url value='/member/loginForm.br?${_csrf.parameterName}=${_csrf.token}' />"
 				});
 			}else{//로그인
 				if(mcc != ""){
@@ -120,7 +120,7 @@
 					COMMENTLIKE : "c",
 					CLA : cla,
 					AD_NO :
-			<%=request.getParameter("AD_NO")%>, AC_NO:$(".00"+cla).val()},
+			<%=request.getParameter("AD_NO")%>, ADC_NO:$(".00"+cla).val()},
 			url:"<c:url value='/ad/adDetail.br?${_csrf.parameterName}=${_csrf.token}' />",
 			success : function(result){
 					var r = result;
@@ -132,7 +132,7 @@
 					if(r.subtract){
 						$('.'+r.CLA).html(cnolike);
 					}
-					$('.0'+r.CLA).html(result.AC_LIKE);
+					$('.0'+r.CLA).html(result.AD_LIKE);
 				}
 			})
 		}
@@ -157,7 +157,7 @@
 				 async:true,
 				 type:'POST',
 				 data:{ID:id,MCOM:$('.com2').val(), AD_NO:<%=request.getParameter("AD_NO")%>},
-				 url:"<c:url value='/ad/adDetail.br' />",
+				 url:"<c:url value='/ad/adDetail.br?${_csrf.parameterName}=${_csrf.token}' />",
 				 success:function(result){
 					$(".writeComment").css("display","none");
 					$(".existComment").css("display","block");
@@ -172,7 +172,7 @@
 				 async:true,
 				 type:'POST',
 				 data:{ID:id,COM:$('.com').val(), AD_NO:<%=request.getParameter("AD_NO")%>},
-				 url:"<c:url value='/ad/adDetail.br' />",
+				 url:"<c:url value='/ad/adDetail.br?${_csrf.parameterName}=${_csrf.token}' />",
 				 success:function(result){
 					$(".writeComment").css("display","none");
 					$(".existComment").css("display","block");
@@ -606,7 +606,7 @@
 																			class="ContentMyCommentSection__MyComment-mhuscg-5 iBmFgp">
 																			<div class="TextTruncate__Self-wvv1uj-0 edeoAV">
 																				<div class="TextTruncate__Text-wvv1uj-1 gLsCNn"
-																					style="white-space: pre-line;">${myComment.ADC_CONTENT}</div><!-- 댓글내용 -->
+																					style="white-space: pre-line;">${myComment.AD_CONTENT}</div><!-- 댓글내용 -->
 																			</div>
 																		</div>
 																		<ul
