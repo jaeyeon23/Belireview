@@ -180,6 +180,7 @@
 											<c:forEach items="${userdramaAll}" var="userdramaAll">
 												<li class="ContentListItemWithPoster__Self-swai1z-0 hKRvvO">
 														<div class="ContentListItemWithPoster__ContentPosterBlock-swai1z-1 kxDIaJ">
+														<a href="/brw/drama/dramaDetail.br?DRAMA_NO=${userdramaAll.DRAMA_NO}">
 															<div class="LazyLoadingImg__Self-s1jb87ps-0 csJkbb">
 																	<img class="LazyLoadingImg__Image-s1jb87ps-1 csJkbb"
 																	src="/brw/resources/images/drama/poster/${userdramaAll.DRAMA_POSTER_IMAGE}">
@@ -187,7 +188,7 @@
 														</div>
 														<div class="ContentListItemWithPoster__ContentInfo-swai1z-2 kVeCGy">
 															<div
-																class="ContentListItemWithPoster__ContentTitle-swai1z-3 dXMJZW">${userdramaAll.DRAMA_NAME}</div>
+																class="ContentListItemWithPoster__ContentTitle-swai1z-3 dXMJZW">${userdramaAll.DRAMA_NAME}</div></a>
 															<div
 																class="ContentListItemWithPoster__ContentRating-swai1z-4 jYxobl">★${userdramaAll.DRAMA_AVG_GRADE}</div>
 															<div
@@ -232,13 +233,14 @@
 																<li class="ContentListItemWithPoster__Self-swai1z-0 hKRvvO">
 																	
 																		<div class="ContentListItemWithPoster__ContentPosterBlock-swai1z-1 kxDIaJ">
+																		<a href="/brw/drama/dramaDetail.br?DRAMA_NO=${userdramaAll.DRAMA_NO}">
 																			<div class="LazyLoadingImg__Self-s1jb87ps-0 csJkbb">
 																				<img class="LazyLoadingImg__Image-s1jb87ps-1 csJkbb"
 																					src="/brw/resources/images/drama/poster/${userdramaAll.DRAMA_POSTER_IMAGE}">
 																			</div>
 																		</div>
 																		<div class="ContentListItemWithPoster__ContentInfo-swai1z-2 kVeCGy">
-																			<div class="ContentListItemWithPoster__ContentTitle-swai1z-3 dXMJZW">${userdramaAll.DRAMA_NAME}</div>
+																			<div class="ContentListItemWithPoster__ContentTitle-swai1z-3 dXMJZW">${userdramaAll.DRAMA_NAME}</div></a>
 																			<div class="ContentListItemWithPoster__ContentRating-swai1z-4 jYxobl">★${userdramaAll.DRAMA_AVG_GRADE}</div>
 																		</div> 
 															
@@ -281,6 +283,7 @@
 																					<c:forEach items="${userDramaList}" var="userDramaList">
 																						<li class="ContentListItemWithPoster__Self-swai1z-0 hKRvvO">
 																								<div class="ContentListItemWithPoster__ContentPosterBlock-swai1z-1 kxDIaJ">
+																								<a href="/brw/drama/dramaDetail.br?DRAMA_NO=${userDramaList.DRAMA_NO}">
 																									<div class="LazyLoadingImg__Self-s1jb87ps-0 csJkbb">
 																										<img class="LazyLoadingImg__Image-s1jb87ps-1 csJkbb"
 																											data-image-id="1"
@@ -289,7 +292,7 @@
 																								</div>
 																								<div class="ContentListItemWithPoster__ContentInfo-swai1z-2 kVeCGy">
 																									<div
-																										class="ContentListItemWithPoster__ContentTitle-swai1z-3 dXMJZW">${userDramaList.DRAMA_NAME}</div>
+																										class="ContentListItemWithPoster__ContentTitle-swai1z-3 dXMJZW">${userDramaList.DRAMA_NAME}</div></a>
 																								</div>
 																						</li>
 																					</c:forEach>
