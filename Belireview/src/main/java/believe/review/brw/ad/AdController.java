@@ -46,7 +46,7 @@ public class AdController {
 		Map<String,Object> map = adService.adDetail(commandMap.getMap());//상세보기
 		List<Map<String,Object>> comment = adService.adCommentForDetail(map);//댓
 		
-		/*List<Map<String,Object>> detailgenre = adService.detailgenre(map);//비슷한장르*/		
+		List<Map<String,Object>> detailgenre = adService.detailgenre(map);//비슷한장르		
 		int totalGrade = adService.grade(map);
 		try {
 			List<Map<String,Object>> gradeRatio = adService.gradeRatio(map);//별점비율
@@ -116,7 +116,7 @@ public class AdController {
 	
 		mv.addObject("map",map);
 		mv.addObject("comment",comment);
-		/*mv.addObject("detailgenre",detailgenre);*/
+		mv.addObject("detailgenre",detailgenre);
 		/*mv.addObject("image",image);*/
 		mv.addObject("totalCount",totalCount);
 		mv.addObject("totalGrade",totalGrade);
