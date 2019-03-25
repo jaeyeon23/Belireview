@@ -50,11 +50,26 @@ public class MainController {
 	private UserService userService;
 	
 	@RequestMapping(value = "/main.br", method = RequestMethod.GET)
-	public String home(Model model) throws Exception{
+	public String home(Model model,HttpSession session) throws Exception{
 
 		List<Map<String, Object>> drama_list = mainService.dramaListTop8();
 		List<Map<String, Object>> movie_list = mainService.movieListTop8();
 		List<Map<String, Object>> ad_list = mainService.adListTop8();
+		
+		if(session.getAttribute("ID")!=null) {//로그인했을때
+			Map tmp = new HashMap();
+			tmp.put("ID", session.getAttribute("ID"));
+			tmp.put("NAME", session.getAttribute("NAME"));
+			Map<String,Object> tmp2 = userService.userWishList(tmp);
+			if(tmp2!=null) {
+				if(tmp2.get("MYPAGE_DRAMA")!=null) {//보고싶어요
+					model.addAttribute("wishD",tmp2.get("MYPAGE_DRAMA"));
+				}
+				if(tmp2.get("MYPAGE_MOVIE")!=null) {//보고싶어요
+					model.addAttribute("wishM",tmp2.get("MYPAGE_MOVIE"));
+				}
+			}
+		}
 		
 		model.addAttribute("drama_list", drama_list);
 		model.addAttribute("movie_list", movie_list);
@@ -116,7 +131,8 @@ public class MainController {
 				}
 			}
 		}else {
-			
+			mv.put("add", "add");
+			userService.insertWishList(mv);
 		}
 		return mv;
 	}
