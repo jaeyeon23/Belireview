@@ -34,22 +34,23 @@
 		realtime();
 	} */
 	
-/* $(function() {
+ $(function() {
 			if (id == "") {//비로그인
-				$(".fa-heart").click(function() {//보고싶어요
+				$(".vv").click(function(e) {//보고싶어요
+					e.preventDefault();
 					alert("로그인 해주세요.");
 					location.href = "<c:url value='/member/loginForm.br?${_csrf.parameterName}=${_csrf.token}' />"
 				});
 			
 			} else {//로그인
 				//작동 버튼 시작 post
-				$(".fa-heart").click(function() {//보고싶어요
+				$(".vv").click(function() {//보고싶어요
 					wish();
 					alert(this)
 					return;
 				});
-
-		}); //작동 버튼 끝 */
+			}
+		}); //작동 버튼 끝 
 </script>
 </head>
 
@@ -222,7 +223,7 @@
 													<div class="product-fade-ct">
 			                                        	<div class="product-fade-control">
 				                                            <div class="to-left">
-				                                                <a href=""><i class="fa fa-heart"></i></a>
+				                                                <a href=""><i class="fa fa-heart vv"></i></a>
 				                                                <a href="/brw/mainSearch.br?searchText=${list.DRAMA_NAME}" ><i class="fa fa-search"></i></a>
 				                                            </div>
 			                                                <div class="to-right">
