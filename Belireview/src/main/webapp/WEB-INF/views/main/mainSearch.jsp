@@ -35,7 +35,7 @@
 		$.ajax({
 			async:true,
 			type:'POST',
-			data:(genre="")?{currentPage:currentPage,searchText:searchText}:{currentPage:currentPage, GENRE:searchText},
+			data:(genre=="")?{currentPage:currentPage,searchText:searchText}:{currentPage:currentPage, GENRE:searchText},
 
 			url:"<c:url value='/mainSearch2.br?${_csrf.parameterName}=${_csrf.token}'/>",
 			
@@ -48,7 +48,7 @@
 		$.ajax({
 			async:true,
 			type:'POST',
-			data:(genre="")?{currentPage:currentPage,searchText:searchText}:{currentPage:currentPage, GENRE:searchText},
+			data:(genre=="")?{currentPage:currentPage,searchText:searchText}:{currentPage:currentPage, GENRE:searchText},
 			url:"<c:url value='/mainSearch2.br?${_csrf.parameterName}=${_csrf.token}'/>",
 			
 			success:function(result){
@@ -75,7 +75,7 @@
 		$.ajax({
 			async:true,
 			type:'POST',
-			data:{currentPage:currentPage, searchText:searchText, type:1},
+			data:(genre=="")?{currentPage:currentPage, searchText:searchText, type:1}:{currentPage:currentPage, GENRE:searchText, type:1},
 			url:"<c:url value='/mdaSearch.br?${_csrf.parameterName}=${_csrf.token}'/>",
 			
 			success:function(result){
@@ -87,7 +87,7 @@
 		$.ajax({
 			async:true,
 			type:'POST',
-			data:{currentPage:currentPage, searchText:searchText, type:1},
+			data:(genre=="")?{currentPage:currentPage, searchText:searchText, type:1}:{currentPage:currentPage, GENRE:searchText, type:1},
 			url:"<c:url value='/mdaSearch.br?${_csrf.parameterName}=${_csrf.token}'/>",
 			
 			success:function(result){
@@ -96,6 +96,7 @@
 		})
 	}
 	
+
 	/* 검색드라마 페이징 및 넘기기 */
 	$(function(){
 		$(".dramaNext").click(function(){
@@ -114,7 +115,7 @@
 		$.ajax({
 			async:true,
 			type:'POST',
-			data:{currentPage:currentPage, searchText:searchText,type:2},
+			data:(genre=="")?{currentPage:currentPage, searchText:searchText, type:2}:{currentPage:currentPage, GENRE:searchText, type:2},
 			url:"<c:url value='/mdaSearch.br?${_csrf.parameterName}=${_csrf.token}'/>",
 			
 			success:function(result){
@@ -126,7 +127,7 @@
 		$.ajax({
 			async:true,
 			type:'POST',
-			data:{currentPage:currentPage, searchText:searchText,type:2},
+			data:(genre=="")?{currentPage:currentPage, searchText:searchText, type:2}:{currentPage:currentPage, GENRE:searchText, type:2},
 			url:"<c:url value='/mdaSearch.br?${_csrf.parameterName}=${_csrf.token}'/>",
 			
 			success:function(result){
@@ -153,7 +154,7 @@
 		$.ajax({
 			async:true,
 			type:'POST',
-			data:{currentPage:currentPage, searchText:searchText,type:3},
+			data:(genre=="")?{currentPage:currentPage, searchText:searchText, type:3}:{currentPage:currentPage, GENRE:searchText, type:3},
 			url:"<c:url value='/mdaSearch.br?${_csrf.parameterName}=${_csrf.token}'/>",
 			
 			success:function(result){
@@ -165,7 +166,7 @@
 		$.ajax({
 			async:true,
 			type:'POST',
-			data:{currentPage:currentPage, searchText:searchText,type:3},
+			data:(genre=="")?{currentPage:currentPage, searchText:searchText, type:3}:{currentPage:currentPage, GENRE:searchText, type:3},
 			url:"<c:url value='/mdaSearch.br?${_csrf.parameterName}=${_csrf.token}'/>",
 			
 			success:function(result){
@@ -212,7 +213,7 @@
 													</c:choose>
 														<div class="ContentListItemWithPoster__ContentPosterBlock-swai1z-1 kxDIaJ">
 															<div class="LazyLoadingImg__Self-s1jb87ps-0 csJkbb">
-																<img class="LazyLoadingImg__Self-s1jb87ps-0 csJkbb" data-image-id="20" src="/brw/resources/images/${result.IMAGE}">
+																<img class="LazyLoadingImg__Self-s1jb87ps-0 csJkbb" data-image-id="20" src="${result.IMAGE}">
 															</div>
 														</div>
 														<div class="ContentListItemWithPoster__ContentInfo-swai1z-2 kVeCGy">
@@ -398,7 +399,7 @@
 																	<span
 																		class="LazyLoadingBackground__BackgroundImage-cgbyi4-1 jhdCRo"
 																		data-background-image-id="27">
-																		<img class="LazyLoadingBackground__StylingMerged-cgbyi4-2 kDLFDU LazyLoadingBackground__Self-cgbyi4-0 dxPvni" src="/brw/resources/images/ad/poster${ad.AD_POSTER_IMAGE}"></span>
+																		<img class="LazyLoadingBackground__StylingMerged-cgbyi4-2 kDLFDU LazyLoadingBackground__Self-cgbyi4-0 dxPvni" src="${ad.AD_POSTER_IMAGE}"></span>
 																</div>
 															</div>
 															<div

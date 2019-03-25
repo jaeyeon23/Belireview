@@ -4,19 +4,20 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>believe.review</groupId>
 	<artifactId>brw</artifactId>
-	<name>Belireview</name>
+	<name>Belireview</name> 
 	<packaging>war</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
-	<properties>
+	<properties>  
 		<java-version>1.8</java-version>
 		<org.springframework-version>4.0.4.RELEASE</org.springframework-version>
 		<org.aspectj-version>1.6.10</org.aspectj-version>
 		<org.slf4j-version>1.6.6</org.slf4j-version>
 	</properties>
-	    
+	  
 	<dependencies> 
-	  <!-- ssl -->
-		<!--  <dependency> 
+    
+	  <!-- ssl --> 
+	 	<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-web</artifactId>
 			<version>3.2.8.RELEASE</version>
@@ -26,10 +27,10 @@
 	       <groupId>org.springframework.security</groupId>
 	       <artifactId>spring-security-config</artifactId>
 	       <version>3.2.8.RELEASE</version>
-	   </dependency> -->
+	   </dependency> 
      <!-- ssl -->
      
-		<!-- bcrypt -->
+		<!-- bcrypt --> 
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-web</artifactId>
@@ -59,7 +60,7 @@
 			<version>3.2.3</version>
 		</dependency>
 		
-		<!-- 타일즈 --> 
+		<!-- 타일즈 -->
 		<dependency>
 			<groupId>org.apache.tiles</groupId>
 			<artifactId>tiles-core</artifactId>

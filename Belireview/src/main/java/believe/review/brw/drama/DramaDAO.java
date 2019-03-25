@@ -87,4 +87,11 @@ public class DramaDAO extends AbstractDAO{
 	public Map<String, Object> commentOne(Map<String, Object> map) throws Exception{
 		return(Map<String,Object>)selectOne("drama_comment.commentOne",map);
 	}
+	
+	public void updateReadCount(Map<String, Object> map) throws Exception{
+		update("drama.updateReadCount",map);
+	}
+	public void updateGrade2(Map<String, Object> map) throws Exception{
+		update("drama.updateGrade2",map);
+	}
 }

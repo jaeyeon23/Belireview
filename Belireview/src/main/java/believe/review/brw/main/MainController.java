@@ -7,6 +7,7 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,6 +22,7 @@ import believe.review.brw.common.common.CommandMap;
 import believe.review.brw.common.util.Paging;
 import believe.review.brw.rank.RankService;
 import believe.review.brw.realTime.RealTimeService;
+import believe.review.brw.user.UserService;
 
 @Controller
 public class MainController {
@@ -45,20 +47,100 @@ public class MainController {
 	@Resource(name="rankService")
 	private RankService rankService;
 	
+	@Resource(name="userService")
+	private UserService userService;
+	
 	@Resource(name="mainService")
 	private MainService mainService;
 	
 	@RequestMapping(value = "/main.br", method = RequestMethod.GET)
+<<<<<<< HEAD
 	public String home(Model model) throws Exception{
+=======
+	public String home(Model model,HttpSession session) throws Exception{
+		List<Map<String, Object>> realtime = realTimeService.selectRealTime();
+		model.addAttribute("realtime", realtime);
+		model.addAttribute("ID",session.getAttribute("ID"));
+>>>>>>> 8e8f9b69ec8377c08544b09c8de442cf8bb93b13
 		List<Map<String, Object>> drama_list = mainService.dramaListTop8();
 		List<Map<String, Object>> movie_list = mainService.movieListTop8();
 		List<Map<String, Object>> ad_list = mainService.adListTop8();
 		
+		List<String> likeList = new ArrayList<String>();
+		if(session.getAttribute("ID")!=null) {//로그인했을때
+			Map tmp = new HashMap();
+			tmp.put("ID", session.getAttribute("ID"));
+			tmp.put("NAME", session.getAttribute("NAME"));
+			Map<String,Object> tmp2 = userService.userWishList(tmp);
+			if(tmp2!=null) {
+				if(tmp2.get("MYPAGE_DRAMA")!=null) {//보고싶어요
+					model.addAttribute("wishD",tmp2.get("MYPAGE_DRAMA"));
+				}
+				if(tmp2.get("MYPAGE_MOVIE")!=null) {//보고싶어요
+					model.addAttribute("wishM",tmp2.get("MYPAGE_MOVIE"));
+				}
+			}
+		}
 		model.addAttribute("drama_list", drama_list);
 		model.addAttribute("movie_list", movie_list);
 		model.addAttribute("ad_list", ad_list);
 		
 		return "main";
+	}
+	
+	@RequestMapping(value = "/like.br", method = RequestMethod.POST)
+	@ResponseBody
+	public Map home_post(Model model,HttpSession session,CommandMap commandMap) throws Exception{
+		
+		Map<String, Object> mv = commandMap.getMap();
+		Map<String,Object> map = new HashMap<String,Object>();
+		
+		map = userService.userWishList(mv);
+		if(mv.get("DRAMA_NO")!=null) {
+			if(map.get("MYPAGE_DRAMA") != null) {
+				String[] str = map.get("MYPAGE_DRAMA").toString().split(",");
+				boolean exist = false;
+				String drama_no = "";
+				for(String s: str) {
+					if(mv.get("DRAMA_NO").equals(s)) {
+						exist = true;
+					}else {
+						drama_no += s+",";
+					}
+				}
+				if(!exist) {
+					drama_no += mv.get("DRAMA_NO");
+					mv.put("add", "add");
+				}else {
+					mv.put("sub", "sub");
+				}
+				mv.put("DRAMA_NO"	,drama_no);
+				userService.updateWishList(mv);
+			}
+		}
+		if(mv.get("MOVIE_NO")!=null) {
+			if(map.get("MYPAGE_MOVIE")!=null) {
+				String[] str = map.get("MYPAGE_MOVIE").toString().split(",");
+				boolean exist = false;
+				String movie_no = "";
+				for(String s: str) {
+					if(mv.get("MOVIE_NO").equals(s)) {
+						exist = true;
+					}else {
+						movie_no += s+",";
+					}
+				}
+				if(!exist) {
+					movie_no += mv.get("MOVIE_NO");
+					mv.put("add", "add");
+				}else {
+					mv.put("sub", "sub");
+				}
+				mv.put("MOVIE_NO"	,movie_no);
+				userService.updateWishList(mv);
+			}
+		}
+		return mv;
 	}
 	
 	@RequestMapping(value = "mainSearch.br")
@@ -78,6 +160,7 @@ public class MainController {
 			
 			commandMap.put("table_value", table);
 			
+			/*rankService.insertSearchText(commandMap.getMap());*/
 			if(table != null) {
 				rankService.insertSearchText(commandMap.getMap());
 			}
@@ -112,7 +195,7 @@ public class MainController {
 			tmp.put("NAME", searchMovie.get(i).get("MOVIE_NAME"));
 			tmp.put("DATE", searchMovie.get(i).get("MOVIE_DATE"));
 			tmp.put("GENRE", searchMovie.get(i).get("MOVIE_GENRE"));
-			tmp.put("IMAGE", "movie/poster/"+searchMovie.get(i).get("MOVIE_POSTER_IMAGE"));
+			tmp.put("IMAGE", "/brw/resources/images/movie/poster/"+searchMovie.get(i).get("MOVIE_POSTER_IMAGE"));
 			tmp.put("TYPE", "영화");
 			searchMain.add(i,tmp);
 		}
@@ -122,7 +205,7 @@ public class MainController {
 			tmp.put("NAME", searchDrama.get(j).get("DRAMA_NAME"));
 			tmp.put("DATE", searchDrama.get(j).get("DRAMA_DATE"));
 			tmp.put("GENRE", searchDrama.get(j).get("DRAMA_GENRE"));
-			tmp.put("IMAGE", "drama/poster/"+searchDrama.get(j).get("DRAMA_POSTER_IMAGE"));
+			tmp.put("IMAGE", "/brw/resources/images/drama/poster/"+searchDrama.get(j).get("DRAMA_POSTER_IMAGE"));
 			tmp.put("TYPE", "TV");
 			searchMain.add(i,tmp);
 		}
@@ -132,7 +215,7 @@ public class MainController {
 			tmp.put("NAME", searchAd.get(j).get("AD_NAME"));
 			tmp.put("DATE", searchAd.get(j).get("AD_READCOUNT"));
 			tmp.put("GENRE", searchAd.get(j).get("AD_COMPANY"));
-			tmp.put("IMAGE", "ad/poster/"+searchAd.get(j).get("AD_POSTER_IMAGE"));
+			tmp.put("IMAGE", searchAd.get(j).get("AD_POSTER_IMAGE"));
 			tmp.put("TYPE", "광고");
 			searchMain.add(i,tmp);
 		}
@@ -243,7 +326,7 @@ public class MainController {
 				tmp.put("NAME", searchAd.get(j).get("AD_NAME"));
 				tmp.put("DATE", searchAd.get(j).get("AD_READCOUNT"));
 				tmp.put("GENRE", searchAd.get(j).get("AD_COMPANY"));
-				tmp.put("IMAGE", "ad/poster/"+searchAd.get(j).get("AD_POSTER_IMAGE"));
+				tmp.put("IMAGE", searchAd.get(j).get("AD_POSTER_IMAGE"));
 				tmp.put("TYPE", "광고");
 				searchMain.add(i,tmp);
 			}
@@ -330,7 +413,7 @@ public class MainController {
 				sb.append("<li class=\"StackableListItem-s18nuw36-0 cIJjio\">");
 				if(TYPE.equals("1")){
 					sb.append("<a lng=\"ko-KR\" class=\"InnerPartOfListWithImage__LinkSelf-s11a1hqv-1 gmbtJD\" title=\"${request}\" href=\"/brw/movie/movieDetail.br?MOVIE_NO=").append(mda.get("MOVIE_NO")).append("\">");
-					image = "drama/poster/"+mda.get("MOVIE_POSTER_IMAGE").toString();
+					image = "movie/poster/"+mda.get("MOVIE_POSTER_IMAGE").toString();
 					name = mda.get("MOVIE_NAME").toString();
 					date = mda.get("MOVIE_DATE").toString();
 					genre = mda.get("MOVIE_GENRE").toString();
@@ -342,7 +425,7 @@ public class MainController {
 					genre = mda.get("DRAMA_GENRE").toString();
 				}else {
 					sb.append("<a lng=\"ko-KR\" class=\"InnerPartOfListWithImage__LinkSelf-s11a1hqv-1 gmbtJD\" title=\"${request}\" href=\"/brw/ad/adDetail.br?AD_NO=").append(mda.get("AD_NO")).append("\">");
-					image = "drama/poster/"+mda.get("AD_POSTER_IMAGE").toString();
+					image = mda.get("AD_POSTER_IMAGE").toString();
 					name = mda.get("AD_NAME").toString();
 					date = mda.get("AD_READCOUNT").toString();
 					genre = mda.get("AD_COMPANY").toString();

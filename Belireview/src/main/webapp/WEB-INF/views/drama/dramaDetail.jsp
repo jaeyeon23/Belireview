@@ -45,11 +45,10 @@
 	var wi = "${wish}";
 	var ra = ""
 	var initValue = "${initValue}";
-	var mcc = "${myComment}";
+	var mcc = ${myComment != null};
 	var like = "${likeList}".split(",");
 		$(function() {
 			$("#cat-nav").hide();
-			
 		})
 		
 		$(function() {
@@ -87,7 +86,7 @@
 					location.href = "<c:url value='/member/loginForm.br?${_csrf.parameterName}=${_csrf.token}' />"
 				});
 			} else {//로그인
-				if (mcc != "") { // 마이코멘트 숨기기 보여주기
+				if (mcc) { // 마이코멘트 숨기기 보여주기
 					$(".writeComment").css("display", "none");
 					$(".existComment").css("display", "block");
 				} else {
@@ -232,7 +231,6 @@
 				url:"<c:url value='/drama/dramaDetail.br?${_csrf.parameterName}=${_csrf.token}' />",
 				success : function(result){
 				}
-				/* $('.gZASBp > a.r1'); */
 			})
 		}
 		/* 별점 */
@@ -253,8 +251,6 @@
 		$(function(){
 			if(id==""||id==null){}
 			else{
-				/* initValue = $('.gZASBp > div').attr("class").split(" ")[1]; */
-
 				var f = $('.gZASBp > a.r1');
 				f.hover(function() {
 					$('.gZASBp > div' ).removeClass(initValue).addClass('r1');
@@ -811,9 +807,84 @@
 																				<ul
 																					class="ContentPeopleSection__PeopleStackableUl-s1qdagi5-0 dCFwKD StackableUl__StyledStackableUl-gafxvv-1 dYcNoO VisualUl-s1vzev56-0 hgAYVH">
 																					<li class="ListItemWithProfilePhoto__Self-s1a35ruo-0 GRmjI">
-																							<div class="InnerPartOfListWithImage__ImageBlock-s11a1hqv-3 kXgAWr">
+																					<a lng="ko-KR"
+																						class="InnerPartOfListWithImage__LinkSelf-s11a1hqv-1 gmbtJD"
+																						title="제임스 카메론" href="/ko-KR/people/178274">
+																						<div class="InnerPartOfListWithImage__ImageBlock-s11a1hqv-3 kXgAWr">
 																								<div class="ProfilePhoto__Self-s1v3isfu-1 cKevdV RoundedImageBlock-k5m4n5-0 gUZYtN">
-																									<div class="ProfilePhoto__ProfilePhotoImage-s1v3isfu-0 ctlVML"></div>
+																									<div class="ProfilePhoto__ProfilePhotoImage-s1v3isfu-0 khTHxj"></div>
+																									<div class="ProfilePhoto__DefaultImageContainer-s1v3isfu-2 kPGxuy">
+																										<img class="defaultImage__ProfileImg-s1kn91bx-1 iaxVtx kPGxuy"
+																											src="/brw/resources/images/actor/${map.DRAMA_DIRECTOR}.jpg" >
+																									</div>
+																								</div>
+																							</div>
+																							<div class="InnerPartOfListWithImage__Info-s11a1hqv-5 hufKbr">
+																								<div class="InnerPartOfListWithImage__Titles-s11a1hqv-4 jtpmaI">
+																									<div class="ListItemWithProfilePhoto__Title-s1a35ruo-1 cSGZfW">${map.DRAMA_DIRECTOR}</div>
+																									<div
+																										class="ListItemWithProfilePhoto__Subtitle-s1a35ruo-2 cbqRVo">감독</div>
+																								</div>
+																								<div></div>
+																							</div></a></li>
+																							
+																					<c:forEach items="${actor}" var="act">
+																					<li class="ListItemWithProfilePhoto__Self-s1a35ruo-0 GRmjI">
+																					<a lng="ko-KR" class="InnerPartOfListWithImage__LinkSelf-s11a1hqv-1 gmbtJD"
+																						title="샘 워싱턴" href="/ko-KR/people/114764"><div class="InnerPartOfListWithImage__ImageBlock-s11a1hqv-3 kXgAWr">
+																								<div class="ProfilePhoto__Self-s1v3isfu-1 cKevdV RoundedImageBlock-k5m4n5-0 gUZYtN">
+																									<div class="ProfilePhoto__ProfilePhotoImage-s1v3isfu-0 fsVfFi"></div>
+																									<div class="ProfilePhoto__DefaultImageContainer-s1v3isfu-2 kPGxuy">
+																										<img class="defaultImage__ProfileImg-s1kn91bx-1 iaxVtx  kPGxuy"
+																											src="/brw/resources/images/actor/${act.ACTOR_IMAGE}">
+																									</div>
+																								</div>
+																							</div>
+																							<div class="InnerPartOfListWithImage__Info-s11a1hqv-5 hufKbr">
+																								<div class="InnerPartOfListWithImage__Titles-s11a1hqv-4 jtpmaI">
+																									<div class="ListItemWithProfilePhoto__Title-s1a35ruo-1 cSGZfW">${act.ACTOR_NAME}</div>
+																									<div class="ListItemWithProfilePhoto__Subtitle-s1a35ruo-2 cbqRVo">배우</div>
+																								</div>
+																								<div></div>
+																							</div></a></li>
+																					</c:forEach>
+																							
+																					<div class="StackableUl__SpinnerContainer-gafxvv-0 gddnxb"></div>
+																				</ul>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+															<div class="Grid-zydj2q-0 cspjno">
+																<div class="Row-s1apwm9x-0 lowZpE">
+																	<hr
+																		class="Divider__StylingMergedDivider-s11un6bw-1 kAeKXS Divider-s11un6bw-0 cVxSEp">
+																</div>
+															</div>
+														</section>
+														<%-- <section class="SectionWithHeader__Self-s1eyxltb-0 gAYeFO">
+															<div class="Grid-zydj2q-0 cspjno">
+																<div class="Row-s1apwm9x-0 lowZpE">
+																	<header
+																		class="SectionWithHeader__Header-s1eyxltb-1 cuiACK">
+																		<h2 class="SectionWithHeader__Title-s1eyxltb-2 kwjefp">출연/제작</h2>
+																	</header>
+																</div>
+															</div>
+															<div
+																class="PrimitiveHorizontalScrollable__ScrollBarContainer-hy4esm-0 hUyjJn">
+																<div
+																	class="PrimitiveHorizontalScrollable__ScrollBar-hy4esm-1 epjsYP">
+																	<div
+																		class="PrimitiveHorizontalScrollable__ScrollingInner-hy4esm-2 iGzmWK">
+																		<div class="Grid-zydj2q-0 cspjno">
+																			<div class="Row-s1apwm9x-0 lowZpE">
+																				<ul class="ContentPeopleSection__PeopleStackableUl-s1qdagi5-0 dCFwKD StackableUl__StyledStackableUl-gafxvv-1 dYcNoO VisualUl-s1vzev56-0 hgAYVH">
+																					<li class="ListItemWithProfilePhoto__Self-s1a35ruo-0 GRmjI">
+																							<div class="">
+																							 <div class="ProfilePhoto__Self-s1v3isfu-1 cKevdV RoundedImageBlock-k5m4n5-0 gUZYtN">
+																										<div class="ProfilePhoto__ProfilePhotoImage-s1v3isfu-0 ctlVML"></div>
 																									<div class="ProfilePhoto__DefaultImageContainer-s1v3isfu-2 kPGxuy">
 																										<img class="defaultImage__ProfileImg-s1kn91bx-1 iaxVtx" src="/brw/resources/images/actor/${map.DRAMA_DIRECTOR}.jpg">
 																									</div>
@@ -823,12 +894,33 @@
 																								<div class="InnerPartOfListWithImage__Titles-s11a1hqv-4 jtpmaI">
 																									<div class="ListItemWithProfilePhoto__Title-s1a35ruo-1 cSGZfW">${map.DRAMA_DIRECTOR}</div>
 																									<div class="ListItemWithProfilePhoto__Subtitle-s1a35ruo-2 cbqRVo">감독</div>
+																								</div>																								
+																								<c:forEach items="${actor}" var="act">
+																							<!-- <li class="ListItemWithProfilePhoto__Self-s1a35ruo-0 GRmjI"> -->
+																							<div class="InnerPartOfListWithImage__ImageBlock-s11a1hqv-3 kXgAWr">
+																								<div class="ProfilePhoto__Self-s1v3isfu-1 cKevdV RoundedImageBlock-k5m4n5-0 gUZYtN">
+																									<div class="ProfilePhoto__ProfilePhotoImage-s1v3isfu-0 ctlVML"></div>
+																									<div class="ProfilePhoto__DefaultImageContainer-s1v3isfu-2 kPGxuy">
+																										<img class="defaultImage__ProfileImg-s1kn91bx-1 iaxVtx" src="/brw/resources/images/actor/${act.ACTOR_IMAGE}">
+																									</div>
 																								</div>
-																								<div></div>
+																							</div>
+																							<div class="InnerPartOfListWithImage__Info-s11a1hqv-5 hufKbr">
+																								<div class="InnerPartOfListWithImage__Titles-s11a1hqv-4 jtpmaI">
+																									<div class="ListItemWithProfilePhoto__Title-s1a35ruo-1 cSGZfW">${act.ACTOR_NAME}</div>
+																								</div>
+																								
+																							</div><!-- </a> --><!-- </li> --></c:forEach>
+																								
+																								
 																							</div><!-- </a> --></li>
+																							
+																																														
+																							
+																							
 																							<!-- 배우 --><c:forEach items="${actor}" var="act">
 																						<li class="ListItemWithProfilePhoto__Self-s1a35ruo-0 GRmjI">
-																							<a lng="ko-KR" class="InnerPartOfListWithImage__LinkSelf-s11a1hqv-1 gmbtJD" title="이다윗" href="/ko-KR/people/193392">
+																							<!-- <a lng="ko-KR" class="InnerPartOfListWithImage__LinkSelf-s11a1hqv-1 gmbtJD" title="이다윗" href="/ko-KR/people/193392"> -->
 																							<div class="InnerPartOfListWithImage__ImageBlock-s11a1hqv-3 kXgAWr">
 																								<div class="ProfilePhoto__Self-s1v3isfu-1 cKevdV RoundedImageBlock-k5m4n5-0 gUZYtN">
 																									<div class="ProfilePhoto__ProfilePhotoImage-s1v3isfu-0 iEEsou"></div>
@@ -843,7 +935,7 @@
 																									<div class="ListItemWithProfilePhoto__Title-s1a35ruo-1 cSGZfW">${act.ACTOR_NAME}</div><!-- 배우 -->
 																								</div>
 																								<div></div>
-																							</div></a></li>
+																							</div><!-- </a> --></li>
 																							<!-- // 배우 --></c:forEach>
 																					<div class="StackableUl__SpinnerContainer-gafxvv-0 gddnxb"></div>
 																				</ul>
@@ -864,7 +956,7 @@
 																	<hr class="Divider__StylingMergedDivider-s11un6bw-1 kAeKXS Divider-s11un6bw-0 cVxSEp">
 																</div>
 															</div>
-														</section>
+														</section> --%>
 														<section class="SectionWithHeader__Self-s1eyxltb-0 gAYeFO">
 															<div class="Grid-zydj2q-0 cspjno">
 																<div class="Row-s1apwm9x-0 lowZpE">
