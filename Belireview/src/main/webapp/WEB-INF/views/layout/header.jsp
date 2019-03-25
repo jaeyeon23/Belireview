@@ -17,6 +17,7 @@
 		 }
 		
   });
+  
   function openSearch(){
 		var comSubmit = new ComSubmit();
        comSubmit.setUrl("<c:url value='/mainSearch.br?${_csrf.parameterName}=${_csrf.token}' />");
@@ -138,8 +139,8 @@
 										<dt>실시간 급상승 검색어</dt>
 										<dd>
 											<ol>
-												<c:forEach items="${realtime }" var="list" varStatus="stat">
-													<li><font id="index">${stat.index + 1}</font>  ${list.SEARCH_TEXT }</li>
+												<c:forEach items="${realtime }" var="list" varStatus="stat">							
+													<li><font id="index">${stat.index + 1}</font> ${list.SEARCH_TEXT }</li>
 												</c:forEach>
 											</ol>
 										</dd>

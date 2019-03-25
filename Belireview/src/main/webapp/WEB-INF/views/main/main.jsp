@@ -123,7 +123,7 @@
 									<p>
 										<font color="black">도깨비<br />arraival in believe store</font>
 									</p>
-									<a href="/brw/drama/dramaList.br" class="btn btn-blue">리뷰보러가기</a>
+									<a href="/brw/drama/dramaDetail.br?DRAMA_NO=66" class="btn btn-blue">리뷰보러가기</a>
 								</div>
 							</div>
 							<!-- 
@@ -179,7 +179,7 @@
 									<p>
 										New & Fvhresh collection<br />arraival in believe store
 									</p>
-									<a href="/brw/ad/adList.br" class="btn btn-blue">리뷰보러가기</a>
+									<a href="/brw/movie/movieDetail.br?MOVIE_NO=341" class="btn btn-blue">리뷰보러가기</a>
 								</div>
 							</div>
 							<div class="col-md-6"></div>
@@ -204,7 +204,7 @@
 								<div class="cat-desc">
 									<div class="cat-inner">
 										<div class="cat-title">
-											<font color="white">MOVIE</font>
+											<font color="white" style="font-family: fantasy;">영화</font>
 										</div>
 										<a href="/brw/movie/movieList.br" class="btn btn-border"><font color="white">Show Now</font></a>
 									</div>
@@ -218,7 +218,7 @@
 								<div class="cat-desc">
 									<div class="cat-inner">
 										<div class="cat-title">
-											DRAMA
+											<font style="font-family: fantasy;">드라마</font>
 										</div>
 										<a href="/brw/drama/dramaList.br" class="btn btn-border">Show Now</a>
 									</div>
@@ -232,7 +232,7 @@
 								<div class="cat-desc">
 									<div class="cat-inner">
 										<div class="cat-title">
-											ADVERTISEMENT
+											<font style="font-family: fantasy;">광고</font>
 										</div>
 										<a href="/brw/ad/adList.br" class="btn btn-border">Show Now</a>
 									</div>
@@ -373,60 +373,60 @@
 					<!-- Slider -->
 					<div id="brand-carousel" class="owl-carousel owl-theme">
 						<div class="item">
-							<a href = "http://www.kbs.co.kr/">	
+							<a href = "http://www.kbs.co.kr/" target="_blank">	
 							<img src="/brw/resources/images/brand/kbs.png" alt="slide-1"
 								class="img-responsive"></a>
 						</div>
 						<div class="item">
-							<a href = "https://www.sbs.co.kr/">	
+							<a href = "https://www.sbs.co.kr/" target="_blank">	
 							<img src="/brw/resources/images/brand/sbs.png" alt="slide-1"
 								class="img-responsive">
 								</a>
 						</div>
 						<div class="item">
-							<a href = "http://m.imbc.com/">	
+							<a href = "http://m.imbc.com/" target="_blank">	
 							<img src="/brw/resources/images/brand/mbc.jpg" alt="slide-1"
 								class="img-responsive">
 								</a>
 						</div>
 						<div class="item">
-							<a href = "http://jtbc.joins.com/">
+							<a href = "http://jtbc.joins.com/" target="_blank">
 							<img src="/brw/resources/images/brand/jtbc.png" alt="slide-1"
 								class="img-responsive">
 								</a>
 						</div>
 						<div class="item">
-							<a href = "http://tvn.tving.com/tvn">
+							<a href = "http://tvn.tving.com/tvn" target="_blank">
 							<img src="/brw/resources/images/brand/tvn.png" alt="slide-1"
 								class="img-responsive">
 								</a>
 						</div>
 						<div class="item">
-							<a href = "http://base.cjmall.com/">
+							<a href = "http://base.cjmall.com/" target="_blank">
 							<img src="/brw/resources/images/brand/cjenm.png" alt="slide-1"
 								class="img-responsive">
 								</a>
 						</div>
 						<div class="item">
-							<a href = "https://www.googleadservices.com/">
+							<a href = "https://www.googleadservices.com/" target="_blank">
 							<img src="/brw/resources/images/brand/lotte.png" alt="slide-1"
 								class="img-responsive">
 								</a>
 						</div>
 						<div class="item">
-							<a href = "https://www.netflix.com/">
+							<a href = "https://www.netflix.com/" target="_blank">
 							<img src="/brw/resources/images/brand/netfilx.png" alt="slide-1"
 								class="img-responsive">
 								</a>
 						</div>
 						<div class="item">
-						<a href = "https://play.watcha.net/">
+						<a href = "https://play.watcha.net/" target="_blank">
 							<img src="/brw/resources/images/brand/watcha.png" alt="slide-1"
 								class="img-responsive">
 								</a>
 						</div>
 						<div class="item">
-						<a href = "https://its-new.co.kr/">
+						<a href = "https://its-new.co.kr/" target="_blank">
 							<img src="/brw/resources/images/brand/new.png" alt="slide-1"
 								class="img-responsive">
 								</a>
