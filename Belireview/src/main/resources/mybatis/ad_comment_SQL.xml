@@ -28,7 +28,7 @@
 	</select>
 	
 	<select id="commentOne" parameterType="hashmap" resultType="hashmap">
-		SELECT AD_NO,ADC_NO,AC.ID,AD_CONTENT,AD_LIKE,AD_LIKE_ID,MEMBER_NO,NAME FROM AD_COMMENT AC,MEMBER M WHERE AC.ID=M.ID AND AC.ADC_NO=#{ADC_NO} AND AD_NO=#{AD_NO}
+		SELECT AD_NO,ADC_NO,AC.ID,AD_CONTENT,AD_REG_DATE,AD_LIKE,AD_LIKE_ID,MEMBER_NO,NAME FROM AD_COMMENT AC,MEMBER M WHERE AC.ID=M.ID AND AC.ADC_NO=#{ADC_NO} AND AD_NO=#{AD_NO}
 	</select>
 
 	<select id="adCommentByLike" parameterType="hashmap" resultType="hashmap">
@@ -38,6 +38,7 @@
 			ADC_NO,
 			ID,
 			AD_CONTENT,
+			AD_REG_DATE,
 			AD_LIKE,
 			AD_LIKE_ID,
 			TO_CHAR(AL_GRADE,'0.0') AS AL_GRADE,
@@ -50,6 +51,7 @@
 				AC.ADC_NO,
 				AC.ID,
 				AC.AD_CONTENT,
+				AC.AD_REG_DATE,
 				AC.AD_LIKE,
 				AC.AD_LIKE_ID,
 				AL.AL_GRADE,
@@ -62,7 +64,7 @@
 						AC.AD_NO=#{AD_NO}
 						<choose>
 							<when test='orderby == 2'>
-								ORDER BY ADC_NO DESC
+								ORDER BY AD_REG_DATE DESC
 							</when>
 							<otherwise>
 								ORDER BY AD_LIKE DESC
@@ -77,6 +79,7 @@
 				  ADC_NO,
 				  ID,
 				  AD_CONTENT,
+				  AD_REG_DATE,
 				  AD_LIKE,
 				  AD_LIKE_ID,
 				  AL_GRADE,
@@ -88,12 +91,13 @@
 				     ADC_NO,
 				     ID,
 				     AD_CONTENT,
+				      AD_REG_DATE,
 				     AD_LIKE,
 				     AD_LIKE_ID,
 				    	TO_CHAR(AL_GRADE,'0.0') AS AL_GRADE,
 		         PROFILE_IMAGE,
 				     ROWNUM RNUM FROM 
-				    (SELECT M.NAME,AC.AD_NO, AC.ADC_NO,AC.ID,AC.AD_CONTENT,AC.AD_LIKE,AC.AD_LIKE_ID,AL.AL_GRADE,PROFILE_IMAGE FROM AD_LIKE AL, AD_COMMENT AC ,MEMBER M
+				    (SELECT M.NAME,AC.AD_NO, AC.ADC_NO,AC.ID,AC.AD_CONTENT,AC.AD_REG_DATE,AC.AD_LIKE,AC.AD_LIKE_ID,AL.AL_GRADE,PROFILE_IMAGE FROM AD_LIKE AL, AD_COMMENT AC ,MEMBER M
 				      WHERE AL.AD_LIKE_NO=AC.AD_NO AND AL.ID=AC.ID and AL.ID=M.ID AND AC.AD_NO=#{AD_NO} ORDER BY AD_LIKE DESC)ORDER BY RNUM ASC) WHERE RNUM BETWEEN 1 AND 3
 	</select>
 	
