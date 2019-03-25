@@ -4,14 +4,31 @@
 	<select id="selectMovieTotal" resultType="hashmap" parameterType="hashmap">
 		SELECT
 			MOVIE_NAME,
-			MOVIE_NO, 
-			R
+			MOVIE_NO,
+			MOVIE_DATE,
+			MOVIE_COUNTRY,
+			MOVIE_GENRE,
+			MOVIE_DIRECTOR,
+			MOVIE_TOTAL_COUNT, 
+			MOVIE_RUNNINGTIME,
+			MOVIE_POSTER_IMAGE,
+			MOVIE_READCOUNT,
+			MOVIE_GRADE,
+			ROWNUM
 		FROM
 			(
 			SELECT
 				MOVIE_NAME,
-				MOVIE_NO, 
-				ROWNUM R
+				MOVIE_NO,
+				MOVIE_DATE,
+				MOVIE_COUNTRY,
+				MOVIE_GENRE,
+				MOVIE_DIRECTOR,
+				MOVIE_TOTAL_COUNT, 
+				MOVIE_RUNNINGTIME,
+				MOVIE_POSTER_IMAGE,
+				MOVIE_READCOUNT,
+				MOVIE_GRADE
 			FROM
 				MOVIE
 			<if test='value != null'>
@@ -29,7 +46,7 @@
 			</if>
 			)
 		WHERE
-			R BETWEEN 1 AND 20
+			ROWNUM BETWEEN 1 AND 10
 	</select>
 	
 	<select id="selectRank5" resultType="hashmap" parameterType="hashmap">
@@ -85,7 +102,7 @@
 					COUNT DESC
 			)
 		WHERE 
-			ROWNUM BETWEEN 1 AND 5
+			ROWNUM BETWEEN 1 AND 10
 	</select>
 	
 	<!-- 테이블 검사 -->

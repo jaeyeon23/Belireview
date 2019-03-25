@@ -6,34 +6,82 @@
 <html>
 <head>
 <meta charset="UTF-8">
+	<!-- <script language="JavaScript" src="/brw/resources/Rcss/rank.js"></script> -->
 	<link href="/brw/resources/Rcss/default.css" rel="stylesheet">
+	<script src="/brw/resources/Rcss/jquery.vticker.min.js"></script>
+	
+    <script>
+
+		$(function() {
+			  $('#best_movie').vTicker('init', {
+			    speed: 1000, //글자가 올라가는 스피드
+			    pause: 1000,   //글자가 올라가는 시간
+			    showItems: 5,   //보여지는 문구 수 
+			    padding: 4
+		      });			  
+		});
+
+		$(function() {
+			  $('#best_drama').vTicker('init', {
+				    speed: 1000, //글자가 올라가는 스피드
+				    pause: 1000,   //글자가 올라가는 시간
+				    showItems: 5,   //보여지는 문구 수 
+				    padding: 4
+			  });
+		});
+		
+		$(function() {
+			  $('#best_actor').vTicker('init', {
+				    speed: 1000, //글자가 올라가는 스피드
+				    pause: 1000,   //글자가 올라가는 시간
+				    showItems: 5,   //보여지는 문구 수 
+				    padding: 4
+			  });
+		});
+			
+</script>
 </head>
 <body>
-
+<br><br>
+<!-- 인기검색어 -->
 <div class="maintable1">
 	    <ul>
 	    	<!-- 최신 개봉작 -->
 			<li class="mainframe1">
 	        	<div class="mainrelease1">
 	                <div>
-	                    <ul>
-	                        <li class="maintitle_h1"><img src="/kobis/web/comm/images/main/title01.png"></li>
-	                        <li class="right"><div class="mainmore"><a href="/kobis/business/stat/them/findLastestOpenningsList.do"><img src="/kobis/web/comm/images/main/more1.png" onmouseover="this.src='/kobis/web/comm/images/main/more1_on.png'" onmouseout="this.src='/kobis/web/comm/images/main/more1.png'" alt="더보기"></a></div></li>
+	                    <ul> <!-- 전체제목목위치욤 ㅎ -->
+	                        <li class="maintitle_h1">영화 인기검색어</li>
 	                    </ul>
 	                </div>
-
 	                <div class="ie9_mainnewopen"></div>
-					<!-- 제목바 (영화명/개봉장 , 순위, 누적관객수, 스크린) -->
-	                <div><img src="/kobis/web/comm/images/main/titlebar01.png"></div>
-
 	                <div style="padding:5px 0 0 0"></div>
-	                <table cellpadding="0" cellspacing="0">
-	                	<tbody><tr>
-	                    	<td colspan="4" class="mainlist_dot"></td>
-	                	</tr>
-						</tbody><tbody id="lastestOpenning">
-						<tr class="mainlist_bg1"><td class="mainlist1" title="이스케이프 룸"><a class="mainlist1_over" href="#none" onclick="mstView('movie','20197283')" alt="이스케이프 룸">이스케이프 룸</a><br><em>2019.03.14</em></td><td class="mainlist2">5</td><td class="mainlist3">480,562명</td><td class="mainlist4">850</td></tr><tr><td colspan="4" class="mainlist_dot"></td></tr><tr class="mainlist_bg2"><td class="mainlist1" title="돈"><a class="mainlist1_over" href="#none" onclick="mstView('movie','20176103')" alt="돈">돈</a><br><em>2019.03.20</em></td><td class="mainlist2">1</td><td class="mainlist3">424,741명</td><td class="mainlist4">1,166</td></tr><tr><td colspan="4" class="mainlist_dot"></td></tr><tr class="mainlist_bg1"><td class="mainlist1" title="라스트 미션"><a class="mainlist1_over" href="#none" onclick="mstView('movie','20197356')" alt="라스트 미션">라스트 미션</a><br><em>2019.03.14</em></td><td class="mainlist2">9</td><td class="mainlist3">84,291명</td><td class="mainlist4">472</td></tr><tr><td colspan="4" class="mainlist_dot"></td></tr><tr class="mainlist_bg2"><td class="mainlist1" title="악질경찰"><a class="mainlist1_over" href="#none" onclick="mstView('movie','20197846')" alt="악질경찰">악질경찰</a><br><em>2019.03.20</em></td><td class="mainlist2">3</td><td class="mainlist3">65,384명</td><td class="mainlist4">833</td></tr><tr><td colspan="4" class="mainlist_dot"></td></tr><tr class="mainlist_bg1"><td class="mainlist1" title="우상"><a class="mainlist1_over" href="#none" onclick="mstView('movie','20175407')" alt="우상">우상</a><br><em>2019.03.20</em></td><td class="mainlist2">4</td><td class="mainlist3">57,204명</td><td class="mainlist4">900</td></tr><tr><td colspan="4" class="mainlist_dot"></td></tr></tbody>
-	              	</table>
+	                
+	                <div id="best_movie">
+	               		 <ul>
+	              			  <c:forEach items="${rank5_movie }" var="list" varStatus="stat">
+						  		 <li class="mainlist_bg1" title="${list.SEARCH_TEXT }" >
+						  		 	<div id="rank_num">${stat.index+1}</div>
+									<a class="mainlist1" href="/brw/movie/movieDetail.br?MOVIE_NO=${list.NO}">${list.SEARCH_TEXT}</a>
+							     </li>
+							  </c:forEach>
+						 </ul>
+					</div>
+					
+	                
+	                <%-- <table cellpadding="0" cellspacing="0">
+						<tbody id="lastestOpenning">
+						<c:forEach items="${rank5_movie }" var="list">
+							<tr class="mainlist_bg1">
+								<td class="mainlist1" title="${list.SEARCH_TEXT }">
+								<a class="mainlist1_over" href="/brw/movie/movieDetail.br?MOVIE_NO=${list.NO}">${list.SEARCH_TEXT}</a><br>
+							</tr>
+							<tr>
+								<td colspan="4" class="mainlist_dot"></td>
+							</tr>
+						</c:forEach>
+						</tbody>
+					</table> --%>
 	            </div>
 	        </li>
 
@@ -42,16 +90,37 @@
 	            <div class="mainrelease1">
 	                <div>
 	                    <ul>
-	                        <li class="maintitle_h1"><img src="/kobis/web/comm/images/main/title02.png"></li>
-	                        <li class="right"><div class="mainmore"><a href="/kobis/business/mast/mvie/findOpenScheduleList.do"><img src="/kobis/web/comm/images/main/more1.png" onmouseover="this.src='/kobis/web/comm/images/main/more1_on.png'" onmouseout="this.src='/kobis/web/comm/images/main/more1.png'" alt="더보기"></a></div></li>
+	                        <li class="maintitle_h1">드라마 인기검색어</li>
 	                    </ul>
 	                </div>
 
 	                <div class="ie9_mainnewopen"></div>
-					<div id="mainOpenmovieList">
-	                    <ul id="openBeMovie">
-	                    <li class="mainschedule1"><div><ul><li class="mainschedule_h"><a href="#none" onclick="mstView('movie','20196025');return false;"><img src="http://kobis.or.kr/common/mast/movie/2019/03/thumb/thn_d8870bb1ac7a4d2080d09c28edeebc1d.jpg" onerror="fn_OpenmovieList(this);" alt="개봉 예정작"></a></li><li class="mainschedule4">2019.03.27</li><li class="mainschedule5" title="덤보"><a href="#none" class="mainschedule6" onclick="mstView('movie','20196025');return false;">덤보</a></li></ul></div></li><li class="mainschedule2"><div><ul><li class="mainschedule_h"><a href="#none" onclick="mstView('movie','20187301');return false;"><img src="http://kobis.or.kr/common/mast/movie/2019/03/thumb/thn_a348ce3ced464c0ba2fb4c43ab3cf35a.jpg" onerror="fn_OpenmovieList(this);" alt="개봉 예정작"></a></li><li class="mainschedule4">2019.03.27</li><li class="mainschedule5" title="선희와 슬기"><a href="#none" class="mainschedule6" onclick="mstView('movie','20187301');return false;">선희와 슬기</a></li></ul></div></li><li class="mainschedule3"><div><ul><li class="mainschedule_h"><a href="#none" onclick="mstView('movie','20183773');return false;"><img src="http://kobis.or.kr/common/mast/movie/2019/03/thumb/thn_45b4b7f33c4a4d26bd1a37d85210a922.jpg" onerror="fn_OpenmovieList(this);" alt="개봉 예정작"></a></li><li class="mainschedule4">2019.03.27</li><li class="mainschedule5" title="장난스런 키스"><a href="#none" class="mainschedule6" onclick="mstView('movie','20183773');return false;">장난스런 키스</a></li></ul></div></li></ul>
-	                </div>
+	                <div style="padding:5px 0 0 0"></div>
+	                
+	                <div id="best_drama">
+	               		 <ul>
+	              			  <c:forEach items="${rank5_drama }" var="list" varStatus="stat">
+						  		 <li class="mainlist_bg1" title="${list.SEARCH_TEXT }" >
+						  			<div id="rank_num">${stat.index+1}</div>
+									<a class="mainlist1" href="/brw/drama/dramaDetail.br?DRAMA_NO=${list.NO}">${list.SEARCH_TEXT}</a>
+							     </li>
+							  </c:forEach>
+						 </ul>
+					</div>
+	                
+	                <%-- <table cellpadding="0" cellspacing="0">
+						<tbody id="lastestOpenning">
+						<c:forEach items="${rank5_drama }" var="list">
+							<tr class="mainlist_bg1">
+								<td class="mainlist1" title="${list.SEARCH_TEXT }">
+								<a class="mainlist1_over" href="/brw/drama/dramaDetail.br?DRAMA_NO=${list.NO}">${list.SEARCH_TEXT}</a><br>
+							</tr>
+							<tr>
+								<td colspan="4" class="mainlist_dot"></td>
+							</tr>
+						</c:forEach>
+						</tbody>
+					</table> --%>
 				</div>
 	        </li>
 
@@ -60,54 +129,223 @@
 	        	<div class="mainrelease1">
 	            	<div>
 	                    <ul>
-	                        <li class="maintitle_h1"><img src="/kobis/web/comm/images/main/title03.png"></li>
-	                        <li class="right"><div class="mainmore"><a href="#none" onclick="fn_goPage('1');return false;"><img src="/kobis/web/comm/images/main/more1.png" onmouseover="this.src='/kobis/web/comm/images/main/more1_on.png'" onmouseout="this.src='/kobis/web/comm/images/main/more1.png'" alt="더보기"></a></div></li>
+	                        <li class="maintitle_h1">배우 인기검색어</li>
 	                    </ul>
 	                </div>
 
 	                <div class="ie9_mainnewopen"></div>
-					<!-- 탭 (총관객수 | 지역별 | 연동영화관) -->
-	                <div>
-	                	<ul id="menu">
-	                    	<li class="maintapE1">
-	                            <a href="#total"><img src="/kobis/web/comm/images/main/TapE01_on.gif" onmouseover="this.src='/kobis/web/comm/images/main/TapE01_over.gif'" onmouseout="this.src='/kobis/web/comm/images/main/TapE01.gif'" onclick="javascript:initTabMu('menu', 'E', '1');return false;" alt="총관객수"></a>
-	                        </li>
-	                    	<li class="maintapE1">
-	                            <a href="#area"><img src="/kobis/web/comm/images/main/TapE02.gif" onmouseover="this.src='/kobis/web/comm/images/main/TapE02_over.gif'" onmouseout="this.src='/kobis/web/comm/images/main/TapE02.gif'" onclick="javascript:initTabMu('menu', 'E', '2');return false;" alt="지역별"></a>
-	                        </li>
-	                        <li class="maintapE1">
-	                            <a href="#cinema"><img src="/kobis/web/comm/images/main/TapE03.gif" onmouseover="this.src='/kobis/web/comm/images/main/TapE03_over.gif'" onmouseout="this.src='/kobis/web/comm/images/main/TapE03.gif'" onclick="javascript:initTabMu('menu', 'E', '3');return false;" alt="연동영화관"></a>
-	                        </li>
-	                	</ul>
-	                </div>
-	                <!-- 탭 (총관객수 | 지역별 | 연동영화관) /-->
-
- 					<div style="padding:30px 0px 0px 0px"></div>
-
-					<!-- 총관객수 -->
-					<div id="total" style="display: block;">
-					<table cellpadding="0" cellspacing="0"><tbody><tr class="maintapbox_bg1"><td class="maintapbox3"><img src="/kobis/web/comm/images/main/img_day.gif" alt="일(Day)"></td><td class="maintapbox5">03/21</td><td class="maintapbox6">303,695명</td></tr><tr><td colspan="3" class="maintapbox_dot"></td></tr><tr class="maintapbox_bg2"><td class="maintapbox4"><img src="/kobis/web/comm/images/main/img_week.gif" alt="주(Week)"></td><td class="maintapbox5">03/11~17(주간)<br>03/15~17(주말)</td><td class="maintapbox6">2,521,439명<br>1,649,885명</td></tr><tr><td colspan="3" class="maintapbox_dot"></td></tr><tr class="maintapbox_bg1"><td class="maintapbox3"><img src="/kobis/web/comm/images/main/img_month.gif" alt="월(Month)"></td><td class="maintapbox5">03/01~31</td><td class="maintapbox6">9,880,580명</td></tr><tr><td colspan="3" class="maintapbox_dot"></td></tr><tr class="maintapbox_bg2"><td class="maintapbox3"><img src="/kobis/web/comm/images/main/img_year.gif" alt="년(Year)"></td><td class="maintapbox5">2019년</td><td class="maintapbox6">50,281,665명</td></tr><tr><td colspan="3" class="maintapbox_dot"></td></tr></tbody></table><p class="maintapbox13"><font style="text-decoration: underline;">년(Year) 통계</font>는 전일자까지의 마감통계와 금일 실시간 발권데이터를 합한 수치임</p></div>
-					<!-- //총관객수 -->
-
-					<!-- 지역별 -->
-					<div class="display">
-						<div id="area" class="area" style="padding: 5px 0px 0px; display: none;"><div id="areaSubDiv" class="titbox"><em>주간 지역별 관객 점유율</em> | <span>03.11 ~ 03.17</span></div><ul><li class="frst"><p style="height:18px;"><span style="float:left;font-size:11px;">01.서울</span><span style="float:right;margin-right:7px;">  29.2%</span></p><p style="height:18px;"><span style="float:left;font-size:11px;">02.경기</span><span style="float:right;margin-right:7px;">  24.0%</span></p><p style="height:18px;"><span style="float:left;font-size:11px;">03.부산</span><span style="float:right;margin-right:7px;">   7.0%</span></p><p style="height:18px;"><span style="float:left;font-size:11px;">04.인천</span><span style="float:right;margin-right:7px;">   5.1%</span></p><p style="height:18px;"><span style="float:left;font-size:11px;">05.대구</span><span style="float:right;margin-right:7px;">   4.8%</span></p><p style="height:18px;"><span style="float:left;font-size:11px;">06.경남</span><span style="float:right;margin-right:7px;">   4.5%</span></p></li><li class="secnd"><p style="height:18px;"><span style="float:left;font-size:11px;">07.대전</span><span style="float:right;margin-right:7px;">   3.3%</span></p><p style="height:18px;"><span style="float:left;font-size:11px;">08.광주</span><span style="float:right;margin-right:7px;">   3.2%</span></p><p style="height:18px;"><span style="float:left;font-size:11px;">09.충남</span><span style="float:right;margin-right:7px;">   3.1%</span></p><p style="height:18px;"><span style="float:left;font-size:11px;">10.경북</span><span style="float:right;margin-right:7px;">   2.8%</span></p><p style="height:18px;"><span style="float:left;font-size:11px;">11.전북</span><span style="float:right;margin-right:7px;">   2.7%</span></p><p style="height:18px;"><span style="float:left;font-size:11px;">12.충북</span><span style="float:right;margin-right:7px;">   2.5%</span></p></li><li class="last"><p style="height:18px;"><span style="float:left;font-size:11px;">13.강원</span><span style="float:right;margin-right:7px;">   2.4%</span></p><p style="height:18px;"><span style="float:left;font-size:11px;">14.울산</span><span style="float:right;margin-right:7px;">   1.9%</span></p><p style="height:18px;"><span style="float:left;font-size:11px;">15.전남</span><span style="float:right;margin-right:7px;">   1.9%</span></p><p style="height:18px;"><span style="float:left;font-size:11px;">16.제주</span><span style="float:right;margin-right:7px;">   1.0%</span></p><p style="height:18px;"><span style="float:left;font-size:11px;">17.세종시</span><span style="float:right;margin-right:7px;">   0.5%</span></p></li></ul></div>
+	                <div style="padding:5px 0 0 0"></div>
+	                
+	                
+	                <div id="best_actor">
+	               		 <ul>
+	              			  <c:forEach items="${rank5_actor }" var="list" varStatus="stat">
+						  		 <li class="mainlist_bg1" title="${list.SEARCH_TEXT }" >
+						  		 	<div id="rank_num">${stat.index+1}</div>
+									${list.SEARCH_TEXT}
+							     </li>
+							  </c:forEach>
+						 </ul>
 					</div>
-					<!-- //지역별 -->
-
-					<!-- 연동영화관 -->
-					<div class="display">
-						<div id="cinema" class="cinema" style="padding: 5px 0px 0px; display: none;"><div class="titbox"><span>2019년 03.22 현재</span></div><div class="cscreen"><div>영화관입장권통합전산망은<br> 전국영화관의 발권데이터를 실시간 집계처리하여<br> 각종 통계정보를 제공하고 있으며,<br></div><br><span>현재 <em><strong>529</strong></em>&nbsp;개 영화관,&nbsp;&nbsp; <strong style="color:#e40203;">3,024</strong>&nbsp;개 스크린 연동중에 있음</span></div><p>전국기준으로 휴관 및 폐관 중인 영화상영관 제외</p></div>
-					</div>
-					<!-- 연동영화관 -->
+	                
+	               <%--  <table cellpadding="0" cellspacing="0">
+						<tbody id="lastestOpenning">
+						<c:forEach items="${rank5_actor }" var="list">
+							<tr class="mainlist_bg1">
+								<td class="mainlist1" title="${list.SEARCH_TEXT }">
+								<a class="mainlist1_over" href="#">${list.SEARCH_TEXT }</a><br>
+							</tr>
+							<tr>
+								<td colspan="4" class="mainlist_dot"></td>
+							</tr>
+						</c:forEach>
+						</tbody>
+					</table> --%>
 	            </div>
 	        </li>
 	    </ul>
 </div>
-
+<!-- 인기검색어 -->
 
 <br>
-<br><br><br><br><br><br>
+
+<script language="JavaScript" src="/brw/resources/Rcss/rank.js"></script>
+<br><br><br><br>
+<div id="boxMovieTab1" class="maintable0" style="display: block; height: 340px;">
+  <ul class="mainbody">
+    <li class="mainbody1 maincolor1">
+        <!-- 일일|주말 class="color1" , 다양성 class="color2" , 예매율|좌점율 class="color3" -->
+    </li>
+
+    <!-- 마우스오버 포스터 -->
+    <li class="mainbody2">
+        <div class="mainpicture">
+            <table border="0" cellpadding="0" cellspacing="0" class="body">
+              	<tbody><tr class="mainbodytr">
+	                <td>
+	                
+	                <c:forEach items="${movie_read}" var="list" varStatus="stat">
+	                	<!-- 조회순 박스오피스 1 ~ 10 -->
+	                    <div class="mainhide" id="poster${stat.index +1}">
+	                        <div class="mainposter1">
+	                        	<!-- 순위이미지 -->
+	                        	<img src="http://www.kobis.or.kr/kobis/web/comm/images/main/poster_A0${stat.index +1}.png">
+	                        </div>
+	                        <!-- 포스터이미지 -->
+	                        <img class="classPoster" id="imgPoster${stat.index +1}" src="/brw/resources/images/movie/poster/${list.MOVIE_POSTER_IMAGE}">
+	                    </div>
+	                 </c:forEach>  
+	                <!-- 조회순 박스오피스 1 ~ 10 /-->
+					
+	                <!-- 평점순 박스오피스 1 ~ 10 -->
+	                <c:forEach items="${movie_grade }" var="list" varStatus="stat">
+	                    <div class="mainhide" id="2poster${stat.index +1}">
+	                        <div class="mainposter1">
+	                        	<!-- 순위이미지 -->
+	                        	<img src="http://www.kobis.or.kr/kobis/web/comm/images/main/poster_B0${stat.index +1}.png">
+	                        </div>
+	                        	<!-- 포스터이미지 -->
+	                        <img class="classPoster" id="2imgPoster${stat.index +1}" src="/brw/resources/images/movie/poster/${list.MOVIE_POSTER_IMAGE}" >
+	                    </div>
+	                 </c:forEach>
+	                <!-- 평점순 박스오피스 1 ~ 10 /-->
+						
+						<!-- 처음보여지는 이미지 ㅋ  조회수기준임 !-->
+	                	<div class="mainposter1">
+	                		<a name="posterLinkPart1" href="#none" onclick="mstView('movie','20176103')" style="text-decoration: underline;">
+	                			<img id="mainPosterPart1" src="http://kobis.or.kr/kobis/web/comm/images/main/poster_A01.png">
+	                		</a>
+	                	</div>
+	                	<a name="posterLinkPart1" href="#none" onclick="mstView('movie','20176103')" style="text-decoration: underline;">
+	                		<c:forEach items="${movie_read}" var="list" varStatus="stat">
+	                		   <c:if test="${stat.first}">
+	                				<img class="classPoster" id="mainPosterImg1" src="/brw/resources/images/movie/poster/${list.MOVIE_POSTER_IMAGE}">
+	                		   </c:if> 
+	                		</c:forEach> 
+	                	</a>
+	                	<!-- 마우스 오버 전 처음보여지는 이미지 ㅋ -->
+	                </td>
+	                <!-- 옆그림자 -->
+	                <td><img src="http://kobis.or.kr/kobis/web/comm/images/main/poster1.png"></td>
+              	</tr>
+              	<tr>
+              		<!-- 밑그림자 -->
+                	<td colspan="2"><img src="http://kobis.or.kr/kobis/web/comm/images/main/poster2.png"></td>
+              	</tr>
+            </tbody></table>
+        </div>
+
+       <!--  <div class="mainpicture1"><input type="text" id="mainpictureNm1"></div> -->
+    </li>
+    <!-- 포스터 /-->
+	
+	
+    <li class="mainbody3">
+		<ul>
+    	<li class="mainbox1">
+
+ 		<!-- 일일 박스오피스  -->
+        <!-- 제목 -->
+        <div class="mainmovie1">
+            <ul>
+                <li class="mainleft">
+                	<!-- 일일박스오피스 -->
+                    <img src="http://kobis.or.kr/kobis/web/comm/images/main/movie_title01.png">
+                    <img src="http://kobis.or.kr/kobis/web/comm/images/main/line.png" width="670px" height="2">
+                </li>
+            </ul>
+        </div>
+        <!-- 제목 -->
+
+        <div class="mainmovie3" id="dailyBoxOffice">
+        			<c:forEach items="${movie_read }" var="list" varStatus="stat">
+							<table class="mainover1" cellspacing="0" cellpadding="0" style="width: 310px;">
+								<tbody>
+									<tr onmouseover="MM_showHideLayers('poster${stat.index +1}','','mainshow','maindata${stat.index +1}' ,'','mainshow')"
+										onmouseout="MM_showHideLayers('poster${stat.index +1}','','mainhide','maindata${stat.index +1}','','mainhide');fnPosterNm('1');">
+										<td class="mainmovie4">
+											<img src="http://kobis.or.kr/kobis/web/comm/images/main/nember_A0${stat.index +1}.png" alt="${stat.index +1}위 ">
+										</td>
+										<td class="mainmovie5"><a style="color: #ffffff;"
+											href="#none" onclick="mstView('movie','20176103')">${list.MOVIE_NAME }</a></td>
+										<td class="mainmovie6">${list.MOVIE_DIRECTOR}</td>
+										<td class="mainmovie7">${list.MOVIE_READCOUNT}</td>
+									</tr>
+									<tr
+										onmouseover="MM_showHideLayers('poster${stat.index +1}','','mainshow','maindata${stat.index +1}' ,'','mainshow')"
+										onmouseout="MM_showHideLayers('poster${stat.index +1}','','mainhide','maindata${stat.index +1}','','mainhide');fnPosterNm('1');">
+										<td colspan="6" class="mainline2"><img
+											src="http://kobis.or.kr/kobis/web/comm/images/main/line.png" width="100%"
+											height="2"></td>
+									</tr>
+								</tbody>
+							</table>
+					</c:forEach>		
+							
+			</div> 
+
+						<div class="mainmovie10" id="dailyBoxOfficeDate">
+        <table><tbody><tr><td>03.21</td></tr></tbody></table></div>
+
+		</li>
+
+
+		<li class="mainbox2">
+ 		<!-- 주말 박스오피스  -->
+        <!-- 제목 -->
+        <div class="mainmovie1">
+            <ul>
+                <li class="mainleft">
+                    <img src="http://kobis.or.kr/kobis/web/comm/images/main/movie_title02.png">
+                </li>
+            </ul>
+        </div>
+        <!-- 제목 -->
+
+        <div class="mainmovie3" id="weekEndBoxOffice">
+        			<c:forEach items="${movie_grade }" var="list" varStatus="stat">
+							<table class="mainover2" cellspacing="0" cellpadding="0"
+								style="width: 310px;">
+								<tbody>
+									<tr
+										onmouseover="MM_showHideLayers('2poster${stat.index +1}','','mainshow','2maindata${stat.index +1}' ,'','mainshow')"
+										onmouseout="MM_showHideLayers('2poster${stat.index +1}','','mainhide','2maindata${stat.index +1}','','mainhide');fnPosterNm('1');">
+										<td class="mainmovie4"><img
+											src="http://kobis.or.kr/kobis/web/comm/images/main/nember_B0${stat.index +1}.png" alt="${stat.index +1}위 "></td>
+										<td class="mainmovie5"><a style="color: #ffffff;"
+											href="#none" onclick="mstView('movie','20181877')">${list.MOVIE_NAME}</a></td>
+										<td class="mainmovie6">${list.MOVIE_DIRECTOR}</td>
+										<td class="mainmovie7">${list.MOVIE_GRADE}</td>
+									</tr>
+									<tr
+										onmouseover="MM_showHideLayers('2poster${stat.index +1}','','mainshow','2maindata${stat.index +1}' ,'','mainshow')"
+										onmouseout="MM_showHideLayers('2poster${stat.index +1}','','mainhide','2maindata${stat.index +1}','','mainhide');fnPosterNm('1');">
+										<td colspan="6" class="mainline2"><img
+											src="http://kobis.or.kr/kobis/web/comm/images/main/line.png" width="100%"
+											height="2"></td>
+									</tr>
+								</tbody>
+							</table>
+					</c:forEach>
+							
+			</div>
+
+
+
+						<div class="mainmovie10" id="weekEndBoxOfficeDate">
+       	<table><tbody><tr><td>03.15 ~ 03.17</td></tr></tbody></table></div>
+		</li>
+
+        </ul>
+    </li>
+
+    
+  	</ul>
+  	<!-- 전체박스 그림자 -->
+  	<div class="shadowline"><img src="http://www.kobis.or.kr/kobis/web/comm/images/main/img01.png"></div>  
+</div>
+<br><br><br>
+
 -----------------------------------원본 보호 ~~~-----------------------------------------------
 	<div class="container">
 		<div class="blog">

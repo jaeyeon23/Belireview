@@ -76,11 +76,9 @@ public class MainController {
 			
 			commandMap.put("table_value", table);
 			
-			Set keyset = commandMap.keySet();
-			System.out.println("test : ============== " + keyset);
-			System.out.println("result : =========== " + commandMap.get("table"));
-			
-			rankService.insertSearchText(commandMap.getMap());
+			if(table != null) {
+				rankService.insertSearchText(commandMap.getMap());
+			}
 		}
 		
 		String p = request.getParameter("currentPage");
