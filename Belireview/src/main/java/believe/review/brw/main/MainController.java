@@ -70,12 +70,10 @@ public class MainController {
 			Map<String,Object> tmp2 = userService.userWishList(tmp);
 			if(tmp2!=null) {
 				if(tmp2.get("MYPAGE_DRAMA")!=null) {//보고싶어요
-					String str[] = tmp2.get("MYPAGE_DRAMA").toString().split(",");
-					model.addAttribute("wishD",str);
+					model.addAttribute("wishD",tmp2.get("MYPAGE_DRAMA"));
 				}
 				if(tmp2.get("MYPAGE_MOVIE")!=null) {//보고싶어요
-					String str[] = tmp2.get("MYPAGE_MOVIE").toString().split(",");
-					model.addAttribute("wishM",str);
+					model.addAttribute("wishM",tmp2.get("MYPAGE_MOVIE"));
 				}
 			}
 		}

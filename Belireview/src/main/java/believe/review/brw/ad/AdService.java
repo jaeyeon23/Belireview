@@ -43,4 +43,6 @@ List<Map<String,Object>> selectBoardList(Map<String, Object>  map) throws Except
 	double ratingPrediction(Map<String, Object> map) throws Exception;
 	
 	Map<String, Object> commentOne(Map<String, Object> map) throws Exception;
+	
+	public void updateReadCount(Map<String, Object> map) throws Exception;
 }

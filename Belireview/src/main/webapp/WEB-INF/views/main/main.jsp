@@ -50,6 +50,18 @@
 					var type = $(this).attr('value2');
 					like(no,type);
 				});
+				var wd = "${wishD}".split(',');
+				var wm = "${wishM}".split(',');
+				for(var i=0;i<wd.length;i++){
+					var b = $('a[value3=d'+wd[i]+']');
+					$(b).css('color','#74d2f7');
+					$(b).css('background','#ffffff');
+				}
+				for(var i=0;i<wm.length;i++){
+					var b = $('a[value3=m'+wm[i]+']');
+					$(b).css('color','#74d2f7');
+					$(b).css('background','#ffffff');
+				}
 			}
 		}); //작동 버튼 끝 
 		
@@ -61,6 +73,32 @@
 				data : (type=="d") ? {DRAMA_NO:no,ID:id}:{MOVIE_NO:no ,ID:id},
 				url:"<c:url value='/like.br?${_csrf.parameterName}=${_csrf.token}'/>",
 				success : function(result){
+					if(result.DRAMA_NO!=null){
+						var wd= result.DRAMA_NO.split(',');
+						for(var i=0;i<wd.length;i++){
+							var a = $('a[value='+no+']');
+							if(wd[i]==a.attr('value')){
+								$(a).css('color','#74d2f7');
+								$(a).css('background','#ffffff');
+							}else{
+								$(a).css('color',"#ffffff");
+								$(a).css('background','#74d2f7');
+							}
+						}
+					}
+					if(result.MOVIE_NO!=null){
+						var wm= result.MOVIE_NO.split(',');
+						for(var i=0;i<wm.length;i++){
+							var b = $('a[value='+no+']');
+							if(wm[i]==b.attr('value')){
+								$(b).css('color','#74d2f7');
+								$(b).css('background','#ffffff');
+							}else{
+								$(b).css('color',"#ffffff");
+								$(b).css('background','#74d2f7');
+							}
+						}
+					}
 				}
 			})
 		}
@@ -236,7 +274,7 @@
 													<div class="product-fade-ct">
 			                                        	<div class="product-fade-control">
 				                                            <div class="to-left">
-				                                                <a href="" class="vv" value="${list.DRAMA_NO}" value2="d"><i class="fa fa-heart"></i></a>
+				                                                <a href="" class="vv" value="${list.DRAMA_NO}" value2="d" value3="d${list.DRAMA_NO}"><i class="fa fa-heart"></i></a>
 				                                                <a href="/brw/mainSearch.br?searchText=${list.DRAMA_NAME}" ><i class="fa fa-search"></i></a>
 				                                            </div>
 			                                                <div class="clearfix"></div>
@@ -269,7 +307,7 @@
 													<div class="product-fade-ct">
 			                                        	<div class="product-fade-control">
 				                                            <div class="to-left">
-				                                                <a href="" class="vv" value="${list.MOVIE_NO}" value2="m"><i class="fa fa-heart"></i></a>
+				                                                <a href="" class="vv" value="${list.MOVIE_NO}" value2="m" value3="m${list.MOVIE_NO}"><i class="fa fa-heart"></i></a>
 				                                                <a href="/brw/mainSearch.br?searchText=${list.MOVIE_NAME}" ><i class="fa fa-search"></i></a>
 				                                            </div>
 			                                                <div class="clearfix"></div>
