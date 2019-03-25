@@ -125,7 +125,7 @@
 		$.ajax({
 			async : true,  
 			type : 'POST',
-			data : {ID:id , COMMENTLIKE:"c" ,CLA:cla , MVOIE_NO:<%=request.getParameter("MOVIE_NO")%>, MC_NO:$(".00"+cla).val()},
+			data : {ID:id , COMMENTLIKE:"c" ,CLA:cla , MOVIE_NO:<%=request.getParameter("MOVIE_NO")%>, MC_NO:$(".00"+cla).val()},
 			url:"<c:url value='/movie/movieDetail.br?${_csrf.parameterName}=${_csrf.token}' />",
 			success : function(result){
 					var r = result;
