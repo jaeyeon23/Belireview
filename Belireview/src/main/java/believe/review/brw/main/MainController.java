@@ -70,49 +70,53 @@ public class MainController {
 		Map<String,Object> map = new HashMap<String,Object>();
 		
 		map = userService.userWishList(mv);
-		if(mv.get("DRAMA_NO")!=null) {
-			if(map.get("MYPAGE_DRAMA") != null) {
-				String[] str = map.get("MYPAGE_DRAMA").toString().split(",");
-				boolean exist = false;
-				String drama_no = "";
-				for(String s: str) {
-					if(mv.get("DRAMA_NO").equals(s)) {
-						exist = true;
-					}else {
-						drama_no += s+",";
+		if(map != null) {
+			if(mv.get("DRAMA_NO")!=null) {
+				if(map.get("MYPAGE_DRAMA") != null) {
+					String[] str = map.get("MYPAGE_DRAMA").toString().split(",");
+					boolean exist = false;
+					String drama_no = "";
+					for(String s: str) {
+						if(mv.get("DRAMA_NO").equals(s)) {
+							exist = true;
+						}else {
+							drama_no += s+",";
+						}
 					}
-				}
-				if(!exist) {
-					drama_no += mv.get("DRAMA_NO");
-					mv.put("add", "add");
-				}else {
-					mv.put("sub", "sub");
-				}
-				mv.put("DRAMA_NO"	,drama_no);
-				userService.updateWishList(mv);
-			}
-		}
-		if(mv.get("MOVIE_NO")!=null) {
-			if(map.get("MYPAGE_MOVIE")!=null) {
-				String[] str = map.get("MYPAGE_MOVIE").toString().split(",");
-				boolean exist = false;
-				String movie_no = "";
-				for(String s: str) {
-					if(mv.get("MOVIE_NO").equals(s)) {
-						exist = true;
+					if(!exist) {
+						drama_no += mv.get("DRAMA_NO");
+						mv.put("add", "add");
 					}else {
-						movie_no += s+",";
+						mv.put("sub", "sub");
 					}
+					mv.put("DRAMA_NO"	,drama_no);
+					userService.updateWishList(mv);
 				}
-				if(!exist) {
-					movie_no += mv.get("MOVIE_NO");
-					mv.put("add", "add");
-				}else {
-					mv.put("sub", "sub");
-				}
-				mv.put("MOVIE_NO"	,movie_no);
-				userService.updateWishList(mv);
 			}
+			if(mv.get("MOVIE_NO")!=null) {
+				if(map.get("MYPAGE_MOVIE")!=null) {
+					String[] str = map.get("MYPAGE_MOVIE").toString().split(",");
+					boolean exist = false;
+					String movie_no = "";
+					for(String s: str) {
+						if(mv.get("MOVIE_NO").equals(s)) {
+							exist = true;
+						}else {
+							movie_no += s+",";
+						}
+					}
+					if(!exist) {
+						movie_no += mv.get("MOVIE_NO");
+						mv.put("add", "add");
+					}else {
+						mv.put("sub", "sub");
+					}
+					mv.put("MOVIE_NO"	,movie_no);
+					userService.updateWishList(mv);
+				}
+			}
+		}else {
+			
 		}
 		return mv;
 	}
