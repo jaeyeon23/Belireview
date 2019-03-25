@@ -45,7 +45,7 @@
 		var wi = "${wish}";
 		var ra = "" 
 		var initValue = "${initValue}";
-		var mcc = "${myComment}";
+		var mcc = "${myComment.MC_CONTENT}";
 		var like= "${likeList}".split(",");
 		$(function(){
 			var ee ;
