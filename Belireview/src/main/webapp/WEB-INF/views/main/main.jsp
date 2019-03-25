@@ -335,44 +335,63 @@
 					<!-- Slider -->
 					<div id="brand-carousel" class="owl-carousel owl-theme">
 						<div class="item">
+							<a href = "http://www.kbs.co.kr/">	
 							<img src="/brw/resources/images/brand/kbs.png" alt="slide-1"
-								class="img-responsive">
+								class="img-responsive"></a>
 						</div>
 						<div class="item">
+							<a href = "https://www.sbs.co.kr/">	
 							<img src="/brw/resources/images/brand/sbs.png" alt="slide-1"
 								class="img-responsive">
+								</a>
 						</div>
 						<div class="item">
+							<a href = "http://m.imbc.com/">	
 							<img src="/brw/resources/images/brand/mbc.jpg" alt="slide-1"
 								class="img-responsive">
+								</a>
 						</div>
 						<div class="item">
+							<a href = "http://jtbc.joins.com/">
 							<img src="/brw/resources/images/brand/jtbc.png" alt="slide-1"
 								class="img-responsive">
+								</a>
 						</div>
 						<div class="item">
+							<a href = "http://tvn.tving.com/tvn">
 							<img src="/brw/resources/images/brand/tvn.png" alt="slide-1"
 								class="img-responsive">
+								</a>
 						</div>
 						<div class="item">
+							<a href = "http://base.cjmall.com/">
 							<img src="/brw/resources/images/brand/cjenm.png" alt="slide-1"
 								class="img-responsive">
+								</a>
 						</div>
 						<div class="item">
+							<a href = "https://www.googleadservices.com/">
 							<img src="/brw/resources/images/brand/lotte.png" alt="slide-1"
 								class="img-responsive">
+								</a>
 						</div>
 						<div class="item">
+							<a href = "https://www.netflix.com/">
 							<img src="/brw/resources/images/brand/netfilx.png" alt="slide-1"
 								class="img-responsive">
+								</a>
 						</div>
 						<div class="item">
+						<a href = "https://play.watcha.net/">
 							<img src="/brw/resources/images/brand/watcha.png" alt="slide-1"
 								class="img-responsive">
+								</a>
 						</div>
 						<div class="item">
+						<a href = "https://its-new.co.kr/">
 							<img src="/brw/resources/images/brand/new.png" alt="slide-1"
 								class="img-responsive">
+								</a>
 						</div>
 					</div>
 				</div>
