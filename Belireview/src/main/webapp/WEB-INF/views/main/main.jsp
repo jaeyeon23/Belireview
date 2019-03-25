@@ -136,7 +136,7 @@
 								<div class="cat-desc">
 									<div class="cat-inner">
 										<div class="cat-title">
-											<font color="white">MOVIE</font>
+											<font color="white" style="font-family: fantasy;">영화</font>
 										</div>
 										<a href="/brw/movie/movieList.br" class="btn btn-border"><font color="white">Show Now</font></a>
 									</div>
@@ -150,7 +150,7 @@
 								<div class="cat-desc">
 									<div class="cat-inner">
 										<div class="cat-title">
-											DRAMA
+											<font style="font-family: fantasy;">드라마</font>
 										</div>
 										<a href="/brw/drama/dramaList.br" class="btn btn-border">Show Now</a>
 									</div>
@@ -164,7 +164,7 @@
 								<div class="cat-desc">
 									<div class="cat-inner">
 										<div class="cat-title">
-											ADVERTISEMENT
+											<font style="font-family: fantasy;">광고</font>
 										</div>
 										<a href="/brw/ad/adList.br" class="btn btn-border">Show Now</a>
 									</div>

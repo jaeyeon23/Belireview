@@ -50,9 +50,6 @@ public class MainController {
 	
 	@RequestMapping(value = "/main.br", method = RequestMethod.GET)
 	public String home(Model model) throws Exception{
-		List<Map<String, Object>> realtime = realTimeService.selectRealTime();
-		model.addAttribute("realtime", realtime);
-		
 		List<Map<String, Object>> drama_list = mainService.dramaListTop8();
 		List<Map<String, Object>> movie_list = mainService.movieListTop8();
 		List<Map<String, Object>> ad_list = mainService.adListTop8();
