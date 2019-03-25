@@ -58,84 +58,6 @@
 			ROWNUM
 		FROM
 			(
-			SELECT
-				SEARCH_TEXT,
-				<if test="table_value != null">
-					NO,
-				</if>
-				S
-			FROM
-				(
-				SELECT
-					SEARCH_TEXT,
-					<if test="table_value != null">
-						NO,
-					</if>
-					SUM(COUNT) AS S
-				FROM
-					(
-					SELECT
-						SEARCH_TEXT,
-						COUNT,
-						SEARCH_DATE,
-						SEARCH_TABLE
-						<if test="table_value != null">
-							<choose>
-								<when test="table_value.equals('drama')">
-									, DRAMA.DRAMA_NO AS NO
-								</when>
-								<when test="table_value.equals('movie')">
-									, MOVIE.MOVIE_NO AS NO
-								</when>
-								<when test="table_value.equals('actor')">
-									, ACTOR.ACTOR_NO AS NO
-								</when>
-							</choose>
-						</if>
-					FROM
-						RANK
-						<if test="table_value != null">
-							, ${table_value}
-						</if>
-					<if test="table_value != null">
-						<choose>
-							<when test="table_value.equals('drama')">
-								WHERE
-									SEARCH_TEXT = DRAMA.DRAMA_NAME		
-							</when>
-							<when test="table_value.equals('movie')">
-								WHERE
-									SEARCH_TEXT = MOVIE.MOVIE_NAME
-							</when>
-							<when test="table_value.equals('actor')">
-								WHERE
-									SEARCH_TEXT = ACTOR.ACTOR_NAME
-							</when>
-						</choose>
-					</if>
-					)
-				GROUP BY
-					<if test="table_value != null">
-						NO,
-					</if>
-					SEARCH_TEXT	
-				)
-			ORDER BY
-				S DESC
-			)
-		WHERE
-			ROWNUM BETWEEN 1 AND 5
-			
-			
-			
-	<!-- 	SELECT
-			SEARCH_TEXT,
-			<if test="table_value != null">
-				NO,
-			</if>
-			ROWNUM
-		FROM
-			(
 				SELECT DISTINCT
 					SEARCH_TEXT, 
 					COUNT
@@ -180,11 +102,7 @@
 					COUNT DESC
 			)
 		WHERE 
-<<<<<<< HEAD
 			ROWNUM BETWEEN 1 AND 10
-=======
-			ROWNUM BETWEEN 1 AND 5 -->
->>>>>>> 8e8f9b69ec8377c08544b09c8de442cf8bb93b13
 	</select>
 	
 	<!-- 테이블 검사 -->
