@@ -13,7 +13,8 @@
             e.preventDefault();
             openSearch();
 		});
-		
+		  function enter(){
+			  $("a[name='search']").trigger('click');
 		
   });
   function openSearch(){
@@ -155,13 +156,13 @@
 	                           <i class="fa fa-search"></i></a>
 	                       </div> -->
                       <div class="srch-form">
-                          <form class="side-search">
+                          
                               <div class="input-group">
-                                  <input type="text" id="autocompleteText" name="searchText" class="form-control search-wid" placeholder="Search Here" aria-describedby="basic-addon2">
-                                  <a href="" name="search" class="input-group-addon btn-side-serach" id="basic-addon2">
-                                  <i class="fa fa-search"></i></a>
-                              </div>
-                          </form>
+                                 <input type="text" id="autocompleteText" name="searchText"  onkeypress="if (event.keyCode==13){enter();}"  class="form-control search-wid" placeholder="Search Here" aria-describedby="basic-addon2">
+                                 <a href="" name="search" class="input-group-addon btn-side-serach" id="basic-addon2">
+                                 <i class="fa fa-search"></i></a>
+                             </div>
+                          
                       </div>
                       </div>
                   </div>
