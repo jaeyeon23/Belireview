@@ -134,9 +134,9 @@
 	<select id="gradeRatio" parameterType="hashmap" resultType="hashmap">
 		  with t as(
 		  		SELECT '0.5' GRADE, count(*) A FROM movie_like where ML_GRADE=0.5 and movie_like_no=#{MOVIE_NO} UNION ALL
-		        SELECT '1' GRADE, count(*) A FROM movie_like where ML_GRADE=1 and movie_like_no=#{movie_NO} UNION ALL
+		        SELECT '1' GRADE, count(*) A FROM movie_like where ML_GRADE=1 and movie_like_no=#{MOVIE_NO} UNION ALL
 		        SELECT '1.5' GRADE, count(*) A FROM movie_like where ML_GRADE=1.5 and movie_like_no=#{MOVIE_NO} UNION ALL
-		        SELECT '2' GRADE, count(*) A FROM movie_like where ML_GRADE=2 and movie_like_no=#{movie_NO} UNION ALL
+		        SELECT '2' GRADE, count(*) A FROM movie_like where ML_GRADE=2 and movie_like_no=#{MOVIE_NO} UNION ALL
 		        SELECT '2.5' GRADE, count(*) A FROM movie_like where ML_GRADE=2.5 and movie_like_no=#{MOVIE_NO} UNION ALL
 		        SELECT '3' GRADE, count(*) A FROM movie_like where ML_GRADE=3 and movie_like_no=#{MOVIE_NO} UNION ALL
 		        SELECT '3.5' GRADE, count(*) A FROM movie_like where ML_GRADE=3.5 and movie_like_no=#{MOVIE_NO} UNION ALL
