@@ -38,10 +38,10 @@ public class AdServiceImpl implements AdService{
 		return adDAO.totalAdCount(map);
 	}
 	
-/*	@Override
+	@Override
 	public List<Map<String, Object>> detailgenre(Map<String, Object> map) throws Exception {
 		return adDAO.detailgenre(map);
-	}*/
+	}
 	@Override
 	public int totalAdComment(Map<String, Object> map) throws Exception {
 		return adDAO.totalAdComment(map);

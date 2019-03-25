@@ -11,6 +11,7 @@
     <meta name="description" content="">
    	<link rel="stylesheet" href="/brw/resources/css/detail2.css"> 
    	<link rel="stylesheet" href="/brw/resources/css/detail.css">
+   	<link rel="stylesheet" href="/brw/resources/css/detailgenre.css">
    
 	<%@ include file="/WEB-INF/views/include/include-body.jspf" %>
    	<%-- <script src="<c:url value='/resources/js/common.js'/>" charset="utf-8"></script>	 --%>
@@ -858,15 +859,7 @@
 																		</div>
 																	</div>
 																</div>
-																<div
-																	class="arrow_button PrimitiveHorizontalScrollable__ArrowButtonBlock-hy4esm-3 kCjzvu"
-																	direction="left">
-																	<div
-																		class="PrimitiveHorizontalScrollable__BackwardButton-hy4esm-5 bWflCD"></div>
-																</div>
-																<div
-																	class="arrow_button PrimitiveHorizontalScrollable__ArrowButtonBlock-hy4esm-3 eweFwK"
-																	direction="right"></div>
+															
 															</div>
 															<div class="Grid-zydj2q-0 cspjno">
 																<div class="Row-s1apwm9x-0 lowZpE">
@@ -874,6 +867,40 @@
 																</div>
 															</div>
 														</section>
+														<hr class="Divider__StylingMergedDivider-s11un6bw-1 jtXrQz Divider-s11un6bw-0 cVxSEp">
+													<section class="SectionWithHeader__Self-s1eyxltb-0 gAYeFO">
+														<div class="Grid-zydj2q-0 cspjno">
+															<div class="Row-s1apwm9x-0 lowZpE">
+																<header
+																	class="SectionWithHeader__Header-s1eyxltb-1 cuiACK">
+																	<h2 class="SectionWithHeader__Title-s1eyxltb-2 kwjefp">같은회사 광고</h2>
+																	<span class="TitleSuffixForNumber-l2d30g-0 ejtPKl"><!-- 비슷한장르개수 --></span>
+																	<div class="SectionWithHeader__TopRight-s1eyxltb-3 bZaEfL">
+																			<div class="SectionWithViewMore__ViewMore-xtbl7q-0 bhbIbv">
+																				<a href="/brw/mainSearch.br?GENRE=${map.AD_COMPANY}">더보기</a>
+																			</div>
+																		</div>
+																</header>
+															</div>
+															
+														</div>
+											
+													 <c:forEach items="${detailgenre}" var="detailgenrelist" >
+														 <div class="col-sm-6 col-md-3">
+														 	<a href="/brw/ad/adDetail.br?AD_NO=${detailgenrelist.AD_NO}">
+														    <div class="detailgenre">
+														      <img src=${detailgenrelist.AD_POSTER_IMAGE}>
+														      <%-- <input type='hidden' class='IDX' value="${dramaList.DRAMA_NO}"> --%>
+														      <div class="detailgenrefont">
+														        <h3 class="genrename">#${detailgenrelist.AD_NAME}</h3>
+														        <p>#${detailgenrelist.AD_READCOUNT}・#${detailgenrelist.AD_COMPANY}</p>
+														      </div>
+														    </div>
+														    </a>
+														  </div>
+													 </c:forEach>
+													</section>
+													
 													</div>
 											</div>
 										</div>
