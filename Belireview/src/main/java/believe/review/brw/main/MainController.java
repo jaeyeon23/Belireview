@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,6 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
 import believe.review.brw.common.common.CommandMap;
 import believe.review.brw.common.util.Paging;
 import believe.review.brw.rank.RankService;
+import believe.review.brw.user.UserService;
 
 @Controller
 public class MainController {
@@ -45,12 +46,30 @@ public class MainController {
 	@Resource(name="mainService")
 	private MainService mainService;
 	
+	@Resource(name="userService")
+	private UserService userService;
+	
 	@RequestMapping(value = "/main.br", method = RequestMethod.GET)
-	public String home(Model model) throws Exception{
+	public String home(Model model,HttpSession session) throws Exception{
 
 		List<Map<String, Object>> drama_list = mainService.dramaListTop8();
 		List<Map<String, Object>> movie_list = mainService.movieListTop8();
 		List<Map<String, Object>> ad_list = mainService.adListTop8();
+		
+		if(session.getAttribute("ID")!=null) {//로그인했을때
+			Map tmp = new HashMap();
+			tmp.put("ID", session.getAttribute("ID"));
+			tmp.put("NAME", session.getAttribute("NAME"));
+			Map<String,Object> tmp2 = userService.userWishList(tmp);
+			if(tmp2!=null) {
+				if(tmp2.get("MYPAGE_DRAMA")!=null) {//보고싶어요
+					model.addAttribute("wishD",tmp2.get("MYPAGE_DRAMA"));
+				}
+				if(tmp2.get("MYPAGE_MOVIE")!=null) {//보고싶어요
+					model.addAttribute("wishM",tmp2.get("MYPAGE_MOVIE"));
+				}
+			}
+		}
 		
 		model.addAttribute("drama_list", drama_list);
 		model.addAttribute("movie_list", movie_list);
@@ -58,6 +77,66 @@ public class MainController {
 		
 		return "main";
 	}
+	@RequestMapping(value = "/like.br", method = RequestMethod.POST)
+	@ResponseBody
+	public Map home_post(Model model,HttpSession session,CommandMap commandMap) throws Exception{
+		
+		Map<String, Object> mv = commandMap.getMap();
+		Map<String,Object> map = new HashMap<String,Object>();
+		
+		map = userService.userWishList(mv);
+		if(map != null) {
+			if(mv.get("DRAMA_NO")!=null) {
+				if(map.get("MYPAGE_DRAMA") != null) {
+					String[] str = map.get("MYPAGE_DRAMA").toString().split(",");
+					boolean exist = false;
+					String drama_no = "";
+					for(String s: str) {
+						if(mv.get("DRAMA_NO").equals(s)) {
+							exist = true;
+						}else {
+							drama_no += s+",";
+						}
+					}
+					if(!exist) {
+						drama_no += mv.get("DRAMA_NO");
+						mv.put("add", "add");
+					}else {
+						mv.put("sub", "sub");
+					}
+					mv.put("DRAMA_NO"	,drama_no);
+					userService.updateWishList(mv);
+				}
+			}
+			if(mv.get("MOVIE_NO")!=null) {
+				if(map.get("MYPAGE_MOVIE")!=null) {
+					String[] str = map.get("MYPAGE_MOVIE").toString().split(",");
+					boolean exist = false;
+					String movie_no = "";
+					for(String s: str) {
+						if(mv.get("MOVIE_NO").equals(s)) {
+							exist = true;
+						}else {
+							movie_no += s+",";
+						}
+					}
+					if(!exist) {
+						movie_no += mv.get("MOVIE_NO");
+						mv.put("add", "add");
+					}else {
+						mv.put("sub", "sub");
+					}
+					mv.put("MOVIE_NO"	,movie_no);
+					userService.updateWishList(mv);
+				}
+			}
+		}else {
+			mv.put("add", "add");
+			userService.insertWishList(mv);
+		}
+		return mv;
+	}
+	
 	
 	@RequestMapping(value = "mainSearch.br")
 	public ModelAndView mainSearch(CommandMap commandMap,HttpServletRequest request) throws Exception {
