@@ -107,6 +107,9 @@ public class MainController {
 					mv.put("DRAMA_NO"	,drama_no);
 					userService.updateWishList(mv);
 				}
+			}else {
+				mv.put("add", "add");
+				userService.updateWishList(mv);
 			}
 			if(mv.get("MOVIE_NO")!=null) {
 				if(map.get("MYPAGE_MOVIE")!=null) {
@@ -129,6 +132,9 @@ public class MainController {
 					mv.put("MOVIE_NO"	,movie_no);
 					userService.updateWishList(mv);
 				}
+			}else {
+				mv.put("add", "add");
+				userService.updateWishList(mv);
 			}
 		}else {
 			mv.put("add", "add");
@@ -353,7 +359,7 @@ public class MainController {
 			mv.put("searchMain",sb.toString());
 	
 			return mv;
-		}	
+		}	 
 		
 		/*메인 검색영화,드라마,광고*/
 		@RequestMapping(value = "mdaSearch.br")
