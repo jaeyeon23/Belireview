@@ -184,7 +184,6 @@
 			ROWNUM BETWEEN 1 AND 10
 =======
 			ROWNUM BETWEEN 1 AND 5 -->
->>>>>>> 8e8f9b69ec8377c08544b09c8de442cf8bb93b13
 	</select>
 	
 	<!-- 테이블 검사 -->
