@@ -17,6 +17,7 @@ public class LoginCheckInterceptor extends HandlerInterceptorAdapter{
 		String id = (String) session.getAttribute("ID");
 		int admin;
 		
+		
 		if(id == null || id.trim().length() <= 0 || id == "") {
 			response.sendRedirect("/brw/member/loginForm.br");
 			
@@ -31,10 +32,6 @@ public class LoginCheckInterceptor extends HandlerInterceptorAdapter{
 					return false;
 				}
 			}
-			if(uri.contains("user")) {
-				response.sendRedirect(uri);
-			}
-			
 		}
 
 		return true;
