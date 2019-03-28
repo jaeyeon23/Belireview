@@ -1,0 +1,1124 @@
+@charset "utf-8";
+
+a:link{
+	text-decoration: none;
+}
+
+.gnb_wrap{width:100%;background-color:#414141}
+.gnb{width:1200px;margin:0 auto}
+.gnb:after{clear:both;content:'';display:block}
+.gnb_wrap ul{float:right}
+.gnb_wrap ul li{float:left;font-size:12px;line-height:18px;border:1px solid #717171;border-width:0 1px 0 0}
+.gnb_wrap ul li:first-child{border-width:0 1px 0 1px}
+.gnb_wrap ul li a{display:block;width:100%;height:100%;padding:10px 15px;color:#bdbdbd}
+.gnb_wrap ul li a:hover{color:#fff}
+
+.gnb_wrap ul li.my_info{background:url('/kofic/comm/img/common/icon_member_arrow.png') 95% center no-repeat;}
+.gnb_wrap ul li.my_info img{margin:2px 5px 0 0;vertical-align:top}
+.gnb_wrap ul li.my_info a{color:#fff;padding:10px 35px 10px 15px}
+
+.my_info_menu{float:none !important;position:absolute;background-color:#414141;z-index:999;display:none}
+.my_info_menu li{float:none !important;width:100%;border-width:1px 0 0 0 !important;background:url('/kofic/comm/img/common/icon_myinfo_arrow.png') 92% center no-repeat}
+.my_info_menu li a{display:block;width:100%;height:100%;color:#fff;padding:10px 66px 10px 15px !important}
+.my_info_menu li:hover{background-color:#005e97}
+.my_info_menu li:hover a{color:#fff !important}
+
+
+
+.top_wrap{width:100%;height:90px;border-bottom:1px solid #ededed;overflow:hidden}
+/* .top {
+	width: 1200px;
+	margin: 0 auto;
+	position: relative
+}
+ */
+.top:after{clear:both;content:'';display:block}
+.top_logo{float:left;padding:30px 0 0 0}
+.top_search_wrap{position:absolute;padding:15px 0 0 0;left:50%; transform:translateX(-50%)}
+.top_search_wrap:after{clear:both;content:'';display:block}
+.top_search_wrap div.top_search_input{float:left;width:450px;padding:8px 0;border:3px solid #947054;border-radius:100px;margin:5px 0 0 0}
+.top_search_wrap div.top_search_input input{width:380px;background-color:#fff;border:0;margin:0 0 0 10px;font-family: 'Noto Sans KR', sans-serif , cursive;font-size:13px;font-weight:300;line-height:20px}
+.top_search_wrap div.btn_top_search{position:absolute;right:0}
+.top_search_wrap div.btn_top_search input{float:right;width:55px;height:55px;background:#947054 url('/kofic/comm/img/common/btn_top_search.png') center center no-repeat;border:0;border-radius:120px;cursor:pointer}
+.btn_top_etc{float:right;padding:27px 0 0 0}
+.btn_mobile_nevi{display:none}
+.mobile_nevi_wrap{display:none}
+.celebrate_logo {position: absolute; padding: 15px 0 0 0; right: 230px;}
+
+
+.top_nevi{width:100%;border-bottom:1px solid #ededed}
+.top_nevi ul{width:1200px;margin:0 auto;text-align:center}
+.top_nevi ul li{width:168px;display:inline-block;font-size:17px;text-align:center;border:1px solid #ededed;border-width:0 1px 0 0}
+.top_nevi ul li:first-child{border-width:0 1px 0 1px}
+.top_nevi ul li a{display:block;color:#000;padding:20px 0}
+
+.top_nevi ul li.active{color:#005e97;font-weight:500}
+.top_nevi ul li.active a{color:#005e97}
+
+
+
+.openmenu_wrap{width:100%;top:188px;background-color:#fff;border-top:1px solid #005e97;border-bottom:1px solid #e4e4e4;padding:0;position:absolute;z-index:1000;display:none}
+.openmenu{width:1200px;height:100%;min-height:330px;margin:0 auto}
+.openmenu:after{clear:both;content:'';display:block}
+
+.openmenu_title_box{float:left;width:240px;text-align:center}
+.openmenu_title{font-size:24px;line-height:30px;color:#000;padding-top:30px}
+.openmenu_text{font-size:13px;line-height:20px;color:#757575;padding-top:10px}
+.icon_openmenu_img{padding:30px 0 0 0}
+
+.openmenu_con{float:left;width:960px;padding:20px 0 50px 50px}
+
+.openmenu_con ul:after{clear:both;content:'';display:block}
+.openmenu_con ul li.openmenu_con_list{float:left;width:200px;margin:20px 20px 0 0}
+.openmenu_con ul li.openmenu_con_list:nth-child(5n){clear:both}
+
+.openmenu_con_list_title{font-size:15px;color:#fff;background-color:#947054}
+.openmenu_con_list_title a{display:block;width:100%;height:100%;padding:15px;color:#fff}
+.openmenu_con ul li.openmenu_con_list:hover p.openmenu_con_list_title{background-color:#4e372e}
+
+.openmenu_con_2depth{background-color:#ededed;padding:15px;margin-top:2px}
+.openmenu_con_2depth ul li{font-size:13px;line-height:20px;margin-bottom:10px;color:#6d6d6d}
+.openmenu_con_2depth ul li:last-child{margin-bottom:0}
+.openmenu_con_2depth ul li a{color:#6d6d6d}
+.openmenu_con_2depth ul li:hover a{color:#000}
+
+.visual_slogan {padding-bottom: 30px; text-align: center;}
+
+.main_visual{width:100%;padding:60px 0 60px 0;background: url('/kofic/comm/img/main/main_visual_bg.jpg') no-repeat;background-size:cover;background-position:center;position:relative;overflow:hidden}
+.main_visual div.visual_boxoffice{width:400px !important;height:438px;background: url('/kofic/comm/img/main/bg_visual_boxoffice.jpg') bottom no-repeat}
+.main_visual div.visual_introduce{width:400px !important;height:438px;background: url('/kofic/comm/img/main/bg_visual_introduce.jpg') bottom no-repeat}
+.main_visual div.visual_research{width:400px !important;height:438px;background: url('/kofic/comm/img/main/bg_visual_research.jpg') bottom no-repeat}
+.main_visual div.visual_announcement{width:400px !important;height:438px;background: url('/kofic/comm/img/main/bg_visual_announcement.jpg') bottom no-repeat}
+.main_visual div.visual_publications{width:400px !important;height:438px;background: url('/kofic/comm/img/main/bg_visual_statistics.jpg') bottom no-repeat}
+.main_visual div.visual_business{width:400px !important;height:438px;background: url('/kofic/comm/img/main/bg_visual_business.jpg') bottom no-repeat}
+.main_visual div.visual_judge{width:400px !important;height:438px;background: url('/kofic/comm/img/main/bg_visual_judge.jpg') bottom no-repeat}
+.main_visual p.visual_text01{font-size:24px;line-height:30px;color:#fff;font-weight:500;padding:0 25px 0 25px}
+.main_visual p.visual_text02{font-size:14px;line-height:20px;color:#fff;padding:10px 25px 0 25px}
+.main_visual div.visual_btn_view{padding:30px 0 0 25px}
+.main_visual div.visual_btn_view input{width:100px;height:40px;border:1px solid #fff;background-color: rgba( 255, 255, 255, 0 );color:#fff;cursor:pointer}
+
+
+
+.section_title_wrap{text-align:center;margin:0 0 30px 0}
+.section_title{font-size:36px;line-height:42px;color:#000;font-weight:500}
+.section_text{font-size:15px;line-height:24px;color:#7c7c7c;padding:10px 0 0 0}
+
+.box_top:after{clear:both;content:'';display:block}
+.box_top_title{float:left;font-size:30px;line-height:36px;color:#000;font-weight:500}
+.box_tabmenu{float:left;padding:5px 0 0 0;background: url('/kofic/comm/img/main/box_tabmenu_line.jpg') 0 5px no-repeat;margin:0 0 0 20px}
+.box_tabmenu ul:after{clear:both;content:'';display:block}
+.box_tabmenu ul li{float:left;font-size:18px;line-height:24px;margin:0 0 0 15px}
+.box_tabmenu ul li:first-child{margin:0 0 0 20px}
+.box_tabmenu ul li a{color:#838181}
+.box_tabmenu ul li.on{border-bottom:2px solid #000;font-weight:700;color:#000}
+.box_tabmenu ul li.on a{color:#000}
+.box_text{float:left;font-size:14px;line-height:20px;color:#7c7b7b;padding:15px 0 0 12px}
+.box_more{float:right;padding:5px 0 0 0}
+.box_more02{float:right; margin-right: 60px; padding:5px 0 0 0}
+
+.news_list{margin:25px 0 0 0}
+.news_list ul li a {color:#000}
+.news_list ul li{margin:15px 0 0 0}
+.news_list ul li:after{clear:both;content:'';display:block}
+.news_list ul li span.subject{float:left;font-size:14px;line-height:20px;color:#000;background:url('/kofic/comm/img/main/icon_news_dot.png') 0 9px no-repeat;padding:0 0 0 10px}
+.news_list ul li span.subject a{color:#000}
+.news_list ul li span.date{float:right;font-size:13px;line-height:20px;color:#848484}
+.news_list ul li span.date a{color:#848484}
+
+
+
+.news_area{width:100%;padding:60px 0 60px 0}
+.news_area div.inner{width:1200px;margin:0 auto}
+.news_area div.inner:after{clear:both;content:'';display:block}
+
+.news_box{float:left;width:600px;height:430px;background-color:#fff;border:1px solid #d8d8d8;padding:30px}
+
+.news_latest{margin:25px 0 0 0;padding:0 0 30px 0;border-bottom:1px dashed #dcdcdc}
+.news_latest:after{clear:both;content:'';display:block}
+.news_latest_thumbnail{float:left}
+.news_latest_thumbnail img{width:200px; height:140px;}
+.news_latest_text{float:left;width:320px;padding:0 0 0 20px}
+.news_latest_text01{font-size:18px;line-height:24px;color:#000}
+.news_latest_text01 a {color:#000}
+.news_latest_text02{font-size:13px;line-height:20px;color:#545454;padding:15px 0 0 0}
+
+.news_box_right{float:right}
+
+.notice_box{width:580px;height:210px;background-color:#fff;border:1px solid #d8d8d8;padding:30px}
+
+.popupzone{width:580px;height:200px;margin:20px 0 0 0;position:relative;overflow:hidden}
+.popupzone img{width:580px;height:200px}
+
+
+
+.business_news_area{width:100%;padding:80px 0 80px 0;background:url('/kofic/comm/img/main/business_news_bg.jpg') no-repeat;background-size:cover;background-position:center}
+.business_news_area div.inner{width:1200px;margin:0 auto}
+.business_news_area div.inner:after{clear:both;content:'';display:block}
+
+.business_news_box{float:left;width:590px;height:340px;background-color:#fff;border:1px solid #d8d8d8;padding:30px}
+
+.business_receipt_box{float:right;width:590px;height:340px;background-color:#fff;border:1px solid #d8d8d8;padding:30px}
+
+.business_news_list{margin:25px 0 0 0}
+.business_news_list ul li{margin:15px 0 0 0}
+.business_news_list ul li:after{clear:both;content:'';display:block}
+.business_news_list ul li span.subject{float:left;font-size:14px;line-height:20px;color:#000;}
+.business_news_list ul li span.subject a{color:#000}
+.business_news_list ul li span.date{float:right;font-size:13px;line-height:20px;color:#848484}
+.business_news_list ul li span.date a{color:#848484}
+
+.icon_news_state_notice{float:left;width:65px;font-size:13px;line-height:18px;color:#fff;border-radius:3px;padding:3px 0 3px 0;margin:0 7px 0 0;text-align:center;background-color:#8108e7}
+.icon_news_state_ing{float:left;width:65px;font-size:13px;line-height:18px;color:#fff;border-radius:3px;padding:3px 0 3px 0;margin:0 7px 0 0;text-align:center;background-color:#0086d7}
+.icon_news_state_complete{float:left;width:65px;font-size:13px;line-height:18px;color:#fff;border-radius:3px;padding:3px 0 3px 0;margin:0 7px 0 0;text-align:center;background-color:#c2864b}
+.icon_news_state_end{float:left;width:65px;font-size:13px;line-height:18px;color:#fff !important;border-radius:3px;padding:3px 0 3px 0;margin:0 7px 0 0;text-align:center;background-color:#6a6a6a}
+
+
+
+.integrated_network_area{width:100%;padding:80px 0 80px 0;background:url('http://www.kofic.or.kr/kofic/comm/img/main/integrated_network_bg.jpg') no-repeat;background-size:cover;}
+.integrated_network_area div.inner{width:1200px;margin:0 auto}
+.integrated_network_area div.inner:after{clear:both;content:'';display:block}
+
+.integrated_network_movie_info{float:left}
+.integrated_network_movie_info_img{float:left;width:289px;position:relative}
+.integrated_network_movie_info_img img{width:289px; height:414px;}
+.integrated_network_movie_info_img span.movie_ranking_number{position:absolute;top:0;left:0;width:45px;padding:15px 0 15px 0;background-color:#ff4e00;font-size:24px;font-weight:700;color:#fff;text-align:center}
+.integrated_network_movie_info_text{float:left;width:235px;padding:0 0 0 26px}
+.integrated_network_movie_info_text01{font-size:24px;line-height:30px;font-weight:700;color:#000}
+.integrated_network_movie_info_text02{font-size:13px;line-height:20px;color:#515050;}
+
+.integrated_network_movie_info_definition {padding: 15px 0; border-bottom: 1px dashed #aaa; font-size: 15px; color: #333;}
+.integrated_network_movie_info_definition:last-of-type {border-bottom: 0;}
+.integrated_network_movie_info_text dl {padding: 5px 0; display:table;}
+.integrated_network_movie_info_text dt {width: 75px; font-weight: bold; display: table-cell;}
+.integrated_network_movie_info_text dd {display: table-cell;}
+
+.integrated_network_movie_ranking_table{float:left;width:600px;margin:0 0 0 50px;border:1px solid #005e97;background-color:#fff}
+.integrated_network_movie_ranking_table table{border-collapse:collapse;width:100%;text-align:center;font-size:14px;line-height:20px;color:#868686}
+.integrated_network_movie_ranking_table table thead tr th{padding:10px 0 10px 0;color:#000;font-weight:normal;background-color:#005e97;color:#fff}
+.integrated_network_movie_ranking_table table tbody::before{content:'';display:block;height:10px;}
+.integrated_network_movie_ranking_table table tbody tr td{padding:5px 0 5px 0;color:#868686;vertical-align:top;cursor:pointer}
+.integrated_network_movie_ranking_table table tbody tr td:last-child{text-align:right;padding:5px 20px 5px 0}
+.integrated_network_movie_ranking_table table tbody tr td.subject{color:#000;text-align:left}
+.integrated_network_movie_ranking_table table tbody tr td div.movie_ranking_number{width:20px;padding:2px 0 2px 0;font-size:12px;text-align:center;color:#fff;background-color:#b6b6b6;margin:0 auto}
+.integrated_network_movie_ranking_table table tbody tr td.subject{color:#000;text-align:left}
+.integrated_network_movie_ranking_table table tbody tr td div.movie_ranking_number{width:20px;padding:2px 0 2px 0;font-size:12px;text-align:center;color:#fff;background-color:#b6b6b6;margin:0 auto}
+.integrated_network_movie_ranking_table table tbody tr.on td.subject{font-weight:700}
+.integrated_network_movie_ranking_table table tbody tr.on td div.movie_ranking_number{background-color:#ff4e00}
+
+.integrated_network_movie_ranking_table_bottom{border-top:1px solid #e5e5e5;margin-top:10px;padding:10px 20px 10px 20px}
+.integrated_network_movie_ranking_table_bottom:after{clear:both;content:'';display:block}
+.integrated_network_movie_ranking_table_bottom01{float:left}
+.integrated_network_movie_ranking_table_bottom02{float:right}
+.integrated_network_movie_ranking_btn input {margin-left: 10px; padding:7px; background: #005e96; display: inline-block; color: #fff; border-radius: 3px; cursor: pointer; border: 0; font-size: 12px; }
+
+.integrated_network_movie_play_stop {margin: 0 25px 10px 0; float: right; display: inline-block; margin-top:-40px;}
+.integrated_network_movie_play {width: 33px; height: 31px; background: url('/kofic/comm/img/main/integrated_network_movie_play.png') no-repeat #fff; display: inline-block; border: 0; cursor: pointer;}
+.integrated_network_movie_stop {width: 33px; height: 31px; background: url('/kofic/comm/img/main/integrated_network_movie_stop.png') no-repeat #fff; display: inline-block; border: 0; cursor: pointer;}
+
+
+.research_statistics_area{width:100%;padding:80px 0 80px 0;background-color:#fff}
+.research_statistics_area div.inner{width:1200px;margin:0 auto}
+.research_statistics_area div.inner:after{clear:both;content:'';display:block}
+
+.research_box{float:left;width:447px}
+
+.publications_box{float:right;width:680px;position:relative}
+.publications_bg{position:absolute;left:-25px;bottom:-60px}
+.publications_box_list{margin:25px 0 0 0}
+.publications_box_list ul:after{clear:both;content:'';display:block}
+.publications_box_list ul li{float:left}
+.publications_box_list ul li:first-child{margin:0 45px 0 0}
+.publications_box_list_img{float:left; width:120px; height:165px;}
+.publications_box_list_img img {width:100%; border:1px solid;}
+.publications_box_list_text{float:left;width:170px;padding:0 0 0 20px}
+.publications_box_list_text01{font-size:18px;line-height:24px;color:#000}
+.publications_box_list_text02{font-size:13px;line-height:18px;color:#646464;padding:5px 0 0 0}
+.publications_view input{width:80px;height:30px;margin:10px 0 0 0;border:1px solid #b5b5b5;background-color: rgba( 255, 255, 255, 0 );color:#4a4a4a;cursor:pointer}
+
+
+
+.kobiz_news_area:after{clear:both;content:'';display:block}
+
+.worldfilm_news{float:left;width:44%;height:400px;padding:40px 35px 40px 0;background:url('/kofic/comm/img/main/worldfilm_bg.jpg') no-repeat;background-size:cover;background-position:center}
+.worldfilm_news div.inner{width:450px;float:right}
+.worldfilm_list{margin:25px 0 0 0}
+.worldfilm_list ul li{display:inline-block;width:220px;height:260px;background-color:#fff;vertical-align:top}
+.worldfilm_list ul li:first-child{margin:0 5px 0 0}
+
+.worldfilm_list_img img{width:220px; height:166px;}
+.worldfilm_list_text{background-color:#fff;padding:15px;text-align:center}
+.worldfilm_list_text01{font-size:14px;line-height:20px;color:#000}
+.worldfilm_list_text02{font-size:13px;line-height:20px;color:#999;padding:5px 0 0 0}
+
+.communication_report{float:left;width:56%;height:400px;padding:40px 0 40px 35px;background:url('/kofic/comm/img/main/communication_report_bg.jpg') no-repeat;background-size:cover;background-position:center}
+.communication_report div.inner{width:680px}
+
+.box_report_tabmenu{float:right;border:1px solid #ccdfea}
+.box_report_tabmenu ul:after{clear:both;content:'';display:block}
+.box_report_tabmenu ul li{float:left;padding:7px 13px;font-size:16px;line-height:22px;color:#ccdfea}
+.box_report_tabmenu ul li:last-child{border:1px solid #ccdfea;border-width:0 0 0 1px}
+.box_report_tabmenu ul li a{color:#ccdfea}
+
+.report_list{margin:25px 0 0 0}
+.report_list ul li{display:inline-block;width:220px;height:260px;padding:15px;background-color:#fff;vertical-align:top;margin:0 7px 0 0}
+.report_list ul li:last-child{margin:0 0 0 0}
+.report_list_classification{width:100%;font-size:13px;line-height:20px;padding:8px 0;background-color:#0b61aa;color:#fff;text-align:center}
+.report_list_text01{font-size:15px;line-height:20px;color:#000;padding:15px 0 0 0}
+.report_list_text02{font-size:13px;line-height:20px;color:#525252;padding:10px 0 0 0}
+.report_list_text03{font-size:13px;line-height:20px;color:#646464;text-align:right;padding:5px 0 0 0}
+
+
+
+.management_area{width:100%;padding:60px 0 60px 0;background-color:#f6f6f6}
+.management_area div.inner{width:1200px;margin:0 auto}
+.management_area div.inner:after{clear:both;content:'';display:block}
+
+.standard_contract_box{float:left;width:590px;height:220px;background-color:#fff;border:1px solid #d8d8d8;padding:30px}
+.standard_contract_list{margin:20px 0 0 0}
+.standard_contract_list ul li{font-size:14px;line-height:20px;color:#000;background:url('/kofic/comm/img/main/icon_news_dot.png'), url('/kofic/comm/img/main/icon_contractor_arrow.png');background-position:0 19px ,right center;padding:11px 0 11px 10px;background-repeat:no-repeat;border-top:1px dashed #dcdcdc}
+.standard_contract_list ul li a{display:block;color:#000}
+
+.unfair_act_box{float:right;width:590px;height:220px;background-color:#fff;border:1px solid #d8d8d8;padding:20px;position:relative}
+.unfair_img{position:absolute;bottom:0;right:0}
+.unfair_act_box_title{font-size:26px;line-height:30px;color:#000}
+.unfair_act_box_title strong{color:#ff4c3a;font-weight:700}
+.unfair_act_box_text{font-size:14px;line-height:20px;color:#5b5b5b;padding:10px 0 0 0}
+.unfair_act_box_line{width:30px;height:2px;background-color:#000;margin:20px 0 10px 0}
+.unfair_act_box_phone{font-size:26px;line-height:28px;color:#000;font-weight:700;}
+
+.unfair_act_box_text:last-of-type {padding-top: 5px;}
+.unfair_link {width: 300px; padding-top: 5px; border-top: 1px solid #d9d9d9; line-height: 24px;}
+.unfair_link:last-of-type {padding-top: 0; border-top: 0;}
+.unfair_link a {font-size: 14px; color: #000; display: block;}
+.unfair_link a:hover {color:#ff4c3a;}
+
+
+
+.main_quickmenu_area{width:100%;padding:50px 0 65px 0;background-color:#fff}
+.main_quickmenu_area div.inner{width:1200px;margin:0 auto}
+.main_quickmenu_area div.inner:after{clear:both;content:'';display:block}
+
+.main_quickmenu{border:1px solid #d8d8d8}
+.main_quickmenu ul:after{clear:both;content:'';display:block}
+.main_quickmenu ul li{float:left;width:20%;border:1px solid #d8d8d8;border-width:0 1px 0 0;padding:35px 0 35px 0;text-align:center}
+.main_quickmenu ul li:last-child{border-width:0 0 0 0}
+.main_quickmenu_text01{font-size:20px;line-height:26px;color:#000;font-weight:500;padding:10px 0 0 0}
+.main_quickmenu_text02{font-size:13px;line-height:20px;color:#6f6f6f;padding:5px 0 0}
+
+
+.clean_center{height:100px;background-color:#494949;margin:20px 0 0 0}
+.clean_center:after{clear:both;content:'';display:block}
+.clean_center_icon{float:left;width:109px;height:100px;padding:29px 0 0 0;background-color:#ff4c3a;text-align:center}
+.clean_center_text{float:left;width:480px;padding:15px 0 0 24px}
+.clean_center_text01{font-size:20px;line-height:26px;color:#fff;font-weight:500;}
+.clean_center_text02{font-size:13px;line-height:20px;color:#dbdbdb;padding:5px 0 0}
+.clean_center_info{float:left;padding:30px 0 0 90px}
+.clean_center_info ul:after{clear:both;content:'';display:block}
+.clean_center_info ul li{float:left}
+.clean_center_info ul li:first-child{padding:0 35px 0 0}
+.clean_center_info_icon{float:left}
+.clean_center_info_text{float:left;font-size:22px;line-height:26px;color:#fff;font-weight:500;padding:8px 0 0 10px}
+
+
+
+.etc_business_area{width:100%;padding:80px 0 80px 0;background:url('/kofic/comm/img/main/etc_business_bg.jpg') no-repeat;background-size:cover;background-position:center}
+.etc_business_area div.inner{width:1200px;margin:0 auto}
+.etc_business_area div.inner:after{clear:both;content:'';display:block}
+
+.etc_business{text-align:center}
+.etc_business li{display:inline-block;width:121px;height:135px;border:1px solid #d8d8d8;background-color:#fff;vertical-align:top;text-align:center;margin:0 10px 0 10px}
+.etc_business_icon{padding:15px 0 0 0}
+.etc_business_text{font-size:14px;line-height:18px;color:#000;padding:7px 0 0 0}
+
+
+
+.famaily_box_area{width:100%;padding:60px 0 60px 0;background:url('/kofic/comm/img/main/family_bg.jpg') no-repeat;background-size:cover;background-position:center}
+.famaily_box{position:relative;overflow:hidden}
+.famaily_box div.swiper-wrapper div{width:307px}
+
+
+
+.banner_area{width:100%;padding:30px 0 30px 0;background-color:#f6f6f6;border-top:1px solid #d9d9d9}
+.banner_area div.inner{width:1200px;margin:0 auto}
+.banner_area div.inner:after{clear:both;content:'';display:block}
+
+.banner_wrap{position:relative;overflow:hidden}
+.banner_wrap div.swiper-wrapper div{width:200px}
+
+
+
+.fnb_area{width:100%;padding:12px 0;background-color:#414141;border-bottom:1px solid #545454}
+.fnb_area div.inner{width:1200px;margin:0 auto}
+.fnb_area div.inner:after{clear:both;content:'';display:block}
+.fnb li{display:inline-block;font-size:14px;color:#a0a0a0}
+.fnb li a{color:#fff}
+
+
+
+.footer_area{width:100%;padding:25px 0 50px 0;background-color:#414141}
+.footer_area div.inner{width:1200px;margin:0 auto}
+.footer_area div.inner:after{clear:both;content:'';display:block}
+.copyright{float:left;font-size:14px;line-height:24px;color:#d9d9d9}
+.footer_con{float:right}
+.footer_con div{float:left}
+.footer_con div:first-child{margin:0 10px 0 0}
+
+.btn_familysite{width:200px;position:relative;cursor:pointer}
+.btn_familysite div.btn_familysite_title{width:200px;color:#d6d6d6;background:#343434 url('/kofic/comm/img/common/icon_family_arrow.png') 95% 50% no-repeat;border:1px solid #2d2d2d;text-align:left;padding:8px 0 8px 10px}
+.btn_familysite_menu{width:200px;font-size:12px;line-height:16px;color:#575757;background-color:#fff;border:1px solid #b1b1b1;position:absolute;bottom:38px;right:0;z-index:999;;text-align:left;display:none}
+.btn_familysite_menu a{display:block;padding:8px 10px 8px 10px;width:100%;color:#575757}
+.btn_familysite_menu ul li:hover{background-color:#eaeaea}
+.btn_familysite_menu ul li:hover a{color:#000}
+
+.famaily_box_area{width:100%;padding:50px 0 50px 0;background:url('/kofic/comm/img/main/family_bg.jpg') no-repeat;background-size:cover;background-position:center}
+.famaily_box{position:relative;overflow:hidden}
+/* .famaily_box div.swiper-wrapper div{width:280px;} */
+.famaily_box div.inner {width:100%; margin: 0 auto; overflow: hidden;}
+.famaily_box div.inner ul { text-align: center;}
+.famaily_box div.inner ul li {width: 141px; margin: 0 7px 20px 0; display: inline-block;}
+.famaily_box div.inner ul li:nth-child(10) {margin-right: 0;}
+
+
+/* SUB */
+.sub_visual01{width:100%;height:150px;background:#343434 url('/kofic/comm/img/sub01/sub_visual01.jpg') no-repeat;background-size:cover;background-position:center;text-align:center}
+.visual_title{font-size:40px;line-height:46px;color:#fff;font-weight:500;padding:30px 0 0 0}
+.visual_text{font-size:15px;line-height:20px;color:#fff;padding:10px 0 0 0}
+
+.search_visual {width: 100%; min-height:150px; padding: 50px 0 50px; background:#005e97; text-align: center;}
+.search select {padding: 11.5px 50px 11.5px 10px; vertical-align: middle;}
+.search input {height: 45px; padding-left: 20px; background: url('/kofic/comm/img/common/icon_btn_search.png') 25% center no-repeat #013554;}
+.research {margin-left: 10px;}
+.research input {width: 18px; height: 18px; border-radius: 2px;}
+.research label {color: #fff; font-size:14px; }
+
+.snb{width:100%;background-color:#f6f6f6;border-bottom:1px solid #d9d9d9}
+.snb ul{width:1200px;margin:0 auto}
+.snb ul:after{clear:both;display:block;content:''}
+
+.snb ul li.snb_home{float:left;width:70px;border:1px solid #d9d9d9;border-width:0 1px 0 1px;text-align:center}
+.snb ul li.snb_home a{display:block;width:100%;padding:18px 0}
+
+.snb ul li.snb_depth01{float:left;width:300px;background:url('/kofic/comm/img/common/icon_snb_arrow01.png') 93% 50% no-repeat;font-size:16px;line-height:22px;border:1px solid #d9d9d9;border-width:0 1px 0 0;position:relative}
+.snb ul li.snb_depth01 a{display:block;width:100%;padding:18px 0 18px 15px;color:#000}
+
+.snb ul li.snb_depth01 ul.snb_depth02{position:absolute;width:301px;left:-1px;background-color:#fff;border:1px solid #d9d9d9;border-width:0 1px 1px 1px;z-index:100;display:none}
+.snb ul li.snb_depth01 ul.snb_depth02 li{font-size:14px;border-top:1px solid #e5e5e5;background:url('/kofic/comm/img/common/icon_snb_arrow02.png') 93% 50% no-repeat}
+.snb ul li.snb_depth01 ul.snb_depth02 li a{color:#000}
+.snb ul li.snb_depth01 ul.snb_depth02 li:hover{background-color:#005e97;font-weight:500}
+.snb ul li.snb_depth01 ul.snb_depth02 li:hover a{color:#fff}
+
+
+.sub_contents_wrap{width:1200px;margin:0 auto}
+
+.sub_title_wrap{text-align:center;margin:40px 0 0 0}
+.sub_title{font-size:36px;line-height:40px;color:#000}
+.sub_title_line{width:60px;height:1px;background-color:#828282;margin:40px auto 40px auto}
+
+.sub_contents{min-height:500px;padding:0 0 100px 0;position:relative}
+
+/* ---------- 로그아웃 팝업 ---------- */
+.timeout_wrap {margin:0 auto; width:436px; border:3px solid #005e97;}
+.timeout_popup {padding:45px 15px 45px 15px; color:#6a6a6a; line-height:18px;}
+.timeout_popup > img {float:left;}
+.timeout_popup ul {text-align:center;}
+.timeout_popup ul li.logout {font-size:15px; font-weight: bold; margin-bottom:10px;}
+.timeout_popup .time {color:#692ac8;}
+.timeout_popup .bold {font-weight: bold; margin-top:10px;}
+.timeout_popup .btn_area {text-align:center; width:400px; margin-top:20px; border-top:1px solid #e5e5e5; padding-top:20px; }
+.timeout_popup .btn_area > img { clear:both; margin-right:5px;}
+
+/* NEW 클린신고센터___추가20181120 */
+.clean_center_box{float:left;width:590px;height:220px;background-color:#fff;border:1px solid #d8d8d8;padding:30px;position:relative}
+.clean_center_box_top{background:url('/kofic/comm/img/main/icon_clean_center.png') 25px 0 no-repeat;padding:0 0 0 150px}
+.clean_center_box_title{font-size:26px;line-height:30px;color:#000}
+.clean_center_box_text{font-size:14px;line-height:20px;color:#5b5b5b;padding:10px 0 0 0}
+.clean_center_box_line{width:100%;border:1px dashed #d9d9d9;margin:18px 0 18px 0}
+
+.clean_center_box_info ul{text-align:center}
+.clean_center_box_info ul li:after{clear:both;content:'';display:block}
+.clean_center_box_info ul li{display:inline-block}
+.clean_center_box_info ul li:first-child{padding:0 35px 0 0}
+.clean_center_box_info_icon{float:left}
+.clean_center_box_info_text{float:left;font-size:20px;line-height:26px;color:#000;font-weight:500;padding:8px 0 0 10px}
+/* NEW 클린신고센터 */
+
+
+/* NEW 뉴스레터___추가20181120 */
+.newsletter_box{display:table;width:100%;height:100px;background-color:#fff;margin:20px 0 0 0;border:1px solid #d8d8d8}
+.newsletter_box_icon{display:table-cell;width:109px;height:100px;background-color:#005e97;text-align:center;vertical-align:middle}
+.newsletter_box_text{display:table-cell;vertical-align:middle;padding:0 30px 0 30px}
+.newsletter_box_text:after{clear:both;content:'';display:block}
+.newsletter_box_text01{float:left;font-size:30px;line-height:36px;color:#000;font-weight:500}
+.newsletter_box_text02{float:left;font-size:13px;line-height:20px;color:#6f6f6f;padding:0 0 0 20px}
+.newsletter_box_btn{float:right;font-size:16px;line-height:24px;color:#000;background:url('/kofic/comm/img/main/btn_newsletter.png') right no-repeat;margin:10px 0 0 0}
+.newsletter_box_btn a{color:#000;padding:0 50px 0 0}
+/* NEW 뉴스레터 */
+
+
+@media screen and (max-width:1200px){
+
+	.gnb_wrap{display:none}
+
+	.celebrate_logo {margin-left: 15px; padding: 25px 0 0 0; position: relative; right: 0; float: left;}
+	.celebrate_logo img {width: 80px;}
+
+	.top_wrap{width:100%;height:170px}
+	.top{width:100%}
+	.top_logo{padding:30px 0 0 30px}
+
+	.top_search_wrap{position:relative;padding:15px 30px 15px 30px;border-bottom:1px solid #ededed}
+	.top_search_wrap div.top_search_input{width:100%}
+	.top_search_wrap div.top_search_input input{width:90%}
+	.top_search_wrap div.btn_top_search{right:30px}
+	.btn_top_etc{display:none}
+
+
+	.btn_mobile_nevi{display:block;float:right;padding:30px 30px 0 0}
+	.mobile_nevi_wrap{width:80%;background-color:#005e96;overflow-x:hidden;display:block;box-shadow: 0 15px 10px rgba(0, 0, 0, 0.7)}
+
+	.mobile_nevi_top{padding:20px 20px;background-color:#947155;font-size:24px;line-height:30px;color:#fff;font-weight:500}
+	.mobile_nevi_top:after{clear:both;content:'';display:block}
+	.mobile_nevi_top span.btn_m_close{float:left}
+	.mobile_nevi_top span.btn_m_twitter{float:right}
+
+	.mobile_nevi_wrap div.mobile_nevi_etc_menu{display:block;width:100%;background-color:#fff}
+	.mobile_nevi_wrap div.mobile_nevi_etc_menu ul:after{clear:both;content:'';display:block}
+	.mobile_nevi_wrap div.mobile_nevi_etc_menu ul li{float:left;height:40px;display:block;font-size:13px;border-left:1px solid #d9d9d9;width:25%;text-align:center;padding-top:10px}
+	.mobile_nevi_wrap div.mobile_nevi_etc_menu ul li a{color:#838383;display:block;height:100%}
+
+	.tm_m_menu{background-color:#005e96}
+
+	.tm_m_list{font-size:18px;color:#fff;font-weight:500;padding:20px;background: url('/kofic/comm/img/common/icon_m_plus.png') 98% 50% no-repeat;border-bottom:1px solid #004b78;cursor:pointer}
+	.tm_m_list a{display:block;height:100%;color:#fff}
+
+	.tm_m_2depth{display:none}
+	.tm_m_2depth li.has_submenu{background:#004167 url('/kofic/comm/img/common/icon_m_arrow.png') 98% 50% no-repeat}
+	.tm_m_2depth_list{font-size:16px;background-color:#004167;border:1px solid #003452;border-width:0 0 1px 0}
+	.tm_m_2depth_list a{color:#fff;display:block;padding:20px 20px 20px 30px}
+
+	.tm_m_3depth{background-color:#fff}
+	.tm_m_3depth_list{font-size:14px;background: url('/kofic/comm/img/common/icon_m_dot.png') 40px 50% no-repeat;border:1px solid #dcdcdc;border-width:0 0 1px 0}
+	.tm_m_3depth_list:last-child{border-width:0 0 0 0}
+	.tm_m_3depth_list a{color:#474646;display:block;padding:15px 15px 15px 48px}
+
+
+
+	.top_nevi{display:none}
+
+
+
+	.openmenu_wrap{display:none}
+
+
+	.box_more02{float:right; margin-right: 0px; padding:5px 0 0 0}
+	.news_area{padding:50px 30px 50px 30px}
+	.news_area div.inner{width:100%}
+
+	.news_box{float:none;width:100%;height:100%}
+
+	.news_latest{display:table;width:100%}
+	.news_latest_thumbnail{float:none;display:table-cell;vertical-align:top}
+	.news_latest_text{float:none;display:table-cell;vertical-align:top;width:100%}
+
+	.news_box_right{float:none}
+	.news_box_right:after{clear:both;content:'';display:block}
+
+	.notice_box{width:100%;height:100%;padding:30px;margin:20px 0 0 0}
+
+	.popupzone{width:100%;height:100%;margin:20px 0 0 0}
+	.popupzone img{width:100%;height:100%}
+
+
+
+	.business_news_area{padding:50px 30px 50px 30px}
+	.business_news_area div.inner{width:100%}
+
+	.business_news_box{float:none;width:100%;height:100%}
+
+	.business_receipt_box{float:none;width:100%;height:100%;margin:20px 0 0 0}
+
+
+
+	.integrated_network_area{padding:50px 30px 50px 30px;background-position:center;}
+	.integrated_network_area div.inner{width:100%}
+
+	.integrated_network_movie_info{float:none;display:table}
+	.integrated_network_movie_info_img{float:none;width:250px;display:table-cell;vertical-align:top}
+	.integrated_network_movie_info_img img{width:250px;height:358px;}
+	.integrated_network_movie_info_text{float:none;width:100%;display:table-cell;vertical-align:top}
+	
+	.integrated_network_movie_info_definition {padding: 10px 0; font-size: 14px;}
+	.integrated_network_movie_info_text dl {padding: 3px 0;}
+	
+	.integrated_network_movie_ranking_table{float:none;width:100%;margin:15px 0 0 0}
+	.integrated_network_movie_play_stop {margin:30px 0px 0px 0; float: none; display:block; text-align: right; }
+
+
+	.research_statistics_area{padding:50px 30px 50px 30px}
+	.research_statistics_area div.inner{width:100%}
+
+	.research_box{float:none;width:100%;height:100%;background-color:#fff;border:1px solid #d8d8d8;padding:30px}
+
+	.publications_box{float:none;width:100%;margin:20px 0 0 0;background-color:#fff;border:1px solid #d8d8d8;padding:30px}
+	.publications_bg{display:none}
+	.publications_box_list{margin:25px 0 0 0}
+	.publications_box_list ul li{float:none;text-align:center}
+	.publications_box_list ul li:after{clear:both;content:'';display:block}
+	.publications_box_list ul li:first-child{margin:0 0 30px 0}
+	.publications_box_list_img{float:none; margin: 0 auto;}
+	.publications_box_list_text{float:none;width:100%;padding:10px 0 0 0}
+	.publications_view input{width:150px;height:40px;margin:15px 0 0 0}
+
+
+
+	.worldfilm_news{float:none;width:100%;height:400px;padding:30px 30px 30px 30px}
+	.worldfilm_news div.inner{width:100%;float:none}
+	.worldfilm_list{margin:25px auto 0 auto;width:460px}
+	.worldfilm_list ul li:first-child{margin:0 10px 0 0}
+
+	.communication_report{float:left;width:100%;height:100%;padding:30px 30px 30px 30px}
+	.communication_report div.inner{width:100%}
+
+	.report_list{margin:25px 0 0 0}
+	.report_list ul li{display:block;width:100%;height:100%;padding:30px;margin:0 0 20px 0}
+	.report_list ul li:last-child{margin:0 0 0 0}
+
+
+
+	.management_area{width:100%;padding:30px 30px 30px 30px}
+	.management_area div.inner{width:100%}
+
+	.standard_contract_box{float:none;width:100%;height:100%}
+
+	.unfair_act_box{float:none;width:100%;height:220px;margin:20px 0 0 0}
+
+
+
+	.main_quickmenu_area{width:100%;padding:50px 30px 50px 30px;background-color:#fff}
+	.main_quickmenu_area div.inner{width:100%}
+
+	.main_quickmenu ul li{float:left;width:50%;border-width:0 1px 1px 0}
+	.main_quickmenu ul li:nth-child(2n){border-width:0 0 1px 0}
+	.main_quickmenu ul li:last-child{border-width:0 1px 0 0}
+
+
+	.clean_center{margin:30px 0 0 0;height:100%;padding:0 0 30px 0}
+	.clean_center_icon{float:none;width:100%;height:80px;padding:20px 0 0 0}
+	.clean_center_text{float:none;width:100%;padding:30px 0 0 0;text-align:center}
+	.clean_center_info{float:none;padding:30px 0 0 0;text-align:center}
+	.clean_center_info ul li{float:none}
+	.clean_center_info ul li:first-child{padding:0 0 20px 0}
+	.clean_center_info_icon{float:none}
+	.clean_center_info_text{float:none}
+
+
+
+	.etc_business_area{padding:50px 30px 30px 30px}
+	.etc_business_area div.inner{width:100%}
+
+	.etc_business li{margin:0 10px 20px 10px}
+
+
+
+	.famaily_box_area{padding:50px 30px 50px 30px}
+	.famaily_box div.inner ul li:nth-child(10) {margin-right: 7px;}
+
+
+	.banner_area{padding:30px 30px 30px 30px}
+	.banner_area div.inner{width:100%}
+
+
+
+	.fnb_area{padding:12px 30px;text-align:center}
+	.fnb_area div.inner{width:100%}
+
+
+
+	.footer_area{padding:25px 30px 50px 30px;text-align:center}
+	.footer_area div.inner{width:100%}
+	.copyright{float:none;margin:0 0 20px 0}
+	.footer_con{float:none}
+	.footer_con div{float:none}
+	.footer_con div:first-child{margin:0 0 0 0}
+
+	.btn_familysite{width:200px;margin:20px auto 0 auto}
+
+
+
+	/* SUB */
+	.snb{display:none}
+
+
+
+	.sub_contents_wrap{width:100%}
+
+	.sub_title_wrap{text-align:center;margin:80px 0 0 0}
+	.sub_title{font-size:30px;line-height:36px;color:#000}
+	.sub_title_line{width:60px;height:1px;background-color:#828282;margin:40px auto 40px auto}
+
+	.sub_contents{min-height:100%;padding:0 30px 100px 30px}
+
+    /* NEW 클린신고센터___추가20181120 */
+    .clean_center_box{float:none;width:100%;height:220px}
+    /* NEW 클린신고센터 */
+
+
+
+    /* NEW 뉴스레터___추가20181120 */
+    .newsletter_box{display:block;height:100%;padding:0 0 30px 0}
+    .newsletter_box_icon{display:block;width:100%;height:80px;padding:20px 0 0 0}
+    .newsletter_box_text{display:block;width:100%;padding:30px 30px 0 30px;text-align:center}
+    .newsletter_box_text01{float:none;font-size:30px;line-height:36px;color:#000;font-weight:500}
+    .newsletter_box_text02{float:none;font-size:13px;line-height:20px;color:#6f6f6f;padding:10px 0 0 0}
+    .newsletter_box_btn{float:none;font-size:14px;line-height:20px;background:none;margin:20px 0 0 0;border:1px solid #c2c2c2;display:inline-block}
+    .newsletter_box_btn a{color:#000;padding:10px 20px 10px 20px;display:inline-block}
+    /* NEW 뉴스레터 */
+
+}
+
+
+
+
+
+@media screen and (max-width:800px){
+
+
+	.top_logo{float:left;padding:30px 0 0 20px}
+
+	.top_search_wrap{padding:15px 20px 15px 20px}
+	.top_search_wrap div.top_search_input input{width:85%}
+	.top_search_wrap div.btn_top_search{right:20px}
+	.btn_top_etc{padding:27px 20px 0 0}
+
+
+
+	.main_visual{padding:50px 0 50px 0}
+	.main_visual div.visual_boxoffice{width:350px !important;height:420px;background-size:350px}
+	.main_visual div.visual_introduce{width:350px !important;height:420px;background-size:350px}
+	.main_visual div.visual_research{width:350px !important;height:420px;background-size:350px}
+	.main_visual div.visual_announcement{width:350px !important;height:420px;background-size:350px}
+	.main_visual div.visual_publications{width:350px !important;height:420px;background-size:350px}
+	.main_visual div.visual_business{width:350px !important;height:420px;background-size:350px}
+	.main_visual div.visual_judge{width:350px !important;height:420px;background-size:350px}
+	.main_visual .visual_icon img{width:350px}
+	.main_visual p.visual_text01{font-size:18px;line-height:24px;color:#fff}
+	.main_visual p.visual_text02{font-size:13px;line-height:18px;color:#fff}
+	.main_visual div.visual_btn_view{padding:20px 0 0 25px}
+
+	.visual_slogan img {width: 95%;}
+
+
+	.section_title_wrap{margin:0 0 20px 0}
+	.section_title{font-size:30px;line-height:36px}
+	.section_text{font-size:13px;line-height:20px;padding:5px 0 0 0}
+
+	.box_top_title{font-size:24px;line-height:30px}
+	.box_tabmenu ul li{font-size:14px;line-height:20px}
+	.box_text{font-size:12px;line-height:18px;padding:10px 0 0 5px}
+	.box_more{padding:3px 0 0 0}
+
+	.news_list{margin:20px 0 0 0}
+	.news_list ul li{margin:10px 0 0 0}
+	.news_list ul li span.subject{font-size:13px;line-height:20px;background:url('/kofic/comm/img/main/icon_news_dot.png') 0 8px no-repeat}
+	.news_list ul li span.date{font-size:12px;line-height:18px}
+
+
+
+	.news_area{padding:50px 20px 50px 20px}
+
+	.news_box{padding:20px}
+
+	.news_latest{margin:20px 0 0 0;padding:0 0 20px 0}
+	.news_latest_text{padding:0 0 0 20px}
+	.news_latest_text01{font-size:16px;line-height:22px}
+	.news_latest_text02{font-size:13px;line-height:20px;padding:10px 0 0 0}
+
+	.notice_box{padding:20px;margin:15px 0 0 0}
+
+	.popupzone{margin:15px 0 0 0}
+
+
+
+	.business_news_area{padding:50px 20px 50px 20px}
+
+	.business_news_box{padding:20px}
+
+	.business_receipt_box{padding:20px;margin:20px 0 0 0}
+
+	.business_news_list{margin:20px 0 0 0}
+	.business_news_list ul li{margin:10px 0 0 0}
+	.business_news_list ul li span.subject{font-size:13px;line-height:20px}
+	.business_news_list ul li span.date{font-size:12px;line-height:18px}
+
+	.icon_news_state_notice{width:55px;font-size:12px}
+	.icon_news_state_ing{width:55px;font-size:12px}
+	.icon_news_state_complete{width:55px;font-size:12px}
+	.icon_news_state_end{width:55px;font-size:12px}
+
+	.view_detail {display: block;}
+
+	.integrated_network_area{padding:50px 20px 50px 20px}
+
+	.integrated_network_movie_info{margin:30px 0 0 0}
+	.integrated_network_movie_info_img{width:150px;}
+	.integrated_network_movie_info_img img{width:150px; height:210px;}
+	.integrated_network_movie_info_img span.movie_ranking_number{width:30px;padding:6px 0 6px 0;font-size:14px}
+	.integrated_network_movie_info_text{padding:0 0 0 20px}
+	.integrated_network_movie_info_text01{font-size:18px;line-height:24px}
+	.integrated_network_movie_info_text02{font-size:13px;line-height:20px;padding:10px 0 0 0}
+
+	.integrated_network_movie_ranking_table{margin:10px 0 0 0}
+	.integrated_network_movie_ranking_table table{font-size:13px;line-height:20px}
+	.integrated_network_movie_ranking_btn input {margin:15px 0 0 0;}
+
+	.research_statistics_area{padding:50px 20px 50px 20px}
+
+	.research_box{padding:20px}
+
+	.publications_box{margin:15px 0 0 0;padding:20px}
+	.publications_box_list{margin:20px 0 0 0}
+	.publications_box_list_text{float:none;width:100%;padding:10px 0 0 0}
+	.publications_box_list_text01{font-size:16px;line-height:22px}
+	.publications_box_list_text02{font-size:13px;line-height:18px}
+
+
+
+	.worldfilm_news{padding:30px 20px 30px 20px}
+
+	.communication_report{padding:30px 20px 30px 20px}
+
+	.box_report_tabmenu ul li{font-size:14px;line-height:20px}
+
+	.report_list{margin:20px 0 0 0}
+	.report_list ul li{padding:20px;margin:0 0 15px 0}
+	.report_list_text03{font-size:12px;text-align:left;padding:8px 0 0 0}
+
+
+
+	.management_area{padding:30px 20px 30px 20px}
+
+	.standard_contract_box{padding:20px}
+	.standard_contract_list ul li{font-size:13px;line-height:18px;color:#000}
+
+	.unfair_act_box{height:200px;padding:20px;margin:15px 0 0 0}
+	.unfair_act_box_title{font-size:24px;line-height:30px}
+	.unfair_act_box_text{font-size:13px;line-height:20px;width:80%}
+	.unfair_act_box_line{width:30px;height:2px;background-color:#000;margin:20px 0 10px 0}
+	.unfair_act_box_phone{font-size:30px;line-height:36px}
+
+
+
+	.main_quickmenu_area{padding:50px 20px 50px 20px}
+
+	.main_quickmenu{border:1px solid #d8d8d8}
+	.main_quickmenu ul li{float:none;width:100%;border:1px solid #d8d8d8;border-width:0 0 1px 0;padding:30px 15px 30px 15px;text-align:center}
+	.main_quickmenu ul li:nth-child(2n){border-width:0 0 1px 0}
+	.main_quickmenu ul li:last-child{border-width:0 0 0 0}
+	.main_quickmenu_text01{font-size:16px;line-height:22px}
+	.main_quickmenu_text02{font-size:13px;line-height:20px}
+
+
+	.clean_center{margin:15px 0 0 0;padding:0 0 25px 0}
+	.clean_center_text{float:none;width:100%;padding:20px 20px 0 20px}
+	.clean_center_text01{font-size:18px;line-height:24px}
+	.clean_center_text02{font-size:13px;line-height:20px}
+	.clean_center_info{padding:25px 0 0 0}
+	.clean_center_info ul li:first-child{padding:0 0 20px 0}
+	.clean_center_info_text{font-size:18px;line-height:24px;padding:8px 0 0 0}
+
+
+
+	.famaily_box_area{padding:50px 20px 50px 20px}
+	.famaily_box div.swiper-wrapper div{width:250px}
+	.famaily_box div.swiper-wrapper div img{width:250px}
+
+	.famaily_box div.inner {width: 100%;}
+
+
+
+	.banner_area{padding:20px 20px 20px 20px}
+
+
+
+	.fnb_area{padding:12px 30px}
+	.fnb li{font-size:13px}
+
+
+
+	.footer_area{padding:20px 20px 20px 20px}
+	.copyright{margin:0 0 30px 0}
+
+	.btn_familysite{width:100%}
+	.btn_familysite div.btn_familysite_title{width:100%;background:#343434 url('/kofic/comm/img/common/icon_family_arrow.png') 98% 50% no-repeat}
+	.btn_familysite_menu{width:100%}
+
+
+
+	/* SUB */
+	.sub_visual01{height:180px}
+	.visual_title{font-size:36px;line-height:40px;color:#fff;font-weight:500;padding:60px 0 0 0}
+	.visual_text{font-size:14px;line-height:20px;color:#fff;padding:10px 0 0 0}
+
+
+
+	.sub_title_wrap{text-align:center;margin:50px 0 0 0}
+	.sub_title{font-size:30px;line-height:36px;color:#000}
+	.sub_title_line{width:50px;height:1px;background-color:#828282;margin:30px auto 30px auto}
+
+	.sub_contents{padding:0 20px 80px 20px}
+
+    /* NEW 클린신고센터___추가20181120 */
+    .clean_center_box{height:100%}
+    .clean_center_box_top{background:url('/kofic/comm/img/main/icon_clean_center.png') 0 0 no-repeat;padding:0 0 0 120px}
+    .clean_center_box_title{font-size:24px;line-height:30px}
+    .clean_center_box_text{font-size:13px;line-height:20px;padding:5px 0 0 0}
+    .clean_center_box_line{margin:18px 0 18px 0}
+
+    .clean_center_box_info ul{text-align:center}
+    .clean_center_box_info ul li{display:block}
+    .clean_center_box_info ul li:first-child{padding:0 0 20px 0}
+    .clean_center_box_info_icon{float:none}
+    .clean_center_box_info_text{float:none;font-size:18px;line-height:24px;padding:8px 0 0 10px}
+    /* NEW 클린신고센터 */
+
+
+
+    /* NEW 뉴스레터___추가20181120 */
+    .newsletter_box{display:block;height:100%;padding:0 0 25px 0}
+    .newsletter_box_text{display:block;width:100%;padding:20px 20px 0 20px}
+    .newsletter_box_text01{font-size:24px;line-height:30px}
+    .newsletter_box_text02{font-size:13px;line-height:20px;padding:5px 0 0 0}
+    .newsletter_box_btn{float:none;font-size:13px;line-height:20px;background:none;margin:20px 0 0 0;border:1px solid #c2c2c2;display:inline-block}
+    .newsletter_box_btn a{color:#000;padding:10px 20px 10px 20px;display:inline-block}
+    /* NEW 뉴스레터 */
+
+}
+
+
+
+
+
+@media screen and (max-width:480px){
+
+	.top_logo{padding:30px 0 0 15px}
+	.top_logo a img {width: 200px;}
+
+	.celebrate_logo {margin-left: 10px; padding: 30px 0 0 0;}
+	.celebrate_logo img {width: 60px;}
+
+	.top_search_wrap{padding:15px 15px 15px 15px}
+	.top_search_wrap div.top_search_input input{width:85%}
+	.top_search_wrap div.btn_top_search{right:15px}
+	.btn_top_etc{padding:27px 15px 0 0}
+
+	.integrated_network_movie_ranking_btn input {font-size: 12px;}
+
+
+	.main_visual{padding:30px 0 30px 0}
+	.main_visual div.visual_boxoffice{width:300px !important;height:360px;background-size:300px}
+	.main_visual div.visual_introduce{width:300px !important;height:360px;background-size:300px}
+	.main_visual div.visual_research{width:300px !important;height:360px;background-size:300px}
+	.main_visual div.visual_announcement{width:300px !important;height:360px;background-size:300px}
+	.main_visual div.visual_publications{width:300px !important;height:360px;background-size:300px}
+	.main_visual div.visual_business{width:300px !important;height:360px;background-size:300px}
+	.main_visual div.visual_judge{width:300px !important;height:360px;background-size:300px}
+	.main_visual .visual_icon img{width:300px}
+	.main_visual p.visual_text01{font-size:16px;line-height:20px}
+	.main_visual p.visual_text02{font-size:12px;line-height:18px}
+	.main_visual div.visual_btn_view{padding:20px 0 0 25px}
+	.visual_slogan {padding-bottom:10px;}
+
+
+	.section_title_wrap{margin:0 0 15px 0}
+	.section_title{font-size:24px;line-height:30px}
+	.section_text{font-size:12px;line-height:20px;padding:5px 0 0 0}
+
+	.box_top_title{font-size:18px;line-height:24px}
+	.box_tabmenu ul li{font-size:13px;line-height:20px}
+	.box_text{font-size:11px;line-height:16px;padding:5px 0 0 5px}
+	.box_more{padding:3px 0 0 0}
+	.box_more img{width:20px}
+
+	.news_list{margin:15px 0 0 0}
+	.news_list ul li{margin:10px 0 0 0}
+	.news_list ul li span.subject{float:none;font-size:12px;line-height:18px;display:block}
+	.news_list ul li span.date{float:none;font-size:12px;line-height:18px;display:block;padding:0 0 0 10px}
+
+
+
+	.news_area{padding:30px 15px 30px 15px}
+
+	.news_box{padding:15px}
+
+	.news_latest{margin:15px 0 0 0;padding:0 0 20px 0}
+	.news_latest_thumbnail{width:120px}
+	.news_latest_thumbnail img{width:120px; height:84px;}
+	.news_latest_text{padding:0 0 0 15px}
+	.news_latest_text01{font-size:16px;line-height:20px}
+	.news_latest_text02{font-size:12px;line-height:18px;padding:5px 0 0 0}
+
+	.notice_box{padding:15px;margin:10px 0 0 0}
+
+	.popupzone{margin:10px 0 0 0}
+
+	/* .famaily_box div.inner ul li {margin:0 auto 20px;} */
+
+	.business_news_area{padding:30px 15px 30px 15px}
+
+	.business_news_box{padding:15px}
+
+	.business_receipt_box{padding:15px;margin:10px 0 0 0}
+
+	.business_news_list{margin:0 0 0 0}
+	.business_news_list ul li{margin:15px 0 0 0;border-top:1px solid #eee;padding:10px 0 0 0}
+	.business_news_list ul li span.subject{float:none;font-size:12px;line-height:18px;display:block;margin:5px 0 0 0}
+	.business_news_list ul li span.date{float:none;font-size:12px;line-height:18px;display:block}
+
+	.icon_news_state_notice{float:none;width:45px;font-size:12px;display:block;margin-right:0;}
+	.icon_news_state_ing{float:none;width:45px;font-size:12px;display:block;margin-right:0;}
+	.icon_news_state_complete{float:none;width:45px;font-size:12px;display:block;margin-right:0;}
+	.icon_news_state_end{float:none;width:45px;font-size:12px;display:block;margin-right:0;}
+
+
+
+	.integrated_network_area{padding:30px 15px 30px 15px}
+
+	.integrated_network_movie_info{margin:20px 0 0 0; height:350px;}
+	.integrated_network_movie_info_img{width:120px;}
+	.integrated_network_movie_info_img img{width:120px; height:171px;}
+	.integrated_network_movie_info_img span.movie_ranking_number{width:30px;padding:6px 0 6px 0;font-size:14px}
+	.integrated_network_movie_info_text{padding:0 0 0 15px}
+	.integrated_network_movie_info_text01{font-size:16px;line-height:20px}
+	.integrated_network_movie_info_text02{font-size:12px;line-height:18px;padding:5px 0 0 0}
+	
+	.integrated_network_movie_info_definition {padding: 5px 0;}
+	.integrated_network_movie_info_text dl {font-size: 12px; display: table;}
+	.integrated_network_movie_info_text dt, .integrated_network_movie_info_text dd {display: table-cell;}
+
+	.integrated_network_movie_ranking_table{margin:10px 0 0 0}
+	.integrated_network_movie_ranking_table table{font-size:12px;line-height:18px}
+
+	.integrated_network_movie_ranking_table_bottom{font-size:11px}
+	.integrated_network_movie_ranking_btn input {font-size: 12px;}
+
+	.integrated_network_movie_play_stop {margin: 20px 0px 0px 0}
+
+	.research_statistics_area{padding:30px 15px 30px 15px}
+
+	.research_box{padding:15px}
+
+	.publications_box{margin:10px 0 0 0;padding:15px}
+	.publications_box_list{margin:20px 0 0 0}
+	.publications_box_list_text{float:none;width:100%;padding:10px 0 0 0}
+	.publications_box_list_text01{font-size:16px;line-height:20px}
+	.publications_box_list_text02{font-size:12px;line-height:18px}
+
+
+
+	.worldfilm_news{width:100%;height:100%;padding:30px 15px 30px 15px}
+	.worldfilm_list{margin:15px auto 0 auto;width:100%}
+	.worldfilm_list ul li{display:block;width:100%;height:100%}
+	.worldfilm_list ul li:first-child{margin:0 0 15px 0}
+	.worldfilm_list_img{width:100%}
+	.worldfilm_list_img img{width:100%; height:100%;}
+	.worldfilm_list_text01{font-size:12px;line-height:18px}
+	.worldfilm_list_text02{font-size:12px;line-height:18px}
+
+
+
+	.communication_report{padding:30px 15px 30px 15px}
+
+	.box_report_tabmenu ul li{font-size:12px;line-height:18px}
+
+	.box_report_tabmenu{float:none;border:0;border:0;clear:both;padding:10px 0 0 0}
+	.box_report_tabmenu ul{border:1px solid #ccdfea;text-align:center}
+	.box_report_tabmenu ul li{float:none;padding:8px 0;font-size:12px;line-height:18px;width:100%}
+	.box_report_tabmenu ul li:last-child{border-width:1px 0 0 0}
+
+	.report_list{margin:15px 0 0 0}
+	.report_list ul li{padding:20px;margin:0 0 15px 0}
+	.report_list_text01{font-size:14px;line-height:20px}
+	.report_list_text02{font-size:12px;line-height:18px;padding:5px 0 0 0}
+	.report_list_text03{font-size:12px;padding:8px 0 0 0}
+
+
+
+	.management_area{padding:30px 15px 30px 15px}
+
+	.standard_contract_box{padding:15px}
+	.standard_contract_list ul li{font-size:12px;line-height:18px}
+
+	.unfair_act_box{height:230px;padding:15px;margin:10px 0 0 0}
+	.unfair_img img{width:250px}
+	.unfair_act_box_title{font-size:18px;line-height:24px}
+	.unfair_act_box_text{font-size:12px;line-height:18px;width:60%}
+	.unfair_act_box_line{width:25px;height:2px;background-color:#000;margin:15px 0 5px 0}
+	.unfair_act_box_phone{font-size:24px;line-height:30px}
+
+	.unfair_link {position: relative; z-index: 500; background: rgba(212, 212, 212, 0.3)}
+	.unfair_link a {font-size: 12px;}
+
+	.main_quickmenu_area{padding:30px 15px 30px 15px}
+
+	.main_quickmenu ul li{padding:20px 15px 20px 15px}
+	.main_quickmenu_text01{font-size:16px;line-height:20px}
+	.main_quickmenu_text02{font-size:12px;line-height:18px}
+
+
+
+	.etc_business_text{font-size:12px;line-height:18px}
+
+
+
+	.clean_center{margin:10px 0 0 0;padding:0 0 25px 0}
+	.clean_center_icon{height:60px;padding:15px 0 0 0}
+	.clean_center_icon img{width:40px}
+	.clean_center_text{float:none;width:100%;padding:20px 15px 0 15px}
+	.clean_center_text01{font-size:16px;line-height:20px}
+	.clean_center_text02{font-size:12px;line-height:18px}
+	.clean_center_info{padding:25px 0 0 0}
+	.clean_center_info ul li:first-child{padding:0 0 20px 0}
+	.clean_center_info_text{font-size:16px;line-height:20px;padding:8px 0 0 0}
+
+
+
+	.famaily_box_area{padding:30px 15px 30px 15px}
+	.famaily_box div.swiper-wrapper div{width:200px}
+	.famaily_box div.swiper-wrapper div img{width:200px}
+
+
+
+	.banner_area{padding:20px 15px 20px 15px}
+
+
+
+	.fnb_area{padding:12px 30px}
+	.fnb li{font-size:12px}
+
+
+
+	.footer_area{padding:20px 15px 20px 15px}
+	.copyright{font-size:12px;;line-height:18px;margin:0 0 30px 0}
+
+
+
+	/* SUB */
+	.sub_visual01{height:150px}
+	.visual_title{font-size:30px;line-height:36px;color:#fff;font-weight:500;padding:40px 15px 0 15px}
+	.visual_text{font-size:12px;line-height:18px;color:#fff;padding:10px 15px 0 15px}
+
+
+
+	.sub_title_wrap{text-align:center;margin:50px 0 0 0}
+	.sub_title{font-size:24px;line-height:30px}
+	.sub_title_line{width:30px;margin:15px auto 15px auto}
+
+	.sub_contents{padding:0 15px 50px 15px}
+
+
+    /* NEW 클린신고센터___추가20181120 */
+    .clean_center_box_top{padding:0 0 0 110px;background-size:90px}
+    .clean_center_box_title{font-size:18px;line-height:24px}
+    .clean_center_box_text{font-size:12px;line-height:18px;padding:5px 0 0 0}
+    /* NEW 클린신고센터 */
+}

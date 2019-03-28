@@ -15,6 +15,16 @@
 	font-weight: bold;
 }
 
+#rank_num2{
+	background:#8cc400;
+	color: white;
+ 	border-radius: 4px; 
+	text-align: center;
+	width: 10px;
+	font-size: 10px;
+	font-weight: bold;
+}
+
 /* rank 순위 번호 ui */
 
 
@@ -1428,7 +1438,13 @@ body.popBody {background:none;}
 .mainbodytr {height:217px;}
 .mainbody1 {float:left; width:10px;background-color:#7ecf00; width:10px; height:339px;font-size:11px; }
 .mainbody2 {float:left; text-align:center; vertical-align:top; width:218px;font-size:11px; }
-.mainbody3 {float:left; text-align:left;   width:660px;font-size:11px; }
+.mainbody3 {
+	float: left;
+	text-align: left;
+	width: 700px;
+	font-size: 11px;
+}
+
 .mainbody4 {float:right; text-align:right; width:57px;font-size:11px; }
 .mainbody5 {float:left; text-align:left; vertical-align:top; width:170px; padding-right:30px; font-size:11px; }
 .mainbody6 {float:left; text-align:left; width:920px;font-size:11px; }
@@ -1481,8 +1497,14 @@ body.popBody {background:none;}
 
 	/* �쇱씪 諛뺤뒪�ㅽ뵾�� */
 .mainmovie1		{ width:310px; padding:30px 0px 20px 0px; font-size:11px; font-family:Dotum, �뗭�, �뗭�泥�, Gulim, AppleGothic, Sans-serif;}
-.mainmovie3		{padding:10px 0px 0px 0px; font-size:11px; font-family:Dotum, �뗭�, �뗭�泥�, Gulim, AppleGothic, Sans-serif;line-height:0em;}
-.mainmovie3	div	{margin:0px; padding:0px; font-size:11px; font-family:Dotum, �뗭�, �뗭�泥�, Gulim, AppleGothic, Sans-serif;line-height:0em; }
+.mainmovie3 {
+	padding: 10px 0px 0px 0px;
+	font-size: 11px;
+	font-family: Dotum, �뗭�, �뗭�泥�, Gulim, AppleGothic, Sans-serif;
+	line-height: 0em;
+}
+
+.mainmovie3	div {margin:0px; padding:0px; font-size:11px; font-family:Dotum, �뗭�, �뗭�泥�, Gulim, AppleGothic, Sans-serif;line-height:0em; }
 .mainmovie3	table {margin:0px; padding:0px; font-size:11px; font-family:Dotum, �뗭�, �뗭�泥�, Gulim, AppleGothic, Sans-serif;line-height:0em; }
 .mainmovie3	table tbody {margin:0px; padding:0px; font-size:11px; font-family:Dotum, �뗭�, �뗭�泥�, Gulim, AppleGothic, Sans-serif;line-height:0em; }
 .mainmovie3	table tbody tr {margin:0px; padding:0px; font-size:11px; font-family:Dotum, �뗭�, �뗭�泥�, Gulim, AppleGothic, Sans-serif;line-height:0em; }
@@ -1493,9 +1515,48 @@ body.popBody {background:none;}
 .mainmovie3	li	{margin:0px; padding:0px; font-size:11px; font-family:Dotum, �뗭�, �뗭�泥�, Gulim, AppleGothic, Sans-serif;line-height:0em; }
 */
 .mainmovie4		{ width:20px; height:23px; font-size:11px; font-family:Dotum, �뗭�, �뗭�泥�, Gulim, AppleGothic, Sans-serif;line-height:0em;}
-.mainmovie5		{ margin:0px; padding:0px; color:#ffffff; width:120px; text-align:left; padding:0px 0px 0px 7px; letter-spacing:-0.04em; text-overflow:ellipsis; overflow:hidden; white-space:nowrap; font-size:11px; font-family:Dotum, �뗭�, �뗭�泥�, Gulim, AppleGothic, Sans-serif;line-height:0em;}
-.mainmovie5_online	{ margin:0px; padding:0px; color:#ffffff; width:145px; text-align:left; padding:0px 0px 0px 7px; letter-spacing:-0.04em; text-overflow:ellipsis; overflow:hidden; white-space:nowrap; font-size:11px; font-family:Dotum, �뗭�, �뗭�泥�, Gulim, AppleGothic, Sans-serif;line-height:0em;}
-.mainmovie5 a   {letter-spacing:-0.03em !important;}
+.mainmovie5 {
+	margin: 0px;
+	padding: 0px;
+	color: #ffffff;
+	width: 120px;
+	text-align: left;
+	padding: 0px 0px 0px 7px;
+	letter-spacing: -0.04em;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+	font-size: 11px;
+	font-family: Dotum, �뗭�, �뗭�泥�, Gulim, AppleGothic, Sans-serif;
+	line-height: 0em;
+}
+
+.mainmovie5_online { margin:0px; padding:0px; color:#ffffff; width:145px; text-align:left; padding:0px 0px 0px 7px; letter-spacing:-0.04em; text-overflow:ellipsis; overflow:hidden; white-space:nowrap; font-size:11px; font-family:Dotum, �뗭�, �뗭�泥�, Gulim, AppleGothic, Sans-serif;line-height:0em;}
+.mainmovie5 a {
+	letter-spacing: -0.03em !important;
+	color: #ffffff;
+}
+.mainmovie5 a:hover{
+	letter-spacing: -0.03em !important;
+	color: #23c5ac;
+	/* background-color: rgba(0, 0, 0, 0.19); */
+	
+}
+
+.read_back:hover{
+	background: linear-gradient(to right, #3c3c3c57, #3a3a3a);
+}
+
+.B_data2 a {
+	letter-spacing: -0.03em !important;
+	color: #ffffff;
+}
+.B_data2 a:hover{
+	letter-spacing: -0.03em !important;
+	color: #8cc400;
+	
+}
+
 .mainmovie6		{ margin:0px; padding:0px; color:#b3b3b3; width:80px; padding-top:5px;text-align:right; letter-spacing:-0.05em; font-size:11px; font-family:Dotum, �뗭�, �뗭�泥�, Gulim, AppleGothic, Sans-serif;line-height:0em;}
 .mainmovie7		{ margin:0px; padding:0px; color:#808080; width:57px;  text-align:right; letter-spacing:-0.1em; font-size:11px; font-family:Dotum, �뗭�, �뗭�泥�, Gulim, AppleGothic, Sans-serif;line-height:0em;}
 .mainmovie7_online { margin:0px; padding:0px; color:#808080; width:30px;  text-align:right; letter-spacing:-0.1em; font-size:11px; font-family:Dotum, �뗭�, �뗭�泥�, Gulim, AppleGothic, Sans-serif;line-height:0em;}
@@ -1607,8 +1668,21 @@ body.popBody {background:none;}
 
 .H_data		{width:280px;position:absolute; visibility:hidden; background-image:url(/kobis/web/comm/images/main/bg.png);}
 .H_data1	{width:20px; height:23px; font-size:11px; font-family:Dotum, �뗭�, �뗭�泥�, Gulim, AppleGothic, Sans-serif;}
-.H_data2	{ color:#f64905; margin:0px; width:137px; text-align:left; padding:0px 0px 0px 2px; letter-spacing:-0.09em; text-overflow:ellipsis; overflow:hidden; white-space:nowrap; font-size:11px; font-family:Dotum, �뗭�, �뗭�泥�, Gulim, AppleGothic, Sans-serif;}
-.H_data2 a  {letter-spacing:-0.09em !important;}
+.H_data2 {
+	color: #f64905;
+	margin: 0px;
+	width: 137px;
+	text-align: left;
+	padding: 0px 0px 0px 2px;
+	letter-spacing: -0.09em;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+	font-size: 11px;
+	font-family: Dotum, �뗭�, �뗭�泥�, Gulim, AppleGothic, Sans-serif;
+}
+
+.H_data2 a {letter-spacing:-0.09em !important;}
 .H_data3	{ color:#f64905; margin:0px; width:78px; text-align:right; letter-spacing:-0.05em; font-size:11px; font-family:Dotum, �뗭�, �뗭�泥�, Gulim, AppleGothic, Sans-serif;}
 .H_data4	{ color:#f64905; margin:0px; padding:0px;  width:57px;  text-align:right; letter-spacing:-0.1em; font-size:11px; font-family:Dotum, �뗭�, �뗭�泥�, Gulim, AppleGothic, Sans-serif;}
 .H_data5	{ color:#f64905; margin:0px; padding:0px 0px 3px 0px;  width:0px;  text-align:left; float:left;  letter-spacing:-0.01em; font-size:11px; font-family:Dotum, �뗭�, �뗭�泥�, Gulim, AppleGothic, Sans-serif;}
@@ -1623,7 +1697,7 @@ body.popBody {background:none;}
 .mainrelease1	{ background-color:#ffffff; border:#e6e6e6 solid 1px; padding:15px; height:205px;}
 
  /* 理쒖떊 媛쒕큺�� */
-.mainlist_bg1	{ background-color:#f5f7f7; width:100%; height:28px;}
+.mainlist_bg1	{ background-color:#f5f7f7; width:300px; height:28px;}
 .mainlist_bg2 	{ background-color:#ffffff; width:100%; height:28px;}
 .mainlist_dot 	{ background-image:url(../../comm/images/main/dot.png); height:1px;}
 .mainlist1 {  /* 인기검색어 리스트 글자!!! */
