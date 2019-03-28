@@ -754,8 +754,7 @@
 																<div class="Row-s1apwm9x-0 lowZpE">
 																	<header
 																		class="SectionWithHeader__Header-s1eyxltb-1 cuiACK">
-																		<h2 class="SectionWithHeader__Title-s1eyxltb-2 kwjefp">기본
-																			정보</h2>
+																		<h2 class="SectionWithHeader__Title-s1eyxltb-2 kwjefp">기본정보</h2>
 																		
 																			<div
 																				class="SectionWithHeader__TopRight-s1eyxltb-3 bZaEfL">
@@ -776,6 +775,8 @@
 																		<div
 																			class="ContentOverviewSection__Summary-s1yclw10-1 kdMFQv">${map.DRAMA_NAME}
 																			<br> <span
+																				class="ContentOverviewSection__OverviewMeta-s1yclw10-2 bvwFIW">${map.DRAMA_DIRECTOR}&nbsp;감독</span>
+																			<br><span
 																				class="ContentOverviewSection__OverviewMeta-s1yclw10-2 bvwFIW">${map.DRAMA_DATE}
 																				· ${map.DRAMA_CHANNEL} · ${map.DRAMA_GENRE}</span><br>
 																			<span
@@ -792,7 +793,7 @@
 																<div class="Row-s1apwm9x-0 lowZpE">
 																	<header
 																		class="SectionWithHeader__Header-s1eyxltb-1 cuiACK">
-																		<h2 class="SectionWithHeader__Title-s1eyxltb-2 kwjefp">출연/제작</h2>
+																		<h2 class="SectionWithHeader__Title-s1eyxltb-2 kwjefp">출연</h2>
 																	</header>
 																</div>
 															</div>
@@ -806,29 +807,7 @@
 																			<div class="Row-s1apwm9x-0 lowZpE">
 																				<ul
 																					class="ContentPeopleSection__PeopleStackableUl-s1qdagi5-0 dCFwKD StackableUl__StyledStackableUl-gafxvv-1 dYcNoO VisualUl-s1vzev56-0 hgAYVH">
-																					<li class="ListItemWithProfilePhoto__Self-s1a35ruo-0 GRmjI">
-																					<a lng="ko-KR"
-																						class="InnerPartOfListWithImage__LinkSelf-s11a1hqv-1 gmbtJD"
-																						title="제임스 카메론" href="/ko-KR/people/178274">
-																						<div class="InnerPartOfListWithImage__ImageBlock-s11a1hqv-3 kXgAWr">
-																								<div class="ProfilePhoto__Self-s1v3isfu-1 cKevdV RoundedImageBlock-k5m4n5-0 gUZYtN">
-																									<div class="ProfilePhoto__ProfilePhotoImage-s1v3isfu-0 khTHxj"></div>
-																									<div class="ProfilePhoto__DefaultImageContainer-s1v3isfu-2 kPGxuy">
-																										<img class="defaultImage__ProfileImg-s1kn91bx-1 iaxVtx kPGxuy"
-																											src="/brw/resources/images/actor/${map.DRAMA_DIRECTOR}.jpg" >
-																									</div>
-																								</div>
-																							</div>
-																							<div class="InnerPartOfListWithImage__Info-s11a1hqv-5 hufKbr">
-																								<div class="InnerPartOfListWithImage__Titles-s11a1hqv-4 jtpmaI">
-																									<div class="ListItemWithProfilePhoto__Title-s1a35ruo-1 cSGZfW">${map.DRAMA_DIRECTOR}</div>
-																									<div
-																										class="ListItemWithProfilePhoto__Subtitle-s1a35ruo-2 cbqRVo">감독</div>
-																								</div>
-																								<div></div>
-																							</div></a></li>
-																							
-																					<c:forEach items="${actor}" var="act">
+																						<c:forEach items="${actor}" var="act">
 																					<li class="ListItemWithProfilePhoto__Self-s1a35ruo-0 GRmjI">
 																					<a lng="ko-KR" class="InnerPartOfListWithImage__LinkSelf-s11a1hqv-1 gmbtJD"
 																						title="샘 워싱턴" href="/ko-KR/people/114764"><div class="InnerPartOfListWithImage__ImageBlock-s11a1hqv-3 kXgAWr">
