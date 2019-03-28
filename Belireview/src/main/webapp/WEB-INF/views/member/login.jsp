@@ -84,6 +84,7 @@ function fn_login() {
 								<button type="submit" id="로그인" value="로그인"
 									class="btn_type btn_primary" onclick="return fn_login()">
 									<span>로그인</span>
+									<input type="hidden" name="uri" value="${header.referer}">
 								</button>
 							</div>
 						</form>	
