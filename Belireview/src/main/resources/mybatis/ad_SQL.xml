@@ -84,6 +84,10 @@
 		update AD_like set AL_grade  =#{RATING} where AD_like_no=#{AD_NO} and id=#{ID}		
 	</delete>
 	
+	<update id="updateReadCount" parameterType="hashmap">
+		UPDATE AD SET AD_READCOUNT = AD_READCOUNT+1 WHERE AD_NO=#{AD_NO}
+	</update>
+	
 	<select id="grade" parameterType="hashmap" resultType="int">
    		select count(*) from AD_like where AD_like_no=#{AD_NO}
 	</select>

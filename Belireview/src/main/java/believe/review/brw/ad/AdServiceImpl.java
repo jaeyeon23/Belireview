@@ -94,5 +94,9 @@ public class AdServiceImpl implements AdService{
 	public Map<String, Object> commentOne(Map<String, Object> map) throws Exception{
 		return adDAO.commentOne(map);
 	}
+	@Override
+	public void updateReadCount(Map<String, Object> map) throws Exception{
+		adDAO.updateReadCount(map);
+	}
 	
 }

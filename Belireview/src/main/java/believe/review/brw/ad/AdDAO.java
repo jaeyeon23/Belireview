@@ -84,4 +84,7 @@ import believe.review.brw.common.common.AbstractDAO;
 		public Map<String, Object> commentOne(Map<String, Object> map) throws Exception{
 			return(Map<String,Object>)selectOne("ad_comment.commentOne",map);
 		}
+		public void updateReadCount(Map<String, Object> map) throws Exception{
+			update("ad.updateReadCount",map);
+		}
 }

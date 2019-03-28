@@ -50,6 +50,18 @@
 					var type = $(this).attr('value2');
 					like(no,type);
 				});
+				var wd = "${wishD}".split(',');
+				var wm = "${wishM}".split(',');
+				for(var i=0;i<wd.length;i++){
+					var b = $('a[value3=d'+wd[i]+']');
+					$(b).css('color','#74d2f7');
+					$(b).css('background','#ffffff');
+				}
+				for(var i=0;i<wm.length;i++){
+					var b = $('a[value3=m'+wm[i]+']');
+					$(b).css('color','#74d2f7');
+					$(b).css('background','#ffffff');
+				}
 			}
 		}); //작동 버튼 끝 
 		
@@ -61,6 +73,32 @@
 				data : (type=="d") ? {DRAMA_NO:no,ID:id}:{MOVIE_NO:no ,ID:id},
 				url:"<c:url value='/like.br?${_csrf.parameterName}=${_csrf.token}'/>",
 				success : function(result){
+					if(result.DRAMA_NO!=null){
+						var wd= result.DRAMA_NO.split(',');
+						for(var i=0;i<wd.length;i++){
+							var a = $('a[value='+no+']');
+							if(wd[i]==a.attr('value')){
+								$(a).css('color','#74d2f7');
+								$(a).css('background','#ffffff');
+							}else{
+								$(a).css('color',"#ffffff");
+								$(a).css('background','#74d2f7');
+							}
+						}
+					}
+					if(result.MOVIE_NO!=null){
+						var wm= result.MOVIE_NO.split(',');
+						for(var i=0;i<wm.length;i++){
+							var b = $('a[value='+no+']');
+							if(wm[i]==b.attr('value')){
+								$(b).css('color','#74d2f7');
+								$(b).css('background','#ffffff');
+							}else{
+								$(b).css('color',"#ffffff");
+								$(b).css('background','#74d2f7');
+							}
+						}
+					}
 				}
 			})
 		}
@@ -80,12 +118,12 @@
 							<div class="col-md-6">
 								<div class="slide-offers-left">
 									<div class="slide-offers-title">
-										<span>드라마</span>
+										<span>드라마</span><br />도깨비
 									</div>
 									<p>
-										<font color="black">도깨비<br />arraival in believe store</font>
+										<font color="black">arraival in believe store</font>
 									</p>
-									<a href="/brw/drama/dramaList.br" class="btn btn-blue">리뷰보러가기</a>
+									<a href="/brw/drama/dramaDetail.br?DRAMA_NO=66" class="btn btn-blue">리뷰보러가기</a>
 								</div>
 							</div>
 							<!-- 
@@ -141,7 +179,7 @@
 									<p>
 										New & Fvhresh collection<br />arraival in believe store
 									</p>
-									<a href="/brw/ad/adList.br" class="btn btn-blue">리뷰보러가기</a>
+									<a href="/brw/movie/movieDetail.br?MOVIE_NO=341" class="btn btn-blue">리뷰보러가기</a>
 								</div>
 							</div>
 							<div class="col-md-6"></div>
@@ -166,7 +204,7 @@
 								<div class="cat-desc">
 									<div class="cat-inner">
 										<div class="cat-title">
-											<font color="white">MOVIE</font>
+											<font color="white" style="font-family: fantasy;">영화</font>
 										</div>
 										<a href="/brw/movie/movieList.br" class="btn btn-border"><font color="white">Show Now</font></a>
 									</div>
@@ -180,7 +218,7 @@
 								<div class="cat-desc">
 									<div class="cat-inner">
 										<div class="cat-title">
-											DRAMA
+											<font style="font-family: fantasy;">드라마</font>
 										</div>
 										<a href="/brw/drama/dramaList.br" class="btn btn-border">Show Now</a>
 									</div>
@@ -194,7 +232,7 @@
 								<div class="cat-desc">
 									<div class="cat-inner">
 										<div class="cat-title">
-											ADVERTISEMENT
+											<font style="font-family: fantasy;">광고</font>
 										</div>
 										<a href="/brw/ad/adList.br" class="btn btn-border">Show Now</a>
 									</div>
@@ -224,20 +262,20 @@
 							<!-- drama start -->
 							<div role="tabpanel" class="tab-pane fade in active" id="1"	aria-labelledby="cat-1">
 								<div class="row clearfix">
-									<c:forEach items="${drama_list }" var="list" varStatus="status">
+									<c:forEach items="${drama_list}" var="list" varStatus="status">
 										<div class="col-md-3 prdct-grid">
 											<div class="product-fade">
 												<div class="product-fade-wrap">
 													<%-- <div id="product-image${status.index + 1 }" class="owl-carousel owl-theme"> --%>
-		                                        	<c:forTokens items="${list.DRAMA_POSTER_IMAGE }" var="image" delims=", ">
+		                                        	<c:forTokens items="${list.DRAMA_POSTER_IMAGE}" var="image" delims=", ">
 			                                            <div class="item"><img src="/brw/resources/images/drama/poster/${image }" alt="" class="img-responsive"></div>
 			                                        </c:forTokens>
 			                                        <!-- </div> -->
 													<div class="product-fade-ct">
 			                                        	<div class="product-fade-control">
 				                                            <div class="to-left">
-				                                                <a href="" class="vv" value="${list.DRAMA_NO}" value2="d"><i class="fa fa-heart"></i></a>
-				                                                <a href="/brw/mainSearch.br?searchText=${list.DRAMA_NAME}" ><i class="fa fa-search"></i></a>
+				                                                <a href="" class="vv" value="${list.DRAMA_NO}" value2="d" value3="d${list.DRAMA_NO}"><i class="fa fa-heart"></i></a>
+				                                                <a href="/brw/mainSearch.br?GENRE=${list.DRAMA_GENRE}" ><i class="fa fa-search"></i></a>
 				                                            </div>
 			                                                <div class="clearfix"></div>
 			                                               	<a href="/brw/drama/dramaDetail.br?DRAMA_NO=${list.DRAMA_NO}" class="btn btn-to-cart"><span>자세히 보기</span><div class="clearfix"></div></a>
@@ -269,8 +307,8 @@
 													<div class="product-fade-ct">
 			                                        	<div class="product-fade-control">
 				                                            <div class="to-left">
-				                                                <a href="" class="vv" value="${list.MOVIE_NO}" value2="m"><i class="fa fa-heart"></i></a>
-				                                                <a href="/brw/mainSearch.br?searchText=${list.MOVIE_NAME}" ><i class="fa fa-search"></i></a>
+				                                                <a href="" class="vv" value="${list.MOVIE_NO}" value2="m" value3="m${list.MOVIE_NO}"><i class="fa fa-heart"></i></a>
+				                                                <a href="/brw/mainSearch.br?GENRE=${list.MOVIE_GENRE}" ><i class="fa fa-search"></i></a>
 				                                            </div>
 			                                                <div class="clearfix"></div>
 			                                               	<a href="/brw/movie/movieDetail.br?MOVIE_NO=${list.MOVIE_NO}" class="btn btn-to-cart"><span>자세히 보기</span><div class="clearfix"></div></a>
@@ -295,14 +333,14 @@
 											<div class="product-fade">
 												<div class="product-fade-wrap">
 													<%-- <div id="product-image${status.index + 1 }" class="owl-carousel owl-theme"> --%>
-		                                        	<c:forTokens items="${list.AD_POSTER_IMAGE }" var="image" delims=", ">
+		                                        	<c:forTokens items="${list.AD_POSTER_IMAGE}" var="image" delims=", ">
 			                                            <div class="item"><img src="${list.AD_POSTER_IMAGE}" alt="" class="img-responsive"></div>
 			                                        </c:forTokens>
 			                                        <!-- </div> -->
 													<div class="product-fade-ct">
 			                                        	<div class="product-fade-control">
 				                                            <div class="to-left">
-				                                                <a href="/brw/mainSearch.br?searchText=${list.AD_NAME}" ><i class="fa fa-search"></i></a>
+				                                                <a href="/brw/mainSearch.br?GENRE=${list.AD_COMPANY}" ><i class="fa fa-search"></i></a>
 				                                            </div>
 			                                                <div class="clearfix"></div>
 			                                               	<a href="/brw/ad/adDetail.br?AD_NO=${list.AD_NO}" class="btn btn-to-cart"><span>자세히 보기</span><div class="clearfix"></div></a>
@@ -335,60 +373,60 @@
 					<!-- Slider -->
 					<div id="brand-carousel" class="owl-carousel owl-theme">
 						<div class="item">
-							<a href = "http://www.kbs.co.kr/">	
+							<a href = "http://www.kbs.co.kr/" target="_blank">	
 							<img src="/brw/resources/images/brand/kbs.png" alt="slide-1"
 								class="img-responsive"></a>
 						</div>
 						<div class="item">
-							<a href = "https://www.sbs.co.kr/">	
+							<a href = "https://www.sbs.co.kr/" target="_blank">	
 							<img src="/brw/resources/images/brand/sbs.png" alt="slide-1"
 								class="img-responsive">
 								</a>
 						</div>
 						<div class="item">
-							<a href = "http://m.imbc.com/">	
+							<a href = "http://m.imbc.com/" target="_blank">	
 							<img src="/brw/resources/images/brand/mbc.jpg" alt="slide-1"
 								class="img-responsive">
 								</a>
 						</div>
 						<div class="item">
-							<a href = "http://jtbc.joins.com/">
+							<a href = "http://jtbc.joins.com/" target="_blank">
 							<img src="/brw/resources/images/brand/jtbc.png" alt="slide-1"
 								class="img-responsive">
 								</a>
 						</div>
 						<div class="item">
-							<a href = "http://tvn.tving.com/tvn">
+							<a href = "http://tvn.tving.com/tvn" target="_blank">
 							<img src="/brw/resources/images/brand/tvn.png" alt="slide-1"
 								class="img-responsive">
 								</a>
 						</div>
 						<div class="item">
-							<a href = "http://base.cjmall.com/">
+							<a href = "http://base.cjmall.com/" target="_blank">
 							<img src="/brw/resources/images/brand/cjenm.png" alt="slide-1"
 								class="img-responsive">
 								</a>
 						</div>
 						<div class="item">
-							<a href = "https://display.ellotte.com/">
+							<a href = "https://www.googleadservices.com/" target="_blank">
 							<img src="/brw/resources/images/brand/lotte.png" alt="slide-1"
 								class="img-responsive">
 								</a>
 						</div>
 						<div class="item">
-							<a href = "https://www.netflix.com/">
+							<a href = "https://www.netflix.com/" target="_blank">
 							<img src="/brw/resources/images/brand/netfilx.png" alt="slide-1"
 								class="img-responsive">
 								</a>
 						</div>
 						<div class="item">
-						<a href = "https://play.watcha.net/">
+						<a href = "https://play.watcha.net/" target="_blank">
 							<img src="/brw/resources/images/brand/watcha.png" alt="slide-1"
 								class="img-responsive">
 								</a>
 						</div>
 						<div class="item">
-						<a href = "https://its-new.co.kr/">
+						<a href = "https://its-new.co.kr/" target="_blank">
 							<img src="/brw/resources/images/brand/new.png" alt="slide-1"
 								class="img-responsive">
 								</a>

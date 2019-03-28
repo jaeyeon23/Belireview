@@ -17,6 +17,7 @@
 		 }
 		
   });
+  
   function openSearch(){
 		var comSubmit = new ComSubmit();
        comSubmit.setUrl("<c:url value='/mainSearch.br?${_csrf.parameterName}=${_csrf.token}' />");
@@ -36,7 +37,9 @@
 				$.ajax({
 					url: "/brw/auto.br?${_csrf.parameterName}=${_csrf.token}",
 					dataType: "json",
-					data:{searchValue: request.term},
+					data:{
+						searchValue: request.term
+					},       
 					success: function(args){
 						response(
 							$.map(args, function(item) {
@@ -106,6 +109,7 @@
                                   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                                       <ul class="nav navbar-nav">
                                           <li class="active"><a href="/brw/main.br">Home <span class="sr-only">(current)</span></a></li>
+                                          <li><a href="/brw/rank.br">Rank</a></li>
                                           <li ><a href="/brw/drama/dramaList.br" class="mmenu" id="menu1" onmouseover="mopen(1);" onmouseout="mclosetime();">Drama</a>
                                           </li>
                                           <li><a class="movie_tab" href="/brw/movie/movieList.br" class="mmenu" id="menu2" onmouseover="mopen(2);" onmouseout="mclosetime();">Movie</a></li>
@@ -135,8 +139,8 @@
 										<dt>실시간 급상승 검색어</dt>
 										<dd>
 											<ol>
-												<c:forEach items="${realtime }" var="list" varStatus="stat">
-													<li><font id="index">${stat.index + 1}</font>  ${list.SEARCH_TEXT }</li>
+												<c:forEach items="${realtime }" var="list" varStatus="stat">							
+													<li><font id="index">${stat.index + 1}</font> ${list.SEARCH_TEXT }</li>
 												</c:forEach>
 											</ol>
 										</dd>
