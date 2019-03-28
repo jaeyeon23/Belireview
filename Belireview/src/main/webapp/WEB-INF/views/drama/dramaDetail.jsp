@@ -809,8 +809,8 @@
 																					class="ContentPeopleSection__PeopleStackableUl-s1qdagi5-0 dCFwKD StackableUl__StyledStackableUl-gafxvv-1 dYcNoO VisualUl-s1vzev56-0 hgAYVH">
 																						<c:forEach items="${actor}" var="act">
 																					<li class="ListItemWithProfilePhoto__Self-s1a35ruo-0 GRmjI">
-																					<a lng="ko-KR" class="InnerPartOfListWithImage__LinkSelf-s11a1hqv-1 gmbtJD"
-																						title="샘 워싱턴" href="/ko-KR/people/114764"><div class="InnerPartOfListWithImage__ImageBlock-s11a1hqv-3 kXgAWr">
+																					<a lng="ko-KR" class="InnerPartOfListWithImage__LinkSelf-s11a1hqv-1 gmbtJD">
+																					<div class="InnerPartOfListWithImage__ImageBlock-s11a1hqv-3 kXgAWr">
 																								<div class="ProfilePhoto__Self-s1v3isfu-1 cKevdV RoundedImageBlock-k5m4n5-0 gUZYtN">
 																									<div class="ProfilePhoto__ProfilePhotoImage-s1v3isfu-0 fsVfFi"></div>
 																									<div class="ProfilePhoto__DefaultImageContainer-s1v3isfu-2 kPGxuy">
