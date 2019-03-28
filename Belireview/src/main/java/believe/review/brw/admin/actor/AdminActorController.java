@@ -69,9 +69,9 @@ public class AdminActorController {
 		totalCount = admin.size();
 		
 		if(orderby == null || searchNum == null) {
-			page = new Paging(currentPage, totalCount, blockCount, blockPage, "/brw/admin/users");
+			page = new Paging(currentPage, totalCount, blockCount, blockPage, "/brw/admin/actor");
 		}else {
-			page = new Paging(currentPage, totalCount, blockCount, blockPage, "/brw/admin/users", orderby, searchNum, searchBox);
+			page = new Paging(currentPage, totalCount, blockCount, blockPage, "/brw/admin/actor", orderby, searchNum, searchBox);
 		}
 		
 		pagingHtml = page.getPagingHtml().toString();
