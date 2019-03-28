@@ -36,9 +36,7 @@
 				$.ajax({
 					url: "/brw/auto.br?${_csrf.parameterName}=${_csrf.token}",
 					dataType: "json",
-					data:{
-						searchValue: request.term
-					},
+					data:{searchValue: request.term},
 					success: function(args){
 						response(
 							$.map(args, function(item) {

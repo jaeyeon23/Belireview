@@ -370,7 +370,7 @@
 								</a>
 						</div>
 						<div class="item">
-							<a href = "https://www.googleadservices.com/">
+							<a href = "https://display.ellotte.com/">
 							<img src="/brw/resources/images/brand/lotte.png" alt="slide-1"
 								class="img-responsive">
 								</a>
