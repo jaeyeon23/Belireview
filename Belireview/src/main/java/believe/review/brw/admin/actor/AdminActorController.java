@@ -138,6 +138,16 @@ public class AdminActorController {
 	public String actorModify(HttpServletRequest request, CommandMap commandMap, Model model) throws Exception{
 		Map<String, Object> map = null;
 		
+		commandMap.put("actor_page", "actor_page");
+		
+		if(commandMap.get("movie_textarea").toString().equals("")) {
+			commandMap.put("movie_textarea", "");
+		}
+		
+		if(commandMap.get("drama_textarea").toString().equals("")) {
+			commandMap.put("drama_textarea", "");
+		}
+		
 		if(commandMap.get("show_file") != null) {
 			map = adminActorService.selectActorOne((String)commandMap.get("no"));
 			
@@ -156,6 +166,9 @@ public class AdminActorController {
 			file = new File(filePath + fileName2);
 			multipartFile.transferTo(file);
 		}
+		
+		commandMap.put("ACTOR_NAME", commandMap.get("name").toString());
+		commandMap.put("ACTOR_NO", commandMap.get("no").toString());
 		
 		adminActorService.updateActorOne(commandMap.getMap());
 		

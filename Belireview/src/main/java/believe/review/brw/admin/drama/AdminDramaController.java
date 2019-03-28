@@ -124,27 +124,43 @@ public class AdminDramaController {
 		
 		adminDramaService.writeDrama(commandMap.getMap());
 
-		String textarea = (String)commandMap.get("drama_textarea");
-		String[] actor_list = textarea.split(", ");
-		
-		for(String actor : actor_list) {
-			Map<String, Object> actor_map = adminActorService.selectActorOne(actor);
+		if(commandMap.get("drama_textarea") != null && commandMap.get("drama_textarea").toString().trim().length() != 0) {
+			String textarea = (String)commandMap.get("drama_textarea");
+			String[] actor_list = textarea.split(", ");
 			
-			String drama_textarea = (String)actor_map.get("ACTOR_DRAMA");
-			String[] drama_list = drama_textarea.split(", ");
-			int count = 0;
-			
-			for(String drama : drama_list) {
-				if(drama.equals((String)commandMap.get("no"))) {
-					count = 1;
-					
-					break;
+			for(String actor : actor_list) {
+				Map<String, Object> actor_map = adminActorService.selectActorOne(actor);
+				
+				String drama_textarea = (String)actor_map.get("ACTOR_DRAMA");
+				String[] drama_list = null;
+				
+				if(drama_textarea != null) {
+					drama_list = drama_textarea.split(", ");
 				}
-			}
-			
-			if(count == 0) {
-				actor_map.put("drama_textarea", actor_map.get("ACTOR_DRAMA") + ", " + commandMap.get("no"));
-				adminActorService.updateActorOne(actor_map);
+				
+				int count = 0;
+				
+				if(drama_list != null) {
+					for(String drama : drama_list) {
+						if(drama.equals(commandMap.get("no").toString())) {
+							count = 1;
+							
+							break;
+						}
+					}
+				}else {
+					count = 0;
+				}
+				
+				if(count == 0) {
+					if(drama_list == null) {
+						actor_map.put("drama_textarea", commandMap.get("no"));
+					}else {
+						actor_map.put("drama_textarea", actor_map.get("ACTOR_DRAMA") + ", " + commandMap.get("no"));
+					}
+					
+					adminActorService.updateActorOne(actor_map);
+				}
 			}
 		}
 		
@@ -202,29 +218,49 @@ public class AdminDramaController {
 		adminDramaService.updateDramaOne(commandMap.getMap());
 		
 		String textarea = (String)commandMap.get("drama_textarea");
-		String[] actor_list = textarea.split(", ");
+		String[] actor_list = null;
 		
-		for(String actor : actor_list) {
-			Map<String, Object> actor_map = adminActorService.selectActorOne(actor);
-			
-			String drama_textarea = (String)actor_map.get("ACTOR_DRAMA");
-			String[] drama_list = drama_textarea.split(", ");
-			int count = 0;
-			
-			for(String drama : drama_list) {
-				if(drama.equals((String)commandMap.get("no"))) {
-					count = 1;
-					
-					break;
-				}
-			}
-			
-			if(count == 0) {
-				actor_map.put("drama_textarea", actor_map.get("ACTOR_DRAMA") + ", " + commandMap.get("no"));
-				adminActorService.updateActorOne(actor_map);
-			}
+		if(textarea.trim().length() > 0) {
+			actor_list = textarea.split(", ");
 		}
 		
+		
+		if(actor_list != null) {
+			for(String actor : actor_list) {
+				Map<String, Object> actor_map = adminActorService.selectActorOne(actor);
+				
+				String drama_textarea = (String)actor_map.get("ACTOR_DRAMA");
+				String[] drama_list = null;
+				
+				if(drama_textarea != null) {
+					drama_list = drama_textarea.split(", ");
+				}
+				
+				int count = 0;
+				
+				if(drama_list != null) {
+					for(String drama : drama_list) {
+						if(drama.equals(commandMap.get("no").toString())) {
+							count = 1;
+							
+							break;
+						}
+					}
+				}else {
+					count = 0;
+				}
+				
+				if(count == 0) {
+					if(drama_list == null) {
+						actor_map.put("drama_textarea", commandMap.get("no"));
+					}else {
+						actor_map.put("drama_textarea", actor_map.get("ACTOR_DRAMA") + ", " + commandMap.get("no"));
+					}
+					
+					adminActorService.updateActorOne(actor_map);
+				}
+			}
+		}
 		return "redirect:/admin/drama.br";
 	}
 

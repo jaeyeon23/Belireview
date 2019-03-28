@@ -124,8 +124,6 @@ public class AdminMovieController {
 				
 		adminMovieService.writeMovie(commandMap.getMap());
 		
-		System.out.println("gsaegasegaesgsagsea ================== " + (String)commandMap.get("movie_textarea"));
-		
 		if(commandMap.get("movie_textarea") != "" && commandMap.get("movie_textarea") != null && commandMap.get("movie_textarea").toString().trim().length() != 0) {
 			String textarea = (String)commandMap.get("movie_textarea");
 			String[] actor_list = textarea.split(", ");
@@ -134,23 +132,36 @@ public class AdminMovieController {
 				Map<String, Object> actor_map = adminActorService.selectActorOne(actor);
 				
 				String movie_textarea = (String)actor_map.get("ACTOR_MOVIE");
-				String[] movie_list = movie_textarea.split(", ");
+				String[] movie_list = null;
+				
+				if(movie_textarea != null) {
+					movie_list = movie_textarea.split(", ");
+				}
+
 				int count = 0;
 				
-				for(String movie : movie_list) {
-					if(movie.equals((String)commandMap.get("no"))) {
-						count = 1;
-						
-						break;
+				if(movie_list != null) {
+					for(String movie : movie_list) {
+						if(movie.equals((String)commandMap.get("no"))) {
+							count = 1;
+							
+							break;
+						}
 					}
+				}else {
+					count = 0;
 				}
 				
 				if(count == 0) {
-					actor_map.put("movie_textarea", actor_map.get("ACTOR_MOVIE") + ", " + commandMap.get("no"));
+					if(movie_list == null) {
+						actor_map.put("movie_textarea", commandMap.get("no"));
+					}else{
+						actor_map.put("movie_textarea", actor_map.get("ACTOR_MOVIE") + ", " + commandMap.get("no")); 
+ 					}
+					
 					adminActorService.updateActorOne(actor_map);
 				}
 			}
-		
 		}
 		return "redirect:/admin/movie.br";
 	}
@@ -206,29 +217,48 @@ public class AdminMovieController {
 		adminMovieService.updateMovieOne(commandMap.getMap());
 		
 		String textarea = (String)commandMap.get("movie_textarea");
-		String[] actor_list = textarea.split(", ");
+		String[] actor_list = null;
 		
-		for(String actor : actor_list) {
-			Map<String, Object> actor_map = adminActorService.selectActorOne(actor);
-			
-			String movie_textarea = (String)actor_map.get("ACTOR_MOVIE");
-			String[] movie_list = movie_textarea.split(", ");
-			int count = 0;
-			
-			for(String movie : movie_list) {
-				if(movie.equals((String)commandMap.get("no"))) {
-					count = 1;
+		if(textarea.trim().length() > 0) {
+			actor_list = textarea.split(", ");
+		}
+
+		if(actor_list != null) {
+			for(String actor : actor_list) {
+				Map<String, Object> actor_map = adminActorService.selectActorOne(actor);
+				
+				String movie_textarea = (String)actor_map.get("ACTOR_MOVIE");
+				String[] movie_list = null;
+				
+				if(movie_textarea != null) {
+					movie_list = movie_textarea.split(", ");
+				}
+				
+				int count = 0;
+				
+				if(movie_list != null) {
+					for(String movie : movie_list) {
+						if(movie.equals((String)commandMap.get("no"))) {
+							count = 1;
+							
+							break;
+						}
+					}
+				}else {
+					count = 0;
+				}
+
+				if(count == 0) {
+					if(movie_list == null) {
+						actor_map.put("movie_textarea", commandMap.get("no"));
+					}else {
+						actor_map.put("movie_textarea", actor_map.get("ACTOR_MOVIE") + ", " + commandMap.get("no"));
+					}
 					
-					break;
+					adminActorService.updateActorOne(actor_map);
 				}
 			}
-			
-			if(count == 0) {
-				actor_map.put("movie_textarea", actor_map.get("ACTOR_MOVIE") + ", " + commandMap.get("no"));
-				adminActorService.updateActorOne(actor_map);
-			}
 		}
-		
 		return "redirect:/admin/movie.br";
 	}
 	
