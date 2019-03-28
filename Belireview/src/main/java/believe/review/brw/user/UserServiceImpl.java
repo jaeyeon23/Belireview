@@ -98,6 +98,34 @@ public class UserServiceImpl implements UserService{
 		userDAO.deleteUserOne(map);
 	}
 
+	@Override
+	public int totalMyMovie(Map<String, Object> map) throws Exception {
+		return userDAO.totalMyMovie(map);
+	}
+
+	@Override
+	public int totalMyDrama(Map<String, Object> map) throws Exception {
+		return userDAO.totalMyDrama(map);
+	}
+
+	@Override
+	public int totalMyAd(Map<String, Object> map) throws Exception {
+		return userDAO.totalMyAd(map);
+	}
+
+	@Override
+	public String totalMyMovieLike(Map<String, Object> map) throws Exception {
+		return userDAO.totalMyMovieLike(map);
+	}
+
+	@Override
+	public String totalMyDramaLike(Map<String, Object> map) throws Exception {
+		return userDAO.totalMyDramaLike(map);
+	}
+	
+	
+	
+
 }
 
 

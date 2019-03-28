@@ -13,13 +13,15 @@
             e.preventDefault();
             openSearch();
 		});
-		
+		  function enter(){
+			  $("a[name='search']").trigger('click');
 		
   });
   function openSearch(){
 		var comSubmit = new ComSubmit();
-       comSubmit.setUrl("<c:url value='/mainSearch.br' />");
+       comSubmit.setUrl("<c:url value='/mainSearch.br?${_csrf.parameterName}=${_csrf.token}' />");
        comSubmit.addParam("searchText",$("input[name='searchText']").val());
+       comSubmit.setMethod("GET");
        comSubmit.submit();
 	}		
 
@@ -147,14 +149,21 @@
                           </nav>
                       </div>
                       
+				<!-- 		<div class="srch-form">
+                          	<div class="input-group">
+	                           <input type="text" name="searchText"  id="autocompleteText"  onkeypress="if (event.keyCode==13){enter();}"  class="form-control search-wid" placeholder="Search Here" aria-describedby="basic-addon2">
+	                           <a href="" name="search" class="input-group-addon btn-side-serach" id="basic-addon2">
+	                           <i class="fa fa-search"></i></a>
+	                       </div> -->
                       <div class="srch-form">
-                          <form class="side-search">
+                          
                               <div class="input-group">
-                                  <input type="text" id="autocompleteText" name="searchText" class="form-control search-wid" placeholder="Search Here" aria-describedby="basic-addon2">
-                                  <a href="" name="search" class="input-group-addon btn-side-serach" id="basic-addon2">
-                                  <i class="fa fa-search"></i></a>
-                              </div>
-                          </form>
+                                 <input type="text" id="autocompleteText" name="searchText"  onkeypress="if (event.keyCode==13){enter();}"  class="form-control search-wid" placeholder="Search Here" aria-describedby="basic-addon2">
+                                 <a href="" name="search" class="input-group-addon btn-side-serach" id="basic-addon2">
+                                 <i class="fa fa-search"></i></a>
+                             </div>
+                          
+                      </div>
                       </div>
                   </div>
               </div> <!-- Nav -->
@@ -169,33 +178,29 @@
                       <div class="collapse navbar-collapse" id="cat-nav-mega">
                            <div class ="submenu" id="submenu1" onmouseover="mcancelclosetime()" onmouseout="mclosetime();" style="display :none;">
                       	   	 <ul class="nav navbar-nav abcd efg">
-                           		  <li class="active"><a href="#">장르</a></li>
-                        	      <li><a href="">로맨스</a></li>
-	                              <li><a href="">공포•호러</a></li>
-    	                          <li><a href="">판타지</a></li>
-        	                      <li><a href="">메디컬</a></li>
-            	                  <li><a href="">애니메이션</a></li>
-                	              <li><a href="">예능</a></li>
-                    	          <li><a href="">코미디</a></li>
-                        	      <li><a href="">종교</a></li>
-                            	  <li><a href="">SF</a></li>
-                              	  <li><a href="">재난</a></li>
+                           		   <li class="active"><a href="#">장르</a></li>
+                        	                              	      <li><a href="/brw/drama/dramaList.br?DRAMA_GENRE=공포&${_csrf.parameterName}=${_csrf.token}">공포</a></li>
+	                              <li><a href="/brw/drama/dramaList.br?DRAMA_GENRE=드라마&${_csrf.parameterName}=${_csrf.token}">드라마</a></li>
+    	                          <li><a href="/brw/drama/dramaList.br?DRAMA_GENRE=로맨스&${_csrf.parameterName}=${_csrf.token}">로맨스</a></li>
+        	                      <li><a href="/brw/drama/dramaList.br?DRAMA_GENRE=메디컬&${_csrf.parameterName}=${_csrf.token}">메디컬</a></li>
+            	                  <li><a href="/brw/drama/dramaList.br?DRAMA_GENRE=범죄&${_csrf.parameterName}=${_csrf.token}">범죄</a></li>
+                	              <li><a href="/brw/drama/dramaList.br?DRAMA_GENRE=코미디&${_csrf.parameterName}=${_csrf.token}">코미디</a></li>
+                    	          <li><a href="/brw/drama/dramaList.br?DRAMA_GENRE=판타지&${_csrf.parameterName}=${_csrf.token}">판타지</a></li>
                        		 </ul>
                            </div>
                            
                             <div class ="submenu" id="submenu2" onmouseover="mcancelclosetime()" onmouseout="mclosetime();" style="display :none;">
                       	   	 <ul class="nav navbar-nav abcd efg">
                            		  <li class="active"><a href="#">장르</a></li>
-                        	      <li><a href="">로맨스</a></li>
-	                              <li><a href="">공포•호러</a></li>
-    	                          <li><a href="">판타지</a></li>
-        	                      <li><a href="">메디컬</a></li>
-            	                  <li><a href="">애니메이션</a></li>
-                	              <li><a href="">예능</a></li>
-                    	          <li><a href="">코미디</a></li>
-                        	      <li><a href="">종교</a></li>
-                            	  <li><a href="">SF</a></li>
-                              	  <li><a href="">재난</a></li>
+                        	      <li><a href="/brw/movie/movieList.br?MOVIE_GENRE=SF&${_csrf.parameterName}=${_csrf.token}">SF</a></li>
+                        	      <li><a href="/brw/movie/movieList.br?MOVIE_GENRE=공포&${_csrf.parameterName}=${_csrf.token}">공포•호러</a></li>
+                        	      <li><a href="/brw/movie/movieList.br?MOVIE_GENRE=로맨스&${_csrf.parameterName}=${_csrf.token}">로맨스</a></li>
+	                              <li><a href="/brw/movie/movieList.br?MOVIE_GENRE=범죄&${_csrf.parameterName}=${_csrf.token}">범죄</a></li>
+	                              <li><a href="/brw/movie/movieList.br?MOVIE_GENRE=애니메이션&${_csrf.parameterName}=${_csrf.token}">애니메이션</a></li>
+	                              <li><a href="/brw/movie/movieList.br?MOVIE_GENRE=액션&${_csrf.parameterName}=${_csrf.token}">액션</a></li>
+    	                          <li><a href="/brw/movie/movieList.br?MOVIE_GENRE=영화&${_csrf.parameterName}=${_csrf.token}">영화&드라마</a></li>
+        	                      <li><a href="/brw/movie/movieList.br?MOVIE_GENRE=코미디&${_csrf.parameterName}=${_csrf.token}">코미디</a></li>
+        	                      <li><a href="/brw/movie/movieList.br?MOVIE_GENRE=판타지&${_csrf.parameterName}=${_csrf.token}">판타지</a></li>
                        		 </ul>
                            </div>
                            

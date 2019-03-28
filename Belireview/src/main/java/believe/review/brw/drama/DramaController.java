@@ -36,7 +36,6 @@ public class DramaController {
 	
 	@Resource(name="userService")
 	private UserService userService;
-	
 
 	@RequestMapping(value = "dramaList.br")
 	public ModelAndView dramaList(CommandMap commandMap,HttpServletRequest request) throws Exception {
@@ -81,9 +80,27 @@ public class DramaController {
 		Map<String,Object> map = dramaService.dramaDetail(commandMap.getMap());//상세보기
 		List<Map<String,Object>> comment = dramaService.dramaCommentForDetail(map);//댓
 		
-		List<Map<String,Object>> actor = dramaService.dramaActor(map); //출연배우
+		List<Map<String,Object>> actortmp = dramaService.dramaActor(map); //출연배우
+		List<Map<String,Object>> actor = new ArrayList<Map<String,Object>>(); 
 		
 		List<Map<String,Object>> detailgenre = dramaService.detailgenre(map);//비슷한장르
+		for(Map m:actortmp) {
+			Map mp = new HashMap();
+			if(m.get("ACTOR_DRAMA") != null) {
+				String tmp[] = m.get("ACTOR_DRAMA").toString().split(",");
+				for(int i=0;i<tmp.length;i++) {
+					if(tmp[i].equals(map.get("DRAMA_NO").toString())) {
+						mp.put("ACTOR_NAME", m.get("ACTOR_NAME"));
+						mp.put("ACTOR_IMAGE", m.get("ACTOR_IMAGE"));
+						actor.add(mp);
+					}
+				}
+			}
+		}
+		dramaService.updateReadCount(map);
+		
+		
+		
 		int totalGrade = dramaService.grade(map);
 		try {
 			List<Map<String,Object>> gradeRatio = dramaService.gradeRatio(map);//별점비율
@@ -123,8 +140,7 @@ public class DramaController {
 					for(int j=0;j<str.length;j++) {
 						if(session.getAttribute("ID").equals(str[j])) {
 							likeList.add("like"+i);
-						}else
-							likeList.add("nonone");
+						}
 					}
 				}
 			}
@@ -151,7 +167,7 @@ public class DramaController {
 		}
 		
 		totalCount = (Integer)dramaService.totalDramaComment(map);
-	
+		System.out.println("사이즈"+actor.size());
 		mv.addObject("map",map);
 		mv.addObject("comment",comment);
 		mv.addObject("actor",actor);
@@ -221,7 +237,9 @@ public class DramaController {
 			}else {//별점이 있을때
 				dramaService.updateGrade(mv);
 			}
+			dramaService.updateGrade2(mv);
 		}
+		
 		/*평점*/
 		
 		//댓
@@ -274,7 +292,7 @@ public class DramaController {
 					sb.append("<img class=\"defaultImage__ProfileImg-s1kn91bx-1 iaxVtx\" src=\"/brw/resources/images/Temporary_img.JPG\">");
 				}
 				sb.append("</div></div><div class=\"UserNameWithBadges__Self-s1bd3hgj-0 brZhrQ\">")
-				.append(m.get("ID"))
+				.append(m.get("NAME"))
 				.append("<input type=\"hidden\" value=\"").append(m.get("DC_NO")).append("\" class=\"00like").append(index).append("\"/>")
 				.append("<span class=\"UserNameWithBadges__SmallBadge-s1bd3hgj-1 bAndNa UIImg-s3jz6tx-0 eBREVF\" src=\"/brw/resources/images/detail/detail_comment1.svg\"></span>")
 				.append("<span class=\"UserNameWithBadges__SmallBadge-s1bd3hgj-1 bAndNa UIImg-s3jz6tx-0 kyuoIv\" src=\"/brw/resources/images/detail/detail_comment2.svg\"></span>")
@@ -460,7 +478,7 @@ public class DramaController {
 				}
 				sb.append("</div></div>")
 				.append("<div class=\"UserNameWithBadges__Self-s1bd3hgj-0 brZhrQ\">")
-				.append(m.get("ID"))
+				.append(m.get("NAME"))
 				.append("<input type=\"hidden\" value=\"").append(m.get("DC_NO")).append("\" class=\"00like").append(index).append("\"/>")
 				.append("<span class=\"UserNameWithBadges__SmallBadge-s1bd3hgj-1 bAndNa UIImg-s3jz6tx-0 eBREVF\" src=\"/brw/resources/images/detail/detail_comment1.svg\"></span>")
 				.append("<span class=\"UserNameWithBadges__SmallBadge-s1bd3hgj-1 bAndNa UIImg-s3jz6tx-0 kyuoIv\" src=\"/brw/resources/images/detail/detail_comment2.svg\"></span>")

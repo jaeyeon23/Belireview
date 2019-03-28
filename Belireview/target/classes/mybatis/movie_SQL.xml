@@ -3,23 +3,6 @@
 <mapper namespace="movie">
 
   <select id="selectBoardList" parameterType="hashmap" resultType="hashmap" >
-  <!-- 
- 		SELECT
- 			DRAMA_NO,
-			DRAMA_NAME,
-			DRAMA_DATE,
-			DRAMA_CHANNEL,
-			DRAMA_GENRE,
-			DRAMA_DIRECTOR,
-			DRAMA_CONTENT,
-			DRAMA_READCOUNT,
-			DRAMA_POSTER_IMAGE,
-			DRAMA_MAIN_IMAGE,
-			DRAMA_CONTENT_IMAGE,
-			DRAMA_EPISODE,
-			DRAMA_GRADE,
-			RNUM FROM 
-			( -->
 		SELECT
 			MOVIE_NO,
 			MOVIE_NAME,
@@ -37,8 +20,17 @@
 			MOVIE_GRADE,
 			ROWNUM RNUM FROM 
 			(SELECT *
-				FROM MOVIE ORDER BY DBMS_RANDOM.RANDOM) ORDER BY RNUM ASC<!-- ) WHERE RNUM BETWEEN #{START} AND #{END} -->
-		
+					FROM MOVIE	
+				<choose>
+				<when test="MOVIE_GENRE !=null">
+				 WHERE MOVIE_GENRE LIKE '%'||#{MOVIE_GENRE}||'%' ORDER BY DBMS_RANDOM.RANDOM)
+				</when>
+				
+				<otherwise>
+				  ORDER BY DBMS_RANDOM.RANDOM)
+				</otherwise>
+				</choose>
+					 ORDER BY RNUM ASC
    </select>
    
    <select id="totalMovieCount" parameterType="hashmap" resultType="int">
@@ -123,32 +115,6 @@
 		update movie_like set ml_grade  =#{RATING} where movie_like_no=#{MOVIE_NO} and id=#{ID}		
 	</delete>
 	
-
-	<!-- <select>
-		SELECT * FROM DRAMA WHERE DRAMA_NO=#{DRAMA_NO}
-	</select>
-	
-수정	
-	<update>
-	UPDATE DRAMA SET 
-		DRAMA_NAME=#{DRAMA_NAME},
-		DRAMA_DATE=#{DRAMA_DATE},
-		DRAMA_CHANNEL=#{DRAMA_CHANNEL},
-		DRAMA_GENRE=#{DRAMA_GENRE},
-		DRAMA_DIRECTOR=#{DRAMA_DIRECTOR},
-		DRAMA_CONTENT=#{DRAMA_CONTENT},
-		DRAMA_POSTER_IMAGE=#{DRAMA_POSTER_IMAGE},
-		DRAMA_MAIN_IMAGE=#{DRAMA_MAIN_IMAGE},
-		DRAMA_CONTENT_IMAGE=#{CONTENT_IMAGE},
-		DRAMA_EPISODE=#{EPISODE}
-	WHERE DRAMA_NO=#{DRAMA_NO}	
-	</update>
-
-삭제
-	<delete>
-		DELETE DRAMA WHERE DRAMA_NO=#{DRAMA_NO}
-	</delete> -->
-	
 	<select id="grade" parameterType="hashmap" resultType="int">
    		select count(*) from movie_like where movie_like_no=#{MOVIE_NO}
 	</select>
@@ -157,12 +123,20 @@
 		select round(avg(ML_GRADE),1) from movie_like where movie_like_no in (select movie_no from movie where movie_genre=#{MOVIE_GENRE}) and id=#{ID}
 	</select>
 	
+	<update id="updateReadCount" parameterType="hashmap">
+		UPDATE MOVIE SET MOVIE_READCOUNT = MOVIE_READCOUNT+1 WHERE MOVIE_NO=#{MOVIE_NO}
+	</update>
+	
+	<update id="updateGrade2" parameterType="hashmap">
+		UPDATE MOVIE SET MOVIE_GRADE = (SELECT AVG(ML_GRADE) FROM MOVIE_LIKE WHERE MOVIE_LIKE_NO=#{MOVIE_NO}) WHERE MOVIE_NO=#{MOVIE_NO}
+	</update>
+	
 	<select id="gradeRatio" parameterType="hashmap" resultType="hashmap">
 		  with t as(
 		  		SELECT '0.5' GRADE, count(*) A FROM movie_like where ML_GRADE=0.5 and movie_like_no=#{MOVIE_NO} UNION ALL
-		        SELECT '1' GRADE, count(*) A FROM movie_like where ML_GRADE=1 and movie_like_no=#{movie_NO} UNION ALL
+		        SELECT '1' GRADE, count(*) A FROM movie_like where ML_GRADE=1 and movie_like_no=#{MOVIE_NO} UNION ALL
 		        SELECT '1.5' GRADE, count(*) A FROM movie_like where ML_GRADE=1.5 and movie_like_no=#{MOVIE_NO} UNION ALL
-		        SELECT '2' GRADE, count(*) A FROM movie_like where ML_GRADE=2 and movie_like_no=#{movie_NO} UNION ALL
+		        SELECT '2' GRADE, count(*) A FROM movie_like where ML_GRADE=2 and movie_like_no=#{MOVIE_NO} UNION ALL
 		        SELECT '2.5' GRADE, count(*) A FROM movie_like where ML_GRADE=2.5 and movie_like_no=#{MOVIE_NO} UNION ALL
 		        SELECT '3' GRADE, count(*) A FROM movie_like where ML_GRADE=3 and movie_like_no=#{MOVIE_NO} UNION ALL
 		        SELECT '3.5' GRADE, count(*) A FROM movie_like where ML_GRADE=3.5 and movie_like_no=#{MOVIE_NO} UNION ALL

@@ -180,14 +180,15 @@
 											<c:forEach items="${userMovieAll}" var="userMovieAll">
 												<li class="ContentListItemWithPoster__Self-swai1z-0 hKRvvO">
 														<div class="ContentListItemWithPoster__ContentPosterBlock-swai1z-1 kxDIaJ">
+														<a href="/brw/movie/movieDetail.br?MOVIE_NO=${userMovieAll.MOVIE_NO}">
 															<div class="LazyLoadingImg__Self-s1jb87ps-0 csJkbb">
 																	<img class="LazyLoadingImg__Image-s1jb87ps-1 csJkbb"
-																	src="/brw/resources/images/MOVIE/poster/${userMovieAll.MOVIE_POSTER_IMAGE}">
+																	src="/brw/resources/images/movie/poster/${userMovieAll.MOVIE_POSTER_IMAGE}">
 															</div>
 														</div>
 														<div class="ContentListItemWithPoster__ContentInfo-swai1z-2 kVeCGy">
 															<div
-																class="ContentListItemWithPoster__ContentTitle-swai1z-3 dXMJZW">${userMovieAll.MOVIE_NAME}</div>
+																class="ContentListItemWithPoster__ContentTitle-swai1z-3 dXMJZW">${userMovieAll.MOVIE_NAME}</div></a>
 															<div
 																class="ContentListItemWithPoster__ContentRating-swai1z-4 jYxobl">★${userMovieAll.MOVIE_AVG_GRADE}</div>
 															<div
@@ -232,13 +233,14 @@
 																<li class="ContentListItemWithPoster__Self-swai1z-0 hKRvvO">
 																	
 																		<div class="ContentListItemWithPoster__ContentPosterBlock-swai1z-1 kxDIaJ">
+																			<a href="/brw/movie/movieDetail.br?MOVIE_NO=${userMovieAll.MOVIE_NO}">
 																			<div class="LazyLoadingImg__Self-s1jb87ps-0 csJkbb">
 																				<img class="LazyLoadingImg__Image-s1jb87ps-1 csJkbb"
-																					src="/brw/resources/images/MOVIE/poster/${userMovieAlll.MOVIE_POSTER_IMAGE}">
+																					src="/brw/resources/images/movie/poster/${userMovieAll.MOVIE_POSTER_IMAGE}">
 																			</div>
 																		</div>
 																		<div class="ContentListItemWithPoster__ContentInfo-swai1z-2 kVeCGy">
-																			<div class="ContentListItemWithPoster__ContentTitle-swai1z-3 dXMJZW">${userMovieAll.MOVIE_NAME}</div>
+																			<div class="ContentListItemWithPoster__ContentTitle-swai1z-3 dXMJZW">${userMovieAll.MOVIE_NAME}</div></a>
 																			<div class="ContentListItemWithPoster__ContentRating-swai1z-4 jYxobl">★${userMovieAll.MOVIE_AVG_GRADE}</div>
 																		</div> 
 															
@@ -281,15 +283,16 @@
 																					<c:forEach items="${userMovieList}" var="userMovieList">
 																						<li class="ContentListItemWithPoster__Self-swai1z-0 hKRvvO">
 																								<div class="ContentListItemWithPoster__ContentPosterBlock-swai1z-1 kxDIaJ">
+																									<a href="/brw/movie/movieDetail.br?MOVIE_NO=${userMovieList.MOVIE_NO}">
 																									<div class="LazyLoadingImg__Self-s1jb87ps-0 csJkbb">
 																										<img class="LazyLoadingImg__Image-s1jb87ps-1 csJkbb"
 																											data-image-id="1"
-																											src="/brw/resources/images/MOVIE/poster/${userMovieList.MOVIE_POSTER_IMAGE}">
+																											src="/brw/resources/images/movie/poster/${userMovieList.MOVIE_POSTER_IMAGE}">
 																									</div>
 																								</div>
 																								<div class="ContentListItemWithPoster__ContentInfo-swai1z-2 kVeCGy">
 																									<div
-																										class="ContentListItemWithPoster__ContentTitle-swai1z-3 dXMJZW">${userMovieList.MOVIE_NAME}</div>
+																										class="ContentListItemWithPoster__ContentTitle-swai1z-3 dXMJZW">${userMovieList.MOVIE_NAME}</div></a>
 																								</div>
 																						</li>
 																					</c:forEach>

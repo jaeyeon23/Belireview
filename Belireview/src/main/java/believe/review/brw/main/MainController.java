@@ -7,6 +7,7 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,7 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
 import believe.review.brw.common.common.CommandMap;
 import believe.review.brw.common.util.Paging;
 import believe.review.brw.rank.RankService;
-import believe.review.brw.realTime.RealTimeService;
+import believe.review.brw.user.UserService;
 
 @Controller
 public class MainController {
@@ -39,23 +40,36 @@ public class MainController {
 	private static final Logger logger = LoggerFactory.getLogger(MainController.class);
 
 	
-	@Resource(name="realTimeService")
-	private RealTimeService realTimeService;
-	
 	@Resource(name="rankService")
 	private RankService rankService;
 	
 	@Resource(name="mainService")
 	private MainService mainService;
 	
+	@Resource(name="userService")
+	private UserService userService;
+	
 	@RequestMapping(value = "/main.br", method = RequestMethod.GET)
-	public String home(Model model) throws Exception{
-		List<Map<String, Object>> realtime = realTimeService.selectRealTime();
-		model.addAttribute("realtime", realtime);
-		
+	public String home(Model model,HttpSession session) throws Exception{
+
 		List<Map<String, Object>> drama_list = mainService.dramaListTop8();
 		List<Map<String, Object>> movie_list = mainService.movieListTop8();
 		List<Map<String, Object>> ad_list = mainService.adListTop8();
+		
+		if(session.getAttribute("ID")!=null) {//로그인했을때
+			Map tmp = new HashMap();
+			tmp.put("ID", session.getAttribute("ID"));
+			tmp.put("NAME", session.getAttribute("NAME"));
+			Map<String,Object> tmp2 = userService.userWishList(tmp);
+			if(tmp2!=null) {
+				if(tmp2.get("MYPAGE_DRAMA")!=null) {//보고싶어요
+					model.addAttribute("wishD",tmp2.get("MYPAGE_DRAMA"));
+				}
+				if(tmp2.get("MYPAGE_MOVIE")!=null) {//보고싶어요
+					model.addAttribute("wishM",tmp2.get("MYPAGE_MOVIE"));
+				}
+			}
+		}
 		
 		model.addAttribute("drama_list", drama_list);
 		model.addAttribute("movie_list", movie_list);
@@ -63,6 +77,72 @@ public class MainController {
 		
 		return "main";
 	}
+	@RequestMapping(value = "/like.br", method = RequestMethod.POST)
+	@ResponseBody
+	public Map home_post(Model model,HttpSession session,CommandMap commandMap) throws Exception{
+		
+		Map<String, Object> mv = commandMap.getMap();
+		Map<String,Object> map = new HashMap<String,Object>();
+		
+		map = userService.userWishList(mv);
+		if(map != null) {
+			if(mv.get("DRAMA_NO")!=null) {
+				if(map.get("MYPAGE_DRAMA") != null) {
+					String[] str = map.get("MYPAGE_DRAMA").toString().split(",");
+					boolean exist = false;
+					String drama_no = "";
+					for(String s: str) {
+						if(mv.get("DRAMA_NO").equals(s)) {
+							exist = true;
+						}else {
+							drama_no += s+",";
+						}
+					}
+					if(!exist) {
+						drama_no += mv.get("DRAMA_NO");
+						mv.put("add", "add");
+					}else {
+						mv.put("sub", "sub");
+					}
+					mv.put("DRAMA_NO"	,drama_no);
+					userService.updateWishList(mv);
+				}
+			}else {
+				mv.put("add", "add");
+				userService.updateWishList(mv);
+			}
+			if(mv.get("MOVIE_NO")!=null) {
+				if(map.get("MYPAGE_MOVIE")!=null) {
+					String[] str = map.get("MYPAGE_MOVIE").toString().split(",");
+					boolean exist = false;
+					String movie_no = "";
+					for(String s: str) {
+						if(mv.get("MOVIE_NO").equals(s)) {
+							exist = true;
+						}else {
+							movie_no += s+",";
+						}
+					}
+					if(!exist) {
+						movie_no += mv.get("MOVIE_NO");
+						mv.put("add", "add");
+					}else {
+						mv.put("sub", "sub");
+					}
+					mv.put("MOVIE_NO"	,movie_no);
+					userService.updateWishList(mv);
+				}
+			}else {
+				mv.put("add", "add");
+				userService.updateWishList(mv);
+			}
+		}else {
+			mv.put("add", "add");
+			userService.insertWishList(mv);
+		}
+		return mv;
+	}
+	
 	
 	@RequestMapping(value = "mainSearch.br")
 	public ModelAndView mainSearch(CommandMap commandMap,HttpServletRequest request) throws Exception {
@@ -81,14 +161,8 @@ public class MainController {
 			
 			commandMap.put("table_value", table);
 			
-			rankService.insertSearchText(commandMap.getMap());
-		}
-		
-		if(realTimeService.selectAllName(commandMap.getMap()) > 0) {
-			if(realTimeService.selectRealTimeCount(commandMap.getMap()) > 0) {
-				realTimeService.updateRealTime(commandMap.getMap());
-			}else {
-				realTimeService.insertRealTime(commandMap.getMap());
+			if(table != null) {
+				rankService.insertSearchText(commandMap.getMap());
 			}
 		}
 		
@@ -113,7 +187,7 @@ public class MainController {
 			tmp.put("NAME", searchMovie.get(i).get("MOVIE_NAME"));
 			tmp.put("DATE", searchMovie.get(i).get("MOVIE_DATE"));
 			tmp.put("GENRE", searchMovie.get(i).get("MOVIE_GENRE"));
-			tmp.put("IMAGE", "movie/poster/"+searchMovie.get(i).get("MOVIE_POSTER_IMAGE"));
+			tmp.put("IMAGE", "/brw/resources/images/movie/poster/"+searchMovie.get(i).get("MOVIE_POSTER_IMAGE"));
 			tmp.put("TYPE", "영화");
 			searchMain.add(i,tmp);
 		}
@@ -123,7 +197,7 @@ public class MainController {
 			tmp.put("NAME", searchDrama.get(j).get("DRAMA_NAME"));
 			tmp.put("DATE", searchDrama.get(j).get("DRAMA_DATE"));
 			tmp.put("GENRE", searchDrama.get(j).get("DRAMA_GENRE"));
-			tmp.put("IMAGE", "drama/poster/"+searchDrama.get(j).get("DRAMA_POSTER_IMAGE"));
+			tmp.put("IMAGE", "/brw/resources/images/drama/poster/"+searchDrama.get(j).get("DRAMA_POSTER_IMAGE"));
 			tmp.put("TYPE", "TV");
 			searchMain.add(i,tmp);
 		}
@@ -133,7 +207,7 @@ public class MainController {
 			tmp.put("NAME", searchAd.get(j).get("AD_NAME"));
 			tmp.put("DATE", searchAd.get(j).get("AD_READCOUNT"));
 			tmp.put("GENRE", searchAd.get(j).get("AD_COMPANY"));
-			tmp.put("IMAGE", "ad/poster/"+searchAd.get(j).get("AD_POSTER_IMAGE"));
+			tmp.put("IMAGE", searchAd.get(j).get("AD_POSTER_IMAGE"));
 			tmp.put("TYPE", "광고");
 			searchMain.add(i,tmp);
 		}
@@ -226,7 +300,7 @@ public class MainController {
 				tmp.put("NAME", searchMovie.get(i).get("MOVIE_NAME"));
 				tmp.put("DATE", searchMovie.get(i).get("MOVIE_DATE"));
 				tmp.put("GENRE", searchMovie.get(i).get("MOVIE_GENRE"));
-				tmp.put("IMAGE", "movie/poster/"+searchMovie.get(i).get("MOVIE_POSTER_IMAGE"));
+				tmp.put("IMAGE", "/brw/resources/images/movie/poster/"+searchMovie.get(i).get("MOVIE_POSTER_IMAGE"));
 				tmp.put("TYPE", "영화");
 				searchMain.add(i,tmp);
 			}
@@ -236,7 +310,7 @@ public class MainController {
 				tmp.put("NAME", searchDrama.get(j).get("DRAMA_NAME"));
 				tmp.put("DATE", searchDrama.get(j).get("DRAMA_DATE"));
 				tmp.put("GENRE", searchDrama.get(j).get("DRAMA_GENRE"));
-				tmp.put("IMAGE", "drama/poster/"+searchDrama.get(j).get("DRAMA_POSTER_IMAGE"));
+				tmp.put("IMAGE", "/brw/resources/images/drama/poster/"+searchDrama.get(j).get("DRAMA_POSTER_IMAGE"));
 				tmp.put("TYPE", "TV");
 				searchMain.add(i,tmp);
 			}
@@ -246,7 +320,7 @@ public class MainController {
 				tmp.put("NAME", searchAd.get(j).get("AD_NAME"));
 				tmp.put("DATE", searchAd.get(j).get("AD_READCOUNT"));
 				tmp.put("GENRE", searchAd.get(j).get("AD_COMPANY"));
-				tmp.put("IMAGE", "ad/poster/"+searchAd.get(j).get("AD_POSTER_IMAGE"));
+				tmp.put("IMAGE", searchAd.get(j).get("AD_POSTER_IMAGE"));
 				tmp.put("TYPE", "광고");
 				searchMain.add(i,tmp);
 			}
@@ -274,7 +348,7 @@ public class MainController {
 				}
 				sb.append("<div class=\"ContentListItemWithPoster__ContentPosterBlock-swai1z-1 kxDIaJ\">")
 				.append("<div class=\"LazyLoadingImg__Self-s1jb87ps-0 csJkbb\">")
-				.append("<img class=\"LazyLoadingImg__Self-s1jb87ps-0 csJkbb\" data-image-id=\"20\" src=\"/brw/resources/images/").append(m.get("IMAGE")).append("\"></div></div>")
+				.append("<img class=\"LazyLoadingImg__Self-s1jb87ps-0 csJkbb\" data-image-id=\"20\" src=\"").append(m.get("IMAGE")).append("\"></div></div>")
 				.append("<div class=\"ContentListItemWithPoster__ContentInfo-swai1z-2 kVeCGy\">")
 				.append("<div class=\"SearchResultsSection__TopResultItemTitle-s1qazrkm-1 kBOijn\">").append(m.get("NAME")).append("</div>")
 				.append("<div class=\"SearchResultsSection__TopResultItemExtraInfo-s1qazrkm-2 dGUMNT\">").append(m.get("DATE")).append(" ・ ").append(m.get("GENRE")).append("</div>")
@@ -285,7 +359,7 @@ public class MainController {
 			mv.put("searchMain",sb.toString());
 	
 			return mv;
-		}	
+		}	 
 		
 		/*메인 검색영화,드라마,광고*/
 		@RequestMapping(value = "mdaSearch.br")
@@ -333,19 +407,19 @@ public class MainController {
 				sb.append("<li class=\"StackableListItem-s18nuw36-0 cIJjio\">");
 				if(TYPE.equals("1")){
 					sb.append("<a lng=\"ko-KR\" class=\"InnerPartOfListWithImage__LinkSelf-s11a1hqv-1 gmbtJD\" title=\"${request}\" href=\"/brw/movie/movieDetail.br?MOVIE_NO=").append(mda.get("MOVIE_NO")).append("\">");
-					image = "drama/poster/"+mda.get("MOVIE_POSTER_IMAGE").toString();
+					image = "/brw/resources/images/movie/poster/"+mda.get("MOVIE_POSTER_IMAGE").toString();
 					name = mda.get("MOVIE_NAME").toString();
 					date = mda.get("MOVIE_DATE").toString();
 					genre = mda.get("MOVIE_GENRE").toString();
 				}else if(TYPE.equals("2")) {
 					sb.append("<a lng=\"ko-KR\" class=\"InnerPartOfListWithImage__LinkSelf-s11a1hqv-1 gmbtJD\" title=\"${request}\" href=\"/brw/drama/dramaDetail.br?DRAMA_NO=").append(mda.get("DRAMA_NO")).append("\">");
-					image = "drama/poster/"+mda.get("DRAMA_POSTER_IMAGE").toString();
+					image = "/brw/resources/images/drama/poster/"+mda.get("DRAMA_POSTER_IMAGE").toString();
 					name = mda.get("DRAMA_NAME").toString();
 					date = mda.get("DRAMA_DATE").toString();
 					genre = mda.get("DRAMA_GENRE").toString();
 				}else {
 					sb.append("<a lng=\"ko-KR\" class=\"InnerPartOfListWithImage__LinkSelf-s11a1hqv-1 gmbtJD\" title=\"${request}\" href=\"/brw/ad/adDetail.br?AD_NO=").append(mda.get("AD_NO")).append("\">");
-					image = "drama/poster/"+mda.get("AD_POSTER_IMAGE").toString();
+					image = mda.get("AD_POSTER_IMAGE").toString();
 					name = mda.get("AD_NAME").toString();
 					date = mda.get("AD_READCOUNT").toString();
 					genre = mda.get("AD_COMPANY").toString();
@@ -353,7 +427,7 @@ public class MainController {
 				sb.append("<div class=\"InnerPartOfListWithImage__ImageBlock-s11a1hqv-3 kXgAWr\">");
 				sb.append("<div class=\"LazyLoadingBackground-cgbyi4-0 cioRyq LazyLoadingBackgroundw__Self-s1stfhov-0 jXCeuY\" alt=\"${request}\">");
 				sb.append("<span class=\"LazyLoadingBackgroundw__BackgroundImage-s1stfhov-1 mPWPS\" data-background-image-id=\"38\">");
-				sb.append("<img class=\"LazyLoadingBackground__StylingMerged-cgbyi4-2 kDLFDU LazyLoadingBackground__Self-cgbyi4-0 dxPvni\" src=\"/brw/resources/images/").append(image).append("\"></span>");
+				sb.append("<img class=\"LazyLoadingBackground__StylingMerged-cgbyi4-2 kDLFDU LazyLoadingBackground__Self-cgbyi4-0 dxPvni\" src=\"").append(image).append("\"></span>");
 				sb.append("</div></div>");
 				sb.append("<div class=\"InnerPartOfListWithImage__Info-s11a1hqv-5 hufKbr\">");
 				sb.append("<div class=\"InnerPartOfListWithImage__Titles-s11a1hqv-4 jtpmaI\">");

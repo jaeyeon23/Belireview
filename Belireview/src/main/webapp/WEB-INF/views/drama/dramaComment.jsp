@@ -38,7 +38,7 @@
 			async : true,  
 			type : 'POST',
 			data : {ID:id , COMMENTLIKE:"c" ,CLA:cla , DRAMA_NO:<%=request.getParameter("DRAMA_NO")%>, DC_NO:$(".00"+cla).val()},
-			url:"<c:url value='/drama/dramaComment.br' />",
+			url:"<c:url value='/drama/dramaComment.br?${_csrf.parameterName}=${_csrf.token}' />",
 			success : function(result){
 					var r = result;
 					var clike = "좋아요취소";
@@ -85,13 +85,13 @@
 							<div class="ShrinkHeaderBar__Buttons-kl2m8-1 gvGpvr">
 								<div class="ShrinkHeaderBar__LeftButtons-kl2m8-5 dPdGEs">
 									<button
-										class="HeaderBackButton__TopLeftButton-s1sky4x3-0 lfxcSv HeaderCloseButton__TopLeftButton-odlno1-0 cLcmdI StylelessButton-phxvo7-0 gsSopE"></button>
+										class="HeaderBackButton__TopLeftButton-s1sky4x3-0 lfxcSv HeaderCloseButton__TopLeftButton-odlno1-0 cLcmdI StylelessButton-phxvo7-0 gsSopE" onclick="history.go(-1)"></button>
 								</div>
 								<div class="ShrinkHeaderBar__RightButtons-kl2m8-6 kuosGj"></div>
 							</div>
 							<div class="ShrinkHeaderBar__LargeTitleBlock-kl2m8-2 VaXBb">
 								<div class="ShrinkHeaderBar__LargeTitle-kl2m8-3 hwiyxo">코멘트</div>
-								<div style="float: right; width: 20%;" onchange="orderby('/brw/drama/dramaComment.br')">
+								<div style="float: right; width: 20%;" onchange="orderby('/brw/drama/dramaComment.br?${_csrf.parameterName}=${_csrf.token}')">
 									<select id="orderby" name="orderby" class="form-control">
 										<option value="">----</option>
 										<option value="1">좋아요순</option>
