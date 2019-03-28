@@ -47,7 +47,7 @@
 		var grade = "${grade}";
 		var ra = "" 
 		var initValue = "${initValue}";
-		var mcc = "${myComment}";
+		var mcc = ${myComment != null};
 		var like = "${likeList}".split(",");
 		$(function() {
 			$("#cat-nav").hide();
@@ -606,7 +606,7 @@
 																		<div
 																			class="ContentMyCommentSection__MyComment-mhuscg-5 iBmFgp">
 																			<div class="TextTruncate__Self-wvv1uj-0 edeoAV">
-																				<div class="TextTruncate__Text-wvv1uj-1 gLsCNn"
+																				<div class="TextTruncate__Text-wvv1uj-1 gLsCNn cc"
 																					style="white-space: pre-line;">${myComment.AD_CONTENT}</div><!-- 댓글내용 -->
 																			</div>
 																		</div>

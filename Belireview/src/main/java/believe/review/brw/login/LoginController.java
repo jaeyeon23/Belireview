@@ -80,7 +80,7 @@ public class LoginController {
 					return mv;
 				}
 			}else {// 회원이 로그인을 시도하였을 때
-
+				System.out.println(commandMap.get("uri"));
 				if (passwordEncoder.matches((String)commandMap.get("password"), (String)chk.get("PASSWORD"))) {
 					session.setAttribute("ID", commandMap.get("id"));
 					mv.addObject("MEMBER", chk);
