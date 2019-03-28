@@ -88,13 +88,47 @@
 			}
 		}
 		
-		if(txt.value != ""){
-			txt.value += ", " + $('#autocompleteTextMovie').val();	
-		}else{
-			txt.value = $('#autocompleteTextMovie').val();
+		if(tmp != 1){
+			if(txt.value != ""){
+				txt.value += ", " + $('#autocompleteTextMovie').val();	
+			}else{
+				txt.value = $('#autocompleteTextMovie').val();
+			}
 		}
 		
 		$('#autocompleteTextMovie').val("");
+	}
+	
+	function deleteOne_drama() {
+		var txt = document.getElementById('drama_textarea').value;
+		var no_arr = txt.split(", ");
+		var return_txt = "";
+		
+		for(var i = 0 ; i < no_arr.length - 1 ; i++){
+			if(return_txt == ""){
+				return_txt = no_arr[i];
+			}else{
+				return_txt += ", " + no_arr[i];
+			}
+		}
+		
+		$('#drama_textarea').val(return_txt);
+	}
+	
+	function deleteOne_movie() {
+		var txt = document.getElementById('movie_textarea').value;
+		var no_arr = txt.split(", ");
+		var return_txt = "";
+		
+		for(var i = 0 ; i < no_arr.length - 1 ; i++){
+			if(return_txt == ""){
+				return_txt = no_arr[i];
+			}else{
+				return_txt += ", " + no_arr[i];
+			}
+		}
+		
+		$('#movie_textarea').val(return_txt);
 	}
 	
 	function reset_drama_area() {
@@ -180,6 +214,7 @@
 				<div>
 					<input type="text" class="form-control search-wid" id="autocompleteTextDrama" name="actor_drama" onkeypress="if (event.keyCode==13){drama_textarea_write();}">
 					<button type="button" class="btn btn-default" onclick="reset_drama_area()">드라마 리셋</button>
+					<button type="button" class="btn btn-default" onclick="deleteOne_drama()">드라마 지우기</button>
 				</div>
 				<div style="margin-top: 5%;">
 					<textarea rows="8" cols="80" id="drama_textarea" name="drama_textarea" class="form-control" readonly>${admin.ACTOR_DRAMA }</textarea>
@@ -190,6 +225,7 @@
 				<div>
 					<input type="text" class="form-control search-wid" id="autocompleteTextMovie" name="actor_movie" onkeypress="if (event.keyCode==13){movie_textarea_write();}">
 					<button type="button" class="btn btn-default" onclick="reset_movie_area()">영화 리셋</button>
+					<button type="button" class="btn btn-default" onclick="deleteOne_movie()">영화 지우기</button>
 				</div>
 				<div style="margin-top: 5%;">
 					<textarea rows="8" cols="80" id="movie_textarea" name="movie_textarea" class="form-control" readonly>${admin.ACTOR_MOVIE }</textarea>
