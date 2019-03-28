@@ -22,13 +22,19 @@ public class LoginCheckInterceptor extends HandlerInterceptorAdapter{
 			
 			return false;
 		}else {
+			String uri = request.getRequestURI();
 			admin = ((BigDecimal)session.getAttribute("ADMIN")).intValue();
+			if(uri.contains("admin")) {
+				if(admin == 0) {
+					response.sendRedirect("/brw/main.br");
+					
+					return false;
+				}
+			}
+			if(uri.contains("user")) {
+				response.sendRedirect(uri);
+			}
 			
-			if(admin == 0) {
-				response.sendRedirect("/brw/main.br");
-				
-				return false;
-			}			
 		}
 
 		return true;

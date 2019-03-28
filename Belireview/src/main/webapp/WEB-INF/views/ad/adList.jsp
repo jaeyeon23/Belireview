@@ -18,7 +18,7 @@
 					
 					//0.5초뒤 해당 데이터 보여주고 로딩이미지 삭제
 					setTimeout(function(){
-						$(".list:hidden").slice(0,8).show();
+						$(".list:hidden").slice(0,12).show();
 						$("#loading img").remove();
 					}, 500)
 				}else{
@@ -35,7 +35,7 @@
    
   		$(function(){
   			$('.list').css('display','none');
-  			$('.list').slice(0,8).show();
+  			$('.list').slice(0,12).show();
   			$('#gogotop').hide();
   			
 

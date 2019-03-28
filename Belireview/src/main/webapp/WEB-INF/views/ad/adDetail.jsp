@@ -47,7 +47,7 @@
 		var grade = "${grade}";
 		var ra = "" 
 		var initValue = "${initValue}";
-		var mcc = "${myComment}";
+		var mcc = ${myComment != null};
 		var like = "${likeList}".split(",");
 		$(function() {
 			$("#cat-nav").hide();
