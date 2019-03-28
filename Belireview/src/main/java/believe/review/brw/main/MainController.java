@@ -105,6 +105,7 @@ public class MainController {
 						mv.put("sub", "sub");
 					}
 					mv.put("DRAMA_NO"	,drama_no);
+					System.out.println(mv.get("DRAMA_NO"));
 					userService.updateWishList(mv);
 				}
 			}else {
