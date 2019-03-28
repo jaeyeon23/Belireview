@@ -118,10 +118,10 @@
 							<div class="col-md-6">
 								<div class="slide-offers-left">
 									<div class="slide-offers-title">
-										<span>드라마</span>
+										<span>드라마</span><br />도깨비
 									</div>
 									<p>
-										<font color="black">도깨비<br />arraival in believe store</font>
+										<font color="black">arraival in believe store</font>
 									</p>
 									<a href="/brw/drama/dramaDetail.br?DRAMA_NO=66" class="btn btn-blue">리뷰보러가기</a>
 								</div>
@@ -262,12 +262,12 @@
 							<!-- drama start -->
 							<div role="tabpanel" class="tab-pane fade in active" id="1"	aria-labelledby="cat-1">
 								<div class="row clearfix">
-									<c:forEach items="${drama_list }" var="list" varStatus="status">
+									<c:forEach items="${drama_list}" var="list" varStatus="status">
 										<div class="col-md-3 prdct-grid">
 											<div class="product-fade">
 												<div class="product-fade-wrap">
 													<%-- <div id="product-image${status.index + 1 }" class="owl-carousel owl-theme"> --%>
-		                                        	<c:forTokens items="${list.DRAMA_POSTER_IMAGE }" var="image" delims=", ">
+		                                        	<c:forTokens items="${list.DRAMA_POSTER_IMAGE}" var="image" delims=", ">
 			                                            <div class="item"><img src="/brw/resources/images/drama/poster/${image }" alt="" class="img-responsive"></div>
 			                                        </c:forTokens>
 			                                        <!-- </div> -->
@@ -275,7 +275,7 @@
 			                                        	<div class="product-fade-control">
 				                                            <div class="to-left">
 				                                                <a href="" class="vv" value="${list.DRAMA_NO}" value2="d" value3="d${list.DRAMA_NO}"><i class="fa fa-heart"></i></a>
-				                                                <a href="/brw/mainSearch.br?searchText=${list.DRAMA_NAME}" ><i class="fa fa-search"></i></a>
+				                                                <a href="/brw/mainSearch.br?GENRE=${list.DRAMA_GENRE}" ><i class="fa fa-search"></i></a>
 				                                            </div>
 			                                                <div class="clearfix"></div>
 			                                               	<a href="/brw/drama/dramaDetail.br?DRAMA_NO=${list.DRAMA_NO}" class="btn btn-to-cart"><span>자세히 보기</span><div class="clearfix"></div></a>
@@ -308,7 +308,7 @@
 			                                        	<div class="product-fade-control">
 				                                            <div class="to-left">
 				                                                <a href="" class="vv" value="${list.MOVIE_NO}" value2="m" value3="m${list.MOVIE_NO}"><i class="fa fa-heart"></i></a>
-				                                                <a href="/brw/mainSearch.br?searchText=${list.MOVIE_NAME}" ><i class="fa fa-search"></i></a>
+				                                                <a href="/brw/mainSearch.br?GENRE=${list.MOVIE_GENRE}" ><i class="fa fa-search"></i></a>
 				                                            </div>
 			                                                <div class="clearfix"></div>
 			                                               	<a href="/brw/movie/movieDetail.br?MOVIE_NO=${list.MOVIE_NO}" class="btn btn-to-cart"><span>자세히 보기</span><div class="clearfix"></div></a>
@@ -333,14 +333,14 @@
 											<div class="product-fade">
 												<div class="product-fade-wrap">
 													<%-- <div id="product-image${status.index + 1 }" class="owl-carousel owl-theme"> --%>
-		                                        	<c:forTokens items="${list.AD_POSTER_IMAGE }" var="image" delims=", ">
+		                                        	<c:forTokens items="${list.AD_POSTER_IMAGE}" var="image" delims=", ">
 			                                            <div class="item"><img src="${list.AD_POSTER_IMAGE}" alt="" class="img-responsive"></div>
 			                                        </c:forTokens>
 			                                        <!-- </div> -->
 													<div class="product-fade-ct">
 			                                        	<div class="product-fade-control">
 				                                            <div class="to-left">
-				                                                <a href="/brw/mainSearch.br?searchText=${list.AD_NAME}" ><i class="fa fa-search"></i></a>
+				                                                <a href="/brw/mainSearch.br?GENRE=${list.AD_COMPANY}" ><i class="fa fa-search"></i></a>
 				                                            </div>
 			                                                <div class="clearfix"></div>
 			                                               	<a href="/brw/ad/adDetail.br?AD_NO=${list.AD_NO}" class="btn btn-to-cart"><span>자세히 보기</span><div class="clearfix"></div></a>

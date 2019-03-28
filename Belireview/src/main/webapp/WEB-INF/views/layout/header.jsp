@@ -39,7 +39,7 @@
 					dataType: "json",
 					data:{
 						searchValue: request.term
-					},
+					},       
 					success: function(args){
 						response(
 							$.map(args, function(item) {
