@@ -18,7 +18,6 @@
         <interceptor>
         	<mapping path="/admin/*"/>
         	<mapping path="/user/*"/>
-        	<mapping path="/member/*"/>
         	<beans:bean id="loginCheckInterceptor" class="believe.review.brw.common.interceptor.LoginCheckInterceptor"/>
         </interceptor>
     </interceptors>    

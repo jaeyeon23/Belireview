@@ -29,7 +29,6 @@ public class LoginCheckInterceptor extends HandlerInterceptorAdapter{
 				
 				return false;
 			}			
-			response.sendRedirect("/brw/main.br");
 		}
 
 		return true;
