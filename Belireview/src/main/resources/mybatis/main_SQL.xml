@@ -196,6 +196,10 @@
 				ORDER BY AD_READCOUNT DESC) ORDER BY RNUM ASC <!--) WHERE RNUM BETWEEN 1 AND 14 -->
 				
 	</select>
+	
+	<select id="searchActor" parameterType="hashmap">
+		select * from actor where actor_name=#{searchText}
+	</select>
 
 	
 </mapper>

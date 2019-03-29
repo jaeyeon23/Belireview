@@ -33,10 +33,10 @@ import believe.review.brw.common.common.AbstractDAO;
 		public int totalAdCount(Map<String, Object> map) throws Exception{
 			return (Integer) selectOne("ad.totalAdCount",map);
 		}
-		/*@SuppressWarnings("unchecked")
+		@SuppressWarnings("unchecked")
 		public List<Map<String,Object>> detailgenre(Map<String, Object> map) throws Exception{
 			return (List<Map<String,Object>>)selectList("ad.detailgenre",map);
-		}*/
+		}
 		
 		public int totalAdComment(Map<String, Object> map) throws Exception{
 			return (Integer) selectOne("ad_comment.totalAdComment",map);
@@ -83,5 +83,8 @@ import believe.review.brw.common.common.AbstractDAO;
 		@SuppressWarnings("unchecked")
 		public Map<String, Object> commentOne(Map<String, Object> map) throws Exception{
 			return(Map<String,Object>)selectOne("ad_comment.commentOne",map);
+		}
+		public void updateReadCount(Map<String, Object> map) throws Exception{
+			update("ad.updateReadCount",map);
 		}
 }

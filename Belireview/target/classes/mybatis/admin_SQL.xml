@@ -633,18 +633,27 @@
 		UPDATE
 			ACTOR
 		SET
-			<if test='movie_textarea != null'>
-				ACTOR_MOVIE=#{movie_textarea},
-			</if>
-			<if test='drama_textarea != null'>
-				ACTOR_DRAMA=#{drama_textarea},
-			</if>
+			<choose>
+				<when test="actor_page == 'actor_page'">
+					ACTOR_MOVIE=#{movie_textarea},
+					ACTOR_DRAMA=#{drama_textarea},
+				</when>
+				<otherwise>
+					<if test='movie_textarea != null'>
+						ACTOR_MOVIE=#{movie_textarea},
+					</if>
+					<if test="drama_textarea != null">
+						ACTOR_DRAMA=#{drama_textarea},
+					</if>
+				</otherwise>
+			</choose>
+			
 			<if test='image != null'>
 				ACTOR_IMAGE=#{image},	
 			</if>
-			ACTOR_NAME=#{name}
+			ACTOR_NAME=#{ACTOR_NAME}
 		WHERE
-			ACTOR_NO=#{no}
+			ACTOR_NO=#{ACTOR_NO}
 	</update>
 	
 	<delete id="deleteActorOne" parameterType="string">

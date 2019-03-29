@@ -161,6 +161,7 @@
 											<c:forEach items="${useradAll}" var="useradAll">
 												<li class="ContentListItemWithPoster__Self-swai1z-0 hKRvvO">
 														<div class="ContentListItemWithPoster__ContentPosterBlock-swai1z-1 kxDIaJ">
+														<a href="/brw/ad/adDetail.br?AD_NO=${useradAll.AD_NO}">
 															<div class="LazyLoadingImg__Self-s1jb87ps-0 csJkbb">
 																	<img class="LazyLoadingImg__Image-s1jb87ps-1 csJkbb"
 																	src="${useradAll.AD_POSTER_IMAGE}">
@@ -168,7 +169,7 @@
 														</div>
 														<div class="ContentListItemWithPoster__ContentInfo-swai1z-2 kVeCGy">
 															<div
-																class="ContentListItemWithPoster__ContentTitle-swai1z-3 dXMJZW">${useradAll.AD_NAME}</div>
+																class="ContentListItemWithPoster__ContentTitle-swai1z-3 dXMJZW">${useradAll.AD_NAME}</div></a>
 															<div
 																class="ContentListItemWithPoster__ContentRating-swai1z-4 jYxobl">★${useradAll.AD_AVG_GRADE}</div>
 															<div
@@ -213,13 +214,14 @@
 																<li class="ContentListItemWithPoster__Self-swai1z-0 hKRvvO">
 																	
 																		<div class="ContentListItemWithPoster__ContentPosterBlock-swai1z-1 kxDIaJ">
+																		<a href="/brw/ad/adDetail.br?AD_NO=${useradAll.AD_NO}">
 																			<div class="LazyLoadingImg__Self-s1jb87ps-0 csJkbb">
 																				<img class="LazyLoadingImg__Image-s1jb87ps-1 csJkbb"
 																					src="${useradAll.AD_POSTER_IMAGE}">
 																			</div>
 																		</div>
 																		<div class="ContentListItemWithPoster__ContentInfo-swai1z-2 kVeCGy">
-																			<div class="ContentListItemWithPoster__ContentTitle-swai1z-3 dXMJZW">${useradAll.AD_NAME}</div>
+																			<div class="ContentListItemWithPoster__ContentTitle-swai1z-3 dXMJZW">${useradAll.AD_NAME}</div></a>
 																			<div class="ContentListItemWithPoster__ContentRating-swai1z-4 jYxobl">★${useradAll.AD_AVG_GRADE}</div>
 																		</div> 
 															

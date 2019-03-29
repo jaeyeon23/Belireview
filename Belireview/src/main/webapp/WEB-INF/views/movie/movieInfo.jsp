@@ -46,6 +46,12 @@
 									</dl>
 									<dl class="ContentOverviewPage__DescriptionList-s3r5qer-1 jnXdZY">
 										<dt
+											class="ContentOverviewPage__DescriptionTitle-s3r5qer-2 dYypmT">제작</dt>
+										<dd
+											class="ContentOverviewPage__DescriptionDetail-s3r5qer-3 lkqwKE">${map.MOVIE_DIRECTOR}</dd>
+									</dl>
+									<dl class="ContentOverviewPage__DescriptionList-s3r5qer-1 jnXdZY">
+										<dt
 											class="ContentOverviewPage__DescriptionTitle-s3r5qer-2 dYypmT">제작
 											연도</dt>
 										<dd
@@ -66,9 +72,9 @@
 									<dl
 										class="ContentOverviewPage__DescriptionList-s3r5qer-1 jnXdZY">
 										<dt
-											class="ContentOverviewPage__DescriptionTitle-s3r5qer-2 dYypmT">몇부작</dt>
+											class="ContentOverviewPage__DescriptionTitle-s3r5qer-2 dYypmT">상영시간</dt>
 										<dd
-											class="ContentOverviewPage__DescriptionDetail-s3r5qer-3 lkqwKE">${map.MOVIE_EPISODE}부작</dd>
+											class="ContentOverviewPage__DescriptionDetail-s3r5qer-3 lkqwKE">${map.MOVIE_RUNNINGTIME}분</dd>
 									</dl>
 									<dl class="ContentOverviewPage__DescriptionList-s3r5qer-1 knqOhM">
 										<dt

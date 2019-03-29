@@ -46,6 +46,12 @@
 									</dl>
 									<dl class="ContentOverviewPage__DescriptionList-s3r5qer-1 jnXdZY">
 										<dt
+											class="ContentOverviewPage__DescriptionTitle-s3r5qer-2 dYypmT">제작</dt>
+										<dd
+											class="ContentOverviewPage__DescriptionDetail-s3r5qer-3 lkqwKE">${map.DRAMA_DIRECTOR}</dd>
+									</dl>
+									<dl class="ContentOverviewPage__DescriptionList-s3r5qer-1 jnXdZY">
+										<dt
 											class="ContentOverviewPage__DescriptionTitle-s3r5qer-2 dYypmT">제작
 											연도</dt>
 										<dd

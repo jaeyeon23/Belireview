@@ -45,7 +45,7 @@
 		var wi = "${wish}";
 		var ra = "" 
 		var initValue = "${initValue}";
-		var mcc = "${myComment}";
+		var mcc = ${myComment.MC_CONTENT != null};
 		var like= "${likeList}".split(",");
 		$(function(){
 			var ee ;
@@ -82,7 +82,7 @@
 					location.href="<c:url value='/member/loginForm.br?${_csrf.parameterName}=${_csrf.token}' />"
 				});
 			}else{//로그인
-				if(mcc != ""){ // 마이코멘트 숨기기 보여주기
+				if(mcc){ // 마이코멘트 숨기기 보여주기
 					$(".writeComment").css("display","none");
 					$(".existComment").css("display","block");
 				}else{
@@ -125,7 +125,7 @@
 		$.ajax({
 			async : true,  
 			type : 'POST',
-			data : {ID:id , COMMENTLIKE:"c" ,CLA:cla , MVOIE_NO:<%=request.getParameter("MOVIE_NO")%>, MC_NO:$(".00"+cla).val()},
+			data : {ID:id , COMMENTLIKE:"c" ,CLA:cla , MOVIE_NO:<%=request.getParameter("MOVIE_NO")%>, MC_NO:$(".00"+cla).val()},
 			url:"<c:url value='/movie/movieDetail.br?${_csrf.parameterName}=${_csrf.token}' />",
 			success : function(result){
 					var r = result;
@@ -770,10 +770,12 @@
 																		<div
 																			class="ContentOverviewSection__Summary-s1yclw10-1 kdMFQv">${map.MOVIE_NAME}
 																			<br> <span
+																				class="ContentOverviewSection__OverviewMeta-s1yclw10-2 bvwFIW">${map.MOVIE_DIRECTOR}&nbsp;감독</span>
+																			<br> <span
 																				class="ContentOverviewSection__OverviewMeta-s1yclw10-2 bvwFIW">${map.MOVIE_DATE}
 																				· ${map.MOVIE_COUNTRY} · ${map.MOVIE_GENRE}</span><br>
 																			<span
-																				class="ContentOverviewSection__OverviewMeta-s1yclw10-2 bvwFIW">${map.MOVIE_EPISODE}부작</span>
+																				class="ContentOverviewSection__OverviewMeta-s1yclw10-2 bvwFIW">${map.MOVIE_RUNNINGTIME}분</span>
 																		</div>
 																	</article>
 																	<hr
@@ -786,7 +788,7 @@
 																<div class="Row-s1apwm9x-0 lowZpE">
 																	<header
 																		class="SectionWithHeader__Header-s1eyxltb-1 cuiACK">
-																		<h2 class="SectionWithHeader__Title-s1eyxltb-2 kwjefp">출연/제작</h2>
+																		<h2 class="SectionWithHeader__Title-s1eyxltb-2 kwjefp">출연</h2>
 																	</header>
 																</div>
 															</div>
@@ -800,54 +802,33 @@
 																			<div class="Row-s1apwm9x-0 lowZpE">
 																				<ul
 																					class="ContentPeopleSection__PeopleStackableUl-s1qdagi5-0 dCFwKD StackableUl__StyledStackableUl-gafxvv-1 dYcNoO VisualUl-s1vzev56-0 hgAYVH">
+																				<c:forEach items="${actor}" var="act">
 																					<li class="ListItemWithProfilePhoto__Self-s1a35ruo-0 GRmjI">
-																							<div class="InnerPartOfListWithImage__ImageBlock-s11a1hqv-3 kXgAWr">
+																					<a lng="ko-KR" class="InnerPartOfListWithImage__LinkSelf-s11a1hqv-1 gmbtJD">
+																					<div class="InnerPartOfListWithImage__ImageBlock-s11a1hqv-3 kXgAWr">
 																								<div class="ProfilePhoto__Self-s1v3isfu-1 cKevdV RoundedImageBlock-k5m4n5-0 gUZYtN">
-																									<div class="ProfilePhoto__ProfilePhotoImage-s1v3isfu-0 ctlVML"></div>
+																									<div class="ProfilePhoto__ProfilePhotoImage-s1v3isfu-0 fsVfFi"></div>
 																									<div class="ProfilePhoto__DefaultImageContainer-s1v3isfu-2 kPGxuy">
-																										<img class="defaultImage__ProfileImg-s1kn91bx-1 iaxVtx" src="/brw/resources/images/actor/${map.MOVIE_DIRECTOR}.jpg">
-																									</div>
-																								</div>
-																							</div>
-																							<div class="InnerPartOfListWithImage__Info-s11a1hqv-5 hufKbr">
-																								<div class="InnerPartOfListWithImage__Titles-s11a1hqv-4 jtpmaI">
-																									<div class="ListItemWithProfilePhoto__Title-s1a35ruo-1 cSGZfW">${map.MOVIE_DIRECTOR}</div>
-																									<div class="ListItemWithProfilePhoto__Subtitle-s1a35ruo-2 cbqRVo">감독</div>
-																								</div>
-																								<div></div>
-																							</div><!-- </a> --></li>
-																							<!-- 배우 --><c:forEach items="${actor}" var="act">
-																						<li class="ListItemWithProfilePhoto__Self-s1a35ruo-0 GRmjI">
-																							<a lng="ko-KR" class="InnerPartOfListWithImage__LinkSelf-s11a1hqv-1 gmbtJD" title="이다윗" href="/ko-KR/people/193392">
-																							<div class="InnerPartOfListWithImage__ImageBlock-s11a1hqv-3 kXgAWr">
-																								<div class="ProfilePhoto__Self-s1v3isfu-1 cKevdV RoundedImageBlock-k5m4n5-0 gUZYtN">
-																									<div class="ProfilePhoto__ProfilePhotoImage-s1v3isfu-0 iEEsou"></div>
-																									<div class="ProfilePhoto__DefaultImageContainer-s1v3isfu-2 kPGxuy">
-																										<img class="defaultImage__ProfileImg-s1kn91bx-1 iaxVtx"
+																										<img class="defaultImage__ProfileImg-s1kn91bx-1 iaxVtx  kPGxuy"
 																											src="/brw/resources/images/actor/${act.ACTOR_IMAGE}">
 																									</div>
 																								</div>
 																							</div>
 																							<div class="InnerPartOfListWithImage__Info-s11a1hqv-5 hufKbr">
 																								<div class="InnerPartOfListWithImage__Titles-s11a1hqv-4 jtpmaI">
-																									<div class="ListItemWithProfilePhoto__Title-s1a35ruo-1 cSGZfW">${act.ACTOR_NAME}</div><!-- 배우 -->
+																									<div class="ListItemWithProfilePhoto__Title-s1a35ruo-1 cSGZfW">${act.ACTOR_NAME}</div>
+																									<div class="ListItemWithProfilePhoto__Subtitle-s1a35ruo-2 cbqRVo">배우</div>
 																								</div>
 																								<div></div>
 																							</div></a></li>
-																							<!-- // 배우 --></c:forEach>
+																					</c:forEach>
+																							
 																					<div class="StackableUl__SpinnerContainer-gafxvv-0 gddnxb"></div>
 																				</ul>
 																			</div>
 																		</div>
 																	</div>
 																</div>
-																<div
-																	class="arrow_button PrimitiveHorizontalScrollable__ArrowButtonBlock-hy4esm-3 kCjzvu"
-																	direction="left">
-																	<div class="PrimitiveHorizontalScrollable__BackwardButton-hy4esm-5 bWflCD"></div>
-																</div>
-																<div class="arrow_button PrimitiveHorizontalScrollable__ArrowButtonBlock-hy4esm-3 eweFwK"
-																	direction="right"></div>
 															</div>
 															<div class="Grid-zydj2q-0 cspjno">
 																<div class="Row-s1apwm9x-0 lowZpE">

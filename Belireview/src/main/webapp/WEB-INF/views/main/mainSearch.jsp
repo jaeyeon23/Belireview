@@ -96,6 +96,7 @@
 		})
 	}
 	
+
 	/* 검색드라마 페이징 및 넘기기 */
 	$(function(){
 		$(".dramaNext").click(function(){

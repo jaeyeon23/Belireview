@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -130,7 +131,7 @@
 								<td>${list.MOVIE_DIRECTOR}</td>
 								<td>${list.MOVIE_READCOUNT}</td>
 								<td>${list.MOVIE_RUNNINGTIME}</td>
-								<td>${list.MOVIE_GRADE}</td>
+								<td><fmt:formatNumber pattern="#.#" value="${list.MOVIE_GRADE}"/></td>
 								<td>
 									<button class="btn btn-default" type="button" onclick="update_movie('${list.MOVIE_NO}')">수정</button>
 									<button class="btn btn-danger" type="button" onclick="delete_movie('${list.MOVIE_NO}')">삭제</button>
