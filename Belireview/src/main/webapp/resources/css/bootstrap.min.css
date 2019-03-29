@@ -1468,7 +1468,8 @@ hr {
 }
 
 .h3, h3 {
-	font-size: 24px
+	font-size: 22px;
+	font-weight:bold;
 }
 
 .h4, h4 {
@@ -4405,7 +4406,7 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 }
 
 .navbar-collapse {
-	padding-right: 15px;
+	/* padding-right: 15px; */
 	padding-left: 15px;
 	overflow-x: visible;
 	-webkit-overflow-scrolling: touch;
@@ -5315,7 +5316,7 @@ a.thumbnail.active, a.thumbnail:focus, a.thumbnail:hover {
 }
 
 .thumbnail .caption {
-	padding: 9px;
+	padding: 3px;
 	color: #333
 }
 
