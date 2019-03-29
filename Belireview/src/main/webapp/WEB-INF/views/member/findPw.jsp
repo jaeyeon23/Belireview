@@ -146,9 +146,9 @@ function checkEmail() {
 				<div class="position_a">
 					<div class="find_info">
 							<center>
-								<a href="http://localhost:8080/brw/member/loginForm.br">로그인</a>
+								<a href="/brw/member/loginForm.br">로그인</a>
 								<span class="bar" aria-hidden="true">|</span> 
-								<a href="http://localhost:8080/brw/main.br">메인으로</a>
+								<a href="/brw/main.br">메인으로</a>
 							</center>
 					</div>
 				</div>

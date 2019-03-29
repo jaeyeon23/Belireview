@@ -118,9 +118,9 @@
 				<div class="position_a">
 					<div class="find_info">
 							<center>
-								<a href="http://localhost:8080/brw/member/findPwForm.br">비밀번호 찾기</a> 
+								<a href="/brw/member/findPwForm.br">비밀번호 찾기</a> 
 								<span class="bar" aria-hidden="true">|</span> 
-								<a href="http://localhost:8080/brw/member/loginForm.br">로그인</a>
+								<a href="/brw/member/loginForm.br">로그인</a>
 							</center>
 					</div>
 				</div>
