@@ -81,7 +81,7 @@
 					
 					movie_no in(select regexp_substr(a.actor_movie,'[^,]+', 1, rownum) as mydata
 
- 					from (select actor_movie from actor where actor_name=#{searchText}) a
+ 					from (select actor_movie from actor where actor_name LIKE '%'||#{searchText}||'%' ) a
 
 					connect by rownum <= length(regexp_replace(actor_movie,'[^,]+')) + 1 )]]>
 				</when>
@@ -119,9 +119,9 @@
 					
 					drama_no in(select regexp_substr(a.actor_drama,'[^,]+', 1, rownum) as mydata
 
- 					from (select actor_drama from actor where actor_name=#{searchText}) a
+ 					from (select actor_drama from actor where actor_name LIKE '%'||#{searchText}||'%' ) a
 
-					connect by rownum <= length(regexp_replace(actor_drama,'[^,]+')) + 1 )    ]]>
+					connect by rownum <= length(regexp_replace(actor_drama,'[^,]+')) + 1 )]]>
 				</when>
 				
 				<otherwise>
