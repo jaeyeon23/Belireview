@@ -54,7 +54,7 @@
    </script>
 </head>
 <body>
-	<div class="row a" >
+	<div class="row a contentList" >
 		<c:forEach items="${list}" var="movieList" >
 			 <div class="col-sm-6 col-md-3 list">
 			 	<!-- <a href="#this" class="detail"> -->
