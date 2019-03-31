@@ -55,6 +55,7 @@
    </script>
 </head>
 <body>
+<div id="bg_color1" style="background: #f5f6f7">
 	<div class="row a contentList">
 		<c:forEach items="${list}" var="dramaList" >
 			 <div class="col-sm-6 col-md-3 list">
@@ -103,8 +104,6 @@
          comSubmit.submit();
 	 }
 	</script> -->
-
-	
-	
+</div>
 </body>
 </html>

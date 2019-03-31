@@ -70,9 +70,8 @@
 		<div id="header">
 			<h1>
 				<center>
-					<img src="/brw/resources/images/logos.jpg" width="150px" alt="">
+					<img src="/brw/resources/images/logo3.png" width="150px" alt="">
 				</center>
-				<br>
 			</h1>
 		</div>
 		<!-- container -->

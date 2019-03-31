@@ -204,7 +204,7 @@ public class MovieController {
 		if(session.getAttribute("PROFILE_IMAGE")!=null) {
 			mv.addObject("PROFILE_IMAGE","user_profile/"+session.getAttribute("PROFILE_IMAGE"));
 		}else
-			mv.addObject("PROFILE_IMAGE","Temporary_img.JPG");
+			mv.addObject("PROFILE_IMAGE","ican/"+"no_pro.png");
 		
 		return mv;
 
@@ -313,7 +313,7 @@ public class MovieController {
 					sb.append("<img class=\"defaultImage__ProfileImg-s1kn91bx-1 iaxVtx\" src=\"/brw/resources/images/user_profile/")
 					.append(m.get("PROFILE_IMAGE")).append("\">");
 				}else {
-					sb.append("<img class=\"defaultImage__ProfileImg-s1kn91bx-1 iaxVtx\" src=\"/brw/resources/images/Temporary_img.JPG\">");
+					sb.append("<img class=\"defaultImage__ProfileImg-s1kn91bx-1 iaxVtx\" src=\"/brw/resources/images/ican/no_pro.png\">");
 				}
 				sb.append("</div></div><div class=\"UserNameWithBadges__Self-s1bd3hgj-0 brZhrQ\">")
 				.append(m.get("NAME"))
@@ -498,7 +498,7 @@ public class MovieController {
 				if(m.get("PROFILE_IMAGE")!=null) {
 					sb.append("<img class=\"defaultImage__ProfileImg-s1kn91bx-1 iaxVtx\" src=\"/brw/resources/images/user_profile/").append(m.get("PROFILE_IMAGE")).append("\">");
 				}else {
-					sb.append("<img class=\"defaultImage__ProfileImg-s1kn91bx-1 iaxVtx\" src=\"/brw/resources/images/Temporary_img.JPG\">");
+					sb.append("<img class=\"defaultImage__ProfileImg-s1kn91bx-1 iaxVtx\" src=\"/brw/resources/images/ican/no_pro.png\">");
 				}
 				sb.append("</div></div>")
 				.append("<div class=\"UserNameWithBadges__Self-s1bd3hgj-0 brZhrQ\">")
