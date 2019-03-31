@@ -3,15 +3,23 @@
 @import url("board.css");
 
 
+
+.search_name{
+	font-weight: bold;
+	margin: 50px 0px 15px 10px;
+	font-size: 23px;
+	font-family: 나눔고딕;
+}
+
 /* rank 순위 번호 ui */
 #rank_num{
 	background:#040063;
 	color: white;
- 	border-radius: 4px; 
+ 	/* border-radius: 4px;  */
 	display:inline-block;
 	text-align: center;
 	width: 15px;
-	font-size: 10px;
+	font-size: 13px;
 	font-weight: bold;
 }
 
@@ -235,11 +243,11 @@ html {background:#fff url(../../comm/images/common/bg_body.gif) repeat-x 0 0;}
 /*body {background-color:#fff;}
 body {background-image: url("../../comm/images/common/bg_body.gif") repeat-x 0 0;}*/
 #skip_menu {overflow:hidden;position:absolute;left:0;top:-5000px;width:0;height:0;font-size:0;line-height:0;}
-#wrap {min-width:1004px;margin-left:-5px;}
-header {padding-top:15px;height:89px;background-color:rgb(242,242,242);}
-#container {min-width:960px;position:relative;padding:0 20px 0px 20px;*padding-right:5px;zoom:1;}
+/* #wrap {min-width:1004px;margin-left:-5px;}
+ */header {padding-top:15px;height:89px;background-color:rgb(242,242,242);}
+/* #container {min-width:960px;position:relative;padding:0 20px 0px 20px;*padding-right:5px;zoom:1;}
 #container:after {content:"";display:block;clear:both;}
-aside {float:left;width:180px;padding-top:20px;clear: both;}
+ */aside {float:left;width:180px;padding-top:20px;clear: both;}
 #content {position:relative;min-width:785px;*min-width:735px;margin-left:170px;padding:22px 0 25px 30px;*padding:31px 0 25px 18px;}
 #content .progressbar {margin:100px auto;width:553px;}
 footer {height:72px;padding:23px 20px 0 40px;background:url(../../comm/images/common/bg_footer2.gif) repeat-x 0 0;border-top:1px solid #b7b7b7;}
@@ -1418,7 +1426,15 @@ body.popBody {background:none;}
 .mainleft {float: left;}
 .mainright {float: right;}
 .maintable0 {width:990px;height:340px;margin-left: auto;margin-right: auto;left:50%;}
-.maintable1 {width:990px;height:237px;margin-left: auto;margin-right: auto;left:50%;}
+.maintable1 {
+	width: 990px;
+	height: 237px;
+	margin-left: auto;
+	margin-right: auto;
+	left: 50%;
+	margin-bottom: 100px;
+}
+
 .maintable2 {width:990px;height:312px; margin-left: auto;margin-right: auto;left:50%;}
 
 	/*  2# body �� */
@@ -1697,15 +1713,20 @@ body.popBody {background:none;}
 .mainrelease1	{ background-color:#ffffff; border:#e6e6e6 solid 1px; padding:15px; height:205px;}
 
  /* 理쒖떊 媛쒕큺�� */
-.mainlist_bg1	{ background-color:#f5f7f7; width:300px; height:28px;}
-.mainlist_bg2 	{ background-color:#ffffff; width:100%; height:28px;}
+.mainlist_bg1 {
+	/* background-color: #f5f7f7; */
+	width: 300px;
+	height: 28px;
+}
+
+.mainlist_bg2 { background-color:#ffffff; width:100%; height:28px;}
 .mainlist_dot 	{ background-image:url(../../comm/images/main/dot.png); height:1px;}
 .mainlist1 {  /* 인기검색어 리스트 글자!!! */
 	width: 113px;
 	height: 28px;
 	line-height: 11px;
 	text-align: left;
-	font-size: 11px;
+	font-size: 14px;
 	color: #414141;
 	padding: 0px 0px 0px 5px;
 	letter-spacing: -0.01em;
@@ -1875,8 +1896,17 @@ body.popBody {background:none;}
 .mainbtn1	{ float:right;  padding:7px 0px 0px 3px;}
 .mainbtn2	{ float:right;  padding:9px 8px 0px 0px;}
 
-/* �쒕ぉ �믪씠 */
-.maintitle_h1 {float:left; height:17px;}
+/*급상승 검색어 제목위치
+ */
+.maintitle_h1 {
+	float: left;
+	height: 17px;
+	/* text-decoration: underline; */
+	font-size: 20px;
+	font-weight: bold;
+	/* line-height: 5px; */
+	padding-left: 5px;
+}
 
 /* [3-3] 怨듭��ы빆 , 援�쟻蹂� 愿�媛� �꾪솴 , 怨좉컼�쇳꽣 */
 

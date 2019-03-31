@@ -4,6 +4,13 @@ a:link{
 	text-decoration: none;
 }
 
+#dtNm a:hover{
+	color:red;
+}
+#dtNm a{
+	color:#337ab7;
+}
+
 .gnb_wrap{width:100%;background-color:#414141}
 .gnb{width:1200px;margin:0 auto}
 .gnb:after{clear:both;content:'';display:block}
@@ -181,9 +188,26 @@ a:link{
 .integrated_network_movie_info{float:left}
 .integrated_network_movie_info_img{float:left;width:289px;position:relative}
 .integrated_network_movie_info_img img{width:289px; height:414px;}
-.integrated_network_movie_info_img span.movie_ranking_number{position:absolute;top:0;left:0;width:45px;padding:15px 0 15px 0;background-color:#ff4e00;font-size:24px;font-weight:700;color:#fff;text-align:center}
-.integrated_network_movie_info_text{float:left;width:235px;padding:0 0 0 26px}
-.integrated_network_movie_info_text01{font-size:24px;line-height:30px;font-weight:700;color:#000}
+.integrated_network_movie_info_img span.movie_ranking_number {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 45px;
+	padding: 15px 0 15px 0;
+	background-color: red;
+	font-size: 24px;
+	font-weight: 700;
+	color: #fff;
+	text-align: center
+}
+
+.integrated_network_movie_info_text {
+	float: left;
+	width: 235px;
+	padding: 0 0 0 26px;
+}
+
+.integrated_network_movie_info_text01 {font-size:24px;line-height:30px;font-weight:700;color:#000}
 .integrated_network_movie_info_text02{font-size:13px;line-height:20px;color:#515050;}
 
 .integrated_network_movie_info_definition {padding: 15px 0; border-bottom: 1px dashed #aaa; font-size: 15px; color: #333;}
@@ -194,11 +218,22 @@ a:link{
 
 .integrated_network_movie_ranking_table{float:left;width:600px;margin:0 0 0 50px;border:1px solid #005e97;background-color:#fff}
 .integrated_network_movie_ranking_table table{border-collapse:collapse;width:100%;text-align:center;font-size:14px;line-height:20px;color:#868686}
-.integrated_network_movie_ranking_table table thead tr th{padding:10px 0 10px 0;color:#000;font-weight:normal;background-color:#005e97;color:#fff}
-.integrated_network_movie_ranking_table table tbody::before{content:'';display:block;height:10px;}
+.integrated_network_movie_ranking_table table thead tr th {
+	padding: 10px 0 10px 0;
+	color: #000;
+	font-weight: normal;
+	background-color: #040063;
+	color: #fff
+}
+
+.integrated_network_movie_ranking_table table tbody::before {content:'';display:block;height:10px;}
 .integrated_network_movie_ranking_table table tbody tr td{padding:5px 0 5px 0;color:#868686;vertical-align:top;cursor:pointer}
-.integrated_network_movie_ranking_table table tbody tr td:last-child{text-align:right;padding:5px 20px 5px 0}
-.integrated_network_movie_ranking_table table tbody tr td.subject{color:#000;text-align:left}
+.integrated_network_movie_ranking_table table tbody tr td:last-child {
+	text-align: right;
+	padding: 5px 10px 5px 0
+}
+
+.integrated_network_movie_ranking_table table tbody tr td.subject {color:#000;text-align:left}
 .integrated_network_movie_ranking_table table tbody tr td div.movie_ranking_number{width:20px;padding:2px 0 2px 0;font-size:12px;text-align:center;color:#fff;background-color:#b6b6b6;margin:0 auto}
 .integrated_network_movie_ranking_table table tbody tr td.subject{color:#000;text-align:left}
 .integrated_network_movie_ranking_table table tbody tr td div.movie_ranking_number{width:20px;padding:2px 0 2px 0;font-size:12px;text-align:center;color:#fff;background-color:#b6b6b6;margin:0 auto}
