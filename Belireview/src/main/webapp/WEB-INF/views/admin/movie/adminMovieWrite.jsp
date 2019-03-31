@@ -168,6 +168,22 @@
     		$("#autocompleteTextMovie").val("");
     	}
         
+        function deleteOne_movie() {
+    		var txt = document.getElementById('movie_textarea').value;
+    		var no_arr = txt.split(", ");
+    		var return_txt = "";
+    		
+    		for(var i = 0 ; i < no_arr.length - 1 ; i++){
+    			if(return_txt == ""){
+    				return_txt = no_arr[i];
+    			}else{
+    				return_txt += ", " + no_arr[i];
+    			}
+    		}
+    		
+    		$('#movie_textarea').val(return_txt);
+    	}
+        
         function reset_movie_area() {
     		var txt = document.getElementById('movie_textarea');
     		
@@ -248,6 +264,7 @@
 				<div>
 					<input type="text" class="form-control search-wid" id="autocompleteTextMovie" name="actor" onkeypress="if (event.keyCode==13){movie_textarea_write();}">
 					<button type="button" class="btn btn-default" onclick="reset_movie_area()">드라마 배우 리셋</button>
+					<button type="button" class="btn btn-default" onclick="deleteOne_movie()">드라마 배우 지우기</button>
 				</div>
 				<div style="margin-top: 5%;">
 					<textarea rows="8" cols="80" id="movie_textarea" name="movie_textarea" class="form-control" readonly></textarea>

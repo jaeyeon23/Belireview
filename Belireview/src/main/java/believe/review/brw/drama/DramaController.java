@@ -37,7 +37,7 @@ public class DramaController {
 	@Resource(name="userService")
 	private UserService userService;
 
-	@RequestMapping(value = "dramaList.br")
+	@RequestMapping(value = "dramaList.br" ,method = RequestMethod.GET)
 	public ModelAndView dramaList(CommandMap commandMap,HttpServletRequest request) throws Exception {
 		String p = request.getParameter("currentPage");
 		
@@ -68,7 +68,32 @@ public class DramaController {
 		mv.addObject("currentPage",currentPage);
 		
 		return mv;
-
+	}
+	@RequestMapping(value = "dramaList.br" ,method = RequestMethod.POST)
+	@ResponseBody
+	public String dramaListPOST(CommandMap commandMap,HttpServletRequest request) throws Exception {
+		String p = request.getParameter("currentPage");
+		if(p == null || p.trim().isEmpty() || p.equals("0")) {
+            currentPage = 1;
+        } else {
+            currentPage = Integer.parseInt(request.getParameter("currentPage"));
+        }
+		
+		List<Map<String,Object>> list = dramaService.selectBoardList(commandMap.getMap());
+		
+		StringBuffer sb = new StringBuffer();
+		for(Map m : list) {
+			sb.append("<div class=\"col-sm-6 col-md-3 list\">")
+			.append("<a href=\"/brw/drama/dramaDetail.br?DRAMA_NO=").append(m.get("DRAMA_NO")).append("\">")
+			.append("<div class=\"thumbnail\">")
+			.append("<img src=\"/brw/resources/images/drama/poster/").append(m.get("DRAMA_POSTER_IMAGE")).append("\">")
+			.append("<div class=\"caption\">")
+			.append("<h3>").append(m.get("DRAMA_NAME")).append("</h3>")
+			.append("<p>").append(m.get("DRAMA_DATE")).append("・").append(m.get("DRAMA_CHANNEL")).append("・").append(m.get("DRAMA_GENRE"))
+			.append("</p></div></div></a></div>");
+		}
+		return sb.toString();
+		
 	}
 
 	@RequestMapping(value="dramaDetail.br" ,method = RequestMethod.GET)

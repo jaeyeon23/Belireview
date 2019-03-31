@@ -22,8 +22,8 @@
 			(SELECT *
 					FROM MOVIE	
 				<choose>
-				<when test="MOVIE_GENRE !=null">
-				 WHERE MOVIE_GENRE LIKE '%'||#{MOVIE_GENRE}||'%' ORDER BY DBMS_RANDOM.RANDOM)
+				<when test="GENRE !=null">
+				 WHERE MOVIE_GENRE LIKE '%'||#{GENRE}||'%' ORDER BY DBMS_RANDOM.RANDOM)
 				</when>
 				
 				<otherwise>
