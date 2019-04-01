@@ -28,14 +28,14 @@
 	  $(function(){
 		  var currentUrl = document.URL;
 	  		
-		  if(currentUrl.indexOf('movie')>-1){
-			  $('.movie').addClass('active');
+		  if(currentUrl.indexOf('admin')>-1){
+			  $('.admin').addClass('active');
 		  }else if(currentUrl.indexOf('ad')>-1){
 			  $('.ad').addClass('active');
 		  }else if(currentUrl.indexOf('drama')>-1){
 			  $('.drama').addClass('active');
-		  }else if(currentUrl.indexOf('admin')>-1){
-			  $('.admin').addClass('active');
+		  }else if(currentUrl.indexOf('movie')>-1){
+			  $('.movie').addClass('active');
 		  }else if(currentUrl.indexOf('main')>-1){
 			  $('.home').addClass('active');
 		  }else if(currentUrl.indexOf('rank')>-1){
