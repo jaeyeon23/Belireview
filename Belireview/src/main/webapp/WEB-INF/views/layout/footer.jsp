@@ -16,11 +16,11 @@
                                       	영화, TV, 도서를 검색하고 4억개의 평점과 리뷰를 만나보세요.
                                   </p>
                                   <ul class="ft-soc clearfix">
-                                      <li><a href=""><i class="fa fa-facebook-square"></i></a></li>
-                                      <li><a href=""><i class="fa fa-twitter"></i></a></li>
-                                      <li><a href=""><i class="fa fa-google-plus-square"></i></a></li>
-                                      <li><a href=""><i class="fa fa-instagram"></i></a></li>
-                                      <li><a href=""><i class="fa fa-pinterest"></i></a></li>
+                                      <li><a href="https://www.facebook.com"><i class="fa fa-facebook-square"></i></a></li>
+                                      <li><a href="https://twitter.com/?lang=ko"><i class="fa fa-twitter"></i></a></li>
+                                      <li><a href="https://www.google.com"><i class="fa fa-google-plus-square"></i></a></li>
+                                      <li><a href="https://www.instagram.com/?hl=ko"><i class="fa fa-instagram"></i></a></li>
+                                      <li><a href="https://www.pinterest.co.kr"><i class="fa fa-pinterest"></i></a></li>
                                   </ul>
                                   <div class="clearfix"></div>
                               </div>
@@ -30,38 +30,41 @@
                                   <div class="wid-title">Quick Links</div>
                                   <ul>
                                       <li><a href="main.br">Home</a></li>
+                                      <li><a href="/brw/rank.br">Rank</a></li>
                                       <li><a href="/brw/drama/dramaList.br">DRAMA</a></li>
                                       <li><a href="/brw/movie/movieList.br">MOVIE</a></li>
                                       <li><a href="/brw/ad/adList.br">ADVERTISEMENT</a></li>
                                   </ul>
                               </div>
                           </div>
-                          <div class="col-md-2">
-                              <div class="term">
-                                  <div class="wid-title">&nbsp;</div>
-                                  <p>
-                                      <a href="#">Tearms & condition</a><br/>
-                                      <a href="#">FAQs</a><br/>
-                                      <a href="#">Privacy Policy</a><br/>
-                                      <a href="#">Legal Desclaimer</a><br/>
-                                  </p>
-                              </div>
-                          </div>
+
                           <div class="col-md-2">
                               <div class="quick-links">
-                                  <div class="wid-title">My Account</div>
+                                  <div class="wid-title">MEMBER</div>
                                   
                                   <ul>
-                                      <li><a href="#">My Account</a></li>
-                                      <li><a href="#">Personal Information</a></li>
-                                      <li><a href="#">Addresses</a></li>
-                                      <li><a href="#">Orders</a></li>
-                                      <li><a href="#">Wishlist</a></li>
-                                      <li><a href="#">track order</a></li>
+                                      <li><a href="#">Park jae-Yeon</a></li>
+                                      <li><a href="#">Baek In-Young</a></li>
+                                      <li><a href="#">Kim Ju-Young</a></li>
+                                      <li><a href="#">Hwang Taek-Gyun</a></li>
+                                      <li><a href="#">Kim Sang-Hyup</a></li>
+                                      <li><a href="#">Woo Jeong-Yoon</a></li>
                                   </ul>
                               </div>
                           </div>
-                          <div class="col-md-3">
+
+				<div class="col-md-2">
+					<div class="term">
+						<div class="wid-title">&nbsp;</div>
+						<p>
+							<a href="#">Tearms & condition</a><br /> <a href="#">FAQs</a><br />
+							<a href="#">Privacy Policy</a><br /> <a href="#">Legal
+								Desclaimer</a><br />
+						</p>
+					</div>
+				</div>
+
+				<div class="col-md-3">
                               <div class="subscribe">
                                   <div class="wid-title">Subscribe for OFFERS & UPDATES</div>
                                   <p>
@@ -81,7 +84,7 @@
               </div>
               <div class="footer-text">
                   <div class="container">
-                      <p>Copyright 2018. Designed and Developed by <a href="https://bootstrapmart.com/">BootstrapMart </a> &amp; Distributed by <a href="https://themewagon.com/">ThemeWagon</a></p>
+                      <p>Copyright 2018. Designed and Developed by <a href="https://localhost/brw/main.br">Belireview </a> </p>
                   </div>
               </div>
           </div>

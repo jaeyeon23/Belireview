@@ -2,8 +2,9 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html>s
+<!DOCTYPE html>
 <html>
+
 <script src="<c:url value='/resources/js/common.js'/>" charset="utf-8"></script>
 <link href="/brw/resources/Jcss/rank.css" rel="stylesheet">
 <script>
@@ -12,11 +13,10 @@
             e.preventDefault();
             openSearch();
 		});
- 	});
-	
-  	function enter(){
-	    $("a[name='search']").trigger('click');
-	 }
+  });
+  function enter(){
+	  $("a[name='search']").trigger('click');
+  }
   
   function openSearch(){
 		var comSubmit = new ComSubmit();
@@ -26,22 +26,6 @@
 	}		
 
 	  $(function(){
-		  var currentUrl = document.URL;
-	  		
-		  if(currentUrl.indexOf('admin')>-1){
-			  $('.admin').addClass('active');
-		  }else if(currentUrl.indexOf('ad')>-1){
-			  $('.ad').addClass('active');
-		  }else if(currentUrl.indexOf('drama')>-1){
-			  $('.drama').addClass('active');
-		  }else if(currentUrl.indexOf('movie')>-1){
-			  $('.movie').addClass('active');
-		  }else if(currentUrl.indexOf('main')>-1){
-			  $('.home').addClass('active');
-		  }else if(currentUrl.indexOf('rank')>-1){
-			  $('.rank').addClass('active');
-		  }
-		  
 		  $("#cat-nav").hide();
 		 
 		
@@ -51,11 +35,11 @@
 		$("#autocompleteText").autocomplete({
 			source: function(request, response){
 				$.ajax({
-					url: "/brw/auto.br?${_csrf.parameterName}=${_csrf.token}",
+					url: "/brw/auto.br",
 					dataType: "json",
 					data:{
 						searchValue: request.term
-					},       
+					},
 					success: function(args){
 						response(
 							$.map(args, function(item) {
@@ -71,8 +55,7 @@
 			minLength:1,
 		});
 	});
-	
-	
+
 	$(function() {
 		var count = $('#rank-list li').length;
 		var height = $('#rank-list li').height();
@@ -89,19 +72,26 @@
 	});
 </script>
 <body>
-	 <div id="header"> <!-- header -->
-              <div class="top"> <!-- top -->
-                  <div class="container">
+	 <div id="header"> 
+	 	<!-- header -->
+		<div class="top">
+			<!-- top -->
+			<div class="container">
 				<div class="top-control">
-                      	  <c:if test="${sessionScope.ID == null }">
-                          <a href="/brw/member/loginForm.br">로그인</a><span>•</span><a href="/brw/member/joinTerms.br">회원가입</a>
-                  		  </c:if>
-                  		   <c:if test="${sessionScope.ID != null }">
-                          <a href="/brw/member/logout.br">로그아웃</a><span>•</span><a href="/brw/user/user.br">마이페이지</a>
-                  		  </c:if>
-                      </div>
-                  </div>
-              </div> <!-- top end -->
+					<c:if test="${sessionScope.ID == null }">
+						<a href="/brw/member/loginForm.br">로그인</a>
+						<span>•</span>
+						<a href="/brw/member/joinTerms.br">회원가입</a>
+					</c:if>
+					<c:if test="${sessionScope.ID != null }">
+						<a href="/brw/member/logout.br">로그아웃</a>
+						<span>•</span>
+						<a href="/brw/user/user.br">마이페이지</a>
+					</c:if>
+				</div>
+			</div>
+		</div>
+		<!-- top end -->
               
               <!-- 메뉴 카테고리 시작 -->
               <div id="believe-nav"> <!-- Nav -->
@@ -124,15 +114,14 @@
                                   <!-- Collect the nav links, forms, and other content for toggling -->
                                   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                                       <ul class="nav navbar-nav">
-                                          <li class="home"><a href="/brw/main.br">Home <span class="sr-only">(current)</span></a></li>
-                                          <li class="rank"><a href="/brw/rank.br">Rank</a></li>
-                                          <li class="drama"><a href="/brw/drama/dramaList.br" class="mmenu" id="menu1" onmouseover="mopen(1);" onmouseout="mclosetime();">Drama</a>
+                                          <li ><a href="/brw/main.br">Home <span class="sr-only">(current)</span></a></li>
+                                          <li><a href="/brw/rank.br">Rank</a></li>
+                                          <li ><a href="/brw/drama/dramaList.br" class="mmenu" id="menu1" onmouseover="mopen(1);" onmouseout="mclosetime();">Drama</a>
                                           </li>
-                                          <li class="movie"><a class="movie_tab" href="/brw/movie/movieList.br" class="mmenu" id="menu2" onmouseover="mopen(2);" onmouseout="mclosetime();">Movie</a></li>
-                                          <li class="ad"><a class="" href="/brw/ad/adList.br">Advertisement</a></li>
-                                          
+                                          <li><a class="movie_tab" href="/brw/movie/movieList.br" class="mmenu" id="menu2" onmouseover="mopen(2);" onmouseout="mclosetime();">Movie</a></li>
+                                          <li class="active"><a class="" href="/brw/ad/adList.br">Advertisement</a></li>
                                           <c:if test="${sessionScope.ADMIN == 1 }">
-                                          	<li class="admin"><a href="" class="dropdown-toggle active" data-toggle="dropdown" role="button" aria-expanded="false">Admin <i class="fa fa-angle-down"></i></a>
+                                          	<li ><a href="" class="dropdown-toggle active" data-toggle="dropdown" role="button" aria-expanded="false">Admin <i class="fa fa-angle-down"></i></a>
 				                                <ul class="dropdown-menu megamenu" role="menu">
 		                                		    <li>
 			                                            <div class="mega-sub">
@@ -149,8 +138,8 @@
                                      	  	</li>
                                           </c:if>
                                       </ul>
-							<ul class="nav navbar-nav navbar-right">
-								<div id="content1">
+								<ul class="nav navbar-nav navbar-right">
+									<div id="content1">
 									<dl id="rank-list">
 										<dt>실시간 급상승 검색어</dt>
 										<dd>
@@ -162,49 +151,46 @@
 										</dd>
 									</dl>
 								</div>
-								<li class="menu-search-form"><a href="#"
-									id="open-srch-form"><img
-										src="/brw/resources/images/srch.png" alt="srch"></a></li>
-								<li><c:if test="${sessionScope.ID != null }">
-										<a href="#"> <c:if
-												test="${sessionScope.PROFILE_IMAGE == null }">
-												<img src="/brw/resources/images/ican/no_pro.png" alt="bag"
-													width="60" height="45"
-													style="border-radius: 150px; margin-top: -10px;">
-											</c:if> <c:if test="${sessionScope.PROFILE_IMAGE != null }">
-												<img
-													src="/brw/resources/images/user_profile/${sessionScope.PROFILE_IMAGE}"
-													alt="bag" width="60" height="45"
-													style="border-radius: 150px; margin-top: -10px;">
-											</c:if>
-										</a>
-									</c:if></li>
-								<li id="open-srch-form-mod">
-									<div>
-										<form class="side-search">
-											<div class="input-group">
-												<input type="text" class="form-control search-wid"
-													placeholder="Search Here" aria-describedby="basic-addon1">
-												<a href="" class="input-group-addon btn-side-serach"
-													id="basic-addon1"><i class="fa fa-search"></i></a>
-											</div>
-										</form>
-									</div>
-								</li>
-							</ul>
-
-						</div><!-- /.navbar-collapse -->
+									<li class="menu-search-form"><a href="#"
+										id="open-srch-form"><img
+											src="/brw/resources/images/srch.png" alt="srch"></a></li>
+									<li><c:if test="${sessionScope.ID != null }">
+											<a href="#"> <c:if
+													test="${sessionScope.PROFILE_IMAGE == null }">
+													<img src="/brw/resources/images/ican/no_pro.png" alt="bag"
+														width="60" height="45"
+														style="border-radius: 150px; margin-top: -10px;">
+												</c:if> <c:if test="${sessionScope.PROFILE_IMAGE != null }">
+													<img
+														src="/brw/resources/images/user_profile/${sessionScope.PROFILE_IMAGE}"
+														alt="bag" width="60" height="45"
+														style="border-radius: 150px; margin-top: -10px;">
+												</c:if>
+											</a>
+										</c:if></li>
+									<li id="open-srch-form-mod">
+										<div>
+											<form class="side-search">
+												<div class="input-group">
+													<input type="text" class="form-control search-wid"
+														placeholder="Search Here" aria-describedby="basic-addon1">
+													<a href="" class="input-group-addon btn-side-serach"
+														id="basic-addon1"><i class="fa fa-search"></i></a>
+												</div>
+											</form>
+										</div>
+									</li>
+								</ul></div><!-- /.navbar-collapse -->
                               <!--</div> -->
                           </nav>
                       </div>
-
-                      <div class="srch-form">
+                      
+                     <div class="srch-form">
                              <div class="input-group">
                                  <input type="text" id="autocompleteText" name="searchText"  onkeypress="if(event.keyCode==13){enter();}"  class="form-control search-wid" placeholder="Search Here" aria-describedby="basic-addon2">
                                  <a href="" name="search" class="input-group-addon btn-side-serach" id="basic-addon2">
                                  <i class="fa fa-search"></i></a>
                              </div>
-                      </div>
                       </div>
                   </div>
               </div> <!-- Nav -->
@@ -219,8 +205,8 @@
                       <div class="collapse navbar-collapse" id="cat-nav-mega">
                            <div class ="submenu" id="submenu1" onmouseover="mcancelclosetime()" onmouseout="mclosetime();" style="display :none;">
                       	   	 <ul class="nav navbar-nav abcd efg">
-                           		  <li class="active"><a href="#">장르</a></li>
-                        	      <li><a href="/brw/drama/dramaList.br?DRAMA_GENRE=공포&${_csrf.parameterName}=${_csrf.token}">공포</a></li>
+                           		   <li class="active"><a href="#">장르</a></li>
+                        	                              	      <li><a href="/brw/drama/dramaList.br?DRAMA_GENRE=공포&${_csrf.parameterName}=${_csrf.token}">공포</a></li>
 	                              <li><a href="/brw/drama/dramaList.br?DRAMA_GENRE=드라마&${_csrf.parameterName}=${_csrf.token}">드라마</a></li>
     	                          <li><a href="/brw/drama/dramaList.br?DRAMA_GENRE=로맨스&${_csrf.parameterName}=${_csrf.token}">로맨스</a></li>
         	                      <li><a href="/brw/drama/dramaList.br?DRAMA_GENRE=메디컬&${_csrf.parameterName}=${_csrf.token}">메디컬</a></li>
