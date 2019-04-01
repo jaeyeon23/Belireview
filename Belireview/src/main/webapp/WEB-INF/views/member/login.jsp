@@ -84,6 +84,7 @@ function fn_login() {
 								<button type="submit" id="로그인" value="로그인"
 									class="btn_type btn_primary" onclick="return fn_login()">
 									<span>로그인</span>
+									<input type="hidden" name="uri" value="${header.referer}">
 								</button>
 							</div>
 						</form>	
@@ -93,17 +94,16 @@ function fn_login() {
 				<div class="position_a">
 					<div class="find_info">
 						<center>
-							<a href="http://localhost:8080/brw/member/findIdForm.br">아이디 찾기</a> <span
+							<a href="/brw/member/findIdForm.br">아이디 찾기</a> <span
 								class="bar" aria-hidden="true">|</span> 
-							<a href="http://localhost:8080/brw/member/findPwForm.br">비밀번호 찾기</a> <span
+							<a href="/brw/member/findPwForm.br">비밀번호 찾기</a> <span
 								class="bar" aria-hidden="true">|</span> 
-							<a href="http://localhost:8080/brw/member/joinTerms.br">회원가입</a>
+							<a href="/brw/member/joinTerms.br">회원가입</a>
 						</center>
 					</div>
 				</div>
-		<br><br><br>
 		</div>
 	</div>
-
+</div>
 </body>
 </html>

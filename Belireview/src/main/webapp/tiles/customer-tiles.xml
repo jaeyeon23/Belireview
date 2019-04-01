@@ -184,7 +184,7 @@
     
 	<!-- 랭킹 -->
 	<definition name="/rank/*" extends=".home">
-		<put-attribute name="header" value="/WEB-INF/views/layout/header_My.jsp"/>
+		<put-attribute name="header" value="/WEB-INF/views/layout/header_R.jsp"/>
 		<put-attribute name="body" value="/WEB-INF/views/rank/{1}.jsp"/>
 	</definition>
 

@@ -8,49 +8,49 @@
 <script src="<c:url value='/resources/js/common.js'/>" charset="utf-8"></script>
 <link href="/brw/resources/Jcss/rank.css" rel="stylesheet">
 <script>
-
-	$(function() {
-		$("a[name='search']").on("click", function(e) {
-			e.preventDefault();
-			openSearch();
+  $(function(){
+		$("a[name='search']").on("click", function(e){ 
+            e.preventDefault();
+            openSearch();
 		});
-		function enter() {
-			$("a[name='search']").trigger('click');
-		}
+  });
+		  function enter(){
+			  $("a[name='search']").trigger('click');
+		  }	
 
-	});
-	function openSearch() {
+  function openSearch(){
 		var comSubmit = new ComSubmit();
-		comSubmit
-				.setUrl("<c:url value='/mainSearch.br?${_csrf.parameterName}=${_csrf.token}' />");
-		comSubmit.addParam("sesarchText", $("input[name='searchText']").val());
-		comSubmit.submit();
-	}
+       comSubmit.setUrl("<c:url value='/mainSearch.br?${_csrf.parameterName}=${_csrf.token}' />");
+       comSubmit.addParam("searchText",$("input[name='searchText']").val());
+       comSubmit.submit();
+	}		
 
-	$(function() {
-		$("#cat-nav").hide();
+	$(function(){
+		  $("#cat-nav").hide();		
 	})
-
+	
 	$(function() {
 		$("#autocompleteText").autocomplete({
-			source : function(request, response) {
+			source: function(request, response){
 				$.ajax({
-					url : "/brw/auto.br?${_csrf.parameterName}=${_csrf.token}",
-					dataType : "json",
-					data : {
-						searchValue : request.term
+					url: "/brw/auto.br?${_csrf.parameterName}=${_csrf.token}",
+					dataType: "json",
+					data:{
+						searchValue: request.term
 					},
-					success : function(args) {
-						response($.map(args, function(item) {
-							return {
-								label : item.data,
-								value : item.data
-							}
-						}));
+					success: function(args){
+						response(
+							$.map(args, function(item) {
+								return{
+									label:item.data,
+									value:item.data
+								}
+							})
+						);
 					}
 				});
 			},
-			minLength : 1,
+			minLength:1,
 		});
 	});
 
@@ -106,6 +106,7 @@
                                   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                                       <ul class="nav navbar-nav">
                                           <li ><a href="/brw/main.br">Home <span class="sr-only">(current)</span></a></li>
+                                          <li><a href="/brw/rank.br">Rank</a></li>
                                           <li class="active"><a href="/brw/drama/dramaList.br" class="mmenu" id="menu1" onmouseover="mopen(1);" onmouseout="mclosetime();">Drama</a>
                                           </li>
                                           <li><a class="movie_tab" href="/brw/movie/movieList.br" class="mmenu" id="menu2" onmouseover="mopen(2);" onmouseout="mclosetime();">Movie</a></li>
@@ -134,8 +135,9 @@
 										<dt>실시간 급상승 검색어</dt>
 										<dd>
 											<ol>
-												<c:forEach items="${realtime }" var="list" varStatus="stat">							
-													<li><font id="index">${stat.index + 1}</font> ${list.SEARCH_TEXT }</li>
+												<c:forEach items="${realtime }" var="list" varStatus="stat">
+													<li><font id="index">${stat.index + 1}</font>
+														${list.SEARCH_TEXT }</li>
 												</c:forEach>
 											</ol>
 										</dd>
@@ -176,16 +178,9 @@
                               <!--</div> -->
                           </nav>
                       </div>
-                      
-					<!-- <div class="srch-form">
-                          <div class="input-group">
-	                           <input type="text" name="searchText"  id="autocompleteText"  onkeypress="if (event.keyCode==13){enter();}"  class="form-control search-wid" placeholder="Search Here" aria-describedby="basic-addon2">
-	                           <a href="" name="search" class="input-group-addon btn-side-serach" id="basic-addon2">
-	                           <i class="fa fa-search"></i></a>
-	                       </div> -->
-                      <div class="srch-form">
-                           <div class="input-group">
-                                 <input type="text" id="autocompleteText" name="searchText"  onkeypress="if (event.keyCode==13){enter();}"  class="form-control search-wid" placeholder="Search Here" aria-describedby="basic-addon2">
+	                   <div class="srch-form">
+                             <div class="input-group">
+                                 <input type="text" id="autocompleteText" name="searchText"  onkeypress="if(event.keyCode==13){enter();}"  class="form-control search-wid" placeholder="Search Here" aria-describedby="basic-addon2">
                                  <a href="" name="search" class="input-group-addon btn-side-serach" id="basic-addon2">
                                  <i class="fa fa-search"></i></a>
                              </div>
@@ -219,12 +214,12 @@
                       	   	 <ul class="nav navbar-nav abcd efg">
                            		  <li class="active"><a href="#">장르</a></li>
                         	      <li><a href="/brw/movie/movieList.br?MOVIE_GENRE=SF&${_csrf.parameterName}=${_csrf.token}">SF</a></li>
-                        	      <li><a href="/brw/movie/movieList.br?MOVIE_GENRE=공포&${_csrf.parameterName}=${_csrf.token}">공포•호러</a></li>
+                        	      <li><a href="/brw/movie/movieList.br?MOVIE_GENRE=공포&${_csrf.parameterName}=${_csrf.token}">공포</a></li>
                         	      <li><a href="/brw/movie/movieList.br?MOVIE_GENRE=로맨스&${_csrf.parameterName}=${_csrf.token}">로맨스</a></li>
 	                              <li><a href="/brw/movie/movieList.br?MOVIE_GENRE=범죄&${_csrf.parameterName}=${_csrf.token}">범죄</a></li>
 	                              <li><a href="/brw/movie/movieList.br?MOVIE_GENRE=애니메이션&${_csrf.parameterName}=${_csrf.token}">애니메이션</a></li>
 	                              <li><a href="/brw/movie/movieList.br?MOVIE_GENRE=액션&${_csrf.parameterName}=${_csrf.token}">액션</a></li>
-    	                          <li><a href="/brw/movie/movieList.br?MOVIE_GENRE=영화&${_csrf.parameterName}=${_csrf.token}">영화&드라마</a></li>
+    	                          <li><a href="/brw/movie/movieList.br?MOVIE_GENRE=드라마&${_csrf.parameterName}=${_csrf.token}">드라마</a></li>
         	                      <li><a href="/brw/movie/movieList.br?MOVIE_GENRE=코미디&${_csrf.parameterName}=${_csrf.token}">코미디</a></li>
         	                      <li><a href="/brw/movie/movieList.br?MOVIE_GENRE=판타지&${_csrf.parameterName}=${_csrf.token}">판타지</a></li>
                        		 </ul>
