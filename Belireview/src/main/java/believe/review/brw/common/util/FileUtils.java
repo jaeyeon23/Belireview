@@ -100,7 +100,8 @@ public class FileUtils {
 
 	//user용
 	//private static final String filePath_P = "C:\\인영\\sts\\Belireview\\Belireview\\src\\main\\webapp\\resources\\images\\user_profile\\";
-	private static final String filePath_P = "C:\\Users\\박재연\\Desktop\\Belireview\\Belireview\\src\\main\\webapp\\resources\\images\\user_profile\\";
+	//private static final String filePath_P = "C:\\Users\\박재연\\Desktop\\Belireview\\Belireview\\src\\main\\webapp\\resources\\images\\user_profile\\";
+	private String filePath_P = "C:\\Java\\pro\\Belireview\\src\\main\\webapp\\resources\\images\\user_profile\\";
 	
 	public Map<String, Object> parseInsertFileInfo(Map<String, Object> map, HttpServletRequest request)
 			throws Exception {
