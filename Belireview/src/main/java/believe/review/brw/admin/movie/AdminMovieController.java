@@ -184,7 +184,7 @@ public class AdminMovieController {
 					if(str.equals("")) {
 						str = map.get("ACTOR_NO").toString();
 					}else {
-						str += ", " + (String)map.get("ACTOR_NO");
+						str += ", " + map.get("ACTOR_NO").toString();
 					}
 				}
 			}

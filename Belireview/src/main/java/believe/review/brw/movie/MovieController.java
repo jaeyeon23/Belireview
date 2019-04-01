@@ -113,7 +113,7 @@ public class MovieController {
 		for(Map m:actortmp) {
 			Map mp = new HashMap();
 			if(m.get("ACTOR_MOVIE") != null) {
-				String tmp[] = m.get("ACTOR_MOVIE").toString().split(",");
+				String tmp[] = m.get("ACTOR_MOVIE").toString().split(", ");
 				for(int i=0;i<tmp.length;i++) {
 					if(tmp[i].equals(map.get("MOVIE_NO").toString())) {
 						mp.put("ACTOR_NAME", m.get("ACTOR_NAME"));

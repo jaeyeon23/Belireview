@@ -6,33 +6,6 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 	<script type="text/javascript">
-        var gfv_count = 1;
-     
-        $(document).ready(function(){
-            $("#addFile").on("click", function(e){ //파일 추가 버튼
-                e.preventDefault();
-                fn_addFile();
-            });
-             
-            $("a[name='delete']").on("click", function(e){ //삭제 버튼
-                e.preventDefault();
-                fn_deleteFile($(this));
-            });
-        });
-
-        function fn_addFile(){
-            var str = "<p><input type='file' class='btn btn-primary btn-send-message' name='content_image_"+(gfv_count++)+"'><a href='#this' class='btn btn-link' name='delete'>삭제</a></p>";
-            $("#fileDiv").append(str);
-            $("a[name='delete']").on("click", function(e){ //삭제 버튼
-                e.preventDefault();
-                fn_deleteFile($(this));
-            });
-        }
-         
-        function fn_deleteFile(obj){
-            obj.parent().remove();
-        }
-        
         function cancel() {
 			location.href="/brw/admin/ad.br?${_csrf.parameterName}=${_csrf.token}";
 		}
@@ -68,23 +41,10 @@
     			return false;
     		}
     		
-    		if(f.poster_image.value == ""){
-    			alert("영화 포스터를 확인해 주세요.");
-    			f.poster_image.focus();
-    			
-    			return false;
-    		}
     		
     		if(f.main_image.value == ""){
     			alert("영화 메인 이미지를 확인해 주세요.");
     			f.main_image.focus();
-    			
-    			return false;
-    		}
-    		
-    		if(f.content_image.value == ""){
-    			alert("영화 서브 이미지를 확인해 주세요.");
-    			f.content_image.focus();
     			
     			return false;
     		}
@@ -123,26 +83,11 @@
 					<input type="text" class="form-control search-wid" name="company">
 				</div>
 				<h3 class="blog-post-title">
-					POSTER_IMAGE
-				</h3>
-				<div>
-					<input type="file" class="btn btn-primary btn-send-message" name="poster_image">
-				</div>
-				<h3 class="blog-post-title">
 					MAIN_IMAGE
 				</h3>
 				<div>
 					<input type="file" class="btn btn-primary btn-send-message" name="main_image">
 				</div>
-				<h3 class="blog-post-title">
-					CONTENT_IMAGE
-				</h3>
-				<div id="fileDiv">
-					<input type="file" class="btn btn-primary btn-send-message" name="content_image"><br>
-				</div>
-				<div>
-					<a href="#this" class="btn" id="addFile">파일 추가</a>
-				</div>	
 				<div style="padding-top: 20pt; padding-bottom: 20pt">
 					<button type="button" class="btn btn-primary" onclick="check_value()">생성</button>
 					<button type="reset" class="btn btn-default">리셋</button>

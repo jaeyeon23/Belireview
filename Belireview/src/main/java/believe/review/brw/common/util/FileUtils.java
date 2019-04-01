@@ -82,18 +82,21 @@ public class FileUtils {
 			main_image = (String)map.get("MOVIE_MAIN_IMAGE");
 			content_image = ((String) map.get("MOVIE_GALLERY_IMAGE")).split(",");
 		}else if(media.equals("ad")) {
-			poster_image = (String)map.get("AD_POSTER_IMAGE");
 			main_image = (String)map.get("AD_MAIN_IMAGE");
-			content_image = ((String) map.get("AD_CONTENT_IMAGE")).split(",");
 		}
 		
-		file = new File(filePath + "poster\\" + poster_image);
-		file.delete();
-		file = new File(filePath + "main\\" + main_image);
-		file.delete();
+		if(!media.equals("ad")) {
+			file = new File(filePath + "poster\\" + poster_image);
+			file.delete();
+			file = new File(filePath + "main\\" + main_image);
+			file.delete();
 		
-		for(int i = 0 ; i < content_image.length ; i++) {
-			file = new File(filePath + "content\\" + content_image[i]);
+			for(int i = 0 ; i < content_image.length ; i++) {
+				file = new File(filePath + "content\\" + content_image[i]);
+				file.delete();
+			}
+		}else {
+			file = new File(filePath + "main\\" + main_image);
 			file.delete();
 		}
 	}
