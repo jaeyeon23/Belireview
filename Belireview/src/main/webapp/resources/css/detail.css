@@ -193,9 +193,34 @@
 .bbnYRd{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;position:relative;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;width:56px;height:56px;overflow:hidden;width:32px;height:32px;width:18px;height:18px;border:0;margin:0 4px 0 0;}.bbnYRd img{width:18px;height:18px;}
 /* sc-component-id: ProfilePhoto__DefaultImageContainer-s1v3isfu-2 */
 
-.kPGxuy{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;position:absolute;top:0;left:0;z-index:0;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;background:#f8f8f8;width:100%;height:100%;}.kPGxuy > img{vertical-align:top;}
-/* sc-component-id: ListItemWithProfilePhoto__Self-s1a35ruo-0 */
+.kPGxuy {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 0;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+	-webkit-align-items: center;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	background: #f8f8f8;
+	width: 100%;
+	height: 100%;
+}
 
+.kPGxuy>img {
+	vertical-align: top;
+	width: 100%;
+	height: 100%;
+}
+/* sc-component-id: ListItemWithProfilePhoto__Self-s1a35ruo-0 */
 .GRmjI{box-sizing:border-box;width:100%;}
 /* sc-component-id: ListItemWithProfilePhoto__Title-s1a35ruo-1 */
 

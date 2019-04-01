@@ -1,0 +1,1226 @@
+@charset 'utf-8';
+
+@font-face {
+  font-family: 'Nanum Gothic';
+  font-style: normal;
+  font-weight: 400;
+  src: url(//images.maxmovie.com/font/NanumGothic-Regular.eot);
+  src: url(//images.maxmovie.com/font/NanumGothic-Regular.eot?#iefix) format('embedded-opentype'),
+       url(//images.maxmovie.com/font/NanumGothic-Regular.woff2) format('woff2'),
+       url(//images.maxmovie.com/font/NanumGothic-Regular.woff) format('woff'),
+       url(//images.maxmovie.com/font/NanumGothic-Regular.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'Nanum Gothic';
+  font-style: normal;
+  font-weight: 800;
+  src: url(//images.maxmovie.com/font/NanumGothic-ExtraBold.eot);
+  src: url(//images.maxmovie.com/font/NanumGothic-ExtraBold.eot?#iefix) format('embedded-opentype'),
+       url(//images.maxmovie.com/font/NanumGothic-ExtraBold.woff2) format('woff2'),
+       url(//images.maxmovie.com/font/NanumGothic-ExtraBold.woff) format('woff'),
+       url(//images.maxmovie.com/font/NanumGothic-ExtraBold.ttf) format('truetype');
+}
+
+
+@font-face {
+    font-family:'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    src: url("http://images.maxmovie.com//images.maxmovie.com/font/zhcz-_WihjSQC0oHJ9TCYL3hpw3pgy2gAi-Ip7WPMi0.woff") format("woff");
+}
+
+
+
+/* --- All --- */
+/* body,p,h1,h2,h3,h4,h5,h6,ul,ol,li,dl,dt,dd,table,th,td,form,fieldset,legend,input,textarea,button{margin:0;padding:0}
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}
+body,table,input,textarea,button,select{font-family:Dotum,'�뗭�',Arial,Helvetica,sans-serif;font-size:12px !important;color:#222;line-height: 1.5em !important;letter-spacing:-0.05em !important}
+ul,ol{list-style:none}
+a{color:#222;text-decoration:none;cursor:pointer}
+a:hover{color:#f03f37;text-decoration:underline}
+a img{border:0}
+button{cursor:pointer}
+menu{margin:0;padding:0}
+fieldset{border:0;margin:0;padding:0}
+em,address{font-style:normal}
+table caption{display:none}
+img, fieldset, form {border:none;vertical-align:middle;}
+table{border-collapse:separate;border-collapse:collapse;empty-cells:show} */
+/* Image Sprite */
+/* Transition */
+/* Layout */
+/* Head */
+/* common */
+
+/* html{overflow-x:hidden}
+.im{width:100%} */
+#wrap{min-width:1175px}
+#wrap #container{width:100%}
+/* #wrap #container .tslide{position:relative;width:100%;min-height:405px} */
+#wrap #container .tslide{position:relative;width:100%;min-height:405px;font-family:'Nanum Gothic',overflow:hidden}
+
+#wrap #container .contents{position:relative}
+#wrap #container .contents .asection{position:relative;width:100%;overflow:hidden;min-height:735px;background:#fff;font-family:'Nanum Gothic','�섎닎怨좊뵓'}
+#wrap #container .contents .bsection{position:relative;width:100%;min-height:441px;background:#f0f0f3;font-family:'Nanum Gothic','�섎닎怨좊뵓'}
+#wrap #container .contents .csection{position:relative;width:100%;min-height:400px;background:#fff;font-family:'Nanum Gothic','�섎닎怨좊뵓'}
+#wrap #footer{position:relative;width:100%;min-height:211px}
+
+#wrap #container .tslide .mvbggbox{position:absolute;left:0;top:0;width:100%;height:405px;background:#134756}
+#wrap #container .tslide .mvbggbox .mvbgg{position:absolute;left:50%;top:0;width:996px;height:405px;margin-left:-1096px;/*background: url("http://images.maxmovie.com/images/web/2016_new/images/main/0b0c11.jpg") no-repeat 0 0;*/background-size:900px 405px}
+#wrap #container .tslide .tslidebg{position:absolute;left:0;top:0;width:100%;min-height:405px;background: url("http://images.maxmovie.com/images/web/2016_new/images/main/main_sl_bg.png")}
+#wrap #container .tslide .tslidebg .tslidein{position:relative;width:965px;padding-top:35px;min-height:405px;margin:0 auto;overflow:hidden}
+#wrap #container .tslide .tslidebg .tslidein .tslist{width:1000%;/*margin-left:-10px;*/*zoom:1}
+#wrap #container .tslide .tslidebg .tslidein .tslist:after{content:""; display:block; clear:both}
+#wrap #container .tslide .tslidebg .tslidein .tslist li {
+	float: left;
+	padding-right: 10px;
+	/* width: 185px !important */
+}
+
+#wrap #container .tslide .tslidebg .tslidein .tslist li:first-child {padding-left:0}
+#wrap #container .tslide .tslidebg .tslidein .tslist li .tposbx{position:relative;width:185px;height:295px;overflow:hidden}
+#wrap #container .tslide .tslidebg .tslidein .tslist li .tposbx .tpos{position:relative;width:185px;height:265px;}
+#wrap #container .tslide .tslidebg .tslidein .tslist li .tposbx .tpos .audbx{position:absolute;left:10px;top:221px;vertical-align:middle}
+#wrap #container .tslide .tslidebg .tslidein .tslist li .tposbx .tpos .audbx em{display:inline-block;padding:0 4px;font-size:11px;height:17px;line-height:17px;color:#aaa;vertical-align:middle;background: url("http://images.maxmovie.com/images/web/2016_new/images/main/main_aud_bg.png") no-repeat -3px -3px}
+#wrap #container .tslide .tslidebg .tslidein .tslist li .tposbx .tpos .audbx em.audtx
+	{
+	/* margin-top: -4px; */
+	color: #fff;
+	vertical-align: middle;
+	font-size: 13px
+}
+
+#wrap #container .tslide .tslidebg .tslidein .tslist li .tposbx .tpos .audbx em.audtx strong
+	{font-family:'Montserrat';font-weight:normal} 
+#wrap #container .tslide .tslidebg .tslidein .tslist li .tposbx .tpos .tskn{position:absolute;left:0;top:0}
+#wrap #container .tslide .tslidebg .tslidein .tslist li .tposbx .tpos .trk{position:absolute;left:9px;top:11px}
+#wrap #container .tslide .tslidebg .tslidein .tslist li .tposbx .tpos .evsi{position:absolute;right:10px;top:10px;display:inline-block;width:53px;z-index:1;}
+#wrap #container .tslide .tslidebg .tslidein .tslist li .tposbx .tpos .evsi a{display:inline-block;width:53px;margin-bottom:2px;text-align:center;height:24px;line-height:22px;font-size:12px;color:#fff;font-weight:800;text-decoration:none;background: url("http://images.maxmovie.com/images/web/2016_new/images/main/main_ic_bg.png") no-repeat 0 0}
+#wrap #container .tslide .tslidebg .tslidein .tslist li .tposbx .tpos .evsi a:hover{background: url("http://images.maxmovie.com/images/web/2016_new/images/main/main_ic_bg.png") no-repeat 0 -24px}
+#wrap #container .tslide .tslidebg .tslidein .tslist li .tposbx .tptxt{background:#000;*zoom:1}
+#wrap #container .tslide .tslidebg .tslidein .tslist li .tposbx .tptxt:after{content:""; display:block; clear:both}
+#wrap #container .tslide .tslidebg .tslidein .tslist li .tposbx .tptxt .tfl{float:left;line-height:30px;padding-left:13px;color:#666}
+#wrap #container .tslide .tslidebg .tslidein .tslist li .tposbx .tptxt .tfl em{color:#fff}
+#wrap #container .tslide .tslidebg .tslidein .tslist li .tposbx .tptxt .tfl span{color:#999}
+#wrap #container .tslide .tslidebg .tslidein .tslist li .tposbx .tptxt .tfl img{vertical-align:middle;margin-top:-2px;color:#666}
+#wrap #container .tslide .tslidebg .tslidein .tslist li .tposbx .tptxt .tfr{float:right;line-height:30px;padding-right:10px;color:#666}
+#wrap #container .tslide .tslidebg .tslidein .tslist li .tposbx .tptxt .tfr span{color:#999}
+#wrap #container .tslide .tslidebg .tslidein .tslist li .tposbx .tptxt .tfr em{color:#fff}
+#wrap #container .tslide .tslidebg .tslidein .tslist li .tposbx .tptxt .stt{color:#999}
+#wrap #container .tslide .tslidebg .tslidein .tslist li .tposbx .tptxt .stt img{vertical-align:middle;margin-top:-2px}
+#wrap #container .tslide .tslidebg .tslidein .tslist li .tposbx .tptxt .stb{color:#666}
+
+#wrap #container .tslide .tslidebg .tslidein .tslist li .tposbx .sover{position:absolute;left:0;top:0;display:none;width:185px;height:295px}
+
+#wrap #container .tslide .tslidebg .tslidein .tslist li .tposbx:hover .sover{position:absolute;left:0;top:0;display:block;width:185px;height:295px;background: url("http://images.maxmovie.com/images/web/2016_new/images/main/main_slide_hover.png") no-repeat 0 0}
+#wrap #container .tslide .tslidebg .tslidein .tslist li .tposbx .sover .sage{position:relative;padding:70px 0 2px 0;text-align:center;font-size:18px;color:#fff;font-weight:900;vertical-align:middle;line-height:24px;}
+#wrap #container .tslide .tslidebg .tslidein .tslist li .tposbx .sover .sage a{display:inline-block;width:170px;color:#fff;text-decoration:none;letter-spacing:-0.05em;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;}
+#wrap #container .tslide .tslidebg .tslidein .tslist li .tposbx .sover .sage a:hover{color:#f03f37;text-decoration:underline}
+#wrap #container .tslide .tslidebg .tslidein .tslist li .tposbx .sover .sage span{display:inline-block;height:22px;line-height:22px;margin-top:-2px;font-size:11px;text-align:center;vertical-align:middle;color:#fff;letter-spacing:-0.75pt}
+#wrap #container .tslide .tslidebg .tslidein .tslist li .tposbx .sover .sage a:hover span{color:#f03f37;background-position:0 -30px !important}
+#wrap #container .tslide .tslidebg .tslidein .tslist li .tposbx .sover .sage span.yall{width:22px;background: url("http://images.maxmovie.com/images/web/2016_new/images/main/bl_age_bg.png") no-repeat 0 0}
+#wrap #container .tslide .tslidebg .tslidein .tslist li .tposbx .sover .sage span.y12{width:22px;background: url("http://images.maxmovie.com/images/web/2016_new/images/main/bl_age_bg.png") no-repeat 0 0}
+#wrap #container .tslide .tslidebg .tslidein .tslist li .tposbx .sover .sage span.y15{width:22px;background: url("http://images.maxmovie.com/images/web/2016_new/images/main/bl_age_bg.png") no-repeat 0 0}
+#wrap #container .tslide .tslidebg .tslidein .tslist li .tposbx .sover .sage span.y18{width:22px;background: url("http://images.maxmovie.com/images/web/2016_new/images/main/bl_age_bg.png") no-repeat 0 0}
+#wrap #container .tslide .tslidebg .tslidein .tslist li .tposbx .sover .sage span.ynone{width:22px;background: url("http://images.maxmovie.com/images/web/2016_new/images/main/bl_age_bg.png") no-repeat 0 0}
+#wrap #container .tslide .tslidebg .tslidein .tslist li .tposbx .sover .sage span:hover{}
+#wrap #container .tslide .tslidebg .tslidein .tslist li .tposbx .sover .sboo{margin-top:12px;text-align:center}
+#wrap #container .tslide .tslidebg .tslidein .tslist li .tposbx .sover .sboo span:hover{color:#f03f37 !important;}
+#wrap #container .tslide .tslidebg .tslidein .tslist li .tposbx .sover .sboo span{display:inline-block;width:96px;height:20px;cursor:pointer;text-align:right;background: url("http://images.maxmovie.com/images/web/2016_new/images/main/bl_mainup_bg.png") no-repeat 0 0}
+
+#wrap #container .tslide .tslidebg .tslidein .tslist li .tposbx .sover .sboo span:hover{color:#f03f37;background: url("http://images.maxmovie.com/images/web/2016_new/images/main/bl_mainup_bg.png") no-repeat 0 -30px}
+#wrap #container .tslide .tslidebg .tslidein .tslist li .tposbx .sover .sboo span:hover em{color:#f03f37;}
+
+#wrap #container .tslide .tslidebg .tslidein .tslist li .tposbx .sover .sboo span em{display:inline-block;width:25px;height:17px;line-height:17px;font-size:11px;text-align:center;color:#fff;vertical-align:top;font-family:'Montserrat'}
+#wrap #container .tslide .tslidebg .tslidein .tslist li .tposbx .sover .sbtxt{margin-top:3px;font-size:11px;color:#999;line-height:17px;text-align:center}
+#wrap #container .tslide .tslidebg .tslidein .tslist li .tposbx .sover .sbtxt img{vertical-align:middle}
+#wrap #container .tslide .tslidebg .tslidein .tslist li .tposbx .sover .spl{padding-top:15px;text-align:center}
+#wrap #container .tslide .tslidebg .tslidein .tslist li .tposbx .sover .spl a{display:inline-block;width:39px;height:39px;background: url("http://images.maxmovie.com/images/web/2016_new/images/main/btn_play.png") no-repeat 0 0}
+#wrap #container .tslide .tslidebg .tslidein .tslist li .tposbx .sover .spl a:hover{background: url("http://images.maxmovie.com/images/web/2016_new/images/main/btn_play.png") no-repeat 0 -39px}
+#wrap #container .tslide .tslidebg .tslidein .tslist li .tposbx .sover .slbtn{position:absolute;left:0;bottom:10px;width:100%;text-align:center}
+#wrap #container .tslide .tslidebg .tslidein .tslist li .tposbx .sover .slbtn a{display:inline-block;width:80px;height:30px;line-height:30px;text-align:center;text-decoration:none;font-size:14px;color:#fff;background: url("http://images.maxmovie.com/images/web/2016_new/images/main/btn_slide_bg.png") no-repeat 0 0}
+#wrap #container .tslide .tslidebg .tslidein .tslist li .tposbx .sover .slbtn a:hover{background:#f03f37}
+
+
+
+
+
+#wrap #container .tslide .tslidebg .tslidein .tstab{position:absolute;left:36%;top:345px;border:1px solid #030a0c}
+#wrap #container .tslide .tslidebg .tslidein .tstab ul{*zoom:1}
+#wrap #container .tslide .tslidebg .tslidein .tstab ul:after{content:""; display:block; clear:both}
+#wrap #container .tslide .tslidebg .tslidein .tstab ul li{float:left;border-left:1px solid #030a0c}
+#wrap #container .tslide .tslidebg .tslidein .tstab ul li:first-child{border-left:none}
+#wrap #container .tslide .tslidebg .tslidein .tstab ul li a{display:inline-block;padding:0 30px;height:38px;line-height:38px;color:#fff;font-size:14px;text-decoration:none;background: url("http://images.maxmovie.com/images/web/2016_new/images/main/main_slide_menu_bg.png")}
+#wrap #container .tslide .tslidebg .tslidein .tstab ul li a:hover{color:#fff;font-weight:800;background:#f03f37}
+#wrap #container .tslide .tslidebg .tslidein .tstab ul li a.on{color:#f03f37;font-weight:800;background:#000}
+
+
+#wrap #container .tslide .tslidebg .tslf{position:absolute;left:50%;top:153px;margin-left:-523px}
+#wrap #container .tslide .tslidebg .tslf a{display:block;width:20px;height:39px;background: url("http://images.maxmovie.com/images/web/2016_new/images/main/main_slide_arrow.png") no-repeat 0 0}
+#wrap #container .tslide .tslidebg .tslf a:hover{background: url("http://images.maxmovie.com/images/web/2016_new/images/main/main_slide_arrow.png") no-repeat 0 -39px}
+#wrap #container .tslide .tslidebg .tslf a.on{background: url("http://images.maxmovie.com/images/web/2016_new/images/main/main_slide_arrow.png") no-repeat 0 -39px}
+#wrap #container .tslide .tslidebg .tsrf{position:absolute;right:50%;top:153px;margin-right:-523px}
+#wrap #container .tslide .tslidebg .tsrf a{display:block;width:20px;height:39px;background: url("http://images.maxmovie.com/images/web/2016_new/images/main/main_slide_arrow.png") no-repeat -20px 0}
+#wrap #container .tslide .tslidebg .tsrf a:hover{background: url("http://images.maxmovie.com/images/web/2016_new/images/main/main_slide_arrow.png") no-repeat -20px -39px}
+#wrap #container .tslide .tslidebg .tsrf a.on{background: url("http://images.maxmovie.com/images/web/2016_new/images/main/main_slide_arrow.png") no-repeat -20px -39px}
+#wrap #container .tslide .tslidebg .tslf span,
+#wrap #container .tslide .tslidebg .tsrf span{display:none}
+
+
+
+
+.asection .asecin{position:relative;width:965px;padding:25px 0 0 0;margin:0 auto}
+.asection .asecin .newstit{position:relative;width:965px}
+.asection .asecin .newstit h2{padding:8px 0 15px;line-height:0}
+.asection .asecin .newstit ul{position:absolute;right:0;top:0;*zoom:1}
+.asection .asecin .newstit ul:after{content:""; display:block; clear:both}
+.asection .asecin .newstit ul li{float:left;background: url("http://images.maxmovie.com/images/web/2016_new/images/main/bl_news_bar.gif") no-repeat 0 10px}
+.asection .asecin .newstit ul li:first-child{background:none}
+.asection .asecin .newstit ul li a{display:inline-block;padding:0 15px;font-size:13px;line-height:32px}
+.asection .asecin .newstit ul li a.on{font-weight:800}
+.asection .asecin .newstit ul li:last-child a{padding-right:0;}
+
+.asection .asecin .typea{}
+.asection .asecin .typea .tyt{position:relative}
+.asection .asecin .typea .tyt .tytbig{position:relative;width:719px;height:315px;overflow:hidden}
+.asection .asecin .typea .tyt .tytbig ul li{position:relative;height:315px}
+.asection .asecin .typea .tyt .tytbig ul li a .bskin{position:absolute;left:0;top:0}
+.asection .asecin .typea .tyt .tytbig ul li a{position:relative;display:block;height:315px}
+.asection .asecin .typea .tyt .tytbig ul li a .bigtxt{position:absolute;left:0;bottom:0;display:table;width:100%;padding-bottom:30px}
+.asection .asecin .typea .tyt .tytbig ul li a .bigtxt .bigtxtin{width:100%;text-align:center;*padding-top:80px}
+.asection .asecin .typea .tyt .tytbig ul li a .bigtxt .bigtxtin .bic{padding-bottom:2px;text-align:center}
+.asection .asecin .typea .tyt .tytbig ul li a .bigtxt .bigtxtin .bic span{display:inline-block;padding:0 6px;height:17px;line-height:17px;color:#f03f37;text-align:center;background:#000;font-family:'Montserrat';}
+.asection .asecin .typea .tyt .tytbig ul li a .bigtxt .bigtxtin .bbt{padding:0 50px;width:619px;font-size:30px;color:#fff;font-weight:900;line-height:32px;/*overflow:hidden;white-space:nowrap;text-overflow:ellipsis*/}
+.asection .asecin .typea .tyt .tytbig ul li a .bigtxt .bigtxtin .bst{padding-top:5px;font-size:13px;color:#999;line-height:18px}
+
+.asection .asecin .typea .tyt .tytbig .asl{position:absolute;left:0;top:132px;width:40px;height:43px}
+.asection .asecin .typea .tyt .tytbig .asl a{display:block;width:40px;height:43px;background: url("http://images.maxmovie.com/images/web/2016_new/images/main/btn_news.png") no-repeat 0 0}
+.asection .asecin .typea .tyt .tytbig .asl a:hover{display:block;width:40px;height:43px;background: url("http://images.maxmovie.com/images/web/2016_new/images/main/btn_news.png") no-repeat 0 -43px}
+.asection .asecin .typea .tyt .tytbig .asl a.on{display:block;width:40px;height:43px;background: url("http://images.maxmovie.com/images/web/2016_new/images/main/btn_news.png") no-repeat 0 -43px}
+.asection .asecin .typea .tyt .tytbig .asl a em{display:none}
+.asection .asecin .typea .tyt .tytbig .asr{position:absolute;right:0;top:132px;width:40px;height:43px}
+.asection .asecin .typea .tyt .tytbig .asr a{display:block;width:40px;height:43px;background: url("http://images.maxmovie.com/images/web/2016_new/images/main/btn_news.png") no-repeat -40px 0}
+.asection .asecin .typea .tyt .tytbig .asr a:hover{display:block;width:40px;height:43px;background: url("http://images.maxmovie.com/images/web/2016_new/images/main/btn_news.png") no-repeat -40px -43px}
+.asection .asecin .typea .tyt .tytbig .asr a.on{display:block;width:40px;height:43px;background: url("http://images.maxmovie.com/images/web/2016_new/images/main/btn_news.png") no-repeat -40px -43px}
+.asection .asecin .typea .tyt .tytbig .asr a em{display:none}
+.asection .asecin .typea .tyt .tytbig .sldot{position:absolute;left:0;top:287px;width:100%;height:6px;text-align:center;}
+.asection .asecin .typea .tyt .tytbig .sldot span{display:inline-block;width:6px;height:6px;margin:0 7px;background: url("http://images.maxmovie.com/images/web/2016_new/images/main/main_news_dot.png") no-repeat 0 0}
+.asection .asecin .typea .tyt .tytbig .sldot span.on{display:inline-block;width:6px;height:6px;margin:0 7px;background: url("http://images.maxmovie.com/images/web/2016_new/images/main/main_news_dot.png") no-repeat 0 -6px}
+.asection .asecin .typea .tyt .tytbig .sldot span em{display:none}
+
+.asection .asecin .typea .tyt .tyside{position:absolute;right:0;top:0;width:225px;min-height:315px}
+.asection .asecin .typea .tyt .tyside .tysidein{position:relative;width:225px;min-height:315px;display:block}
+.asection .asecin .typea .tyt .tyside .tysidein .ply{position:relative;width:225px;height:142px;overflow:hidden}
+.asection .asecin .typea .tyt .tyside .tysidein .ply .tsk{position:absolute;left:0;top:0}
+.asection .asecin .typea .tyt .tyside em{position:absolute;left:93px;top:52px;display:block;width:39px;height:39px;background: url("http://images.maxmovie.com/images/web/2016_new/images/main/btn_play.png") no-repeat 0 0}
+.asection .asecin .typea .tyt .tyside em:hover{background: url("http://images.maxmovie.com/images/web/2016_new/images/main/btn_play.png") no-repeat 0 -39px}
+.asection .asecin .typea .tyt .tyside .tysidein .ply span{position:absolute;left:0;top:0;width:40px;height:40px;font-size:13px;color:#f03f37;font-weight:800;text-align:center;line-height:40px;background:#000}
+.asection .asecin .typea .tyt .tyside .tysidein .plysub{padding:17px 15px 14px;font-size:15px;line-height:24px}
+.asection .asecin .typea .tyt .tyside .tysidein .plytxt{padding:0 15px 0;font-size:13px;color:#666;line-height:24px}
+.asection .asecin .typea .tyt .tyside .tysidein:hover{text-decoration:none}
+.asection .asecin .typea .tyt .tyside .tysidein:hover .plysub{text-decoration:underline}
+
+.asection .asecin .typea .tyb{padding:21px 0 0}
+.asection .asecin .typea .tyb ul{*zoom:1}
+.asection .asecin .typea .tyb ul:after{content:""; display:block; clear:both}
+.asection .asecin .typea .tyb ul li{position:relative;float:left;padding-left:22px;min-height:315px}
+.asection .asecin .typea .tyb ul li:first-child{padding-left:0}
+.asection .asecin .typea .tyb .tysidein{position:relative;width:225px;min-height:315px;display:block}
+.asection .asecin .typea .tyb .tysidein .ply{position:relative;width:225px;height:142px;overflow:hidden}
+.asection .asecin .typea .tyb .tysidein .ply .tsk{position:absolute;left:0;top:0}
+.asection .asecin .typea .tyb .tysidein .ply em{position:absolute;left:93px;top:52px;display:block;width:39px;height:39px;background: url("http://images.maxmovie.com/images/web/2016_new/images/main/btn_play.png") no-repeat 0 0}
+.asection .asecin .typea .tyb .tysidein .ply em:hover{background: url("http://images.maxmovie.com/images/web/2016_new/images/main/btn_play.png") no-repeat 0 -39px}
+.asection .asecin .typea .tyb .tysidein .ply span{position:absolute;left:0;top:0;width:40px;height:40px;font-size:13px;color:#f03f37;font-weight:800;text-align:center;line-height:40px;background:#000}
+.asection .asecin .typea .tyb .tysidein .plysub{padding:17px 15px 14px;font-size:15px;line-height:24px}
+.asection .asecin .typea .tyb .tysidein .plytxt{padding:0 15px 0;font-size:13px;color:#666;line-height:24px}
+.asection .asecin .typea .tyb a.tysidein:hover{text-decoration:none}
+.asection .asecin .typea .tyb a.tysidein:hover .plysub{text-decoration:underline}
+.asection .asecin .typea .tyb ul li em{position:absolute;right:93px;top:52px;display:block;width:39px;height:39px;background: url("http://images.maxmovie.com../../images/main/btn_play.png") no-repeat 0 0}
+.asection .asecin .typea .tyb ul li em:hover{background: url("http://images.maxmovie.com../../images/main/btn_play.png") no-repeat 0 -39px}
+
+.asection .asecin .typea .tyb .pl{padding-left:21px}
+
+
+.asection .asecin .typeb{position:relative}
+.asection .asecin .typeb .tyfl{position:relative}
+.asection .asecin .typeb .tyfl .tytbig{position:relative;width:471px;height:630px;overflow:hidden}
+.asection .asecin .typeb .tyfl .tytbig ul li{position:relative;width:473px !important;height:630px}
+.asection .asecin .typeb .tyfl .tytbig ul li a .bskin{position:absolute;left:0;top:0}
+.asection .asecin .typeb .tyfl .tytbig ul li a{position:relative;display:block;height:630px}
+.asection .asecin .typeb .tyfl .tytbig ul li a img{height:100%;width:auto}
+.asection .asecin .typeb .tyfl .tytbig ul li a .bigtxt{position:absolute;left:0;top:429px;width:100%}
+.asection .asecin .typeb .tyfl .tytbig ul li a .bigtxt .bigtxtin{padding-left:50px;padding-right:50px;}
+.asection .asecin .typeb .tyfl .tytbig ul li a .bigtxt .bigtxtin .bic{padding-bottom:7px}
+.asection .asecin .typeb .tyfl .tytbig ul li a .bigtxt .bigtxtin .bic span{display:inline-block;padding:0 6px;height:17px;line-height:17px;color:#f03f37;text-align:center;background:#000;font-family:'Montserrat';}
+.asection .asecin .typeb .tyfl .tytbig ul li a .bigtxt .bigtxtin .bbt{padding-bottom:2px;font-size:30px;color:#fff;font-weight:900;line-height:36px}
+.asection .asecin .typeb .tyfl .tytbig ul li a .bigtxt .bigtxtin .bst{font-size:13px;color:#999;line-height:24px}
+
+.asection .asecin .typeb .tyfl .tytbig .asl{position:absolute;left:0;top:293px;width:40px;height:43px}
+.asection .asecin .typeb .tyfl .tytbig .asl a{display:block;width:40px;height:43px;background: url("http://images.maxmovie.com/images/web/2016_new/images/main/btn_news.png") no-repeat 0 0}
+.asection .asecin .typeb .tyfl .tytbig .asl a:hover{display:block;width:40px;height:43px;background: url("http://images.maxmovie.com/images/web/2016_new/images/main/btn_news.png") no-repeat 0 -43px}
+.asection .asecin .typeb .tyfl .tytbig .asl a.on{display:block;width:40px;height:43px;background: url("http://images.maxmovie.com/images/web/2016_new/images/main/btn_news.png") no-repeat 0 -43px}
+.asection .asecin .typeb .tyfl .tytbig .asl a em{display:none}
+.asection .asecin .typeb .tyfl .tytbig .asr{position:absolute;right:0;top:293px;width:40px;height:43px}
+.asection .asecin .typeb .tyfl .tytbig .asr a{display:block;width:40px;height:43px;background: url("http://images.maxmovie.com/images/web/2016_new/images/main/btn_news.png") no-repeat -40px 0}
+.asection .asecin .typeb .tyfl .tytbig .asr a:hover{display:block;width:40px;height:43px;background: url("http://images.maxmovie.com/images/web/2016_new/images/main/btn_news.png") no-repeat -40px -43px}
+.asection .asecin .typeb .tyfl .tytbig .asr a.on{display:block;width:40px;height:43px;background: url("http://images.maxmovie.com/images/web/2016_new/images/main/btn_news.png") no-repeat -40px -43px}
+.asection .asecin .typeb .tyfl .tytbig .asr a em{display:none}
+.asection .asecin .typeb .tyfl .tytbig .sldot{position:absolute;left:0;top:602px;width:100%;height:6px;text-align:center;}
+.asection .asecin .typeb .tyfl .tytbig .sldot span{display:inline-block;width:6px;height:6px;margin:0 7px;background: url("http://images.maxmovie.com/images/web/2016_new/images/main/main_news_dot.png") no-repeat 0 0}
+.asection .asecin .typeb .tyfl .tytbig .sldot span.on{display:inline-block;width:6px;height:6px;margin:0 7px;background: url("http://images.maxmovie.com/images/web/2016_new/images/main/main_news_dot.png") no-repeat 0 -6px}
+.asection .asecin .typeb .tyfr em{position:absolute;left:93px;top:52px;display:block;width:39px;height:39px;background: url("http://images.maxmovie.com/images/web/2016_new/images/main/btn_play.png") no-repeat 0 0}
+.asection .asecin .typeb .tyfr em:hover{background: url("http://images.maxmovie.com/images/web/2016_new/images/main/btn_play.png") no-repeat 0 -39px}
+
+.asection .asecin .typeb .tyfl .tytbig ul li .bigtt{position:absolute;left:0;top:0;width:40px;height:40px;font-size:13px;color:#f03f37;font-weight:800;text-align:center;line-height:40px;background:#000}
+.asection .asecin .typeb .tyfl .tytbig ul li .bigplay{position:absolute;left:50%;top:50%;display:block;width:39px;height:39px;margin:-20px 0 0 -20px;cursor:pointer;background: url("http://images.maxmovie.com/images/web/2016_new/images/main/btn_play.png") no-repeat 0 0}
+.asection .asecin .typeb .tyfl .tytbig ul li .bigplay:hover{background: url("http://images.maxmovie.com/images/web/2016_new/images/main/btn_play.png") no-repeat 0 -39px}
+
+.asection .asecin .typeb .tyfr{position:absolute;right:0;top:0;width:471px}
+.asection .asecin .typeb .tyfr ul{*zoom:1}
+.asection .asecin .typeb .tyfr ul:after{content:""; display:block; clear:both}
+.asection .asecin .typeb .tyfr ul li{position:relative;float:left;padding-left:21px;min-height:335px}
+.asection .asecin .typeb .tyfr ul li:first-child{padding-left:0}
+.asection .asecin .typeb .tyfr .tysidein{position:relative;width:225px;min-height:315px;display:block}
+.asection .asecin .typeb .tyfr .tysidein .ply{position:relative;width:225px;height:142px;overflow:hidden}
+.asection .asecin .typeb .tyfr .tysidein .ply .tsk{position:absolute;left:0;top:0}
+.asection .asecin .typeb .tyfr em{position:absolute;left:94px;top:52px;display:block;width:39px;height:39px;background: url("http://images.maxmovie.com/images/web/2016_new/images/main/btn_play.png") no-repeat 0 0}
+.asection .asecin .typeb .tyfr em:hover{background: url("http://images.maxmovie.com/images/web/2016_new/images/main/btn_play.png") no-repeat 0 -39px}
+.asection .asecin .typeb .tyfr .tysidein .ply span{position:absolute;left:0;top:0;width:40px;height:40px;font-size:13px;color:#f03f37;font-weight:800;text-align:center;line-height:40px;background:#000}
+.asection .asecin .typeb .tyfr .tysidein .plysub{padding:17px 15px 14px;font-size:15px;line-height:24px}
+.asection .asecin .typeb .tyfr .tysidein .plytxt{padding:0 15px 0;font-size:13px;color:#666;line-height:24px;}
+.asection .asecin .typeb .tyfr .tysidein:hover{text-decoration:none}
+.asection .asecin .typeb .tyfr .tysidein:hover .plysub{text-decoration:underline}
+.asection .asecin .typeb .tyfr .pl{padding-left:0}
+
+.asection .asecin .typec .tyt{position:relative}
+.asection .asecin .typec .tyt .tytbig{position:relative;width:965px;height:315px;overflow:hidden}
+.asection .asecin .typec .tyt .tytbig ul li{position:relative;height:315px}
+.asection .asecin .typec .tyt .tytbig ul li a .bskin{position:absolute;left:0;top:0}
+.asection .asecin .typec .tyt .tytbig ul li a{position:relative;display:block;height:315px}
+.asection .asecin .typec .tyt .tytbig ul li a .bigtxt{position:absolute;left:0;top:0;height:315px;display:table;vertical-align: middle;width:100%}
+.asection .asecin .typec .tyt .tytbig ul li a .bigtxt .bigtxtin{display:table-cell;width:100%;text-align:left;vertical-align: middle}
+.asection .asecin .typec .tyt .tytbig ul li a .bigtxt .bigtxtin .bic{padding-left:90px;padding-bottom:2px;text-align:left}
+.asection .asecin .typec .tyt .tytbig ul li a .bigtxt .bigtxtin .bic span{display:inline-block;padding:0 6px;height:17px;line-height:17px;color:#f03f37;text-align:left;background:#000;font-family:'Montserrat';}
+.asection .asecin .typec .tyt .tytbig ul li a .bigtxt .bigtxtin .bbt{padding:0 90px;font-size:30px;color:#fff;font-weight:900;line-height:36px}
+.asection .asecin .typec .tyt .tytbig ul li a .bigtxt .bigtxtin .bst{padding-left:90px;font-size:13px;color:#999;line-height:18px}
+
+.asection .asecin .typec .tyt .tytbig .asl{position:absolute;left:0;top:132px;width:40px;height:43px}
+.asection .asecin .typec .tyt .tytbig .asl a{display:block;width:40px;height:43px;background: url("http://images.maxmovie.com/images/web/2016_new/images/main/btn_news.png") no-repeat 0 0}
+.asection .asecin .typec .tyt .tytbig .asl a:hover{display:block;width:40px;height:43px;background: url("http://images.maxmovie.com/images/web/2016_new/images/main/btn_news.png") no-repeat 0 -43px}
+.asection .asecin .typec .tyt .tytbig .asl a.on{display:block;width:40px;height:43px;background: url("http://images.maxmovie.com/images/web/2016_new/images/main/btn_news.png") no-repeat 0 -43px}
+.asection .asecin .typec .tyt .tytbig .asl a em{display:none}
+.asection .asecin .typec .tyt .tytbig .asr{position:absolute;right:0;top:132px;width:40px;height:43px}
+.asection .asecin .typec .tyt .tytbig .asr a{display:block;width:40px;height:43px;background: url("http://images.maxmovie.com/images/web/2016_new/images/main/btn_news.png") no-repeat -40px 0}
+.asection .asecin .typec .tyt .tytbig .asr a:hover{display:block;width:40px;height:43px;background: url("http://images.maxmovie.com/images/web/2016_new/images/main/btn_news.png") no-repeat -40px -43px}
+.asection .asecin .typec .tyt .tytbig .asr a.on{display:block;width:40px;height:43px;background: url("http://images.maxmovie.com/images/web/2016_new/images/main/btn_news.png") no-repeat -40px -43px}
+.asection .asecin .typec .tyt .tytbig .asr a em{display:none}
+.asection .asecin .typec .tyt .tytbig .sldot{position:absolute;left:0;top:287px;width:100%;height:6px;text-align:center;}
+.asection .asecin .typec .tyt .tytbig .sldot span{display:inline-block;width:6px;height:6px;margin:0 7px;background: url("http://images.maxmovie.com/images/web/2016_new/images/main/main_news_dot.png") no-repeat 0 0}
+.asection .asecin .typec .tyt .tytbig .sldot span.on{display:inline-block;width:6px;height:6px;margin:0 7px;background: url("http://images.maxmovie.com/images/web/2016_new/images/main/main_news_dot.png") no-repeat 0 -6px}
+.asection .asecin .typec .tyt .tytbig .sldot span em{display:none}
+
+.asection .asecin .typec .tyb{}
+.asection .asecin .typec .tyb ul{*zoom:1}
+.asection .asecin .typec .tyb ul:after{content:""; display:block; clear:both}
+.asection .asecin .typec .tyb ul li{float:left;padding-left:22px;min-height:315px}
+.asection .asecin .typec .tyb ul li:first-child{padding-left:0}
+.asection .asecin .typec .tyb ul li.pbno{padding-left:0}
+.asection .asecin .typec .tyb .tysidein{position:relative;width:225px;min-height:315px;display:block}
+.asection .asecin .typec .tyb .tysidein .ply{position:relative;width:225px;height:142px;overflow:hidden}
+.asection .asecin .typec .tyb .tysidein .ply .tsk{position:absolute;left:0;top:0}
+.asection .asecin .typec .tyb .tysidein .ply em{position:absolute;left:93px;top:52px;display:block;width:39px;height:39px;background: url("http://images.maxmovie.com/images/web/2016_new/images/main/btn_play.png") no-repeat 0 0}
+.asection .asecin .typec .tyb .tysidein .ply em:hover{background: url("http://images.maxmovie.com/images/web/2016_new/images/main/btn_play.png") no-repeat 0 -39px}
+.asection .asecin .typec .tyb .tysidein .ply span{position:absolute;left:0;top:0;width:40px;height:40px;font-size:13px;color:#f03f37;font-weight:800;text-align:center;line-height:40px;background:#000}
+.asection .asecin .typec .tyb .tysidein .plysub{padding:17px 15px 14px;font-size:15px;line-height:24px}
+.asection .asecin .typec .tyb .tysidein .plytxt{padding:0 15px 0;height:72px;overflow:hidden;font-size:13px;color:#666;line-height:24px;word-wrap:break-word;word-break:keep-all}
+.asection .asecin .typec .tyb .tysidein:hover{text-decoration:none}
+.asection .asecin .typec .tyb .tysidein:hover .plysub{text-decoration:underline}
+.asection .asecin .typec .tyb .pl{padding-left:21px}
+
+#wrap .adbg{position:absolute;left:50%;top:110px;margin-left:482px}
+/*#wrap .adbg a{display:block;width:2000px;height:310px;background:#3d3f48 url("http://images.maxmovie.com/images/web/2016_new/images/main/adbg.jpg") no-repeat 0 0}*/
+#wrap .adbg a{display:block;width:2000px;height:310px;}
+#wrap #container .contents .bsection .bsecin{position:relative;width:965px;margin:0 auto;padding:38px 0 40px}
+#wrap #container .contents .bsection .bsecin .sucfl{width:721px;min-height:363px}
+#wrap #container .contents .bsection .bsecin .sucfl h2{position:relative;padding-bottom:13px;*padding-bottom:5px}
+#wrap #container .contents .bsection .bsecin .sucfl h2 a{display:inline-block;padding-right:10px;margin-left:39px;vertical-align:top;font-size:11px;font-weight:normal;line-height:19px;background: url("http://images.maxmovie.com/images/web/2016_new/images/main/bl_more_arrow.png") no-repeat right 6px}
+#wrap #container .contents .bsection .bsecin .sucfl .boolist{width:732px;}
+#wrap #container .contents .bsection .bsecin .sucfl .boolist > ul{*zoom:1}
+#wrap #container .contents .bsection .bsecin .sucfl .boolist > ul:after{content:""; display:block; clear:both}
+#wrap #container .contents .bsection .bsecin .sucfl .boolist > ul > li{position:relative;float:left;padding-left:11px}
+#wrap #container .contents .bsection .bsecin .sucfl .boolist > ul > li:first-child{padding-left:0}
+#wrap #container .contents .bsection .bsecin .sucfl .boolist > ul > li .boo{width:231px;min-height:329px;background:#fff;border:1px solid #dbdbdb}
+#wrap #container .contents .bsection .bsecin .sucfl .boolist > ul > li .boo .booin{position:relative;height:190px;overflow:hidden;}
+#wrap #container .contents .bsection .bsecin .sucfl .boolist > ul > li .boo .booin img{width:468px !important;height:190px !important;margin-left:-118px;}
+#wrap #container .contents .bsection .bsecin .sucfl .boolist > ul > li .boo .booin .bsk{position:absolute;left:0;top:0;width:231px !important;height:190px !important;margin-left:0 !important;}
+#wrap #container .contents .bsection .bsecin .sucfl .boolist > ul > li .boo .booin .boopost{position:absolute;left:50%;top:20px;width:76px;height:110px;overflow:hidden;margin-left:-38px}
+#wrap #container .contents .bsection .bsecin .sucfl .boolist > ul > li .boo .booin .boopost img{width:76px !important;;height:110px !important;margin-left:0 !important;}
+#wrap #container .contents .bsection .bsecin .sucfl .boolist > ul > li .boo .booin .boopost em{position:absolute;left:19px;top:36px;display:block;width:39px;height:39px;background: url("http://images.maxmovie.com/images/web/2016_new/images/main/btn_play.png") no-repeat 0 0}
+#wrap #container .contents .bsection .bsecin .sucfl .boolist > ul > li .boo .booin .boopost em:hover{background: url("http://images.maxmovie.com/images/web/2016_new/images/main/btn_play.png") no-repeat 0 -39px}
+#wrap #container .contents .bsection .bsecin .sucfl .boolist > ul > li .boo .booin .booply{position:absolute;left:0;top:135px;width:100%;text-align:center}
+#wrap #container .contents .bsection .bsecin .sucfl .boolist > ul > li .boo .booin .booply a{display:block;padding-left:10px;padding-right:10px;text-align:center;font-size:16px;line-height:23px;color:#fff;text-overflow:ellipsis;white-space:nowrap;word-wrap:normal;overflow:hidden;}
+#wrap #container .contents .bsection .bsecin .sucfl .boolist > ul > li .boo .booin .booply a:hover{color:#f03f37;text-decoration:underline}
+#wrap #container .contents .bsection .bsecin .sucfl .boolist > ul > li .boo .booin .booply span{display:inline-block;padding:0 4px;color:#878d99;font-size:11px;line-height:16px}
+
+#wrap #container .contents .bsection .bsecin .sucfl .boolist ul li .boo .bootxt{position:relative;min-height:98px;border-bottom:1px solid #dbdbdb}
+#wrap #container .contents .bsection .bsecin .sucfl .boolist ul li .boo .bootxt:hover .boonum{color:#f03f37;text-decoration:underline}
+#wrap #container .contents .bsection .bsecin .sucfl .boolist ul li .boo .bootxt .boonum{position:relative;padding-left:53px;height:46px;line-height:52px;font-size:15px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;letter-spacing:-0.5pt}
+#wrap #container .contents .bsection .bsecin .sucfl .boolist ul li .boo .bootxt .boonum span{position:absolute;left:6px;top:0;display:inline-block;width:44px;height:46px;text-align:center;background: url("http://images.maxmovie.com/images/web/2016_new/images/main/bl_updown.png") no-repeat right 0}
+#wrap #container .contents .bsection .bsecin .sucfl .boolist ul li .boo .bootxt .boonum span.on{position:absolute;left:6px;top:0;display:inline-block;width:44px;height:46px;text-align:center;background: url("http://images.maxmovie.com/images/web/2016_new/images/main/bl_updown.png") no-repeat right -92px}
+#wrap #container .contents .bsection .bsecin .sucfl .boolist ul li .boo .bootxt .boonum span.top{position:absolute;left:6px;top:0;display:inline-block;width:44px;height:46px;text-align:center;background: url("http://images.maxmovie.com/images/web/2016_new/images/main/bl_updown.png") no-repeat right -46px}
+#wrap #container .contents .bsection .bsecin .sucfl .boolist ul li .boo .bootxt .boonum span em{display:inline-block;margin-left:4px;font-size:16px;color:#6264a3;font-family:'Montserrat'}
+#wrap #container .contents .bsection .bsecin .sucfl .boolist ul li .boo .bootxt .boonum span.on em{display:inline-block;margin-left:4px;font-size:16px;color:#f03f37;font-family:'Montserrat'}
+#wrap #container .contents .bsection .bsecin .sucfl .boolist ul li .boo .bootxt .boonum span.top em{display:inline-block;margin-left:4px;font-size:16px;color:#f03f37;font-family:'Montserrat'}
+#wrap #container .contents .bsection .bsecin .sucfl .boolist ul li .boo .bootxt .bttx{padding:0px 16px 0;font-size:13px;color:#666;line-height:18px;word-wrap:break-word}
+#wrap #container .contents .bsection .bsecin .sucfl .boolist ul li .boo .boobtn{*zoom:1}
+#wrap #container .contents .bsection .bsecin .sucfl .boolist ul li .boo .boobtn:after{content:""; display:block; clear:both}
+#wrap #container .contents .bsection .bsecin .sucfl .boolist ul li .boo .boobtn li{float:left;width:50%;background: url("http://images.maxmovie.com/images/web/2016_new/images/main/bl_boom_bar.gif") no-repeat 0 13px}
+#wrap #container .contents .bsection .bsecin .sucfl .boolist ul li .boo .boobtn li:first-child{background:none;*width:49.9%}
+#wrap #container .contents .bsection .bsecin .sucfl .boolist ul li .boo .boobtn a{display:block;text-align:center;height:40px;line-height:40px;font-size:14px;color:#000}
+#wrap #container .contents .bsection .bsecin .sucfl .boolist ul li .boo .boobtn a span{vertical-align:middle;margin-top:-3px}
+
+#wrap #container .contents .bsection .bsecin .sucfl .boolist ul li .boo .boobtn .up a span{display:inline-block;padding-left:0;color:#000;font-size:12px;line-height:40px;*line-height:45px;background:none}
+#wrap #container .contents .bsection .bsecin .sucfl .boolist ul li .boo .boobtn .up a.on{background:#f03f37}
+#wrap #container .contents .bsection .bsecin .sucfl .boolist ul li .boo .boobtn .up a.on span{padding-left:21px;color:#fff;font-size:12px;line-height:40px;*line-height:45px;background: url("http://images.maxmovie.com/images/web/2016_new/images/main/boom_up.png") no-repeat 0 13px}
+
+#wrap #container .contents .bsection .bsecin .sucfl .boolist ul li .boo .boobtn .down a span{display:inline-block;padding-left:0;color:#000;font-size:12px;line-height:40px;*line-height:45px;background:none}
+#wrap #container .contents .bsection .bsecin .sucfl .boolist ul li .boo .boobtn .down a.on{background:#6264a3}
+#wrap #container .contents .bsection .bsecin .sucfl .boolist ul li .boo .boobtn .down a.on  span{padding-left:21px;color:#fff;font-size:11px;line-height:40px;*line-height:45px;background: url("http://images.maxmovie.com/images/web/2016_new/images/main/boom_down.png") no-repeat 0 13px}
+
+
+#wrap #container .contents .bsection .bsecin .sucfr{position:absolute;right:0;top:38px;width:233px;min-height:363px}
+#wrap #container .contents .bsection .bsecin .sucfr h2{position:relative;padding-bottom:15px;line-height:0;height:17px}
+#wrap #container .contents .bsection .bsecin .sucfr .maga{width:231px;min-height:329px;background:#fff;border:1px solid #dbdbdb}
+#wrap #container .contents .bsection .bsecin .sucfr .maga .magain{position:relative;height:190px}
+#wrap #container .contents .bsection .bsecin .sucfr .maga .magain .magapost{position:absolute;left:0;top:0;width:231px;height:190px;overflow:hidden;background: url("http://images.maxmovie.com/images/web/2016_new/images/main/magazine_bg.jpg") no-repeat 0 0}
+#wrap #container .contents .bsection .bsecin .sucfr .maga .magatbox{padding:16px 20px}
+#wrap #container .contents .bsection .bsecin .sucfr .maga .magatbox .magatxt{position:relative;font-size:15px;line-height:20px}
+#wrap #container .contents .bsection .bsecin .sucfr .maga .magatbox .magatxt{color:#222}
+#wrap #container .contents .bsection .bsecin .sucfr .maga .magamon{position:absolute;left:0;bottom:0;width:231px;height:40px;line-height:40px;font-size:12px;color:#959595;letter-spacing:-0.7pt}
+#wrap #container .contents .bsection .bsecin .sucfr .maga .magamon span{display:block;padding-left:20px}
+#wrap #container .contents .bsection .bsecin .sucfr .maga .magamon span strong{display:inline-block;padding-left:6px;font-size:12px;color:#5e5b78;font-weight:900;font-family:'Montserrat'}
+
+#wrap #container .contents .bsection .bsecin .sucfl .boolist > ul > li .boo .upvotesns{position:relative}
+#wrap #container .contents .bsection .bsecin .sucfl .boolist > ul > li .boo .upvotesns .snstxt{position:relative;font-size:13px;padding-right:41px;height:40px;line-height:40px;padding-left:20px;font-size:12px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+#wrap #container .contents .bsection .bsecin .sucfl .boolist > ul > li .boo .upvotesns .snstxt img{vertical-align:middle;margin-top:-7px}
+#wrap #container .contents .bsection .bsecin .sucfl .boolist > ul > li .boo .upvotesns .snstxt span{display:inline-block;vertical-align:middle;padding:0 5px 0 10px;font-weight:bold;color:#6264a3;line-height:45px;margin-top:-2px}
+#wrap #container .contents .bsection .bsecin .sucfl .boolist > ul > li .boo .upvotesns .snstxt span.on{color:#f03f37;text-decoration:underline}
+#wrap #container .contents .bsection .bsecin .sucfl .boolist > ul > li .boo .upvotesns .snstxt a{position:absolute;right:7px;top:5px;display:inline-block;width:38px;height:35px;background:#fff url("http://images.maxmovie.com/images/web/img/chart/new/lay_myup.png") no-repeat 0 0;background-size:38px 35px}
+#wrap #container .contents .bsection .bsecin .sucfl .boolist > ul > li .boo .upvotesns .snstxt a.on{display:inline-block;width:38px;height:35px;background:#e0e0e0 url("http://images.maxmovie.com/images/web/img/chart/new/up_bt_share.png") no-repeat 0 0;background-size:38px 35px;-moz-border-radius:3px;-webkit-border-radius:3px;border-radius:3px}
+
+
+.boomlay{width:448px;padding-bottom:16px;min-height:258px;background:#fff;border:1px solid #999;z-index:1000}
+.boomlay h3{padding-left:20px;height:49px;line-height:49px;font-size:16px;font-weight:800;border-bottom:1px solid #d4d4d4}
+.boomlay h3 span.up{color:#f03f37;font-weight:800}
+.boomlay h3 span.down{color:#6264a3;font-weight:800}
+.boomlay .boolayin{padding:16px 16px 0}
+.boomlay .boolayin ul li{line-height:20px;padding-bottom:10px;font-size:14px;padding-left:20px}
+.boomlay .boolayin ul li input{vertical-align:middle;margin-right:5px;margin-left:-20px}
+.boomlay .boolayin .boolaybt{padding-top:7px}
+.boomlay .boolayin .boolaybt a{display:block;height:33px;font-size:15px;line-height:33px;text-align:center;border:1px solid #999;*zoom:1}
+.boomlay .boolayin .boolaybt a:after{content:""; display:block; clear:both}
+.boomlay .boolayin .boolaybt a.dfl{float:left;width:335px}
+.boomlay .boolayin .boolaybt a.dfr{float:right;width:78px;border-left:0}
+.boomlay .boolayin .boolaybt a.up:hover{color:#f03f37;text-decoration:none;border:1px solid #f03f37}
+.boomlay .boolayin .boolaybt a.down:hover{color:#6264a3;text-decoration:none;border:1px solid #6264a3}
+.boomlay .boolayin .boolaybt a.dfr:hover{border-left:0}
+
+
+
+.boomlay .blaycl{display:inline-block;position:absolute;right:15px;top:15px;width:20px;height:20px}
+.boomlay .blayarr{position:absolute;left:96px;bottom:-8px;display:inline-block;width:12px;height:8px;background: url("http://images.maxmovie.com/images/web/2016_new/images/main/btn_boomup_arr.png") no-repeat 0 0}
+
+#wrap #container .contents .csection .csecin{position:relative;width:965px;margin:0 auto;padding:38px 0 59px 0}
+#wrap #container .contents .csection .csecin .lounge{position:relative}
+#wrap #container .contents .csection .csecin .lounge .loungetit{position:relative}
+#wrap #container .contents .csection .csecin .lounge .loungetit h2{padding-bottom:13px}
+#wrap #container .contents .csection .csecin .lounge .loungetit ul{position:absolute;right:0;top:-4px;*zoom:1}
+#wrap #container .contents .csection .csecin .lounge .loungetit ul:after{content:""; display:block; clear:both}
+#wrap #container .contents .csection .csecin .lounge .loungetit ul li{float:left;background: url("http://images.maxmovie.com/images/web/2016_new/images/main/bl_sisa_bar.gif") no-repeat 0 4px}
+#wrap #container .contents .csection .csecin .lounge .loungetit ul li:first-child{background:none}
+#wrap #container .contents .csection .csecin .lounge .loungetit ul li a{display:inline-block;padding:0 14px;line-height:18px;font-size:13px;}
+#wrap #container .contents .csection .csecin .lounge .loungetit ul li a.on{font-weight:800}
+#wrap #container .contents .csection .csecin .lounge .logfl{position:absolute;left:-9px;top:150px}
+#wrap #container .contents .csection .csecin .lounge .logfl a{display:block;width:40px;height:43px;background: url("http://images.maxmovie.com/images/web/2016_new/images/main/btn_sisa_fl.png") no-repeat 0 0}
+#wrap #container .contents .csection .csecin .lounge .logfl a:hover{display:block;width:40px;height:43px;background: url("http://images.maxmovie.com/images/web/2016_new/images/main/btn_sisa_fl.png") no-repeat 0 -43px}
+#wrap #container .contents .csection .csecin .lounge .logfl a.on{display:block;width:40px;height:43px;background: url("http://images.maxmovie.com/images/web/2016_new/images/main/btn_sisa_fl.png") no-repeat 0 -43px}
+#wrap #container .contents .csection .csecin .lounge .logfr{position:absolute;right:-9px;top:150px}
+#wrap #container .contents .csection .csecin .lounge .logfr a{display:block;width:40px;height:43px;background: url("http://images.maxmovie.com/images/web/2016_new/images/main/btn_sisa_fr.png") no-repeat 0 0}
+#wrap #container .contents .csection .csecin .lounge .logfr a:hover{display:block;width:40px;height:43px;background: url("http://images.maxmovie.com/images/web/2016_new/images/main/btn_sisa_fr.png") no-repeat 0 -43px}
+#wrap #container .contents .csection .csecin .lounge .logfr a.on{display:block;width:40px;height:43px;background: url("http://images.maxmovie.com/images/web/2016_new/images/main/btn_sisa_fr.png") no-repeat 0 -43px}
+#wrap #container .contents .csection .csecin .lounge .logfl a span,
+#wrap #container .contents .csection .csecin .lounge .logfr a span{display:none}
+#wrap #container .contents .csection .csecin .lounge .logbox{overflow:hidden;height:268px;border:1px solid #e5e5e5}
+#wrap #container .contents .csection .csecin .lounge .logbox > ul{margin-left:-1px;*zoom:1}
+#wrap #container .contents .csection .csecin .lounge .logbox > ul:after{content:""; display:block; clear:both}
+#wrap #container .contents .csection .csecin .lounge .logbox > ul > li{float:left}
+#wrap #container .contents .csection .csecin .lounge .logbox ul.loglist{*zoom:1}
+#wrap #container .contents .csection .csecin .lounge .logbox ul.loglist:after{content:""; display:block; clear:both}
+#wrap #container .contents .csection .csecin .lounge .logbox ul.loglist li{float:left;width:240px;height:268px;border-left:1px solid #e5e5e5}
+#wrap #container .contents .csection .csecin .lounge .logbox ul.loglist li:first-child{background:none;border-left:none}
+#wrap #container .contents .csection .csecin .lounge .logbox ul.loglist li a{position:relative;display:block;width:240px;height:268px}
+#wrap #container .contents .csection .csecin .lounge .logbox ul.loglist li a .imgbox{position:absolute;left:50%;top:30px;width:150px;height:150px;margin-left:-75px;background:#f5f5f8}
+#wrap #container .contents .csection .csecin .lounge .logbox ul.loglist li a .ska{position:absolute;left:0;top:0;line-height:0}
+#wrap #container .contents .csection .csecin .lounge .logbox ul.loglist li a .skb{position:absolute;left:0;bottom:0;line-height:0}
+#wrap #container .contents .csection .csecin .lounge .logbox ul.loglist li a .skc{position:absolute;left:0;bottom:0;line-height:0}
+#wrap #container .contents .csection .csecin .lounge .logbox ul.loglist li a .imgtxt{position:absolute;left:0;top:198px;width:220px;padding:0 10px;text-align:center;line-height:23px;font-size:15px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+#wrap #container .contents .csection .csecin .lounge .logbox ul.loglist li a .imgtxt span{display:block;color:#666;font-size:13px;}
+#wrap #container .contents .csection .csecin .lounge .logbox ul.loglist li a .imgtxt em{display:inline-block;padding-left:20px;font-size:13px;color:#6d7079;font-weight:800;line-height:20px;background: url("http://images.maxmovie.com/images/web/2016_new/images/main/bl_point.png") no-repeat 0 2px}
+#wrap #container .contents .csection .csecin .lounge .logbox ul.loglist li a:hover .imgtxt{text-decoration:underline}
+#wrap #container .contents .csection .csecin .lounge .logbox ul.loglist li a:hover .imgtxt span{color:#f03f37}
+
+#wrap #container .contents .csection .csecin .lounge .logbox ul.loglist li a .vodbox{position:absolute;left:50%;top:20px;width:130px;height:185px;margin-left:-65px}
+#wrap #container .contents .csection .csecin .lounge .logbox ul.loglist li a .vskb{position:absolute;left:0;top:0;line-height:0;width:130px;height:185px}
+#wrap #container .contents .csection .csecin .lounge .logbox ul.loglist li a .vskc{position:absolute;left:0;top:0;line-height:0}
+#wrap #container .contents .csection .csecin .lounge .logbox ul.loglist li a .vodp{position:absolute;right:5px;bottom:5px;line-height:0}
+#wrap #container .contents .csection .csecin .lounge .logbox ul.loglist li a .vt{position:absolute;left:0;top:210px}
+
+.mnotice{width:100%;border-top:1px solid #f1f1f1;font-family:'Nanum Gothic','�섎닎怨좊뵓'}
+.mnotice .mnin{position:relative;width:965px;margin:0 auto;height:49px;line-height:49px}
+.mnotice .mnin strong{display:inline-block;width:90px;font-size:14px;font-weight:800}
+.mnotice .mnin .ntxt{display:inline-block;font-size:13px}
+.mnotice .mnin .nmore{display:inline-block;font-size:13px;margin-left:40px;padding-right:11px;background: url("http://images.maxmovie.com/images/web/2016_new/images/main/bl_more_arrow.png") no-repeat right 21px}
+.mnotice .mnin .snsft{position:absolute;right:0;top:12px;height:25px;line-height:25px;display:inline-block;vertical-align:top}
+
+
+
+/* #footer{width:100%;background:#f0f0f3;border-top:1px solid #cfcfd2;font-family:'Nanum Gothic','�섎닎怨좊뵓'}
+#footer .footin{position:relative;width:965px;margin:0 auto;padding:27px 0 50px}
+#footer .footin .footlink{*zoom:1}
+#footer .footin .footlink:after{content:""; display:block; clear:both}
+#footer .footin .footlink li{float:left;background: url("http://images.maxmovie.com/images/web/2016_new/images/main/bl_foot_bar.gif") no-repeat 0 4px}
+#footer .footin .footlink li:first-child{background:none}
+#footer .footin .footlink li a{display:inline-block;margin:0 15px;line-height:19px;font-size:13px;}
+#footer .footin .footlink li:first-child a{margin-left:0}
+
+#footer .footin .address{padding-top:15px;*zoom:1}
+#footer .footin .address:after{content:""; display:block; clear:both}
+#footer .footin .address li{float:left;padding:0 10px;line-height:19px;font-size:12px;color:#666;background: url("http://images.maxmovie.com/images/web/2016_new/images/main/bl_foot_bar.gif") no-repeat 0 4px}
+#footer .footin .address li:first-child{padding-left:0;background:none}
+
+#footer .footin .cptime{line-height:19px;font-size:12px;color:#666}
+#footer .footin .copy{padding-top:15px;line-height:19px;font-size:11px;}
+ */
+
+
+
+/* gnb */
+#ngnb{position:relative;z-index:1;width:100%;background:#f7f7fa;border-bottom:1px solid #cfcfd2;font-family:'Nanum Gothic','�섎닎怨좊뵓'}
+#ngnb .ngnbin{position:relative;width:965px;margin:0 auto;height:32px}
+#ngnb .ngnbin ul{position:absolute;right:0;top:0;*zoom:1}
+#ngnb .ngnbin ul:after{content:""; display:block; clear:both}
+#ngnb .ngnbin ul li{float:left;height:32px;line-height:32px;background: url("http://images.maxmovie.com/images/web/2016_new/images/main/bl_gnb_bar.gif") no-repeat 0 11px}
+#ngnb .ngnbin ul li a{display:inline-block;line-height:32px;margin:0 10px;font-size:12px;}
+#ngnb .ngnbin ul li a:hover{font-weight:800;color:#f03f37}
+#ngnb .ngnbin ul li:first-child{background:none;}
+#ngnb .ngnbin ul li:first-child a{margin-left:0;background:none}
+
+
+/* nav */
+#nnav{position:relative;width:100%;background:#fff;font-family:'Nanum Gothic','�섎닎怨좊뵓'}
+#nnav .nnavin{position:relative;width:965px;margin:0 auto;text-align:left}
+#nnav .nnavin h1{position:relative;padding-left:10px;line-height:0}
+#nnav .nnavin h1 a{display:inline-block;height:77px}
+#nnav .nnavin .menu{position:absolute;right:102px;top:24px;*zoom:1}
+#nnav .nnavin .menu:after{content:""; display:block; clear:both}
+#nnav .nnavin .menu li{float:left}
+#nnav .nnavin .menu li a{display:block;height:38px}
+#nnav .nnavin .menu li a span{display:none}
+#nnav .nnavin .menu li.n1{width:93px}
+#nnav .nnavin .menu li.n1 a{background: url("http://images.maxmovie.com/images/web/2016_new/images/main/nav_01.png") no-repeat center 0}
+#nnav .nnavin .menu li.n1 a:hover{background: url("http://images.maxmovie.com/images/web/2016_new/images/main/nav_01.png") no-repeat center -38px}
+#nnav .nnavin .menu li.n1 a.on{background: url("http://images.maxmovie.com/images/web/2016_new/images/main/nav_01.png") no-repeat center -38px}
+#nnav .nnavin .menu li.n2{width:89px}
+#nnav .nnavin .menu li.n2 a{background: url("http://images.maxmovie.com/images/web/2016_new/images/main/nav_02.png") no-repeat center 0}
+#nnav .nnavin .menu li.n2 a:hover{background: url("http://images.maxmovie.com/images/web/2016_new/images/main/nav_02.png") no-repeat center -38px}
+#nnav .nnavin .menu li.n2 a.on{background: url("http://images.maxmovie.com/images/web/2016_new/images/main/nav_02.png") no-repeat center -38px}
+#nnav .nnavin .menu li.n3{width:92px}
+#nnav .nnavin .menu li.n3 a{background: url("http://images.maxmovie.com/images/web/2016_new/images/main/nav_03.png") no-repeat center 0}
+#nnav .nnavin .menu li.n3 a:hover{background: url("http://images.maxmovie.com/images/web/2016_new/images/main/nav_03.png") no-repeat center -38px}
+#nnav .nnavin .menu li.n3 a.on{background: url("http://images.maxmovie.com/images/web/2016_new/images/main/nav_03.png") no-repeat center -38px}
+#nnav .nnavin .menu li.n4{width:101px}
+#nnav .nnavin .menu li.n4 a{background: url("http://images.maxmovie.com/images/web/2016_new/images/main/nav_04.png") no-repeat center 0}
+#nnav .nnavin .menu li.n4 a:hover{background: url("http://images.maxmovie.com/images/web/2016_new/images/main/nav_04.png") no-repeat center -38px}
+#nnav .nnavin .menu li.n4 a.on{background: url("http://images.maxmovie.com/images/web/2016_new/images/main/nav_04.png") no-repeat center -38px}
+
+#nnav .nnavin .logbox{position:absolute;right:53px;top:33px}
+#nnav .nnavin .logbox .navsh a{display:block;width:27px;height:25px;background: url("http://images.maxmovie.com/images/web/2016_new/images/main/btn_log.png") no-repeat 0 -25px}
+#nnav .nnavin .logbox .navsh a:hover{background: url("http://images.maxmovie.com/images/web/2016_new/images/main/btn_log.png") no-repeat -27px -25px}
+#nnav .nnavin .logbox .navsh a.ov{display:block;width:27px;height:25px;background: url("http://images.maxmovie.com/images/web/2016_new/images/main/btn_log.png") no-repeat 0 0}
+#nnav .nnavin .logbox .navsh a.ov:hover{background: url("http://images.maxmovie.com/images/web/2016_new/images/main/btn_log.png") no-repeat -27px 0}
+#nnav .nnavin .logbox .navsh a.ovm{background: url("http://images.maxmovie.com/images/web/2016_new/images/main/btn_log.png") no-repeat -27px 0}
+#nnav .nnavin .logbox .navsh a span{display:none}
+#nnav .nnavin .logbox .navsh em{position:absolute;right:0;top:-6px;display:block;width:16px;height:16px;line-height:16px;text-align:center;color:#fff;font-family:'Montserrat';background: url("http://images.maxmovie.com/images/web/2016_new/images/main/bl_log_alarm.png") no-repeat 0 0}
+
+#nnav .nnavin .shbox{position:absolute;right:0;top:24px;z-index:1000}
+#nnav .nnavin .shbox .navsh a{display:block;width:38px;height:38px;background: url("http://images.maxmovie.com/images/web/2016_new/images/main/btn_gnb_search.png") no-repeat 0 0}
+#nnav .nnavin .shbox .navsh a:hover{background: url("http://images.maxmovie.com/images/web/2016_new/images/main/btn_gnb_search.png") no-repeat 0 -38px}
+#nnav .nnavin .shbox .navsh a.on{background: url("http://images.maxmovie.com/images/web/2016_new/images/main/btn_gnb_search.png") no-repeat 0 -38px}
+#nnav .nnavin .shbox .navsh a span{display:none}
+#nnav .nnavin .shbox .shinp{position:absolute;right:0;top:38px;width:368px;height:36px;vertical-align:middle;line-height:36px;border:1px solid #000;background:#fff}
+#nnav .nnavin .shbox .shinp span{display:block;padding:0 35px 0 14px}
+#nnav .nnavin .shbox .shinp span input{margin-top:4px;width:100%;border:none;height:28px;font-size:14px;height:28px;line-height:28px;font-family:'Nanum Gothic','�섎닎怨좊뵓'}
+#nnav .nnavin .shbox .shinp span .sdel{position:absolute;right:8px;top:8px}
+
+#nnav .navdp{width:100%;background:#232323}
+#nnav .navdp .navdpin{width:965px;margin:0 auto}
+#nnav .navdp .navdpin ul{*zoom:1}
+#nnav .navdp .navdpin ul:after{content:""; display:block; clear:both}
+#nnav .navdp .navdpin ul li{float:left}
+#nnav .navdp .navdpin ul li a{display:inline-block;padding:0 19px;height:45px;line-height:45px;text-align:center;font-size:14px;color:#fff;/*background: url("http://images.maxmovie.com/images/web/2016_new/images/main/bl_menu_bar.gif") no-repeat 0 17px;*/text-decoration:none}
+#nnav .navdp .navdpin ul li:first-child a{background:none}
+#nnav .navdp .navdpin ul li a:hover{display:inline-block;padding:0 19px;height:45px;line-height:45px;text-align:center;font-size:14px;color:#f03f37;font-weight:bold;background:#000;text-decoration:none}
+#nnav .navdp .navdpin ul li a:hover span{text-decoration:none}
+#nnav .navdp .navdpin ul li a.on{display:inline-block;padding:0 19px;height:45px;line-height:45px;text-align:center;font-size:14px;color:#f03f37;font-weight:bold;background:#000}
+
+#nnav .navhover{position:absolute;left:50%;top:77px;margin-left:276px;text-align:left;border-top:1px solid #17181b;/*border-bottom:1px solid #6f6f6f;*/z-index:200001 !important}
+#nnav .navhover .adbg{position:absolute;left:50%;top:0;margin-left:482px}
+#nnav .navhover .adbg span{display:block;width:2000px;height:310px;overflow:hidden}
+#nnav .navhover .navmedia{position:relative;padding:14px 0 10px;min-height:190px}
+#nnav .navhover .navmedia .hlist ul{font-size:14px;}
+#nnav .navhover .navmedia .hlist ul li{width:154px;line-height:31px;border-bottom:1px solid #e5e5e5}
+#nnav .navhover .navmedia .hlist ul li a{display:block;padding-left:10px;font-weight:800}
+#nnav .navhover .navmedia .hlist ul li.nob{border-bottom:none}
+#nnav .navhover .navmedia .hmedia{position:absolute;left:190px;top:20px;width:739px}
+#nnav .navhover .navmedia .hmedia ul{*zoom:1}
+#nnav .navhover .navmedia .hmedia ul:after{content:""; display:block; clear:both}
+#nnav .navhover .navmedia .hmedia ul li{float:left;padding-left:17px}
+#nnav .navhover .navmedia .hmedia ul li:first-child{padding-left:0}
+#nnav .navhover .navmedia .hmedia ul li a{display:block;width:235px;}
+#nnav .navhover .navmedia .hmedia ul li a .mimg{position:relative;width:235px;height:135px;text-align:center;overflow:hidden}
+#nnav .navhover .navmedia .hmedia ul li a .mimg .skm{position:absolute;left:0;top:0}
+#nnav .navhover .navmedia .hmedia ul li a .mimg span{position:absolute;left:0;top:0;display:inline-block;padding:0 10px;height:40px;line-height:40px;color:#f03f37;font-size:12px;font-weight:bold;background:#000}
+#nnav .navhover .navmedia .hmedia ul li a .hmtxt{padding:15px 10px 0}
+#nnav .navhover .navmedia .hmedia ul li a .hmtxt .mtxt1{line-height:24px;font-size:15px;}
+#nnav .navhover .navmedia .hmedia ul li a .hmtxt .mtxt2{padding-top:8px;line-height:22px;font-size:13px;color:#666;text-decoration:none}
+#nnav .navhover .navmedia .hmedia ul li a:hover{text-decoration:none}
+#nnav .navhover .navmedia .hmedia ul li a:hover .mtxt1{text-decoration:underline}
+
+#nnav .navhover .navmedia .hrev{position:absolute;left:190px;top:20px;width:739px}
+#nnav .navhover .navmedia .hrev .revtit{font-size:14px;line-height:19px;padding-bottom:6px;font-weight:800}
+#nnav .navhover .navmedia .hrev ul{*zoom:1}
+#nnav .navhover .navmedia .hrev ul:after{content:""; display:block; clear:both}
+#nnav .navhover .navmedia .hrev ul li{float:left;padding-left:17px}
+#nnav .navhover .navmedia .hrev ul li:first-child{padding-left:0}
+#nnav .navhover .navmedia .hrev ul li a{display:block;width:140px;}
+#nnav .navhover .navmedia .hrev ul li a .mimg{position:relative;width:140px;height:200px;overflow:hidden}
+#nnav .navhover .navmedia .hrev ul li a .mimg .skm{position:absolute;left:0;top:0}
+#nnav .navhover .navmedia .hrev ul li a .mimg .snum{position:absolute;left:10px;top:10px}
+#nnav .navhover .navmedia .hrev ul li a .mimg span{position:absolute;left:0;top:0;display:inline-block;padding:0 10px;height:40px;line-height:40px;color:#f03f37;font-size:12px;font-weight:bold;background:#000}
+#nnav .navhover .navmedia .hrev ul li .hrtxt{position:relative;padding:6px 0 0 3px}
+#nnav .navhover .navmedia .hrev ul li .hrtxt .mtxt1{line-height:17px;font-size:12px;}
+#nnav .navhover .navmedia .hrev ul li .hrtxt .mtxt1 span{padding-right:5px;color:#999}
+#nnav .navhover .navmedia .hrev ul li .hrtxt .mtxt2{position:absolute;right:0;top:6px;line-height:17px;font-size:12px}
+#nnav .navhover .navmedia .hrev ul li .hrtxt .mtxt2 img{vertical-align:middle}
+#nnav .navhover .navmedia .hrev ul li.big a{position:relative;display:block;width:268px}
+#nnav .navhover .navmedia .hrev ul li.big a .skm{position:absolute;left:0;top:0}
+#nnav .navhover .navmedia .hrev ul li.big .revev{position:absolute;left:0;top:50px;width:268px;text-align:center}
+#nnav .navhover .navmedia .hrev ul li.big .revev span{display:inline-block;padding:0 6px;line-height:17px;font-size:12px;color:#f03f37;font-family:'Montserrat';background:#000}
+#nnav .navhover .navmedia .hrev ul li.big .revev .evtxt1{padding:8px 0;font-size:20px;color:#fff;font-weight:bold;line-height:25px;background: url("http://images.maxmovie.com/images/web/2016_new/images/main/bl_txt_bar.gif") no-repeat center bottom}
+#nnav .navhover .navmedia .hrev ul li.big .revev .evtxt2{padding-top:10px;font-size:12px;color:#999;line-height:17px;}
+
+#nnav .navhover .navmedia .hchart{position:absolute;left:190px;top:22px;width:739px}
+#nnav .navhover .navmedia .hchart .chday{padding-bottom:4px;font-size:12px;color:#898989;line-height:19px;text-align:right}
+#nnav .navhover .navmedia .hchart .chbox{position:relative;width:739px}
+#nnav .navhover .navmedia .hchart .chbox .chlf{width:361px;padding-bottom:15px;background:#f5f5f8}
+#nnav .navhover .navmedia .hchart .chbox .chlf .chtit{padding:22px 0 8px 31px;font-size:16px;font-weight:900;line-height:23px}
+#nnav .navhover .navmedia .hchart .chbox .chlf ul{padding-left:31px}
+#nnav .navhover .navmedia .hchart .chbox .chlf ul li{position:relative;line-height:30px;font-size:14px}
+#nnav .navhover .navmedia .hchart .chbox .chlf ul li em{display:inline-block;width:30px;font-size:16px;color:#c2c2c2;font-family:'Montserrat'}
+#nnav .navhover .navmedia .hchart .chbox .chlf ul li a{display:inline-block;width:230px;height:30px;line-height:30px;vertical-align:middle;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+#nnav .navhover .navmedia .hchart .chbox .chlf ul li.rd{font-weight:bold}
+#nnav .navhover .navmedia .hchart .chbox .chlf ul li.rd em{color:#e14840}
+#nnav .navhover .navmedia .hchart .chbox .chlf ul li span{position:absolute;right:26px;top:2px;display:inline-block;width:40px;height:30px;font-size:11px;line-height:30px;vertical-align:middle;text-align:center;font-family:'Montserrat'}
+
+#nnav .navhover .navmedia .hchart .chbox .chrf{position:absolute;right:0;top:0;width:361px;padding-bottom:15px;background:#f5f5f8}
+#nnav .navhover .navmedia .hchart .chbox .chrf .chtit{padding:22px 0 8px 31px;font-size:16px;font-weight:900;line-height:23px}
+#nnav .navhover .navmedia .hchart .chbox .chrf ul{padding-left:31px}
+#nnav .navhover .navmedia .hchart .chbox .chrf ul li{position:relative;line-height:30px;font-size:14px}
+#nnav .navhover .navmedia .hchart .chbox .chrf ul li em{display:inline-block;width:30px;font-size:16px;color:#c2c2c2;font-family:'Montserrat'}
+#nnav .navhover .navmedia .hchart .chbox .chrf ul li a{display:inline-block;width:230px;height:30px;line-height:30px;vertical-align:middle;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+#nnav .navhover .navmedia .hchart .chbox .chrf ul li.rd{font-weight:bold}
+#nnav .navhover .navmedia .hchart .chbox .chrf ul li.rd em{color:#e14840}
+#nnav .navhover .navmedia .hchart .chbox .chrf ul li.rd span {color:#f03f37}
+#nnav .navhover .navmedia .hchart .chbox .chrf ul li span{position:absolute;right:26px;top:2px;display:inline-block;width:40px;height:30px;line-height:30px;font-size:12px;font-weight:400;font-family:'Montserrat';text-align:center}
+
+#nnav .navhover .pt0{padding-top:0;padding-bottom:0}
+#nnav .navhover .navmedia .navlogbox{width:227px;padding-bottom:1px;background: url("http://images.maxmovie.com//image.maxmovie.com/movie_info/images/log_bor_bg.png") no-repeat center bottom;*zoom:1}
+#nnav .navhover .navmedia .navlogbox:after{content:""; display:block; clear:both}
+#nnav .navhover .navmedia .navlogbox .navlog{float:left;width:770px;padding-top:10px;*zoom:1}
+#nnav .navhover .navmedia .navlogbox .navlog:after{content:""; display:block; clear:both}
+#nnav .navhover .navmedia .navlogbox .navlog .logcate{float:left;width:154px}
+#nnav .navhover .navmedia .navlogbox .navlog .pl40{padding-right:40px}
+#nnav .navhover .navmedia .navlogbox .navlog .logcate h3{padding:0 0 0 5px !important;height:32px;line-height:32px;font-size:15px;border-bottom:2px solid #222}
+#nnav .navhover .navmedia .navlogbox .navlog .logcate h3 a{display:block;padding-left:5px;font-weight:800;line-height:29px;text-decoration:none}
+#nnav .navhover .navmedia .navlogbox .navlog .logcate ul li{border-top:1px solid #e5e5e5}
+#nnav .navhover .navmedia .navlogbox .navlog .logcate ul li:first-child{border-top:0}
+#nnav .navhover .navmedia .navlogbox .navlog .logcate ul li a{display:block;padding-left:10px;line-height:29px;font-size:14px;font-weight:800}
+
+
+#nnav .navhover .navmedia .navlogbox .navloginp{width:223px;margin:0 1px 1px;border-left:1px solid #fff;border-right:1px solid #fff;padding-bottom:11px;background:#f6f6f6;/*min-height:310px;*/border-bottom:1px solid #6f6f6f}
+#nnav .navhover .navmedia .navlogbox .navloginp .loginp{padding:14px 11px 0}
+#nnav .navhover .navmedia .navlogbox .navloginp .loginp .inpin{position:relative;padding-bottom:5px}
+#nnav .navhover .navmedia .navlogbox .navloginp .loginp .inpin label{position:absolute;left:10px;top:0;display:inline-block;height:30px;line-height:30px;color:#888;font-size:12px;}
+#nnav .navhover .navmedia .navlogbox .navloginp .loginp .inpin input{width:190px !important;height:28px;line-height:28px;padding-left:10px;color:#888;font-size:12px;background:#e9e9e9;border:1px solid #d4d4d4;border-top:1px solid #a2a2a2}
+#nnav .navhover .navmedia .navlogbox .navloginp .loginp .inpin input:focus{background:#fff;font-family:'Montserrat'}
+#nnav .navhover .navmedia .navlogbox .navloginp .loginp .inchk{padding-bottom:6px;padding-left:5px;line-height:22px}
+#nnav .navhover .navmedia .navlogbox .navloginp .loginp .inchk input{vertical-align:middle}
+#nnav .navhover .navmedia .navlogbox .navloginp .loginp .inchk label{display:inline-block;padding-left:10px;vertical-align:middle;font-size:12px;line-height:22px}
+#nnav .navhover .navmedia .navlogbox .navloginp .loginp .logbt{padding-bottom:5px}
+#nnav .navhover .navmedia .navlogbox .navloginp .loginp .logbt a{display:block;height:30px;line-height:30px;text-align:center;font-size:13px;color:#fff;font-weight:800;background:#000;text-decoration:none}
+#nnav .navhover .navmedia .navlogbox .navloginp .loginp .logbt a:hover{background:#f03f37}
+#nnav .navhover .navmedia .navlogbox .navloginp .loginp .joinbt{padding-bottom:25px}
+#nnav .navhover .navmedia .navlogbox .navloginp .loginp .joinbt a{display:block;height:28px;line-height:28px;text-align:center;font-size:13px;font-weight:800;background:#fff;border:1px solid #b2b2b2;text-decoration:none}
+#nnav .navhover .navmedia .navlogbox .navloginp .loginp .joinbt a:hover{color:#fff;background:#f03f37;border:1px solid #f03f37}
+#nnav .navhover .navmedia .navlogbox .navloginp .loginp .logsh{*zoom:1}
+#nnav .navhover .navmedia .navlogbox .navloginp .loginp .logsh:after{content:""; display:block; clear:both}
+#nnav .navhover .navmedia .navlogbox .navloginp .loginp .logsh li{float:left;width:50%;background: url("http://images.maxmovie.com/images/web/2016_new/images/main/bl_sisa_bar.gif") no-repeat 0 4px}
+#nnav .navhover .navmedia .navlogbox .navloginp .loginp .logsh li:first-child{width:96px;background:none}
+#nnav .navhover .navmedia .navlogbox .navloginp .loginp .logsh li a{display:block;text-align:center;font-size:12px;line-height:20px}
+
+#nnav .navhover .navmedia .navlogbox .navloginp .loginfo{padding:11px 16px 16px;position:relative;}
+#nnav .navhover .navmedia .navlogbox .navloginp .loginfo .logname{padding:0 5px 3px;line-height:23px;font-size:14px;letter-spacing:-1pt}
+#nnav .navhover .navmedia .navlogbox .navloginp .loginfo .logname a{font-weight:900}
+#nnav .navhover .navmedia .navlogbox .navloginp .loginfo .logtic{padding:10px 0 10px;margin-bottom:5px;border-bottom:1px solid #e0e0e0}
+#nnav .navhover .navmedia .navlogbox .navloginp .loginfo .logtic ul{*zoom:1}
+#nnav .navhover .navmedia .navlogbox .navloginp .loginfo .logtic ul:after{content:""; display:block; clear:both} 
+#nnav .navhover .navmedia .navlogbox .navloginp .loginfo .logtic ul li{float:left;width:33.3%}
+#nnav .navhover .navmedia .navlogbox .navloginp .loginfo .logtic ul li:first-child{width:33.1%}
+#nnav .navhover .navmedia .navlogbox .navloginp .loginfo .logtic ul li a{position:relative;display:block;width:100%;text-align:center}
+#nnav .navhover .navmedia .navlogbox .navloginp .loginfo .logtic ul li span{display:block;text-align:center}
+#nnav .navhover .navmedia .navlogbox .navloginp .loginfo .logtic ul li em{position:absolute;right:6px;top:-8px;display:block;width:16px;height:16px;font-size:11px;color:#fff;font-family:'Montserrat';line-height:16px;text-align:center;background: url("http://images.maxmovie.com/images/web/2016_new/images/main/login_bl_bk.png") no-repeat 0 0}
+#nnav .navhover .navmedia .navlogbox .navloginp .loginfo .nameif li{position:relative;padding-right:5px;line-height:19px;text-align:right}
+#nnav .navhover .navmedia .navlogbox .navloginp .loginfo .nameif li span{position:absolute;left:5px;top:-3px;display:inline-block;height:25px;line-height:25px;color:#222;font-size:12px}
+#nnav .navhover .navmedia .navlogbox .navloginp .loginfo .nameif li a{font-size:13px;text-decoration:underline;letter-spacing:-1pt}
+#nnav .navhover .navmedia .navlogbox .navloginp .loginfo .logmv{position:relative;padding-top:15px;margin-top:12px;border-top:1px solid #e0e0e0}
+#nnav .navhover .navmedia .navlogbox .navloginp .loginfo .logmv .lmp{position:absolute;left:5px;top:15px}
+#nnav .navhover .navmedia .navlogbox .navloginp .loginfo .logmv .lmp span{position:absolute;left:0;top:0;display:inline-block;padding:0 4px;height:16px;line-height:16px;font-size:10px;color:#f03f37;background:#222;font-weight:800}
+#nnav .navhover .navmedia .navlogbox .navloginp .loginfo .logmv .lmt{padding-left:60px;min-height:70px}
+#nnav .navhover .navmedia .navlogbox .navloginp .loginfo .logmv .lmt .lmtt{padding-bottom:2px;font-size:15px;color:#222;line-height:19px;font-weight:900}
+#nnav .navhover .navmedia .navlogbox .navloginp .loginfo .logmv .lmt .lmtc{font-size:13px;color:#666;line-height:16px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+#nnav .navhover .navmedia .navlogbox .navloginp .loginfo .logmv .lmt .lmtd{font-size:13px;color:#666;line-height:16px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+#nnav .navhover .navmedia .navlogbox .navloginp .loginfo .mylk{padding-top:20px;text-align:center;*zoom:1}
+#nnav .navhover .navmedia .navlogbox .navloginp .loginfo .mylk:after{content:""; display:block; clear:both}
+#nnav .navhover .navmedia .navlogbox .navloginp .loginfo .mylk li{float:left}
+#nnav .navhover .navmedia .navlogbox .navloginp .loginfo .mylk li:first-child{padding-right:3px}
+#nnav .navhover .navmedia .navlogbox .navloginp .loginfo .mylk li a{display:block;width:92px;height:28px;line-height:28px;letter-spacing:-0.5pt;text-align:center;font-size:13px;font-weight:bold;background:#fff;border:1px solid #b2b2b2;text-decoration:none}
+#nnav .navhover .navmedia .navlogbox .navloginp .loginfo .mylk li a:hover{color:#fff;background:#f03f37;border:1px solid #f03f37}
+
+
+#nnav .navhover .hbottom{width:100%;background:#ececef;border-top:1px solid #b2b2b2;border-bottom:1px solid #fff}
+#nnav .navhover .hbottom .hbottomin{position:relative;width:965px;margin:0 auto}
+#nnav .navhover .hbottom .hbottomin ul{*zoom:1}
+#nnav .navhover .hbottom .hbottomin ul:after{content:""; display:block; clear:both}
+#nnav .navhover .hbottom .hbottomin ul li{float:left;height:39px;padding:0 15px;border-right:1px solid #ddd;font-size:13px}
+#nnav .navhover .hbottom .hbottomin ul li:first-child{border-left:1px solid #ddd}
+#nnav .navhover .hbottom .hbottomin ul li a{line-height:39px}
+#nnav .navhover .hbottom .hbottomin ul li a strong{text-decoration:underline;padding-left:10px}
+#nnav .navhover .hbottom .hbottomin ul li img{vertical-align:middle}
+#nnav .navhover .hbottom .hbottomin .hblink{position:absolute;right:0;top:0;}
+#nnav .navhover .hbottom .hbottomin .hblink a{display:inline-block;padding:0 15px;*vertical-align:middle;height:39px;font-size:13px;line-height:39px;*line-height:40px;background: url("http://images.maxmovie.com/images/web/2016_new/images/main/bl_hover_bar.gif") no-repeat 0 14px}
+#nnav .navhover .hbottom .hbottomin .hblink a img{vertical-align:middle;*padding-top:12px}
+#nnav .navhover .hbottom .hbottomin .hblink a.m1 img{*vertical-align:middle;*margin-top:-11px}
+
+.loginp .logttt{padding-bottom:18px;font-size:14px;line-height:19px;color:#222;font-weight:700}
+.navloginp .btnloc{position:absolute;right:8px;top:13px}
+
+
+/* layer */
+.laysh{position:absolute;left:50% !important;top:153px;width:348px;margin-left:-174px;margin-top:140px;font-family:'Nanum Gothic','�섎닎怨좊뵓'}
+.laysh .layshin{padding:26px 35px;background:#fff;border:1px solid #d9d9d9;border-bottom:0}
+.laysh .layshin .sntit{text-align:center;font-size:16px;font-weight:900;line-height:21px}
+.laysh .layshin .sntxt{text-align:center;font-size:14px;padding-bottom:15px;color:#999;line-height:26px;letter-spacing:-0.7pt}
+.laysh .layshin ul{text-align:center;*zoom:1}
+.laysh .layshin ul:after{content:""; display:block; clear:both}
+.laysh .layshin ul li{display:inline-block;padding:0 10px;}
+.laysh .layshin ul li a{display:block;text-align:center}
+.laysh .layshin ul li span{display:block;text-align:center}
+.laysh .layarr{border:1px solid #232830;border-top:0}
+.laysh .layarr a{display:block;height:45px;line-height:45px;font-size:16px;color:#fff;background:#292f38;text-align:center}
+.laysh .layarr a span{display:inline-block;padding-right:16px;background: url("http://images.maxmovie.com/images/web/2016_new/images/main/lay_sns_arrow.png") no-repeat right 17px;text-decoration:none}
+.laysh .sncl{position:absolute;right:7px;top:7px}
+.b-modal{opacity: 0.8 !important;}
+
+.laymv{position:absolute;left:50% !important;top:153px;width:965px;background:#111;margin-left:-483px;z-index:10000;font-family:'Nanum Gothic','�섎닎怨좊뵓'}
+.laymv .sncl{position:absolute;right:0;top:-36px}
+.laymv .laymvlist{padding:0 30px 12px;}
+.laymv .laymvlist .mvlistit{position:relative;padding:10px 0;font-size:20px;color:#fff;font-weight:900;line-height:31px;font-size:;border-bottom:1px solid #222}
+.laymv .laymvlist .mvlistit a{position:absolute;right:0;top:15px;display:inline-block;line-height:23px;color:#fff;font-size:14px;text-decoration:underline;font-weight:normal}
+.laymv .laymvlist .mvsld{position:relative;padding-top:10px}
+.laymv .laymvlist .mvsld .mvtt{padding-bottom:5px;line-height:25px;color:#fff;font-size:14px}
+.laymv .laymvlist .mvsld .mvmv{position:absolute;right:0;top:10px;text-align:right}
+.laymv .laymvlist .mvsld .mvli{width:905px;overflow:hidden}
+.laymv .laymvlist .mvsld .mvli ul{*zoom:1}
+.laymv .laymvlist .mvsld .mvli ul:after{content:""; display:block; clear:both}
+.laymv .laymvlist .mvsld .mvli ul li{float:left;padding-left:13px}
+.laymv .laymvlist .mvsld .mvli ul li:first-child{padding-left:0}
+.laymv .laymvlist .mvsld .mvli ul li a{position:relative;display:block;width:140px;height:80px;margin-top:-13px;overflow:hidden;color:#666}
+.laymv .laymvlist .mvsld .mvli ul li a img{width:100%}
+.laymv .laymvlist .mvsld .mvli ul li a em{position:absolute;left:50%;top:50%;display:block;width:39px;height:39px;margin:-13px 0 0 -20px;cursor:pointer;background: url("http://images.maxmovie.com/images/web/2016_new/images/main/lay_play.png") no-repeat 0 0}
+.laymv .laymvlist .mvsld .mvli ul li span{display:block;width:140px;font-size:12px;text-align:center;color:#666;line-height:32px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+
+
+
+.layboom{position:absolute;left:50% !important;top:153px;width:900px;min-height:481px;background:#000;margin-left:-450px;z-index:9999;font-family:'Nanum Gothic','�섎닎怨좊뵓'}
+.layboom .lboombox{*zoom:1}
+.layboom .lboombox:after{content:""; display:block; clear:both}
+.layboom .lboombox .bmlf{float:left;width:400px;background:#fff}
+.layboom .lboombox .bmrf{float:right;width:500px;line-height:0}
+.layboom .lboombox .bmlf .bmpost{position:relative;width:400px;height:130px;overflow:hidden}
+.layboom .lboombox .bmlf .bmpost .bmbg{position:absolute;left:0;top:0;z-index:0;background: url("http://images.maxmovie.com/images/web/2016_new/images/main/lay_poster_bg.jpg") no-repeat 0 0;background-size:100% auto}
+.layboom .lboombox .bmlf .bmpost .bmbg img{width:400px;}
+.layboom .lboombox .bmlf .bmpost .bmpo{position:absolute;left:15px;top:10px;width:76px;height:100px}
+.layboom .lboombox .bmlf .bmpost .bminfo{position:absolute;left:105px;top:15px}
+.layboom .lboombox .bmlf .bmpost .bminfo .bmf1{line-height:24px;font-size:18px;color:#fff;font-weight:900;width:287px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.layboom .lboombox .bmlf .bmpost .bminfo .bmf1 a{color:#fff}
+.layboom .lboombox .bmlf .bmpost .bminfo .bmf2{line-height:23px;font-size:11px;color:#999}
+.layboom .lboombox .bmlf .bmpost .bminfo .bmf2 span{padding:0 4px}
+.layboom .lboombox .bmlf .bmpost .bminfo .bmf3{position:absolute;left:0;top:70px;line-height:0}
+.layboom .lboombox .bmlf .bmtxt{position:relative;padding:0 94px 0 59px;line-height:21px;padding-top:11px;font-size:15px;font-weight:900;border-bottom:1px solid #cdcdcd;min-height:33px;letter-spacing:-0.7pt}
+.layboom .lboombox .bmlf .bmtxt span{position:absolute;left:8px;top:-6px;width:44px;height:46px;display:inline-block}
+.layboom .lboombox .bmlf .bmtxt span.star{color:#f03f37;background: url("http://images.maxmovie.com/images/web/2016_new/images/main/lay_boom_star.png") no-repeat 0 0}
+.layboom .lboombox .bmlf .bmtxt span.up{color:#f03f37;background: url("http://images.maxmovie.com/images/web/2016_new/images/main/lay_boom_star.png") no-repeat 0 -46px}
+.layboom .lboombox .bmlf .bmtxt span.down{color:#6264a3;background: url("http://images.maxmovie.com/images/web/2016_new/images/main/lay_boom_star.png") no-repeat 0 -92px}
+.layboom .lboombox .bmlf .bmtxt span em{display:inline-block;width:30px;text-align:center;margin-left:10px;padding-top:10px;line-height:35px;font-size:18px;font-family:'Montserrat';font-weight:800}
+.layboom .lboombox .bmlf .bmtxt a{position:absolute;right:16px;top:11px;display:inline-block;line-height:19px;font-size:13px;font-weight:normal;padding-right:13px;background: url("http://images.maxmovie.com/images/web/2016_new/images/main/lay_boom_arrow.png") no-repeat right 6px}
+
+.layboom .lboombox .bmlf .boolist{padding:10px 15px 20px;min-height:248px}
+.layboom .lboombox .bmlf .boolist ul li{position:relative;margin-top:2px;padding:5px 150px 5px 12px;font-size:14px;vertical-align:middle;line-height:19px;font-size:12px;background:url("http://images.maxmovie.com/images/web/2016_new/images/main/up_graph_bg.gif");background-size:3px 3px;letter-spacing:-0.7pt}
+.layboom .lboombox .bmlf .boolist ul li:first-child{margin-top:0}
+.layboom .lboombox .bmlf .boolist ul li span{position:absolute;right:0;top:0;vertical-align:middle;display:inline-block;width:134px;height:100%;line-height:29px;background:#fff}
+.layboom .lboombox .bmlf .boolist ul li span .ibbg{display:inline-block;vertical-align:top;height:100%;line-height:19px;font-size:12px;font-family:'Montserrat';background:url("http://images.maxmovie.com/images/web/2016_new/images/main/up_graph_bg.gif");background-size:3px 3px;}
+.layboom .lboombox .bmlf .boolist ul li span strong{position:relative;display:inline-block;vertical-align:middle;width:34px;height:100%;margin:auto 0;line-height:26px;text-align:center;font-weight:normal;background:#fff}
+.layboom .lboombox .bmlf .boolist ul li span strong em{position:absolute;left:0;top:50%;margin-top:-15px;width:36px;height:26px}
+
+.layboom .lboombox .bmlf .boolist ul li.top{font-size:12px;color:#fff;background:#f03f37}
+.layboom .lboombox .bmlf .boolist ul li.top span{position:absolute;right:0;top:0;vertical-align:middle;display:inline-block;width:134px;height:100%;line-height:29px;background:#fff}
+.layboom .lboombox .bmlf .boolist ul li.top span .ibbg{display:inline-block;vertical-align:top;height:100%;line-height:19px;font-size:12px;font-family:'Montserrat';background:#f03f37}
+.layboom .lboombox .bmlf .boolist ul li.top span strong{position:relative;display:inline-block;vertical-align:middle;width:34px;height:100%;margin:auto 0;text-align:center;font-weight:normal;background:#fff}
+.layboom .lboombox .bmlf .boolist ul li.top span strong em{position:absolute;left:0;top:50%;margin-top:-15px;width:36px;height:26px;color:#f03f37}
+
+.layboom .lboombox .bmlf .boolist ul li.blue{font-size:12px;color:#fff;background:#6264a3}
+.layboom .lboombox .bmlf .boolist ul li.blue span{position:absolute;right:0;top:0;vertical-align:middle;display:inline-block;width:134px;height:100%;line-height:19px;background:#fff}
+.layboom .lboombox .bmlf .boolist ul li.blue span .ibbg{display:inline-block;vertical-align:top;height:100%;line-height:19px;font-size:12px;font-family:'Montserrat';background:#6264a3}
+.layboom .lboombox .bmlf .boolist ul li.blue span strong{position:relative;display:inline-block;vertical-align:middle;width:34px;height:100%;margin:auto 0;line-height:26px;text-align:center;font-weight:normal;background:#fff}
+.layboom .lboombox .bmlf .boolist ul li.blue span strong em{position:absolute;left:0;top:50%;margin-top:-15px;width:36px;height:26px;color:#6264a3}
+
+.layboom .lboombox .bmlf .upvote{position:relative}
+.layboom .lboombox .bmlf .upvote>ul{*zoom:1}
+.layboom .lboombox .bmlf .upvote>ul:after{content:"";display:block;clear:both}
+.layboom .lboombox .bmlf .upvote>ul>li{float:left;text-align:center;width:50%}
+.layboom .lboombox .bmlf .upvote>ul>li a{border-left:1px solid #e6e6e6}
+.layboom .lboombox .bmlf .upvote>ul>li:first-child>a{border-left:0}
+.layboom .lboombox .bmlf .upvote>ul li.red a{display:block;height:45px;line-height:45px;text-align:center;border-top:1px solid #666;border-bottom:1px solid #666}
+.layboom .lboombox .bmlf .upvote>ul li.red a span{display:inline-block;padding-left:20px;font-size:13px;font-weight:bold;background: url("http://images.maxmovie.com/images/web/2016_new/images/main/lay_boom_up.png") no-repeat 0 15px;background-size:18px 18px}
+.layboom .lboombox .bmlf .upvote>ul li.red a.on{display:block;height:45px;line-height:45px;text-align:center;background:#f03f37;border-top:1px solid #f03f37;border-bottom:1px solid #f03f37}
+.layboom .lboombox .bmlf .upvote>ul li.red a.on span{display:inline-block;padding-left:20px;font-size:13px;color:#fff;font-weight:bold;background:#f03f37 url("http://images.maxmovie.com/images/web/2016_new/images/main/up_bt_up.png") no-repeat 0 15px;background-size:18px 18px}
+.layboom .lboombox .bmlf .upvote>ul li.blue a{display:block;height:45px;line-height:45px;text-align:center;;border-top:1px solid #666;border-bottom:1px solid #666}
+.layboom .lboombox .bmlf .upvote>ul li.blue a:hover{color:#6264a3}
+.layboom .lboombox .bmlf .upvote>ul li.blue a span{display:inline-block;padding-left:20px;font-size:13px;font-weight:bold;background: url("http://images.maxmovie.com/images/web/2016_new/images/main/lay_boom_down.png") no-repeat 0 15px;background-size:18px 18px}
+.layboom .lboombox .bmlf .upvote>ul li.blue a.on{display:block;height:45px;line-height:45px;text-align:center;background:#202142;;border-top:1px solid #202142;border-bottom:1px solid #202142}
+.layboom .lboombox .bmlf .upvote>ul li.blue a.on span{display:inline-block;padding-left:20px;font-size:13px;color:#fff;font-weight:bold;background:#202142 url("http://images.maxmovie.com/images/web/2016_new/images/main/up_bt_down.png") no-repeat 0 15px;background-size:18px 18px}
+
+.layboom .lboombox .bmlf .upvotesns{position:relative;border-top:1px solid #dbdbdb}
+.layboom .lboombox .bmlf .upvotesns .snstxt{position:relative;font-size:13px;padding-right:41px;height:45px;line-height:45px;padding-left:20px;font-size:12px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.layboom .lboombox .bmlf .upvotesns .snstxt img{vertical-align:middle;margin-top:-10px}
+.layboom .lboombox .bmlf .upvotesns .snstxt span{display:inline-block;vertical-align:middle;padding:0 5px 0 10px;font-weight:bold;color:#6264a3;line-height:45px;margin-top:-2px}
+.layboom .lboombox .bmlf .upvotesns .snstxt span.on{color:#f03f37;text-decoration:underline}
+.layboom .lboombox .bmlf .upvotesns .snstxt a{position:absolute;right:7px;top:5px;display:inline-block;width:38px;height:35px;background:#fff url("http://images.maxmovie.com/images/web/img/chart/new/lay_myup.png") no-repeat 0 0;background-size:38px 35px}
+.layboom .lboombox .bmlf .upvotesns .snstxt a.on{display:inline-block;width:38px;height:35px;background:#e0e0e0 url("http://images.maxmovie.com/images/web/img/chart/new/up_bt_share.png") no-repeat 0 0;background-size:38px 35px;-moz-border-radius:3px;-webkit-border-radius:3px;border-radius:3px}
+
+
+.boomlayb{width:378px;/*min-height:278px;*/text-align:left;background:#fff;border:1px solid #999}
+.boomlayb h3{padding-left:20px;height:49px;line-height:49px;font-size:16px;font-weight:800;border-bottom:1px solid #d4d4d4}
+.boomlayb h3 span.up{color:#f03f37;font-weight:800}
+.boomlayb h3 span.down{color:#6264a3;font-weight:800}
+.boomlayb .boolayin{padding:16px; 20px}
+.boomlayb .boolayin ul li{line-height:20px;padding-bottom:10px;padding-left:20px;font-size:14px}
+.boomlayb .boolayin ul li input{vertical-align:middle;margin-right:5px;margin-left:-20px;}
+.boomlayb .boolayin .boolaybt{padding-top:7px}
+.boomlayb .boolayin .boolaybt a{display:block;height:33px;font-size:15px;line-height:33px;text-align:center;border:1px solid #999}
+.boomlayb .boolayin .boolaybt a:hover.up{color:#f03f37;border:1px solid #f03f37;text-decoration:none}
+.boomlayb .boolayin .boolaybt a:hover.down{color:#6264a3;border:1px solid #6264a3;text-decoration:none}
+.boomlayb .blaycl{display:inline-block;position:absolute;right:15px;top:15px;width:20px;height:20px}
+.boomlayb .blayarr{display:inline-block;width:12px;height:8px;background: url("http://images.maxmovie.com/images/web/2016_new/images/main/btn_boomup_arr.png") no-repeat 0 0}
+.layboom .sncl{position:absolute;right:0;top:-40px}
+
+
+.companytit{position:relative;width:100%;background:#222;height:134px}
+.companytit p{position:absolute;left:50%;top:0;width:965px;margin-left:-483px;text-align:center}
+.companytit p img{margin-left:-468px}
+
+.gnbwrap{padding-bottom:9px;background:#dedfe0;border-top:1px solid #979898;}
+/*.gnbtype{border-bottom:1px solid #979898}*/
+
+.pop_notice{position:absolute;left:50% !important;top:153px;width:384px;min-height:524px;margin-left:250px;z-index:100000}
+.pop_notice .popn a{position:absolute;left:0;top:322px;width:100%;text-align:center}
+.pop_notice .popcl{position:absolute;right:-37px;top:1px}
+
+#nnav .navdp{position:relative;*z-index:-1}
+#nnav .navdp .navdpin ul li a.plr25{padding:0 25px}
+#nnav .navdp .navdpin ul li.depth{position:relative}
+#nnav .navdp .navdpin ul li.depth>a{padding-right:50px}
+#nnav .navdp .navdpin ul li.depth a span{vertical-align:top;line-height:45px}
+#nnav .navdp .navdpin ul li.depth em{position:absolute;right:25px;top:0;display:inline-block;width:23px;height:45px;background: url("http://images.maxmovie.com/images/web/2016_new/images/main/depth_magazine.png") no-repeat 0 0}
+#nnav .navdp .navdpin ul li.depth em:hover{background: url("http://images.maxmovie.com/images/web/2016_new/images/main/depth_magazine.png") no-repeat 0 -45px}
+#nnav .navdp .navdpin ul li.depth ul{position:absolute;top:45px;left:0;text-align:left;width:200px;z-index:9999999;background:#232323;z-index:999999}
+#nnav .navdp .navdpin ul li.depth ul li{display:block;width:200px;line-height:38px !important;height:38px !important}
+#nnav .navdp .navdpin ul li.depth ul a{display:block;text-align:left;line-height:38px !important}
+#nnav .navdp .magash{position:absolute;left:50%;top:0;width:69px;height:45px;margin-left:410px}
+#nnav .navdp .magash a{display:block;width:69px;height:45px;background: url("http://images.maxmovie.com/images/web/2016_new/images/main/depth_magazine_sh.png") no-repeat 0 0}
+#nnav .navdp .magash a:hover{display:block;width:69px;height:45px;background: url("http://images.maxmovie.com/images/web/2016_new/images/main/depth_magazine_sh.png") no-repeat 0 -45px}
+#nnav .navdp .magash a.on{display:block;width:69px;height:45px;background: url("http://images.maxmovie.com/images/web/2016_new/images/main/depth_magazine_sh.png") no-repeat 0 -45px}
+#nnav .navdp .magainp{position:absolute;left:50%;top:0;width:965px;height:45px;background:#232323;margin-left:-483px}
+#nnav .navdp .magainp input{margin-top:10px;line-height:24px;height:24px;width:900px;padding-left:10px;background:#232323;color:#f03f37;font-size:14px;border:0;vertical-align:top}
+#nnav .navdp .magainp img{position:absolute;right:12px;top:12px}
+
+.topad{position:relative;width:100%;height:auto;border-bottom:1px solid #e7e7e7;min-width: 1175px;line-height:0;background:#f7f7fa}
+.topad .adbanner{width:965px;margin:0 auto;line-height:0}
+.topad .adcl{position:absolute;right:20px;top:50%;width:40px;height:40px;line-height:0;margin-top:-20px}
+
+
+#resFrm{*height:672px}
+.fclean{position:absolute;right:0;top:34px}
+
+
+.soclay{position:absolute;left:0;top:180px;width:100%}
+.soclay .soclaybox{border:1px solid #cfd0d1;margin:0 7px;padding:10px;background:#f4f4f4}
+.soclay .soctit{font-size:12px;padding-bottom:5px;padding-left:30px;line-height:22px;}
+.soclay .sf{background: url("http://images.maxmovie.com/images/web/2016_new/images/boomup/bl_facebook.png") no-repeat 0 0;background-size:25px 24px}
+.soclay .st{background: url("http://images.maxmovie.com/images/web/2016_new/images/boomup/bl_twitter.png") no-repeat 0 0;background-size:25px 24px}
+.soclay .sk{background: url("http://images.maxmovie.com/images/web/2016_new/images/boomup/bl_kakao.png") no-repeat 0 0;background-size:25px 24px}
+.soclay .soclayin{padding:7px;border:1px solid #d3d3d3;background:#fff}
+.soclay .soclayin .slaytop{position:relative}
+.soclay .soclayin .slaytop .slayfl{position:absolute;left:0;top:0;width:75px;height:75px;overflow:hidden}
+.soclay .soclayin .slaytop .slayfr{margin-left:85px;min-height:50px}
+.soclay .soclayin .slaytxt{margin-top:10px;padding-bottom:5px;border-top:2px solid #686868;background:#f9f9f9}
+.soclay .soclayin .slaytxt .stxttit{padding:5px;font-size:11px}
+.soclay .soclayin .slaytxt .stxttit strong{font-size:12px;color:#4977BB}
+.soclay .soclayin .slaytxt .slarea{margin:0 5px;border:1px solid #dbdfe6;border-top:1px solid#abadb3}
+.soclay .soclayin .slaytxt .slarea textarea{border:0}
+
+.jobt .bt{display:inline-block;padding:0 30px;height:34px;line-height:34px;color:#333;font-size:15px;font-weight:bold;border-top:1px solid #e0e0e0;border-right:1px solid #cfd0d1;border-bottom:1px solid #c1c2c3;border-left:1px solid #cfd0d1;background:#fff;text-align: center;border-radius:3px;-moz-border-radius:3px;-webkit-border-radius:3px}
+.jobt .not{border-top:1px solid #c1c2c3 !important;border-right:1px solid #cfd0d1 !important;border-bottom:1px solid #e0e0e0 !important;border-left:1px solid #cfd0d1 !important;background:#e0e0e0;color:#9d9d9d}
+.jobt .dim{border-top:1px solid #9fb7db !important;border-right:1px solid #4875b7 !important;border-bottom:1px solid #3c629a !important;border-left:1px solid #4875b7 !important;background:#4977bb;color:#fff}
+.pbcen{text-align:center;padding-bottom:15px}
+
+
+
+/* ad area */
+.slide_ad{position:absolute;left:50%;top:0;width:1925px;height:405px;margin-left:-963px}
+.admid{position:relative;width:965px;margin:-25px auto 0;font-size:0;line-height:0}
+.admid .adbanner{margin-top:-25px}
+.adleft{position:absolute;left:50%;bottom:0;margin-left:-962px;width:460px;height:735px}
+.adright{position:absolute;right:50%;bottom:0;margin-right:-962px;width:460px;height:735px}
+.adside{position:absolute;left:50%;top:65px;margin-left:-622px;width:120px;height:315px}
+.adblbt{position:absolute;left:50%;top:65px;margin-left:-622px;width:120px;height:140px}
+.adbl{position:absolute;left:50%;top:10%;z-index:10000;width:965px;height:auto;margin-left:-483px}
+
+.adbrabt{position:absolute;right:50%;top:65px;margin-right:-612px;width:90px;height:180px;background:#fff}
+.brand_layer{position:absolute;left:50%;top:112px;z-index:10000;width:965px;height:750px;margin-left:-483px;background:#fff}
+
+/* 21060920 add */
+.cercle{position:absolute;left:50%;top:255px;width:220px;height:220px;margin-left:430px}
+.cercle .cerimg a{display:block;width:200px;height:200px;background: url("http://images.maxmovie.com/images/banner/cercle_img.png") no-repeat 0 0;}
+.cercle .cerimg a:hover{display:block;width:200px;height:200px;background: url("http://images.maxmovie.com/images/banner/cercle_img.png") no-repeat 0 -200px;}
+.cercle .cercl{position:absolute;right:55px;top:0}
+.cercle .certxt{text-align:center;font-size:12px;line-height:18px;padding-top:5px;color:#999}
+
+/* --- 1023px ---
+@media all and (min-width:767px){
+#wrap{width:100%}
+.contents{width:100%}
+
+
+}
+ */
+/* --- Desktop --- 
+@media all and (min-width:1280px){
+.head, .wrap{position:relative;width:1280px;margin:0 auto}
+}
+
+*/
+
+
+  input[id=searchKEywordStr]::-ms-clear {
+    display: none;
+}
+
+
+#nnav .navhover .boomlf{position:absolute;right:50%;top:0;margin-right:482px;display:none}
+#nnav .navhover .boomlf span{display:block;width:2000px;height:310px;overflow:hidden;background:#222;text-align:right}
+
+#nnav .navhover .boomrf{position:absolute;left:50%;top:0;margin-left:482px}
+#nnav .navhover .boomrf span{display:block;width:2000px;height:310px;overflow:hidden;background:#222}
+
+.ctaa{display:inline-block;width:150px;height:150px;background:url('//image.maxmovie.com/sisa/ban_c_01.jpg') no-repeat 0 0}
+.ctaa:hover{display:inline-block;width:150px;height:150px;background:url('//image.maxmovie.com/sisa/ban_c_01.jpg') no-repeat 0 -150px}
+
+.ctmaa{position:absolute;left:50%;top:165px;width:140px;height:140px;z-index:1000;margin-left:505px}
+.ctmaa a{display:inline-block;width:140px;height:140px;background:url('//image.maxmovie.com/sisa/ban_c_main.jpg') no-repeat 0 0}
+.ctmaa a:hover{display:inline-block;width:140px;height:140px;background:url('//image.maxmovie.com/sisa/ban_c_main.jpg') no-repeat 0 -140px}
+
+.bearmov{position:absolute;left:50%;top:0;width:965px;height:323px;margin-left:-482px;}
+.bearmov .bearmovin{position:absolute;left:400px;top:0;width:185px;height:323px}
+@media all and (min-width:0) and (max-width:965px){
+.bearmov{position:absolute;left:0;top:0;width:965px;height:323px;margin-left:0}
+}
+.parent { width: 250px; height:125px;}
+.lionImg {
+    width: 185px;
+    height: 323px;
+    background:url('//image.maxmovie.com/www_maxmovie_com_2013/main/catchyap/hand.png') no-repeat;
+		background-size:100%;
+    position:absolute;
+		left: 50%;
+    top: -5px;
+		margin-left:-95px;
+    -webkit-transition-property: width height background-image;
+    -webkit-transition-duration:0.7s;
+    -webkit-transition-delay:0s;
+    -webkit-transition-timing-function: ease-in-out;
+    transition-property: width height background-image;
+    transition-duration:0.7s;
+    transition-delay:0s;
+    transition-timing-function: ease-out;
+		transform: rotate(0deg);
+		transform-origin: 30% 0%
+}
+.lionImg1 {
+    width: 185px;
+    height: 323px;
+    background:url('//image.maxmovie.com/www_maxmovie_com_2013/main/catchyap/hand.png') no-repeat;
+		background-size:100%;
+    position:absolute;
+    left: 50%;
+    top: -5px;
+		margin-left:-95px;
+		-webkit-transition-property: width height background-image;
+    -webkit-transition-duration:0.7s;
+    -webkit-transition-delay:0s;
+    -webkit-transition-timing-function: ease-in-out;
+    -webkit-transform: rotate(45deg);
+    transition-property: width height background-image;
+    transition-duration:0.7s;
+    transition-delay:0s;
+    transition-timing-function: ease-in-out;
+		transform: rotate(10deg);
+		transform-origin: 30% 0%
+}
+
+/* layer */
+.player{width:100%}
+.player .playerdown{width:100%;height:900px;position:absolute;left:0;top:0;z-index:10000;background: url("http://images.maxmovie.com/images/common/popup/popup_layer_bg.png");
+opacity: 0.5; /* other browsers */
+filter: progid:DXImageTransform.Microsoft.Alpha(opacity=50); /* this works in IE6, IE7, and IE8 */
+-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(opacity=100)"; /* this works in IE8 only */
+}
+.player .playerin{width:600px;position:absolute;left:50%;top:110px;margin-left:-300px;z-index:100000;background:#e0e2e7;border-bottom:3px solid #2a2a34}
+.player .playerin .ptit{position:relative;padding:15px 0 16px 20px;line-height:0;font-size:14px;color:#b0c4e5;background:#2a2a34}
+.player .playerin .pxtit{position:relative;padding:12px 0 15px 20px;line-height:18px;font-size:14px;color:#b0c4e5;background:#2a2a34}
+.player .playerin .pcl{position:absolute;right:20px;top:13px}
+.player .playerin .playtxt{padding:24px 30px 45px}
+.player .playerin .playtxt .ptxtt{padding-bottom:15px;border-bottom:1px solid #c0c5cd}
+.player .playerin .playtxt .pldot li{line-height:23px;letter-spacing:-0.3pt;padding-left:8px;background: url("http://images.maxmovie.com/images/common/bl/bl_dark_dot.gif") no-repeat 0 10px}
+.player .playerin .playtxt .ptxtb{padding-top:15px;line-height:19px;border-top:1px solid #fff}
+.player .playerin .pstit{padding-bottom:7px;font-weight:bold;color:#18427a;line-height:24px}
+.playtable{max-height:500px;overflow-y:auto}
+.playtable .lay_table{width:100%}
+.playtable .lay_table th{padding:10px 0 7px;color:#495f88;font-size:12px;font-weight:normal;letter-spacing:-0.3pt;border-right:1px solid #c2c9d5;border-bottom:1px solid #c2c9d5;background:#eaeef3}
+.playtable .lay_table .pl20{padding-left:20px;text-align:left;line-height:18px}
+.playtable .lay_table td{padding:5px 0 5px;border-bottom:1px solid #f0f0f0;background:#fff;}
+
+.player .tlayerin{width:768px;position:absolute;left:50%;top:110px;margin-left:-384px;z-index:100000;background:#fff}
+.player .tlayerin .ptit{position:relative;padding:13px 0 12px 20px;line-height:0;font-size:14px;color:#b0c4e5;background:#2a2a34}
+.player .tlayerin .pcl{position:absolute;right:20px;top:13px}
+.player .tlayerin .tlaytxt{padding:31px 25px}
+
+.ticbox{border-top:2px solid #3b4151;*zoom:1}
+.ticbox:after{content:"";display:block;clear:both}
+.ticbox .ticlf{position:relative;float:left;line-height:0}
+.ticbox .ticlf a .pshadow{position:absolute;left:0;top:0}
+.ticbox .ticrf{float:left;padding-left:20px}
+.ticbox .ticrf .ticrfin{width:548px;padding-left:10px;min-height:165px;border-bottom:1px solid #dbdcdd}
+.ticbox .ticrf .ticrfin .lftit1{padding-top:25px;line-height:22px;color:#4977bb;font-size:16px;font-weight:bold}
+.ticbox .ticrf .ticrfin .lftit1 a{color:#4977bb;letter-spacing:-0.7pt}
+.ticbox .ticrf .ticrfin .lftit2{padding-top:12px;line-height:19px;color:#18427a;font-size:11px}
+.ticbox .ticrf .ticrfin .lftit2 strong{line-height:19px;color:#18427a;font-size:13px;}
+.ticbox .ticrf .ticrfin .lftit3{line-height:20px;font-weight:bold;color:#18427a}
+.ticbox .ticrf .ticrfin .lftit3 a{display:inline-block;padding-left:14px;font-size:11px;color:#596273;text-decoration:underline;font-weight:normal;letter-spacing:-0.7pt;font-family:Dotum}
+.ticbox .ticrf .ticrfin .lftit4{padding-top:14px;color:#676767;font-size:11px;line-height:18px}
+.ticbox .ticrf .ticrfin .lftit5{color:#676767;font-size:11px;line-height:18px}
+.ticbox .ticrf .ticrfin .lftit5 a{display:inline-block;padding-left:13px;font-size:11px;color:#596273;text-decoration:underline;font-weight:normal;letter-spacing:-0.7pt}
+.ticbox .ticrf .sutic{position:relative;line-height:16px;padding-top:10px;font-size:11px}
+.ticbox .ticrf .sutic span{display:inline-block;position:absolute;right:0;top:10px}
+.ticbox .ticrf .sutic strong{color:#993e0b}
+
+.ticmap{margin-top:20px;border-top:1px solid #ddd;border-right:1px solid #c8c8c8;border-bottom:1px solid #a8a8a8;border-left:1px solid #c8c8c8;*zoom:1}
+.ticmap:after{content:"";display:block;clear:both}
+.ticmap .ticmapin{float:left;padding:20px 29px}
+.ticmap .ticmapin .tmtit1{padding-bottom:6px;line-height:20px;font-size:14px;font-weight:bold}
+.ticmap .ticmapin .tmtit2{padding-bottom:17px;line-height:18px;font-size:11px;color:#3b4151}
+.ticmap .ticmapin .tmtit2 span{display:inline-block;padding-left:24px;vertical-align:middle;background: url("http://images.maxmovie.com/images/common/bl/bl_re_aco_bar.gif") no-repeat 11px 4px}
+.ticmap .ticmapin .tmtit2 span em{display:inline-block;padding-left:16px;vertical-align:middle;background: url("http://images.maxmovie.com/images/common/popup/bl_seat.gif") no-repeat 0 3px}
+.ticmap .ticmapin .tmtit3{line-height:20px}
+.ticmap .ticmapin .tmtit3f{line-height:20px;}
+.ticmap .mapbox{float:right;border-left:1px solid #c8c8c8}
+
+.player .llayerin{width:370px;position:absolute;left:50%;top:110px;margin-left:-185px;z-index:100000;background:#e0e2e7;border-bottom:3px solid #2a2a34}
+.player .llayerin .ptit{position:relative;padding:15px 0 16px 20px;line-height:0;font-size:14px;color:#b0c4e5;background:#2a2a34}
+.player .llayerin .pcl{position:absolute;right:20px;top:13px}
+.player .llayerin .llaytxt{padding:26px 30px}
+.player .llayerin .llaytxt .laylogin{position:relative}
+.player .llayerin .llaytxt .laylogin .laylog li{line-height:34px}
+.player .llayerin .llaytxt .laylogin .laylog li:first-child{padding-bottom:2px}
+.player .llayerin .llaytxt .laylogin .laylog li input{padding-left:20px;width:214px;color:#676767;height:31px;border:1px solid #d5d5d5}
+.player .llayerin .llaytxt .laylogin p{position:absolute;right:0;top:1px}
+.player .llayerin .llaytxt .loglink{padding-top:16px;*zoom:1}
+.player .llayerin .llaytxt .loglink:after{content:"";display:block;clear:both}
+.player .llayerin .llaytxt .loglink li{float:left;line-height:18px;padding-left:28px;background: url("http://images.maxmovie.com/images/common/popup/log_bar.gif") no-repeat 14px 5px}
+.player .llayerin .llaytxt .loglink li:first-child{padding-left:4px;background:none}
+.player .llayerin .llaytxt .loglink li a{font-size:11px;color:#676767;letter-spacing:-1pt}
+
+.player .regularin{width:690px;position:absolute;left:50%;top:110px;margin-left:-345px;z-index:100000;background:#e0e2e7;border-bottom:3px solid #2a2a34}
+.player .regularin .ptit{position:relative;padding:15px 0 16px 20px;line-height:0;font-size:14px;color:#b0c4e5;background:#2a2a34}
+.player .regularin .ptit .pittp{position:absolute;right:46px;top:9px;display:inline-block;font-weight:normal;height:26px;line-height:25px;padding:0 15px;font-size:11px;color:#fff;background:#16161b;-moz-border-radius:13px;-webkit-border-radius:13px;border-radius:13px}
+.player .regularin .ptit .pittp strong{color:#b0c4e5}
+.player .regularin .ptit .pittp em{color:#666}
+.player .regularin .pcl{position:absolute;right:20px;top:13px}
+.player .regularin .relaytxt{position:relative;padding:25px 30px 31px;*zoom:1}
+.player .regularin .relaytxt:after{content:"";display:block;clear:both}
+.player .regularin .relaytxt .relf{float:left;width:300px}
+.player .regularin .relaytxt .relf h4{line-height:20px;padding-bottom:7px}
+.player .regularin .relaytxt .relfin{width:298px;height:349px;background:#fff;border-top:2px solid #2a2a34;border-right:1px solid #aaaeb5;border-bottom:1px solid #79808c;border-left:1px solid #aaaeb5}
+.player .regularin .relaytxt .relfin .retab{*zoom:1}
+.player .regularin .relaytxt .relfin .retab:after{content:"";display:block;clear:both}
+.player .regularin .relaytxt .relfin .retab>li{float:left;width:50%;background:#eaebee}
+.player .regularin .relaytxt .relfin .retab>li>a{display:block;height:39px;line-height:39px;text-align:center;border-bottom:1px solid #aaaeb5}
+.player .regularin .relaytxt .relfin .retab>li.lf>a.on{display:block;font-weight:bold;color:#18427a;text-align:center;background:#f5f5f5;border-right:1px solid #aaaeb5;border-bottom:1px solid #f5f5f5}
+.player .regularin .relaytxt .relfin .retab>li.rf>a.on{display:block;font-weight:bold;color:#18427a;text-align:center;background:#f5f5f5;border-left:1px solid #aaaeb5;border-bottom:1px solid #f5f5f5}
+.player .regularin .relaytxt .relfin .tabin{background:#f5f5f5;border-bottom:1px solid #c0c5cd}
+.player .regularin .relaytxt .relfin .tabin .zonesel{padding:12px 15px}
+.player .regularin .relaytxt .relfin .tabin .zonesel select{height:24px;vertical-align:middle}
+.player .regularin .relaytxt .relfin .tabin .zonesel input{height:22px;border:1px solid #d5d5d5;padding-left:20px;vertical-align:middle}
+.player .regularin .relaytxt .relfin .tabinbox{height:258px}
+.player .regularin .relaytxt .relfin .tabinbox .jScrollbar_draggable{height:245px}
+.player .regularin .relaytxt .relfin .tabinbox .resco .nosea{padding-top:89px;line-height:17px;text-align:center;background: url("http://images.maxmovie.com/images/common/popup/bl_con_no.gif") no-repeat center 34px}
+
+.player .regularin .relaytxt .rerf{float:right;width:300px}
+.player .regularin .relaytxt .rerf h4{line-height:20px;padding-bottom:7px}
+.player .regularin .relaytxt .rerf h4 span{color:#4977bb}
+.player .regularin .relaytxt .rerfin{float:right;width:298px;height:349px;background:#fff;border-top:2px solid #2a2a34;border-right:1px solid #aaaeb5;border-bottom:1px solid #79808c;border-left:1px solid #aaaeb5}
+.player .regularin .relaytxt .rerfin .tabinbox{height:349px}
+.player .regularin .relaytxt .rerfin .tabinbox .jScrollbar_draggable{height:332px}
+.player .regularin .relaytxt .rerfin .tabinbox .resco .nosea{padding-top:103px;line-height:17px;text-align:center;background: url("http://images.maxmovie.com/images/common/popup/bl_con_no.gif") no-repeat center 49px}
+.player .regularin .relaytxt .rerfin .tabinbox .resco .nosea em{display:inline-block;padding-left:17px;background: url("http://images.maxmovie.com/images/common/popup/bl_lay_star.gif") no-repeat 0 1px}
+.player .regularin .relaytxt .rerfin .tabinbox .resco .nosea span{display:block;padding-top:20px;line-height:17px;font-size:11px;text-align:center;color:#18427a}
+.player .regularin .relaytxt .mvarrow{position:absolute;left:340px;top:200px}
+
+.player .clayerin{width:768px;position:absolute;left:50%;top:110px;margin-left:-384px;z-index:100000;background:#e0e2e7}
+.player .clayerin .ptit{position:relative;padding:15px 0 16px 20px;line-height:0;font-size:14px;color:#b0c4e5;background:#2a2a34}
+.player .clayerin .pxtit{position:relative;padding:12px 0 15px 20px;line-height:18px;font-size:14px;color:#b0c4e5;background:#2a2a34}
+.player .clayerin .pcl{position:absolute;right:20px;top:13px}
+.player .clayerin .claytxt{width:768px;padding-bottom:26px;background:#fff}
+.player .clayerin .claytxt h4{padding:39px 0 35px;text-align:center}
+.player .clayerin .cardall{padding-left:31px}
+.player .clayerin .cardall ul{*zoom:1}
+.player .clayerin .cardall ul:after{content:"";display:block;clear:both}
+.player .clayerin .cardall ul li{float:left;width:169px;height:137px;line-height:0;padding-right:10px;padding-bottom:10px;background: url("http://images.maxmovie.com/images/sub_discount/card_all_popup_bg.jpg") no-repeat 0 0}
+.player .clayerin .cardall ul li a{display:block;width:169px;height:137px}
+
+.player .nlayerin{width:390px;position:absolute;left:50%;top:110px;margin-left:-195px;z-index:100000;background:#e0e2e7}
+.player .nlayerin .ptit{position:relative;padding:15px 0 16px 20px;line-height:0;font-size:14px;color:#b0c4e5;background:#2a2a34}
+.player .nlayerin .pxtit{position:relative;padding:12px 0 15px 20px;line-height:18px;font-size:14px;color:#b0c4e5;background:#2a2a34}
+.player .nlayerin .pcl{position:absolute;right:20px;top:13px}
+.player .nlayerin .nlaytxt{padding:28px 35px 47px;background:#fff}
+.player .nlayerin .nlaytxt h4{line-height:19px;padding-bottom:11px;font-weight:bold;color:#222;border-bottom:1px solid #eff0f2}
+.player .nlayerin .nlaytxt .nlaytxtin{line-height:19px;padding-top:12px;color:#222;letter-spacing:-0.3pt}
+.player .nlayerin .nltod{padding-left:20px;line-height:30px;font-size:11px;color:#333;background:#f4f4f4}
+
+.player .nllayerin{width:680px;position:absolute;left:50%;top:110px;margin-left:-340px;z-index:100000;background:#e0e2e7;border-bottom:3px solid #2a2a34}
+.player .nllayerin .ptit{position:relative;padding:15px 0 16px 20px;line-height:0;font-size:14px;color:#b0c4e5;background:#2a2a34}
+.player .nllayerin .pxtit{position:relative;padding:12px 0 15px 20px;line-height:18px;font-size:14px;color:#b0c4e5;background:#2a2a34}
+.player .nllayerin .pcl{position:absolute;right:20px;top:16px}
+.player .nllayerin .nllaytxt{padding:18px 30px 40px;*zoom:1}
+.player .nllayerin .nllaytxt:after{content:"";display:block;clear:both}
+.player .nllayerin .nllaytxt .logfl{float:left;width:360px}
+.player .nllayerin .nllaytxt .ban_a{float:right;width:240px;height:240px}
+.player .nllaytxt .tabdis{border-top:2px solid #2a2a34;border-left:1px solid #bbb;*zoom:1}
+.player .nllaytxt .tabdis:after{content:"";display:block;clear:both}
+.player .nllaytxt .tabdis>li{float:left;width:50%}
+.player .nllaytxt .tabdis>li>a{display:block;height:37px;text-decoration:none;text-align:center;line-height:37px;letter-spacing:-1pt;color:#333;font-size:13px;background:#eaebee;border:1px solid #aaaeb5;border-left:0;border-top:0}
+.player .nllaytxt .tabdis>li>a strong{font-weight:normal}
+.player .nllaytxt .tabdis>li>a.on{color:#18427a;font-weight:bold;background:#fff;letter-spacing:-1pt;border:1px solid #aaaeb5;border-bottom:1px solid #fff;border-left:0;border-top:0}
+.player .nllaytxt .tabdis>li>a.on strong{font-weight:bold}
+.player .logflbox{border:1px solid #aaaeb5;border-bottom:1px solid #79808c;border-top:0;background:#fff}
+.player .nllayerin .nlltit{padding-top:9px;padding-bottom:20px;padding-left:10px}
+.player .logflbox{padding:35px 0 12px 44px;border-top:1px solid #c0c5cd}
+.player .logflbox .loging{width:270px;margin-top:-6px;text-align:center;font-weight:bold;color:#18427a}
+.player .logflbox .flogin li{padding-top:5px}
+.player .logflbox .flogin li:first-child{padding-top:0}
+.player .logflbox .flogin li input{padding-left:14px;height:33px;line-height:33px;border:1px solid #d5d5d5;font-family:Tahoma;color:#4977bb;font-weight:bold}
+.player .logflbox .flogin li input:focus{border:1px solid #4977bb}
+.player .logflbox .floglink{*zoom:1}
+.player .logflbox .floglink:after{content:"";display:block;clear:both}
+.player .logflbox .floglink li{float:left;height:18px;line-height:18px;padding-left:12px;margin-left:11px;font-size:11px;background: url("http://images.maxmovie.com/images/common/bl/bl_gu.gif") no-repeat 0 3px}
+.player .logflbox .floglink li:first-child{margin-left:0;background:none}
+.player .logflbox .floglink li a{font-size:11px;letter-spacing:-1pt;color:#333}
+.player .logflbox .floglink li:last-child a{color:#676767}
+.player .logflbox .pb20{padding-bottom:9px}
+.player .logflbox .loginchk{text-align:center;vertical-align:middle;width:270px}
+.player .logflbox .loginchk input{vertical-align:middle;margin-top:-1px}
+.player .logflbox .loginchk label{padding-left:7px;font-size:12px;line-height:16px;color:#333}
+
+.player .nocare{clear:both;position:relative;padding-top:36px;padding-left:274px}
+.player .nocare p{position:absolute;left:30px;top:63px}
+.player .nocare ul li{line-height:20px;padding-left:12px;color:#333;letter-spacing:-0.7pt;background: url("http://images.maxmovie.com/images/common/bl/bl_dark_dot.gif") no-repeat 0 8px}
+.player .nocare ul li strong{color:#18427a}
+
+.player .nofinfo{background: url("http://images.maxmovie.com/images/common/popup/logtab_bg.gif") repeat-x left bottom}
+.player .nofinfoin{padding:21px 16px 17px;border:1px solid #aaaeb5;border-bottom:1px solid #79808c;border-top:0;background:#fff}
+.player .nofinfoin .notxts{padding-bottom:11px;line-height:19px;text-align:center;letter-spacing:-0.7pt}
+.player .nofinfoin .notxts span{font-weight:bold}
+.player .nofinfoin .notxts strong{color:#2a5ba4}
+.player .nofinfoin .notable{padding-left:124px;padding-bottom:7px;border-top:1px solid #d1d1d1;border-bottom:1px solid #e9e9e9;background:#f8f8f8}
+.player .nofinfoin .notable table th{padding-top:3px;padding-bottom:3px;text-align:left;font-weight:normal;letter-spacing:-0.7pt}
+.player .nofinfoin .notable table td{padding-top:3px;padding-bottom:3px;text-align:left}
+.player .nofinfoin .notable table td input{padding-left:11px;height:30px;line-height:30px;font-family:Tahoma;font-weight:bold;border:1px solid #d5d5d5;background:#fff}
+.player .nofinfoin .notable table td select{height:32px;border:1px solid #d5d5d5}
+.player .nofinfoin .perch{padding-top:8px;padding-bottom:10px;text-align:center;line-height:21px;border-bottom:1px solid #f0f0f0;background:#f8f8f8;font-family:dotum}
+.player .nofinfoin .perch strong{display:inline-block;padding-right:17px;padding-left:24px;background: url("http://images.maxmovie.com/images/common/popup/bl_per.png") no-repeat 0 2px}
+.player .nofinfoin .perch a{display:inline-block;padding-right:32px;text-decoration:underline;letter-spacing:-0.7pt}
+.player .nofinfoin .perch .vl{margin-top:-2px}
+.player .nofinfoin .perch label{letter-spacing:-0.3pt}
+#etcWrap{margin-bottom:70px;width:100%}
+.etcWrap{padding-bottom:40px;width:100%}
+
+.con_mail{padding-top:40px;margin-left:5px;padding-bottom:90px}
+.con_mail ul{*zoom:1}
+.con_mail ul:after{content:"";display:block;clear:both}
+.con_mail ul li{position:relative;float:left;width:285px;padding-left:25px}
+.con_mail ul li:first-child{}
+.con_mail ul li a{position:absolute;left:53px;top:62px}
+
+.mvic{position:absolute;right:0;top:0;z-index:10;width:50px;height:50px}
+.mvbanb{line-height:0;padding:10px 0;border-top:2px solid #667180}
+
+/* 171010 add */
+.stpop{position:absolute;left:50%;top:295px;width:400px;letter-spacing:-1pt;margin-left:-200px;border:1px solid #868686;z-index:10000000}
+.stpop .stpopin{padding:20px 15px 40px;background:#fff}
+.stpop .stpopin .stptit{position:relative;line-height:0;padding:0 0 10px 5px;border-bottom:2px solid #222}
+.stpop .stpopin .stptit a{position:absolute;right:2px;top:-3px}
+.stpop .stpopin .stpbox{text-align:center;padding:37px 0 0}
+.stpop .stpopin .stpbox .stpf1{font-size:18px;line-height:22px;font-weight:800}
+.stpop .stpopin .stpbox .stpf2{padding-top:15px;font-size:13px}
+.stpop .stpopin .stpbox .stpbt{padding-top:27px;font-size:18px;line-height:0}
+.stpop .stpbottom{position:relative;padding:17px 20px;font-size:12px;line-height:18px;border-top:1px solid #d1d1d1}
+.stpop .stpbottom span{color:#999}
+.stpop .stpbottom .stpbb{position:absolute;right:20px;top:17px}
+.stpop .stpbottom .stpbb a{display:block;width:107px;height:33px;line-height:33px;text-align:center;font-size:13px;color:#222;background:#fff;border:1px solid #b2b2b2;text-decoration:none}
+
+.sfacebox .smovin ul li .acttxt dl dd{height:15px}
+
+
+
+.maxstore .msbuy .msbuyin{paddiing:30px 0 90px}

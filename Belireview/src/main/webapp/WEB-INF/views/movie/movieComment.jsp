@@ -117,7 +117,7 @@
 																</c:if>
 																<c:if test="${moviecommentlist.PROFILE_IMAGE==null}">
 																	<img class="defaultImage__ProfileImg-s1kn91bx-1 iaxVtx" 
-																		src="/brw/resources/images/Temporary_img.JPG">
+																		src="/brw/resources/images/ican/no_pro.png">
 																</c:if>
 															</div>
 														</div>

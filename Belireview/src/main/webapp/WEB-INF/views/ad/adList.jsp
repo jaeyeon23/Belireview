@@ -56,6 +56,7 @@
 
 </head>
 <body>
+<div id="bg_color1" style="background: #f5f6f7">
 	<div class="row a">
 		<c:forEach items="${list}" var="adList" >
 			 <div class="col-sm-6 col-md-3 list">
@@ -81,5 +82,6 @@
 	</p>
 	
 		<%@ include file="/WEB-INF/views/include/include-body.jspf" %>
+</div>
 </body>
 </html>

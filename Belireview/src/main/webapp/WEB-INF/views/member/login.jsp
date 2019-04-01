@@ -102,9 +102,8 @@ function fn_login() {
 						</center>
 					</div>
 				</div>
-		<br><br><br>
 		</div>
 	</div>
-
+</div>
 </body>
 </html>
