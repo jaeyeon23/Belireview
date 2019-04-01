@@ -121,7 +121,8 @@
 										<span>드라마</span><br />도깨비
 									</div>
 									<p>
-										<font color="black">arraival in believe store</font>
+										<!-- <font color="black">너와 함께한 날들이 모두 눈부셨다.</font> -->
+										<font color="black">New & Fvhresh collection<br />arraival in believe store</font>
 									</p>
 									<a href="/brw/drama/dramaDetail.br?DRAMA_NO=66" class="btn btn-blue">리뷰보러가기</a>
 								</div>
@@ -443,11 +444,10 @@
 		<div class="container">
 			<div class="ct-offers">
 				<div class="ct-offers-title">
-					Tommy Hilfiger<br />Women’s
+					<br><br>REVIEW <br /> MOVIE,DRAMA,AD<br>NOW!
 				</div>
-				<p>The generated Lorem Ipsum is therefore always free from
-					repetition, injected humour</p>
-				<a href="" class="btn btn-blue">Discover more Product</a>
+				<p>What is your best Movie, Drama, Advertisement?</p>
+				<a href="/brw/rank.br" class="btn btn-blue">Go to Rank page</a>
 			</div>
 		</div>
 	</div>
