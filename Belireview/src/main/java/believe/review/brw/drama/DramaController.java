@@ -112,7 +112,7 @@ public class DramaController {
 		for(Map m:actortmp) {
 			Map mp = new HashMap();
 			if(m.get("ACTOR_DRAMA") != null) {
-				String tmp[] = m.get("ACTOR_DRAMA").toString().split(",");
+				String tmp[] = m.get("ACTOR_DRAMA").toString().split(", ");
 				for(int i=0;i<tmp.length;i++) {
 					if(tmp[i].equals(map.get("DRAMA_NO").toString())) {
 						mp.put("ACTOR_NAME", m.get("ACTOR_NAME"));

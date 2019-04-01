@@ -476,8 +476,7 @@
 			ad_content,
 			ad_company,
 			ad_poster_image,
-			ad_main_image,
-			ad_content_image
+			ad_main_image
 		)
 		VALUES(
 			SEQ_AD_NO.CURRVAL, 
@@ -486,8 +485,7 @@
 			#{content},
 			#{company},
 			#{poster_image},
-			#{main_image},
-			#{content_image}
+			#{main_image}
 		)			
 	</insert>
 	
@@ -510,8 +508,7 @@
 			AD_COMPANY=#{company}
 			<if test="main_image != null">
 				, AD_MAIN_IMAGE=#{main_image},
-				AD_POSTER_IMAGE=#{poster_image},
-				AD_CONTENT_IMAGE=#{content_image} 
+				AD_POSTER_IMAGE=#{poster_image}
 			</if>
 		WHERE
 			AD_NO=#{no}	

@@ -57,9 +57,10 @@
 					<div class="term">
 						<div class="wid-title">&nbsp;</div>
 						<p>
-							<a href="#">Tearms & condition</a><br /> <a href="#">FAQs</a><br />
-							<a href="#">Privacy Policy</a><br /> <a href="#">Legal
-								Desclaimer</a><br />
+							<a href="#">사업자등록번호 123-45-67890</a><br/> 
+							<a href="#">통신판매업신고번호 제KH24호</a><br/>
+							<a href="#">강남구 테헤란로14길 6 남도빌딩 3층 </a><br/> 
+							<a href="#">Iclass 24기</a><br />
 						</p>
 					</div>
 				</div>
@@ -67,16 +68,9 @@
 				<div class="col-md-3">
                               <div class="subscribe">
                                   <div class="wid-title">Subscribe for OFFERS & UPDATES</div>
-                                  <p>
-                                      Enter your email and we'll send you a coupon
-                                      with 10% off your next order. Add any text here
-                                  </p>
-                                  <form>
-                                      <div class="form-group">
-                                          <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
-                                      </div>
-                                      <button type="submit" class="btn btn-default">Subscribe Now</button>
-                                  </form>
+								  <img src="/brw/resources/images/img_mark2.PNG" width="70px">
+								  <img src="/brw/resources/images/img_mark3.PNG" width="80px">
+								  <img src="/brw/resources/images/img_mark4.PNG" width="80px">	
                               </div>
                           </div>
                       </div>

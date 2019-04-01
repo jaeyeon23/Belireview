@@ -263,8 +263,8 @@
 				</h3>
 				<div>
 					<input type="text" class="form-control search-wid" id="autocompleteTextMovie" name="actor" onkeypress="if (event.keyCode==13){movie_textarea_write();}">
-					<button type="button" class="btn btn-default" onclick="reset_movie_area()">드라마 배우 리셋</button>
-					<button type="button" class="btn btn-default" onclick="deleteOne_movie()">드라마 배우 지우기</button>
+					<button type="button" class="btn btn-default" onclick="reset_movie_area()">영화 배우 리셋</button>
+					<button type="button" class="btn btn-default" onclick="deleteOne_movie()">영화 배우 지우기</button>
 				</div>
 				<div style="margin-top: 5%;">
 					<textarea rows="8" cols="80" id="movie_textarea" name="movie_textarea" class="form-control" readonly></textarea>
