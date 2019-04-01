@@ -10,7 +10,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="">
    	<link rel="stylesheet" href="/brw/resources/css/detail2.css"> 
-   	<link rel="stylesheet" href="/brw/resources/css/detail.css">
+   	<link rel="stylesheet" href="/brw/resources/css/detail0.css">
    	<link rel="stylesheet" href="/brw/resources/css/detailgenre.css">
    
 	<%@ include file="/WEB-INF/views/include/include-body.jspf" %>
@@ -449,7 +449,7 @@
 												<div class="MaxWidthCol-s1fpp771-0 bLPhwL">
 													<div
 														class="ContentJumbotron__PosterWithRankingInfoBlock-yf8npk-10 cIaqHU">
-														<div class="LazyLoadingImg__Self-s1jb87ps-0 cjQTNJ">
+														<div class="LazyLoadingImg__Self-s1jb87ps-0 cjQTNJ LazyLoadingImagew__Self-s76w0ot-0 iSZttl">
 															<img class="LazyLoadingImg__Self-s1jb87ps-0 cjQTNJ"
 															src="${map.AD_POSTER_IMAGE}"">
 														</div>
