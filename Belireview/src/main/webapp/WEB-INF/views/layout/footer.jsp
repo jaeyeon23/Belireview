@@ -30,6 +30,7 @@
                                   <div class="wid-title">Quick Links</div>
                                   <ul>
                                       <li><a href="main.br">Home</a></li>
+                                      <li><a href="/brw/rank.br">RANK</a></li>
                                       <li><a href="/brw/drama/dramaList.br">DRAMA</a></li>
                                       <li><a href="/brw/movie/movieList.br">MOVIE</a></li>
                                       <li><a href="/brw/ad/adList.br">ADVERTISEMENT</a></li>
