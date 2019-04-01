@@ -69,9 +69,9 @@ public class AdminActorController {
 		totalCount = admin.size();
 		
 		if(orderby == null || searchNum == null) {
-			page = new Paging(currentPage, totalCount, blockCount, blockPage, "/brw/admin/users");
+			page = new Paging(currentPage, totalCount, blockCount, blockPage, "/brw/admin/actor");
 		}else {
-			page = new Paging(currentPage, totalCount, blockCount, blockPage, "/brw/admin/users", orderby, searchNum, searchBox);
+			page = new Paging(currentPage, totalCount, blockCount, blockPage, "/brw/admin/actor", orderby, searchNum, searchBox);
 		}
 		
 		pagingHtml = page.getPagingHtml().toString();
@@ -139,6 +139,16 @@ public class AdminActorController {
 	public String actorModify(HttpServletRequest request, CommandMap commandMap, Model model) throws Exception{
 		Map<String, Object> map = null;
 		
+		commandMap.put("actor_page", "actor_page");
+		
+		if(commandMap.get("movie_textarea").toString().equals("")) {
+			commandMap.put("movie_textarea", "");
+		}
+		
+		if(commandMap.get("drama_textarea").toString().equals("")) {
+			commandMap.put("drama_textarea", "");
+		}
+		
 		if(commandMap.get("show_file") != null) {
 			map = adminActorService.selectActorOne((String)commandMap.get("no"));
 			
@@ -157,6 +167,9 @@ public class AdminActorController {
 			file = new File(filePath + fileName2);
 			multipartFile.transferTo(file);
 		}
+		
+		commandMap.put("ACTOR_NAME", commandMap.get("name").toString());
+		commandMap.put("ACTOR_NO", commandMap.get("no").toString());
 		
 		adminActorService.updateActorOne(commandMap.getMap());
 		

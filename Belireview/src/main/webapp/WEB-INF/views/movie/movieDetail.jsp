@@ -47,6 +47,9 @@
 		var initValue = "${initValue}";
 		var mcc = ${myComment.MC_CONTENT != null};
 		var like= "${likeList}".split(",");
+		$(function() {
+			$("#cat-nav").hide();
+		})
 		$(function(){
 			var ee ;
 			for(var i=0;i<10;i++){
@@ -455,7 +458,7 @@
 		/* 별점 */
 	</script>
 	
-	<link rel="stylesheet" href="/brw/resources/css/global2.css">
+	<link rel="stylesheet" href="/brw/resources/css/global2.css"> 
 </head>
 <body> 
 	<c:forEach begin="0" end="9" step="1" items="${ratio}"  varStatus="status" var='i'>
@@ -936,7 +939,7 @@
 																													</c:if>
 																													<c:if test="${comment.PROFILE_IMAGE==null}">
 																													<img class="defaultImage__ProfileImg-s1kn91bx-1 iaxVtx" 
-																														src="/brw/resources/images/Temporary_img.JPG">
+																														src="/brw/resources/images/ican/no_pro.png">
 																													</c:if>
 																												</div>
 																											</div>

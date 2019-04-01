@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -130,7 +131,7 @@
 								<td>${list.DRAMA_DIRECTOR}</td>
 								<td>${list.DRAMA_READCOUNT}</td>
 								<td>${list.DRAMA_EPISODE}</td>
-								<td>${list.DRAMA_GRADE}</td>
+								<td><fmt:formatNumber pattern="#.#" value="${list.DRAMA_GRADE}"/></td>
 								<td>
 									<button class="btn btn-default" type="button" onclick="update_drama('${list.DRAMA_NO}')">수정</button>
 									<button class="btn btn-danger" type="button" onclick="delete_drama('${list.DRAMA_NO}')">삭제</button>

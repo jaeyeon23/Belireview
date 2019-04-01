@@ -73,9 +73,12 @@
 .gUZYtN{display:block;width:;height:;border:solid 1px rgba(0,0,0,0.08);border-radius:50%;}
 /* sc-component-id: defaultImage__ProfileImg-s1kn91bx-1 */
 
-.iaxVtx{vertical-align:top;width:24px;height:24px;}
+.iaxVtx {
+	vertical-align: top;
+	width: 100%;
+	height: 100%;
+}
 /* sc-component-id: ProfilePhoto__ProfilePhotoImage-s1v3isfu-0 */
-
 .jawsmT{position:relative;z-index:1;background:url(https://d3sz5r0rl9fxuc.cloudfront.net/assets/default/user/photo_file_name_small-bc8b334acec6a4e386249dedf9e763b5e6aff523fa85cc29211f22e6bed540df.jpg) no-repeat center;background-size:cover;width:100%;height:100%;}
 
 .kgJrze{position:relative;z-index:1;background-size:cover;width:100%;height:100%;}

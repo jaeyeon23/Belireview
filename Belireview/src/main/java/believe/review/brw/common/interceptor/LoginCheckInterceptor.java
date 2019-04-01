@@ -32,8 +32,8 @@ public class LoginCheckInterceptor extends HandlerInterceptorAdapter{
 					return false;
 				}
 			}
+			
+			return true;
 		}
-
-		return true;
 	}
 }
