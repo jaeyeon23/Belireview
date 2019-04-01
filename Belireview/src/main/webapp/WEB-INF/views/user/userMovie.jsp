@@ -214,7 +214,7 @@
 									<c:set var="count" value="0"></c:set>
 									<c:forEach items="${userMovieAll}" var="userMovieAll">
 										<c:if test="${userMovieAll.ML_GRADE == rating}">
-											${count = count+1} 
+											<input type="hidden" value="${count = count+1}">
 										</c:if> 
 									</c:forEach>
 								<section class="SectionWithHeader__Self-s1eyxltb-0 gAYeFO r${i}"><!-- 5점 -->
