@@ -190,7 +190,8 @@ select::-ms-expand {
 #container{
 	margin: 0 auto;
 	max-width: 768px;
-	min-width: 460px
+	min-width: 460px;
+	/* padding-bottom:4%; */
 }
 
 

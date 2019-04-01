@@ -80,11 +80,14 @@ public class LoginController {
 					return mv;
 				}
 			}else {// 회원이 로그인을 시도하였을 때
-
+				String uri = commandMap.get("uri").toString();
 				if (passwordEncoder.matches((String)commandMap.get("password"), (String)chk.get("PASSWORD"))) {
 					session.setAttribute("ID", commandMap.get("id"));
 					mv.addObject("MEMBER", chk);
-					mv.setViewName("redirect:/main.br");
+					if(uri.contains("member"))
+						mv.setViewName("redirect:/main.br");
+					else
+						mv.setViewName("redirect:"+uri);
 					session.setAttribute("NAME", chk.get("NAME"));
 					session.setAttribute("TEL", chk.get("TEL"));
 					session.setAttribute("EMAIL", chk.get("EMAIL"));

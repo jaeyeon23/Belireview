@@ -1,7 +1,9 @@
 @media (min-width: 992px){
 .a {
-   margin: 80px 300px 90px 150px;
-}}
+   margin: 0px 300px 0px 150px;
+   padding-top: 80px;
+   padding-bottom: 90px; 
+}
 
 #loading {
 	width: 100%;

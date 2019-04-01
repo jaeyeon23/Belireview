@@ -29,16 +29,16 @@
 	font-size: inherit;
 	line-height: normal;
 	vertical-align: middle;
-	background-color: #3b8686;  /* 버튼색 */
+	background-color: #376a96;  /* 버튼색 */
 	cursor: pointer;
-	border: 1px solid #3b8686;
+	border: 1px solid #376a96;
 	border-radius: .25em;
 	-webkit-transition: background-color 0.2s;
 	transition: background-color 0.2s;
 }
 
 .filebox label:hover {
-	background-color: #2f6363;
+	background-color: #325c80;
 }
 
 .filebox label:active {

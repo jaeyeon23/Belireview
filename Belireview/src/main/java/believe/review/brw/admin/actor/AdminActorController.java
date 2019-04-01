@@ -34,7 +34,8 @@ public class AdminActorController {
 	private int blockPage = 5; 	 
 	private String pagingHtml;  
 	private Paging page;
-	private String filePath = "C:\\Users\\박재연\\Desktop\\Belireview\\Belireview\\src\\main\\webapp\\resources\\images\\actor\\";
+	//private String filePath = "C:\\Users\\박재연\\Desktop\\Belireview\\Belireview\\src\\main\\webapp\\resources\\images\\actor\\";
+	private String filePath = "C:\\Java\\pro\\Belireview\\src\\main\\webapp\\resources\\images\\actor\\";
 	//private String filePath = "C:\\인영\\sts\\Belireview\\Belireview\\src\\main\\webapp\\resources\\images\\actor\\";
 	private File file;
 	private HttpSession session;
@@ -68,9 +69,9 @@ public class AdminActorController {
 		totalCount = admin.size();
 		
 		if(orderby == null || searchNum == null) {
-			page = new Paging(currentPage, totalCount, blockCount, blockPage, "/brw/admin/users");
+			page = new Paging(currentPage, totalCount, blockCount, blockPage, "/brw/admin/actor");
 		}else {
-			page = new Paging(currentPage, totalCount, blockCount, blockPage, "/brw/admin/users", orderby, searchNum, searchBox);
+			page = new Paging(currentPage, totalCount, blockCount, blockPage, "/brw/admin/actor", orderby, searchNum, searchBox);
 		}
 		
 		pagingHtml = page.getPagingHtml().toString();

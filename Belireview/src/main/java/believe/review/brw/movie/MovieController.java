@@ -38,7 +38,7 @@ public class MovieController {
 	private UserService userService;
 	
 
-	@RequestMapping(value = "movieList.br")
+	@RequestMapping(value = "movieList.br" ,method = RequestMethod.GET)
 	public ModelAndView movieList(CommandMap commandMap,HttpServletRequest request) throws Exception {
 		String p = request.getParameter("currentPage");
 		
@@ -70,6 +70,32 @@ public class MovieController {
 		
 		return mv;
 
+	}
+	@RequestMapping(value = "movieList.br" ,method = RequestMethod.POST)
+	@ResponseBody
+	public String movieListPOST(CommandMap commandMap,HttpServletRequest request) throws Exception {
+		String p = request.getParameter("currentPage");
+		if(p == null || p.trim().isEmpty() || p.equals("0")) {
+            currentPage = 1;
+        } else {
+            currentPage = Integer.parseInt(request.getParameter("currentPage"));
+        }
+		
+		List<Map<String,Object>> list = movieService.selectBoardList(commandMap.getMap());
+		
+		StringBuffer sb = new StringBuffer();
+		for(Map m : list) {
+			sb.append("<div class=\"col-sm-6 col-md-3 list\">")
+			.append("<a href=\"/brw/movie/movieDetail.br?movie_NO=").append(m.get("MOVIE_NO")).append("\">")
+			.append("<div class=\"thumbnail\">")
+			.append("<img src=\"/brw/resources/images/movie/poster/").append(m.get("MOVIE_POSTER_IMAGE")).append("\">")
+			.append("<div class=\"caption\">")
+			.append("<h3>").append(m.get("MOVIE_NAME")).append("</h3>")
+			.append("<p>").append(m.get("MOVIE_DATE")).append("・").append(m.get("MOVIE_COUNTRY")).append("・").append(m.get("MOVIE_GENRE"))
+			.append("</p></div></div></a></div>");
+		}
+		return sb.toString();
+		
 	}
 
 	@RequestMapping(value="movieDetail.br" ,method = RequestMethod.GET)
@@ -178,7 +204,7 @@ public class MovieController {
 		if(session.getAttribute("PROFILE_IMAGE")!=null) {
 			mv.addObject("PROFILE_IMAGE","user_profile/"+session.getAttribute("PROFILE_IMAGE"));
 		}else
-			mv.addObject("PROFILE_IMAGE","Temporary_img.JPG");
+			mv.addObject("PROFILE_IMAGE","ican/"+"no_pro.png");
 		
 		return mv;
 
@@ -287,7 +313,7 @@ public class MovieController {
 					sb.append("<img class=\"defaultImage__ProfileImg-s1kn91bx-1 iaxVtx\" src=\"/brw/resources/images/user_profile/")
 					.append(m.get("PROFILE_IMAGE")).append("\">");
 				}else {
-					sb.append("<img class=\"defaultImage__ProfileImg-s1kn91bx-1 iaxVtx\" src=\"/brw/resources/images/Temporary_img.JPG\">");
+					sb.append("<img class=\"defaultImage__ProfileImg-s1kn91bx-1 iaxVtx\" src=\"/brw/resources/images/ican/no_pro.png\">");
 				}
 				sb.append("</div></div><div class=\"UserNameWithBadges__Self-s1bd3hgj-0 brZhrQ\">")
 				.append(m.get("NAME"))
@@ -472,7 +498,7 @@ public class MovieController {
 				if(m.get("PROFILE_IMAGE")!=null) {
 					sb.append("<img class=\"defaultImage__ProfileImg-s1kn91bx-1 iaxVtx\" src=\"/brw/resources/images/user_profile/").append(m.get("PROFILE_IMAGE")).append("\">");
 				}else {
-					sb.append("<img class=\"defaultImage__ProfileImg-s1kn91bx-1 iaxVtx\" src=\"/brw/resources/images/Temporary_img.JPG\">");
+					sb.append("<img class=\"defaultImage__ProfileImg-s1kn91bx-1 iaxVtx\" src=\"/brw/resources/images/ican/no_pro.png\">");
 				}
 				sb.append("</div></div>")
 				.append("<div class=\"UserNameWithBadges__Self-s1bd3hgj-0 brZhrQ\">")

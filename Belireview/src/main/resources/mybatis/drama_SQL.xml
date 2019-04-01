@@ -21,8 +21,8 @@
 				(SELECT *
 					FROM DRAMA	
 				<choose>
-				<when test="DRAMA_GENRE !=null">
-				 WHERE DRAMA_GENRE LIKE '%'||#{DRAMA_GENRE}||'%' ORDER BY DBMS_RANDOM.RANDOM)
+				<when test="GENRE !=null">
+				 WHERE DRAMA_GENRE LIKE '%'||#{GENRE}||'%' ORDER BY DBMS_RANDOM.RANDOM)
 				</when>
 				
 				<otherwise>

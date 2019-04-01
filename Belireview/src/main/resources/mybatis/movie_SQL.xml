@@ -22,8 +22,8 @@
 			(SELECT *
 					FROM MOVIE	
 				<choose>
-				<when test="MOVIE_GENRE !=null">
-				 WHERE MOVIE_GENRE LIKE '%'||#{MOVIE_GENRE}||'%' ORDER BY DBMS_RANDOM.RANDOM)
+				<when test="GENRE !=null">
+				 WHERE MOVIE_GENRE LIKE '%'||#{GENRE}||'%' ORDER BY DBMS_RANDOM.RANDOM)
 				</when>
 				
 				<otherwise>
@@ -60,7 +60,7 @@
  
    
    <select id="movieActor" parameterType="hashmap" resultType="hashmap">
-   		SELECT ACTOR_NAME,ACTOR_IMAGE FROM ACTOR WHERE ACTOR_MOVIE LIKE '%'||#{MOVIE_NAME}||'%'
+   		SELECT ACTOR_NAME,ACTOR_IMAGE,ACTOR_MOVIE FROM ACTOR WHERE ACTOR_MOVIE LIKE '%'||#{MOVIE_NO}||'%'
    </select>
    
    <select id="detailgenre" parameterType="hashmap" resultType="hashmap" >
