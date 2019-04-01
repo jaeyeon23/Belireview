@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-   <link rel="stylesheet" href="/brw/resources/css/list2.css">
+   <link rel="stylesheet" href="/brw/resources/css/list3.css">
    <script src="<c:url value='/resources/js/common.js'/>" charset="utf-8"></script>
    <script>
   		 $(window).scroll(function(){
@@ -64,7 +64,7 @@
 			      <img width="300px" height="400px" src="/brw/resources/images/movie/poster/${movieList.MOVIE_POSTER_IMAGE}">
 			      <%-- <input type='hidden' class='IDX' value="${dramaList.DRAMA_NO}"> --%>
 			      <div class="caption">
-			        <h3>${movieList.MOVIE_NAME}</h3>
+			        <h3 class="name">${movieList.MOVIE_NAME}</h3>
 			        <p>${movieList.MOVIE_DATE}・${movieList.MOVIE_COUNTRY}・${movieList.MOVIE_GENRE}</p>
 			      </div>
 			    </div>
