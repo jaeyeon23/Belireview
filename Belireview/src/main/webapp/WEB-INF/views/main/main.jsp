@@ -284,7 +284,7 @@
 												</div>
 			                                </div>
 			                                <div class="product-name">
-												<a href="">${list.DRAMA_NAME }</a>
+												<a href="/brw/drama/dramaDetail.br?DRAMA_NO=${list.DRAMA_NO}">${list.DRAMA_NAME }</a>
 											</div>
 			                            </div>
 									</c:forEach>
@@ -317,7 +317,7 @@
 												</div>
 			                                </div>
 			                                <div class="product-name">
-												<a href="">${list.MOVIE_NAME }</a>
+												<a href="/brw/movie/movieDetail.br?MOVIE_NO=${list.MOVIE_NO}">${list.MOVIE_NAME }</a>
 											</div>
 			                            </div>
 									</c:forEach>
@@ -349,7 +349,7 @@
 												</div>
 			                                </div>
 			                                <div class="product-name">
-												<a href="">${list.AD_NAME }</a>
+												<a href="/brw/ad/adDetail.br?AD_NO=${list.AD_NO}">${list.AD_NAME }</a>
 											</div>
 			                            </div>
 									</c:forEach>

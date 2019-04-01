@@ -100,12 +100,7 @@
 											${sessionScope.NAME} 님
 										</h1> 
 									</div>
-									<div class="UserPage__AboutMe-s1uda3mb-8 jxRxZJ">
-										<div class="TextTruncate__Self-wvv1uj-0 laNFWG">
-											<div class="TextTruncate__Text-wvv1uj-1 gLsCNn"
-												style="white-space: pre-line;">보유포인트</div>
-										</div>
-									</div>
+									
 								</header>
 							</div>
 							<div class="PrimitiveHorizontalScrollable__ScrollBarContainer-hy4esm-0 hUyjJn">
