@@ -35,14 +35,7 @@ public class AdminUserController {
 	private Paging page;
 	private String filePath = "C:\\Users\\박재연\\Desktop\\Belireview\\Belireview\\src\\main\\webapp\\resources\\images\\user_profile\\";
 	private File file;
-	/*
-	Set keyset = commandMap.keySet();
-	System.out.println("Key set values are" + keyset);
-	
-	(result) Key set values are[password, sms_marketing, email_marketing, password_check, name, admin, tel, id, email]
-	
-	*/
-	
+
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
 	
