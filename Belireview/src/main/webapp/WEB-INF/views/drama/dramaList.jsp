@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-   <link rel="stylesheet" href="/brw/resources/css/list2.css">
+   <link rel="stylesheet" href="/brw/resources/css/list3.css">
    <script src="<c:url value='/resources/js/common.js'/>" charset="utf-8"></script>
    <script>
 		
@@ -65,7 +65,7 @@
 			      <img src="/brw/resources/images/drama/poster/${dramaList.DRAMA_POSTER_IMAGE}">
 			      <%-- <input type='hidden' class='IDX' value="${dramaList.DRAMA_NO}"> --%>
 			      <div class="caption">
-			        <h3>${dramaList.DRAMA_NAME}</h3>
+			        <h3 class="name">${dramaList.DRAMA_NAME}</h3>
 			        <p>${dramaList.DRAMA_DATE}・${dramaList.DRAMA_CHANNEL}・${dramaList.DRAMA_GENRE}</p>
 			      </div>
 			    </div>
