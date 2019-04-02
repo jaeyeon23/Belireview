@@ -118,11 +118,13 @@
 							<div class="col-md-6">
 								<div class="slide-offers-left">
 									<div class="slide-offers-title">
-										<span>드라마</span><br />도깨비
+										<span>드라마</span><br /><font color="black">도깨비</font>
 									</div>
 									<p>
-										<!-- <font color="black">너와 함께한 날들이 모두 눈부셨다.</font> -->
-										<font color="black">New & Fvhresh collection<br />arraival in believe store</font>
+										<!-- <font color="black">너와 함께한 날들이 모두 눈부셨다</font> -->
+										<!-- <font color="black">New & Fvhresh collection<br />arraival in believe store</font> -->
+										<br>
+										<br>
 									</p>
 									<a href="/brw/drama/dramaDetail.br?DRAMA_NO=66" class="btn btn-blue">리뷰보러가기</a>
 								</div>
@@ -153,10 +155,10 @@
 							<div class="col-md-6">
 								<div class="slide-offers-left">
 									<div class="slide-offers-title">
-										<span>광고</span><br />for online order
+										<span>영화</span><br />코코
 									</div>
 									<p>
-										New & Fvhresh collection<br />arraival in believe store
+										<br><br>
 									</p>
 									<a href="/brw/ad/adList.br" class="btn btn-blue">AD</a>
 								</div>
@@ -178,7 +180,7 @@
 										<span>영화</span><br />보헤미안 랩소디
 									</div>
 									<p>
-										New & Fvhresh collection<br />arraival in believe store
+										<br><br>
 									</p>
 									<a href="/brw/movie/movieDetail.br?MOVIE_NO=341" class="btn btn-blue">리뷰보러가기</a>
 								</div>
