@@ -42,6 +42,10 @@
     <script src="/brw/resources/js/jquery-1.4.4.min.js"></script>
     
 	<script src="/brw/resources/js/slides.jquery.js"></script>
+	<script type="text/javascript">
+    jQuery.noConflict();
+    var j$ = jQuery;
+	</script>
 	<script>
 		var id = "${ID}";
 		var grade = "${grade}";
@@ -50,62 +54,62 @@
 		var mcc = ${myComment != null};
 		var like = "${likeList}".split(",");
 		$(function() {
-			$("#cat-nav").hide();
+			j$("#cat-nav").hide();
 		})
 		
 		$(function() {
 			var ee;
 			for (var i = 0; i < 10; i++) {
-				ee = $('.ree' + i).html() + "px";
-				$('.re' + (i + 1)).css("height", ee);
+				ee = j$('.ree' + i).html() + "px";
+				j$('.re' + (i + 1)).css("height", ee);
 			}
 		});//막대그래프 높이 조정
 		
 		 $(function(){
 			 if(grade != ""){//평가했을때
 			  	var rr = "r"+"${grade}";
-			  	$('.r0').removeClass('r0').addClass(rr);
-			  	$('.ccOSgS').html("${ra}");
+			  	j$('.r0').removeClass('r0').addClass(rr);
+			  	j$('.ccOSgS').html("${ra}");
 			 }else{
-				$('.ccOSgS').html("평가하기");
+				j$('.ccOSgS').html("평가하기");
 			 }
 		 });  
 		 /* 로그인 유무 */
 		$(function(){ 
 			if(id==""){//비로그인
-				$(".gZASBp").click(function(){//별점
+				j$(".gZASBp").click(function(){//별점
 					alert("로그인 해주세요.");
 					location.href="<c:url value='/member/loginForm.br?${_csrf.parameterName}=${_csrf.token}' />"
 				});
 			}else{//로그인
 				if(mcc != ""){
-					$(".writeComment").css("display","none");
-					$(".existComment").css("display","block");
+					j$(".writeComment").css("display","none");
+					j$(".existComment").css("display","block");
 				}else{
-					$(".writeComment").css("display","block");
-					$(".existComment").css("display","none");
+					j$(".writeComment").css("display","block");
+					j$(".existComment").css("display","none");
 				}
-				$('.wc').click(function(){
+				j$('.wc').click(function(){
 					comment();
 				});
-				 $('.deleteComment').click(function(){
+				j$('.deleteComment').click(function(){
 					deleteComment();
 				}); 
-				 $('.mc').click(function(){
+				j$('.mc').click(function(){
 					updateComment();
 				});
-				 $(".like").live("click", function() {//좋아요 버튼
-						var cla = $(this).attr('class').split(" ")[5];
+				j$(".like").live("click", function() {//좋아요 버튼
+						var cla = j$(this).attr('class').split(" ")[5];
 						commentlike(cla);
 						return;
 				});
 				if (like == "" || like == null) {
-					$(".like").html("좋아요")
+					j$(".like").html("좋아요")
 				} else {
 					for (var i = 0; i < like.length; i++) {
 						var tmp = like[i].replace("[", "").replace("]", "")
 								.trim();
-						$("." + tmp).html("좋아요취소");
+						j$("." + tmp).html("좋아요취소");
 					}
 				}
 			}
@@ -113,7 +117,7 @@
 		 /* 로그인 유무 */
 		
 		 function commentlike(cla) {
-			$.ajax({
+			j$.ajax({
 				async : true,
 				type : 'POST',
 				data : {
@@ -128,64 +132,64 @@
 					var clike ="좋아요취소";
 					var cnolike ="좋아요";
 					if(r.add){
-						$('.'+r.CLA).html(clike);
+						j$('.'+r.CLA).html(clike);
 					}
 					if(r.subtract){
-						$('.'+r.CLA).html(cnolike);
+						j$('.'+r.CLA).html(cnolike);
 					}
-					$('.0'+r.CLA).html(result.AD_LIKE);
+					j$('.0'+r.CLA).html(result.AD_LIKE);
 				}
 			})
 		}
 		 
 		function deleteComment(){
-			 $.ajax({
+			 j$.ajax({
 				 async:true,
 				 type:'POST',
 				 data:{ID:id,DELCOM:'DEL', ADC_NO:"${myComment.ADC_NO}",AD_NO:<%=request.getParameter("AD_NO")%>},
 				 url:"<c:url value='/ad/adDetail.br?${_csrf.parameterName}=${_csrf.token}' />",
 				 success:function(result){
-					$(".writeComment").css("display","block");
-					$(".existComment").css("display","none");
-					$(".comen").html(result.comList); //코멘트 리스트
-					$(".comnum").html(result.comNum); // 코멘트 숫자
+					j$(".writeComment").css("display","block");
+					j$(".existComment").css("display","none");
+					j$(".comen").html(result.comList); //코멘트 리스트
+					j$(".comnum").html(result.comNum); // 코멘트 숫자
 				 }
 			 })
 			 
 		} 
 		function updateComment(){
-			$.ajax({
+			j$.ajax({
 				 async:true,
 				 type:'POST',
 				 data:{ID:id,MCOM:$('.com2').val(), AD_NO:<%=request.getParameter("AD_NO")%>},
 				 url:"<c:url value='/ad/adDetail.br?${_csrf.parameterName}=${_csrf.token}' />",
 				 success:function(result){
-					$(".writeComment").css("display","none");
-					$(".existComment").css("display","block");
-					$(".cc").html(result.myCom.AD_CONTENT);
-					$(".comen").html(result.comList);
-					$(".comnum").html(result.comNum);
+					j$(".writeComment").css("display","none");
+					j$(".existComment").css("display","block");
+					j$(".cc").html(result.myCom.AD_CONTENT);
+					j$(".comen").html(result.comList);
+					j$(".comnum").html(result.comNum);
 				 }
 			 })
 		} 
 		function comment(){
-			 $.ajax({
+			 j$.ajax({
 				 async:true,
 				 type:'POST',
 				 data:{ID:id,COM:$('.com').val(), AD_NO:<%=request.getParameter("AD_NO")%>},
 				 url:"<c:url value='/ad/adDetail.br?${_csrf.parameterName}=${_csrf.token}' />",
 				 success:function(result){
-					$(".writeComment").css("display","none");
-					$(".existComment").css("display","block");
-					$(".cc").html(result.myCom.AD_CONTENT);
-					$(".comen").html(result.comList);
-					$(".comnum").html(result.comNum);
+					j$(".writeComment").css("display","none");
+					j$(".existComment").css("display","block");
+					j$(".cc").html(result.myCom.AD_CONTENT);
+					j$(".comen").html(result.comList);
+					j$(".comnum").html(result.comNum);
 				 }
 			 })
 		}
 		/* 별점 */
 		function rating(rr){
-			$.ajax({
+			j$.ajax({
 				async : true,  
 				type : 'POST',
 				data : {ID:id , RATING:rr , AD_NO:<%=request.getParameter("AD_NO")%>},
@@ -205,207 +209,207 @@
 			else{
 				var f = $('.gZASBp > a.r1');
 				f.hover(function() {
-					$('.gZASBp > div' ).removeClass(initValue).addClass('r1');
+					j$('.gZASBp > div' ).removeClass(initValue).addClass('r1');
 				}, function() {
-					$('.gZASBp > div' ).removeClass('r1').addClass(initValue);
+					j$('.gZASBp > div' ).removeClass('r1').addClass(initValue);
 				});
 				f.click(function(){
 					if(initValue == 'r1'){
 						initValue = 'r0';
 						r=0;
-						$('.ccOSgS').html("평가하기");
+						j$('.ccOSgS').html("평가하기");
 						rating(r);
 					}else{
 						initValue = 'r1';
 						r=0.5;
-						$('.ccOSgS').html("최악이에요");
+						j$('.ccOSgS').html("최악이에요");
 						rating(r);
 					}
 				});
 				
-				f = $('.gZASBp > a.r2');
+				f = j$('.gZASBp > a.r2');
 				f.hover(function() {
-					$('.gZASBp > div' ).removeClass(initValue).addClass('r2');
+					j$('.gZASBp > div' ).removeClass(initValue).addClass('r2');
 				}, function() {
-					$('.gZASBp > div' ).removeClass('r2').addClass(initValue);
+					j$('.gZASBp > div' ).removeClass('r2').addClass(initValue);
 				});
 				f.click(function(){
 					if(initValue == 'r2'){
 						initValue = 'r0';
 						r=0;
-						$('.ccOSgS').html("평가하기");
+						j$('.ccOSgS').html("평가하기");
 						rating(r);
 					}else{
 						initValue = 'r2';
 						r=1;
-						$('.ccOSgS').html("싫어요");
+						j$('.ccOSgS').html("싫어요");
 						rating(r);
 					}
 				});
 				
-				f = $('.gZASBp > a.r3');
+				f = j$('.gZASBp > a.r3');
 				f.hover(function() {
-					$('.gZASBp > div' ).removeClass(initValue).addClass('r3');
+					j$('.gZASBp > div' ).removeClass(initValue).addClass('r3');
 				}, function() {
-					$('.gZASBp > div' ).removeClass('r3').addClass(initValue);
+					j$('.gZASBp > div' ).removeClass('r3').addClass(initValue);
 				});
 				f.click(function(){
 					if(initValue == 'r3'){
 						initValue = 'r0';
 						r=0;
-						$('.ccOSgS').html("평가하기");
+						j$('.ccOSgS').html("평가하기");
 						rating(r);
 					}else{
 						initValue = 'r3';
 						r=1.5;
-						$('.ccOSgS').html("재미없어요");
+						j$('.ccOSgS').html("재미없어요");
 						rating(r);
 					}
 				});
 				
-				f = $('.gZASBp > a.r4');
+				f = j$('.gZASBp > a.r4');
 				f.hover(function() {
-					$('.gZASBp > div' ).removeClass(initValue).addClass('r4');
+					j$('.gZASBp > div' ).removeClass(initValue).addClass('r4');
 				}, function() {
-					$('.gZASBp > div' ).removeClass('r4').addClass(initValue);
+					j$('.gZASBp > div' ).removeClass('r4').addClass(initValue);
 				});
 				f.click(function(){
 					if(initValue == 'r4'){
 						initValue = 'r0';
 						r=0;
-						$('.ccOSgS').html("평가하기");
+						j$('.ccOSgS').html("평가하기");
 						rating(r);
 					}
 					else{
 						initValue = 'r4';
 						r=2;
-						$('.ccOSgS').html("별로에요");
+						j$('.ccOSgS').html("별로에요");
 						rating(r);
 					}
 				});
 				
-				f = $('.gZASBp > a.r5');
+				f = j$('.gZASBp > a.r5');
 				f.hover(function() {
-					$('.gZASBp > div' ).removeClass(initValue).addClass('r5');
+					j$('.gZASBp > div' ).removeClass(initValue).addClass('r5');
 				}, function() {
-					$('.gZASBp > div' ).removeClass('r5').addClass(initValue);
+					j$('.gZASBp > div' ).removeClass('r5').addClass(initValue);
 				});
 				f.click(function(){
 					if(initValue == 'r5'){
 						initValue = 'r0';
 						r=0;
-						$('.ccOSgS').html("평가하기");
+						j$('.ccOSgS').html("평가하기");
 						rating(r);
 					}
 					else{
 						initValue = 'r5';
 						r=2.5;
-						$('.ccOSgS').html("부족해요");
+						j$('.ccOSgS').html("부족해요");
 						rating(r);
 					}
 				});
 				
-				f = $('.gZASBp > a.r6');
+				f = j$('.gZASBp > a.r6');
 				f.hover(function() {
-					$('.gZASBp > div' ).removeClass(initValue).addClass('r6');
+					j$('.gZASBp > div' ).removeClass(initValue).addClass('r6');
 				}, function() {
-					$('.gZASBp > div' ).removeClass('r6').addClass(initValue);
+					j$('.gZASBp > div' ).removeClass('r6').addClass(initValue);
 				});
 				f.click(function(){
 					if(initValue == 'r6'){
 						initValue = 'r0';
 						r=0;
-						$('.ccOSgS').html("평가하기");
+						j$('.ccOSgS').html("평가하기");
 						rating(r);
 					}
 					else{
 						initValue = 'r6';
 						r=3;
-						$('.ccOSgS').html("보통이에요");
+						j$('.ccOSgS').html("보통이에요");
 						rating(r);
 					}
 				});
 				
-				f = $('.gZASBp > a.r7');
+				f = j$('.gZASBp > a.r7');
 				f.hover(function() {
-					$('.gZASBp > div' ).removeClass(initValue).addClass('r7');
+					j$('.gZASBp > div' ).removeClass(initValue).addClass('r7');
 				}, function() {
-					$('.gZASBp > div' ).removeClass('r7').addClass(initValue);
+					j$('.gZASBp > div' ).removeClass('r7').addClass(initValue);
 				});
 				f.click(function(){
 					if(initValue == 'r7'){
 						initValue = 'r0';
 						r=0;
-						$('.ccOSgS').html("평가하기");
+						j$('.ccOSgS').html("평가하기");
 						rating(r);
 					}
 					else{
 						initValue = 'r7';
 						r=3.5;
-						$('.ccOSgS').html("볼만해요");
+						j$('.ccOSgS').html("볼만해요");
 						rating(r);
 					}
 				});
 				
-				f = $('.gZASBp > a.r8');
+				f = j$('.gZASBp > a.r8');
 				f.hover(function() {
-					$('.gZASBp > div' ).removeClass(initValue).addClass('r8');
+					j$('.gZASBp > div' ).removeClass(initValue).addClass('r8');
 				}, function() {
-					$('.gZASBp > div' ).removeClass('r8').addClass(initValue);
+					j$('.gZASBp > div' ).removeClass('r8').addClass(initValue);
 				});
 				f.click(function(){
 					if(initValue == 'r8'){
 						initValue = 'r0';
 						r=0;
-						$('.ccOSgS').html("평가하기");
+						j$('.ccOSgS').html("평가하기");
 						rating(r);
 					}
 					else{
 						initValue = 'r8';
 						r=4;
-						$('.ccOSgS').html("재미있어요");
+						j$('.ccOSgS').html("재미있어요");
 						rating(r);
 					}
 				});
 				
-				f = $('.gZASBp > a.r9');
+				f = j$('.gZASBp > a.r9');
 				f.hover(function() {
-					$('.gZASBp > div' ).removeClass(initValue).addClass('r9');
+					j$('.gZASBp > div' ).removeClass(initValue).addClass('r9');
 				}, function() {
-					$('.gZASBp > div' ).removeClass('r9').addClass(initValue);
+					j$('.gZASBp > div' ).removeClass('r9').addClass(initValue);
 				});
 				f.click(function(){
 					if(initValue == 'r9'){
 						initValue = 'r0';
 						r=0;
-						$('.ccOSgS').html("평가하기");
+						j$('.ccOSgS').html("평가하기");
 						rating(r);
 					}
 					else{
 						initValue = 'r9';
 						r=4.5;
-						$('.ccOSgS').html("훌륭해요!");
+						j$('.ccOSgS').html("훌륭해요!");
 						rating(r);
 					}
 				});
 				
-				f = $('.gZASBp > a.r10');
+				f = j$('.gZASBp > a.r10');
 				f.hover(function() {
-					$('.gZASBp > div' ).removeClass(initValue).addClass('r10');
+					j$('.gZASBp > div' ).removeClass(initValue).addClass('r10');
 				}, function() {
-					$('.gZASBp > div' ).removeClass('r10').addClass(initValue);
+					j$('.gZASBp > div' ).removeClass('r10').addClass(initValue);
 				});
 				f.click(function(){
 					if(initValue == 'r10'){
 						initValue = 'r0';
 						r=0;
-						$('.ccOSgS').html("평가하기");
+						j$('.ccOSgS').html("평가하기");
 						rating(r);
 					}
 					else{
 						initValue = 'r10';
 						r=5;
-						$('.ccOSgS').html("최고에요!");
+						j$('.ccOSgS').html("최고에요!");
 						rating(r);
 					}
 				});
@@ -465,7 +469,7 @@
 													<div class="ContentJumbotron__PaneInner-yf8npk-13 eJceNg">
 														<h1 class="ContentJumbotron__Title-yf8npk-14 jCFeyL">${map.AD_NAME}</h1><!-- 제목 -->
 														<div class="ContentJumbotron__Detail-yf8npk-15 bJHRjP">${map.AD_COMPANY}</div><!--  -->
-														<div class="ContentJumbotron__ContentRatings-yf8npk-16 epsYAr">평점 ★${map.AD_GRADE}&nbsp;&nbsp;・&nbsp;&nbsp;<!-- 평점 -->
+														<div class="ContentJumbotron__ContentRatings-yf8npk-16 epsYAr">평점 ★${map.AD_GRADE}&nbsp;&nbsp;&nbsp;&nbsp;<!-- 평점 -->
 														</div>
 													
 														<div
@@ -534,7 +538,7 @@
 																		class="ContentMyCommentSection__LeaveCommentBlock-mhuscg-2 bvmyee">
 																		<h3
 																			class="ContentMyCommentSection__Title-mhuscg-11 inwTWL">이
-																			작품에 대한 ${map.ID} 님의 평가를 글로 남겨보세요.</h3>
+																			작품에 대한 ${map.NAME} 님의 평가를 글로 남겨보세요.</h3>
 																		<div class="ContentMyCommentSection__ButtonBlock-mhuscg-12 kTSrnl">
 																			<!-- modal 구동 버튼 (trigger) -->
 																			<!-- 코멘트 작성창 -->
@@ -599,7 +603,7 @@
 																					class="ProfilePhoto__DefaultImageContainer-s1v3isfu-2 kPGxuy">
 																					<img
 																						class="defaultImage__ProfileImg-s1kn91bx-1 iaxVtx"
-																						src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDQ4IDQ4Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgZmlsbD0iI0UwRTBFMCI+CiAgICAgICAgICAgIDxwYXRoIGQ9Ik0yNCAyMS4yNzhhOC41NyA4LjU3IDAgMCAxLTguNTcxLTguNTdBOC41NzEgOC41NzEgMCAxIDEgMjQgMjEuMjc3TTQzLjUxOSA0My44NjVjLjU2NCAwIDEuMDMzLS40NjggMS4wMDMtMS4wMzFDNDMuOTYzIDMyLjQyNCAzNC45ODkgMjQuMTUgMjQgMjQuMTVjLTEwLjk4OSAwLTE5Ljk2MyA4LjI3NC0yMC41MjIgMTguNjgzLS4wMy41NjMuNDM5IDEuMDMgMS4wMDMgMS4wM2gzOS4wMzh6Ii8+CiAgICAgICAgPC9nPgogICAgPC9nPgo8L3N2Zz4K" >
+																						src="/brw/resources/images/${PROFILE_IMAGE}" >
 																				</div>
 																			</div>
 																		</div>
