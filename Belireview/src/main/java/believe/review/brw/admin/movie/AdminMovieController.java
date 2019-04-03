@@ -143,7 +143,7 @@ public class AdminMovieController {
 				
 				if(movie_list != null) {
 					for(String movie : movie_list) {
-						if(movie.equals((String)commandMap.get("no"))) {
+						if(movie.equals(commandMap.get("no").toString())) {
 							count = 1;
 							
 							break;
