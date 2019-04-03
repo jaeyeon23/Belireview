@@ -34,9 +34,7 @@ public class AdminDramaController {
 	private int blockPage = 5; 	 
 	private String pagingHtml;  
 	private Paging page;
-	//private String filePath = "C:\\Users\\박재연\\Desktop\\Belireview\\Belireview\\src\\main\\webapp\\resources\\images\\drama\\";
-	//private String filePath = "C:\\인영\\sts\\Belireview\\Belireview\\src\\main\\webapp\\resources\\images\\drama\\";
-	private String filePath = "C:\\Java\\pro\\Belireview\\src\\main\\webapp\\resources\\images\\drama\\";
+	private String filePath = "C:\\인영\\sts\\Belireview\\Belireview\\src\\main\\webapp\\resources\\images\\drama\\";
 	private HttpSession session = null;
 	
 	@Autowired
@@ -185,7 +183,7 @@ public class AdminDramaController {
 					if(str.equals("")) {
 						str = map.get("ACTOR_NO").toString();
 					}else {
-						str += ", " + (String)map.get("ACTOR_NO");
+						str += ", " + map.get("ACTOR_NO").toString();
 					}
 				}
 			}

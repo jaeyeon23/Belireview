@@ -16,11 +16,11 @@
                                       	영화, TV, 도서를 검색하고 4억개의 평점과 리뷰를 만나보세요.
                                   </p>
                                   <ul class="ft-soc clearfix">
-                                      <li><a href="https://www.facebook.com"><i class="fa fa-facebook-square"></i></a></li>
-                                      <li><a href="https://twitter.com/?lang=ko"><i class="fa fa-twitter"></i></a></li>
-                                      <li><a href="https://www.google.com"><i class="fa fa-google-plus-square"></i></a></li>
-                                      <li><a href="https://www.instagram.com/?hl=ko"><i class="fa fa-instagram"></i></a></li>
-                                      <li><a href="https://www.pinterest.co.kr"><i class="fa fa-pinterest"></i></a></li>
+                                      <li><a href="https://www.facebook.com" target="_blank"><i class="fa fa-facebook-square"></i></a></li>
+                                      <li><a href="https://twitter.com/?lang=ko" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                                      <li><a href="https://www.rocketpunch.com/@cf2e60f502b34389" target="_blank"><i class="fa fa-rocket"></i></a></li>
+                                      <li><a href="https://www.instagram.com/?hl=ko" target="_blank"><i class="fa fa-instagram"></i></a></li>
+                                      <li><a href="https://www.youtube.com/" target="_blank"><i class="fa fa-youtube-play"></i></a></li>
                                   </ul>
                                   <div class="clearfix"></div>
                               </div>
@@ -43,12 +43,12 @@
                                   <div class="wid-title">MEMBER</div>
                                   
                                   <ul>
-                                      <li><a href="#">Park jae-Yeon</a></li>
-                                      <li><a href="#">Baek In-Young</a></li>
-                                      <li><a href="#">Kim Ju-Young</a></li>
-                                      <li><a href="#">Hwang Taek-Gyun</a></li>
-                                      <li><a href="#">Kim Sang-Hyup</a></li>
-                                      <li><a href="#">Woo Jeong-Yoon</a></li>
+                                      <li><a href="http://www.jype.com/" target="_blank">Park jae-Yeon</a></li>
+                                      <li><a href="https://www.google.com/doodles/halloween-2018" target="_blank">Baek In-Young</a></li>
+                                      <li><a href="http://tv.jtbc.joins.com/cast/PR10010969/19" target="_blank">Kim Ju-Young</a></li>
+                                      <li><a href="https://kdexp.com/main.kd" target="_blank">Hwang Taek-Gyun</a></li>
+                                      <li><a href="https://i.pinimg.com/originals/f0/28/bf/f028bf9f1101b7e46afa33b3577aeaa8.jpg" target="_blank">Kim Sang-Hyup</a></li>
+                                      <li><a href="https://youngmill.kr/" target="_blank">Woo Jeong-Yoon</a></li>
                                   </ul>
                               </div>
                           </div>
@@ -57,10 +57,10 @@
 					<div class="term">
 						<div class="wid-title">&nbsp;</div>
 						<p>
-							<a href="#">사업자등록번호 123-45-67890</a><br/> 
-							<a href="#">통신판매업신고번호 제KH24호</a><br/>
-							<a href="#">강남구 테헤란로14길 6 남도빌딩 3층 </a><br/> 
-							<a href="#">Iclass 24기</a><br />
+							사업자등록번호 123-45-67890<br/> 
+							통신판매업신고번호 제KH24호<br/>
+							강남구 테헤란로14길 6 남도빌딩 3층<br/> 
+							Iclass 24기<br />
 						</p>
 					</div>
 				</div>
