@@ -166,7 +166,7 @@
 									id="open-srch-form"><img
 										src="/brw/resources/images/srch.png" alt="srch"></a></li>
 								<li><c:if test="${sessionScope.ID != null }">
-										<a href="#"> <c:if
+										<a href="/brw/user/user.br"> <c:if
 												test="${sessionScope.PROFILE_IMAGE == null }">
 												<img src="/brw/resources/images/ican/no_pro.png" alt="bag"
 													width="60" height="45"
