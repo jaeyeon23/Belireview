@@ -78,9 +78,9 @@
 </head>
 <body>
    <div class="container">
-      <div style="float:left; margin:20pt auto; background: skyblue;">
+     <!--  <div style="float:left; margin:20pt auto; background: skyblue;">
          회원관리
-      </div>
+      </div> -->
       <div style="margin:20pt auto; float: right; width: 20%;" onchange="orderby('/brw/admin/users.br?${_csrf.parameterName}=${_csrf.token}')">
          <select id="orderby" name="orderby" class="form-control">
             <option value="">----</option>

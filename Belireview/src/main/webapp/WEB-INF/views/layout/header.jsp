@@ -150,6 +150,7 @@
                                           </c:if>
                                       </ul>
 							<ul class="nav navbar-nav navbar-right">
+							<c:if test="${sessionScope.ADMIN != 1 }">
 								<div id="content1">
 									<dl id="rank-list">
 										<dt>실시간 급상승 검색어</dt>
@@ -162,6 +163,7 @@
 										</dd>
 									</dl>
 								</div>
+							</c:if>
 								<li class="menu-search-form"><a href="#"
 									id="open-srch-form"><img
 										src="/brw/resources/images/srch.png" alt="srch"></a></li>
