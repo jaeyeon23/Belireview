@@ -211,11 +211,17 @@
 							<section class="ArchiveRatingsPage__ByRatingSections-s1ojhyk5-1 fmQknq">
 								<c:forEach  var="i" begin="1" end="10" step="1" varStatus="stat">
 									<c:set var="rating" value="${((10-i)*0.5)+0.5}"></c:set>
+									<c:set var="count" value="0"></c:set>
+									<c:forEach items="${userMovieAll}" var="userMovieAll">
+										<c:if test="${userMovieAll.ML_GRADE == rating}">
+											<input type="hidden" value="${count = count+1}">
+										</c:if> 
+									</c:forEach>
 								<section class="SectionWithHeader__Self-s1eyxltb-0 gAYeFO r${i}"><!-- 5점 -->
 									<div class="Grid-zydj2q-0 cspjno">
 										<div class="Row-s1apwm9x-0 lowZpE">
 											<header class="SectionWithHeader__Header-s1eyxltb-1 cuiACK">
-												<h3 class="SectionWithHeader__Title-s1eyxltb-2 kwjefp">${rating}점 준 영화 </h3>
+												<h3 class="SectionWithHeader__Title-s1eyxltb-2 kwjefp">${rating}점 준 영화 (${count})</h3>
 												<span class="TitleSuffixForNumber-l2d30g-0 ejtPKl"> <!-- 5.0준 영화 개수 -->
 												</span>
 											</header>

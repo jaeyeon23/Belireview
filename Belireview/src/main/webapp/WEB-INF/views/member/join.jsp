@@ -28,7 +28,7 @@
                     <div class="join_row">
                         <h3 class="join_title"><label for="id">아이디</label></h3>
                         <span class="ps_box int_id">
-							<input type="text" id="id" name="id" class="int" title="ID" maxlength="20">
+							<input type="text" id="id" name="id" numberOnly2 class="int" title="ID" maxlength="20">
                         </span>
                         <span class="error_next_box" id="idMsg" style="display:none" role="alert"></span>
                     </div>
@@ -113,6 +113,15 @@
 	
 	var idFlag = false;
 	var pwFlag = false;
+	
+	
+	/* 아이디 영문과 숫자만 입력가능하게 */
+	$(function(){
+   		$("input:text[numberOnly2]").on("keyup", function() {
+		    $(this).val($(this).val().replace( /[^0-9a-z]/ig,""));
+		});
+   		
+	});
 	
 	/* 아이디입력여부 */
 	$("input[name = id]").blur(function() {

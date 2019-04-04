@@ -16,23 +16,23 @@ public class LoginCheckInterceptor extends HandlerInterceptorAdapter{
 		HttpSession session = request.getSession();
 		String id = (String) session.getAttribute("ID");
 		int admin;
-		
+		String uri = request.getRequestURI();
 		
 		if(id == null || id.trim().length() <= 0 || id == "") {
+			if(uri.contains("member")) {
+				return true;
+			}
 			response.sendRedirect("/brw/member/loginForm.br");
-			
 			return false;
 		}else {
-			String uri = request.getRequestURI();
 			admin = ((BigDecimal)session.getAttribute("ADMIN")).intValue();
-			if(uri.contains("admin")) {
+			if(uri.contains("admin")||(uri.contains("member")&&!uri.contains("logout"))) {
 				if(admin == 0) {
 					response.sendRedirect("/brw/main.br");
 					
 					return false;
 				}
 			}
-			
 			return true;
 		}
 	}

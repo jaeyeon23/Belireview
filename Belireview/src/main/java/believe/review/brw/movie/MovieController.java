@@ -71,32 +71,6 @@ public class MovieController {
 		return mv;
 
 	}
-	@RequestMapping(value = "movieList.br" ,method = RequestMethod.POST)
-	@ResponseBody
-	public String movieListPOST(CommandMap commandMap,HttpServletRequest request) throws Exception {
-		String p = request.getParameter("currentPage");
-		if(p == null || p.trim().isEmpty() || p.equals("0")) {
-            currentPage = 1;
-        } else {
-            currentPage = Integer.parseInt(request.getParameter("currentPage"));
-        }
-		
-		List<Map<String,Object>> list = movieService.selectBoardList(commandMap.getMap());
-		
-		StringBuffer sb = new StringBuffer();
-		for(Map m : list) {
-			sb.append("<div class=\"col-sm-6 col-md-3 list\">")
-			.append("<a href=\"/brw/movie/movieDetail.br?movie_NO=").append(m.get("MOVIE_NO")).append("\">")
-			.append("<div class=\"thumbnail\">")
-			.append("<img src=\"/brw/resources/images/movie/poster/").append(m.get("MOVIE_POSTER_IMAGE")).append("\">")
-			.append("<div class=\"caption\">")
-			.append("<h3>").append(m.get("MOVIE_NAME")).append("</h3>")
-			.append("<p>").append(m.get("MOVIE_DATE")).append("・").append(m.get("MOVIE_COUNTRY")).append("・").append(m.get("MOVIE_GENRE"))
-			.append("</p></div></div></a></div>");
-		}
-		return sb.toString();
-		
-	}
 
 	@RequestMapping(value="movieDetail.br" ,method = RequestMethod.GET)
 	public ModelAndView movieDetail(CommandMap commandMap, HttpServletRequest request) throws Exception {
@@ -113,7 +87,7 @@ public class MovieController {
 		for(Map m:actortmp) {
 			Map mp = new HashMap();
 			if(m.get("ACTOR_MOVIE") != null) {
-				String tmp[] = m.get("ACTOR_MOVIE").toString().split(",");
+				String tmp[] = m.get("ACTOR_MOVIE").toString().split(", ");
 				for(int i=0;i<tmp.length;i++) {
 					if(tmp[i].equals(map.get("MOVIE_NO").toString())) {
 						mp.put("ACTOR_NAME", m.get("ACTOR_NAME"));

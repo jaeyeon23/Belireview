@@ -34,9 +34,15 @@
 	
 	<!-- 토탈 js -->
 	<script src="/brw/resources/Rcss/rank.js"></script>
-
+	
+	<script type="text/javascript">
+		$(function() {
+			$("#bgLayer").hide();
+		})
+	</script>
 </head>
 <body>
+<div id="bgLayer" style="position: fixed;width: 100%;height: 120%;left: 0px;top: 0px;background: rgb(0, 0, 0);opacity: 0.8;z-index: 2000000;"></div>
 <!-- 평점/조회순 js -->
 <script language="JavaScript" src="//images.maxmovie.com/js/jQuery/jquery-1.9.1.min.js"></script> 
 <div id="wrap">

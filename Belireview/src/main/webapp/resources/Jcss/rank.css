@@ -1,8 +1,57 @@
+@media (max-width: 1190px){
+	body {
+		font-size: 12px;
+		background: #FFF;
+		color: #333;
+		margin: 0;
+	}
+	#content1 {
+		height: 20px;
+		padding:0px;
+	}
+	#rank-list {
+		text-decoration: none;
+	}
+	#rank-list {
+		overflow: hidden;
+		width: 200px;
+		height: 23px;
+		margin: 0px;
+		font-size: 14px;
+		font-weight: bold;
+	}
+	#rank-list dt {
+		display: none;
+	}
+	#rank-list dd {
+		position: relative;
+		margin: 0;
+	}
+	#rank-list ol {
+		position: absolute;
+		top: 0;
+		left: 0;
+		margin: 0;
+		padding: 0;
+		list-style-type: none;
+	}
+	#rank-list li {
+		height: 20px;
+		line-height: 20px;
+	}
+	#index {
+		color: #245dffed;
+		font-size: 20px;
+	}
+}
+
+@media (min-width: 1191px){
+
 body {
     font-size: 12px;
     background: #FFF;
     color: #333;
-    margin: 0;
+    margin: 0px;
 }
 
 #content1 {
@@ -19,7 +68,7 @@ body {
     overflow: hidden;
     width: 200px;
     height: 20px;
-    margin: 0;
+    margin: 0px;
     text-align:right;
     font-size: 14px;
     font-weight:bold;
@@ -50,4 +99,5 @@ body {
 #index{
 	color:#245dffed;
 	font-size:20px;
+}
 }

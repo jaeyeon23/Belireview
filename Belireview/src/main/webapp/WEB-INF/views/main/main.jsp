@@ -118,10 +118,10 @@
 							<div class="col-md-6">
 								<div class="slide-offers-left">
 									<div class="slide-offers-title">
-										<span>드라마</span><br />도깨비
+										<span>드라마</span><br /><font color="black">도깨비</font>
 									</div>
 									<p>
-										<font color="black">arraival in believe store</font>
+										<font color="black">Goblin : The LONELY and GREAT GOD (2016) </font>
 									</p>
 									<a href="/brw/drama/dramaDetail.br?DRAMA_NO=66" class="btn btn-blue">리뷰보러가기</a>
 								</div>
@@ -152,12 +152,12 @@
 							<div class="col-md-6">
 								<div class="slide-offers-left">
 									<div class="slide-offers-title">
-										<span>광고</span><br />for online order
+										<span>영화</span><br />코코
 									</div>
 									<p>
-										New & Fvhresh collection<br />arraival in believe store
+										(Coco, 2017)
 									</p>
-									<a href="/brw/ad/adList.br" class="btn btn-blue">AD</a>
+									<a href="/brw/movie/movieDetail.br?MOVIE_NO=62" class="btn btn-blue">리뷰보러가기</a>
 								</div>
 							</div>
 							<div class="col-md-6"></div>
@@ -177,7 +177,7 @@
 										<span>영화</span><br />보헤미안 랩소디
 									</div>
 									<p>
-										New & Fvhresh collection<br />arraival in believe store
+										(Bohemian Rhapsody, 2018)
 									</p>
 									<a href="/brw/movie/movieDetail.br?MOVIE_NO=341" class="btn btn-blue">리뷰보러가기</a>
 								</div>
@@ -284,7 +284,7 @@
 												</div>
 			                                </div>
 			                                <div class="product-name">
-												<a href="">${list.DRAMA_NAME }</a>
+												<a href="/brw/drama/dramaDetail.br?DRAMA_NO=${list.DRAMA_NO}">${list.DRAMA_NAME }</a>
 											</div>
 			                            </div>
 									</c:forEach>
@@ -317,7 +317,7 @@
 												</div>
 			                                </div>
 			                                <div class="product-name">
-												<a href="">${list.MOVIE_NAME }</a>
+												<a href="/brw/movie/movieDetail.br?MOVIE_NO=${list.MOVIE_NO}">${list.MOVIE_NAME }</a>
 											</div>
 			                            </div>
 									</c:forEach>
@@ -349,7 +349,7 @@
 												</div>
 			                                </div>
 			                                <div class="product-name">
-												<a href="">${list.AD_NAME }</a>
+												<a href="/brw/ad/adDetail.br?AD_NO=${list.AD_NO}">${list.AD_NAME }</a>
 											</div>
 			                            </div>
 									</c:forEach>
@@ -443,11 +443,10 @@
 		<div class="container">
 			<div class="ct-offers">
 				<div class="ct-offers-title">
-					Tommy Hilfiger<br />Women’s
+					<br><br>REVIEW <br /> MOVIE,DRAMA,AD<br>NOW!
 				</div>
-				<p>The generated Lorem Ipsum is therefore always free from
-					repetition, injected humour</p>
-				<a href="" class="btn btn-blue">Discover more Product</a>
+				<p>What is your best Movie, Drama, Advertisement?</p>
+				<a href="/brw/rank.br" class="btn btn-blue">Go to Rank page</a>
 			</div>
 		</div>
 	</div>

@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-   <link rel="stylesheet" href="/brw/resources/css/list2.css">
+   <link rel="stylesheet" href="/brw/resources/css/list3.css">
     <script src="<c:url value='/resources/js/common.js'/>" charset="utf-8"></script>
    <script>
 		

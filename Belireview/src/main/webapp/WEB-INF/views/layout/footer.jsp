@@ -16,11 +16,11 @@
                                       	영화, TV, 도서를 검색하고 4억개의 평점과 리뷰를 만나보세요.
                                   </p>
                                   <ul class="ft-soc clearfix">
-                                      <li><a href=""><i class="fa fa-facebook-square"></i></a></li>
-                                      <li><a href=""><i class="fa fa-twitter"></i></a></li>
-                                      <li><a href=""><i class="fa fa-google-plus-square"></i></a></li>
-                                      <li><a href=""><i class="fa fa-instagram"></i></a></li>
-                                      <li><a href=""><i class="fa fa-pinterest"></i></a></li>
+                                      <li><a href="https://www.facebook.com" target="_blank"><i class="fa fa-facebook-square"></i></a></li>
+                                      <li><a href="https://twitter.com/?lang=ko" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                                      <li><a href="https://www.rocketpunch.com/@cf2e60f502b34389" target="_blank"><i class="fa fa-rocket"></i></a></li>
+                                      <li><a href="https://www.instagram.com/?hl=ko" target="_blank"><i class="fa fa-instagram"></i></a></li>
+                                      <li><a href="https://www.youtube.com/" target="_blank"><i class="fa fa-youtube-play"></i></a></li>
                                   </ul>
                                   <div class="clearfix"></div>
                               </div>
@@ -30,50 +30,47 @@
                                   <div class="wid-title">Quick Links</div>
                                   <ul>
                                       <li><a href="main.br">Home</a></li>
+                                      <li><a href="/brw/rank.br">Rank</a></li>
                                       <li><a href="/brw/drama/dramaList.br">DRAMA</a></li>
                                       <li><a href="/brw/movie/movieList.br">MOVIE</a></li>
                                       <li><a href="/brw/ad/adList.br">ADVERTISEMENT</a></li>
                                   </ul>
                               </div>
                           </div>
-                          <div class="col-md-2">
-                              <div class="term">
-                                  <div class="wid-title">&nbsp;</div>
-                                  <p>
-                                      <a href="#">Tearms & condition</a><br/>
-                                      <a href="#">FAQs</a><br/>
-                                      <a href="#">Privacy Policy</a><br/>
-                                      <a href="#">Legal Desclaimer</a><br/>
-                                  </p>
-                              </div>
-                          </div>
+
                           <div class="col-md-2">
                               <div class="quick-links">
-                                  <div class="wid-title">My Account</div>
+                                  <div class="wid-title">MEMBER</div>
                                   
                                   <ul>
-                                      <li><a href="#">My Account</a></li>
-                                      <li><a href="#">Personal Information</a></li>
-                                      <li><a href="#">Addresses</a></li>
-                                      <li><a href="#">Orders</a></li>
-                                      <li><a href="#">Wishlist</a></li>
-                                      <li><a href="#">track order</a></li>
+                                      <li><a href="http://www.jype.com/" target="_blank">Park jae-Yeon</a></li>
+                                      <li><a href="https://www.google.com/doodles/halloween-2018" target="_blank">Baek In-Young</a></li>
+                                      <li><a href="http://tv.jtbc.joins.com/cast/PR10010969/19" target="_blank">Kim Ju-Young</a></li>
+                                      <li><a href="https://kdexp.com/main.kd" target="_blank">Hwang Taek-Gyun</a></li>
+                                      <li><a href="https://i.pinimg.com/originals/f0/28/bf/f028bf9f1101b7e46afa33b3577aeaa8.jpg" target="_blank">Kim Sang-Hyup</a></li>
+                                      <li><a href="https://youngmill.kr/" target="_blank">Woo Jeong-Yoon</a></li>
                                   </ul>
                               </div>
                           </div>
-                          <div class="col-md-3">
+
+				<div class="col-md-2">
+					<div class="term">
+						<div class="wid-title">&nbsp;</div>
+						<p>
+							사업자등록번호 123-45-67890<br/> 
+							통신판매업신고번호 제KH24호<br/>
+							강남구 테헤란로14길 6 남도빌딩 3층<br/> 
+							Iclass 24기<br />
+						</p>
+					</div>
+				</div>
+
+				<div class="col-md-3">
                               <div class="subscribe">
                                   <div class="wid-title">Subscribe for OFFERS & UPDATES</div>
-                                  <p>
-                                      Enter your email and we'll send you a coupon
-                                      with 10% off your next order. Add any text here
-                                  </p>
-                                  <form>
-                                      <div class="form-group">
-                                          <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
-                                      </div>
-                                      <button type="submit" class="btn btn-default">Subscribe Now</button>
-                                  </form>
+								  <img src="/brw/resources/images/img_mark2.PNG" width="70px">
+								  <img src="/brw/resources/images/img_mark3.PNG" width="80px">
+								  <img src="/brw/resources/images/img_mark4.PNG" width="80px">	
                               </div>
                           </div>
                       </div>
@@ -81,7 +78,7 @@
               </div>
               <div class="footer-text">
                   <div class="container">
-                      <p>Copyright 2018. Designed and Developed by <a href="https://bootstrapmart.com/">BootstrapMart </a> &amp; Distributed by <a href="https://themewagon.com/">ThemeWagon</a></p>
+                      <p>Copyright 2018. Designed and Developed by <a href="https://localhost/brw/main.br">Belireview </a> </p>
                   </div>
               </div>
           </div>

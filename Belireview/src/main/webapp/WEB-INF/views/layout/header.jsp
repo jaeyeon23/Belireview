@@ -26,6 +26,22 @@
 	}		
 
 	  $(function(){
+		  var currentUrl = document.URL;
+	  		
+		  if(currentUrl.indexOf('admin')>-1){
+			  $('.admin').addClass('active');
+		  }else if(currentUrl.indexOf('ad')>-1){
+			  $('.ad').addClass('active');
+		  }else if(currentUrl.indexOf('drama')>-1){
+			  $('.drama').addClass('active');
+		  }else if(currentUrl.indexOf('movie')>-1){
+			  $('.movie').addClass('active');
+		  }else if(currentUrl.indexOf('main')>-1){
+			  $('.home').addClass('active');
+		  }else if(currentUrl.indexOf('rank')>-1){
+			  $('.rank').addClass('active');
+		  }
+		  
 		  $("#cat-nav").hide();
 		 
 		
@@ -108,15 +124,15 @@
                                   <!-- Collect the nav links, forms, and other content for toggling -->
                                   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                                       <ul class="nav navbar-nav">
-                                          <li class="active"><a href="/brw/main.br">Home <span class="sr-only">(current)</span></a></li>
-                                          <li><a href="/brw/rank.br">Rank</a></li>
-                                          <li ><a href="/brw/drama/dramaList.br" class="mmenu" id="menu1" onmouseover="mopen(1);" onmouseout="mclosetime();">Drama</a>
+                                          <li class="home"><a href="/brw/main.br">Home <span class="sr-only">(current)</span></a></li>
+                                          <li class="rank"><a href="/brw/rank.br">Rank</a></li>
+                                          <li class="drama"><a href="/brw/drama/dramaList.br" class="mmenu" id="menu1" onmouseover="mopen(1);" onmouseout="mclosetime();">Drama</a>
                                           </li>
-                                          <li><a class="movie_tab" href="/brw/movie/movieList.br" class="mmenu" id="menu2" onmouseover="mopen(2);" onmouseout="mclosetime();">Movie</a></li>
-                                          <li><a class="" href="/brw/ad/adList.br">Advertisement</a></li>
+                                          <li class="movie"><a class="movie_tab" href="/brw/movie/movieList.br" class="mmenu" id="menu2" onmouseover="mopen(2);" onmouseout="mclosetime();">Movie</a></li>
+                                          <li class="ad"><a class="" href="/brw/ad/adList.br">Advertisement</a></li>
                                           
                                           <c:if test="${sessionScope.ADMIN == 1 }">
-                                          	<li><a href="" class="dropdown-toggle active" data-toggle="dropdown" role="button" aria-expanded="false">Admin <i class="fa fa-angle-down"></i></a>
+                                          	<li class="admin"><a href="" class="dropdown-toggle active" data-toggle="dropdown" role="button" aria-expanded="false">Admin <i class="fa fa-angle-down"></i></a>
 				                                <ul class="dropdown-menu megamenu" role="menu">
 		                                		    <li>
 			                                            <div class="mega-sub">
@@ -134,6 +150,7 @@
                                           </c:if>
                                       </ul>
 							<ul class="nav navbar-nav navbar-right">
+							<c:if test="${sessionScope.ADMIN != 1 }">
 								<div id="content1">
 									<dl id="rank-list">
 										<dt>실시간 급상승 검색어</dt>
@@ -146,11 +163,12 @@
 										</dd>
 									</dl>
 								</div>
+							</c:if>
 								<li class="menu-search-form"><a href="#"
 									id="open-srch-form"><img
 										src="/brw/resources/images/srch.png" alt="srch"></a></li>
 								<li><c:if test="${sessionScope.ID != null }">
-										<a href="#"> <c:if
+										<a href="/brw/user/user.br"> <c:if
 												test="${sessionScope.PROFILE_IMAGE == null }">
 												<img src="/brw/resources/images/ican/no_pro.png" alt="bag"
 													width="60" height="45"
@@ -204,28 +222,28 @@
                            <div class ="submenu" id="submenu1" onmouseover="mcancelclosetime()" onmouseout="mclosetime();" style="display :none;">
                       	   	 <ul class="nav navbar-nav abcd efg">
                            		  <li class="active"><a href="#">장르</a></li>
-                        	      <li><a href="/brw/drama/dramaList.br?DRAMA_GENRE=공포&${_csrf.parameterName}=${_csrf.token}">공포</a></li>
-	                              <li><a href="/brw/drama/dramaList.br?DRAMA_GENRE=드라마&${_csrf.parameterName}=${_csrf.token}">드라마</a></li>
-    	                          <li><a href="/brw/drama/dramaList.br?DRAMA_GENRE=로맨스&${_csrf.parameterName}=${_csrf.token}">로맨스</a></li>
-        	                      <li><a href="/brw/drama/dramaList.br?DRAMA_GENRE=메디컬&${_csrf.parameterName}=${_csrf.token}">메디컬</a></li>
-            	                  <li><a href="/brw/drama/dramaList.br?DRAMA_GENRE=범죄&${_csrf.parameterName}=${_csrf.token}">범죄</a></li>
-                	              <li><a href="/brw/drama/dramaList.br?DRAMA_GENRE=코미디&${_csrf.parameterName}=${_csrf.token}">코미디</a></li>
-                    	          <li><a href="/brw/drama/dramaList.br?DRAMA_GENRE=판타지&${_csrf.parameterName}=${_csrf.token}">판타지</a></li>
+                        	      <li><a href="/brw/drama/dramaList.br?GENRE=공포&${_csrf.parameterName}=${_csrf.token}">공포</a></li>
+	                              <li><a href="/brw/drama/dramaList.br?GENRE=드라마&${_csrf.parameterName}=${_csrf.token}">드라마</a></li>
+    	                          <li><a href="/brw/drama/dramaList.br?GENRE=로맨스&${_csrf.parameterName}=${_csrf.token}">로맨스</a></li>
+        	                      <li><a href="/brw/drama/dramaList.br?GENRE=메디컬&${_csrf.parameterName}=${_csrf.token}">메디컬</a></li>
+            	                  <li><a href="/brw/drama/dramaList.br?GENRE=범죄&${_csrf.parameterName}=${_csrf.token}">범죄</a></li>
+                	              <li><a href="/brw/drama/dramaList.br?GENRE=코미디&${_csrf.parameterName}=${_csrf.token}">코미디</a></li>
+                    	          <li><a href="/brw/drama/dramaList.br?GENRE=판타지&${_csrf.parameterName}=${_csrf.token}">판타지</a></li>
                        		 </ul>
                            </div>
                            
                             <div class ="submenu" id="submenu2" onmouseover="mcancelclosetime()" onmouseout="mclosetime();" style="display :none;">
                       	   	 <ul class="nav navbar-nav abcd efg">
                            		  <li class="active"><a href="#">장르</a></li>
-                        	      <li><a href="/brw/movie/movieList.br?MOVIE_GENRE=SF&${_csrf.parameterName}=${_csrf.token}">SF</a></li>
-                        	      <li><a href="/brw/movie/movieList.br?MOVIE_GENRE=공포&${_csrf.parameterName}=${_csrf.token}">공포</a></li>
-                        	      <li><a href="/brw/movie/movieList.br?MOVIE_GENRE=로맨스&${_csrf.parameterName}=${_csrf.token}">로맨스</a></li>
-	                              <li><a href="/brw/movie/movieList.br?MOVIE_GENRE=범죄&${_csrf.parameterName}=${_csrf.token}">범죄</a></li>
-	                              <li><a href="/brw/movie/movieList.br?MOVIE_GENRE=애니메이션&${_csrf.parameterName}=${_csrf.token}">애니메이션</a></li>
-	                              <li><a href="/brw/movie/movieList.br?MOVIE_GENRE=액션&${_csrf.parameterName}=${_csrf.token}">액션</a></li>
-    	                          <li><a href="/brw/movie/movieList.br?MOVIE_GENRE=드라마&${_csrf.parameterName}=${_csrf.token}">드라마</a></li>
-        	                      <li><a href="/brw/movie/movieList.br?MOVIE_GENRE=코미디&${_csrf.parameterName}=${_csrf.token}">코미디</a></li>
-        	                      <li><a href="/brw/movie/movieList.br?MOVIE_GENRE=판타지&${_csrf.parameterName}=${_csrf.token}">판타지</a></li>
+                        	      <li><a href="/brw/movie/movieList.br?GENRE=SF&${_csrf.parameterName}=${_csrf.token}">SF</a></li>
+                        	      <li><a href="/brw/movie/movieList.br?GENRE=공포&${_csrf.parameterName}=${_csrf.token}">공포</a></li>
+                        	      <li><a href="/brw/movie/movieList.br?GENRE=로맨스&${_csrf.parameterName}=${_csrf.token}">로맨스</a></li>
+	                              <li><a href="/brw/movie/movieList.br?GENRE=범죄&${_csrf.parameterName}=${_csrf.token}">범죄</a></li>
+	                              <li><a href="/brw/movie/movieList.br?GENRE=애니메이션&${_csrf.parameterName}=${_csrf.token}">애니메이션</a></li>
+	                              <li><a href="/brw/movie/movieList.br?GENRE=액션&${_csrf.parameterName}=${_csrf.token}">액션</a></li>
+    	                          <li><a href="/brw/movie/movieList.br?GENRE=드라마&${_csrf.parameterName}=${_csrf.token}">드라마</a></li>
+        	                      <li><a href="/brw/movie/movieList.br?GENRE=코미디&${_csrf.parameterName}=${_csrf.token}">코미디</a></li>
+        	                      <li><a href="/brw/movie/movieList.br?GENRE=판타지&${_csrf.parameterName}=${_csrf.token}">판타지</a></li>
                        		 </ul>
                            </div>
                            

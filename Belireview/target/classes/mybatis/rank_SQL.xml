@@ -15,7 +15,7 @@
 			MOVIE_POSTER_IMAGE,
 			MOVIE_MAIN_IMAGE,
 			MOVIE_READCOUNT,
-			TO_CHAR(MOVIE_GRADE,'0.99') AS MOVIE_GRADE,
+			TO_CHAR(MOVIE_GRADE,'0.9') AS MOVIE_GRADE,
 			ROWNUM
 		FROM
 			(
@@ -54,60 +54,85 @@
 	</select>
 	
 	<select id="selectRank5" resultType="hashmap" parameterType="hashmap">
-		SELECT
-			SEARCH_TEXT,
-			<if test="table_value != null">
-				NO,
-			</if>
-			ROWNUM
-		FROM
-			(
-				SELECT DISTINCT
-					SEARCH_TEXT, 
-					COUNT
-					<if test="table_value != null">
-						<choose>
-							<when test="table_value.equals('drama')">
-								,DRAMA.DRAMA_NO AS NO, 
-								DRAMA.DRAMA_NAME	
-							</when>
-							<when test="table_value.equals('movie')">
-								,MOVIE.MOVIE_NO AS NO,
-								MOVIE.MOVIE_NAME
-							</when>
-							<otherwise>
-								,ACTOR.ACTOR_NO AS NO,
-								ACTOR.ACTOR_NAME
-							</otherwise>
-						</choose>
-					</if> 
-				FROM
-					RANK
-					<if test="table_value != null">
-						, ${table_value}
-					</if>
-				WHERE
-					SEARCH_DATE BETWEEN SYSDATE-7 AND SYSDATE 
-					<if test="table_value != null">
-						AND SEARCH_TABLE=#{table_value}
-						<choose>
-							<when test="table_value.equals('drama')">
-								AND	SEARCH_TEXT=DRAMA_NAME		
-							</when>
-							<when test="table_value.equals('movie')">
-								AND	SEARCH_TEXT=MOVIE_NAME
-							</when>
-							<otherwise>
-								AND	SEARCH_TEXT=ACTOR_NAME
-							</otherwise>
-						</choose>
-					</if>
-				ORDER BY
-					COUNT DESC
-			)
-		WHERE 
-			ROWNUM BETWEEN 1 AND 10
-	</select>
+      SELECT
+         SEARCH_TEXT,
+         <if test="table_value != null">
+            NO,
+         </if>
+         ROWNUM
+      FROM
+      (
+         SELECT
+            SEARCH_TEXT,
+            C,
+            NO
+         FROM
+            (
+               SELECT 
+                  SEARCH_TEXT, 
+                  SUM(COUNT) AS C
+                  <if test="table_value != null">
+                     <choose>
+                        <when test="table_value.equals('drama')">
+                           ,DRAMA.DRAMA_NO AS NO, 
+                           DRAMA.DRAMA_NAME   
+                        </when>
+                        <when test="table_value.equals('movie')">
+                           ,MOVIE.MOVIE_NO AS NO,
+                           MOVIE.MOVIE_NAME
+                        </when>
+                        <otherwise>
+                           ,ACTOR.ACTOR_NO AS NO,
+                           ACTOR.ACTOR_NAME
+                        </otherwise>
+                     </choose>
+                  </if> 
+               FROM
+                  RANK
+                  <if test="table_value != null">
+                     , ${table_value}
+                  </if>
+               WHERE
+                  SEARCH_DATE BETWEEN SYSDATE-7 AND SYSDATE 
+                  <if test="table_value != null">
+                     AND SEARCH_TABLE=#{table_value}
+                     <choose>
+                        <when test="table_value.equals('drama')">
+                           AND   SEARCH_TEXT=DRAMA_NAME      
+                        </when>
+                        <when test="table_value.equals('movie')">
+                           AND   SEARCH_TEXT=MOVIE_NAME
+                        </when>
+                        <otherwise>
+                           AND   SEARCH_TEXT=ACTOR_NAME
+                        </otherwise>
+                     </choose>
+                  </if>
+               GROUP BY
+                  SEARCH_TEXT
+                  <if test="table_value != null">
+                     <choose>
+                        <when test="table_value.equals('drama')">
+                           ,DRAMA.DRAMA_NO
+                           ,DRAMA.DRAMA_NAME
+                        </when>
+                        <when test="table_value.equals('movie')">
+                           ,MOVIE.MOVIE_NO
+                           ,MOVIE.MOVIE_NAME
+                        </when>
+                        <otherwise>
+                           ,ACTOR.ACTOR_NO
+                           ,ACTOR.ACTOR_NAME
+                        </otherwise>
+                     </choose>
+                  </if> 
+            )
+         ORDER BY
+            C DESC
+      )
+      WHERE 
+         ROWNUM BETWEEN 1 AND 10
+   </select>
 	
 	<!-- 테이블 검사 -->
 	<select id="selectDramaSearch" parameterType="hashmap" resultType="int">

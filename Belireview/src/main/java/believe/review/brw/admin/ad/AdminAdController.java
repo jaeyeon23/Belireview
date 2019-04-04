@@ -3,6 +3,7 @@ package believe.review.brw.admin.ad;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -33,8 +34,7 @@ public class AdminAdController {
 	private int blockPage = 5; 	 
 	private String pagingHtml;  
 	private Paging page;
-	private String filePath = "C:\\Users\\박재연\\Desktop\\Belireview\\Belireview\\src\\main\\webapp\\resources\\images\\ad\\";
-	//private String filePath = "C:\\인영\\sts\\Belireview\\Belireview\\src\\main\\webapp\\resources\\images\\ad\\";
+	private String filePath = "C:\\인영\\sts\\Belireview\\Belireview\\src\\main\\webapp\\resources\\images\\ad\\";
 	private HttpSession session = null;
 	
 	@Autowired
@@ -71,9 +71,9 @@ public class AdminAdController {
 		totalCount = admin.size();
 			
 		if(orderby == null || searchNum == null) {
-			page = new Paging(currentPage, totalCount, blockCount, blockPage, "/brw/admin/movie");
+			page = new Paging(currentPage, totalCount, blockCount, blockPage, "/brw/admin/ad");
 		}else {
-			page = new Paging(currentPage, totalCount, blockCount, blockPage, "/brw/admin/movie", orderby, searchNum, searchBox);
+			page = new Paging(currentPage, totalCount, blockCount, blockPage, "/brw/admin/ad", orderby, searchNum, searchBox);
 		}
 		
 		pagingHtml = page.getPagingHtml().toString();
@@ -113,9 +113,13 @@ public class AdminAdController {
 		
 		Map<String, Object> listMap = fileUtils.parseInsertFileInfo(commandMap.getMap(), request, filePath);
 		
-		commandMap.put("poster_image", listMap.get("poster_image"));
+		String[] arr = commandMap.get("link").toString().split("\\?");
+		String poster_image = arr[0].replace("www", "img");
+		poster_image = poster_image.replace("embed", "vi");
+		poster_image += "/mqdefault.jpg";
+		
+		commandMap.put("poster_image", poster_image);
 		commandMap.put("main_image", listMap.get("main_image"));
-		commandMap.put("content_image", listMap.get("content_image"));
 		
 		adminAdService.writeAd(commandMap.getMap());
 
@@ -145,9 +149,13 @@ public class AdminAdController {
 			commandMap.put("media", "ad");
 			map = fileUtils.parseInsertFileInfo(commandMap.getMap(), request, filePath);
 			
-			commandMap.put("poster_image", map.get("poster_image"));
+			String[] arr = commandMap.get("link").toString().split("\\?");
+			String poster_image = arr[0].replace("www", "img");
+			poster_image = poster_image.replace("embed", "vi");
+			poster_image += "/mqdefault.jpg";
+			
+			commandMap.put("poster_image", poster_image);
 			commandMap.put("main_image", map.get("main_image"));
-			commandMap.put("content_image", map.get("content_image"));
 		}
 		
 		adminAdService.updateAdOne(commandMap.getMap());

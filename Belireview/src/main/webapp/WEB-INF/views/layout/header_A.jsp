@@ -140,18 +140,17 @@
                                       </ul>
 								<ul class="nav navbar-nav navbar-right">
 									<div id="content1">
-										<dl id="rank-list">
-											<dt>실시간 급상승 검색어</dt>
-											<dd>
-												<ol>
-													<c:forEach items="${realtime }" var="list" varStatus="stat">
-														<li><font id="index">${stat.index + 1}</font>
-															${list.SEARCH_TEXT }</li>
-													</c:forEach>
-												</ol>
-											</dd>
-										</dl>
-									</div>
+									<dl id="rank-list">
+										<dt>실시간 급상승 검색어</dt>
+										<dd>
+											<ol>
+												<c:forEach items="${realtime }" var="list" varStatus="stat">							
+													<li><font id="index">${stat.index + 1}</font> ${list.SEARCH_TEXT }</li>
+												</c:forEach>
+											</ol>
+										</dd>
+									</dl>
+								</div>
 									<li class="menu-search-form"><a href="#"
 										id="open-srch-form"><img
 											src="/brw/resources/images/srch.png" alt="srch"></a></li>
